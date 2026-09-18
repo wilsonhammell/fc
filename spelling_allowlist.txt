@@ -1,0 +1,46 @@
+# Words restyle_pdf.py --spellcheck should never flag. One per line, any case.
+# Anything after # is ignored. Add Libro product names, place names and
+# member-facing terms here as they turn up in the report.
+
+# Libro
+Libro
+eSign
+
+# Canadian spellings the (US English) dictionary rejects. The dictionary
+# already accepts licence, cancelled, instalment, enrolment, fulfil,
+# catalogue, theatre and grey, so they aren't listed.
+behaviour
+centre
+centres
+cheque
+chequebook
+cheques
+chequing
+colour
+colours
+counselling
+defence
+endeavour
+favour
+favourable
+favourite
+favours
+harbour
+honour
+honoured
+honours
+jewellery
+kilometre
+kilometres
+labour
+metre
+metres
+mould
+neighbour
+neighbours
+odour
+offence
+rumour
+savour
+valour
+vapour
