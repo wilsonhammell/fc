@@ -1,0 +1,7 @@
+# Work documents and generated output - regenerable or not ours to version
+input forms/
+output/
+proofs/
+reports/
+*.pdf
+__pycache__/
