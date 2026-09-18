@@ -33,6 +33,7 @@ import csv
 import os
 import sys
 import glob
+from collections import Counter
 
 import pymupdf as fitz
 
@@ -131,38 +132,70 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
     return lines, notes
 
 
+def census_band(y, page_height, bands=40):
+    """Horizontal band a glyph falls in, keyed on its baseline y."""
+    return min(bands - 1, max(0, int(y / max(page_height, 1) * bands)))
+
+
 def glyph_census(page, bands=40):
-    """Count visible glyphs per horizontal band using get_texttrace(), which sees
-    text that get_text('dict') misses (runs with broken encodings, some form
-    artefacts). Used to prove nothing was erased without being redrawn."""
-    counts = [0] * bands
-    h = max(page.rect.height, 1)
+    """Count visible glyphs by (band, character) using get_texttrace(), which
+    sees text that get_text('dict') misses (runs with broken encodings, some form
+    artefacts). Used to prove nothing was erased without being redrawn, and
+    nothing was drawn twice.
+
+    Whitespace isn't counted. It has no ink, and redrawn spaces come back from
+    the new font as U+00A0 - counting them let every redrawn line inflate the
+    total by its number of spaces, enough to hide a real loss of the same size.
+    Glyphs are banded by baseline, which restyling never moves, so a glyph
+    lands in the same band before and after."""
+    counts = Counter()
+    h = page.rect.height
     for run in page.get_texttrace():
         if run.get("type") != 0:          # 0 = normal filled text
             continue
-        bb = run.get("bbox")
-        chars = run.get("chars", [])
-        if not bb or not chars:
-            continue
-        n = sum(1 for c in chars if c[0] not in (32, 0))
-        if n:
-            counts[min(bands - 1, max(0, int(bb[1] / h * bands)))] += n
+        for c in run.get("chars", []):
+            if c[0] <= 0 or chr(c[0]).isspace():
+                continue
+            counts[(census_band(c[2][1], h, bands), c[0])] += 1
     return counts
 
 
-def verify_no_text_lost(before, after, page_height, bands=40):
-    """Compare two censuses. The page total must match exactly: restyling changes
-    how glyphs look, never how many there are. Band counts are noisy (a line can
-    shift bands because a different font has a different ascender), so bands are
-    used only to point at where a real loss happened."""
-    lost = sum(before) - sum(after)
-    if lost <= 0:
-        return []
-    worst = max(range(bands), key=lambda i: before[i] - after[i])
-    y0 = round(worst * page_height / bands)
-    y1 = round((worst + 1) * page_height / bands)
-    return [("TEXT_LOST",
-             f"{lost} glyph(s) erased but not redrawn; largest loss near y={y0}-{y1}")]
+def verify_census(before, after, page_height, expected=None, bands=40):
+    """Compare two censuses glyph by glyph. Restyling changes how glyphs look,
+    never which glyphs there are or which line they sit on, so every
+    (band, character) count must match exactly. The only allowed difference is
+    `expected`: underscores deliberately added or removed when a fill-in rule is
+    rebuilt to its original length.
+
+    Both directions are errors. A loss is text erased but not redrawn. A gain is
+    text drawn that wasn't visible before - e.g. a label inside a form field,
+    which redaction can't erase, redrawn on the page on top of the original, or
+    an invisible OCR layer redrawn as visible text. Comparing per character also
+    catches a loss and a gain that would cancel out in a plain total."""
+    delta = Counter(after)
+    delta.subtract(before)
+    if expected:
+        delta.subtract(expected)
+
+    issues = []
+    for issue, sign, what in (("TEXT_LOST", -1, "erased but not redrawn"),
+                              ("TEXT_GAINED", 1, "drawn that weren't visible before")):
+        per_char, per_band = Counter(), Counter()
+        for (band, cp), n in delta.items():
+            if sign * n > 0:
+                per_char[cp] += sign * n
+                per_band[band] += sign * n
+        if not per_char:
+            continue
+        worst = max(per_band, key=per_band.get)
+        y0 = round(worst * page_height / bands)
+        y1 = round((worst + 1) * page_height / bands)
+        shown = ", ".join(f"{chr(cp)!r} x{n}" for cp, n in per_char.most_common(8))
+        if len(per_char) > 8:
+            shown += ", ..."
+        issues.append((issue, f"{sum(per_char.values())} glyph(s) {what} ({shown}); "
+                              f"largest near y={y0}-{y1}"))
+    return issues
 
 
 def recover_orphans(page, known_rects):
@@ -217,12 +250,13 @@ def recover_orphans(page, known_rects):
 def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio,
                  skip_conforming, target_font_substr, size_tol, dry_run, gap_tol=3.0,
                  recover=True):
-    """Restyle one page. Returns list of (issue, detail) tuples."""
+    """Restyle one page. Returns (issues, expected): a list of (issue, detail)
+    tuples, and the glyph-count changes made on purpose, for the census."""
     issues = []
     lines, notes = collect_lines(page, skip_conforming, target_font_substr, size, size_tol)
     issues.extend(notes)
     if not lines:
-        return issues
+        return issues, Counter()
 
     page_centre = page.rect.width / 2
     text_left = min(l["bbox"].x0 for l in lines)
@@ -248,9 +282,8 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
         plan.append({"line": ln, "new_w": new_w, "old_w": old_w, "centred": looks_centred})
 
     if dry_run:
-        return issues
+        return issues, Counter()
 
-    census_before = glyph_census(page)
     orphans = recover_orphans(page, [ln["bbox"] for ln in lines]) if recover else []
     if orphans:
         issues.append(("recovered_hidden_text",
@@ -297,6 +330,7 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
             prev_end_old = sp["bbox"][2]
             prev_end_new = x + dx + font.text_length(sp["text"], size)
 
+    expected = Counter()        # glyph-count changes made on purpose
     for o in orphans:
         alias, path, font = style_of(o["flags"], fonts)
         text = o["text"]
@@ -304,13 +338,13 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
             # rebuild the rule to its original length at the new glyph width
             unit = font.text_length("_", size) or 1
             text = "_" * max(1, int(round(o["width"] / unit)))
+            band = census_band(o["origin"][1], page.rect.height)
+            expected[(band, ord("_"))] += len(text) - len(o["text"])
         page.insert_text(fitz.Point(*o["origin"]), text,
                          fontname=alias, fontfile=path,
                          fontsize=size, color=tuple(o["color"]), overlay=True)
 
-    issues.extend(verify_no_text_lost(census_before, glyph_census(page),
-                                      page.rect.height))
-    return issues
+    return issues, expected
 
 
 # --------------------------------------------------------------------------
@@ -360,6 +394,12 @@ def best_fit_size(doc, fonts, target, min_size, right_margin, quantise):
 def process_file(src, dst, fonts, args):
     doc = fitz.open(src)
     rows = []
+    # Census every page before anything is touched. It's checked against the
+    # saved file, not the page in memory: after redaction the in-memory page
+    # stops drawing form-field appearances, so a field label redrawn on top of
+    # itself would cancel out of the count and pass.
+    census_before = [] if args.dry_run else [glyph_census(p) for p in doc]
+    expected = []
 
     size = args.size
     if args.best_fit:
@@ -371,11 +411,13 @@ def process_file(src, dst, fonts, args):
 
     for pno, page in enumerate(doc, start=1):
         before_pix = page.get_pixmap(dpi=args.png_dpi) if (args.png and not args.dry_run) else None
-        for issue, detail in restyle_page(
+        issues, allowed = restyle_page(
                 page, fonts, size, args.pad, args.centre_tol, args.min_indent,
                 args.width_tolerance, args.skip_conforming, args.target_font,
                 args.size_tolerance, args.dry_run, args.gap_tolerance,
-                not args.no_recover):
+                not args.no_recover)
+        expected.append(allowed)
+        for issue, detail in issues:
             rows.append([os.path.basename(src), pno, issue, detail])
         if before_pix is not None:
             save_proof(before_pix, page.get_pixmap(dpi=args.png_dpi),
@@ -385,6 +427,19 @@ def process_file(src, dst, fonts, args):
     if not args.dry_run:
         doc.save(dst, garbage=3, deflate=True)
     doc.close()
+
+    if not args.dry_run:
+        with fitz.open(dst) as out:
+            if out.page_count != len(census_before):
+                rows.append([os.path.basename(src), "", "PAGE_COUNT_CHANGED",
+                             f"{len(census_before)} -> {out.page_count}"])
+            for pno, page in enumerate(out, start=1):
+                if pno > len(census_before):
+                    break
+                for issue, detail in verify_census(census_before[pno - 1],
+                                                   glyph_census(page),
+                                                   page.rect.height, expected[pno - 1]):
+                    rows.append([os.path.basename(src), pno, issue, detail])
     return rows, size
 
 
