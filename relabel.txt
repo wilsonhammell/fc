@@ -18,11 +18,15 @@ Signature of Witness                    => Authorizing Staff Member
 Witness' Signature                      => Authorizing Staff Member
 
 # v. Member signing -> Authorized Signature
-# (on the quota and marketing-board forms the member signs as "Producer")
+# (the member signs as "Producer", "Borrower" or "Mortgagor" depending on
+#  the form; as whole labels only - the agreements say "the Borrower" hundreds
+#  of times in their text, and that is never touched)
 Signature(s) of Producer(s)             => Authorized Signature
 Signature of Producer                   => Authorized Signature
 Signature of Producer / Breeder Grower  => Authorized Signature
 Director's (Producer) Signature         => Authorized Signature
+Borrower                                => Authorized Signature
+Mortgagor                               => Authorized Signature
 
 # v. Member name -> Name (the number is kept where a form has two signers)
 Owner(s) Name                           => Name
@@ -34,5 +38,6 @@ Owner/Signing Officer Name 2            => Name 2
 #   "Witness' Name (non-family member)"   the Milk form's rule about who may witness
 #   "(Print Name of Witness below signature)"   an instruction, not a label
 #   "Signature:"                           member or staff depends on the form
+#   a bare "Owner"                        'owner:' can end a sentence
 #   Name of Lender / Name of corporation / Farm/Business Name / Name on DFO
 #   Licence / Account Name                 these name something other than the member
