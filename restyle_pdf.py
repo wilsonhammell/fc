@@ -159,16 +159,26 @@ def drawable(text, font):
     return all(ch.isspace() or (ch != "\ufffd" and font.has_glyph(ord(ch))) for ch in text)
 
 
-def save_proof(before, after, path):
-    """Write a side-by-side before/after image for visual review."""
-    from PIL import Image
+def save_proof(before, after, path, caption=""):
+    """Write a side-by-side before/after image for visual review, captioned
+    with the file, the page and the size the document settled on, so a
+    reviewer can tell at a glance which ones are worth a closer look."""
+    from PIL import Image, ImageDraw, ImageFont
     a = Image.frombytes("RGB", (before.width, before.height), before.samples)
     b = Image.frombytes("RGB", (after.width, after.height), after.samples)
-    gap = 24
+    gap, bar = 24, 30 if caption else 0
     canvas = Image.new("RGB", (a.width + b.width + gap,
-                               max(a.height, b.height)), (210, 210, 210))
-    canvas.paste(a, (0, 0))
-    canvas.paste(b, (a.width + gap, 0))
+                               max(a.height, b.height) + bar), (210, 210, 210))
+    canvas.paste(a, (0, bar))
+    canvas.paste(b, (a.width + gap, bar))
+    if caption:
+        draw = ImageDraw.Draw(canvas)
+        draw.rectangle([0, 0, canvas.width, bar], fill=(32, 32, 32))
+        try:
+            font = ImageFont.truetype("arial.ttf", 17)
+        except OSError:                                  # bitmap fallback
+            font = ImageFont.load_default()
+        draw.text((10, 6), caption, fill=(255, 255, 255), font=font)
     canvas.save(path)
 
 
@@ -1877,7 +1887,10 @@ def process_file(src, dst, fonts, args, speller=None):
                 for pno in range(min(orig.page_count, out.page_count)):
                     save_proof(orig[pno].get_pixmap(dpi=args.png_dpi),
                                out[pno].get_pixmap(dpi=args.png_dpi),
-                               os.path.join(args.png, f"{title}_p{pno + 1}_proof.png"))
+                               os.path.join(args.png,
+                                            f"{title} [{size:g}pt] p{pno + 1}_proof.png"),
+                               f"{name}   page {pno + 1} of {out.page_count}   "
+                               f"set at {size:g}pt   (original left, restyled right)")
     return rows, size
 
 
