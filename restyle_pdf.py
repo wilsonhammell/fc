@@ -1413,9 +1413,11 @@ def content_extent(page, skip=()):
 def find_old_header(page, zone, min_title_size):
     """The existing logo and title on page 1, to be replaced rather than pushed
     down under the new header. A title is a text line lying wholly within the
-    top `zone` points and set at `min_title_size` or larger; a logo is an image
-    lying wholly in the same band and no wider than half the page. This is a
-    guess, so every removal is reported."""
+    top `zone` points and set at `min_title_size` or larger. A logo is an image
+    that *starts* within that band, no wider than half the page and no taller
+    than a fifth of it - a letterhead logo often hangs below the band, and
+    requiring it to fit entirely left the old logo on the page under the new
+    one. This is a guess, so every removal is reported."""
     titles = []
     for block in page.get_text("dict")["blocks"]:
         if block.get("type") != 0:
@@ -1426,7 +1428,8 @@ def find_old_header(page, zone, min_title_size):
                     and max(s["size"] for s in spans) >= min_title_size:
                 titles.append({"bbox": fitz.Rect(line["bbox"]), "spans": spans})
     logos = [fitz.Rect(i["bbox"]) for i in page.get_image_info()
-             if i["bbox"][3] <= zone and fitz.Rect(i["bbox"]).width <= page.rect.width / 2]
+             if i["bbox"][1] <= zone and fitz.Rect(i["bbox"]).width <= page.rect.width / 2
+             and fitz.Rect(i["bbox"]).height <= page.rect.height / 5]
     return titles, logos
 
 
@@ -1627,12 +1630,24 @@ def draw_header(page, plan):
 
 def check_header(page, plan):
     """On the saved page 1, nothing but the header may sit above the header's
-    bottom edge. Catches a move that didn't take, or a field left behind."""
+    bottom edge, and no second logo may be left on the page. Catches a move
+    that didn't take, a field left behind, or an old letterhead logo that
+    wasn't recognised and now sits under ours."""
+    issues = []
     ext = content_extent(page, [plan["logo"]] + [ln["rect"] for ln in plan["lines"]])
     if ext is not None and ext.y0 < plan["bottom"]:
-        return [("HEADER_OVERLAP", f"page content starts at y={ext.y0:.1f}, above the "
-                                   f"header's bottom edge at y={plan['bottom']:.1f}")]
-    return []
+        issues.append(("HEADER_OVERLAP", f"page content starts at y={ext.y0:.1f}, above the "
+                                         f"header's bottom edge at y={plan['bottom']:.1f}"))
+    others = [fitz.Rect(i["bbox"]) for i in page.get_image_info()
+              if fitz.Rect(i["bbox"]).width <= page.rect.width / 2
+              and fitz.Rect(i["bbox"]).height <= page.rect.height / 5
+              and not fitz.Rect(i["bbox"]).intersects(plan["logo"])
+              and fitz.Rect(i["bbox"]).y0 <= page.rect.height / 3]
+    for r in others:
+        issues.append(("LOGO_LEFT_ON_PAGE",
+                       f"an image is still on page 1 at x={r.x0:.0f}-{r.x1:.0f}, "
+                       f"y={r.y0:.0f}-{r.y1:.0f}; if it's the old logo there are now two"))
+    return issues
 
 
 # --------------------------------------------------------------------------
