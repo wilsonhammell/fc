@@ -1,0 +1,38 @@
+# Labels restyle_pdf.py --relabel swaps for the house wording.
+#
+#   printed label => replacement
+#
+# A label only matches when it is the WHOLE line. Case, curly apostrophes,
+# spacing and a trailing colon don't matter, and a colon is kept if the form
+# had one. ALL-CAPS labels come out in capitals. A word inside a sentence is
+# never touched, and a label is left alone - and listed for a human - if it's
+# part of a paragraph or the new wording wouldn't fit where it sits.
+#
+# Chosen 2026-09-19 from the labels that appear in the 11 sample forms.
+# Anything not listed is for a human; the report lists lines that mention a
+# witness or staff so they can be found.
+
+# iv. Witness / staff references -> Authorizing Staff Member
+Witness                                 => Authorizing Staff Member
+Signature of Witness                    => Authorizing Staff Member
+Witness' Signature                      => Authorizing Staff Member
+
+# v. Member signing -> Authorized Signature
+# (on the quota and marketing-board forms the member signs as "Producer")
+Signature(s) of Producer(s)             => Authorized Signature
+Signature of Producer                   => Authorized Signature
+Signature of Producer / Breeder Grower  => Authorized Signature
+Director's (Producer) Signature         => Authorized Signature
+
+# v. Member name -> Name (the number is kept where a form has two signers)
+Owner(s) Name                           => Name
+Director's (Producer) Name              => Name
+Owner/Signing Officer Name 1            => Name 1
+Owner/Signing Officer Name 2            => Name 2
+
+# Deliberately NOT here - a human should decide:
+#   "Witness' Name (non-family member)"   the Milk form's rule about who may witness
+#   "(Print Name of Witness below signature)"   an instruction, not a label
+#   "Signature:"                           member or staff depends on the form
+#   Name of Lender / Name of corporation / Farm/Business Name / Name on DFO
+#   Licence / Account Name                 these name something other than the member

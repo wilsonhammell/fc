@@ -452,14 +452,15 @@ def recover_orphans(page, known_rects):
 
 def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio,
                  skip_conforming, target_font_substr, size_tol, dry_run, gap_tol=3.0,
-                 recover=True, reflow=None, rules=None, fine=None):
+                 recover=True, reflow=None, rules=None, fine=None, relabel=None):
     """Restyle one page. Returns (issues, expected): a list of (issue, detail)
     tuples, and the glyph-count changes made on purpose, keyed by (baseline y,
     character), for the census. From plan_reflow: `reflow` maps line_key ->
     layout for lines whose paragraph is re-wrapped rather than redrawn in
     place, and `rules` gives fill-in rules a new start and end. `fine` maps
-    line_key -> the smaller size for footers and fine print."""
-    reflow, rules, fine = reflow or {}, rules or [], fine or {}
+    line_key -> the smaller size for footers and fine print, and `relabel`
+    line_key -> the house wording from plan_relabels."""
+    reflow, rules, fine, relabel = reflow or {}, rules or [], fine or {}, relabel or {}
     issues = []
     content = printed(page)
     lines, notes = collect_lines(content, skip_conforming, target_font_substr, size, size_tol)
@@ -481,7 +482,10 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
         # A line ending in typed underscores is drawn as its label, then the
         # rule rebuilt apart where plan_reflow put it.
         spans, rule = ln["spans"], None
-        if line_key(ln) in inline:
+        if line_key(ln) in relabel:
+            # the house wording, set in the label's own style
+            spans = [dict(ln["spans"][0], text=relabel[line_key(ln)]["text"])]
+        elif line_key(ln) in inline:
             spans, style, _ = split_trailing_rule(ln["spans"])
             rule = (inline[line_key(ln)], style)
         line_size = fine.get(line_key(ln), size)
@@ -504,6 +508,8 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
                            f"{text_preview!r} {old_w:.0f}pt -> {new_w:.0f}pt"))
 
         plan.append({"line": ln, "spans": spans, "rule": rule, "size": line_size, "new_w": new_w,
+                     "relabelled": line_key(ln) in relabel,
+                     "keep_centre": relabel[line_key(ln)]["centre"] if line_key(ln) in relabel else None,
                      "old_w": old_w, "centred": looks_centred, "right": flush_right})
 
     if dry_run:
@@ -545,7 +551,10 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     expected = Counter()        # glyph-count changes made on purpose
     for item in plan:
         ln = item["line"]
-        if item["centred"]:
+        if item["keep_centre"] is not None:
+            # a relabelled caption stays centred under its signature line
+            dx = (item["keep_centre"] - item["new_w"] / 2) - ln["bbox"].x0
+        elif item["centred"]:
             # keep the visual centre, shift every span by the same amount
             dx = (page_centre - item["new_w"] / 2) - ln["bbox"].x0
         elif item["right"]:
@@ -589,6 +598,18 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
                              fontfile=path, fontsize=item["size"], color=span_colour(style),
                              overlay=True)
             expected[(cut["y"], ord("_"))] += n - cut["count"]
+
+        if item["relabelled"]:
+            # The census is told exactly which glyphs the new wording swaps,
+            # so anything else that changed on this line still shows up.
+            for sp in ln["spans"]:
+                for ch in sp["text"]:
+                    if not ch.isspace():
+                        expected[(sp["origin"][1], ord(ch))] -= 1
+            for sp in item["spans"]:
+                for ch in sp["text"]:
+                    if not ch.isspace():
+                        expected[(sp["origin"][1], ord(ch))] += 1
 
     # Re-wrapped paragraphs. Their glyphs are all still there, just on other
     # baselines, so the census is told where each one left and arrived.
@@ -1337,6 +1358,124 @@ def plan_reflow(doc, fonts, args, fine=None):
 
 
 # --------------------------------------------------------------------------
+# Relabelling: whole labels swapped for the house wording
+# --------------------------------------------------------------------------
+
+RELABEL_TABLE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "relabel.txt")
+REVIEW_WORDS = re.compile(r"\bwitness|\bstaff\b", re.I)
+
+
+def label_key(text):
+    """A label as the table matches it: case, curly apostrophes, spacing and a
+    trailing colon don't count."""
+    t = " ".join(text.replace("’", "'").split()).casefold()
+    return t[:-1].rstrip() if t.endswith(":") else t
+
+
+def load_relabels(path):
+    """The relabel table: {label_key: replacement}."""
+    table = {}
+    if path and os.path.exists(path):
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.split("#", 1)[0].strip()
+                if "=>" in line:
+                    old, new = (part.strip() for part in line.split("=>", 1))
+                    if old and new:
+                        table[label_key(old)] = new
+    return table
+
+
+def plan_relabels(doc, fonts, args, table, size, fine, plans):
+    """Which labels to swap: per page {line_key: new text}, plus report rows.
+
+    Deliberately narrow, because rewording is a human job wherever it can't
+    be done cleanly. A line is relabelled only when its WHOLE text is a label
+    in the table, it stands on its own rather than being part of a paragraph,
+    it isn't being re-wrapped, and the new wording fits the room the line
+    already has at the document's size - relabelling never shrinks the
+    document or moves anything else. A word inside a sentence is never
+    touched. Everything that didn't qualify is reported for a human, as is
+    any line mentioning a witness or staff that the table doesn't cover.
+    Reads the document, changes nothing. Each entry is {"text", "centre"},
+    centre being the x to keep when the label was centred under its line."""
+    out, rows = [], []
+    for pi, page in enumerate(doc):
+        found = {}
+        out.append(found)
+        p = printed(page)
+        lines, _ = collect_lines(p, False, args.target_font, args.size, args.size_tolerance)
+        if not lines:
+            continue
+        right = args.right_margin or ink_right(p) or max(ln["bbox"].x1 for ln in lines)
+        if args.page_margin is not None and not args.right_margin:
+            right = max(right, page.rect.width - args.page_margin)
+        room = line_room(p, lines, reflow_obstacles(p, lines), right, args)
+        in_para = {k for para in find_paragraphs(p, lines, right, args)
+                   if len(para["lines"]) > 1 for k in para["lines"]}
+        reflowed = (plans[pi] or {}).get("reflow", {})
+        rules = [r for r in rule_segments(p) if r.width > 3 * max(r.height, 1)] + [
+            f["rect"] for f in fill_ins(p, lines)]
+        for i, ln in enumerate(lines):
+            text = " ".join("".join(s["text"] for s in ln["spans"]).split())
+            new = table.get(label_key(text))
+            if new is None:
+                if REVIEW_WORDS.search(text):
+                    where = "in running text" if len(text) > 42 else "a label the table doesn't cover"
+                    rows.append((pi + 1, "relabel_review", f"{text[:70]!r} ({where})"))
+                continue
+            if text.endswith(":") and not new.endswith(":"):
+                new += ":"
+            # set in capitals if most of the label's words were
+            # ("DIRECTOR'S (Producer) NAME" sits in a row of capitals)
+            words = [w for w in text.split() if any(c.isalpha() for c in w)]
+            if words and sum(w.upper() == w for w in words) * 2 > len(words):
+                new = new.upper()
+            if new == text:
+                continue
+            # keep any leading space the label was set with, so it starts
+            # where the original's first letter did
+            first = ln["spans"][0]["text"]
+            new = first[:len(first) - len(first.lstrip())] + new
+            key, rm = line_key(ln), room[i]
+            anchor = None
+            if i in in_para:
+                why = "it's part of a paragraph"
+            elif key in reflowed:
+                why = "its line is being re-wrapped"
+            else:
+                b = ln["bbox"]
+                mid = (b.x0 + b.x1) / 2
+                # A caption centred under the signature line just above it
+                # keeps that centre, or the new wording drifts off its line.
+                under = [r for r in rules if b.y0 - 16 <= r.y1 <= b.y0 + 2
+                         and r.x0 <= b.x0 + 1 and r.x1 >= b.x1 - 1
+                         and abs((r.x0 + r.x1) / 2 - mid) <= 6]
+                anchor = mid if under else None
+                width = line_width([dict(ln["spans"][0], text=new)], fonts, fine[pi].get(key, size))
+                if anchor is not None:
+                    fits = anchor - width / 2 >= rm["left_stop"] + 2 and anchor + width / 2 <= rm["hard"]
+                elif rm["right"]:
+                    fits = rm["ink_end"] - width >= rm["left_stop"] + 2
+                elif rm["centred"]:
+                    centre = page.rect.width / 2
+                    fits = centre - width / 2 >= rm["left_stop"] and centre + width / 2 <= rm["hard"]
+                else:
+                    stop = rm["hard"]
+                    if rm["blank"] is not None:
+                        stop = min(stop, rm["blank"]["x0"] - rm["blank"]["gap"])
+                    fits = ln["spans"][0]["origin"][0] + width <= stop + 0.01
+                why = None if fits else f"{new!r} doesn't fit where the label sits"
+            if why:
+                rows.append((pi + 1, "relabel_for_human", f"{text!r} -> {new.strip()!r}: {why}"))
+            else:
+                found[key] = {"text": new, "centre": anchor}
+                rows.append((pi + 1, "relabelled", f"{text!r} -> {new.strip()!r}"
+                             + (" (kept centred under its line)" if anchor is not None else "")))
+    return out, rows
+
+
+# --------------------------------------------------------------------------
 # Header: logo top-left, title top-right, room for signing buttons
 # --------------------------------------------------------------------------
 
@@ -1785,7 +1924,7 @@ def best_fit_size(doc, fonts, target, min_size, right_margin, quantise, fine=Non
     return round(best, 2), culprit
 
 
-def process_file(src, dst, fonts, args, speller=None):
+def process_file(src, dst, fonts, args, speller=None, relabels=None):
     doc = fitz.open(src)
     name = os.path.basename(src)
     title = os.path.splitext(name)[0]
@@ -1837,6 +1976,12 @@ def process_file(src, dst, fonts, args, speller=None):
     # Fine print is never set larger than the body it sits under.
     fine = [{k: min(s, size) for k, s in f.items()} for f in fine]
 
+    # Labels to reword, decided at the settled size so they never change it.
+    relabel = [{} for _ in range(doc.page_count)]
+    if relabels:
+        relabel, notes = plan_relabels(doc, fonts, args, relabels, size, fine, plans)
+        rows += [[name, where, issue, detail] for where, issue, detail in notes]
+
     if header and not args.dry_run:
         expected[0].update(remove_old_header(doc[0], header, args.pad))
 
@@ -1846,7 +1991,7 @@ def process_file(src, dst, fonts, args, speller=None):
                 args.width_tolerance, args.skip_conforming, args.target_font,
                 args.size_tolerance, args.dry_run, args.gap_tolerance,
                 not args.no_recover, plans[pno - 1].get("reflow"), plans[pno - 1].get("rules"),
-                fine[pno - 1])
+                fine[pno - 1], relabel[pno - 1])
         expected[pno - 1].update(allowed)      # update, not +=: allowances can be negative
         for issue, detail in issues:
             rows.append([name, pno, issue, detail])
@@ -1960,6 +2105,15 @@ def main():
                     help="a blank after a label (a fill-in rule) may be shortened "
                          "from the left to make room for the label, down to this fraction of "
                          "its width and never under 36pt (default 0.5)")
+    rl = ap.add_argument_group("relabelling (--relabel)")
+    rl.add_argument("--relabel", action="store_true",
+                    help="swap whole labels for the house wording in the table (Witness -> "
+                         "Authorizing Staff Member, ...). Only whole labels that stand alone and "
+                         "fit are changed, never words inside sentences; the rest is listed "
+                         "for a human")
+    rl.add_argument("--relabel-table", default=RELABEL_TABLE,
+                    help="the table of 'label => replacement' lines (default relabel.txt "
+                         "beside this script)")
     hd = ap.add_argument_group("header (--header)")
     hd.add_argument("--header", action="store_true",
                     help="give page 1 the logo top-left and the file name as the "
@@ -2001,6 +2155,9 @@ def main():
                            if getattr(args, f"font_{k}")})
     print(f"Using: {fonts['regular'][1]}")
     speller = load_speller(args.spell_allow) if args.spellcheck else None
+    relabels = load_relabels(args.relabel_table) if args.relabel else None
+    if args.relabel and not relabels:
+        sys.exit(f"--relabel: no 'label => replacement' lines in {args.relabel_table}")
 
     if os.path.isdir(args.input):
         srcs = sorted(glob.glob(os.path.join(args.input, "*.pdf")))
@@ -2017,7 +2174,7 @@ def main():
     all_rows, failed, sizes = [], [], []
     for i, (src, dst) in enumerate(pairs, 1):
         try:
-            rows, used = process_file(src, dst, fonts, args, speller)
+            rows, used = process_file(src, dst, fonts, args, speller, relabels)
             all_rows.extend(rows)
             sizes.append(used)
             flag = f"  [{len(rows)} flagged]" if rows else ""
@@ -2048,6 +2205,12 @@ def main():
         for issue, n in sorted(Counter(r[2] for r in all_rows
                                        if r[2].startswith("HEADER_")).items()):
             print(f"  {n} {issue}")
+    if args.relabel:
+        done = sum(1 for r in all_rows if r[2] == "relabelled")
+        human = sum(1 for r in all_rows if r[2] == "relabel_for_human")
+        review = sum(1 for r in all_rows if r[2] == "relabel_review")
+        print(f"Relabelled {done} label(s); {human} left for a human; "
+              f"{review} other line(s) mention a witness or staff.")
     if args.spellcheck:
         spelled = [r for r in all_rows if r[2] == "spelling"]
         print(f"Spelling: {len(spelled)} word(s) to check in "
