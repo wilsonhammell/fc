@@ -314,6 +314,67 @@ def ink_right(page):
     return max(xs) if xs else None
 
 
+def rule_segments(page):
+    """Thin drawn things text can collide with: ruled lines, box edges, and
+    rules drawn as slivers of fill."""
+    out = []
+    for d in page.get_drawings():
+        fill = d.get("fill")
+        if d["type"] in ("f", "fs") and fill and min(fill) < 0.99 and d["rect"].height < 4:
+            out.append(fitz.Rect(d["rect"]))
+        if d["type"] not in ("s", "fs"):
+            continue
+        w = max(d.get("width") or 1.0, 1.0) / 2
+        for item in d["items"]:
+            if item[0] == "l":
+                p, q = item[1], item[2]
+                out.append(fitz.Rect(min(p.x, q.x) - w, min(p.y, q.y) - w,
+                                     max(p.x, q.x) + w, max(p.y, q.y) + w))
+            elif item[0] == "re":
+                b = fitz.Rect(item[1])
+                out += [fitz.Rect(b.x0 - w, b.y0 - w, b.x1 + w, b.y0 + w),
+                        fitz.Rect(b.x0 - w, b.y1 - w, b.x1 + w, b.y1 + w),
+                        fitz.Rect(b.x0 - w, b.y0 - w, b.x0 + w, b.y1 + w),
+                        fitz.Rect(b.x1 - w, b.y0 - w, b.x1 + w, b.y1 + w)]
+    return out
+
+
+def rule_crossings(page, band=20.0):
+    """Characters whose body (cap height down to the baseline) crosses a ruled
+    line or a box edge. Descender space is left out, so an underline sitting
+    just under the text doesn't count. Returns (count, worst y)."""
+    rows = {}
+    for seg in rule_segments(page):
+        for k in range(int(seg.y0 // band), int(seg.y1 // band) + 1):
+            rows.setdefault(k, []).append(seg)
+    hits, where = 0, None
+    for run in printed(page).get_texttrace():
+        if run.get("type") not in (0, 1):
+            continue
+        for c in run.get("chars", []):
+            if c[0] <= 0 or chr(c[0]).isspace():
+                continue
+            base, size = c[2][1], run["size"]
+            body = fitz.Rect(c[3][0], base - 0.72 * size, c[3][2], base + 0.08 * size)
+            near = rows.get(int(body.y0 // band), []) + rows.get(int(body.y1 // band), [])
+            if any(body.intersects(s) for s in near):
+                hits += 1
+                where = where if where is not None else round(base)
+    return hits, where
+
+
+def verify_rules(before, after):
+    """Text must not end up crossing a ruled line or box edge it didn't cross
+    before: grown text can break out of a box it used to sit inside, which
+    neither the census nor the right-edge check can see."""
+    was, _ = rule_crossings(before)
+    now, where = rule_crossings(after)
+    if now <= was:
+        return []
+    return [("TEXT_CROSSES_RULE", f"{now - was} more character(s) sit on a ruled line or box "
+                                  f"edge than before ({was} -> {now}), first near y={where}")]
+
+
 def verify_right_edge(before, after, page_margin=None, tolerance=2.0):
     """On the saved page, no printed text may reach past the right edge the
     original text used (or --page-margin's, if that's further) - let alone
@@ -423,7 +484,8 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
         # indented from the text margin. Re-centre these so titles and footers
         # don't jump left when the text gets narrower.
         looks_centred = (abs((ln["bbox"].x0 + ln["bbox"].x1) / 2 - page_centre) < centre_tol
-                         and (ln["bbox"].x0 - text_left) > min_indent)
+                         and (ln["bbox"].x0 - text_left) > min_indent
+                         and alone_on_row(ln, lines))
         flush_right = (not looks_centred and rule is None
                        and looks_right_aligned(ln["bbox"], text_left, text_right))
 
@@ -485,8 +547,10 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
 
         prev_end_old = None      # right edge of previous span, original layout
         prev_end_new = None      # right edge of previous span, as redrawn
+        line_max = max((sp["size"] for sp in item["spans"]), default=item["size"])
         for sp in item["spans"]:
             alias, path, font = style_of(sp["flags"], fonts)
+            at = span_size(sp, line_max, item["size"])
             x, y = sp["origin"]
 
             # If this span butted up against the previous one, it's continuous
@@ -501,10 +565,10 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
                 continue
             page.insert_text(fitz.Point(x + dx, y), sp["text"],
                              fontname=alias, fontfile=path,
-                             fontsize=item["size"], color=span_colour(sp), overlay=True)
+                             fontsize=at, color=span_colour(sp), overlay=True)
 
             prev_end_old = sp["bbox"][2]
-            prev_end_new = x + dx + font.text_length(sp["text"], item["size"])
+            prev_end_new = x + dx + font.text_length(sp["text"], at)
 
         if item["rule"]:
             cut, style = item["rule"]
@@ -519,10 +583,10 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     # Re-wrapped paragraphs. Their glyphs are all still there, just on other
     # baselines, so the census is told where each one left and arrived.
     for layout in {id(v): v for v in reflow.values()}.values():
-        for x, y, text, sp in layout["pieces"]:
+        for x, y, text, sp, at in layout["pieces"]:
             alias, path, font = style_of(sp["flags"], fonts)
             page.insert_text(fitz.Point(x, y), text, fontname=alias, fontfile=path,
-                             fontsize=size, color=span_colour(sp), overlay=True)
+                             fontsize=at, color=span_colour(sp), overlay=True)
             for ch in text:
                 if not ch.isspace():
                     expected[(y, ord(ch))] += 1
@@ -637,9 +701,28 @@ def line_width(spans, fonts, size):
         spans.pop()
     if not spans:
         return 0.0
+    line_max = max(s["size"] for s in spans)
     last = dict(spans[-1], text=spans[-1]["text"].rstrip())
-    return sum(style_of(s["flags"], fonts)[2].text_length(s["text"], size)
+    return sum(style_of(s["flags"], fonts)[2].text_length(s["text"], span_size(s, line_max, size))
                for s in spans[:-1] + [last])
+
+
+def span_size(sp, line_max, size):
+    """The size a span is set at. One set smaller than the rest of its line -
+    a superscript, a subscript, small print inside a sentence - keeps that
+    proportion instead of being blown up to the body size."""
+    if line_max <= 0 or sp["size"] >= line_max * 0.9:
+        return size
+    return round(size * sp["size"] / line_max, 2)
+
+
+def alone_on_row(line, lines):
+    """Whether nothing else shares this line's baseline. A line in one column
+    of a two-column block can straddle the page centre by accident, and
+    re-centring it would drag it over its neighbour."""
+    base = line["spans"][0]["origin"][1]
+    return not any(other is not line and abs(other["spans"][0]["origin"][1] - base) <= 2
+                   for other in lines)
 
 
 def looks_right_aligned(bbox, text_left, text_right):
@@ -669,14 +752,16 @@ def redrawn_end(spans, fonts, size, gap_tol, dx=0.0):
     their own x. Must follow restyle_page's placement exactly. None if the
     spans draw nothing."""
     prev_old = prev_new = end = None
+    line_max = max((sp["size"] for sp in spans), default=size)
     for sp in spans:
         font = style_of(sp["flags"], fonts)[2]
+        at = span_size(sp, line_max, size)
         x = sp["origin"][0]
         if prev_old is not None and sp["bbox"][0] - prev_old < gap_tol:
             x = prev_new - dx
         if sp["text"].strip():
-            end = x + dx + font.text_length(sp["text"].rstrip(), size)
-        prev_old, prev_new = sp["bbox"][2], x + dx + font.text_length(sp["text"], size)
+            end = x + dx + font.text_length(sp["text"].rstrip(), at)
+        prev_old, prev_new = sp["bbox"][2], x + dx + font.text_length(sp["text"], at)
     return end
 
 
@@ -883,8 +968,11 @@ def layout_paragraph(para, size, fonts, limit, obstacles, cap, min_leading, cent
     space = reg.text_length(" ", size)
     asc, desc = reg.ascender * size, -reg.descender * size
 
+    para_max = max(sp["size"] for sp in para["spans"])
+
     def width(word):
-        return sum(style_of(sp["flags"], fonts)[2].text_length(t, size) for t, sp in word)
+        return sum(style_of(sp["flags"], fonts)[2].text_length(t, span_size(sp, para_max, size))
+                   for t, sp in word)
 
     if para["centred"]:
         # stay inside the band the centred text spanned, wrapping rather
@@ -958,16 +1046,18 @@ def layout_paragraph(para, size, fonts, limit, obstacles, cap, min_leading, cent
     if para["marker"]:
         x = para["marker_x"]
         for t, sp in para["words"][0]:
-            pieces.append((x, para["base"], t, sp))
-            x += style_of(sp["flags"], fonts)[2].text_length(t, size)
+            at = span_size(sp, para_max, size)
+            pieces.append((x, para["base"], t, sp, at))
+            x += style_of(sp["flags"], fonts)[2].text_length(t, at)
     for n, (row, used) in enumerate(rows):
         x, y = row_x(n, used), para["base"] + n * pitch
         for k, (word, _) in enumerate(row):
             if k:
                 x += space
             for t, sp in word:
-                pieces.append((x, y, t, sp))
-                x += style_of(sp["flags"], fonts)[2].text_length(t, size)
+                at = span_size(sp, para_max, size)
+                pieces.append((x, y, t, sp, at))
+                x += style_of(sp["flags"], fonts)[2].text_length(t, at)
     return {"pieces": pieces, "spans": para["spans"], "rows": len(rows), "pitch": pitch}, None
 
 
@@ -1054,7 +1144,7 @@ def line_room(page, lines, static, right, args):
             blank = {"x0": bx0, "x1": bx1, "reach": max(bx1, hard), "parts": mine,
                      "gap": min(4.0, gap) if gap >= 0 else 1.5}
         centred = (abs((b.x0 + b.x1) / 2 - centre) < args.centre_tol
-                   and b.x0 - text_left > args.min_indent)
+                   and b.x0 - text_left > args.min_indent and alone_on_row(ln, lines))
         out.append({"hard": hard, "blank": blank, "left_stop": left_stop, "ink_end": ends[i],
                     "label": label if inline else ln["spans"], "centred": centred,
                     "right": (not centred and not inline
@@ -1761,6 +1851,8 @@ def process_file(src, dst, fonts, args, speller=None):
                                                    dys[pno - 1]):
                     rows.append([name, pno, issue, detail])
                 for issue, detail in verify_right_edge(orig[pno - 1], page, args.page_margin):
+                    rows.append([name, pno, issue, detail])
+                for issue, detail in verify_rules(orig[pno - 1], page):
                     rows.append([name, pno, issue, detail])
             if header:
                 rows += [[name, 1, issue, detail] for issue, detail in check_header(out[0], header)]
