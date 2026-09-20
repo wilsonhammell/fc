@@ -211,16 +211,58 @@ def save_proof(before, after, path, caption="", before_marks=(), after_marks=(),
 # Page processing
 # --------------------------------------------------------------------------
 
+def read_once(page, kind, make):
+    """Remember an expensive read of a page.
+
+    A page is asked for the same things over and over in a run - its text, its
+    glyph runs, its drawings, a copy of itself without annotations - and each
+    ask re-parses the whole content stream. Page objects don't survive from
+    one `doc[n]` to the next, so the answers are kept on the document, by page
+    number. Anything that changes a page drops what was remembered about it
+    (see `forget`)."""
+    doc = page.parent
+    if kind != "printed" and not getattr(doc, "_no_annots", False):
+        # Only a page with its annotations stripped reads the same every
+        # time. On a page that still has them, the extractor fills in a
+        # widget's appearance the first time something asks for it, so an
+        # early read and a later one differ - and remembering the early one
+        # had the signing tabs' SIGN redrawn as text nobody had accounted for.
+        return make()
+    store = getattr(doc, "_reads", None)
+    if store is None:
+        store = {}
+        try:
+            doc._reads = store
+        except Exception:                 # a document that won't hold one
+            return make()
+    key = (page.number, kind)
+    if key not in store:
+        store[key] = make()
+    return store[key]
+
+
+def forget(page):
+    """Drop what was remembered about a page, because it has just changed."""
+    store = getattr(page.parent, "_reads", None)
+    if store:
+        for key in [k for k in store if k[0] == page.number]:
+            del store[key]
+
+
 def printed(page):
     """The page's printed content only: a copy with its annotations dropped,
     at the same coordinates. Text extraction also reads what form fields
     display - a pre-filled value, a signature tab's SIGN - and restyling
     that onto the page would draw it a second time under the field's own
     copy. Everything that decides what gets restyled reads this instead."""
-    tmp = fitz.open()
-    tmp.insert_pdf(page.parent, from_page=page.number, to_page=page.number)
-    tmp.xref_set_key(tmp[0].xref, "Annots", "null")
-    return tmp.reload_page(tmp[0])
+    def build():
+        tmp = fitz.open()
+        tmp.insert_pdf(page.parent, from_page=page.number, to_page=page.number)
+        tmp.xref_set_key(tmp[0].xref, "Annots", "null")
+        tmp._no_annots = True             # so its reads can be remembered
+        return tmp.reload_page(tmp[0])
+
+    return read_once(page, "printed", build)
 
 
 LIGATURE_PARTS = ("ti", "ft", "fi", "fl", "ff", "ffi", "ffl", "tt", "st")
@@ -288,7 +330,7 @@ def resolve_ligatures(page, unnamed, freq):
     if not unnamed or freq is None:
         return {}
     votes, seen = {}, {}
-    for block in page.get_text("rawdict")["blocks"]:
+    for block in read_once(page, "raw", lambda: page.get_text("rawdict"))["blocks"]:
         if block.get("type") != 0:
             continue
         for line in block.get("lines", []):
@@ -389,9 +431,9 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
     out of the extractor, the line is re-read glyph by glyph so the bold stops
     where the heading does."""
     lines, notes = [], []
-    data = page.get_text("dict")
+    data = read_once(page, "dict", lambda: page.get_text("dict"))
     raw = None
-    stroked = {(round(c[2][0], 1), round(c[2][1], 1)) for run in page.get_texttrace()
+    stroked = {(round(c[2][0], 1), round(c[2][1], 1)) for run in read_once(page, "trace", page.get_texttrace)
                if run.get("type") == 1 for c in run.get("chars", [])}
     # where those glyphs are, by baseline, so a span can be asked whether only
     # part of it is stroked
@@ -407,7 +449,7 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
     # character - the page shows "after execution" while the text layer says
     # "Ōer execuƟon" - and redrawing what the text layer claims would print
     # that. The extractor reports these as U+FFFD, so the span is left alone.
-    unnamed = [(fitz.Rect(c[3]), (run["font"], c[1])) for run in page.get_texttrace()
+    unnamed = [(fitz.Rect(c[3]), (run["font"], c[1])) for run in read_once(page, "trace", page.get_texttrace)
                if run.get("type") in (0, 1)
                for c in run.get("chars", []) if c[0] == 0xFFFD]
     spelt = resolve_ligatures(page, unnamed, word_frequency())
@@ -448,7 +490,7 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
                 # can't be named keep their own font
                 if raw is None:
                     raw = {tuple(round(v, 1) for v in l["bbox"]): l
-                           for b in page.get_text("rawdict")["blocks"] if b.get("type") == 0
+                           for b in read_once(page, "raw", lambda: page.get_text("rawdict"))["blocks"] if b.get("type") == 0
                            for l in b["lines"]}
                 exact = raw.get(tuple(round(v, 1) for v in line["bbox"]))
                 if exact:
@@ -481,8 +523,15 @@ def glyph_in(bbox, rect):
     Judged by the box's centre, not the glyph's origin: the origin sits on the
     baseline, and some fonts report a line box that ends exactly on the
     baseline - where a point test counts as outside, so whole lines were taken
-    for hidden text and drawn twice."""
-    return fitz.Point((bbox[0] + bbox[2]) / 2, (bbox[1] + bbox[3]) / 2) in rect
+    for hidden text and drawn twice.
+
+    This is asked several million times in a run, so the test is done in
+    plain arithmetic: building a Point and handing it to the rect's own
+    `in` costs three layers of Python per glyph, which came to most of the
+    time the whole tool spent."""
+    x = (bbox[0] + bbox[2]) / 2
+    y = (bbox[1] + bbox[3]) / 2
+    return rect.x0 <= x < rect.x1 and rect.y0 <= y < rect.y1
 
 
 def glyph_census(page, dy=0.0, bands=40):
@@ -500,7 +549,7 @@ def glyph_census(page, dy=0.0, bands=40):
     content down, `dy` counts the original as if it had moved too."""
     counts = Counter()
     h = page.rect.height
-    for run in page.get_texttrace():
+    for run in read_once(page, "trace", page.get_texttrace):
         if run.get("type") != 0:          # 0 = normal filled text
             continue
         for c in run.get("chars", []):
@@ -564,7 +613,7 @@ def rule_segments(page):
     """Thin drawn things text can collide with: ruled lines, box edges, and
     rules drawn as slivers of fill."""
     out = []
-    for d in page.get_drawings():
+    for d in read_once(page, "draw", page.get_drawings):
         fill = d.get("fill")
         if d["type"] in ("f", "fs") and fill and min(fill) < 0.99 and d["rect"].height < 4:
             out.append(fitz.Rect(d["rect"]))
@@ -599,7 +648,7 @@ def rule_crossings(page, band=20.0):
         for k in range(int(seg.y0 // band), int(seg.y1 // band) + 1):
             rows.setdefault(k, []).append(seg)
     hits = Counter()
-    for run in page.get_texttrace():
+    for run in read_once(page, "trace", page.get_texttrace):
         if run.get("type") not in (0, 1):
             continue
         for c in run.get("chars", []):
@@ -695,7 +744,7 @@ def recover_orphans(page, known_rects):
     they are redrawn they vanish silently - which is how the rule after 'FROM:'
     on a real form disappeared. Returns run dicts ready to redraw."""
     runs = []
-    for tr in page.get_texttrace():
+    for tr in read_once(page, "trace", page.get_texttrace):
         if tr.get("type") != 0 or not tr.get("chars"):
             continue
         if abs(tr.get("dir", (1, 0))[1]) > 1e-6:
@@ -845,6 +894,7 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
         else:
             b = fitz.Rect(ln["bbox"])
             rects += clip_out(fitz.Rect(b.x0 - pad, b.y0 - pad, b.x1 + pad, b.y1 + pad), keeps)
+    forget(page)                       # the page is about to change
     for r in rects:
         page.add_redact_annot(r, fill=None, cross_out=False)
 
@@ -1159,7 +1209,7 @@ def ink_ends(page, lines):
     one's box runs past where the second starts - and taking the second's
     glyphs for the first's put its ink end 19pt beyond its last letter, which
     in turn cancelled the stop that should have held it back."""
-    chars = [c for run in page.get_texttrace() if run.get("type") in (0, 1)
+    chars = [c for run in read_once(page, "trace", page.get_texttrace) if run.get("type") in (0, 1)
              for c in run.get("chars", []) if c[0] > 0 and not chr(c[0]).isspace()]
     bases = [ln["spans"][0]["origin"][1] for ln in lines]
     ends = [None] * len(lines)
@@ -1288,7 +1338,7 @@ def find_paragraphs(page, lines, limit, args):
     columns, not prose), fill-in rules, or text --skip-conforming leaves alone
     - with the reason in "bad", so the report can say why."""
     per_line = [[] for _ in lines]
-    for w in page.get_text("words"):
+    for w in read_once(page, "words", lambda: page.get_text("words")):
         c = fitz.Point((w[0] + w[2]) / 2, (w[1] + w[3]) / 2)
         for i, ln in enumerate(lines):
             if c in ln["bbox"]:
@@ -1384,7 +1434,7 @@ def reflow_obstacles(page, lines):
     wholly contains a paragraph is its background, and the paragraph has to
     stay inside it."""
     obs = []
-    for d in page.get_drawings():
+    for d in read_once(page, "draw", page.get_drawings):
         fill = d.get("fill")
         if d["type"] in ("f", "fs") and fill and min(fill) < 0.99:
             obs.append((fitz.Rect(d["rect"]), "a filled shape", True))
@@ -1403,9 +1453,9 @@ def reflow_obstacles(page, lines):
                     obs.append((fitz.Rect(min(p.x, q.x) - w, min(p.y, q.y) - w,
                                           max(p.x, q.x) + w, max(p.y, q.y) + w),
                                 "a ruled line", False))
-    obs += [(fitz.Rect(i["bbox"]), "an image", True) for i in page.get_image_info()]
+    obs += [(fitz.Rect(i["bbox"]), "an image", True) for i in read_once(page, "images", page.get_image_info)]
     known = [ln["bbox"] for ln in lines]
-    for run in page.get_texttrace():
+    for run in read_once(page, "trace", page.get_texttrace):
         if run.get("type") not in (0, 1):
             continue
         ink = [fitz.Rect(c[3]) for c in run.get("chars", [])
@@ -1558,7 +1608,7 @@ def line_room(page, lines, static, right, args):
     rule) isn't a stop: the label may push into it, shortening it from the
     left, so each line also gets that blank. Form fields are ignored."""
     blanks = fill_ins(page, lines)
-    trace = [(c[0], c[2], c[3]) for run in page.get_texttrace() if run.get("type") in (0, 1)
+    trace = [(c[0], c[2], c[3]) for run in read_once(page, "trace", page.get_texttrace) if run.get("type") in (0, 1)
              for c in run.get("chars", [])]
     text_left = min(ln["bbox"].x0 for ln in lines)
     text_right = max(ln["bbox"].x1 for ln in lines)
@@ -1699,7 +1749,7 @@ def plan_reflow(doc, fonts, args, fine=None, dys=None):
                       # its own bottom margin has a line's worth of room
                       # there, and that is often the whole difference.
                       "cap": (page.rect.height - args.min_bottom_margin
-                              - (dys or {}).get(pi, 0.0) if args.restructure else
+                              - (dys or {}).get(pi, 0.0) if getattr(args, "restructure", False) else
                               min(ext.y1 if ext else page.rect.height,
                                   page.rect.height - args.min_bottom_margin)),
                       "centre": page.rect.width / 2})
@@ -1726,7 +1776,7 @@ def plan_reflow(doc, fonts, args, fine=None, dys=None):
                 own, and --shrink-stubborn lets it take a smaller size while
                 the body keeps its own. A form's table-cell labels and its
                 shaded heading bars are what this is for."""
-                return args.shrink_stubborn and k not in multi
+                return getattr(args, "shrink_stubborn", False) and k not in multi
 
             def caption(k):
                 """A label set smaller than this page's body text, sitting in
@@ -1773,7 +1823,7 @@ def plan_reflow(doc, fonts, args, fine=None, dys=None):
                         # the rule beside it
                         need = ((room["hard"] - 1.0 - start) / (end - start)
                                 if end > start else 0.0)
-                        if (args.condense < 1.0 and need >= args.condense
+                        if (getattr(args, "condense", 1.0) < 1.0 and need >= getattr(args, "condense", 1.0)
                                 and not room["centred"] and not room["right"]):
                             plans[pi]["squeeze"][line_key(ln)] = round(need, 4)
                         else:
@@ -1837,7 +1887,7 @@ def plan_reflow(doc, fonts, args, fine=None, dys=None):
                                        for j, r, t in text_obs if j not in para["lines"]]
                 layout, why = layout_paragraph(para, size, fonts, limit, obst, pg["cap"],
                                                args.min_leading, pg["centre"])
-                if layout is None and args.condense < 1.0 and not para["centred"]:
+                if layout is None and getattr(args, "condense", 1.0) < 1.0 and not para["centred"]:
                     # It needs a line more than it has room for. Setting the
                     # paragraph narrower lets each line hold more, so the text
                     # keeps the line count it had - which is the only thing
@@ -1845,8 +1895,8 @@ def plan_reflow(doc, fonts, args, fine=None, dys=None):
                     # full width against room stretched by the same amount,
                     # then drawn squeezed back into the real room.
                     left = para["bbox"].x0
-                    for scale in (0.98, 0.96, args.condense):
-                        if scale < args.condense - 1e-9:
+                    for scale in (0.98, 0.96, getattr(args, "condense", 1.0)):
+                        if scale < getattr(args, "condense", 1.0) - 1e-9:
                             break
                         wide = [(fitz.Rect(left + (o.x0 - left) / scale, o.y0,
                                            left + (o.x1 - left) / scale, o.y1), what, keep)
@@ -1993,7 +2043,7 @@ def fit_fine_print(doc, fonts, args, size, fine, plans):
             if fine_print:
                 was = small[key]
             elif (key not in plans[pi].get("reflow", {})
-                  and (own < min(size, body) - 0.05 or args.shrink_stubborn)):
+                  and (own < min(size, body) - 0.05 or getattr(args, "shrink_stubborn", False))):
                 # Set smaller than the body and about to be enlarged to it.
                 # Growing text is the dangerous direction: on one form a 7.2pt
                 # caption taken to 8pt ran straight into the label beside it.
@@ -2195,7 +2245,7 @@ def content_extent(page, skip=()):
     None for an empty page. Built from coordinates rather than Rect unions,
     because a horizontal rule is a zero-height rect and unions drop those."""
     rects = []
-    for run in page.get_texttrace():
+    for run in read_once(page, "trace", page.get_texttrace):
         if run.get("type") not in (0, 1):                     # filled or stroked
             continue
         # Glyphs with ink only: a stray space has a bbox but draws nothing, and
@@ -2205,11 +2255,11 @@ def content_extent(page, skip=()):
         if ink:
             rects.append(fitz.Rect(min(r.x0 for r in ink), min(r.y0 for r in ink),
                                    max(r.x1 for r in ink), max(r.y1 for r in ink)))
-    for d in page.get_drawings():
+    for d in read_once(page, "draw", page.get_drawings):
         if d["type"] == "f" and d.get("fill") and min(d["fill"]) >= 0.99:
             continue
         rects.append(fitz.Rect(d["rect"]))
-    rects += [fitz.Rect(i["bbox"]) for i in page.get_image_info()]
+    rects += [fitz.Rect(i["bbox"]) for i in read_once(page, "images", page.get_image_info)]
     doc = page.parent
     for xref, kind, _ in page.annot_xrefs():
         if kind in (fitz.PDF_ANNOT_POPUP, fitz.PDF_ANNOT_TEXT):
@@ -2242,7 +2292,7 @@ def find_old_header(page, zone, min_title_size):
     requiring it to fit entirely left the old logo on the page under the new
     one. This is a guess, so every removal is reported."""
     all_lines = []
-    for block in page.get_text("dict")["blocks"]:
+    for block in read_once(page, "dict", lambda: page.get_text("dict"))["blocks"]:
         if block.get("type") != 0:
             continue
         for line in block["lines"]:
@@ -2253,7 +2303,7 @@ def find_old_header(page, zone, min_title_size):
     band = [ln for ln in all_lines
             if ln["bbox"].y0 <= zone and ln["size"] >= min_title_size]
     if not band:
-        return [], [fitz.Rect(i["bbox"]) for i in page.get_image_info()
+        return [], [fitz.Rect(i["bbox"]) for i in read_once(page, "images", page.get_image_info)
                     if i["bbox"][1] <= zone
                     and fitz.Rect(i["bbox"]).width <= page.rect.width / 2
                     and fitz.Rect(i["bbox"]).height <= page.rect.height / 5]
@@ -2292,7 +2342,7 @@ def find_old_header(page, zone, min_title_size):
             break
         titles += more
         taken |= {id(ln) for ln in more}
-    logos = [fitz.Rect(i["bbox"]) for i in page.get_image_info()
+    logos = [fitz.Rect(i["bbox"]) for i in read_once(page, "images", page.get_image_info)
              if i["bbox"][1] <= zone and fitz.Rect(i["bbox"]).width <= page.rect.width / 2
              and fitz.Rect(i["bbox"]).height <= page.rect.height / 5]
     return titles, logos
@@ -2360,7 +2410,7 @@ def house_marks(path):
 def letterhead_marks(page, zone):
     """Every mark printed in the top band of the page."""
     out = []
-    for info in page.get_image_info():
+    for info in read_once(page, "images", page.get_image_info):
         r = fitz.Rect(info["bbox"])
         if r.y0 <= zone and 20 < r.width <= page.rect.width * 0.6:
             got = logo_print(page, r)
@@ -2418,7 +2468,7 @@ def plan_header(page, title, fonts, args):
                                          "header placement is untested there")]
     old_titles, old_logos = find_old_header(printed(page), args.old_header_zone,
                                             args.old_title_min_size)
-    others = [fitz.Rect(i["bbox"]) for i in page.get_image_info()
+    others = [fitz.Rect(i["bbox"]) for i in read_once(page, "images", page.get_image_info)
               if fitz.Rect(i["bbox"]) not in old_logos]
     for r in old_logos:
         if any(r.intersects(o) for o in others):
@@ -2516,6 +2566,7 @@ def remove_old_header(page, plan, pad):
     every other line and simply doesn't redraw it, so a neighbour the erase
     catches is still redrawn. Redacting the title on its own clipped the line
     beneath it, and that text was gone before the restyle ever saw it."""
+    forget(page)                       # the page is about to change
     expected = Counter()
     if plan["old_titles"]:
         for t in plan["old_titles"]:
@@ -2542,6 +2593,7 @@ def shift_down(page, dy):
     anything it couldn't move."""
     doc = page.parent
     issues = []
+    forget(page)                       # the page is about to change
     # PDF space runs bottom-up, so down the page is negative y.
     head, tail = doc.get_new_xref(), doc.get_new_xref()
     for xref, data in ((head, f"q 1 0 0 1 0 {-dy:.4f} cm\n"), (tail, "\nQ\n")):
@@ -2571,6 +2623,7 @@ def draw_header(page, plan):
     """Draw the logo (or its black placeholder) and title. Returns the title's
     glyphs as census allowances, keyed in pre-move coordinates like every
     other allowance."""
+    forget(page)                       # the page is about to change
     alias, path = plan["font"]
     if plan["logo_file"]:
         page.insert_image(plan["logo"], filename=plan["logo_file"], overlay=True)
@@ -2596,7 +2649,7 @@ def check_header(page, plan):
     if ext is not None and ext.y0 < plan["bottom"]:
         issues.append(("HEADER_OVERLAP", f"page content starts at y={ext.y0:.1f}, above the "
                                          f"header's bottom edge at y={plan['bottom']:.1f}"))
-    others = [fitz.Rect(i["bbox"]) for i in page.get_image_info()
+    others = [fitz.Rect(i["bbox"]) for i in read_once(page, "images", page.get_image_info)
               if fitz.Rect(i["bbox"]).width <= page.rect.width / 2
               and fitz.Rect(i["bbox"]).height <= page.rect.height / 5
               and not fitz.Rect(i["bbox"]).intersects(plan["logo"])
@@ -3031,6 +3084,26 @@ def digest_lines(rows, failed, sizes, target, relabels=None):
     return out
 
 
+_TOOLS = {}
+
+
+def restyle_one(job):
+    """One file, in whatever process picks it up. Fonts and the dictionary
+    are built once per worker: neither survives being sent between
+    processes, and both cost more to make than a file costs to restyle."""
+    src, dst, args, relabels = job
+    if not _TOOLS:
+        _TOOLS["fonts"] = resolve_fonts({k: getattr(args, f"font_{k}") for k in
+                                         ("regular", "bold", "italic", "bolditalic")
+                                         if getattr(args, f"font_{k}")})
+        _TOOLS["speller"] = load_speller(args.spell_allow) if args.spellcheck else None
+    try:
+        rows, used = process_file(src, dst, _TOOLS["fonts"], args, _TOOLS["speller"], relabels)
+        return src, rows, used, None
+    except Exception as exc:                      # a bad file mustn't stop the batch
+        return src, [], None, f"{type(exc).__name__}: {exc}"
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -3068,6 +3141,10 @@ def main():
                     help="how near the page centre a line must sit to count as centred")
     ap.add_argument("--min-indent", type=float, default=24.0,
                     help="how far right of the text margin a centred line must start")
+    ap.add_argument("--jobs", type=int, default=1, metavar="N",
+                    help="restyle N files at once (0 for one per core). Files don't "
+                         "depend on each other, and the report comes back in the same "
+                         "order however many are used.")
     ap.add_argument("--report", help="write a CSV of flagged lines here")
     ap.add_argument("--digest", help="where to write the run's summary for reviewers "
                                      "(default: beside --report, as .digest.txt)")
@@ -3195,18 +3272,29 @@ def main():
         os.makedirs(args.png, exist_ok=True)
 
     all_rows, failed, sizes, used_by = [], [], [], {}
-    for i, (src, dst) in enumerate(pairs, 1):
-        try:
-            rows, used = process_file(src, dst, fonts, args, speller, relabels)
-            all_rows.extend(rows)
-            sizes.append(used)
-            used_by[os.path.basename(src)] = used
-            flag = f"  [{len(rows)} flagged]" if rows else ""
-            note = f"  @{used}pt" if used != args.size else ""
-            print(f"[{i}/{len(pairs)}] {os.path.basename(src)}{note}{flag}")
-        except Exception as e:
-            failed.append((os.path.basename(src), f"{type(e).__name__}: {e}"))
-            print(f"[{i}/{len(pairs)}] {os.path.basename(src)}  FAILED: {e}")
+    jobs = [(src, dst, args, relabels) for src, dst in pairs]
+    workers = getattr(args, "jobs", 1) if getattr(args, "jobs", 1) > 0 else (os.cpu_count() or 1)
+    workers = max(1, min(workers, len(jobs)))
+    if workers > 1:
+        # Files don't depend on each other, so they go out to a pool. The
+        # results come back in the order they were sent, whatever order they
+        # were done in, so a run reads the same as a single-process one.
+        from concurrent.futures import ProcessPoolExecutor
+        with ProcessPoolExecutor(max_workers=workers) as pool:
+            done = list(pool.map(restyle_one, jobs))
+    else:
+        done = [restyle_one(job) for job in jobs]
+    for i, (src, rows, used, err) in enumerate(done, 1):
+        if err:
+            failed.append((os.path.basename(src), err))
+            print(f"[{i}/{len(pairs)}] {os.path.basename(src)}  FAILED: {err}")
+            continue
+        all_rows.extend(rows)
+        sizes.append(used)
+        used_by[os.path.basename(src)] = used
+        flag = f"  [{len(rows)} flagged]" if rows else ""
+        note = f"  @{used}pt" if used != args.size else ""
+        print(f"[{i}/{len(pairs)}] {os.path.basename(src)}{note}{flag}")
 
     if args.report:
         with open(args.report, "w", newline="", encoding="utf-8") as fh:
