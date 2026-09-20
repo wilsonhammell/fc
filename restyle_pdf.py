@@ -940,10 +940,13 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     # Re-wrapped paragraphs. Their glyphs are all still there, just on other
     # baselines, so the census is told where each one left and arrived.
     for layout in {id(v): v for v in reflow.values()}.values():
+        narrow = layout.get("squeeze")
         for x, y, text, sp, at in layout["pieces"]:
             alias, path, font = style_of(sp["flags"], fonts)
+            morph = ((fitz.Point(layout["pivot"], y), fitz.Matrix(narrow, 1))
+                     if narrow else None)
             page.insert_text(fitz.Point(x, y), text, fontname=alias, fontfile=path,
-                             fontsize=at, color=span_colour(sp), overlay=True)
+                             fontsize=at, color=span_colour(sp), morph=morph, overlay=True)
             for ch in text:
                 if not ch.isspace():
                     expected[(y, ord(ch))] += 1
@@ -1659,7 +1662,7 @@ def line_room(page, lines, static, right, args):
     return out
 
 
-def plan_reflow(doc, fonts, args, fine=None):
+def plan_reflow(doc, fonts, args, fine=None, dys=None):
     """Best fit with structural changes allowed. Steps down from --size by
     --quantise to --min-size and takes the first size at which every line
     fits its room (see line_room): where it is, by shortening the blank
@@ -1673,7 +1676,7 @@ def plan_reflow(doc, fonts, args, fine=None):
     body size down."""
     fine = fine or [{} for _ in doc]
     pages = []
-    for page in doc:
+    for pi, page in enumerate(doc):
         page = printed(page)
         lines, _ = collect_lines(page, False, args.target_font, args.size, args.size_tolerance)
         if not lines:
@@ -1688,10 +1691,17 @@ def plan_reflow(doc, fonts, args, fine=None):
                       "body": dominant_size(lines),
                       "paras": find_paragraphs(page, lines, right, args),
                       "room": line_room(page, lines, static, right, args),
-                      # never reach lower than the page's content already does,
-                      # so --header's room check still holds
-                      "cap": min(ext.y1 if ext else page.rect.height,
-                                 page.rect.height - args.min_bottom_margin),
+                      # Normally a re-wrapped paragraph may not reach lower
+                      # than the page's content already does, so --header's
+                      # room check still holds. --restructure lets it use the
+                      # foot of the page as well, less whatever the header
+                      # pushes the page down by: a form that ends 30pt above
+                      # its own bottom margin has a line's worth of room
+                      # there, and that is often the whole difference.
+                      "cap": (page.rect.height - args.min_bottom_margin
+                              - (dys or {}).get(pi, 0.0) if args.restructure else
+                              min(ext.y1 if ext else page.rect.height,
+                                  page.rect.height - args.min_bottom_margin)),
                       "centre": page.rect.width / 2})
 
     def preview(line):
@@ -1827,6 +1837,29 @@ def plan_reflow(doc, fonts, args, fine=None):
                                        for j, r, t in text_obs if j not in para["lines"]]
                 layout, why = layout_paragraph(para, size, fonts, limit, obst, pg["cap"],
                                                args.min_leading, pg["centre"])
+                if layout is None and args.condense < 1.0 and not para["centred"]:
+                    # It needs a line more than it has room for. Setting the
+                    # paragraph narrower lets each line hold more, so the text
+                    # keeps the line count it had - which is the only thing
+                    # the space below it will take. The wrap is worked out at
+                    # full width against room stretched by the same amount,
+                    # then drawn squeezed back into the real room.
+                    left = para["bbox"].x0
+                    for scale in (0.98, 0.96, args.condense):
+                        if scale < args.condense - 1e-9:
+                            break
+                        wide = [(fitz.Rect(left + (o.x0 - left) / scale, o.y0,
+                                           left + (o.x1 - left) / scale, o.y1), what, keep)
+                                for o, what, keep in obst]
+                        # the same point in hand the single-line squeeze
+                        # keeps: measured and drawn ends agree to about that
+                        got, _ = layout_paragraph(para, size, fonts,
+                                                  left + (limit - 1.0 - left) / scale, wide,
+                                                  pg["cap"], args.min_leading, pg["centre"])
+                        if got is not None:
+                            got["squeeze"], got["pivot"] = scale, left
+                            layout, why = got, None
+                            break
                 if layout is None:
                     if not all(caption(k) or stubborn(k) for k in para["lines"]):
                         blockers.append((pi + 1, para["preview"], why))
@@ -1860,6 +1893,13 @@ def plan_reflow(doc, fonts, args, fine=None):
                                f"don't fit at {size}pt")))
         rows += [(pg, "reflow_blocked", f"at {failed_at}pt: {text!r} - {reason}")
                  for pg, text, reason in why]
+    for pi, plan in enumerate(plans):
+        for layout in {id(v): v for v in plan.get("reflow", {}).values()}.values():
+            if layout.get("squeeze"):
+                rows.append((pi + 1, "paragraph_condensed",
+                             f"{layout['para']['preview']!r}: set at "
+                             f"{layout['squeeze'] * 100:.0f}% width so it keeps "
+                             f"{len(layout['para']['lines'])} line(s)"))
     for pi, plan in enumerate(plans):
         for key, at in sorted(plan.get("squeeze", {}).items()):
             line = next((ln for ln in pages[pi]["lines"] if line_key(ln) == key), None)
@@ -2742,7 +2782,8 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                          + (" ..." if len(examples) > 5 else "")])
     size, plans = args.size, [{"squeeze": {}} for _ in range(doc.page_count)]
     if args.reflow:
-        size, plans, notes = plan_reflow(doc, fonts, args, fine)
+        size, plans, notes = plan_reflow(doc, fonts, args, fine,
+                                         {i: v for i, v in enumerate(dys)})
         rows += [[name, where, issue, detail] for where, issue, detail in notes]
     elif args.best_fit:
         size, culprit = best_fit_size(doc, fonts, args.size, args.min_size,
