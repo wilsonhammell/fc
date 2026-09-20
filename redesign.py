@@ -119,13 +119,17 @@ def rows_with_fields(page):
             continue
         run, held = [], []
         for c in chars + [None]:
-            # a wide run of spaces is a tab stop as surely as a geometric gap
-            if c is not None and c["c"].isspace():
+            # A wide run of spaces is a tab stop as surely as a geometric gap,
+            # and so is a run of underscores: that is the form drawing its own
+            # blank, and the rebuild puts a real field there instead. Left in,
+            # they glue the label after them onto the label before.
+            if c is not None and (c["c"].isspace() or c["c"] == "_"):
                 held.append(c)
                 continue
             spaces = (fitz.Rect(held[-1]["bbox"]).x1 - fitz.Rect(held[0]["bbox"]).x0
                       if held else 0.0)
-            if run and (c is None or spaces > 8
+            rules = sum(1 for h in held if h["c"] == "_")
+            if run and (c is None or spaces > 8 or rules >= 3
                         or c["bbox"][0] - run[-1]["bbox"][2] > 8):
                 text = "".join(x["c"] for x in run).strip()
                 if text:
@@ -236,7 +240,7 @@ def is_caption_row(row, slots):
     """The short labels that sit under a row of lines - "Checked By",
     "Entered By", "Date Entered"."""
     return (all(i["what"] == "text" for i in row) and len(row) == slots
-            and all(len(i["text"]) < 60 for i in row))
+            and all(len(i["text"]) < 90 for i in row))
 
 
 class Rebuild:
@@ -269,7 +273,14 @@ class Rebuild:
             return (self.size * 1.1 if item["kind"] == "CheckBox"
                     else max(self.MIN_FIELD, item["rect"].width))
         font = self.face(item["bold"], item["italic"])[2]
-        return font.text_length(item["text"], self.size)
+        # as it will be drawn: the trailing underscores a form types to draw
+        # its own line come off, and measuring them kept a label's field off
+        # the end of the row by less than a point
+        return font.text_length(self.shown(item), self.size)
+
+    @staticmethod
+    def shown(item):
+        return item["text"].rstrip("_ ").rstrip() or item["text"]
 
     def split(self, item, column):
         """One item, in pieces no wider than the column."""
@@ -330,7 +341,7 @@ class Rebuild:
             for it in group:
                 if it["what"] == "text":
                     alias, path, font = self.face(it["bold"], it["italic"])
-                    text = it["text"].rstrip("_ ").rstrip() or it["text"]
+                    text = self.shown(it)
                     self.page.insert_text(fitz.Point(x, base), text, fontname=alias,
                                           fontfile=path, fontsize=self.size)
                     x += font.text_length(text, self.size) + 4
@@ -409,9 +420,15 @@ class Rebuild:
         rules = [next((i for i in group if i["what"] == "field"), group[0])
                  for _, group in slots]
         spots = [x for x, _ in slots]
-        span = max(1.0, max(i["rect"].x1 for i in rules) - spots[0])
-        starts = [self.left + (x - spots[0]) / span * column for x in spots]
-        starts.append(self.right + 12)
+        if len(spots) == 1:
+            # one line on its own keeps the side of the page it sat on
+            page_width = self.page.rect.width
+            x0 = self.left + (spots[0] / page_width) * column
+            starts = [x0, self.right + 12]
+        else:
+            span = max(1.0, max(i["rect"].x1 for i in rules) - spots[0])
+            starts = [self.left + (x - spots[0]) / span * column for x in spots]
+            starts.append(self.right + 12)
         height = self.size * (3.2 if captions else 2.0)
         if self.y + height > 792 - self.margin:
             self.new_page()
@@ -523,7 +540,13 @@ def main():
             pending.append(row)
             continue
         if pending:
-            sheet.table(pending)
+            # One row of label-and-box is not a table, it's a line of labels:
+            # "Branch:", "Owner Number:", "Contract Number:" came back boxed
+            # in as if they were a grid. A table is rows, plural.
+            if len(pending) > 1:
+                sheet.table(pending)
+            else:
+                sheet.row(pending[0])
             pending = []
         if row is None:
             break
