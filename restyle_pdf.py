@@ -2707,6 +2707,99 @@ def remove_old_header(page, plan, pad):
     return expected
 
 
+def art_key(d):
+    """What makes one drawing the same drawing as another: where it is, what
+    it's made of, and how it's painted."""
+    r = fitz.Rect(d["rect"])
+    return (d["type"], tuple(round(v, 1) for v in r), len(d["items"]),
+            tuple(d.get("fill") or ()), tuple(d.get("color") or ()))
+
+
+def redraw_art(shape, d, dy):
+    """Put one drawing back, dy points lower."""
+    move = fitz.Matrix(1, 0, 0, 1, 0, dy)
+    for item in d["items"]:
+        if item[0] == "l":
+            shape.draw_line(item[1] * move, item[2] * move)
+        elif item[0] == "re":
+            shape.draw_rect(fitz.Rect(item[1]) * move)
+        elif item[0] == "qu":
+            shape.draw_quad(item[1] * move)
+        elif item[0] == "c":
+            shape.draw_bezier(item[1] * move, item[2] * move,
+                              item[3] * move, item[4] * move)
+    cap = d.get("lineCap") or 0
+    shape.finish(color=d.get("color"), fill=d.get("fill"),
+                 width=d.get("width") or 0, dashes=d.get("dashes"),
+                 even_odd=bool(d.get("even_odd")),
+                 closePath=bool(d.get("closePath")),
+                 lineJoin=d.get("lineJoin") or 0,
+                 lineCap=max(cap) if isinstance(cap, (list, tuple)) else cap,
+                 stroke_opacity=1 if d.get("stroke_opacity") is None
+                 else d["stroke_opacity"],
+                 fill_opacity=1 if d.get("fill_opacity") is None else d["fill_opacity"])
+
+
+def push_down(page, from_y, delta):
+    """Move what the form prints below `from_y` down by `delta`: its ruled
+    lines, boxes and shading, and any field that sits there. Text isn't
+    touched - the restyle draws that itself, and it is told to draw the lines
+    below this point lower.
+
+    This is the one thing in the tool that takes the form's own furniture
+    apart and puts it back, so verify_line_art watches it: every shape has to
+    come back, the same shape, or the run says so."""
+    # What the page itself prints, not what its widgets draw: a signing tab's
+    # own artwork belongs to the widget and travels with its rectangle, and
+    # capturing it here baked a copy of the tab into the page.
+    all_art = [d for d in printed(page).get_drawings() if d["items"]]
+    art = [d for d in all_art if fitz.Rect(d["rect"]).y0 >= from_y - 0.01]
+    # A single path can hold shapes both sides of the line - one form draws a
+    # box at the top of the page and another 300pt below it as one path.
+    # Removal keeps the part it didn't touch and hands back the rest, and
+    # there is no honest way to put half a path somewhere else, so the move
+    # is refused rather than guessed at.
+    astride = [d for d in all_art
+               if fitz.Rect(d["rect"]).y0 < from_y - 0.01 < fitz.Rect(d["rect"]).y1]
+    if astride:
+        return -len(astride)
+    forget(page)
+    rects = [fitz.Rect(d["rect"]) + (-0.5, -0.5, 0.5, 0.5) for d in art]
+    if art:
+        for r in rects:
+            page.add_redact_annot(r)
+        page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE,
+                              graphics=fitz.PDF_REDACT_LINE_ART_REMOVE_IF_TOUCHED,
+                              text=fitz.PDF_REDACT_TEXT_NONE)
+        forget(page)
+        # Removal takes whatever the rectangles touch, which reaches a little
+        # past what was asked for: a rule a fraction of a point above the
+        # first shape being moved goes with it. Rather than guess which, the
+        # page is read again and whatever has actually gone is put back -
+        # shapes below the line lower down, the rest exactly where they were.
+        left = {art_key(d) for d in printed(page).get_drawings()}
+        shape = page.new_shape()
+        for d in all_art:
+            if art_key(d) in left:
+                continue                      # still on the page
+            redraw_art(shape, d, delta if fitz.Rect(d["rect"]).y0 >= from_y - 0.01 else 0)
+        shape.commit(overlay=False)           # back under the text
+    doc = page.parent
+    for xref, _, _ in page.annot_xrefs():
+        if field_name(doc, xref) in SIGNING_WIDGETS:
+            continue
+        kind, val = doc.xref_get_key(xref, "Rect")
+        if kind != "array":
+            continue
+        nums = [float(v) for v in val.strip()[1:-1].split()]
+        if min(nums[1], nums[3]) < page.rect.height - from_y - 0.01:
+            continue                          # PDF space runs bottom-up
+        nums = [v - delta if i % 2 else v for i, v in enumerate(nums)]
+        doc.xref_set_key(xref, "Rect", "[" + " ".join(f"{v:.4f}" for v in nums) + "]")
+    forget(page)
+    return len(art)
+
+
 def shift_down(page, dy):
     """Move everything on the page down by dy points: the content stream under a
     translation, each annotation through its coordinates. A field's appearance
