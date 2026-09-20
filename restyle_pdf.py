@@ -47,6 +47,7 @@ Requires: pip install pymupdf (and pyspellchecker for --spellcheck)
 
 import argparse
 import csv
+import json
 import os
 import re
 import unicodedata
@@ -1845,6 +1846,9 @@ def plan_reflow(doc, fonts, args, fine=None):
 # --------------------------------------------------------------------------
 
 RELABEL_TABLE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "relabel.txt")
+ISSUERS = os.path.join(os.path.dirname(os.path.abspath(__file__)), "third_parties.txt")
+HOUSE_MARKS = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           "assets", "libro_marks.json")
 REVIEW_WORDS = re.compile(r"\bwitness|\bstaff\b", re.I)
 
 
@@ -1853,6 +1857,18 @@ def label_key(text):
     trailing colon don't count."""
     t = " ".join(text.replace("’", "'").split()).casefold()
     return t[:-1].rstrip() if t.endswith(":") else t
+
+
+def load_issuers(path):
+    """Issuer names whose forms aren't ours to re-brand, one per line."""
+    out = []
+    if path and os.path.exists(path):
+        with open(path, encoding="utf-8") as fh:
+            for line in fh:
+                line = line.split("#", 1)[0].strip()
+                if line:
+                    out.append(line)
+    return out
 
 
 def load_relabels(path):
@@ -2227,6 +2243,85 @@ def wrap_title(title, font, size, max_width):
     return best
 
 
+def logo_print(page, rect, n=32):
+    """A small grey thumbnail of what's drawn in `rect`, trimmed to its ink
+    and padded square, with the shape's own width-to-height ratio. Comparing
+    the printed result rather than the stored image keeps this steady across
+    scaling, colour and how the file happens to store the picture."""
+    try:
+        from PIL import Image
+    except ImportError:
+        return None
+    pm = page.get_pixmap(dpi=150, clip=rect)
+    im = Image.frombytes("RGB", (pm.width, pm.height), pm.samples).convert("L")
+    box = im.point(lambda p: 255 if p < 200 else 0).getbbox()
+    if not box:
+        return None
+    im = im.crop(box)
+    side = max(im.size)
+    pad = Image.new("L", (side, side), 255)
+    pad.paste(im, ((side - im.size[0]) // 2, (side - im.size[1]) // 2))
+    px = list(pad.resize((n, n), Image.LANCZOS).getdata())
+    lo, hi = min(px), max(px)
+    if hi - lo < 8:
+        return None
+    return [(p - lo) * 255 // (hi - lo) for p in px], im.size[0] / im.size[1]
+
+
+def house_marks(path):
+    """The house logo's fingerprints, as written by --learn-marks."""
+    if path and os.path.exists(path):
+        with open(path, encoding="utf-8") as fh:
+            return json.load(fh)
+    return []
+
+
+def letterhead_marks(page, zone):
+    """Every mark printed in the top band of the page."""
+    out = []
+    for info in page.get_image_info():
+        r = fitz.Rect(info["bbox"])
+        if r.y0 <= zone and 20 < r.width <= page.rect.width * 0.6:
+            got = logo_print(page, r)
+            if got:
+                out.append(got)
+    return out
+
+
+def third_party(page, zone, marks, issuers):
+    """Whose form this is. Returns (not ours, why).
+
+    A form put out by someone else - a marketing board, the CRA, a payments
+    network - isn't Libro's to re-brand, and quietly stamping a Libro logo and
+    title on one is worse than leaving it alone. Two things are read: the
+    letterhead mark, which has to be a Libro one, and the issuer names in
+    `issuers`, matched in the top band only, so a Libro form that mentions the
+    Canada Revenue Agency in its terms isn't caught by it.
+
+    A shape is only compared with a house mark of about the same proportions.
+    Squeezed into a square, a wide logo looks much like any other wide logo -
+    the Libro wordmark came out closer to a government wordmark than to its
+    own square form - and the proportions are what tell them apart."""
+    band = page.get_textbox(fitz.Rect(0, 0, page.rect.width, zone)).lower()
+    for name in issuers:
+        if name.lower() in band:
+            return True, f"the letterhead names {name!r}, so this form isn't Libro's"
+    found = letterhead_marks(page, zone)
+    if not found or not marks:
+        return False, None
+    best = None
+    for fp, aspect in found:
+        for ref in marks:
+            if abs(aspect - ref["aspect"]) / ref["aspect"] <= 0.15:
+                d = sum(abs(a - b) for a, b in zip(fp, ref["fp"])) / len(fp)
+                best = d if best is None else min(best, d)
+    if best is None or best > 25:
+        return True, ("the letterhead mark isn't a Libro one"
+                      + (f" (nearest match {best:.0f}, needs 25 or less)" if best else
+                         " (no mark of the same proportions to compare it with)"))
+    return False, None
+
+
 def plan_header(page, title, fonts, args):
     """Lay out the new header on page 1 and work out how far the page content
     must move down to clear it. Reads the page, changes nothing, so it runs in
@@ -2570,7 +2665,15 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
     # The header is planned before anything is touched: it decides how far
     # page 1's content moves, which the census has to know up front.
     header, dys = None, [0.0] * doc.page_count
-    if args.header and doc.page_count:
+    theirs, why = (third_party(doc[0], args.old_header_zone, house_marks(args.house_marks),
+                               load_issuers(args.issuers))
+                   if args.header and doc.page_count else (False, None))
+    if theirs:
+        rows.append([name, 1, "THIRD_PARTY_FORM",
+                     why + (" - left as it is" if args.skip_third_party
+                            else " - a Libro header was added anyway; pass --skip-third-party "
+                                 "to leave these alone")])
+    if args.header and doc.page_count and not (theirs and args.skip_third_party):
         header, notes = plan_header(doc[0], title, fonts, args)
         rows += [[name, 1, issue, detail] for issue, detail in notes]
         if header:
@@ -2951,6 +3054,15 @@ def main():
                     help="text this size or larger in that zone counts as the old title "
                          "(default 12)")
     sc = ap.add_argument_group("spelling (--spellcheck)")
+    hd.add_argument("--skip-third-party", action="store_true",
+                    help="don't put the Libro header on a form someone else issued - a "
+                         "marketing board, the CRA, a payments network. Detected either "
+                         "way and reported as THIRD_PARTY_FORM.")
+    hd.add_argument("--issuers", default=ISSUERS,
+                    help="issuer names whose forms aren't ours to re-brand, one per line "
+                         "(default third_parties.txt beside this script)")
+    hd.add_argument("--house-marks", default=HOUSE_MARKS,
+                    help="fingerprints of the house logo, as written by --learn-marks")
     ap.add_argument("--shrink-stubborn", action="store_true",
                     help="let a line that can't be re-wrapped take a smaller size of its "
                          "own rather than holding the whole document down - a table-cell "

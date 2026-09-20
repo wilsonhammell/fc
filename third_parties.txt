@@ -1,0 +1,18 @@
+# Issuers whose forms aren't Libro's to re-brand. A line matches when it
+# appears in the top of page 1 - the letterhead - not anywhere in the body,
+# so a Libro form that merely mentions the Canada Revenue Agency in its terms
+# isn't caught. Case doesn't matter. Lines starting with # are ignored.
+#
+# The letterhead mark is checked as well: a form whose logo isn't a Libro one
+# is reported even if nothing here matches it. This list is for the forms
+# that carry no logo, and to name the issuer in the report.
+
+Dairy Farmers of Ontario
+Ontario Broiler Hatching Egg
+O.B.H.E.C.C
+Canada Revenue Agency
+Agence du revenu du Canada
+Protected B
+Central 1
+Payments Canada
+Canadian Payments Association
