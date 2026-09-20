@@ -686,6 +686,55 @@ def text_clashes(page):
     return hits
 
 
+def line_art(page, ignore=()):
+    """Every rule, box and filled shape the page prints, counted by what it
+    looks like rather than where it is: its kind, its colour, and its size to
+    a tenth of a point. Shapes inside `ignore` are left out.
+
+    Counting shape rather than position is deliberate - a rule that moves is
+    still that rule, and the point of this is to notice one that stops
+    existing, or comes back a different size."""
+    out = Counter()
+    for d in read_once(printed(page), "draw", printed(page).get_drawings):
+        r = fitz.Rect(d["rect"])
+        if any(r in fitz.Rect(z) for z in ignore):
+            continue
+        colour = d.get("color") or d.get("fill") or (0, 0, 0)
+        # to the half point: moving a page's content by a fraction of a point
+        # rounds a shape's measured size differently at a finer grain than
+        # that, and a tenth of a point either way is not a shape changing
+        out[(d["type"], tuple(round(c, 2) for c in colour),
+             round(r.width * 2) / 2, round(r.height * 2) / 2)] += 1
+    return out
+
+
+def verify_line_art(before, after, gone=(), added=()):
+    """Every rule and box the form prints must still be there afterwards.
+
+    This is the one thing no other check watches. The census counts glyphs,
+    the word check reads words, the edge and rule checks measure where text
+    sits - all of them are about text. Erasing vector art and putting it back
+    somewhere else is the one operation that can take a form apart without a
+    single glyph going missing, so it gets a check of its own."""
+    was, now = line_art(before, gone), line_art(after, added)
+    lost, gained = was - now, now - was
+
+    def show(counts):
+        return ", ".join(f"{w:g}x{h:g}pt {kind}" + (f" x{n}" if n > 1 else "")
+                         for (kind, _, w, h), n in counts.most_common(4))
+
+    issues = []
+    if lost:
+        issues.append(("LINE_ART_LOST",
+                       f"{sum(lost.values())} ruled line(s) or shape(s) the form printed "
+                       f"are no longer there: {show(lost)}"))
+    if gained:
+        issues.append(("LINE_ART_GAINED",
+                       f"{sum(gained.values())} ruled line(s) or shape(s) appeared that "
+                       f"the form didn't print: {show(gained)}"))
+    return issues
+
+
 def verify_overlap(before, after, dy=0.0):
     """No line may end up sitting on top of another that it cleared before.
 
@@ -2985,6 +3034,19 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                 for issue, detail in verify_words(orig[pno - 1], page):
                     rows.append([name, pno, issue, detail])
                 for issue, detail in verify_overlap(orig[pno - 1], page, dys[pno - 1]):
+                    rows.append([name, pno, issue, detail])
+                # The header is the one place art is meant to come and go: the
+                # old title's rules go with it, and the new header brings its
+                # own. The two pages are looked at in their own coordinates -
+                # the old title's boxes on the original, the header's band on
+                # the restyled one - because everything else on page 1 has
+                # moved down between them.
+                gone = ([fitz.Rect(t["bbox"]) + (-2, -2, 2, 2) for t in header["old_titles"]]
+                        + [fitz.Rect(r) + (-2, -2, 2, 2) for r in header["old_logos"]]
+                        if header and pno == 1 else [])
+                added = ([fitz.Rect(0, 0, page.rect.width, header["bottom"] + 4)]
+                         if header and pno == 1 else [])
+                for issue, detail in verify_line_art(orig[pno - 1], page, gone, added):
                     rows.append([name, pno, issue, detail])
             if header:
                 rows += [[name, 1, issue, detail] for issue, detail in check_header(out[0], header)]

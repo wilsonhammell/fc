@@ -11,3 +11,7 @@ check nobody knows works.
 
 `test_census.py` runs each case through the baseline script as well, to show
 what the census used to miss: of the six, the original caught one.
+
+`test_line_art.py` rubs out a ruled line and draws a box that wasn't there,
+and checks both are reported. It is the check that has to hold before
+anything is allowed to move a form's rules and boxes around.
