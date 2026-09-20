@@ -740,7 +740,8 @@ def recover_orphans(page, known_rects):
 
 def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio,
                  skip_conforming, target_font_substr, size_tol, dry_run, gap_tol=3.0,
-                 recover=True, reflow=None, rules=None, fine=None, relabel=None, drop=None):
+                 recover=True, reflow=None, rules=None, fine=None, relabel=None, drop=None,
+                 squeeze=None):
     """Restyle one page. Returns (issues, expected): a list of (issue, detail)
     tuples, and the glyph-count changes made on purpose, keyed by (baseline y,
     character), for the census. From plan_reflow: `reflow` maps line_key ->
@@ -751,6 +752,7 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     erase with the rest but not redraw - the old title --header replaces."""
     reflow, rules, fine, relabel = reflow or {}, rules or [], fine or {}, relabel or {}
     drop = drop or []
+    squeeze = squeeze or {}
     issues = []
     content = printed(page)
     lines, notes = collect_lines(content, skip_conforming, target_font_substr, size, size_tol)
@@ -883,6 +885,14 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
         prev_end_old = None      # right edge of previous span, original layout
         prev_end_new = None      # right edge of previous span, as redrawn
         line_max = max((sp["size"] for sp in item["spans"]), default=item["size"])
+        # A line set narrower is squeezed horizontally about the point it
+        # starts from, so it still begins exactly where it did. Every span of
+        # the line takes the same squeeze, which also pulls their positions in
+        # - that's what makes the whole line narrower rather than just its
+        # glyphs thinner.
+        narrow = squeeze.get(line_key(ln))
+        morph = ((fitz.Point(ln["bbox"].x0 + dx, ln["spans"][0]["origin"][1]),
+                  fitz.Matrix(narrow, 1)) if narrow else None)
         for sp in item["spans"]:
             alias, path, font = style_of(sp["flags"], fonts)
             at = span_size(sp, line_max, item["size"])
@@ -899,7 +909,7 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
                 prev_end_old = prev_end_new = sp["bbox"][2]
                 continue
             page.insert_text(fitz.Point(x + dx, y), sp["text"],
-                             fontname=alias, fontfile=path,
+                             fontname=alias, fontfile=path, morph=morph,
                              fontsize=at, color=span_colour(sp), overlay=True)
 
             prev_end_old = sp["bbox"][2]
@@ -1597,11 +1607,20 @@ def line_room(page, lines, static, right, args):
         # line off well short of where the form itself prints it. Text is a
         # different matter - two labels can sit a point apart and still be
         # what stops each other, so those stops always count.
-        stops = [o for o, _, _ in static if after_on_row(ln, o)
+        def follows(r):
+            """On this row, and past where this line's glyphs stop. Measured
+            against the ink, not the line box: the box runs on over trailing
+            spaces, and a box edge standing in that space read as being behind
+            the line rather than in front of it - so nothing held the line
+            back and it was set straight through the edge."""
+            return (r.y1 > base - 0.7 * size and r.y0 < base + 0.3 * size
+                    and r.x0 > b.x0 + 0.5 * b.width and r.x1 > ends[i] + 1)
+
+        stops = [o for o, _, _ in static if follows(o)
                  and not any(o.intersects(r) for r in in_blank)
                  and o.x0 >= ends[i] - 0.5]
         beside = [other["bbox"] for j, other in enumerate(lines)
-                  if j != i and after_on_row(ln, other["bbox"])]
+                  if j != i and follows(other["bbox"])]
         stops += beside
         stop = min([right] + [o.x0 for o in stops])
         # A shaded bar or box the line sits inside is its background, and the
@@ -1679,7 +1698,7 @@ def plan_reflow(doc, fonts, args, fine=None):
         return "".join(s["text"] for s in line["spans"]).strip()[:50]
 
     def attempt(size):
-        plans = [{"reflow": {}, "rules": [], "cuts": []} for _ in pages]
+        plans = [{"reflow": {}, "rules": [], "cuts": [], "squeeze": {}} for _ in pages]
         blockers = []
         for pi, pg in enumerate(pages):
             if pg is None:
@@ -1732,7 +1751,23 @@ def plan_reflow(doc, fonts, args, fine=None):
                 blank = room["blank"]
                 if blank is None:
                     if end > room["hard"] + 0.01:
-                        over.add(i)
+                        # Set the line a little narrower rather than let it
+                        # hold the document's size down. Squeezing the glyphs
+                        # horizontally leaves their height alone, and height
+                        # is what the eye reads a size change by: at 96% this
+                        # is invisible where dropping half a point is not.
+                        start = ln["bbox"].x0
+                        # a point in hand: the measured end and the ink the
+                        # drawing actually lays down agree to about that, and
+                        # squeezing to the very limit put a bracket 1.3pt into
+                        # the rule beside it
+                        need = ((room["hard"] - 1.0 - start) / (end - start)
+                                if end > start else 0.0)
+                        if (args.condense < 1.0 and need >= args.condense
+                                and not room["centred"] and not room["right"]):
+                            plans[pi]["squeeze"][line_key(ln)] = round(need, 4)
+                        else:
+                            over.add(i)
                     continue
                 width = blank["x1"] - blank["x0"]
                 if end + blank["gap"] <= blank["x0"] + 0.01:
@@ -1825,6 +1860,12 @@ def plan_reflow(doc, fonts, args, fine=None):
                                f"don't fit at {size}pt")))
         rows += [(pg, "reflow_blocked", f"at {failed_at}pt: {text!r} - {reason}")
                  for pg, text, reason in why]
+    for pi, plan in enumerate(plans):
+        for key, at in sorted(plan.get("squeeze", {}).items()):
+            line = next((ln for ln in pages[pi]["lines"] if line_key(ln) == key), None)
+            text = "".join(sp["text"] for sp in line["spans"]).strip() if line else ""
+            rows.append((pi + 1, "line_condensed",
+                         f"{text[:50]!r}: set at {at * 100:.0f}% width to fit its room"))
     for pi, plan in enumerate(plans):
         rows += [(pi + 1, "blank_moved" if new >= old - 0.5 else "blank_shortened",
                   f"{text!r}: the blank after it starts {moved:.0f}pt later"
@@ -2699,7 +2740,7 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                          f"{len(hits)} line(s) on page(s) {','.join(map(str, pages))} set at up "
                          f"to {args.fine_size:g}pt: " + "; ".join(repr(e[:40]) for e in examples[:5])
                          + (" ..." if len(examples) > 5 else "")])
-    size, plans = args.size, [{} for _ in range(doc.page_count)]
+    size, plans = args.size, [{"squeeze": {}} for _ in range(doc.page_count)]
     if args.reflow:
         size, plans, notes = plan_reflow(doc, fonts, args, fine)
         rows += [[name, where, issue, detail] for where, issue, detail in notes]
@@ -2740,7 +2781,8 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                 args.width_tolerance, args.skip_conforming, args.target_font,
                 args.size_tolerance, args.dry_run, args.gap_tolerance,
                 not args.no_recover, plans[pno - 1].get("reflow"), plans[pno - 1].get("rules"),
-                fine[pno - 1], relabel[pno - 1], drop if pno == 1 else None)
+                fine[pno - 1], relabel[pno - 1], drop if pno == 1 else None,
+                plans[pno - 1].get("squeeze"))
         expected[pno - 1].update(allowed)      # update, not +=: allowances can be negative
         for issue, detail in issues:
             rows.append([name, pno, issue, detail])
@@ -3063,6 +3105,15 @@ def main():
                          "(default third_parties.txt beside this script)")
     hd.add_argument("--house-marks", default=HOUSE_MARKS,
                     help="fingerprints of the house logo, as written by --learn-marks")
+    ap.add_argument("--restructure", action="store_true",
+                    help="experimental: reshape a form to hold the target size rather than "
+                         "set the whole document smaller. Turns on --shrink-stubborn and "
+                         "--condense 0.94 together; every change it makes is reported.")
+    ap.add_argument("--condense", type=float, default=1.0, metavar="FLOOR",
+                    help="how narrow a line may be set to fit its room, as a fraction of "
+                         "its natural width (e.g. 0.94). Squeezing the glyphs leaves their "
+                         "height alone, so it reads as unchanged where a smaller size "
+                         "doesn't. 1.0, the default, never squeezes.")
     ap.add_argument("--shrink-stubborn", action="store_true",
                     help="let a line that can't be re-wrapped take a smaller size of its "
                          "own rather than holding the whole document down - a table-cell "
@@ -3076,6 +3127,10 @@ def main():
                     help="words never to flag, one per line (default spelling_allowlist.txt "
                          "beside this script)")
     args = ap.parse_args()
+    if args.restructure:
+        args.shrink_stubborn = True
+        if args.condense >= 1.0:
+            args.condense = 0.94
 
     fonts = resolve_fonts({k: getattr(args, f"font_{k}") for k in
                            ("regular", "bold", "italic", "bolditalic")
