@@ -80,129 +80,292 @@ def blocks_of(page, args):
     return out
 
 
-def paragraphs(found):
-    """Run the loose rows back together into paragraphs, tables and lists, so
-    the rebuild sets out blocks rather than the original's line breaks."""
+def rows_with_fields(page):
+    """Each row of the form as an ordered run of things: text, then a field,
+    then more text. "I, ___ of ___, in the Province of Ontario" is a row of
+    five items, and keeping them in that order is what lets the rebuild put
+    the blank back inside the sentence instead of at the end of the line."""
+    p = R.printed(page)
+    lines, _ = R.collect_lines(p, False, "Arial", 10.0, 0.6)
+    items = []
+    raw = {tuple(round(v, 1) for v in l["bbox"]): l
+           for b in p.get_text("rawdict")["blocks"] if b.get("type") == 0
+           for l in b["lines"]}
+    for ln in lines:
+        # A line can hold several labels set apart across the row - "Branch:",
+        # "Owner Number:", "Contract Number:" - each with its own field. Split
+        # where the gap between one letter and the next is wide enough to be a
+        # tab stop, whether the extractor called them separate spans or ran
+        # them together with spaces, so each label goes back beside its field.
+        exact = raw.get(tuple(round(v, 1) for v in ln["bbox"]))
+        chars = [c for sp in exact["spans"] for c in sp["chars"]] if exact else []
+        sp0 = ln["spans"][0]
+        style = {"size": max(x["size"] for x in ln["spans"]),
+                 "bold": bool(sp0["flags"] & 16 or "bold" in sp0["font"].lower()),
+                 "italic": bool(sp0["flags"] & 2 or "italic" in sp0["font"].lower())}
+        if not chars:
+            text = "".join(x["text"] for x in ln["spans"]).strip()
+            if text:
+                items.append(dict(style, what="text", text=text,
+                                  rect=fitz.Rect(ln["bbox"]), base=sp0["origin"][1]))
+            continue
+        run, held = [], []
+        for c in chars + [None]:
+            # a wide run of spaces is a tab stop as surely as a geometric gap
+            if c is not None and c["c"].isspace():
+                held.append(c)
+                continue
+            spaces = (fitz.Rect(held[-1]["bbox"]).x1 - fitz.Rect(held[0]["bbox"]).x0
+                      if held else 0.0)
+            if run and (c is None or spaces > 8
+                        or c["bbox"][0] - run[-1]["bbox"][2] > 8):
+                text = "".join(x["c"] for x in run).strip()
+                if text:
+                    box = fitz.Rect(run[0]["bbox"])
+                    for x in run[1:]:
+                        box |= fitz.Rect(x["bbox"])
+                    items.append(dict(style, what="text", text=text, rect=box,
+                                      base=run[0]["origin"][1]))
+                run = []
+            elif held:
+                run += held
+            held = []
+            if c is not None:
+                run.append(c)
+    for w in page.widgets():
+        r = fitz.Rect(w.rect)
+        # a field sits astride the baseline of its own label, so its middle
+        # lines up with the text far better than its bottom edge does
+        items.append({"what": "field", "rect": r, "base": (r.y0 + r.y1) / 2 + 2,
+                      "name": w.field_name, "type": w.field_type,
+                      "kind": w.field_type_string, "size": 10.0,
+                      "bold": False, "italic": False,
+                      "flags": w.field_flags, "text": ""})
+    # group into rows by baseline first, then read each row left to right:
+    # sorting by baseline throughout puts a field a point higher than its own
+    # sentence ahead of it, and the blank ends up before the words it sits in
+    items.sort(key=lambda i: i["base"])
+    rows, current, last = [], [], None
+    for it in items:
+        if last is not None and abs(it["base"] - last) > 5:
+            rows.append(current)
+            current = []
+        current.append(it)
+        last = it["base"]
+    if current:
+        rows.append(current)
+    for row in rows:
+        row.sort(key=lambda i: i["rect"].x0)
+    return rows
+
+
+def is_table_row(row):
+    """A row that reads label, box, label, box ... is a table row: the
+    beneficiary grids are built that way, and they have to come back as a
+    grid rather than a line of labels with rules trailing after it."""
+    kinds = [i["what"] for i in row]
+    return (len(row) >= 6 and kinds[0] == "text"        # a cell starts with its label
+            and kinds.count("field") >= 3 and kinds.count("text") >= 3
+            and all(a != b for a, b in zip(kinds, kinds[1:])))
+
+
+def merge_prose(rows):
+    """Join rows that are a single run of text into paragraphs, so the
+    rebuild wraps them to its own column instead of keeping the original's
+    line breaks."""
     out = []
-    for b in found:
+    for row in rows:
+        plain = len(row) == 1 and row[0]["what"] == "text"
         last = out[-1] if out else None
-        joins = (last and last["kind"] == "text" and b["kind"] == "text"
-                 and not b["text"].startswith(("•", "-", "●"))
-                 and abs(last["size"] - b["size"]) < 0.6
-                 and last["bold"] == b["bold"] and last["italic"] == b["italic"]
-                 and b["y"] - last["y"] < 2.2 * max(b["size"], 1)
-                 and not last["text"].rstrip().endswith(":"))
-        if joins:
-            last["text"] = last["text"].rstrip() + " " + b["text"].lstrip()
-            last["y"] = b["y"]
-        elif (last and last["kind"] == "cells" and b["kind"] == "cells"
-              and len(last["cells"]) == len(b["cells"])):
-            last.setdefault("rows", [last["cells"]])["rows"] if False else None
-            last["rows"] = last.get("rows", [last["cells"]]) + [b["cells"]]
-            last["y"] = b["y"]
+        if (plain and last and len(last) == 1 and last[0]["what"] == "text"
+                and abs(last[0]["size"] - row[0]["size"]) < 0.6
+                and last[0]["bold"] == row[0]["bold"]
+                and last[0]["italic"] == row[0]["italic"]
+                and 0 < row[0]["base"] - last[0]["base"] < 2.2 * row[0]["size"]
+                and not last[0]["text"].rstrip().endswith(":")
+                and row[0]["text"].lstrip()[:1] not in ("•", "●")):
+            joined = dict(last[0])
+            joined["text"] = last[0]["text"].rstrip() + " " + row[0]["text"].lstrip()
+            joined["base"] = row[0]["base"]
+            out[-1] = [joined]
         else:
-            if b["kind"] == "cells":
-                b["rows"] = [b["cells"]]
-            out.append(dict(b))
+            out.append(row)
     return out
 
 
-class Sheet:
-    """Somewhere to put blocks, one after another down the page."""
+class Rebuild:
+    """Sets rows out again at the target size, fields and all.
 
-    def __init__(self, doc, fonts, size, margin=40.0, gap=6.0):
-        self.doc, self.fonts, self.size, self.margin, self.gap = doc, fonts, size, margin, gap
+    Text is fixed: it needs the width it needs. Fields are elastic - a blank
+    is a place to write, not a measurement - so when a row is too wide for
+    the column the fields give up the difference between them, down to a
+    width still worth writing in."""
+
+    MIN_FIELD = 42.0
+
+    def __init__(self, doc, fonts, size=10.0, margin=40.0):
+        self.doc, self.fonts, self.size, self.margin = doc, fonts, size, margin
+        self.fields = []
         self.page = None
         self.new_page()
 
     def new_page(self):
         self.page = self.doc.new_page(width=612, height=792)
+        self.left, self.right = self.margin, 612 - self.margin
         self.y = self.margin
-        self.left = self.margin
-        self.right = 612 - self.margin
-
-    def room(self, height):
-        if self.y + height > 792 - self.margin:
-            self.new_page()
-
-    def wrap(self, text, width, size, bold=False, italic=False):
-        font = self.fonts["bolditalic" if bold and italic else "bold" if bold
-                          else "italic" if italic else "regular"][2]
-        words, rows, line = text.split(), [], ""
-        for w in words:
-            trial = (line + " " + w).strip()
-            if font.text_length(trial, size) > width and line:
-                rows.append(line)
-                line = w
-            else:
-                line = trial
-        if line:
-            rows.append(line)
-        return rows
 
     def face(self, bold, italic):
         return self.fonts["bolditalic" if bold and italic else "bold" if bold
                           else "italic" if italic else "regular"]
 
-    def text(self, text, size=None, bold=False, italic=False, indent=0.0, lead=1.25):
-        size = size or self.size
-        alias, path, font = self.face(bold, italic)
-        for row in self.wrap(text, self.right - self.left - indent, size, bold, italic):
-            self.room(size * lead)
-            self.page.insert_text(fitz.Point(self.left + indent, self.y + size * 0.85), row,
-                                  fontname=alias, fontfile=path, fontsize=size)
-            self.y += size * lead
-        return self
+    def width_of(self, item):
+        if item["what"] == "field":
+            return (self.size * 1.1 if item["kind"] == "CheckBox"
+                    else max(self.MIN_FIELD, item["rect"].width))
+        font = self.face(item["bold"], item["italic"])[2]
+        return font.text_length(item["text"], self.size)
+
+    def split(self, item, column):
+        """One item, in pieces no wider than the column."""
+        if item["what"] != "text" or self.width_of(item) <= column:
+            return [item]
+        font = self.face(item["bold"], item["italic"])[2]
+        out, line = [], ""
+        for word in item["text"].split():
+            trial = (line + " " + word).strip()
+            if font.text_length(trial, self.size) > column and line:
+                out.append(dict(item, text=line))
+                line = word
+            else:
+                line = trial
+        if line:
+            out.append(dict(item, text=line))
+        return out
+
+    def row(self, items, lead=1.45):
+        """Put one row down, wrapping onto more lines if it must."""
+        column = self.right - self.left
+        # A row can hold a run of prose as one of its items - a bullet and its
+        # sentence, say - and that item alone can be wider than the column.
+        # Break it into pieces that fit before flowing, or it runs off the page.
+        items = [piece for it in items for piece in self.split(it, column)]
+        line, lines = [], []
+        for it in items:
+            if line and sum(self.width_of(x) + 4 for x in line + [it]) > column:
+                lines.append(line)
+                line = []
+            line.append(it)
+        if line:
+            lines.append(line)
+        for group in lines:
+            fixed = sum(self.width_of(x) for x in group if x["what"] == "text")
+            gaps = 4 * max(0, len(group) - 1)
+            elastic = [x for x in group if x["what"] == "field"
+                       and x["kind"] != "CheckBox"]
+            spare = column - fixed - gaps - sum(
+                self.size * 1.1 for x in group if x["what"] == "field"
+                and x["kind"] == "CheckBox")
+            each = max(self.MIN_FIELD, spare / len(elastic)) if elastic else 0
+            height = self.size * lead
+            if self.y + height > 792 - self.margin:
+                self.new_page()
+            base = self.y + self.size
+            x = self.left
+            for it in group:
+                if it["what"] == "text":
+                    alias, path, font = self.face(it["bold"], it["italic"])
+                    text = it["text"].rstrip("_ ").rstrip() or it["text"]
+                    self.page.insert_text(fitz.Point(x, base), text, fontname=alias,
+                                          fontfile=path, fontsize=self.size)
+                    x += font.text_length(text, self.size) + 4
+                elif it["kind"] == "CheckBox":
+                    box = fitz.Rect(x, base - self.size * 0.85,
+                                    x + self.size * 0.85, base + self.size * 0.05)
+                    self.field(box, it)
+                    x += self.size * 1.1 + 4
+                else:
+                    wide = min(each, self.right - x)
+                    box = fitz.Rect(x, base - self.size, x + wide, base + 2)
+                    self.page.draw_line(fitz.Point(x, base + 2),
+                                        fitz.Point(x + wide, base + 2),
+                                        color=(0, 0, 0), width=0.6)
+                    self.field(box, it)
+                    x += wide + 4
+            self.y += height
+
+    def field(self, rect, item):
+        """Put the form field back, with the name and type it had."""
+        w = fitz.Widget()
+        w.rect = rect
+        w.field_name = item["name"] or f"field_{len(self.fields)}"
+        w.field_type = item["type"]
+        if item["kind"] == "CheckBox":
+            w.border_width = 0.8
+            w.border_color = (0, 0, 0)
+        self.page.add_widget(w)
+        self.fields.append(w.field_name)
+
+    def table(self, rows):
+        """A grid: every label keeps its own cell, with its box beside it."""
+        column = self.right - self.left
+        pairs = max(sum(1 for i in r if i["what"] == "text") for r in rows)
+        alias, path, font = self.face(False, False)
+        labels = [i["text"] for i in rows[0] if i["what"] == "text"]
+        widths = [font.text_length((labels[k] if k < len(labels) else "") + " ",
+                                   self.size * 0.85) for k in range(pairs)]
+        cell = (column - sum(widths)) / pairs if pairs else 0
+        height = self.size * 1.8
+        for row in rows:
+            if self.y + height > 792 - self.margin:
+                self.new_page()
+            items, x, k = list(row), self.left, 0
+            while items and k < pairs:
+                label = items.pop(0) if items[0]["what"] == "text" else None
+                box = items.pop(0) if items and items[0]["what"] == "field" else None
+                wide = widths[k] + cell
+                frame = fitz.Rect(x, self.y, x + wide, self.y + height)
+                self.page.draw_rect(frame, color=(0, 0, 0), width=0.6)
+                if label:
+                    self.page.insert_text(fitz.Point(x + 3, self.y + self.size * 1.15),
+                                          label["text"], fontname=alias, fontfile=path,
+                                          fontsize=self.size * 0.85)
+                if box:
+                    self.field(fitz.Rect(x + widths[k], self.y + 1,
+                                         frame.x1 - 1, frame.y1 - 1), box)
+                x += wide
+                k += 1
+            self.y += height
+        self.y += 4
 
     def bar(self, text):
-        self.room(self.size * 1.9)
+        if self.y + self.size * 2 > 792 - self.margin:
+            self.new_page()
         alias, path, font = self.face(True, False)
-        box = fitz.Rect(self.left, self.y, self.right, self.y + self.size * 1.7)
+        box = fitz.Rect(self.left, self.y, self.right, self.y + self.size * 1.6)
         self.page.draw_rect(box, color=None, fill=BAR_GREY)
-        self.page.insert_text(fitz.Point(self.left + 4, self.y + self.size * 1.25), text,
-                              fontname=alias, fontfile=path, fontsize=self.size)
-        self.y = box.y1 + self.gap
-        return self
+        self.page.insert_text(fitz.Point(self.left + 4, self.y + self.size * 1.2),
+                              text, fontname=alias, fontfile=path, fontsize=self.size)
+        self.y = box.y1 + 5
 
-    def fill_row(self, label, size=None):
-        """A label with a line after it to write on."""
-        size = size or self.size
-        alias, path, font = self.face(False, False)
-        label = label.replace("_", " ").rstrip()
-        self.room(size * 2)
-        base = self.y + size * 0.85
-        self.page.insert_text(fitz.Point(self.left, base), label,
-                              fontname=alias, fontfile=path, fontsize=size)
-        start = self.left + font.text_length(label, size) + 6
-        if start < self.right - 20:
-            self.page.draw_line(fitz.Point(start, base + 2), fitz.Point(self.right, base + 2),
-                                color=(0, 0, 0), width=0.6)
-        self.y += size * 2
-        return self
-
-    def table(self, rows, size=None):
-        size = size or self.size
-        alias, path, font = self.face(False, False)
-        cols = max(len(r) for r in rows)
-        labels = rows[0]
-        widths = [font.text_length((labels[i] if i < len(labels) else "") + "   ", size)
-                  for i in range(cols)]
-        spare = (self.right - self.left) - sum(widths)
-        widths = [w + spare / cols for w in widths]
-        height = size * 1.9
+    def prose(self, text, bold=False, italic=False, indent=0.0):
+        alias, path, font = self.face(bold, italic)
+        words, line = text.split(), ""
+        rows = []
+        for word in words:
+            trial = (line + " " + word).strip()
+            if font.text_length(trial, self.size) > self.right - self.left - indent and line:
+                rows.append(line)
+                line = word
+            else:
+                line = trial
+        if line:
+            rows.append(line)
         for row in rows:
-            self.room(height)
-            x = self.left
-            for i in range(cols):
-                cell = fitz.Rect(x, self.y, x + widths[i], self.y + height)
-                self.page.draw_rect(cell, color=(0, 0, 0), width=0.6)
-                if i < len(row) and row[i]:
-                    self.page.insert_text(fitz.Point(x + 3, self.y + size * 1.2), row[i],
-                                          fontname=alias, fontfile=path, fontsize=size * 0.9)
-                x += widths[i]
-            self.y += height
-        self.y += self.gap
-        return self
+            if self.y + self.size * 1.3 > 792 - self.margin:
+                self.new_page()
+            self.page.insert_text(fitz.Point(self.left + indent, self.y + self.size * 0.9),
+                                  row, fontname=alias, fontfile=path, fontsize=self.size)
+            self.y += self.size * 1.3
 
 
 def main():
@@ -215,54 +378,69 @@ def main():
     args = ap.parse_args()
 
     doc = fitz.open(args.input)
-    found = []
-    for page in doc:
-        found += blocks_of(page, args)
-    found = paragraphs(found)
-    if args.dump:
-        for b in found:
-            print(f"  {b['kind']:5} {b['size']:4.1f} {'B' if b['bold'] else ' '}"
-                  f"{'I' if b['italic'] else ' '} {len(b.get('rows', []) or '') or ''}  "
-                  f"{b['text'][:64]!r}")
-        print(f"{len(found)} block(s)")
-        return
-
     fonts = R.resolve_fonts({})
     out = fitz.open()
-    sheet = Sheet(out, fonts, args.size)
+    sheet = Rebuild(out, fonts, args.size)
     title = os.path.splitext(os.path.basename(args.input))[0]
 
     logo = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "libro_logo.png")
     if os.path.exists(logo):
         pix = fitz.Pixmap(logo)
-        box = fitz.Rect(sheet.left, sheet.y, sheet.left + 63 * pix.width / pix.height,
-                        sheet.y + 63)
-        sheet.page.insert_image(box, filename=logo)
-    alias, path_b, font_b = fonts["bold"]
-    sheet.page.insert_text(fitz.Point(sheet.right - font_b.text_length(title, 14),
-                                      sheet.y + 20), title,
-                           fontname=alias, fontfile=path_b, fontsize=14)
+        sheet.page.insert_image(
+            fitz.Rect(sheet.left, sheet.y, sheet.left + 63 * pix.width / pix.height,
+                      sheet.y + 63), filename=logo)
+    alias, bold_path, bold_font = fonts["bold"]
+    sheet.page.insert_text(
+        fitz.Point(sheet.right - bold_font.text_length(title, 14), sheet.y + 20), title,
+        fontname=alias, fontfile=bold_path, fontsize=14)
     sheet.y += 74
 
+    bars = []
+    for page in doc:
+        p = R.printed(page)
+        bars += [fitz.Rect(d["rect"]) for d in p.get_drawings()
+                 if d.get("fill") and 6 < fitz.Rect(d["rect"]).height < 30
+                 and fitz.Rect(d["rect"]).width > 60]
+    rows = []
+    for page in doc:
+        rows += rows_with_fields(page)
+
+    rows = merge_prose(rows)
     started = False
-    for b in found:
-        if not started and b["size"] >= 12:
+    pending = []
+    for row in rows + [None]:
+        if row is not None and is_table_row(row):
+            pending.append(row)
+            continue
+        if pending:
+            sheet.table(pending)
+            pending = []
+        if row is None:
+            break
+        texts = [i for i in row if i["what"] == "text"]
+        has_field = any(i["what"] == "field" for i in row)
+        joined = " ".join(i["text"] for i in texts).strip()
+        if not started and texts and texts[0]["size"] >= 12 and not has_field:
             continue                        # the form's own title; the header carries it
         started = True
-        if b["kind"] == "bar":
-            sheet.bar(b["text"])
-        elif b["kind"] == "cells":
-            sheet.table(b.get("rows") or [b["cells"]])
-        elif b["kind"] == "fill":
-            sheet.fill_row(b["text"])
-        elif b["text"].lstrip()[:1] in ("•", "●"):
-            sheet.text(b["text"].lstrip("•● ").strip(), bold=b["bold"],
-                       italic=b["italic"], indent=14)
+        if not joined and not has_field:
+            continue
+        in_bar = texts and any(b.y0 - 3 <= texts[0]["rect"].y0
+                               and texts[0]["rect"].y1 <= b.y1 + 3 for b in bars)
+        if in_bar and not has_field:
+            sheet.bar(joined)
+        elif has_field or len(texts) > 1:
+            sheet.row(row)
         else:
-            sheet.text(b["text"], bold=b["bold"], italic=b["italic"])
-        sheet.y += sheet.gap * 0.5
+            bullet = joined.lstrip()[:1] in ("•", "●", "-")
+            sheet.prose(joined.lstrip("•●- ") if bullet else joined,
+                        bold=texts[0]["bold"], italic=texts[0]["italic"],
+                        indent=14 if bullet else 0)
+        sheet.y += 2
     out.save(args.output)
-    print(f"rebuilt {len(found)} block(s) onto {out.page_count} page(s): {args.output}")
+    was = sum(1 for page in doc for _ in page.widgets())
+    print(f"rebuilt onto {out.page_count} page(s): {args.output}")
+    print(f"fields: {was} in the original, {len(sheet.fields)} in the rebuild")
 
 
 if __name__ == "__main__":
