@@ -350,15 +350,20 @@ def rule_segments(page):
 
 
 def rule_crossings(page, band=20.0):
-    """Characters whose body (cap height down to the baseline) crosses a ruled
-    line or a box edge. Descender space is left out, so an underline sitting
-    just under the text doesn't count. Returns (count, worst y)."""
+    """Which lines have characters whose body (cap height down to the
+    baseline) crosses a ruled line or a box edge, keyed by baseline. Descender
+    space is left out, so an underline just under the text doesn't count.
+    Counting per line keeps a caption that already sat on its rule from
+    reading as a regression when one more character touches it. Only printed
+    rules count: a field's own border is the requirements tool's to place,
+    and the layout ignores fields."""
+    page = printed(page)
     rows = {}
     for seg in rule_segments(page):
         for k in range(int(seg.y0 // band), int(seg.y1 // band) + 1):
             rows.setdefault(k, []).append(seg)
-    hits, where = 0, None
-    for run in printed(page).get_texttrace():
+    hits = Counter()
+    for run in page.get_texttrace():
         if run.get("type") not in (0, 1):
             continue
         for c in run.get("chars", []):
@@ -368,21 +373,22 @@ def rule_crossings(page, band=20.0):
             body = fitz.Rect(c[3][0], base - 0.72 * size, c[3][2], base + 0.08 * size)
             near = rows.get(int(body.y0 // band), []) + rows.get(int(body.y1 // band), [])
             if any(body.intersects(s) for s in near):
-                hits += 1
-                where = where if where is not None else round(base)
-    return hits, where
+                hits[round(base)] += 1
+    return hits
 
 
-def verify_rules(before, after):
-    """Text must not end up crossing a ruled line or box edge it didn't cross
-    before: grown text can break out of a box it used to sit inside, which
-    neither the census nor the right-edge check can see."""
-    was, _ = rule_crossings(before)
-    now, where = rule_crossings(after)
-    if now <= was:
+def verify_rules(before, after, dy=0.0):
+    """No line may end up sitting on a ruled line or box edge it cleared
+    before: text grown inside a fixed box can break out of it, which neither
+    the census nor the right-edge check can see. Lines that already crossed
+    one don't count again - that's the form's own layout."""
+    was = {y + dy for y in rule_crossings(before)}
+    now = rule_crossings(after)
+    fresh = sorted(y for y in now if not any(abs(y - w) <= 2 for w in was))
+    if not fresh:
         return []
-    return [("TEXT_CROSSES_RULE", f"{now - was} more character(s) sit on a ruled line or box "
-                                  f"edge than before ({was} -> {now}), first near y={where}")]
+    return [("TEXT_CROSSES_RULE", f"{len(fresh)} line(s) now sit on a ruled line or box edge "
+                                  f"that cleared it before, first near y={fresh[0]}")]
 
 
 def verify_right_edge(before, after, page_margin=None, tolerance=2.0):
@@ -452,15 +458,17 @@ def recover_orphans(page, known_rects):
 
 def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio,
                  skip_conforming, target_font_substr, size_tol, dry_run, gap_tol=3.0,
-                 recover=True, reflow=None, rules=None, fine=None, relabel=None):
+                 recover=True, reflow=None, rules=None, fine=None, relabel=None, drop=None):
     """Restyle one page. Returns (issues, expected): a list of (issue, detail)
     tuples, and the glyph-count changes made on purpose, keyed by (baseline y,
     character), for the census. From plan_reflow: `reflow` maps line_key ->
     layout for lines whose paragraph is re-wrapped rather than redrawn in
     place, and `rules` gives fill-in rules a new start and end. `fine` maps
     line_key -> the smaller size for footers and fine print, and `relabel`
-    line_key -> the house wording from plan_relabels."""
+    line_key -> the house wording from plan_relabels. `drop` holds lines to
+    erase with the rest but not redraw - the old title --header replaces."""
     reflow, rules, fine, relabel = reflow or {}, rules or [], fine or {}, relabel or {}
+    drop = drop or set()
     issues = []
     content = printed(page)
     lines, notes = collect_lines(content, skip_conforming, target_font_substr, size, size_tol)
@@ -471,12 +479,20 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     page_centre = page.rect.width / 2
     text_left = min(l["bbox"].x0 for l in lines)
     text_right = max(l["bbox"].x1 for l in lines)
+    starts = [l["bbox"].x0 for l in lines]
     ink_end = dict(zip((id(l) for l in lines), ink_ends(content, lines)))
 
     # --- plan every line before touching the page ------------------------
     plan = []
     inline = {r["inline"]: r for r in rules if "inline" in r}
+    dropped = Counter()
     for ln in lines:
+        if line_key(ln) in drop:
+            for sp in ln["spans"]:        # erased with the rest, never redrawn
+                for ch in sp["text"]:
+                    if not ch.isspace():
+                        dropped[(sp["origin"][1], ord(ch))] -= 1
+            continue
         if line_key(ln) in reflow:
             continue            # erased with the rest, redrawn with its paragraph
         # A line ending in typed underscores is drawn as its label, then the
@@ -501,7 +517,7 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
                          and (ln["bbox"].x0 - text_left) > min_indent
                          and alone_on_row(ln, lines))
         flush_right = (not looks_centred and rule is None
-                       and looks_right_aligned(ln["bbox"], text_left, text_right))
+                       and looks_right_aligned(ln["bbox"], text_left, text_right, starts))
 
         if new_w > old_w * keep_size_ratio:
             issues.append(("line_got_wider",
@@ -549,6 +565,7 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
 
     # --- redraw ------------------------------------------------------------
     expected = Counter()        # glyph-count changes made on purpose
+    expected.update(dropped)
     for item in plan:
         ln = item["line"]
         if item["keep_centre"] is not None:
@@ -756,13 +773,19 @@ def alone_on_row(line, lines):
                    for other in lines)
 
 
-def looks_right_aligned(bbox, text_left, text_right):
+def looks_right_aligned(bbox, text_left, text_right, starts=()):
     """A short line set flush against the right edge of the text - a page
     number, a date, 'rev. 05/12'. It keeps its right edge and grows to the
-    left; growing right, it would run past the edge on its own."""
+    left; growing right, it would run past the edge on its own.
+
+    It must also start where no other line does: text in the right-hand
+    column of a two-column page also ends at the right edge and begins well
+    in from the left, but shares its left edge with the lines around it."""
     column = text_right - text_left
-    return (abs(bbox.x1 - text_right) <= 4 and bbox.width < 0.5 * column
-            and bbox.x0 - text_left > 0.4 * column)
+    if not (abs(bbox.x1 - text_right) <= 4 and bbox.width < 0.5 * column
+            and bbox.x0 - text_left > 0.4 * column):
+        return False
+    return sum(1 for x in starts if abs(x - bbox.x0) <= 2) <= 1
 
 
 def ink_ends(page, lines):
@@ -1122,6 +1145,7 @@ def line_room(page, lines, static, right, args):
              for c in run.get("chars", [])]
     text_left = min(ln["bbox"].x0 for ln in lines)
     text_right = max(ln["bbox"].x1 for ln in lines)
+    starts = [ln["bbox"].x0 for ln in lines]
     ends = ink_ends(page, lines)
     centre = page.rect.width / 2
     out = []
@@ -1179,7 +1203,7 @@ def line_room(page, lines, static, right, args):
         out.append({"hard": hard, "blank": blank, "left_stop": left_stop, "ink_end": ends[i],
                     "label": label if inline else ln["spans"], "centred": centred,
                     "right": (not centred and not inline
-                              and looks_right_aligned(b, text_left, text_right))})
+                              and looks_right_aligned(b, text_left, text_right, starts))})
     return out
 
 
@@ -1386,6 +1410,51 @@ def load_relabels(path):
     return table
 
 
+def fit_fine_print(doc, fonts, args, size, fine, plans):
+    """Footers and fine print keep their own size, so the body size can't make
+    room for them - but Arial is wider than what they were set in, and they
+    can still run past the edge or into a rule. Each one that doesn't fit its
+    room is stepped down (never below --fine-floor) until it does. Changes
+    `fine` in place; returns report rows."""
+    rows = []
+    for pi, page in enumerate(doc):
+        small = fine[pi]
+        if not small:
+            continue
+        p = printed(page)
+        lines, _ = collect_lines(p, False, args.target_font, args.size, args.size_tolerance)
+        if not lines:
+            continue
+        right = args.right_margin or ink_right(p) or max(ln["bbox"].x1 for ln in lines)
+        if args.page_margin is not None and not args.right_margin:
+            right = max(right, page.rect.width - args.page_margin)
+        room = line_room(p, lines, reflow_obstacles(p, lines), right, args)
+        for ln, rm in zip(lines, room):
+            key = line_key(ln)
+            if key not in small:
+                continue
+            was = small[key]
+            at = was
+            while at > args.fine_floor:
+                end = (page.rect.width / 2 + line_width(rm["label"], fonts, at) / 2
+                       if rm["centred"] else
+                       rm["ink_end"] if rm["right"] else
+                       redrawn_end(rm["label"], fonts, at, args.gap_tolerance))
+                stop = rm["hard"]
+                if rm["blank"] is not None:
+                    stop = min(stop, rm["blank"]["x0"] - rm["blank"]["gap"])
+                if end is None or end <= stop + 0.01:
+                    break
+                at = round(at - 0.5, 2)
+            if at < was:
+                small[key] = at
+                text = "".join(sp["text"] for sp in ln["spans"]).strip()
+                rows.append((pi + 1, "fine_print_shrunk" if at > args.fine_floor else
+                             "FINE_PRINT_NO_ROOM",
+                             f"{text[:50]!r}: {was:g} -> {at:g}pt to fit its room"))
+    return rows
+
+
 def plan_relabels(doc, fonts, args, table, size, fine, plans):
     """Which labels to swap: per page {line_key: new text}, plus report rows.
 
@@ -1562,20 +1631,36 @@ def content_extent(page, skip=()):
 def find_old_header(page, zone, min_title_size):
     """The existing logo and title on page 1, to be replaced rather than pushed
     down under the new header. A title is a text line lying wholly within the
-    top `zone` points and set at `min_title_size` or larger. A logo is an image
+    top `zone` points and set at `min_title_size` or larger, plus any line the
+    title runs onto below it. A logo is an image
     that *starts* within that band, no wider than half the page and no taller
     than a fifth of it - a letterhead logo often hangs below the band, and
     requiring it to fit entirely left the old logo on the page under the new
     one. This is a guess, so every removal is reported."""
-    titles = []
+    all_lines = []
     for block in page.get_text("dict")["blocks"]:
         if block.get("type") != 0:
             continue
         for line in block["lines"]:
             spans = [s for s in line["spans"] if s["text"].strip()]
-            if spans and line["bbox"][3] <= zone \
-                    and max(s["size"] for s in spans) >= min_title_size:
-                titles.append({"bbox": fitz.Rect(line["bbox"]), "spans": spans})
+            if spans:
+                all_lines.append({"bbox": fitz.Rect(line["bbox"]), "spans": spans,
+                                  "size": max(s["size"] for s in spans)})
+    titles = [ln for ln in all_lines
+              if ln["bbox"].y0 <= zone and ln["size"] >= min_title_size]
+    # A title set over several lines can hang below the band. Take all of it,
+    # or the leftover lines stay on the page under the new header.
+    taken = {id(ln) for ln in titles}
+    while True:
+        more = [ln for ln in all_lines if id(ln) not in taken
+                and any(abs(ln["size"] - t["size"]) <= 0.6
+                        and 0 <= ln["bbox"].y0 - t["bbox"].y1 <= 1.6 * t["size"]
+                        and ln["bbox"].x1 > t["bbox"].x0 and ln["bbox"].x0 < t["bbox"].x1
+                        for t in titles)]
+        if not more:
+            break
+        titles += more
+        taken |= {id(ln) for ln in more}
     logos = [fitz.Rect(i["bbox"]) for i in page.get_image_info()
              if i["bbox"][1] <= zone and fitz.Rect(i["bbox"]).width <= page.rect.width / 2
              and fitz.Rect(i["bbox"]).height <= page.rect.height / 5]
@@ -1621,7 +1706,7 @@ def plan_header(page, title, fonts, args):
     if page.rotation:
         return None, [("HEADER_SKIPPED", f"page 1 is rotated {page.rotation} degrees; "
                                          "header placement is untested there")]
-    old_titles, old_logos = find_old_header(page, args.old_header_zone,
+    old_titles, old_logos = find_old_header(printed(page), args.old_header_zone,
                                             args.old_title_min_size)
     others = [fitz.Rect(i["bbox"]) for i in page.get_image_info()
               if fitz.Rect(i["bbox"]) not in old_logos]
@@ -1697,25 +1782,23 @@ def plan_header(page, title, fonts, args):
 
 
 def remove_old_header(page, plan, pad):
-    """Take the old title and logo off page 1, in two redaction passes so the
-    image pass can't touch text and the text pass can't touch images. Returns
-    the removed glyphs as census allowances."""
+    """Take the old logo off page 1, and any line art lying inside the old
+    title (an underlined title is text plus a separate rule, and the rule
+    alone would be left floating under the new header).
+
+    The title's text is not redacted here. restyle_page erases it along with
+    every other line and simply doesn't redraw it, so a neighbour the erase
+    catches is still redrawn. Redacting the title on its own clipped the line
+    beneath it, and that text was gone before the restyle ever saw it."""
     expected = Counter()
     if plan["old_titles"]:
         for t in plan["old_titles"]:
             b = t["bbox"]
             page.add_redact_annot(fitz.Rect(b.x0 - pad, b.y0 - pad, b.x1 + pad, b.y1 + pad),
                                   fill=None, cross_out=False)
-            for sp in t["spans"]:
-                for ch in sp["text"]:
-                    if not ch.isspace():
-                        expected[(sp["origin"][1], ord(ch))] -= 1
-        # Line art lying wholly inside the title goes too: an underlined title
-        # is drawn as text plus a separate rule, and the rule on its own would
-        # be left floating under the new header.
         page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE,
                               graphics=fitz.PDF_REDACT_LINE_ART_REMOVE_IF_COVERED,
-                              text=fitz.PDF_REDACT_TEXT_REMOVE)
+                              text=fitz.PDF_REDACT_TEXT_NONE)
     if plan["old_logos"]:
         for r in plan["old_logos"]:
             page.add_redact_annot(r, fill=None, cross_out=False)
@@ -1977,13 +2060,23 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
     fine = [{k: min(s, size) for k, s in f.items()} for f in fine]
 
     # Labels to reword, decided at the settled size so they never change it.
+    rows += [[name, where, issue, detail]
+             for where, issue, detail in fit_fine_print(doc, fonts, args, size, fine, plans)]
+
     relabel = [{} for _ in range(doc.page_count)]
     if relabels:
         relabel, notes = plan_relabels(doc, fonts, args, relabels, size, fine, plans)
         rows += [[name, where, issue, detail] for where, issue, detail in notes]
 
+    drop = set()
     if header and not args.dry_run:
         expected[0].update(remove_old_header(doc[0], header, args.pad))
+        # The old title is erased with the rest of page 1 and not redrawn.
+        drop = {line_key(t) for t in header["old_titles"]}
+        keep = plans[0].get("reflow", {})
+        gone = {id(keep[k]) for k in keep if k in drop}
+        for k in [k for k, v in keep.items() if id(v) in gone]:
+            del keep[k]              # a re-wrap can't keep a line we're dropping
 
     for pno, page in enumerate(doc, start=1):
         issues, allowed = restyle_page(
@@ -1991,7 +2084,7 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                 args.width_tolerance, args.skip_conforming, args.target_font,
                 args.size_tolerance, args.dry_run, args.gap_tolerance,
                 not args.no_recover, plans[pno - 1].get("reflow"), plans[pno - 1].get("rules"),
-                fine[pno - 1], relabel[pno - 1])
+                fine[pno - 1], relabel[pno - 1], drop if pno == 1 else None)
         expected[pno - 1].update(allowed)      # update, not +=: allowances can be negative
         for issue, detail in issues:
             rows.append([name, pno, issue, detail])
@@ -2022,7 +2115,7 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                     rows.append([name, pno, issue, detail])
                 for issue, detail in verify_right_edge(orig[pno - 1], page, args.page_margin):
                     rows.append([name, pno, issue, detail])
-                for issue, detail in verify_rules(orig[pno - 1], page):
+                for issue, detail in verify_rules(orig[pno - 1], page, dys[pno - 1]):
                     rows.append([name, pno, issue, detail])
             if header:
                 rows += [[name, 1, issue, detail] for issue, detail in check_header(out[0], header)]
@@ -2143,6 +2236,9 @@ def main():
                     help="text this size or larger in that zone counts as the old title "
                          "(default 12)")
     sc = ap.add_argument_group("spelling (--spellcheck)")
+    ap.add_argument("--fine-floor", type=float, default=5.0,
+                    help="footers and fine print may be stepped down to this size to fit "
+                         "the room they have; below it they're reported instead (default 5)")
     sc.add_argument("--spellcheck", action="store_true",
                     help="report words the dictionary doesn't know; never changes text")
     sc.add_argument("--spell-allow", default=ALLOWLIST,
