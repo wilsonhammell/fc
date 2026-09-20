@@ -665,6 +665,45 @@ def rule_crossings(page, band=20.0):
     return hits
 
 
+def text_clashes(page):
+    """Pairs of lines that share a row and whose boxes overlap, by baseline."""
+    rows = []
+    for block in read_once(printed(page), "dict",
+                           lambda: printed(page).get_text("dict"))["blocks"]:
+        for line in block.get("lines", []):
+            text = "".join(s["text"] for s in line["spans"]).strip()
+            # Real words only. A fill-in rule is rebuilt to its own length and
+            # a checkbox is one glyph in a box of its own: both sit right up
+            # against their neighbours by design, and reading that as text
+            # running into text would cry wolf on every form that has them.
+            if sum(c.isalpha() for c in text) >= 3 and "_" not in text:
+                rows.append((fitz.Rect(line["bbox"]), line["spans"][0]["origin"][1]))
+    hits = Counter()
+    for i, (ra, base) in enumerate(rows):
+        for rb, other in rows[i + 1:]:
+            if abs(base - other) <= 2 and ra.x1 > rb.x0 + 0.5 and rb.x1 > ra.x0 + 0.5:
+                hits[round(min(base, other))] += 1
+    return hits
+
+
+def verify_overlap(before, after, dy=0.0):
+    """No line may end up sitting on top of another that it cleared before.
+
+    Text running into text is its own kind of wrong: the census still counts
+    every glyph, the words are all still there, nothing has left the page -
+    it just can't be read. One form had "account number." and "Correct
+    account:" set a tab apart on the same line, and the first grew into the
+    second."""
+    was = {y + dy for y in text_clashes(before)}
+    now = text_clashes(after)
+    fresh = sorted(y for y in now if not any(abs(y - w) <= 2 for w in was))
+    if not fresh:
+        return []
+    return [("TEXT_OVERLAPS_TEXT",
+             f"{len(fresh)} line(s) now run into text beside them that they cleared "
+             f"before, first near y={fresh[0]:.0f}")]
+
+
 def verify_words(before, after):
     """Words that ran together, or came apart, between the two files.
 
@@ -1242,6 +1281,29 @@ def redrawn_end(spans, fonts, size, gap_tol, dx=0.0):
     return end
 
 
+def span_overrun(spans, fonts, size, gap_tol):
+    """How far the text before a tab-like gap grows into the span after it.
+
+    A line can hold two things set well apart - "Payment is made to incorrect
+    account number." and, a tab away, "Correct account:". The span after the
+    gap keeps its own place, so when the text before it is set wider the two
+    run together. The room a line has is measured to whatever follows the
+    whole line, which says nothing about this, so it's measured here."""
+    worst = 0.0
+    prev_old = prev_new = None
+    line_max = max((sp["size"] for sp in spans), default=size)
+    for sp in spans:
+        font = style_of(sp["flags"], fonts)[2]
+        at = span_size(sp, line_max, size)
+        x = sp["origin"][0]
+        if prev_old is not None and sp["bbox"][0] - prev_old < gap_tol:
+            x = prev_new                                  # carried along
+        elif prev_new is not None and sp["text"].strip():
+            worst = max(worst, prev_new - (sp["bbox"][0] - 1.0))
+        prev_old, prev_new = sp["bbox"][2], x + font.text_length(sp["text"], at)
+    return worst
+
+
 # A centred line covers at most this much of the text column.
 CENTRE_MAX_WIDTH = 0.6
 
@@ -1808,8 +1870,19 @@ def plan_reflow(doc, fonts, args, fine=None, dys=None):
                 else:
                     end = (redrawn_end(room["label"], fonts, size, args.gap_tolerance)
                            if room["label"] else None) or ln["spans"][0]["origin"][0]
+                # text before a tab-like gap growing into what sits after it
+                spill = span_overrun(room["label"], fonts, size, args.gap_tolerance)
                 blank = room["blank"]
                 if blank is None:
+                    if spill > 0.01 and end <= room["hard"] + 0.01:
+                        start = ln["bbox"].x0
+                        room_for = (end - start) - spill
+                        need = room_for / (end - start) if end > start else 0.0
+                        if getattr(args, "condense", 1.0) < 1.0 and need >= getattr(args, "condense", 1.0):
+                            plans[pi]["squeeze"][line_key(ln)] = round(need, 4)
+                        else:
+                            over.add(i)
+                        continue
                     if end > room["hard"] + 0.01:
                         # Set the line a little narrower rather than let it
                         # hold the document's size down. Squeezing the glyphs
@@ -2910,6 +2983,8 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                 for issue, detail in verify_rules(orig[pno - 1], page, dys[pno - 1]):
                     rows.append([name, pno, issue, detail])
                 for issue, detail in verify_words(orig[pno - 1], page):
+                    rows.append([name, pno, issue, detail])
+                for issue, detail in verify_overlap(orig[pno - 1], page, dys[pno - 1]):
                     rows.append([name, pno, issue, detail])
             if header:
                 rows += [[name, 1, issue, detail] for issue, detail in check_header(out[0], header)]
