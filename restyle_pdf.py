@@ -605,7 +605,10 @@ def rule_crossings(page, band=20.0):
             if c[0] <= 0 or chr(c[0]).isspace():
                 continue
             base, size = c[2][1], run["size"]
-            body = fitz.Rect(c[3][0], base - 0.72 * size, c[3][2], base + 0.08 * size)
+            # the descender band is trimmed by a third of a point: a glyph
+            # whose tail grazes an underline by a hundredth of a point isn't
+            # sitting on it, and at these sizes that happens on rounding alone
+            body = fitz.Rect(c[3][0], base - 0.72 * size, c[3][2], base + 0.08 * size - 0.3)
             near = rows.get(int(body.y0 // band), []) + rows.get(int(body.y1 // band), [])
             if any(body.intersects(s) for s in near):
                 hits[round(base)] += 1
@@ -1600,6 +1603,18 @@ def line_room(page, lines, static, right, args):
                   if j != i and after_on_row(ln, other["bbox"])]
         stops += beside
         stop = min([right] + [o.x0 for o in stops])
+        # A shaded bar or box the line sits inside is its background, and the
+        # line has to stay in it: a heading set in a grey bar that grows past
+        # the end of the bar reads as a mistake. Only with --shrink-stubborn,
+        # where the heading can take a smaller size of its own - held against
+        # the whole document, this bought a tidier grey bar on one form at the
+        # cost of a size step on four others.
+        around = [o for o, _, contains in static
+                  if getattr(args, "shrink_stubborn", False)
+                  and contains and o.x0 <= b.x0 + 1 and o.x1 > b.x0
+                  and o.y0 - 2 <= base <= o.y1 + 2]
+        if around:
+            stop = min(stop, min(o.x1 for o in around))
         # Clearance: as much as the line already had, up to 3pt. Where the
         # next thing along is text, keep a little even if the original left
         # none, or the two run together as one word.
@@ -1673,6 +1688,15 @@ def plan_reflow(doc, fonts, args, fine=None):
             widths = [line_width(room["label"], fonts, small.get(line_key(ln), size))
                       for ln, room in zip(lines, pg["room"])]
             over, why = set(), {}
+            multi = {k for p in pg["paras"] if len(p["lines"]) > 1 for k in p["lines"]}
+
+            def stubborn(k):
+                """A line nothing can be done for by setting the document
+                smaller as a whole: it stands on its own, in a slot of its
+                own, and --shrink-stubborn lets it take a smaller size while
+                the body keeps its own. A form's table-cell labels and its
+                shaded heading bars are what this is for."""
+                return args.shrink_stubborn and k not in multi
 
             def caption(k):
                 """A label set smaller than this page's body text, sitting in
@@ -1739,7 +1763,7 @@ def plan_reflow(doc, fonts, args, fine=None):
                 continue
             owner = {k: p for p in pg["paras"] for k in p["lines"]}
             for i in sorted(over):
-                if (i in why or i not in owner) and not caption(i):
+                if (i in why or i not in owner) and not (caption(i) or stubborn(i)):
                     blockers.append((pi + 1, preview(lines[i]),
                                      why.get(i, "it isn't part of a paragraph")))
             todo = {id(owner[i]): owner[i] for i in over if i in owner and i not in why}
@@ -1760,7 +1784,7 @@ def plan_reflow(doc, fonts, args, fine=None):
                         for sp in para["spans"]):
                     para["bad"] = "it holds characters Arial can't draw, which have to stay put"
                 if para["bad"]:
-                    if not all(caption(k) for k in para["lines"]):
+                    if not all(caption(k) or stubborn(k) for k in para["lines"]):
                         blockers.append((pi + 1, para["preview"], para["bad"]))
                     continue
                 obst = pg["static"] + [(r, f"the line {t!r}", False)
@@ -1768,7 +1792,7 @@ def plan_reflow(doc, fonts, args, fine=None):
                 layout, why = layout_paragraph(para, size, fonts, limit, obst, pg["cap"],
                                                args.min_leading, pg["centre"])
                 if layout is None:
-                    if not all(caption(k) for k in para["lines"]):
+                    if not all(caption(k) or stubborn(k) for k in para["lines"]):
                         blockers.append((pi + 1, para["preview"], why))
                     continue
                 layout["para"] = para
@@ -1866,10 +1890,13 @@ def fit_fine_print(doc, fonts, args, size, fine, plans):
         for ln, rm in zip(lines, room):
             key = line_key(ln)
             own, fine_print = max(sp["size"] for sp in ln["spans"]), key in small
+            text_of = "".join(sp["text"] for sp in ln["spans"]).strip()
+            if text_of.count("_") > 0.6 * len(text_of):
+                continue        # a fill-in rule: rebuilt to length, not shrunk
             if fine_print:
                 was = small[key]
-            elif (own < min(size, body) - 0.05
-                  and key not in plans[pi].get("reflow", {})):
+            elif (key not in plans[pi].get("reflow", {})
+                  and (own < min(size, body) - 0.05 or args.shrink_stubborn)):
                 # Set smaller than the body and about to be enlarged to it.
                 # Growing text is the dangerous direction: on one form a 7.2pt
                 # caption taken to 8pt ran straight into the label beside it.
@@ -1878,9 +1905,16 @@ def fit_fine_print(doc, fonts, args, size, fine, plans):
                 continue
             at = was
             while at > args.fine_floor:
+                if rm["right"]:
+                    # anchored on its right edge, so it grows into what's to
+                    # its left: that's the end that has to clear
+                    start = rm["ink_end"] - line_width(rm["label"], fonts, at)
+                    if start >= rm["left_stop"] + 2:
+                        break
+                    at = round(at - 0.5, 2)
+                    continue
                 end = (page.rect.width / 2 + line_width(rm["label"], fonts, at) / 2
                        if rm["centred"] else
-                       rm["ink_end"] if rm["right"] else
                        redrawn_end(rm["label"], fonts, at, args.gap_tolerance))
                 stop = rm["hard"]
                 if rm["blank"] is not None:
@@ -1894,6 +1928,32 @@ def fit_fine_print(doc, fonts, args, size, fine, plans):
                 what = "fine_print_shrunk" if fine_print else "line_kept_smaller"
                 rows.append((pi + 1, what if at > args.fine_floor else "FINE_PRINT_NO_ROOM",
                              f"{text[:50]!r}: {was:g} -> {at:g}pt to fit its room"))
+
+        # A row reads as one thing, so it's set at one size. Where a label in
+        # a row had to come down, its neighbours on that row come down with
+        # it - three tax bands beside each other, two of them shrunk and one
+        # not, is the sort of thing a reviewer stops at.
+        for ln, rm in zip(lines, room):
+            key = line_key(ln)
+            if key not in small:
+                continue
+            base = ln["spans"][0]["origin"][1]
+            own = max(sp["size"] for sp in ln["spans"])
+            if size - small[key] > 1.5:
+                # Too big a drop to be a matter of matching: a line that had
+                # to come down this far is its own small thing - a "Sub#"
+                # tucked beside a checkbox - and taking its whole row with it
+                # shrinks text that was perfectly happy.
+                continue
+            for other in lines:
+                mate = line_key(other)
+                if (mate != key and abs(other["spans"][0]["origin"][1] - base) <= 2
+                        and abs(max(sp["size"] for sp in other["spans"]) - own) <= 0.1
+                        and small.get(mate, size) > small[key]):
+                    small[mate] = small[key]
+                    rows.append((pi + 1, "line_kept_smaller",
+                                 f"{''.join(sp['text'] for sp in other['spans']).strip()[:50]!r}: "
+                                 f"{size:g} -> {small[key]:g}pt, to match its row"))
     return rows
 
 
@@ -2891,6 +2951,10 @@ def main():
                     help="text this size or larger in that zone counts as the old title "
                          "(default 12)")
     sc = ap.add_argument_group("spelling (--spellcheck)")
+    ap.add_argument("--shrink-stubborn", action="store_true",
+                    help="let a line that can't be re-wrapped take a smaller size of its "
+                         "own rather than holding the whole document down - a table-cell "
+                         "label or a heading in a shaded bar. Each one is reported.")
     ap.add_argument("--fine-floor", type=float, default=5.0,
                     help="footers and fine print may be stepped down to this size to fit "
                          "the room they have; below it they're reported instead (default 5)")
