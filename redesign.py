@@ -23,6 +23,7 @@ import pymupdf as fitz
 import restyle_pdf as R
 
 BAR_GREY = (0.82, 0.81, 0.81)
+HIDDEN = []          # text the form draws in white on white
 
 
 def blocks_of(page, args):
@@ -100,6 +101,13 @@ def rows_with_fields(page):
         exact = raw.get(tuple(round(v, 1) for v in ln["bbox"]))
         chars = [c for sp in exact["spans"] for c in sp["chars"]] if exact else []
         sp0 = ln["spans"][0]
+        if all(x.get("color", 0) == 0xFFFFFF for x in ln["spans"]):
+            # White on white. One form carries a broken mail-merge tag under
+            # its signature field this way; the restyle keeps it invisible by
+            # keeping its colour, and a rebuild that draws everything black
+            # would publish it.
+            HIDDEN.append("".join(x["text"] for x in ln["spans"]).strip())
+            continue
         style = {"size": max(x["size"] for x in ln["spans"]),
                  "bold": bool(sp0["flags"] & 16 or "bold" in sp0["font"].lower()),
                  "italic": bool(sp0["flags"] & 2 or "italic" in sp0["font"].lower())}
@@ -173,10 +181,24 @@ def merge_prose(rows):
     """Join rows that are a single run of text into paragraphs, so the
     rebuild wraps them to its own column instead of keeping the original's
     line breaks."""
+    def bullet_row(row):
+        return (len(row) == 2 and all(i["what"] == "text" for i in row)
+                and row[0]["text"].strip() in ("•", "●", "-", "*"))
+
     out = []
     for row in rows:
         plain = len(row) == 1 and row[0]["what"] == "text"
         last = out[-1] if out else None
+        if (plain and last and bullet_row(last)
+                and 0 < row[0]["base"] - last[1]["base"] < 2.2 * row[0]["size"]
+                and abs(last[1]["size"] - row[0]["size"]) < 0.6):
+            # the rest of the bullet's sentence, which the form broke across
+            # lines; it belongs to the bullet, indent and all
+            joined = dict(last[1])
+            joined["text"] = last[1]["text"].rstrip() + " " + row[0]["text"].lstrip()
+            joined["base"] = row[0]["base"]
+            out[-1] = [last[0], joined]
+            continue
         if (plain and last and len(last) == 1 and last[0]["what"] == "text"
                 and abs(last[0]["size"] - row[0]["size"]) < 0.6
                 and last[0]["bold"] == row[0]["bold"]
@@ -191,6 +213,30 @@ def merge_prose(rows):
         else:
             out.append(row)
     return out
+
+
+def is_rule_row(row):
+    """A row that is only places to write: fields, or the underscores a form
+    types to draw a line."""
+    return bool(row) and all(
+        i["what"] == "field" or not i["text"].strip("_ ") for i in row)
+
+
+def slot_count(row):
+    """How many places to write a row really has: a field and the underscores
+    drawn under it are one place, not two."""
+    spots = []
+    for item in sorted(row, key=lambda i: i["rect"].x0):
+        if not spots or item["rect"].x0 - spots[-1] >= 12:
+            spots.append(item["rect"].x0)
+    return len(spots)
+
+
+def is_caption_row(row, slots):
+    """The short labels that sit under a row of lines - "Checked By",
+    "Entered By", "Date Entered"."""
+    return (all(i["what"] == "text" for i in row) and len(row) == slots
+            and all(len(i["text"]) < 60 for i in row))
 
 
 class Rebuild:
@@ -249,14 +295,24 @@ class Rebuild:
         # sentence, say - and that item alone can be wider than the column.
         # Break it into pieces that fit before flowing, or it runs off the page.
         items = [piece for it in items for piece in self.split(it, column)]
-        line, lines = [], []
-        for it in items:
-            if line and sum(self.width_of(x) + 4 for x in line + [it]) > column:
+        # A row of labels and blanks belongs on one line: the blanks are
+        # elastic, so try squeezing them to their minimum before breaking the
+        # row - otherwise "Contract Number:" keeps its label and loses its
+        # line to the row below.
+        tight = sum((self.MIN_FIELD if x["what"] == "field"
+                     and x["kind"] != "CheckBox" else self.width_of(x)) + 4
+                    for x in items)
+        if tight <= column:
+            lines = [items]
+        else:
+            line, lines = [], []
+            for it in items:
+                if line and sum(self.width_of(x) + 4 for x in line + [it]) > column:
+                    lines.append(line)
+                    line = []
+                line.append(it)
+            if line:
                 lines.append(line)
-                line = []
-            line.append(it)
-        if line:
-            lines.append(line)
         for group in lines:
             fixed = sum(self.width_of(x) for x in group if x["what"] == "text")
             gaps = 4 * max(0, len(group) - 1)
@@ -337,6 +393,59 @@ class Rebuild:
             self.y += height
         self.y += 4
 
+    def signature(self, rules, captions=None):
+        """Lines to sign on, with their captions underneath, spread across the
+        column in the proportions the form used."""
+        column = self.right - self.left
+        # A slot can hold both a field and the underscores the form typed to
+        # draw its line, at the same place: group by where they sit, or the
+        # slots collapse into each other.
+        slots = []
+        for item in sorted(rules, key=lambda i: i["rect"].x0):
+            if slots and item["rect"].x0 - slots[-1][0] < 12:
+                slots[-1][1].append(item)
+            else:
+                slots.append([item["rect"].x0, [item]])
+        rules = [next((i for i in group if i["what"] == "field"), group[0])
+                 for _, group in slots]
+        spots = [x for x, _ in slots]
+        span = max(1.0, max(i["rect"].x1 for i in rules) - spots[0])
+        starts = [self.left + (x - spots[0]) / span * column for x in spots]
+        starts.append(self.right + 12)
+        height = self.size * (3.2 if captions else 2.0)
+        if self.y + height > 792 - self.margin:
+            self.new_page()
+        base = self.y + self.size * 1.2
+        alias, path, font = self.face(False, False)
+        for k, item in enumerate(rules):
+            x0, x1 = starts[k], starts[k + 1] - 12
+            self.page.draw_line(fitz.Point(x0, base), fitz.Point(x1, base),
+                                color=(0, 0, 0), width=0.6)
+            if item["what"] == "field":
+                self.field(fitz.Rect(x0, base - self.size * 1.2, x1, base - 1), item)
+            if captions and k < len(captions):
+                at = self.size * 0.9
+                words, line, rows = captions[k]["text"].split(), "", []
+                for word in words:
+                    trial = (line + " " + word).strip()
+                    if font.text_length(trial, at) > (x1 - x0) and line:
+                        rows.append(line)
+                        line = word
+                    else:
+                        line = trial
+                if line:
+                    rows.append(line)
+                for n, piece in enumerate(rows[:2]):
+                    self.page.insert_text(fitz.Point(x0, base + at * (1.1 + n)), piece,
+                                          fontname=alias, fontfile=path, fontsize=at)
+                height = max(height, self.size * 2 + at * (1.1 + len(rows[:2])))
+        self.y += height
+
+    def keep(self, height):
+        """Start a page if a heading would be left at the foot of this one."""
+        if self.y + height > 792 - self.margin:
+            self.new_page()
+
     def bar(self, text):
         if self.y + self.size * 2 > 792 - self.margin:
             self.new_page()
@@ -408,7 +517,8 @@ def main():
     rows = merge_prose(rows)
     started = False
     pending = []
-    for row in rows + [None]:
+    skip_next = False
+    for idx, row in enumerate(rows + [None]):
         if row is not None and is_table_row(row):
             pending.append(row)
             continue
@@ -425,10 +535,30 @@ def main():
         started = True
         if not joined and not has_field:
             continue
+        if skip_next:
+            skip_next = False
+            continue
+        if is_rule_row(row):
+            following = rows[idx + 1] if idx + 1 < len(rows) else None
+            if following is not None and is_caption_row(following, slot_count(row)):
+                sheet.signature(row, following)
+                skip_next = True
+            else:
+                sheet.signature(row)
+            continue
+        if joined.rstrip().endswith(":") and len(joined) < 40:
+            sheet.keep(sheet.size * 4)          # "NOTE:" keeps its notes
         in_bar = texts and any(b.y0 - 3 <= texts[0]["rect"].y0
                                and texts[0]["rect"].y1 <= b.y1 + 3 for b in bars)
         if in_bar and not has_field:
+            sheet.keep(sheet.size * 4)          # a heading keeps its first lines
             sheet.bar(joined)
+        elif (len(texts) == 2 and not has_field
+              and texts[0]["text"].strip() in ("•", "●", "-", "*")):
+            # a bullet and its sentence are one thing: set as a hanging
+            # paragraph, not as two items that wrap apart
+            sheet.prose("•  " + texts[1]["text"], bold=texts[1]["bold"],
+                        italic=texts[1]["italic"], indent=14)
         elif has_field or len(texts) > 1:
             sheet.row(row)
         else:
