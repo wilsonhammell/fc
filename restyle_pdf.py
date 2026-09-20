@@ -160,13 +160,36 @@ def drawable(text, font):
     return all(ch.isspace() or (ch != "\ufffd" and font.has_glyph(ord(ch))) for ch in text)
 
 
-def save_proof(before, after, path, caption=""):
+MARK_COLOURS = {"swap": ((255, 232, 66, 80), (196, 148, 0)),      # wording replaced
+                "gone": ((255, 96, 96, 70), (200, 40, 40))}       # taken off the page
+
+
+def mark_up(img, marks, dpi):
+    """Shade the places where the words themselves changed, so a reviewer
+    scrolling through proofs can see what to check without hunting for it.
+    Rects are in points, the image is in pixels."""
+    from PIL import Image, ImageDraw
+    if not marks:
+        return img
+    scale = dpi / 72.0
+    over = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    pen = ImageDraw.Draw(over)
+    for rect, kind in marks:
+        fill, edge = MARK_COLOURS.get(kind, MARK_COLOURS["swap"])
+        box = [rect.x0 * scale - 2, rect.y0 * scale - 2,
+               rect.x1 * scale + 2, rect.y1 * scale + 2]
+        pen.rectangle(box, fill=fill, outline=edge + (255,), width=2)
+    return Image.alpha_composite(img.convert("RGBA"), over).convert("RGB")
+
+
+def save_proof(before, after, path, caption="", before_marks=(), after_marks=(), dpi=110):
     """Write a side-by-side before/after image for visual review, captioned
     with the file, the page and the size the document settled on, so a
     reviewer can tell at a glance which ones are worth a closer look."""
     from PIL import Image, ImageDraw, ImageFont
     a = Image.frombytes("RGB", (before.width, before.height), before.samples)
     b = Image.frombytes("RGB", (after.width, after.height), after.samples)
+    a, b = mark_up(a, before_marks, dpi), mark_up(b, after_marks, dpi)
     gap, bar = 24, 30 if caption else 0
     canvas = Image.new("RGB", (a.width + b.width + gap,
                                max(a.height, b.height) + bar), (210, 210, 210))
@@ -289,25 +312,37 @@ def resolve_ligatures(page, unnamed, freq):
     return {k: next(iter(v)) for k, v in votes.items() if len(v) == 1}
 
 
-def split_unnamed(raw_line, unnamed):
-    """Rebuild a line's spans so glyphs the PDF can't name sit in spans of
-    their own, letting the rest of the line be restyled around them."""
+def split_unnamed(raw_line, unnamed, stroked=()):
+    """Rebuild a line's spans so glyphs that have to be treated differently sit
+    in spans of their own: glyphs the PDF can't name, and glyphs drawn with an
+    outline to thicken them.
+
+    The extractor hands back one span per run of same font, same size - and a
+    heading thickened by stroking is exactly that, so "Amendments to the Plan:
+    The Depositary may from time to time..." arrives as a single span with
+    only its first words stroked. Taking the span's first glyph for the whole
+    span set entire sentences in bold."""
     out = []
     for sp in raw_line["spans"]:
-        group, bad = [], None
+        group, was = [], None
         for ch in sp["chars"] + [None]:
-            this = None if ch is None else any(glyph_in(ch["bbox"], u) for u in unnamed)
-            if group and (this != bad or bad):
+            this = None if ch is None else (
+                any(glyph_in(ch["bbox"], u) for u in unnamed),
+                (round(ch["origin"][0], 1), round(ch["origin"][1], 1)) in stroked)
+            # an unnameable glyph also gets a span to itself, so it can be
+            # spelt out or kept on its own
+            if group and (this != was or was[0]):
                 box = fitz.Rect(group[0]["bbox"])
                 for c in group[1:]:
                     box |= fitz.Rect(c["bbox"])
                 out.append({"text": "".join(c["c"] for c in group), "origin": group[0]["origin"],
                             "bbox": tuple(box), "font": sp["font"], "size": sp["size"],
-                            "flags": sp["flags"], "color": sp.get("color", 0), "unnamed": bad})
+                            "flags": sp["flags"] | (16 if was[1] else 0),
+                            "color": sp.get("color", 0), "unnamed": was[0]})
                 group = []
             if ch is not None:
                 group.append(ch)
-                bad = this
+                was = this
     return out
 
 
@@ -332,12 +367,25 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
 
     A span that's filled and also stroked is faux bold - a regular font drawn
     with an outline to thicken it, as Word does when a font has no bold - and
-    is marked bold here, so everything downstream draws it in the bold face."""
+    is marked bold here, so everything downstream draws it in the bold face.
+    Where only part of a span is stroked, which is how a run-in heading comes
+    out of the extractor, the line is re-read glyph by glyph so the bold stops
+    where the heading does."""
     lines, notes = [], []
     data = page.get_text("dict")
     raw = None
     stroked = {(round(c[2][0], 1), round(c[2][1], 1)) for run in page.get_texttrace()
                if run.get("type") == 1 for c in run.get("chars", [])}
+    # where those glyphs are, by baseline, so a span can be asked whether only
+    # part of it is stroked
+    stroked_rows = {}
+    for x, y in stroked:
+        stroked_rows.setdefault(y, []).append(x)
+
+    def stroked_run(sp):
+        """How many of a span's glyphs are drawn with an outline."""
+        xs = stroked_rows.get(round(sp["origin"][1], 1), ())
+        return sum(1 for x in xs if sp["bbox"][0] - 0.5 <= x <= sp["bbox"][2] + 0.5)
     # Glyphs the PDF itself can't name. Some files map a ligature to the wrong
     # character - the page shows "after execution" while the text layer says
     # "Ōer execuƟon" - and redrawing what the text layer claims would print
@@ -365,16 +413,26 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
             spans = []
             for sp in line["spans"]:
                 if not sp["text"].strip():
+                    # A space can be a span of its own, in its own font, and
+                    # dropping it ran the words either side together - "made a
+                    # withdrawalfrom your RRSP" - once they were close enough
+                    # to be flowed as continuous text. It belongs to the words
+                    # before it; a space starting a line has nothing to join,
+                    # and the next span's origin already allows for it.
+                    if spans:
+                        spans[-1] = dict(spans[-1], text=spans[-1]["text"] + sp["text"])
                     continue
                 if skip_conforming and target_font_substr.lower() in sp["font"].lower() \
                         and abs(sp["size"] - target_size) <= size_tol:
                     continue
-                if (round(sp["origin"][0], 1), round(sp["origin"][1], 1)) in stroked:
-                    sp = dict(sp, flags=sp["flags"] | 16)
+                thick = stroked_run(sp)
+                if thick:
+                    sp = dict(sp, flags=sp["flags"] | 16,
+                              part_thick=thick < len(sp["text"].replace(" ", "")))
                 if any(glyph_in(u, fitz.Rect(sp["bbox"])) for u in boxes):
                     sp = dict(sp, unnamed=True)
                 spans.append(sp)
-            if spans and any(sp.get("unnamed") for sp in spans):
+            if spans and any(sp.get("unnamed") or sp.get("part_thick") for sp in spans):
                 # re-read this line glyph by glyph, so only the glyphs that
                 # can't be named keep their own font
                 if raw is None:
@@ -384,7 +442,8 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
                 exact = raw.get(tuple(round(v, 1) for v in line["bbox"]))
                 if exact:
                     spans = [spell_out(sp, unnamed, spelt)
-                             for sp in split_unnamed(exact, boxes) if sp["text"].strip()]
+                             for sp in split_unnamed(exact, boxes, stroked)
+                             if sp["text"].strip()]
             spans = [spell_out(sp, unnamed, spelt) for sp in spans]
             if spans:
                 lines.append({"bbox": fitz.Rect(line["bbox"]), "spans": spans,
@@ -635,7 +694,7 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     line_key -> the house wording from plan_relabels. `drop` holds lines to
     erase with the rest but not redraw - the old title --header replaces."""
     reflow, rules, fine, relabel = reflow or {}, rules or [], fine or {}, relabel or {}
-    drop = drop or set()
+    drop = drop or []
     issues = []
     content = printed(page)
     lines, notes = collect_lines(content, skip_conforming, target_font_substr, size, size_tol)
@@ -652,6 +711,7 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     text_left = min(l["bbox"].x0 for l in lines)
     text_right = max(l["bbox"].x1 for l in lines)
     starts = [l["bbox"].x0 for l in lines]
+    flush = right_aligned_flags(lines, text_left, text_right, starts)
     ink_end = dict(zip((id(l) for l in lines), ink_ends(content, lines)))
 
     # --- plan every line before touching the page ------------------------
@@ -659,7 +719,7 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     inline = {r["inline"]: r for r in rules if "inline" in r}
     dropped = Counter()
     for ln in lines:
-        if line_key(ln) in drop:
+        if in_drop(line_key(ln), drop):
             for sp in ln["spans"]:        # erased with the rest, never redrawn
                 if kept(sp):              # except glyphs that stay in their own font
                     continue
@@ -690,8 +750,7 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
         looks_centred = (centred_shape(ln["bbox"], page_centre, text_left, text_right,
                                        centre_tol, min_indent)
                          and alone_on_row(ln, lines))
-        flush_right = (not looks_centred and rule is None
-                       and looks_right_aligned(ln["bbox"], text_left, text_right, starts))
+        flush_right = not looks_centred and rule is None and flush[lines.index(ln)]
 
         if new_w > old_w * keep_size_ratio:
             issues.append(("line_got_wider",
@@ -914,6 +973,13 @@ def find_fine_print(doc, args):
 MARKER = re.compile(r"\(?[0-9]{1,2}[.)]?|\(?[A-Za-z][.)]|\([ivxIVX]{1,4}\)|[•·▪*–-]|NOTE:?|Note:?")
 
 
+def in_drop(key, rects):
+    """Whether a line, named by where its first glyph sits, is one of the
+    lines being taken off the page."""
+    point = fitz.Point(*key)
+    return any(point in r for r in rects)
+
+
 def line_key(line):
     """A text line's identity across re-extraction: its first span's origin."""
     x, y = line["spans"][0]["origin"]
@@ -986,16 +1052,56 @@ def looks_right_aligned(bbox, text_left, text_right, starts=()):
     return sum(1 for x in starts if abs(x - bbox.x0) <= 2) <= 1
 
 
+def right_aligned_flags(lines, text_left, text_right, starts):
+    """Which lines are set flush right, judged over the page rather than one
+    line at a time.
+
+    A title set over two lines is right-aligned as a block, and its long first
+    line is far too wide to read as flush right on its own - so it was redrawn
+    from its left edge while the short line under it kept the right edge they
+    used to share, and the block came apart. A line joins the block when it
+    ends where a flush-right line beside it ends, within a couple of points,
+    and starts where no other line does, which is what keeps the right-hand
+    column of a two-column page out."""
+    flags = [looks_right_aligned(ln["bbox"], text_left, text_right, starts) for ln in lines]
+    while True:
+        added = False
+        for i, ln in enumerate(lines):
+            if flags[i] or sum(1 for x in starts if abs(x - ln["bbox"].x0) <= 2) > 1:
+                continue
+            for j, other in enumerate(lines):
+                if not flags[j] or i == j or abs(ln["bbox"].x1 - other["bbox"].x1) > 2:
+                    continue
+                gap = 1.6 * max(sp["size"] for sp in ln["spans"] + other["spans"])
+                if (ln["bbox"].y0 - other["bbox"].y1 <= gap
+                        and other["bbox"].y0 - ln["bbox"].y1 <= gap):
+                    flags[i] = added = True
+                    break
+        if not added:
+            return flags
+
+
 def ink_ends(page, lines):
     """Where each line's glyphs actually end. The line box can reach further,
-    over trailing spaces, so a flush-right line is anchored on this."""
+    over trailing spaces, so a flush-right line is anchored on this.
+
+    A glyph counts as this line's only if it sits on this line's baseline.
+    Line boxes overlap where a form sets two labels side by side and the first
+    one's box runs past where the second starts - and taking the second's
+    glyphs for the first's put its ink end 19pt beyond its last letter, which
+    in turn cancelled the stop that should have held it back."""
     chars = [c for run in page.get_texttrace() if run.get("type") in (0, 1)
              for c in run.get("chars", []) if c[0] > 0 and not chr(c[0]).isspace()]
-    ends = []
-    for ln in lines:
-        xs = [c[3][2] for c in chars if glyph_in(c[3], ln["bbox"])]
-        ends.append(max(xs) if xs else ln["bbox"].x1)
-    return ends
+    bases = [ln["spans"][0]["origin"][1] for ln in lines]
+    ends = [None] * len(lines)
+    for c in chars:
+        # each glyph belongs to the nearest baseline of the lines whose box
+        # holds it - side-by-side labels can sit less than a point apart
+        owner = min((i for i, ln in enumerate(lines) if glyph_in(c[3], ln["bbox"])),
+                    key=lambda i: abs(bases[i] - c[2][1]), default=None)
+        if owner is not None:
+            ends[owner] = max(ends[owner] or 0.0, c[3][2])
+    return [e if e is not None else ln["bbox"].x1 for e, ln in zip(ends, lines)]
 
 
 def redrawn_end(spans, fonts, size, gap_tol, dx=0.0):
@@ -1366,6 +1472,16 @@ def after_on_row(line, r):
             and r.x0 > b.x0 + 0.5 * b.width and r.x1 > b.x1 + 1)
 
 
+def dominant_size(lines):
+    """The size most of a page's text is set in, weighted by how much text is
+    at each size. Captions and footers sit below it; headings above."""
+    weight = Counter()
+    for ln in lines:
+        for sp in ln["spans"]:
+            weight[round(sp["size"], 1)] += len(sp["text"].strip())
+    return weight.most_common(1)[0][0] if weight else 0.0
+
+
 def line_room(page, lines, static, right, args):
     """How far each line may run at any size. A line stops before the next
     thing on its row - text in another column, a box edge, a checkbox - or
@@ -1378,6 +1494,7 @@ def line_room(page, lines, static, right, args):
     text_left = min(ln["bbox"].x0 for ln in lines)
     text_right = max(ln["bbox"].x1 for ln in lines)
     starts = [ln["bbox"].x0 for ln in lines]
+    flush = right_aligned_flags(lines, text_left, text_right, starts)
     ends = ink_ends(page, lines)
     centre = page.rect.width / 2
     out = []
@@ -1418,17 +1535,28 @@ def line_room(page, lines, static, right, args):
             first = min(mine, key=lambda f: f["rect"].x0)
             mine = [f for f in mine if f["rect"].x0 <= first["rect"].x1]
         in_blank = [f["rect"] for f in mine]
-        stops = [o for o, _, _ in static if after_on_row(ln, o)
-                 and not any(o.intersects(r) for r in in_blank)]
-        stops += [other["bbox"] for j, other in enumerate(lines)
-                  if j != i and after_on_row(ln, other["bbox"])]
-        # Anything the line's own glyphs already run through isn't beside the
+        # A drawing the line's own glyphs already run through isn't beside the
         # line at all: a rule drawn a couple of points under the baseline
         # falls inside the row's band, and taking it as a stop would cut the
-        # line off well short of where the form itself prints it.
-        stops = [o for o in stops if o.x0 >= ends[i] - 0.5]
+        # line off well short of where the form itself prints it. Text is a
+        # different matter - two labels can sit a point apart and still be
+        # what stops each other, so those stops always count.
+        stops = [o for o, _, _ in static if after_on_row(ln, o)
+                 and not any(o.intersects(r) for r in in_blank)
+                 and o.x0 >= ends[i] - 0.5]
+        beside = [other["bbox"] for j, other in enumerate(lines)
+                  if j != i and after_on_row(ln, other["bbox"])]
+        stops += beside
         stop = min([right] + [o.x0 for o in stops])
-        hard = stop - max(0.0, min(3.0, stop - b.x1)) if stop < right else right
+        # Clearance: as much as the line already had, up to 3pt. Where the
+        # next thing along is text, keep a little even if the original left
+        # none, or the two run together as one word.
+        least = 1.5 if any(abs(o.x0 - stop) < 0.01 for o in beside) else 0.0
+        hard = stop - max(least, min(3.0, stop - b.x1)) if stop < right else right
+        # Whatever the stops say, a line may keep the room it already used:
+        # where a form overlaps its own labels, that's the form's doing and no
+        # reason to drive the whole document smaller.
+        hard = max(hard, ends[i])
         blank = None
         if mine:
             bx0, bx1 = min(r.x0 for r in in_blank), max(r.x1 for r in in_blank)
@@ -1440,8 +1568,7 @@ def line_room(page, lines, static, right, args):
                    and alone_on_row(ln, lines))
         out.append({"hard": hard, "blank": blank, "left_stop": left_stop, "ink_end": ends[i],
                     "label": label if inline else ln["spans"], "centred": centred,
-                    "right": (not centred and not inline
-                              and looks_right_aligned(b, text_left, text_right, starts))})
+                    "right": not centred and not inline and flush[i]})
     return out
 
 
@@ -1471,6 +1598,7 @@ def plan_reflow(doc, fonts, args, fine=None):
         static = reflow_obstacles(page, lines)
         ext = content_extent(page)
         pages.append({"lines": lines, "limit": right, "static": static,
+                      "body": dominant_size(lines),
                       "paras": find_paragraphs(page, lines, right, args),
                       "room": line_room(page, lines, static, right, args),
                       # never reach lower than the page's content already does,
@@ -1493,6 +1621,20 @@ def plan_reflow(doc, fonts, args, fine=None):
             widths = [line_width(room["label"], fonts, small.get(line_key(ln), size))
                       for ln, room in zip(lines, pg["room"])]
             over, why = set(), {}
+
+            def caption(k):
+                """A label set smaller than this page's body text, sitting in
+                a slot of its own. Setting the whole document smaller does
+                nothing for it - it keeps whatever size fits that slot
+                (fit_fine_print settles that) - so once re-wrapping has been
+                tried and failed, it mustn't hold the rest of the document
+                down. Measured against the page's own body size, never
+                against the size being tried: that would call every body line
+                a caption as soon as a larger size was tried, and each one
+                would then be shrunk on its own."""
+                r = pg["room"][k]
+                return (max(sp["size"] for sp in lines[k]["spans"]) < pg["body"] - 0.05
+                        and r["blank"] is None and not r["right"] and not r["centred"])
             for i, ln in enumerate(lines):
                 if line_key(ln) in small:
                     continue                # its size doesn't depend on this one
@@ -1545,7 +1687,7 @@ def plan_reflow(doc, fonts, args, fine=None):
                 continue
             owner = {k: p for p in pg["paras"] for k in p["lines"]}
             for i in sorted(over):
-                if i in why or i not in owner:
+                if (i in why or i not in owner) and not caption(i):
                     blockers.append((pi + 1, preview(lines[i]),
                                      why.get(i, "it isn't part of a paragraph")))
             todo = {id(owner[i]): owner[i] for i in over if i in owner and i not in why}
@@ -1566,14 +1708,16 @@ def plan_reflow(doc, fonts, args, fine=None):
                         for sp in para["spans"]):
                     para["bad"] = "it holds characters Arial can't draw, which have to stay put"
                 if para["bad"]:
-                    blockers.append((pi + 1, para["preview"], para["bad"]))
+                    if not all(caption(k) for k in para["lines"]):
+                        blockers.append((pi + 1, para["preview"], para["bad"]))
                     continue
                 obst = pg["static"] + [(r, f"the line {t!r}", False)
                                        for j, r, t in text_obs if j not in para["lines"]]
                 layout, why = layout_paragraph(para, size, fonts, limit, obst, pg["cap"],
                                                args.min_leading, pg["centre"])
                 if layout is None:
-                    blockers.append((pi + 1, para["preview"], why))
+                    if not all(caption(k) for k in para["lines"]):
+                        blockers.append((pi + 1, para["preview"], why))
                     continue
                 layout["para"] = para
                 for k in para["lines"]:
@@ -1658,8 +1802,6 @@ def fit_fine_print(doc, fonts, args, size, fine, plans):
     rows = []
     for pi, page in enumerate(doc):
         small = fine[pi]
-        if not small:
-            continue
         p = printed(page)
         lines, _ = collect_lines(p, False, args.target_font, args.size, args.size_tolerance)
         if not lines:
@@ -1668,11 +1810,20 @@ def fit_fine_print(doc, fonts, args, size, fine, plans):
         if args.page_margin is not None and not args.right_margin:
             right = max(right, page.rect.width - args.page_margin)
         room = line_room(p, lines, reflow_obstacles(p, lines), right, args)
+        body = dominant_size(lines)
         for ln, rm in zip(lines, room):
             key = line_key(ln)
-            if key not in small:
+            own, fine_print = max(sp["size"] for sp in ln["spans"]), key in small
+            if fine_print:
+                was = small[key]
+            elif (own < min(size, body) - 0.05
+                  and key not in plans[pi].get("reflow", {})):
+                # Set smaller than the body and about to be enlarged to it.
+                # Growing text is the dangerous direction: on one form a 7.2pt
+                # caption taken to 8pt ran straight into the label beside it.
+                was = size
+            else:
                 continue
-            was = small[key]
             at = was
             while at > args.fine_floor:
                 end = (page.rect.width / 2 + line_width(rm["label"], fonts, at) / 2
@@ -1688,8 +1839,8 @@ def fit_fine_print(doc, fonts, args, size, fine, plans):
             if at < was:
                 small[key] = at
                 text = "".join(sp["text"] for sp in ln["spans"]).strip()
-                rows.append((pi + 1, "fine_print_shrunk" if at > args.fine_floor else
-                             "FINE_PRINT_NO_ROOM",
+                what = "fine_print_shrunk" if fine_print else "line_kept_smaller"
+                rows.append((pi + 1, what if at > args.fine_floor else "FINE_PRINT_NO_ROOM",
                              f"{text[:50]!r}: {was:g} -> {at:g}pt to fit its room"))
     return rows
 
@@ -1780,7 +1931,9 @@ def plan_relabels(doc, fonts, args, table, size, fine, plans):
             if why:
                 rows.append((pi + 1, "relabel_for_human", f"{text!r} -> {new.strip()!r}: {why}"))
             else:
-                found[key] = {"text": new, "centre": anchor}
+                # the line's own box, so the proof can point at what changed
+                found[key] = {"text": new, "centre": anchor,
+                              "box": fitz.Rect(ln["bbox"])}
                 rows.append((pi + 1, "relabelled", f"{text!r} -> {new.strip()!r}"
                              + (" (kept centred under its line)" if anchor is not None else "")))
     return out, rows
@@ -1888,8 +2041,35 @@ def find_old_header(page, zone, min_title_size):
             if spans:
                 all_lines.append({"bbox": fitz.Rect(line["bbox"]), "spans": spans,
                                   "size": max(s["size"] for s in spans)})
-    titles = [ln for ln in all_lines
-              if ln["bbox"].y0 <= zone and ln["size"] >= min_title_size]
+    band = [ln for ln in all_lines
+            if ln["bbox"].y0 <= zone and ln["size"] >= min_title_size]
+    if not band:
+        return [], [fitz.Rect(i["bbox"]) for i in page.get_image_info()
+                    if i["bbox"][1] <= zone
+                    and fitz.Rect(i["bbox"]).width <= page.rect.width / 2
+                    and fitz.Rect(i["bbox"]).height <= page.rect.height / 5]
+    # Only the largest text in the band is the title. A form can put its own
+    # labels up there - "Collection Item Number:", "Date:" - and on one form
+    # they were taken for the title and removed with it, which the census
+    # can't catch, because it's told the title is meant to go.
+    biggest = max(ln["size"] for ln in band)
+    band = [ln for ln in band if ln["size"] >= biggest - 0.6]
+    head = min(band, key=lambda ln: (ln["bbox"].y0, ln["bbox"].x0))
+
+    def lines_up(ln, t):
+        """Whether a line is set the way the title is - sharing its centre,
+        its left edge or its right edge. Where a form sets its title at the
+        body size, this is all that separates the two: on one declaration the
+        title is centred and 'TO:', 'RE:' and the address beneath it are not,
+        and without this test they went with it."""
+        # 5pt, not 2: a line box runs past its last glyph over any trailing
+        # space, and one title line missed its own block by 0.8pt that way.
+        return (abs((ln["bbox"].x0 + ln["bbox"].x1) / 2
+                    - (t["bbox"].x0 + t["bbox"].x1) / 2) <= 5
+                or abs(ln["bbox"].x0 - t["bbox"].x0) <= 5
+                or abs(ln["bbox"].x1 - t["bbox"].x1) <= 5)
+
+    titles = [ln for ln in band if ln is head or lines_up(ln, head)]
     # A title set over several lines can hang below the band. Take all of it,
     # or the leftover lines stay on the page under the new header.
     taken = {id(ln) for ln in titles}
@@ -1897,7 +2077,7 @@ def find_old_header(page, zone, min_title_size):
         more = [ln for ln in all_lines if id(ln) not in taken
                 and any(abs(ln["size"] - t["size"]) <= 0.6
                         and 0 <= ln["bbox"].y0 - t["bbox"].y1 <= 1.6 * t["size"]
-                        and ln["bbox"].x1 > t["bbox"].x0 and ln["bbox"].x0 < t["bbox"].x1
+                        and lines_up(ln, t)
                         for t in titles)]
         if not more:
             break
@@ -2016,6 +2196,18 @@ def plan_header(page, title, fonts, args):
     issues = [("header_old_title_removed",
                f"{''.join(s['text'] for s in t['spans']).strip()!r} "
                f"({t['spans'][0]['font']} {t['spans'][0]['size']:.1f}pt)") for t in old_titles]
+    # Taking the old title out is the one place the census is told to expect
+    # text to vanish, so a wrong guess here is a loss nothing else can see.
+    # Anything that reads like a form label rather than a title is called out.
+    label_like = [t for t in old_titles
+                  if "".join(s["text"] for s in t["spans"]).strip().endswith(":")
+                  or "_" * 3 in "".join(s["text"] for s in t["spans"])]
+    if label_like:
+        issues.append(("HEADER_TITLE_CHECK",
+                       f"{len(label_like)} line(s) removed as part of the old title read "
+                       "like form labels, not a title - check nothing was lost: "
+                       + "; ".join(repr("".join(s["text"] for s in t["spans"]).strip()[:40])
+                                   for t in label_like)))
     issues += [("header_old_logo_removed", f"image at x={r.x0:.0f}-{r.x1:.0f}, "
                                            f"y={r.y0:.0f}-{r.y1:.0f}") for r in old_logos]
     what = (f"logo {os.path.basename(logo_file)} at {logo.width:.0f}x{logo.height:.0f}pt"
@@ -2314,13 +2506,16 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
         relabel, notes = plan_relabels(doc, fonts, args, relabels, size, fine, plans)
         rows += [[name, where, issue, detail] for where, issue, detail in notes]
 
-    drop = set()
+    drop = []
     if header and not args.dry_run:
         expected[0].update(remove_old_header(doc[0], header, args.pad))
         # The old title is erased with the rest of page 1 and not redrawn.
-        drop = {line_key(t) for t in header["old_titles"]}
+        # Matched on where the line sits, not on an exact key: a line can be
+        # read as one span here and as several elsewhere - a leading space
+        # splits off on its own - and the key then names a different point.
+        drop = [fitz.Rect(t["bbox"]) + (-2, -2, 2, 2) for t in header["old_titles"]]
         keep = plans[0].get("reflow", {})
-        gone = {id(keep[k]) for k in keep if k in drop}
+        gone = {id(keep[k]) for k in keep if in_drop(k, drop)}
         for k in [k for k, v in keep.items() if id(v) in gone]:
             del keep[k]              # a re-wrap can't keep a line we're dropping
 
@@ -2369,13 +2564,171 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
             # its form fields by now, so it isn't what ships.
             if args.png:
                 for pno in range(min(orig.page_count, out.page_count)):
+                    # Where the words changed: relabelled lines, and the old
+                    # title the header replaces. Both move down with the page
+                    # on the restyled side.
+                    dy = dys[pno]
+                    swaps = [e["box"] for e in relabel[pno].values() if e.get("box")]
+                    # on the restyled side, box the words as they were
+                    # actually set: the new wording is a different length,
+                    # and a caption kept centred sits somewhere else again
+                    drawn = []
+                    for e in relabel[pno].values():
+                        if not e.get("box"):
+                            continue
+                        band = fitz.Rect(0, e["box"].y0 + dy - 2,
+                                         out[pno].rect.width, e["box"].y1 + dy + 2)
+                        hit = out[pno].search_for(e["text"].strip(), clip=band)
+                        if hit:
+                            # the new wording can read the same as words
+                            # already on that row - 'Name' sits inside
+                            # "WITNESS' NAME" too - so take the one nearest
+                            # where the label being replaced actually stood
+                            want = (e["centre"] if e["centre"] is not None
+                                    else (e["box"].x0 + e["box"].x1) / 2)
+                            drawn.append(min(hit, key=lambda r: abs((r.x0 + r.x1) / 2 - want)))
+                        else:
+                            drawn.append(e["box"] + (0, dy, 0, dy))
+                    dropped = ([fitz.Rect(t["bbox"]) for t in header["old_titles"]]
+                               if header and pno == 0 else [])
+                    marks = [(r, "swap") for r in swaps]
+                    note = ("   yellow = wording replaced" if swaps else "")
+                    if dropped:
+                        note += "   red = old title, replaced by the header"
                     save_proof(orig[pno].get_pixmap(dpi=args.png_dpi),
                                out[pno].get_pixmap(dpi=args.png_dpi),
                                os.path.join(args.png,
                                             f"{title} [{size:g}pt] p{pno + 1}_proof.png"),
                                f"{name}   page {pno + 1} of {out.page_count}   "
-                               f"set at {size:g}pt   (original left, restyled right)")
+                               f"set at {size:g}pt   (original left, restyled right)" + note,
+                               before_marks=marks + [(r, "gone") for r in dropped],
+                               after_marks=[(r, "swap") for r in drawn],
+                               dpi=args.png_dpi)
     return rows, size
+
+
+def digest_lines(rows, failed, sizes, target, relabels=None):
+    """The run in the order someone has to act on it: what needs a person,
+    what needs a decision, what merely happened. Everything here is in the
+    CSV already - this is the CSV grouped and sorted, so a reviewer opens one
+    file and knows which forms to touch instead of pivoting a spreadsheet."""
+    files = sorted(sizes)
+    out = [f"{len(files) + len(failed)} file(s)"
+           + (f", {len(failed)} failed" if failed else "")]
+
+    checks = Counter(r[2] for r in rows if r[2].isupper())
+    if checks:
+        out += ["", "CHECKS THAT FIRED"]
+        out += [f"  {n:4} {issue}" for issue, n in sorted(checks.items())]
+    else:
+        out += ["", "CHECKS  all clear: no text lost, gained, past an edge or on a rule."]
+
+    if failed:
+        out += ["", f"FAILED ({len(failed)})"]
+        for f, why in failed:
+            out += [f"  {f}", f"      {why}"]
+
+    # Anything a check refused to do. Grouped by check, worst first.
+    by_issue = {}
+    for r in rows:
+        if r[2].isupper():
+            by_issue.setdefault(r[2], []).append(r)
+    if by_issue:
+        total = sum(len(v) for v in by_issue.values())
+        out += ["", f"NEEDS A HUMAN ({total})"]
+        for issue, hits in sorted(by_issue.items(), key=lambda kv: -len(kv[1])):
+            out.append(f"  {issue}")
+            for r in hits:
+                where = f" p{r[1]}" if r[1] not in ("", None) else ""
+                out.append(f"    {r[0]}{where}")
+                out.append(f"        {r[3]}")
+
+    # Rewording the table asked for and the page wouldn't take. The most
+    # actionable thing in the run: the wording is decided, the room isn't.
+    stuck = [r for r in rows if r[2] == "relabel_for_human"]
+    if stuck:
+        out += ["", f"RELABEL BY HAND ({len(stuck)}, no room or inside a sentence)"]
+        for r in stuck:
+            out += [f"  {r[0]} p{r[1]}", f"      {r[3]}"]
+
+    # Wording the table wouldn't touch: a real decision, one line per label.
+    # A label already in the house wording needs no decision, so it's dropped.
+    house = {label_key(v) for v in (relabels or {}).values()}
+    review = [r for r in rows if r[2] == "relabel_review"
+              and label_key(r[3].split("' (")[0].lstrip("'")) not in house]
+    labels = [r for r in review if "(in running text)" not in r[3]]
+    running = [r for r in review if "(in running text)" in r[3]]
+    if labels:
+        by_label = {}
+        for r in labels:
+            by_label.setdefault(r[3].split("' (")[0].lstrip("'"), []).append(r)
+        out += ["", f"DECIDE THE WORDING ({len(by_label)} label(s), "
+                    f"{len({r[0] for r in labels})} file(s))"]
+        for label, hits in sorted(by_label.items(), key=lambda kv: -len(kv[1])):
+            where = ", ".join(sorted({f"{r[0]} p{r[1]}" for r in hits})[:3])
+            more = len({f"{r[0]} p{r[1]}" for r in hits}) - 3
+            out.append(f"  {label!r}")
+            out.append(f"      {where}" + (f" and {more} more" if more > 0 else ""))
+    if running:
+        out += ["", f"MENTIONS A WITNESS OR STAFF IN RUNNING TEXT "
+                    f"({len({r[0] for r in running})} file(s), left alone by design)"]
+        out += [f"  {f}" for f in sorted({r[0] for r in running})]
+
+    # What the house wording actually replaced, per form. The reviewer's
+    # question is "should 'Owner' have become 'Name' on this form?", and that
+    # can only be answered form by form, with the old words in front of them.
+    done = [r for r in rows if r[2] == "relabelled"]
+    if done:
+        out += ["", f"WORDING REPLACED ({len(done)} label(s), "
+                    f"{len({r[0] for r in done})} file(s)) - check each one reads right"]
+        for f in sorted({r[0] for r in done}):
+            out.append(f"  {f}")
+            seen = {}
+            for r in done:
+                if r[0] == f:
+                    seen.setdefault(r[3].split(" (kept")[0], []).append(r[1])
+            for swap, pages in seen.items():
+                where = ", ".join(f"p{p}" for p in sorted(set(pages), key=str))
+                out.append(f"      {swap}   [{where}]")
+
+    # Taking out the old title is the only text removed on purpose, so it's
+    # listed too: nothing else would show that a form label went with it.
+    gone = [r for r in rows if r[2] == "header_old_title_removed"]
+    if gone:
+        out += ["", f"OLD TITLE REMOVED ({len(gone)} line(s), "
+                    f"{len({r[0] for r in gone})} file(s)) - replaced by the new header"]
+        for f in sorted({r[0] for r in gone}):
+            out.append(f"  {f}")
+            out += [f"      {r[3]}" for r in gone if r[0] == f]
+
+    # Size is the client's uniformity question, so it gets its own list.
+    small = sorted(((z, f) for f, z in sizes.items() if z < target))
+    if small:
+        out += ["", f"SET BELOW {target:g}pt ({len(small)} of {len(files)})"]
+        for z in sorted({z for z, _ in small}):
+            named = [f for zz, f in small if zz == z]
+            out.append(f"  {z:g}pt  " + "; ".join(named[:4])
+                       + (f"; and {len(named) - 4} more" if len(named) > 4 else ""))
+    at = len(files) - len(small)
+    out.append(f"  {at} file(s) took the full {target:g}pt.")
+
+    spelled = [r for r in rows if r[2] == "spelling"]
+    if spelled:
+        words = Counter(r[3].split("'")[1] for r in spelled if "'" in r[3])
+        out += ["", f"SPELLING ({len(spelled)} word(s) in "
+                    f"{len({r[0] for r in spelled})} file(s), report only)"]
+        out.append("  " + ", ".join(f"{w} x{n}" if n > 1 else w
+                                    for w, n in words.most_common(12))
+                   + (" ..." if len(words) > 12 else ""))
+
+    changed = Counter(r[2] for r in rows
+                      if r[2] in ("relabelled", "reflowed", "ligature_spelt_out",
+                                  "blank_shortened", "blank_moved", "reflow_blocked",
+                                  "header", "kept_original_glyphs"))
+    if changed:
+        out += ["", "WHAT THE RUN DID"]
+        out += [f"  {n:4} {k}" for k, n in sorted(changed.items())]
+    return out
 
 
 def main():
@@ -2416,6 +2769,8 @@ def main():
     ap.add_argument("--min-indent", type=float, default=24.0,
                     help="how far right of the text margin a centred line must start")
     ap.add_argument("--report", help="write a CSV of flagged lines here")
+    ap.add_argument("--digest", help="where to write the run's summary for reviewers "
+                                     "(default: beside --report, as .digest.txt)")
     ap.add_argument("--png", help="folder for side-by-side before/after proof images")
     ap.add_argument("--png-dpi", type=int, default=110)
     ap.add_argument("--dry-run", action="store_true",
@@ -2513,12 +2868,13 @@ def main():
     if args.png and not args.dry_run:
         os.makedirs(args.png, exist_ok=True)
 
-    all_rows, failed, sizes = [], [], []
+    all_rows, failed, sizes, used_by = [], [], [], {}
     for i, (src, dst) in enumerate(pairs, 1):
         try:
             rows, used = process_file(src, dst, fonts, args, speller, relabels)
             all_rows.extend(rows)
             sizes.append(used)
+            used_by[os.path.basename(src)] = used
             flag = f"  [{len(rows)} flagged]" if rows else ""
             note = f"  @{used}pt" if used != args.size else ""
             print(f"[{i}/{len(pairs)}] {os.path.basename(src)}{note}{flag}")
@@ -2533,6 +2889,11 @@ def main():
             w.writerows(all_rows)
             w.writerows([[f, "", "file_failed", e] for f, e in failed])
         print(f"Report: {args.report}")
+        where = args.digest or os.path.splitext(args.report)[0] + ".digest.txt"
+        with open(where, "w", encoding="utf-8") as fh:
+            for line in digest_lines(all_rows, failed, used_by, args.size, relabels):
+                print(line, file=fh)
+        print(f"Digest: {where}")
 
     if sizes:
         at_target = sum(1 for z in sizes if z >= args.size)
