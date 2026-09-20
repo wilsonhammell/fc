@@ -878,7 +878,7 @@ def recover_orphans(page, known_rects):
 def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio,
                  skip_conforming, target_font_substr, size_tol, dry_run, gap_tol=3.0,
                  recover=True, reflow=None, rules=None, fine=None, relabel=None, drop=None,
-                 squeeze=None):
+                 squeeze=None, push=None):
     """Restyle one page. Returns (issues, expected): a list of (issue, detail)
     tuples, and the glyph-count changes made on purpose, keyed by (baseline y,
     character), for the census. From plan_reflow: `reflow` maps line_key ->
@@ -890,6 +890,19 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     reflow, rules, fine, relabel = reflow or {}, rules or [], fine or {}, relabel or {}
     drop = drop or []
     squeeze = squeeze or {}
+    moved_glyphs = []          # (baseline it left, baseline it went to, text)
+
+    def lower(y):
+        """Where a baseline ends up. Everything below the line a push was made
+        at goes down with the furniture that was moved out from under it."""
+        return y + drop_at(push or (), y)
+
+    def put(x, y, text, **kw):
+        at = lower(y)
+        page.insert_text(fitz.Point(x, at), text, **kw)
+        if at != y:
+            moved_glyphs.append((y, at, text))
+        return at
     issues = []
     content = printed(page)
     lines, notes = collect_lines(content, skip_conforming, target_font_substr, size, size_tol)
@@ -1046,9 +1059,8 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
             if kept(sp):                    # left where it was, in its own font
                 prev_end_old = prev_end_new = sp["bbox"][2]
                 continue
-            page.insert_text(fitz.Point(x + dx, y), sp["text"],
-                             fontname=alias, fontfile=path, morph=morph,
-                             fontsize=at, color=span_colour(sp), overlay=True)
+            put(x + dx, y, sp["text"], fontname=alias, fontfile=path, morph=morph,
+                fontsize=at, color=span_colour(sp), overlay=True)
 
             prev_end_old = sp["bbox"][2]
             prev_end_new = x + dx + font.text_length(sp["text"], at)
@@ -1058,9 +1070,9 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
             alias, path, font = style_of(style["flags"], fonts)
             n = max(1, int(round((cut["x1"] - cut["x0"])
                                  / (font.text_length("_", item["size"]) or 1))))
-            page.insert_text(fitz.Point(cut["x0"], cut["y"]), "_" * n, fontname=alias,
-                             fontfile=path, fontsize=item["size"], color=span_colour(style),
-                             overlay=True)
+            put(cut["x0"], cut["y"], "_" * n, fontname=alias,
+                fontfile=path, fontsize=item["size"], color=span_colour(style),
+                overlay=True)
             expected[(cut["y"], ord("_"))] += n - cut["count"]
 
         if item["relabelled"]:
@@ -1083,8 +1095,8 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
             alias, path, font = style_of(sp["flags"], fonts)
             morph = ((fitz.Point(layout["pivot"], y), fitz.Matrix(narrow, 1))
                      if narrow else None)
-            page.insert_text(fitz.Point(x, y), text, fontname=alias, fontfile=path,
-                             fontsize=at, color=span_colour(sp), morph=morph, overlay=True)
+            put(x, y, text, fontname=alias, fontfile=path,
+                fontsize=at, color=span_colour(sp), morph=morph, overlay=True)
             for ch in text:
                 if not ch.isspace():
                     expected[(y, ord(ch))] += 1
@@ -1108,10 +1120,17 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
             unit = font.text_length("_", size) or 1
             text = "_" * max(1, int(round(width / unit)))
             expected[(o["origin"][1], ord("_"))] += len(text) - len(o["text"])
-        page.insert_text(origin, text,
+        put(origin.x, origin.y, text,
                          fontname=alias, fontfile=path,
                          fontsize=size, color=tuple(o["color"]), overlay=True)
 
+    # Everything that went down with the furniture moved from one baseline to
+    # another, and the census counts by baseline, so it is told each one.
+    for was, now, text in moved_glyphs:
+        for ch in text:
+            if not ch.isspace():
+                expected[(was, ord(ch))] -= 1
+                expected[(now, ord(ch))] += 1
     return issues, expected
 
 
@@ -1849,7 +1868,8 @@ def plan_reflow(doc, fonts, args, fine=None, dys=None):
         static = reflow_obstacles(page, lines)
         ext = content_extent(page)
         pages.append({"lines": lines, "limit": right, "static": static,
-                      "body": dominant_size(lines),
+                      "body": dominant_size(lines), "page": page, "pushes": [],
+                      "floor": ext.y1 if ext else page.rect.height,
                       "paras": find_paragraphs(page, lines, right, args),
                       "room": line_room(page, lines, static, right, args),
                       # Normally a re-wrapped paragraph may not reach lower
@@ -1869,7 +1889,11 @@ def plan_reflow(doc, fonts, args, fine=None, dys=None):
         return "".join(s["text"] for s in line["spans"]).strip()[:50]
 
     def attempt(size):
-        plans = [{"reflow": {}, "rules": [], "cuts": [], "squeeze": {}} for _ in pages]
+        plans = [{"reflow": {}, "rules": [], "cuts": [], "squeeze": {}, "pushes": []}
+                 for _ in pages]
+        for pg in pages:
+            if pg is not None:
+                pg["pushes"] = []
         blockers = []
         for pi, pg in enumerate(pages):
             if pg is None:
@@ -2030,6 +2054,35 @@ def plan_reflow(doc, fonts, args, fine=None, dys=None):
                                                   pg["cap"], args.min_leading, pg["centre"])
                         if got is not None:
                             got["squeeze"], got["pivot"] = scale, left
+                            layout, why = got, None
+                            break
+                if (layout is None and getattr(args, "rebuild", False)
+                        and "runs into" in (why or "")):
+                    # Nothing about this paragraph fits because there's no
+                    # room under it. Ask for the room: everything below the
+                    # paragraph goes down by a line, if the page still has
+                    # that much space at its foot and its furniture can be
+                    # moved at all. A page can be cut in more than one place -
+                    # each cut moves what's below it, so they add up.
+                    pitch = round(para["pitch"] or 1.2 * size, 1)
+                    line = round(para["bbox"].y1 + 1, 1)
+                    taken = sum(d for _, d in pg["pushes"])
+                    room = pg["cap"] - pg["floor"] - taken
+                    # A paragraph may want more than one line's worth: ask for
+                    # as many as the foot of the page can still give.
+                    for lines_wanted in (1, 2, 3):
+                        step = round(pitch * lines_wanted, 1)
+                        if step > room + 0.01 or not can_push(pg["page"], line):
+                            break
+                        cuts = pg["pushes"] + [(line, step)]
+                        shifted = [(r + (0, drop_at(cuts, r.y0), 0, drop_at(cuts, r.y0)),
+                                    what, keep) for r, what, keep in obst]
+                        got, why2 = layout_paragraph(para, size, fonts, limit, shifted,
+                                                     pg["cap"], args.min_leading,
+                                                     pg["centre"])
+                        if got is not None:
+                            pg["pushes"] = cuts
+                            plans[pi]["pushes"] = list(cuts)
                             layout, why = got, None
                             break
                 if layout is None:
@@ -2715,6 +2768,20 @@ def art_key(d):
             tuple(d.get("fill") or ()), tuple(d.get("color") or ()))
 
 
+def drop_at(cuts, y):
+    """How far down something at y ends up, given where the page was cut.
+    Each cut moves what is below it, so the cuts above a point add up."""
+    return sum(step for line, step in cuts if y >= line - 0.01)
+
+
+def can_push(page, from_y):
+    """Whether the furniture below a line can be moved at all. A path that
+    lies across the line can't be, and nothing else is worth attempting on a
+    page where that's true."""
+    return not any(fitz.Rect(d["rect"]).y0 < from_y - 0.01 < fitz.Rect(d["rect"]).y1
+                   for d in printed(page).get_drawings() if d["items"])
+
+
 def redraw_art(shape, d, dy):
     """Put one drawing back, dy points lower."""
     move = fitz.Matrix(1, 0, 0, 1, 0, dy)
@@ -3085,13 +3152,27 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
             del keep[k]              # a re-wrap can't keep a line we're dropping
 
     for pno, page in enumerate(doc, start=1):
+        shove = list(plans[pno - 1].get("pushes") or ()) if not args.dry_run else []
+        # bottom-most cut first: a cut higher up then carries what has already
+        # been moved down further still, which is how the cuts add up
+        for line, step in sorted(shove, reverse=True):
+            moved = push_down(page, line, step)
+            if moved < 0:                     # a path lies across the line
+                rows.append([name, pno, "PUSH_REFUSED",
+                             f"the page below y={line:.0f} couldn't be moved down "
+                             f"{step:.0f}pt: {-moved} path(s) lie across that line"])
+                shove = [c for c in shove if c != (line, step)]
+            else:
+                rows.append([name, pno, "page_pushed_down",
+                             f"everything below y={line:.0f} moved down {step:.0f}pt to "
+                             f"make room for a paragraph ({moved} shape(s) moved)"])
         issues, allowed = restyle_page(
                 page, fonts, size, args.pad, args.centre_tol, args.min_indent,
                 args.width_tolerance, args.skip_conforming, args.target_font,
                 args.size_tolerance, args.dry_run, args.gap_tolerance,
                 not args.no_recover, plans[pno - 1].get("reflow"), plans[pno - 1].get("rules"),
                 fine[pno - 1], relabel[pno - 1], drop if pno == 1 else None,
-                plans[pno - 1].get("squeeze"))
+                plans[pno - 1].get("squeeze"), shove)
         expected[pno - 1].update(allowed)      # update, not +=: allowances can be negative
         for issue, detail in issues:
             rows.append([name, pno, issue, detail])
@@ -3453,6 +3534,11 @@ def main():
                          "(default third_parties.txt beside this script)")
     hd.add_argument("--house-marks", default=HOUSE_MARKS,
                     help="fingerprints of the house logo, as written by --learn-marks")
+    ap.add_argument("--rebuild", action="store_true",
+                    help="experimental, and more than --restructure: let a paragraph that "
+                         "has no room under it push the rest of the page down, moving the "
+                         "form's own rules and boxes with it. Every shape is accounted "
+                         "for (LINE_ART_LOST), and every push is reported.")
     ap.add_argument("--restructure", action="store_true",
                     help="experimental: reshape a form to hold the target size rather than "
                          "set the whole document smaller. Turns on --shrink-stubborn and "
@@ -3475,6 +3561,8 @@ def main():
                     help="words never to flag, one per line (default spelling_allowlist.txt "
                          "beside this script)")
     args = ap.parse_args()
+    if args.rebuild:
+        args.restructure = True
     if args.restructure:
         args.shrink_stubborn = True
         if args.condense >= 1.0:
