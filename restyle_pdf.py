@@ -49,6 +49,7 @@ import argparse
 import csv
 import os
 import re
+import unicodedata
 import sys
 import glob
 from collections import Counter
@@ -198,6 +199,134 @@ def printed(page):
     return tmp.reload_page(tmp[0])
 
 
+LIGATURE_PARTS = ("ti", "ft", "fi", "fl", "ff", "ffi", "ffl", "tt", "st")
+_WORDS = None
+
+
+def word_frequency():
+    """The English and French word lists, as one frequency lookup. Used to
+    work out what an unnameable glyph really draws. Returns None if
+    pyspellchecker isn't installed, and the glyph is then left alone."""
+    global _WORDS
+    if _WORDS is None:
+        try:
+            from spellchecker import SpellChecker
+            en, fr = SpellChecker(), SpellChecker(language="fr")
+            _WORDS = lambda w: max(en.word_frequency[w], fr.word_frequency[w])
+        except ImportError:
+            _WORDS = False
+    return _WORDS or None
+
+
+def unicode_ligature(ch):
+    """'fi' as one character -> the two letters it stands for. These are
+    presentation forms whose decomposition Unicode itself defines, so this
+    needs no guessing - and Arial has none of them."""
+    if not 0xFB00 <= ord(ch) <= 0xFB06:
+        return None
+    parts = unicodedata.normalize("NFKD", ch)
+    return parts if parts != ch else None
+
+
+def ligature_candidates(word, i, freq):
+    """Which letters could stand where word[i] is, for the word to be a word.
+    Returns them best first, by how common the resulting word is.
+
+    The glyph has to sit inside a word for any of this to mean anything. A
+    glyph standing on its own is a symbol - a checkbox, a bullet - and must be
+    left alone, which takes saying, because "ti" by itself is in the word list
+    and every lone symbol would otherwise come out as those two letters."""
+    if sum(ch.isalpha() for ch in word) < 2:
+        return []
+    hits = []
+    for cand in LIGATURE_PARTS:
+        whole = (word[:i] + cand + word[i + 1:]).strip("'’.,;:()[]").lower()
+        n = freq(whole) if whole.isalpha() else 0
+        if n:
+            hits.append((n, cand))
+    hits.sort(reverse=True)
+    return hits
+
+
+def resolve_ligatures(page, unnamed, freq):
+    """What each unnameable glyph on the page actually draws, as
+    {(font, glyph id): letters}.
+
+    A PDF written by Word can map a ligature to the wrong character - the page
+    shows "execution" while the text layer says "execuƟon" - so the text layer
+    can't be trusted and the extractor reports the glyph as U+FFFD. What it
+    draws is worked out from the word it sits in: the letters that turn that
+    word into a real word. A glyph is only resolved when every occurrence on
+    the page that resolves at all agrees, and an occurrence with more than one
+    possible answer is settled by which word is commoner - "after" over
+    "aster" - and only by a wide margin. Anything unresolved keeps its own
+    glyph, which is right but leaves the odd gap in a word."""
+    if not unnamed or freq is None:
+        return {}
+    votes, seen = {}, {}
+    for block in page.get_text("rawdict")["blocks"]:
+        if block.get("type") != 0:
+            continue
+        for line in block.get("lines", []):
+            chars = [c for sp in line["spans"] for c in sp["chars"]]
+            text = "".join(unicode_ligature(c["c"]) or c["c"] for c in chars)
+            # index in `text` of each character, once ligatures are spelt out
+            at, pos = [], 0
+            for c in chars:
+                at.append(pos)
+                pos += len(unicode_ligature(c["c"]) or c["c"])
+            for i, c in enumerate(chars):
+                key = next((k for u, k in unnamed if glyph_in(c["bbox"], u)), None)
+                if key is None:
+                    continue
+                start = text.rfind(" ", 0, at[i]) + 1
+                end = text.find(" ", at[i])
+                word = text[start:end if end > 0 else len(text)]
+                hits = ligature_candidates(word, at[i] - start, freq)
+                seen.setdefault(key, []).append(word)
+                if hits and (len(hits) == 1 or hits[0][0] >= 10 * hits[1][0]):
+                    votes.setdefault(key, set()).add(hits[0][1])
+    return {k: next(iter(v)) for k, v in votes.items() if len(v) == 1}
+
+
+def split_unnamed(raw_line, unnamed):
+    """Rebuild a line's spans so glyphs the PDF can't name sit in spans of
+    their own, letting the rest of the line be restyled around them."""
+    out = []
+    for sp in raw_line["spans"]:
+        group, bad = [], None
+        for ch in sp["chars"] + [None]:
+            this = None if ch is None else any(glyph_in(ch["bbox"], u) for u in unnamed)
+            if group and (this != bad or bad):
+                box = fitz.Rect(group[0]["bbox"])
+                for c in group[1:]:
+                    box |= fitz.Rect(c["bbox"])
+                out.append({"text": "".join(c["c"] for c in group), "origin": group[0]["origin"],
+                            "bbox": tuple(box), "font": sp["font"], "size": sp["size"],
+                            "flags": sp["flags"], "color": sp.get("color", 0), "unnamed": bad})
+                group = []
+            if ch is not None:
+                group.append(ch)
+                bad = this
+    return out
+
+
+def spell_out(sp, unnamed, spelt):
+    """A span with its ligatures written out as plain letters, so the new font
+    can set them like the rest of the word. `was` records the glyphs that were
+    there before, because the census counts glyphs and this changes how many
+    there are. A glyph nothing could identify is left exactly as it is."""
+    if sp.get("unnamed"):
+        key = next((k for u, k in unnamed if glyph_in(sp["bbox"], u)), None)
+        letters = spelt.get(key)
+        if not letters:
+            return sp
+        # the extractor saw U+FFFD here, so that's what the census counted
+        return dict(sp, text=letters, unnamed=False, was="�" * len(sp["text"]))
+    text = "".join(unicode_ligature(ch) or ch for ch in sp["text"])
+    return sp if text == sp["text"] else dict(sp, text=text, was=sp["text"])
+
+
 def collect_lines(page, skip_conforming, target_font_substr, target_size, size_tol):
     """Gather every horizontal text line with its spans. Returns (lines, notes).
 
@@ -206,8 +335,22 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
     is marked bold here, so everything downstream draws it in the bold face."""
     lines, notes = [], []
     data = page.get_text("dict")
+    raw = None
     stroked = {(round(c[2][0], 1), round(c[2][1], 1)) for run in page.get_texttrace()
                if run.get("type") == 1 for c in run.get("chars", [])}
+    # Glyphs the PDF itself can't name. Some files map a ligature to the wrong
+    # character - the page shows "after execution" while the text layer says
+    # "Ōer execuƟon" - and redrawing what the text layer claims would print
+    # that. The extractor reports these as U+FFFD, so the span is left alone.
+    unnamed = [(fitz.Rect(c[3]), (run["font"], c[1])) for run in page.get_texttrace()
+               if run.get("type") in (0, 1)
+               for c in run.get("chars", []) if c[0] == 0xFFFD]
+    spelt = resolve_ligatures(page, unnamed, word_frequency())
+    boxes = [u for u, _ in unnamed]
+    for (font, gid), letters in sorted(spelt.items()):
+        notes.append(("ligature_spelt_out",
+                      f"a glyph {font} can't name (#{gid}) draws {letters!r}, "
+                      f"so it's set in the new font like the rest of its word"))
 
     for block in data["blocks"]:
         if block.get("type") != 0:            # 0 = text, 1 = image
@@ -228,10 +371,34 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
                     continue
                 if (round(sp["origin"][0], 1), round(sp["origin"][1], 1)) in stroked:
                     sp = dict(sp, flags=sp["flags"] | 16)
+                if any(glyph_in(u, fitz.Rect(sp["bbox"])) for u in boxes):
+                    sp = dict(sp, unnamed=True)
                 spans.append(sp)
+            if spans and any(sp.get("unnamed") for sp in spans):
+                # re-read this line glyph by glyph, so only the glyphs that
+                # can't be named keep their own font
+                if raw is None:
+                    raw = {tuple(round(v, 1) for v in l["bbox"]): l
+                           for b in page.get_text("rawdict")["blocks"] if b.get("type") == 0
+                           for l in b["lines"]}
+                exact = raw.get(tuple(round(v, 1) for v in line["bbox"]))
+                if exact:
+                    spans = [spell_out(sp, unnamed, spelt)
+                             for sp in split_unnamed(exact, boxes) if sp["text"].strip()]
+            spans = [spell_out(sp, unnamed, spelt) for sp in spans]
             if spans:
                 lines.append({"bbox": fitz.Rect(line["bbox"]), "spans": spans,
                               "block_bbox": fitz.Rect(block["bbox"])})
+
+    # The printer's ligatures get spelt out too. Unicode defines what they
+    # stand for, so there's nothing to work out - but it still changes how
+    # many glyphs the page holds, so it's reported like any other change.
+    shown = Counter(ch for ln in lines for sp in ln["spans"]
+                    if sp.get("was") and "�" not in sp["was"]
+                    for ch in sp["was"] if unicode_ligature(ch))
+    for ch, n in sorted(shown.items()):
+        notes.append(("ligature_spelt_out",
+                      f"{ch!r} set as {unicode_ligature(ch)!r} in {n} place(s)"))
     return lines, notes
 
 
@@ -476,6 +643,11 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     if not lines:
         return issues, Counter()
 
+    # Glyphs Arial can't draw - a character it hasn't got, or one the PDF
+    # can't even name - stay exactly as they were, in their own font.
+    def kept(sp):
+        return sp.get("unnamed", False) or not drawable(sp["text"], style_of(sp["flags"], fonts)[2])
+
     page_centre = page.rect.width / 2
     text_left = min(l["bbox"].x0 for l in lines)
     text_right = max(l["bbox"].x1 for l in lines)
@@ -489,6 +661,8 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     for ln in lines:
         if line_key(ln) in drop:
             for sp in ln["spans"]:        # erased with the rest, never redrawn
+                if kept(sp):              # except glyphs that stay in their own font
+                    continue
                 for ch in sp["text"]:
                     if not ch.isspace():
                         dropped[(sp["origin"][1], ord(ch))] -= 1
@@ -513,8 +687,8 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
         # Centred-line detection: sits near the page centre and is clearly
         # indented from the text margin. Re-centre these so titles and footers
         # don't jump left when the text gets narrower.
-        looks_centred = (abs((ln["bbox"].x0 + ln["bbox"].x1) / 2 - page_centre) < centre_tol
-                         and (ln["bbox"].x0 - text_left) > min_indent
+        looks_centred = (centred_shape(ln["bbox"], page_centre, text_left, text_right,
+                                       centre_tol, min_indent)
                          and alone_on_row(ln, lines))
         flush_right = (not looks_centred and rule is None
                        and looks_right_aligned(ln["bbox"], text_left, text_right, starts))
@@ -536,11 +710,6 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
         issues.append(("recovered_hidden_text",
                        f"{len(orphans)} run(s) invisible to the text extractor, redrawn"))
 
-    # Glyphs Arial can't draw - a character it hasn't got, or one the PDF
-    # can't even name - stay exactly as they were, in their own font.
-    def kept(sp):
-        return not drawable(sp["text"], style_of(sp["flags"], fonts)[2])
-
     orphans = [o for o in orphans if drawable(o["text"], style_of(o["flags"], fonts)[2])]
     left = [sp for ln in lines for sp in ln["spans"] if kept(sp)]
     if left:
@@ -549,13 +718,16 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
                                                f"their own font: {shown[:80]}"))
 
     # --- erase all original text in one pass ------------------------------
-    rects = [o["rect"] for o in orphans]
+    keeps = [fitz.Rect(sp["bbox"]) for ln in lines for sp in ln["spans"] if kept(sp)]
+    rects = [piece for o in orphans for piece in clip_out(o["rect"], keeps)]
     for ln in lines:
         if any(kept(sp) for sp in ln["spans"]):
-            rects += [fitz.Rect(sp["bbox"]) for sp in ln["spans"] if not kept(sp)]
+            for sp in ln["spans"]:
+                if not kept(sp):
+                    rects += clip_out(fitz.Rect(sp["bbox"]), keeps)
         else:
             b = fitz.Rect(ln["bbox"])
-            rects.append(fitz.Rect(b.x0 - pad, b.y0 - pad, b.x1 + pad, b.y1 + pad))
+            rects += clip_out(fitz.Rect(b.x0 - pad, b.y0 - pad, b.x1 + pad, b.y1 + pad), keeps)
     for r in rects:
         page.add_redact_annot(r, fill=None, cross_out=False)
 
@@ -566,6 +738,18 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     # --- redraw ------------------------------------------------------------
     expected = Counter()        # glyph-count changes made on purpose
     expected.update(dropped)
+    # A ligature spelt out is one glyph before and two letters after, wherever
+    # the line ends up: every path draws the span's text and accounts for it
+    # at its own baseline, so declaring the swap once here balances all of them.
+    for ln in lines:
+        for sp in ln["spans"]:
+            if sp.get("was") is not None:
+                for ch in sp["was"]:
+                    if not ch.isspace():
+                        expected[(sp["origin"][1], ord(ch))] -= 1
+                for ch in sp["text"]:
+                    if not ch.isspace():
+                        expected[(sp["origin"][1], ord(ch))] += 1
     for item in plan:
         ln = item["line"]
         if item["keep_centre"] is not None:
@@ -764,6 +948,20 @@ def span_size(sp, line_max, size):
     return round(size * sp["size"] / line_max, 2)
 
 
+def centred_shape(bbox, centre, text_left, text_right, tol, min_indent):
+    """Whether a line's geometry reads as centred: near the page centre, well
+    in from the text margin, and short enough that the centring can be meant.
+
+    The width test is what keeps ordinary body text out. A line that fills its
+    column straddles the centre whatever its alignment, and on a form with a
+    hanging indent its two margins can match to within a point by chance -
+    re-centring such a line shifts it left into the checkbox beside it."""
+    column = text_right - text_left
+    return (abs((bbox.x0 + bbox.x1) / 2 - centre) < tol
+            and bbox.x0 - text_left > min_indent
+            and (column <= 0 or bbox.width <= CENTRE_MAX_WIDTH * column))
+
+
 def alone_on_row(line, lines):
     """Whether nothing else shares this line's baseline. A line in one column
     of a two-column block can straddle the page centre by accident, and
@@ -817,6 +1015,39 @@ def redrawn_end(spans, fonts, size, gap_tol, dx=0.0):
             end = x + dx + font.text_length(sp["text"].rstrip(), at)
         prev_old, prev_new = sp["bbox"][2], x + dx + font.text_length(sp["text"], at)
     return end
+
+
+# A centred line covers at most this much of the text column.
+CENTRE_MAX_WIDTH = 0.6
+
+
+def clip_out(rect, blockers, gap=0.5):
+    """What's left of rect once the blockers are cut out of it, as up to four
+    pieces each. The erase works on span boxes, and those overlap their
+    neighbours (trailing spaces run past the next span's first glyph) and the
+    lines above and below. Cutting only the blocker's own area keeps a glyph
+    that must stay while still erasing everything around it - cutting its
+    whole column would spare the line above's glyphs too, and they'd be
+    redrawn on top of themselves."""
+    parts = [rect]
+    for b in blockers:
+        b = fitz.Rect(b.x0 - gap, b.y0 - gap, b.x1 + gap, b.y1 + gap)
+        out = []
+        for r in parts:
+            if not r.intersects(b):
+                out.append(r)
+                continue
+            if r.y0 < b.y0:
+                out.append(fitz.Rect(r.x0, r.y0, r.x1, b.y0))
+            if r.y1 > b.y1:
+                out.append(fitz.Rect(r.x0, b.y1, r.x1, r.y1))
+            top, bottom = max(r.y0, b.y0), min(r.y1, b.y1)
+            if r.x0 < b.x0:
+                out.append(fitz.Rect(r.x0, top, b.x0, bottom))
+            if r.x1 > b.x1:
+                out.append(fitz.Rect(b.x1, top, r.x1, bottom))
+        parts = [p for p in out if p.width > 0.2 and p.height > 0.2]
+    return parts
 
 
 def split_trailing_rule(spans):
@@ -899,6 +1130,7 @@ def find_paragraphs(page, lines, limit, args):
 
     order = sorted(range(len(lines)), key=lambda i: (base(i), lines[i]["bbox"].x0))
     text_left = min(ln["bbox"].x0 for ln in lines)
+    text_right = max(ln["bbox"].x1 for ln in lines)
     centre = page.rect.width / 2
     used, paras = set(), []
     for i in order:
@@ -956,8 +1188,8 @@ def find_paragraphs(page, lines, limit, args):
             "marker_x": ws0[0][0], "text_x": text_x,
             "cont_x": per_line[group[1]][0][0] if len(group) > 1 else text_x,
             "base": bases[0], "pitch": pitches[len(pitches) // 2] if pitches else None,
-            "centred": (all(abs((ln["bbox"].x0 + ln["bbox"].x1) / 2 - centre) < args.centre_tol
-                            for ln in pl) and first.x0 - text_left > args.min_indent),
+            "centred": all(centred_shape(ln["bbox"], centre, text_left, text_right,
+                                         args.centre_tol, args.min_indent) for ln in pl),
             "bad": bad, "olds": [(base(k), lines[k]["bbox"]) for k in group],
             "bbox": fitz.Rect(min(ln["bbox"].x0 for ln in pl), min(ln["bbox"].y0 for ln in pl),
                               max(ln["bbox"].x1 for ln in pl), max(ln["bbox"].y1 for ln in pl)),
@@ -1190,6 +1422,11 @@ def line_room(page, lines, static, right, args):
                  and not any(o.intersects(r) for r in in_blank)]
         stops += [other["bbox"] for j, other in enumerate(lines)
                   if j != i and after_on_row(ln, other["bbox"])]
+        # Anything the line's own glyphs already run through isn't beside the
+        # line at all: a rule drawn a couple of points under the baseline
+        # falls inside the row's band, and taking it as a stop would cut the
+        # line off well short of where the form itself prints it.
+        stops = [o for o in stops if o.x0 >= ends[i] - 0.5]
         stop = min([right] + [o.x0 for o in stops])
         hard = stop - max(0.0, min(3.0, stop - b.x1)) if stop < right else right
         blank = None
@@ -1198,8 +1435,9 @@ def line_room(page, lines, static, right, args):
             gap = bx0 - label_end               # as the form had it, unless it overlapped
             blank = {"x0": bx0, "x1": bx1, "reach": max(bx1, hard), "parts": mine,
                      "gap": min(4.0, gap) if gap >= 0 else 1.5}
-        centred = (abs((b.x0 + b.x1) / 2 - centre) < args.centre_tol
-                   and b.x0 - text_left > args.min_indent and alone_on_row(ln, lines))
+        centred = (centred_shape(b, centre, text_left, text_right,
+                                 args.centre_tol, args.min_indent)
+                   and alone_on_row(ln, lines))
         out.append({"hard": hard, "blank": blank, "left_stop": left_stop, "ink_end": ends[i],
                     "label": label if inline else ln["spans"], "centred": centred,
                     "right": (not centred and not inline
@@ -1324,7 +1562,8 @@ def plan_reflow(doc, fonts, args, fine=None):
                 text_obs.append((j, r, "".join(s["text"] for s in ln["spans"]).strip()[:30]))
             for para in todo.values():
                 if not para["bad"] and not all(
-                        drawable(sp["text"], style_of(sp["flags"], fonts)[2]) for sp in para["spans"]):
+                        not sp.get("unnamed") and drawable(sp["text"], style_of(sp["flags"], fonts)[2])
+                        for sp in para["spans"]):
                     para["bad"] = "it holds characters Arial can't draw, which have to stay put"
                 if para["bad"]:
                     blockers.append((pi + 1, para["preview"], para["bad"]))
@@ -1508,7 +1747,10 @@ def plan_relabels(doc, fonts, args, table, size, fine, plans):
             new = first[:len(first) - len(first.lstrip())] + new
             key, rm = line_key(ln), room[i]
             anchor = None
-            if i in in_para:
+            if any(sp.get("unnamed") or not drawable(sp["text"], style_of(sp["flags"], fonts)[2])
+                   for sp in ln["spans"]):
+                why = "it holds glyphs that have to stay in their own font"
+            elif i in in_para:
                 why = "it's part of a paragraph"
             elif key in reflowed:
                 why = "its line is being re-wrapped"
@@ -1760,11 +2002,15 @@ def plan_header(page, title, fonts, args):
 
     bottom = max([logo.y1] + [ln["rect"].y1 for ln in lines])
     dy = max(0.0, bottom + args.header_gap - ext.y0)
-    free = page.rect.height - args.min_bottom_margin - ext.y1
+    # Free space is what the page has below its content. It can come out
+    # negative on a page that already ran past the bottom margin before we
+    # touched it; that's the page's own doing, and only matters here if the
+    # header actually asks the content to move.
+    free = max(0.0, page.rect.height - args.min_bottom_margin - ext.y1)
     if dy > free:
         return None, [("HEADER_NO_ROOM",
-                       f"content must move down {dy:.1f}pt to clear the header but only "
-                       f"{max(free, 0):.1f}pt is free below it (bottom margin kept at "
+                       f"content must move down {dy:.2f}pt to clear the header but only "
+                       f"{free:.2f}pt is free below it (bottom margin kept at "
                        f"{args.min_bottom_margin:g}pt)")]
 
     issues = [("header_old_title_removed",
