@@ -346,6 +346,22 @@ def split_unnamed(raw_line, unnamed, stroked=()):
     return out
 
 
+def keep_spaces(spans):
+    """Drop spans that hold nothing but whitespace, folding what they held
+    into the words before them. A space can end up in a span of its own -
+    in its own font, or on the far side of a stroked/unstroked boundary - and
+    simply dropping it ran the words either side together once they were
+    close enough to be flowed as continuous text. A space starting a line has
+    nothing to join, and the next span's origin already allows for it."""
+    out = []
+    for sp in spans:
+        if sp["text"].strip():
+            out.append(sp)
+        elif out:
+            out[-1] = dict(out[-1], text=out[-1]["text"] + sp["text"])
+    return out
+
+
 def spell_out(sp, unnamed, spelt):
     """A span with its ligatures written out as plain letters, so the new font
     can set them like the rest of the word. `was` records the glyphs that were
@@ -413,14 +429,7 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
             spans = []
             for sp in line["spans"]:
                 if not sp["text"].strip():
-                    # A space can be a span of its own, in its own font, and
-                    # dropping it ran the words either side together - "made a
-                    # withdrawalfrom your RRSP" - once they were close enough
-                    # to be flowed as continuous text. It belongs to the words
-                    # before it; a space starting a line has nothing to join,
-                    # and the next span's origin already allows for it.
-                    if spans:
-                        spans[-1] = dict(spans[-1], text=spans[-1]["text"] + sp["text"])
+                    spans.append(sp)              # kept by keep_spaces below
                     continue
                 if skip_conforming and target_font_substr.lower() in sp["font"].lower() \
                         and abs(sp["size"] - target_size) <= size_tol:
@@ -432,6 +441,7 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
                 if any(glyph_in(u, fitz.Rect(sp["bbox"])) for u in boxes):
                     sp = dict(sp, unnamed=True)
                 spans.append(sp)
+            spans = keep_spaces(spans)
             if spans and any(sp.get("unnamed") or sp.get("part_thick") for sp in spans):
                 # re-read this line glyph by glyph, so only the glyphs that
                 # can't be named keep their own font
@@ -442,8 +452,7 @@ def collect_lines(page, skip_conforming, target_font_substr, target_size, size_t
                 exact = raw.get(tuple(round(v, 1) for v in line["bbox"]))
                 if exact:
                     spans = [spell_out(sp, unnamed, spelt)
-                             for sp in split_unnamed(exact, boxes, stroked)
-                             if sp["text"].strip()]
+                             for sp in keep_spaces(split_unnamed(exact, boxes, stroked))]
             spans = [spell_out(sp, unnamed, spelt) for sp in spans]
             if spans:
                 lines.append({"bbox": fitz.Rect(line["bbox"]), "spans": spans,
@@ -601,6 +610,49 @@ def rule_crossings(page, band=20.0):
             if any(body.intersects(s) for s in near):
                 hits[round(base)] += 1
     return hits
+
+
+def verify_words(before, after):
+    """Words that ran together, or came apart, between the two files.
+
+    The census counts glyphs and ignores whitespace on purpose - a space
+    doesn't survive a round trip reliably enough to count - so a lost space
+    is invisible to it, though "the Lendernoted above" is as wrong as a lost
+    letter. This reads the words themselves: any word in the restyled file
+    that is two of the original's words stuck together, or two that are one
+    of the original's split in half, is reported. Re-wrapping moves words
+    between lines, which this doesn't mind, and joining a hyphenated word
+    across a line break leaves a word that matches neither test."""
+    def prose(w):
+        """Worth comparing: real words, not a fill-in rule or a figure. A
+        blank is rebuilt to its own length and a superscript ("4th") is set
+        as a piece of its own, so both come apart by design."""
+        return sum(c.isalpha() for c in w) >= 3 and "_" not in w
+
+    was = [w[4] for w in printed(before).get_text("words")]
+    now = [w[4] for w in printed(after).get_text("words")]
+    glued = {was[i] + was[i + 1] for i in range(len(was) - 1)}
+    torn = {now[i] + now[i + 1] for i in range(len(now) - 1)}
+    spare = Counter(was)
+    merged = []
+    for w in now:
+        if spare[w]:
+            spare[w] -= 1
+        elif w in glued and prose(w):
+            merged.append(w)
+    split = [w for w, n in spare.items() if n > 0 and w in torn and prose(w)]
+    issues = []
+    if merged:
+        issues.append(("WORDS_RUN_TOGETHER",
+                       f"{len(merged)} word(s) lost the space before them: "
+                       + ", ".join(repr(w[:28]) for w in merged[:5])
+                       + (" ..." if len(merged) > 5 else "")))
+    if split:
+        issues.append(("WORD_BROKEN_UP",
+                       f"{len(split)} word(s) came apart: "
+                       + ", ".join(repr(w[:28]) for w in split[:5])
+                       + (" ..." if len(split) > 5 else "")))
+    return issues
 
 
 def verify_rules(before, after, dy=0.0):
@@ -2557,6 +2609,8 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                 for issue, detail in verify_right_edge(orig[pno - 1], page, args.page_margin):
                     rows.append([name, pno, issue, detail])
                 for issue, detail in verify_rules(orig[pno - 1], page, dys[pno - 1]):
+                    rows.append([name, pno, issue, detail])
+                for issue, detail in verify_words(orig[pno - 1], page):
                     rows.append([name, pno, issue, detail])
             if header:
                 rows += [[name, 1, issue, detail] for issue, detail in check_header(out[0], header)]
