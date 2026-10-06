@@ -8,8 +8,9 @@
 # that carry no logo, and to name the issuer in the report.
 
 Dairy Farmers of Ontario
-Ontario Broiler Hatching Egg
-O.B.H.E.C.C
+# Not "Ontario Broiler Hatching Egg" / "O.B.H.E.C.C": the Hatching Egg
+# direction names the board it is addressed to, and the client's own
+# hand-cleaned copy (2026-09-22) gave it the full Libro header.
 Canada Revenue Agency
 Agence du revenu du Canada
 Protected B

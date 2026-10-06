@@ -1,0 +1,153 @@
+# PROPOSED additions to relabel.txt - NOTHING HERE IS IN FORCE.
+# Found by scanning all 71 forms for standalone captions, using the same
+# row model the rebuild uses, so every line below is one it could act on.
+# Counts are (times it appears, forms it appears on).
+#
+# To accept a line: move it into relabel.txt. To reject it: delete it.
+
+# ========================================================================
+# A. RECOMMENDED. The replacement is the client's own wording, and the
+#    label names the member or the witnessing staff member, nothing else.
+# ========================================================================
+
+(Signature of Libro Credit Union Witness)            => Authorizing Staff Member        # x4, 2 form(s)
+(Signature of Credit Union Witness)                  => Authorizing Staff Member        # x1, 1 form(s)
+(Signature of Libro Representative)                  => Authorizing Staff Member        # x2, 1 form(s)
+Credit Union Witness                                 => Authorizing Staff Member        # x2, 2 form(s)
+Libro Credit Union Limited Witness:                  => Authorizing Staff Member        # x1, 1 form(s)
+Annuitant’s Signature                                => Authorized Signature            # x5, 5 form(s)
+Annuitant’s signature                                => Authorized Signature            # x1, 1 form(s)
+Signature of Annuitant                               => Authorized Signature            # x3, 3 form(s)
+Owner Signature                                      => Authorized Signature            # x9, 4 form(s)
+Owner Signatures                                     => Authorized Signature            # x1, 1 form(s)
+Owner Signature (s)                                  => Authorized Signature            # x1, 1 form(s)
+Owner’s signature                                    => Authorized Signature            # x2, 2 form(s)
+Holder’s Signature                                   => Authorized Signature            # x2, 2 form(s)
+Holder's Signature                                   => Authorized Signature            # x1, 1 form(s)
+Applicant’s Signature                                => Authorized Signature            # x1, 1 form(s)
+Participant's signature                              => Authorized Signature            # x1, 1 form(s)
+Signature of Account Holder:                         => Authorized Signature            # x2, 2 form(s)
+Owner Name:                                          => Name                            # x7, 6 form(s)
+Owner Name(s)                                        => Name                            # x2, 2 form(s)
+Owner Name(s):                                       => Name                            # x1, 1 form(s)
+Print Owner Name(s)                                  => Name                            # x1, 1 form(s)
+Owner’s name:                                        => Name                            # x2, 2 form(s)
+Member Name:                                         => Name                            # x3, 3 form(s)
+Name of Annuitant                                    => Name                            # x9, 1 form(s)
+Annuitant’s Name:                                    => Name                            # x1, 1 form(s)
+Annuitant's Name:                                    => Name                            # x1, 1 form(s)
+Holder's Name                                        => Name                            # x1, 1 form(s)
+FHSA Holder Name                                     => Name                            # x1, 1 form(s)
+Tax Free Savings Account (TFSA) Holder’s Name        => Name                            # x1, 1 form(s)
+
+# ========================================================================
+# B. NEEDS YOUR DECISION. Either the client's list gives no wording for
+#    this, or the label names someone who signs but is not the member.
+#    The replacement is my suggestion only.
+# ========================================================================
+
+# a NAME line for the witness; the client's list only gives wording for the signature
+(Name of Libro Credit Union Witness - printed)       => Authorizing Staff Member Name   # x2, 2 form(s)
+
+# same, with an en dash
+(Name of Libro Credit Union Witness – printed)       => Authorizing Staff Member Name   # x2, 2 form(s)
+
+# same
+(Name of Credit Union Witness)                       => Authorizing Staff Member Name   # x1, 1 form(s)
+
+# same
+(Name of Libro Representative - printed)             => Authorizing Staff Member Name   # x2, 1 form(s)
+
+# same
+Printed Name of Witness                              => Authorizing Staff Member Name   # x1, 1 form(s)
+
+# same
+Witness Name:                                        => Authorizing Staff Member Name   # x1, 1 form(s)
+
+# same
+Staff name                                           => Authorizing Staff Member Name   # x1, 1 form(s)
+
+# a bare 'Witness' is already in the table; this only adds the colon form
+Witness Signature:                                   => Authorizing Staff Member        # x1, 1 form(s)
+
+# a SECOND signer. The table numbers two signers elsewhere (Name 1 / Name 2), so this follows that - but '2' is wrong if the joint owner signs first
+Joint Owner Signature                                => Authorized Signature 2          # x9, 1 form(s)
+
+# same reasoning
+Joint Owner Name:                                    => Name 2                          # x1, 1 form(s)
+
+# the trustee IS the signer on an estate form, but they are not the member
+Signature of Estate Trustee                          => Authorized Signature            # x12, 2 form(s)
+
+# same
+(Signature of Estate Trustee)                        => Authorized Signature            # x12, 3 form(s)
+
+# same
+(Name of Estate Trustee - printed)                   => Name                            # x12, 3 form(s)
+
+# same
+Name of Estate Trustee-Printed                       => Name                            # x4, 1 form(s)
+
+# the claimant is the signer, but not necessarily the member
+(Signature of Claimant)                              => Authorized Signature            # x2, 1 form(s)
+
+# same
+Claimant Name                                        => Name                            # x2, 1 form(s)
+
+# '(Legal)' may be load-bearing
+Owner (Legal) Name:                                  => Name                            # x1, 1 form(s)
+
+# '(Grantor)' names a role, not the member
+Owner (Grantor) Name:                                => Name                            # x1, 1 form(s)
+
+# ========================================================================
+# C. DELIBERATELY NOT PROPOSED. Reported for a human, never swapped.
+# ========================================================================
+
+#   'STATEMENT OF WITNESS' (x6, 3 form(s)): a section heading, not a caption - swapping it retitles the section
+#   'I witness this Estate Trustee sign this form' (x5, 2 form(s)): a declaration the witness signs, not a label
+#   'I witness this Claimant sign this form' (x1, 1 form(s)): same
+#   'WITNESS’ NAME (non-family member)' (x1, 1 form(s)): states who may witness - already excluded from the table
+#   'Name of Witness (Payor) [print or type]' (x1, 1 form(s)): states who may witness
+#   '(Print Name of Witness below signature)' (x1, 1 form(s)): an instruction - already excluded from the table
+#   'Signature:' (x5, 2 form(s)): member or staff depends on the form - already excluded from the table
+#   'Signature of Spouse' (x1, 1 form(s)): a different party consenting; 'Authorized Signature' would hide who signs
+#   'Attorney Signature:' (x1, 1 form(s)): a power of attorney, not the member
+#   'Signature of Designated Beneficiary' (x1, 1 form(s)): a different party
+#   '(Signature of Designated Beneficiary)' (x1, 1 form(s)): a different party
+#   'Signature of Above Named Payee' (x1, 1 form(s)): a different party
+#   'Date Signed' (x5, 5 form(s)): a date line, not a signing label - that was client item vi, which you dropped
+#   'Date signed' (x1, 1 form(s)): same
+#   'DATE SIGNED' (x1, 1 form(s)): same
+#   'Date of Signature' (x2, 1 form(s)): same
+#   'Date signed by lender' (x1, 1 form(s)): same, and the lender is not the member
+#   'Signed this' (x2, 2 form(s)): part of a sentence
+#   'Signed:' (x2, 2 form(s)): ambiguous
+#   'Signed at:' (x1, 1 form(s)): a place, not a signer
+#   'Name of Lender' (x1, 1 form(s)): names someone other than the member - already excluded
+#   'Name of corporation' (x1, 1 form(s)): same - already excluded
+#   'Farm/Business Name' (x1, 1 form(s)): same - already excluded
+#   'Account Name' (x4, 2 form(s)): same - already excluded
+#   'Account Name:' (x2, 2 form(s)): same
+#   'Name of Minor' (x4, 2 form(s)): a different party
+#   'Name of Trustee for Minor' (x4, 2 form(s)): a different party
+#   'Name of Beneficiary' (x3, 3 form(s)): a different party
+#   'Name of Spouse:' (x1, 1 form(s)): a different party
+#   'Employer’s name:' (x2, 2 form(s)): a different party
+#   'Vendor name:' (x1, 1 form(s)): a different party
+#   'Contact Name' (x2, 2 form(s)): a different party
+#   'Depositor’s Name:' (x1, 1 form(s)): may not be the member
+#   "Issuer's name" (x1, 1 form(s)): a different party
+#   'Specimen Plan Name' (x1, 1 form(s)): names a plan
+#   'Corporation Name and Business Name' (x1, 1 form(s)): names a business
+#   '(Name of pension plan or organization administering LIRA)' (x1, 1 form(s)): names an institution
+#   'Name of quota holder as registered by O.B.H.E.C.C.' (x1, 1 form(s)): a third-party regulator's wording
+#   'First Name' (x2, 2 form(s)): already generic
+#   'Last Name' (x2, 2 form(s)): already generic
+#   'Annuitant’s First Name' (x3, 3 form(s)): a name split across two fields; 'Name' would collide
+#   'Annuitant’s Last Name' (x3, 3 form(s)): same
+#   'Holder’s First Name' (x2, 2 form(s)): same
+#   'Holder’s Last Name' (x2, 2 form(s)): same
+#   'Authorized Signature' (x4, 4 form(s)): already the house wording
+#   'Authorized Signature:' (x3, 3 form(s)): already the house wording
+#   'Name' (x31, 9 form(s)): already the house wording

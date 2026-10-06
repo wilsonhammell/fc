@@ -1,0 +1,45 @@
+Client review notes, 2026-09-22. Reviewed the version of each form that reached
+10pt (the ladder's chosen rung). They did not get through every form.
+
+ABM POS TRACE REQUEST
+- Owner should be changed to member with the exception of Owner Name that should remain just Name
+AFT – US FUNDS ORIGINATING IN US
+- No updates
+AFT REQUEST & AUTH BUS INTERNAL
+- Looks as the last sentence in the top paragraph was bolded and it should not be
+- Owner should be changed to member with the exception of Owner Name that should remain just Name
+- Formatting in the Primary Contact table changed the Name/Phone/Email was in grey before
+- The radio buttons should remain in the same location and not be moved to the end of the sentence
+- There is sentence break in the requested after 1st run that should not be there
+- There are additional rows with lines in the AFT Authorization
+APPOINTMENT OF AGENT
+- The Member signing area at the bottom of the page should have 3 columns: Authorized Name / Authorized Signature / Date
+ASSIGNMENT OF LIFE INS POLICY – LETTER
+- Remove wording between << and >> replace with text box
+AUTHORIZATION TO RELEASE FINANCIAL INFO
+- The Member signing area at the bottom of the page should have 3 columns: Authorized Name / Authorized Signature / Date
+- Add Authorizing Staff Member with a signature line above
+AVISO LEVERAGED TRANSACTIONS
+- Owner should be changed to member with the exception of Owner Name that should remain just Name
+- The Member signing area at the bottom of the page should have 3 columns: Authorized Name / Authorized Signature / Date
+- Add Authorizing Staff Member with a signature line above
+BILL PAYMENT TRACE
+- Owner should be changed to member with the exception of Owner Name that should remain just Name
+COLLATERAL AGREEMENT Q-TRADE INVESTMENTS
+- The Member signing area at the bottom of the page should have 3 columns: Authorized Name / Authorized Signature / Date
+- Add Authorizing Staff Member with a signature line above
+COLLECTION REQUEST
+- No Change
+DIRECTION OF CHICKEN QUOTA
+- Libro Name and Address should be in line with each other
+- Owner should be changed to member with the exception of Owner Name that should remain just Name
+- The Member signing area at the bottom of the page should have 3 columns: Authorized Name / Authorized Signature / Date
+- Add Authorizing Staff Member with a signature line above
+- Logo should be included on the second page as well
+DIRECTION OF EGG QUOTA
+- Libro Name and Address should be in line with each other
+- Owner should be changed to member with the exception of Owner Name that should remain just Name
+- The Member signing area at the bottom of the page should have 3 columns: Authorized Name / Authorized Signature / Date
+- Add Authorizing Staff Member with a signature line above
+- Logo should be included on the second page as well
+- Acknowledgement should fit on the first page

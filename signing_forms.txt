@@ -1,0 +1,15 @@
+# Forms whose member signing area is brought to the client's standard by
+# --signing: Authorized Name | Authorized Signature | Date per member, then
+# Authorizing Staff Member | Date. One form per line, by file name; the .pdf
+# and case don't matter. Lines starting with # are ignored.
+#
+# Only the forms the client asked for (review notes, 2026-09-22). Not every
+# form needs the standard block, so every other form keeps its signing area
+# as the form has it.
+
+Appointment of Agent
+Authorization to Release Financial Info
+Aviso Leveraged Transactions
+Collateral Agreement-Q-Trade Investments
+Direction of Chicken Quota
+Direction of Egg Quota

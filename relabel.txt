@@ -8,12 +8,19 @@
 # never touched, and a label is left alone - and listed for a human - if it's
 # part of a paragraph or the new wording wouldn't fit where it sits.
 #
+# A comment is a whole line starting with "#". A "#" inside a line is part
+# of the label ("Owner #").
+#
 # Chosen 2026-09-19 from the labels that appear in the 11 sample forms.
 # Anything not listed is for a human; the report lists lines that mention a
 # witness or staff so they can be found.
 
 # iv. Witness / staff references -> Authorizing Staff Member
-Witness                                 => Authorizing Staff Member
+# A bare "Witness" is the first column of a member's signing row, and the
+# client's signing area is Authorized Name | Authorized Signature | Date
+# (review notes 2026-09-22; their own hand-cleaned forms do the same).
+# A witness the form names as Libro's or the credit union's stays staff.
+Witness                                 => Authorized Name
 Signature of Witness                    => Authorizing Staff Member
 Witness' Signature                      => Authorizing Staff Member
 
@@ -41,3 +48,100 @@ Owner/Signing Officer Name 2            => Name 2
 #   a bare "Owner"                        'owner:' can end a sentence
 #   Name of Lender / Name of corporation / Farm/Business Name / Name on DFO
 #   Licence / Account Name                 these name something other than the member
+
+# ========================================================================
+# Added 2026-09-20, chosen from all 71 forms and approved one group
+# at a time. Everything the scan turned up that is NOT here was
+# deliberately left for a human; relabel_proposed.txt says why.
+# ========================================================================
+
+# iv. Witness / staff references -> Authorizing Staff Member
+#     (2026-09-20: the signature captions)
+(Signature of Libro Credit Union Witness)      => Authorizing Staff Member
+(Signature of Credit Union Witness)            => Authorizing Staff Member
+(Signature of Libro Representative)            => Authorizing Staff Member
+Credit Union Witness                           => Authorizing Staff Member
+Libro Credit Union Limited Witness             => Authorizing Staff Member
+Witness Signature                              => Authorizing Staff Member
+
+#     and the printed-name lines. The client gave no separate wording
+#     for a witness's NAME, so these take the same words as the
+#     signature: on a form that has both, the two captions read alike.
+(Name of Libro Credit Union Witness - printed) => Authorizing Staff Member
+(Name of Libro Credit Union Witness – printed) => Authorizing Staff Member
+(Name of Credit Union Witness)                 => Authorizing Staff Member
+(Name of Libro Representative - printed)       => Authorizing Staff Member
+Printed Name of Witness                        => Authorizing Staff Member
+Witness Name                                   => Authorizing Staff Member
+Staff name                                     => Authorizing Staff Member
+
+# v. Member signing -> Authorized Signature
+#    (2026-09-20: the member signing their own plan)
+Annuitant’s Signature                          => Authorized Signature
+Signature of Annuitant                         => Authorized Signature
+Owner Signature                                => Authorized Signature
+Owner Signatures                               => Authorized Signature
+Owner Signature (s)                            => Authorized Signature
+Owner’s signature                              => Authorized Signature
+Holder’s Signature                             => Authorized Signature
+Signature of Account Holder                    => Authorized Signature
+Applicant’s Signature                          => Authorized Signature
+Participant’s signature                        => Authorized Signature
+
+#    a joint owner signs as well; the number is deliberately dropped,
+#    so a form with two owners carries the same caption twice
+Joint Owner Signature                          => Authorized Signature
+
+#    someone signing in place of the member: the estate trustee of a
+#    deceased member, and the claimant on a reimbursement claim
+Signature of Estate Trustee                    => Authorized Signature
+(Signature of Estate Trustee)                  => Authorized Signature
+(Signature of Claimant)                        => Authorized Signature
+
+# v. Member name -> Name
+#    (2026-09-20)
+Owner Name                                     => Name
+Owner Name(s)                                  => Name
+Print Owner Name(s)                            => Name
+Owner’s name                                   => Name
+Owner (Legal) Name                             => Name
+Owner (Grantor) Name                           => Name
+Joint Owner Name                               => Name
+Member Name                                    => Name
+Clients first and last name                    => Name
+Name of Annuitant                              => Name
+Annuitant’s Name                               => Name
+Holder’s Name                                  => Name
+FHSA Holder Name                               => Name
+Tax Free Savings Account (TFSA) Holder’s Name  => Name
+(Name of Estate Trustee - printed)             => Name
+Name of Estate Trustee-Printed                 => Name
+Claimant Name                                  => Name
+
+# Owner -> Member (client review notes 2026-09-22: "Owner should be changed to
+# member with the exception of Owner Name that should remain just Name").
+# Labels only, as everywhere in this table. "Owner" is also a defined term in
+# the wording of several agreements - "The Owner shall not store anything..."
+# - and that is never touched here; those lines are listed for a human.
+Owner Number                                   => Member Number
+Owner No                                       => Member Number
+Owner No.                                      => Member Number
+Owner #                                        => Member #
+Owner#                                         => Member#
+Branch/Owner#                                  => Branch/Member#
+CU Owner number                                => CU Member number
+Owner Acct. No.                                => Member Acct. No.
+Owner                                          => Member
+Owner(s)                                       => Member(s)
+Owner Details                                  => Member Details
+Owner Identification                           => Member Identification
+A – Owner Identification                       => A – Member Identification
+Owner Information                              => Member Information
+Owner Information (where the money is being deposited) => Member Information (where the money is being deposited)
+Owner’s Home Branch                            => Member’s Home Branch
+Owner didn’t receive any funds.                => Member didn’t receive any funds.
+Owner does not recognize the transaction.      => Member does not recognize the transaction.
+Owner error - Admin will apply s/c to Owner    => Member error - Admin will apply s/c to Member
+Owner’s account at vendor not credited - Investigate and apply payment => Member’s account at vendor not credited - Investigate and apply payment
+AFT- Direct Credits- Libro Owner is DEBITED    => AFT- Direct Credits- Libro Member is DEBITED
+AFT- Direct Debits – Libro Owner is CREDITED   => AFT- Direct Debits – Libro Member is CREDITED

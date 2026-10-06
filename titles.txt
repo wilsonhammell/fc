@@ -1,0 +1,13 @@
+# The title a form's header shows, where its file name won't do.
+#
+#   file name (without .pdf) => title
+#
+# The header title is the file's name unless it is listed here. A comment is
+# a whole line starting with "#". Case and spacing in the file name don't
+# matter. Proofs and output files keep the file's own name either way.
+#
+# The client's hand-cleaned forms always title a form in its own wording.
+# Most file names are a fair short form of it; these two are not.
+
+Authorization to Release Financial Info Edited => Authorization to Release Financial Info
+RRIF Designation of Successr Annuitant         => RRIF Designation of Successor Annuitant
