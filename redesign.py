@@ -564,6 +564,11 @@ def rows_with_fields(page, grids=()):
                     # field they came back as a row of dashes
                     if len(on) > 1:
                         f["on_rule"] = (round(r.x0, 1), round(r.y0, 1))
+                        # and how far the line runs on past them: ABM's name
+                        # line ran to the margin under two fields, and drawn to
+                        # the last field it stopped 84pt short of the Branch
+                        # line under it
+                        f["rule_x1"] = r.x1
                 if len(on) == 1:
                     f = on[0]
                     f["rect"] = fitz.Rect(min(f["rect"].x0, r.x0), f["rect"].y0,
@@ -783,6 +788,32 @@ def rows_with_fields(page, grids=()):
                 del rows[k]
                 continue
         k += 1
+
+    # Label-then-blank rows one under another, their blanks started close
+    # together, are a column of blanks: each starts after the widest label
+    # in it. Set from each row's own label, ABM's "Name:" line began 14pt
+    # left of "Member Number:"'s once the label grew.
+    font_ = ARIAL or R.resolve_fonts({})["regular"][2]
+    srt = lambda r: sorted(r, key=lambda i: i["rect"].x0)
+    lead_ = lambda r: (len(r) >= 2 and srt(r)[0]["what"] == "text" and srt(r)[1]["what"] != "text"
+                       and srt(r)[1].get("kind") not in ("CheckBox", "RadioButton"))
+    k = 0
+    while k < len(rows):
+        j = k
+        while (j + 1 < len(rows) and lead_(rows[k]) and lead_(rows[j + 1])
+               and abs(srt(rows[j + 1])[0]["rect"].x0 - srt(rows[k])[0]["rect"].x0) <= 3
+               and abs(srt(rows[j + 1])[1]["rect"].x0 - srt(rows[k])[1]["rect"].x0) <= 12):
+            j += 1
+        if j > k:
+            group = [srt(r) for r in rows[k:j + 1]]
+            widest = max(font_.text_length(r[0]["text"].strip(), 10.0)
+                         * (1.07 if r[0].get("bold") else 1.0) for r in group)
+            gap = max(min(24.0, max(4.2, r[1]["rect"].x0 - r[0]["rect"].x1)) for r in group)
+            start = max(min(r[0]["rect"].x0 for r in group) + widest + 1 + gap,
+                        max(r[1]["rect"].x0 for r in group))
+            for r in group:
+                r[1]["min_x"] = start
+        k = j + 1
 
     # A short label set beside a block of two rows of choices, halfway down
     # it - Transfer Authorization's "Registered Type (check one)" beside its
@@ -1922,7 +1953,7 @@ class KeepShape:
             # a flush-right label is anchored by its right edge
             if spots[n].get("ralign") is not None and spots[n]["what"] == "text":
                 return max(spots[n]["ralign"] - widths[n], spots[n]["rect"].x0 - 60, 36.0)
-            return spots[n]["rect"].x0
+            return max(spots[n]["rect"].x0, spots[n].get("min_x", 0.0))
 
         def run(widths, anchored):
             xs, x = [], anchor(0, widths) if anchored else spots[0]["rect"].x0
@@ -2044,7 +2075,13 @@ class KeepShape:
         laid = [list(t) for t in laid]
         for n in range(1, len(laid)):
             item, x, room, lines = laid[n]
-            match = [c for c in cols if abs(c[0] - item["rect"].x0) <= 2.0]
+            # (a blank lines up with a blank started within 12pt of it: ABM's
+            #  name and number lines began 9pt apart, and once "Member
+            #  Number:" grew they were 14pt apart)
+            match = [c for c in cols if abs(c[0] - item["rect"].x0) <= 2.0
+                     or (item["what"] != "text" and c[4] != "text"
+                         and item.get("kind") not in ("CheckBox", "RadioButton")
+                         and abs(c[0] - item["rect"].x0) <= 12.0)]
             if not match:
                 continue
             d = match[-1][1] - x
@@ -2081,7 +2118,7 @@ class KeepShape:
     def remember_columns(self, laid):
         cols = self.__dict__.setdefault("_cols", [])
         for item, x, _room, _lines in laid:
-            cols.append((item["rect"].x0, x, self.doc.page_count, self.y))
+            cols.append((item["rect"].x0, x, self.doc.page_count, self.y, item["what"]))
         del cols[:-40]
 
     def place(self, row, right_edge, lead=1.25, last=False):
@@ -2155,10 +2192,17 @@ class KeepShape:
                     # three. Drawn a blank each, they come out as a line
                     # broken into pieces with gaps in it.
                     run_to = x + room
+                    last_ = item
                     for k in range(n + 1, len(laid)):
                         if not joined(k):
                             break
                         run_to = laid[k][1] + laid[k][2]
+                        last_ = laid[k][0]
+                    past = (last_.get("rule_x1") or 0) - last_["rect"].x1
+                    if past > 2 and not any(i["rect"].x0 >= last_["rect"].x1 - 1
+                                            for i, *_ in laid if i is not last_
+                                            and i["rect"].x0 < last_["rect"].x1 + past):
+                        run_to = min(max(run_to, last_["rule_x1"]), right_edge)
                     lone = (item.get("unruled") and not any(
                         i["what"] == "text" for i, *_ in laid)) or item.get(
                         "type") == fitz.PDF_WIDGET_TYPE_BUTTON
