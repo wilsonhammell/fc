@@ -3483,6 +3483,95 @@ NO_ROOM_AREAS = []     # (page number, box, members) of areas the block did not 
 STAFFISH = re.compile(r"witness|staff", re.I)   # a staff member's field, by its name
 
 
+def signing_excluded(name, path=None):
+    """Is this form one that never has a signing block added? Listed in
+    signing_forms.txt with a leading "-": the client's call (2026-10-07) was
+    that information sheets and staff worksheets - the Wire Instructions, the
+    T4 estate calculations - ask for no signature and get none."""
+    path = path or SIGNING_FORMS
+    stem = " ".join(os.path.splitext(os.path.basename(name))[0].split()).casefold()
+    if not os.path.exists(path):
+        return False
+    with open(path, encoding="utf-8") as fh:
+        for l in fh:
+            l = l.split("#", 1)[0].strip()
+            if l.startswith("-") and " ".join(
+                    os.path.splitext(l[1:].strip())[0].split()).casefold() == stem:
+                return True
+    return False
+
+
+# The heading of a form's terms: an added block goes before it, at the end of
+# the part of the form that is filled in.
+TERMS_HEAD = re.compile(r"^\s*terms(?:\s+(?:and|&)\s+conditions)?\b"
+                        # and the staff's part: ABM POS Trace's "ADMIN OFFICE USE
+                        # ONLY" box ends what the member fills in, and the block
+                        # went after it, onto a page of its own
+                        r"|\buse\s+only\b|\bfor\s+(?:office|credit union|branch|admin\w*)\s+use\b",
+                        re.I)
+
+
+def terms_heading(page):
+    """The top of a "Terms and Conditions" heading on this page, or None. A
+    heading is a short line of its own, below the top of the page - not the
+    page's title."""
+    for b in page.get_text("dict")["blocks"]:
+        for l in b.get("lines", []):
+            t = "".join(s["text"] for s in l["spans"]).strip()
+            if TERMS_HEAD.search(t) and len(t) < 60 and l["bbox"][1] > page.rect.height * 0.2:
+                return l["bbox"][1]
+    return None
+
+
+def asks_for_signature(doc):
+    """Does the form ask anyone to sign, anywhere - a signature field, or the
+    words? Only one that does not gets the block added. Read by its signing
+    areas instead, forms whose signatures sit in a table - Est190's trustees,
+    the Safe Deposit entry log - had a second block put on them."""
+    if any(w.field_type == fitz.PDF_WIDGET_TYPE_SIGNATURE for p in doc for w in p.widgets()):
+        return True
+    return any(SIGN_ANYWHERE.search(p.get_text()) for p in doc)
+
+
+# (not "signed": the Assignment letter mentions a policy "signed by the
+#  above stated insured", which asks no one here to sign)
+SIGN_ANYWHERE = re.compile(r"signature|witness|(?<![a-z])sign(?![a-z])", re.I)
+
+
+def block_spot(doc):
+    """Where a form that asks for no signature gets the standard block: on the
+    page its terms start, before them, or else on its last page. Returns
+    (page index, whether it goes before a terms heading)."""
+    for i, p in enumerate(doc):
+        if terms_heading(p) is not None:
+            return i, True
+    return doc.page_count - 1, False
+
+
+def add_signing_block(page, fonts, size, terms=False, margin=36.0):
+    """The client's standard block, added where a form that asks for no
+    signature ends its fill-in part: after the last thing printed above its
+    terms heading, or above its footer. The same drawing as a replaced area,
+    from an empty area at that height; refused, with the reason, where it
+    would not fit."""
+    p = printed(page)
+    words = p.get_text("words")
+    stop = page.rect.height * 0.9                # the footer's band
+    if terms:
+        head = terms_heading(p)
+        if head is not None:
+            stop = min(stop, head - 1)
+    body = [w for w in words if w[3] <= stop]
+    draws = [fitz.Rect(d["rect"]) for d in p.get_drawings()
+             if d["rect"].y1 <= stop and d["rect"].height < page.rect.height * 0.5]
+    bottom = max([w[3] for w in body] + [r.y1 for r in draws] + [margin])
+    left = max(margin * 0.5, min([w[0] for w in words] + [margin]))
+    y = bottom + 2 * size
+    area = {"box": fitz.Rect(left, y, page.rect.width - margin, y + 1), "members": 0,
+            "rules": [], "pieces": [], "text": [], "frag_text": []}
+    return standard_signing(page, area, fonts, size)
+
+
 def standardize_signing(page, fonts, size, skip=False):
     """Every member signing area on a page, brought to the client's standard.
 
@@ -5726,6 +5815,15 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
     joined = [[] for _ in range(doc.page_count)]     # rules run back
     moved = [[] for _ in range(doc.page_count)]      # labels moved across
     underlines = [[] for _ in range(doc.page_count)]  # underlines lengthened
+    # A form with no signing area on any page - read from a copy, before the
+    # restyle moves anything - gets the standard block added, unless it is a
+    # declaration, someone else's form, or one listed never to get one.
+    adding = None
+    if (args.signing and not args.dry_run and signing_listed(name)
+            and not signing_excluded(name) and not theirs and not declared_doc):
+        copy_ = fitz.open("pdf", doc.tobytes())
+        if not asks_for_signature(copy_) and not any(signing_areas(p)[0] for p in copy_):
+            adding = block_spot(copy_)
     for pno, page in enumerate(doc, start=1):
         shove = list(plans[pno - 1].get("pushes") or ()) if not args.dry_run else []
         # bottom-most cut first: a cut higher up then carries what has already
@@ -5810,6 +5908,21 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                     if now is not None:
                         expected[pno - 1][(now, ord(ch))] += 1
             rows += [[name, pno, issue, detail] for issue, detail in said]
+            # A form that asks for no signature anywhere gets the block added
+            # at the end of its fill-in part (the client's word, 2026-10-07).
+            if adding is not None and pno - 1 == adding[0]:
+                rec, why = add_signing_block(page, fonts, min(size, 10.0), terms=adding[1])
+                if rec is None:
+                    rows.append([name, pno, "SIGNING_AREA_NO_ROOM",
+                                 f"a block to add, the form asking for no signature: it {why}"])
+                else:
+                    signed[pno - 1] = signed[pno - 1] + [rec]
+                    for base, ch in rec["made_glyphs"]:
+                        expected[pno - 1][(base, ord(ch))] += 1
+                    rows.append([name, pno, "SIGNING_AREA_ADDED",
+                                 f"the form asks for no signature; the standard block was added "
+                                 f"at y={rec['box'].y0:.0f}"
+                                 + (" before its terms" if adding[1] else " at its end")])
         # Once the type is set, a caption that stands away from its own rule
         # can have the rule run back to meet it. This happens last because it
         # measures where the words actually ended up, not where they began.

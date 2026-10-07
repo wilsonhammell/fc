@@ -679,6 +679,18 @@ def rows_with_fields(page, grids=()):
         kept.append(item)
     items = kept
 
+    # A tall tick box goes with the line its top is level with: set beside a
+    # two-line item, its own baseline falls by the second line, and Indemnity's
+    # "OFFICIAL CREDIT UNION CHEQUE" box came back beside "Order Number".
+    for b in items:
+        if b["what"] != "field" or b.get("kind") not in ("CheckBox", "RadioButton"):
+            continue
+        r = b["rect"]
+        level = [t for t in items if t["what"] == "text"
+                 and 0 <= t["rect"].x0 - r.x1 <= 20 and abs(t["rect"].y0 - r.y0) <= 10]
+        if level and r.height > 1.3 * level[0].get("size", 10.0):
+            b["base"] = min(level, key=lambda t: abs(t["rect"].y0 - r.y0))["base"]
+
     # group into rows by baseline first, then read each row left to right:
     # sorting by baseline throughout puts a field a point higher than its own
     # sentence ahead of it, and the blank ends up before the words it sits in
@@ -748,6 +760,26 @@ def rows_with_fields(page, grids=()):
             rows[k - 1] = up + row
             del rows[k]
             continue
+        k += 1
+
+    # And the other way: a tall tick box set beside a two-line item - Indemnity's
+    # "CREDIT UNION CERTIFIED CHEQUE / Order Number & $Amount" - has its middle
+    # between the lines, and read as a row of its own it was rebuilt on a line
+    # by itself under its words. It goes with the first line it stands beside.
+    k = 1
+    while k < len(rows):
+        row, up = rows[k], rows[k - 1]
+        words_up = sorted((i for i in up if i["what"] == "text"), key=lambda i: i["rect"].x0)
+        if (len(row) == 1 and row[0]["what"] == "field"
+                and row[0].get("kind") in ("CheckBox", "RadioButton") and words_up):
+            box, first = row[0]["rect"], words_up[0]
+            if (0 <= first["rect"].x0 - box.x1 <= 20
+                    and min(box.y1, first["rect"].y1) - max(box.y0, first["rect"].y0) >= 4
+                    and not any(i["rect"].x1 > box.x0 - 1 and i["rect"].x0 < box.x1 + 1
+                                for i in up)):
+                rows[k - 1] = up + [dict(row[0], base=first["base"])]
+                del rows[k]
+                continue
         k += 1
 
     # A short label set beside a block of two rows of choices, halfway down
@@ -3918,6 +3950,18 @@ def main():
 
     table = R.load_relabels(args.relabel_table) if args.relabel else {}
     declared_doc = R.declared_pages(doc)
+    # A form that asks for no signature anywhere gets the client's standard
+    # block added at the end of its fill-in part - before its terms, or after
+    # its last row - unless it is a declaration, someone else's, or listed
+    # never to get one. Room is kept for it as the form is laid out.
+    adding = bool(args.signing and (house or args.no_house)
+                  and R.signing_listed(args.input) and not R.signing_excluded(args.input)
+                  and not R.is_declaration(doc)
+                  and not R.asks_for_signature(fitz.open("pdf", doc.tobytes()))
+                  and not any(R.signing_areas(p)[0] for p in fitz.open("pdf", doc.tobytes())))
+    block_need = sheet.size * (3.4 * (R.STANDARD_MEMBERS + 1) + 1.2) + 4
+    adding_spot = None
+    adding_page = R.block_spot(fitz.open("pdf", doc.tobytes()))[0] if adding else None
     # a text box put in place of a merge tag never takes a name in use
     TAKEN.update(w.field_name for p in doc for w in p.widgets())
     notes, before, dropped_feet = [], [], []
@@ -4186,7 +4230,11 @@ def main():
         squeeze = 1.0
         if closes and len(laid) > 1:
             content = (sum(sheet.measure(r, right_edge) for r in laid)
-                       + sum(a["extra"] for a in signing_at))
+                       + sum(a["extra"] for a in signing_at)
+                       # and the block to be added there, which closing up the
+                       # gaps can make room for: Bill Payment Trace went to two
+                       # sheets for a block alone on the second
+                       + (block_need if adding and page.number == adding_page else 0.0))
             gaps = 0.0
             for a, b in zip(laid, laid[1:]):
                 said = [i for i in b if i["what"] == "text"]
@@ -4369,6 +4417,12 @@ def main():
                 n += 1
                 continue
 
+            if (adding and adding_spot is None and texts
+                    and R.TERMS_HEAD.search(texts[0]["text"]) and len(texts[0]["text"]) < 60):
+                sheet.room(block_need + 8, clear=False)
+                adding_spot = (sheet.doc.page_count - 1, sheet.y + sheet.size)
+                sheet.y += block_need
+                sheet.spare = 0.0
             bar = next((b for b in bars
                         if texts and b.y0 - 3 <= texts[0]["rect"].y0
                         and texts[0]["rect"].y1 <= b.y1 + 3), None)
@@ -4438,6 +4492,10 @@ def main():
             if not a["done"]:
                 close_signing(a)
         last_base = None                    # a new page starts its own run
+    if adding and adding_spot is None:
+        sheet.room(block_need + 8, clear=False)
+        adding_spot = (sheet.doc.page_count - 1, sheet.y + sheet.size)
+        sheet.y += block_need
     # Each sheet carries the footer of the form page its rows came from, at
     # the foot, in the fine-print size - as the form printed it on every page.
     if footers:
@@ -4498,6 +4556,23 @@ def main():
                     signing_issues.append((kind, f"page {pg.number + 1}: {detail}"))
                 else:
                     notes.append((kind, f"page {pg.number + 1}: {detail}"))
+        if adding_spot is not None:
+            pg = out[adding_spot[0]]
+            y_ = adding_spot[1]
+            area_ = {"box": fitz.Rect(sheet.rect.x0 + 36, y_, pg.rect.width - 36, y_ + 1),
+                     "members": 0, "rules": [], "pieces": [], "text": [], "frag_text": []}
+            rec_, why_ = R.standard_signing(pg, area_, fonts, sheet.size)
+            if rec_ is None:
+                signing_issues.append(("SIGNING_AREA_NO_ROOM",
+                                       f"page {pg.number + 1}: a block to add, the form asking "
+                                       f"for no signature: it {why_}"))
+            else:
+                signing_boxes.setdefault(pg.number, []).append(
+                    R.signing_extent(rec_, pg.rect.width) + (0, -6, 0, 6))
+                sheet.said.update(w for t in rec_["made_text"] for w in re.findall(r"[^\s_]+", t))
+                notes.append(("signing_area_added",
+                              f"page {pg.number + 1}: the form asks for no signature; the "
+                              f"standard block was added at y={y_:.0f}"))
         sheet.said = +sheet.said        # drop the words taken out entirely
     # An area the block had no room in: map it back to the rows of the form
     # it was laid out from, and lay the form out once more with the room kept

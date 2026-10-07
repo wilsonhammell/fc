@@ -53,6 +53,9 @@ RUNGS = [
 
 
 RUNG_NO = {"plain": 1, "condense": 2, "stubborn": 3, "rebuild": 4}
+# the look checks: how far a form came out from how it looked
+LOOKS = ("FIELD_MOVED", "ALIGNMENT_BROKEN", "CENTRING_LOST", "STYLE_CHANGED",
+         "FILL_CHANGED", "COLOUR_CHANGED", "NEW_LINE_BREAK", "RULES_CHANGED")
 
 
 def gather(raw, into, rung_of):
@@ -234,6 +237,7 @@ def main():
         # run knows - the dry runs never draw the block - so it is read from
         # what the restyle rungs just reported, and their file and proof for
         # the form are replaced.
+        held = {}
         if args.signing:
             moved_up = []
             for name, _ in RUNGS:
@@ -245,6 +249,10 @@ def main():
                         and rung_of.get(r[0]) == name}
                 if not need:
                     continue
+                # the rows the restyle wrote for those forms, to put back if
+                # the form comes back to this rung
+                with open(rep + ".held", "w", encoding="utf-8", newline="") as fh:
+                    csv.writer(fh).writerows(r for r in rows_ if r and r[0] in need)
                 rows_ = [r for r in rows_ if not r or r[0] not in need] + [
                     [n, "", "moved_to_rebuild",
                      "its signing area had no room for the standard block where it stood"]
@@ -255,10 +263,19 @@ def main():
                     rung_of[n] = "rebuild"
                     counts[name] -= 1
                     moved_up.append(n)
+                    # kept aside, file, proof and report, in case the rebuild
+                    # turns out to cost more than the block is worth
+                    hold = os.path.join(scratch, "held", n)
+                    os.makedirs(hold, exist_ok=True)
+                    shutil.copy2(os.path.join(args.output, n), os.path.join(hold, n))
+                    held[n] = {"rung": name, "dir": hold, "proofs": [],
+                               "rows": [r for r in list(csv.reader(open(rep + ".held", encoding="utf-8")))
+                                        if r and r[0] == n] if os.path.exists(rep + ".held") else []}
                     stem = os.path.splitext(n)[0] + " ["
                     for f in os.listdir(raw):
                         if f.startswith(stem) and "[rebuilt]" not in f:
-                            os.remove(os.path.join(raw, f))
+                            shutil.move(os.path.join(raw, f), os.path.join(hold, f))
+                            held[n]["proofs"].append(f)
             if moved_up:
                 print(f"\n{len(moved_up)} form(s) moved to the rebuild for the signing "
                       f"block: " + ", ".join(sorted(moved_up)), flush=True)
@@ -290,6 +307,40 @@ def main():
                 # failing outright, it never gets as far as its checks)
                 if "checks:" not in (r.stdout or ""):
                     found.append((n, "", "REBUILD_FAILED", (r.stderr or "")[-300:]))
+            # A form sent up only for the signing block's room comes back to
+            # its own rung if rebuilding it cost more than the block gives:
+            # Collection Request lost its boxes and came back scrambled. The
+            # look checks are the measure - three findings or more beyond what
+            # the restyle had - and the form is listed for a person instead.
+            for n, h in held.items():
+                looks_rb = sum(1 for f in found if f[0] == n and f[2] in LOOKS)
+                looks_rs = sum(1 for r in h["rows"] if len(r) > 2 and r[2] in LOOKS)
+                if looks_rb <= looks_rs + 2 and not any(
+                        f[0] == n and f[2] == "REBUILD_FAILED" for f in found):
+                    continue
+                shutil.copy2(os.path.join(h["dir"], n), os.path.join(args.output, n))
+                stem = os.path.splitext(n)[0] + " [rebuilt]"
+                for f in os.listdir(raw):
+                    if f.startswith(stem):
+                        os.remove(os.path.join(raw, f))
+                for f in h["proofs"]:
+                    shutil.move(os.path.join(h["dir"], f), os.path.join(raw, f))
+                rung_of[n] = h["rung"]
+                counts[h["rung"]] += 1
+                counts["rebuild"] -= 1
+                found = [f for f in found if f[0] != n]
+                rep = os.path.join(os.path.dirname(args.report) or ".", f"rung_{h['rung']}.csv")
+                rows_ = [r for r in csv.reader(open(rep, encoding="utf-8"))
+                         if not (r and r[0] == n and len(r) > 2 and r[2] == "moved_to_rebuild")]
+                rows_ += [r for r in h["rows"] if r[2] != "SIGNING_AREA_NO_ROOM"]
+                rows_.append([n, "", "SIGNING_BLOCK_FOR_A_PERSON",
+                              f"no room for the standard signing block in place, and rebuilding "
+                              f"the form to make room cost more than it gave ({looks_rb} look "
+                              f"finding(s) against {looks_rs}) - left as the restyle had it"])
+                with open(rep, "w", encoding="utf-8", newline="") as fh:
+                    csv.writer(fh).writerows(rows_)
+                print(f"   kept in place: {n} - the rebuild cost more than the block gave",
+                      flush=True)
             with open(os.path.join(os.path.dirname(args.report) or ".", "rung_rebuild.csv"),
                       "w", encoding="utf-8", newline="") as fh:
                 csv.writer(fh).writerows(found)

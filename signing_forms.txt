@@ -16,3 +16,14 @@ Aviso Leveraged Transactions
 Collateral Agreement-Q-Trade Investments
 Direction of Chicken Quota
 Direction of Egg Quota
+
+# A form that asks for no signature anywhere gets the standard block added at
+# the end of its fill-in part (2026-10-07) - except these, the client's call:
+# information sheets and staff worksheets ask for no signature and get none.
+# A leading "-" marks one.
+-Wire Instructions CAD
+-Wire Instructions EUR
+-Wire Instructions OTHER CURRENCIES
+-Wire Instructions USD
+-T4RIF Estate Calculation Worksheet
+-T4RSP Estate Calculation Worksheet
