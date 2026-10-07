@@ -645,6 +645,26 @@ def rows_with_fields(page, grids=()):
         f["base"] = item["base"]
         f["unruled"] = False
     items.extend(added_rules)
+    # A run of dashes typed just under a field is the form's line for it:
+    # Bill Payment Trace types "-----------" under each amount box, and with
+    # the field's own line drawn as well every amount came back underlined
+    # twice.
+    gone_ = []
+    for item in items:
+        if item["what"] != "text" or not re.fullmatch(r"\s*-{6,}\s*", item["text"]):
+            continue
+        r = item["rect"]
+        # (under it or in its lower half: the dashes can sit inside the box)
+        over_ = [f for f in boxes_ if (f["rect"].y0 + f["rect"].y1) / 2 <= r.y0 + 3
+                 and r.y0 - f["rect"].y1 <= 10
+                 and min(r.x1, f["rect"].x1) - max(r.x0, f["rect"].x0) >= 0.5 * r.width]
+        if over_:
+            gone_.append(item)
+            for f in over_:
+                f["unruled"] = False
+    if gone_:
+        DASHES_DROPPED.extend(i["text"].strip() for i in gone_)
+        items = [i for i in items if not any(i is g for g in gone_)]
 
     ticks = [i["rect"] for i in items
              if i["what"] == "field" and i["kind"] in ("CheckBox", "RadioButton")]
@@ -813,6 +833,33 @@ def rows_with_fields(page, grids=()):
                         max(r[1]["rect"].x0 for r in group))
             for r in group:
                 r[1]["min_x"] = start
+        k = j + 1
+
+    # and they end together: labels one under another, each with a blank after
+    # it - Bill Payment's Name / Home Branch / Number - end their blanks at
+    # one point, as far as every row has room for, where each had its own
+    k = 0
+    while k < len(rows):
+        j = k
+        while (j + 1 < len(rows) and lead_(rows[k]) and lead_(rows[j + 1])
+               and abs(srt(rows[j + 1])[0]["rect"].x0 - srt(rows[k])[0]["rect"].x0) <= 3):
+            j += 1
+        # (a line run to the margin keeps its length: Est107's "Late of:" ran
+        #  the width of the page, and cut back to the "of:" line over it that
+        #  stops for "S.I.N.:" it looked unfinished)
+        full_ = lambda r: srt(r)[1]["rect"].x1 >= page.rect.width - 70 and len(r) == 2
+        if j > k and any(full_(r) for r in rows[k:j + 1]):
+            j = k
+        if j > k:
+            group = [srt(r) for r in rows[k:j + 1]]
+            # (clear of the next label by the rebuild's widest gap, 24pt)
+            limits = [(r[2]["rect"].x0 - 24 if len(r) > 2 else 10 ** 6) for r in group]
+            end = min(max(r[1]["rect"].x1 for r in group), min(limits))
+            if all(end - r[1]["rect"].x0 >= 36 for r in group):
+                for r in group:
+                    b = r[1]["rect"]
+                    r[1]["rect"] = fitz.Rect(b.x0, b.y0, end, b.y1)
+                    r[1]["end_x"] = end
         k = j + 1
 
     # A short label set beside a block of two rows of choices, halfway down
@@ -1540,6 +1587,7 @@ def merge_prose(rows, right_edge=10 ** 6):
 
 UNFOLDED = []         # pages whose two columns of terms were read as one
 SIGNING_DROPPED = []  # (name, kind) of fields the standard signing block took out
+DASHES_DROPPED = []   # dashed lines typed under fields, drawn as the fields' lines
 
 
 def column_region(rows, width):
@@ -2044,6 +2092,13 @@ class KeepShape:
             widths = relax(relax(list(want), False, True), False, False)
             fit = (run(widths, False)[0], widths)
         xs, widths = fit
+        # a blank set to end at a column's shared end point ends there, where
+        # it starts is up to its label (and never short of a usable blank)
+        widths = list(widths)
+        for n, item in enumerate(spots):
+            if item.get("end_x") and item["what"] != "text":
+                nxt_ = xs[n + 1] - min(pad[n], 12.0) if n + 1 < len(spots) else right_edge
+                widths[n] = max(36.0, min(item["end_x"], nxt_) - xs[n])
         out = []
         for n, item in enumerate(spots):
             if item["what"] == "text":
@@ -2073,6 +2128,20 @@ class KeepShape:
         cols = [c for c in self.__dict__.get("_cols", ())
                 if c[2] == self.doc.page_count and 0 < self.y - c[3] <= self.size * 5]
         laid = [list(t) for t in laid]
+        # A row that opens with a tick box under another one - Bill Payment's
+        # second "☐ Member error" under "Please indicate ☐ Branch error" -
+        # moves over whole, so the boxes stay one above the other: left where
+        # the form put it, it sat left of the first box once "Please
+        # indicate" had grown.
+        if laid and laid[0][0].get("kind") in ("CheckBox", "RadioButton"):
+            first = laid[0][0]
+            match = [c for c in cols if abs(c[0] - first["rect"].x0) <= 2.0 and c[4] != "text"]
+            if match:
+                d = match[-1][1] - laid[0][1]
+                if 0.5 <= abs(d) <= 90 and laid[-1][1] + laid[-1][2] + d <= right_edge + 1 \
+                        and laid[0][1] + d >= 18:
+                    for t in laid:
+                        t[1] += d
         for n in range(1, len(laid)):
             item, x, room, lines = laid[n]
             # (a blank lines up with a blank started within 12pt of it: ABM's
@@ -4462,6 +4531,62 @@ def main():
                         break
                     inside += laid[k]
                     k += 1
+                # A shaded panel with no uprights inside its border - ABM's
+                # "ADMIN OFFICE USE ONLY" box, labels with a line to write on
+                # after each - is not a table. Read band by band it came back
+                # as one, label cells over empty cells. Its rows are set as
+                # rows, kept together, in a box of its own fill and border.
+                gb = here["box"]
+                # (drawn uprights only - dark strips or strokes; the edges of
+                #  the grey fills between label and blank are not lines)
+                def dark_(d):
+                    c = d.get("fill") if d["type"] == "f" else d.get("color")
+                    return c is not None and max(c) < 0.5
+                inner_ups = [d for d in R.printed(page).get_drawings()
+                             if dark_(d) and d["rect"].width <= 3 and d["rect"].height >= 8
+                             and gb.x0 + 6 < d["rect"].x0 < gb.x1 - 6
+                             and d["rect"].y0 < gb.y1 - 2 and d["rect"].y1 > gb.y0 + 2]
+                # (the box's own border is not a line to write on: Federal
+                #  RLIF's top edge, broken by its heading, came back as one)
+                panel_rows = [[i for i in r if not (i["what"] == "rule" and (
+                    abs(i["rect"].y1 - gb.y0) <= 4 or abs(i["rect"].y1 - gb.y1) <= 4))]
+                              for r in laid[n:k]]
+                typed -= sum(len(r) for r in laid[n:k]) - sum(len(r) for r in panel_rows)
+                panel_rows = [r for r in panel_rows if r]
+                if (not inner_ups and panel_rows
+                        and all(len(r) <= 3 and all(i.get("kind") not in ("CheckBox", "RadioButton")
+                                                    for i in r) for r in panel_rows)):
+                    # (shaded as the rest of the rebuild shades: a fill 95% white
+                    #  or lighter - ABM's - counts as white, as tables' do)
+                    shade_ = Counter(tuple(round(c, 2) for c in f) for r_, f in fills_of[page.number]
+                                     if gb.contains(r_)).most_common(1)
+                    need_ = sum(max(sheet.measure(r, right_edge) + sheet.size * 0.3, sheet.size * 2.8)
+                                for r in panel_rows) + sheet.size * 2
+                    sheet.room(need_ + 8, clear=False)
+                    page_no_, top_ = sheet.doc.page_count, sheet.y + sheet.size * 0.4
+                    sheet.y += sheet.size * 0.6
+                    for j_, r in enumerate(panel_rows):
+                        y_was = sheet.y
+                        sheet.place(r, min(right_edge, gb.x1 - 4))
+                        # rows as far apart as the form set them
+                        if j_ + 1 < len(panel_rows):
+                            step_ = (min(i["base"] for i in panel_rows[j_ + 1])
+                                     - min(i["base"] for i in r))
+                            sheet.y = max(sheet.y + sheet.size * 0.3,
+                                          y_was + min(step_, sheet.size * 3.2))
+                    if sheet.doc.page_count == page_no_:
+                        box_ = fitz.Rect(gb.x0, top_, gb.x1, sheet.y + sheet.size * 0.2)
+                        if shade_:
+                            sheet.page.draw_rect(box_, color=None, fill=shade_[0][0],
+                                                 width=0, overlay=False)
+                        sheet.page.draw_rect(box_, color=(0, 0, 0), width=1.6)
+                        sheet.y = box_.y1 + sheet.size * 0.4
+                    notes.append(("panel_set_as_rows",
+                                  f"page {page.number + 1} of the form: a shaded box of "
+                                  f"{len(panel_rows)} row(s) with no columns, set as rows"))
+                    last_base = gb.y1
+                    n = k
+                    continue
                 # every item belongs to exactly one band, or a field that
                 # sits on a band edge is built twice under the same name
                 bands = [(top, foot, cuts, []) for top, foot, cuts in here["bands"]]
