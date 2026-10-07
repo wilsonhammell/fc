@@ -502,6 +502,8 @@ def rows_with_fields(page, grids=()):
                       "name": w.field_name, "type": w.field_type,
                       "kind": w.field_type_string, "size": 10.0,
                       "boxed": w.field_type_string == "Text" and boxed_field(page, w),
+                      # a button is pressed, not written on: no line under it
+                      "unruled": w.field_type == fitz.PDF_WIDGET_TYPE_BUTTON,
                       "value": w.field_value, "props": R.field_props(w),
                       "bold": False, "italic": False,
                       "flags": w.field_flags, "text": ""})
@@ -982,6 +984,8 @@ def relabel_rows(rows, table, notes, page_no=0, before=None, declared=False):
                 continue
             text = " ".join(item["text"].split())
             new = table.get(R.label_key(text))
+            if new is not None and len(text.split()) == 1 and text[:1].islower():
+                new = None      # a wrapped word, not a label (see plan_relabels)
             if new is None:
                 if R.REVIEW_WORDS.search(text):
                     where = ("in running text" if len(text) > 42
@@ -1276,9 +1280,17 @@ def is_table_row(row):
     beneficiary grids are built that way, and they have to come back as a
     grid rather than a line of labels with rules trailing after it."""
     kinds = [i["what"] for i in row]
+    # A sentence with blanks in it reads the same way - "Safe Deposit Box #
+    # ___ was accessed on the ___ day of ___, 20__" - and boxed up as a grid
+    # it came back as a table (Est171). Its pieces run on: they start in lower
+    # case or with punctuation, where a table's labels do not.
+    runs_on = any(i["what"] == "text" and i["text"].strip()[:1]
+                  and (i["text"].strip()[0].islower() or i["text"].strip()[0] in ",.;:")
+                  for i in row[1:])
     return (len(row) >= 6 and kinds[0] == "text"        # a cell starts with its label
             and kinds.count("field") >= 3 and kinds.count("text") >= 3
-            and all(a != b for a, b in zip(kinds, kinds[1:])))
+            and all(a != b for a, b in zip(kinds, kinds[1:]))
+            and not runs_on)
 
 
 def ran_out_of_room(line, nxt, right_edge, slack=6.0):
@@ -2147,8 +2159,10 @@ class KeepShape:
                         if not joined(k):
                             break
                         run_to = laid[k][1] + laid[k][2]
-                    lone = item.get("unruled") and not any(
-                        i["what"] == "text" for i, *_ in laid)
+                    lone = (item.get("unruled") and not any(
+                        i["what"] == "text" for i, *_ in laid)) or item.get(
+                        "type") == fitz.PDF_WIDGET_TYPE_BUTTON
+                    # (a button never has a line under it)
                     if not item.get("in_cell") and not lone:
                         self.page.draw_line(fitz.Point(x, bottom),
                                             fitz.Point(run_to, bottom),
@@ -2263,7 +2277,9 @@ class KeepShape:
         # Rebuilt with a name and a type only, every one of those was lost,
         # and the field check, which counts names and types, passed it.
         props = item.get("props") or {}
-        for what in R.FIELD_SCRIPTS + ("field_label", "text_maxlen", "text_format"):
+        for what in R.FIELD_SCRIPTS + ("field_label", "text_maxlen", "text_format",
+                                       "button_caption", "fill_color", "border_color",
+                                       "text_color", "text_fontsize"):
             if props.get(what):
                 setattr(w, what, props[what])
         if props.get("choice_values") and w.field_type in (
@@ -4042,14 +4058,46 @@ def main():
                       f"read as one, left column then right, and set across the page"
                       + (f"; {len(inside)} rule(s) drawn among them left out"
                          if inside else "")))
+    # The letterhead's lines again at the top of a later page - Payroll's
+    # "LIBRO CREDIT UNION / Payroll / Deduction Authorization Form / 217 York
+    # St." - are the house header's to carry, as they are on the first page.
+    # Read as rows of that page they came back halfway down the second sheet.
+    band = doc[0].rect.height * 0.16
+    said_ = lambda r: " ".join(" ".join(i["text"].split()) for i in r if i["what"] == "text")
+    head_rows = {said_(r) for r in read[0]["rows"]
+                 if r and all(i["what"] == "text" and i["rect"].y1 <= band for i in r)}
+    head_rows.discard("")
+    if head_rows:
+        for n in range(1, len(read)):
+            rows_ = read[n]["rows"]
+            k = 0
+            while (k < len(rows_) and rows_[k] and said_(rows_[k]) in head_rows
+                   and all(i["rect"].y1 <= band for i in rows_[k])):
+                k += 1
+            # (two lines or more: one line alone - "LIBRO CREDIT UNION" over
+            #  RRIF's Declaration of Trust - is the start of a document's own
+            #  title, which the client wants kept on its new page)
+            if k >= 2:
+                read[n]["rows"] = rows_[k:]
+                notes.append(("letterhead_repeat_dropped",
+                              f"page {n + 1} of the form: {k} line(s) of the letterhead "
+                              f"again - the header carries them"))
     running = running_block(doc, read)
     running_fields = Counter()
     if running:
         k, on = running
         block = read[on[0]]["rows"][:k]
+        # or the letterhead's own lines, set at the top of every page in the
+        # band the house header takes on the first: Payroll's "LIBRO CREDIT
+        # UNION / Payroll / Deduction Authorization Form / 217 York St." came
+        # back halfway down the second sheet
+        top_band = doc[on[0]].rect.height * 0.16
+        letterhead_text = (k <= 5 and all(i["what"] == "text" and i["rect"].y1 <= top_band
+                                          for r in block for i in r))
         if (not any(i["what"] == "field" for r in block for i in r)
-                and k <= 3 and all(i["what"] != "text" or i["size"] >= 11.5 or i["bold"]
-                                   for r in block for i in r)):
+                and (letterhead_text
+                     or (k <= 3 and all(i["what"] != "text" or i["size"] >= 11.5 or i["bold"]
+                                        for r in block for i in r)))):
             # the form's title again at the head of each page: the house
             # header on the first sheet carries it, as it does page 1's
             for n in on:
@@ -4314,6 +4362,15 @@ def main():
                 zones[page.number].append(fitz.Rect(0, 0, page.rect.width, cut))
             started = True
             base = min(i["base"] for i in row)
+            # the block a form that asks for no signature gets goes before its
+            # terms or its office-use part - which can be a table's first row,
+            # so this comes before tables are set (ABM POS Trace's admin box)
+            if (adding and adding_spot is None and texts
+                    and R.TERMS_HEAD.search(texts[0]["text"]) and len(texts[0]["text"]) < 60):
+                sheet.room(block_need + 8, clear=False)
+                adding_spot = (sheet.doc.page_count - 1, sheet.y + sheet.size)
+                sheet.y += block_need
+                sheet.spare = 0.0
             # everything still to come on the last page of the form: if it is
             # only a line or two, it closes up and leans into the bottom
             # margin rather than opening a sheet of its own
@@ -4403,6 +4460,11 @@ def main():
                 zones[page.number].append(fitz.Rect(box.x0 - 8, box.y0 - 8,
                                                     page.rect.width, box.y1 + 8))
                 sheet.room(sheet.size * 2.6 + 4, clear=False)
+                # a small table goes on whole: ABM's admin box left its last
+                # row, "Response:", alone at the top of the next sheet
+                whole_ = sum(sheet.measure(r, right_edge) * 1.25 + 6 for r in grid)
+                if whole_ <= 0.4 * (sheet.rect.height - sheet.top - sheet.bottom):
+                    sheet.room(whole_ + 8, clear=False)
                 sheet.table(grid, right_edge)
                 last_base = max(i["base"] for i in grid[-1])
                 n = k
@@ -4417,12 +4479,6 @@ def main():
                 n += 1
                 continue
 
-            if (adding and adding_spot is None and texts
-                    and R.TERMS_HEAD.search(texts[0]["text"]) and len(texts[0]["text"]) < 60):
-                sheet.room(block_need + 8, clear=False)
-                adding_spot = (sheet.doc.page_count - 1, sheet.y + sheet.size)
-                sheet.y += block_need
-                sheet.spare = 0.0
             bar = next((b for b in bars
                         if texts and b.y0 - 3 <= texts[0]["rect"].y0
                         and texts[0]["rect"].y1 <= b.y1 + 3), None)
@@ -4559,7 +4615,10 @@ def main():
         if adding_spot is not None:
             pg = out[adding_spot[0]]
             y_ = adding_spot[1]
-            area_ = {"box": fitz.Rect(sheet.rect.x0 + 36, y_, pg.rect.width - 36, y_ + 1),
+            # (set from the text's own left edge, not the sheet's margin)
+            lefts_ = [w[0] for w in pg.get_text("words") if w[0] >= 30]
+            x0_ = min(lefts_) if lefts_ else 36.0
+            area_ = {"box": fitz.Rect(x0_, y_, pg.rect.width - 36, y_ + 1),
                      "members": 0, "rules": [], "pieces": [], "text": [], "frag_text": []}
             rec_, why_ = R.standard_signing(pg, area_, fonts, sheet.size)
             if rec_ is None:

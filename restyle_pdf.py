@@ -1182,6 +1182,16 @@ def field_props(w):
         out["text_format"] = w.text_format
     if w.choice_values:
         out["choice_values"] = list(w.choice_values)
+    if w.field_type == fitz.PDF_WIDGET_TYPE_BUTTON:
+        # a push button's face: Federal RLIF's "Print" and "Reset" came back
+        # as two blank buttons, ruled under like a blank to write on
+        if w.button_caption:
+            out["button_caption"] = w.button_caption
+            # (its caption is drawn only at a size: left at 0 it came back blank)
+            out["text_fontsize"] = w.text_fontsize or 8.0
+        for a in ("fill_color", "border_color", "text_color"):
+            if getattr(w, a, None):
+                out[a] = list(getattr(w, a))
     if w.field_type in TICKS:
         on = w.on_state()
         if on not in (True, None, "Yes"):
@@ -1231,7 +1241,7 @@ def verify_field_behaviour(before, after):
              "script_stroke": "keystroke check", "script_change": "validation",
              "script_blur": "on-exit script", "script_focus": "on-enter script",
              "choice_values": "dropdown list", "on_state": "tick-box export value",
-             "field_label": "tooltip"}
+             "field_label": "tooltip", "button_caption": "button caption"}
     return [("FIELD_BEHAVIOUR_LOST", f"{n} {names.get(what, what)}(s) gone, first on "
                                      f"{example[what]!r}")
             for what, n in lost.most_common()]
@@ -2863,6 +2873,18 @@ def signing_areas(page, min_rules=2):
         # its last is its own too, however far it sits from a line
         inner = [l for l in lines if l["signing"] and top_y - 2 <= l["box"].y0 <= foot_y + 2
                  and l["box"].x0 < across[1] and across[0] < l["box"].x1]
+        # A line that ends a sentence is the tail of a paragraph, not a caption:
+        # Appointment of Agent's "... by any one of the undersigned, to" /
+        # "Libro Credit Union Limited." is all signing words, and was erased
+        # with the block as the area's heading.
+        # (ending a sentence and set right under a line of prose - PAC's
+        #  "___ for Libro Credit Union." ends with a stop too, beside its line)
+        prose = lambda l: (l["text"].rstrip().endswith(".") and any(
+            not o["signing"] and 0 <= l["box"].y0 - o["box"].y1 <= 6
+            and o["box"].x0 < l["box"].x1 and l["box"].x0 < o["box"].x1 for o in lines))
+        heads = [l for l in heads if not prose(l)]
+        tails = [l for l in tails if not prose(l)]
+        inner = [l for l in inner if not prose(l)]
         own = {id(c): c for c in caps + heads + tails + inner}.values()
         box = fitz.Rect(min(r["x0"] for r in run), top_y - 2,
                         max(r["x1"] for r in run), max(r["y"] for r in run) + 2)
@@ -3608,6 +3630,13 @@ def standardize_signing(page, fonts, size, skip=False):
                           f"{len(rec['placed'])} field(s) moved to their cells "
                           f"({', '.join(rec['placed'][:4])}); {rec['bare']} cell(s) "
                           f"have no field"))
+        # The text an area takes with it is its captions. A sentence going
+        # with it - the end of a paragraph read as a caption - is a loss the
+        # word check is told to expect, so it is said here instead.
+        for t in rec["was"]:
+            if t.rstrip().endswith(".") and len(t.split()) > 6:
+                notes.append(("SIGNING_TOOK_SENTENCE",
+                              f"area at y={rec['box'].y0:.0f} took {t[:60]!r} with it"))
         for name, kind in rec["dropped"]:
             notes.append(("signing_field_dropped",
                           f"field {name!r} ({kind}) has no cell in the standard "
@@ -4895,6 +4924,11 @@ def plan_relabels(doc, fonts, args, table, size, fine, plans):
             bare = text.rstrip("_ ").rstrip()
             tail = text[len(bare):]
             new = table.get(label_key(bare))
+            # a word on its own in lower case is a sentence wrapped onto a new
+            # line, not a label: Q-Trade's "... the beneficial" / "owner:"
+            # came out "the beneficial Member:"
+            if new is not None and len(bare.split()) == 1 and bare[:1].islower():
+                new = None
             if new is None:
                 if REVIEW_WORDS.search(text):
                     where = "in running text" if len(text) > 42 else "a label the table doesn't cover"
