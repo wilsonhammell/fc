@@ -3737,7 +3737,7 @@ def main():
                          "puts out (a marketing board, the CRA)")
     ap.add_argument("--signing", action="store_true",
                     help="bring each member signing area to the client's "
-                         "standard: Authorized Name | Authorized Signature | "
+                         "standard: Name | Authorized Signature | "
                          "Date per member, then Authorizing Staff Member | Date")
     ap.add_argument("--merge-fields", action="store_true",
                     help="take mail-merge tags out of the text and put a text "

@@ -2215,9 +2215,15 @@ def follow_underlines(page, marked, keep_out=(), gap=6.0):
              for c in run.get("chars", []) if c[0] > 32]
     trims = []
     shape = page.new_shape()
+    # the rules still on the page: one a signing area took away with its
+    # heading is not there to follow, and run out to letters near its line it
+    # drew pieces under the standard block's captions
+    here = rule_segments(printed(page))
     for entry in marked:
         base, (y, rx0, rx1, width, colour, kind) = entry[0], entry[1]
         if any(abs(base - b) < 0.6 for b in keep_out):
+            continue
+        if not any(abs((s.y0 + s.y1) / 2 - y) <= 1.5 and s.x0 < rx1 and rx0 < s.x1 for s in here):
             continue
         if len(entry) == 4:
             words, nth = entry[2], entry[3]
@@ -2617,7 +2623,11 @@ DETAILS = re.compile(r"address|phone|fax|telephone|contact|institution|account|a
 SIGNISH = re.compile(r"witness|date|agent|representative|sign|officer|staff|name|notary|"
                      r"commissioner", re.I)
 ACCEPTS = re.compile(r"\bI(?:/we)?\b.{0,90}\b(?:accept|agree|acknowledge|consent|authori[sz]e)|"
-                     r"\bby signing\b|\bsigned below\b", re.I)
+                     r"\bby signing\b|\bsigned below\b"
+                     # an agreement's own words for signing: Milk's "IN WITNESS
+                     # WHEREOF the Borrower has hereunto set his hand and seal"
+                     r"|\bin witness whereof\b|\bhereunto set\b|signed,? sealed and delivered",
+                     re.I)
 CORPORATE = re.compile(r"authority to bind|bind the (?:corporation|company)|"
                        r"\bcorporat|\bc/s\b", re.I)
 
@@ -2689,9 +2699,14 @@ def signing_areas(page, min_rules=2):
     # somewhere to sign: Safe Deposit's "Owner Signatures" heading had its
     # underline read as a signature line, and the block was refused for
     # being drawn over the heading.
-    rules = [r for r in rules if r["typed"] or not any(
-        -1 <= r["y"] - l["box"].y1 <= 4 and abs(r["x0"] - l["box"].x0) <= 4
-        and abs(r["x1"] - l["box"].x1) <= 6 for l in lines)]
+    # (centred under the words and about as wide: a heading the relabel
+    #  rewrote keeps its old underline - "Owner Signatures" became
+    #  "Authorized Signature", 9pt off at each end)
+    under_of = lambda r, l: (-1 <= r["y"] - l["box"].y1 <= 4
+                             and abs((r["x0"] + r["x1"]) / 2 - (l["box"].x0 + l["box"].x1) / 2) <= 6
+                             and 0.5 * l["box"].width <= r["x1"] - r["x0"] <= l["box"].width * 1.3 + 6)
+    underlines_ = [(r, l) for r in rules if not r["typed"] for l in lines if under_of(r, l)]
+    rules = [r for r in rules if r["typed"] or not any(under_of(r, l) for l in lines)]
 
     # which line each piece of text sits under, if any: the nearest one
     # above it that it overlaps. A caption belongs to that line alone.
@@ -3008,6 +3023,11 @@ def signing_areas(page, min_rules=2):
             declined.append(f"{what}: {members} signature line(s) - too little to go on")
             continue
         pieces = [fitz.Rect(l["box"]) for l in own]
+        # a heading the area takes goes with its underline: left behind, the
+        # underline sat under nothing and was run out to the block's captions
+        own_ids = {id(l) for l in own}
+        pieces += [fitz.Rect(r["x0"] - 1, r["y"] - 1.5, r["x1"] + 1, r["y"] + 1.5)
+                   for r, l in underlines_ if id(l) in own_ids]
         bits = [(f, t) for f, t in frags
                 if box.x0 - 4 <= f.x0 and f.x1 <= box.x1 + 4
                 and box.y0 - 14 <= f.y0 and f.y1 <= box.y1 + 4]
@@ -3034,7 +3054,7 @@ def member_rows(area):
 def standard_signing(page, area, fonts, size, margin=36.0):
     """Replace one signing area with the client's standard, in place.
 
-        Authorized Name       Authorized Signature       Date        x members
+        Name                  Authorized Signature       Date        x members
                               Authorizing Staff Member   Date
 
     Everything inside the area goes - its captions, its lines, the orange
@@ -3346,7 +3366,8 @@ def standard_signing(page, area, fonts, size, margin=36.0):
     groups = groups[:area["members"]]
     for n in range(member_rows(area)):
         cells = split(groups.pop(0)) if groups else [[], [], []]
-        for (x0, x1), label, group in zip(cols, ("Authorized Name",
+        # (the first column is "Name": the client's word, 2026-10-07)
+        for (x0, x1), label, group in zip(cols, ("Name",
                                                 "Authorized Signature", "Date"), cells):
             rule(x0, x1, y)
             caption(x0, y + size + 1, label)
@@ -3379,9 +3400,13 @@ def standard_signing(page, area, fonts, size, margin=36.0):
         if n:
             y += pitch
         cells_ = split(group_)
-        cells_[1], cells_[0] = cells_[1] + cells_[0], []
-        for (x0, x1), label, group in zip(cols[1:], ("Authorizing Staff Member", "Date"),
-                                          cells_[1:]):
+        # The staff member signs in the first column, under the members'
+        # names, then a gap, then the date - the client's layout
+        # (2026-10-07); their name field goes in with their signature.
+        cells_[0], cells_[1] = cells_[1] + cells_[0], []
+        for (x0, x1), label, group in zip((cols[0], cols[2]),
+                                          ("Authorizing Staff Member", "Date"),
+                                          (cells_[0], cells_[2])):
             rule(x0, x1, y)
             caption(x0, y + size + 1, label)
             if (held or staff_held) and not seat(group, x0, x1, y):
@@ -3644,7 +3669,7 @@ def standardize_signing(page, fonts, size, skip=False):
                           f"one kind for one signer; taken out"))
         notes.append(("signing_area_standard",
                       f"area at y={rec['box'].y0:.0f} rebuilt as {max(STANDARD_MEMBERS, rec['members'])} "
-                      f"member row(s) - Authorized Name | Authorized Signature | "
+                      f"member row(s) - Name | Authorized Signature | "
                       f"Date - and a staff row (the form had {rec['members']} "
                       f"signer(s)); it read "
                       + "; ".join(repr(t[:30]) for t in rec["was"][:4])))
@@ -6478,7 +6503,7 @@ def main():
     ap.add_argument("--png-dpi", type=int, default=110)
     ap.add_argument("--signing", action="store_true",
                     help="bring each member signing area to the client's "
-                         "standard: Authorized Name | Authorized Signature | "
+                         "standard: Name | Authorized Signature | "
                          "Date per member, then Authorizing Staff Member | Date")
     ap.add_argument("--merge-fields", action="store_true",
                     help="take mail-merge tags (a name in guillemets or double "

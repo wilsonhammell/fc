@@ -17,10 +17,10 @@
 
 # iv. Witness / staff references -> Authorizing Staff Member
 # A bare "Witness" is the first column of a member's signing row, and the
-# client's signing area is Authorized Name | Authorized Signature | Date
-# (review notes 2026-09-22; their own hand-cleaned forms do the same).
+# client's signing area is Name | Authorized Signature | Date
+# (review notes 2026-09-22; "Name", not "Authorized Name", 2026-10-07).
 # A witness the form names as Libro's or the credit union's stays staff.
-Witness                                 => Authorized Name
+Witness                                 => Name
 Signature of Witness                    => Authorizing Staff Member
 Witness' Signature                      => Authorizing Staff Member
 
