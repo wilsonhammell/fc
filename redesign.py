@@ -602,6 +602,43 @@ def rows_with_fields(page, grids=()):
         keep.append(item)
     items = keep
 
+    # A label typed with its own blank - "Attorney Name: ________" in one run
+    # of text - and a field set over those underscores: the field is that
+    # blank. Read apart, the field sat a few points high on a row of its own,
+    # was drawn with no line, and the label lost its underscores: Transfer In
+    # POA's attorney and witness rows came back with nothing to write on.
+    boxes_ = [i for i in items if i["what"] == "field"
+              and i.get("kind") not in ("CheckBox", "RadioButton")]
+    added_rules = []
+    for item in items:
+        if item["what"] != "text":
+            continue
+        m = re.match(r"^(.*?\S)\s*_{4,}[.:,]?\s*$", item["text"])
+        if not m:
+            continue
+        r = item["rect"]
+        label_end = r.x0 + r.width * len(m.group(1)) / max(len(item["text"].rstrip()), 1)
+        over = [f for f in boxes_ if f["rect"].x0 >= label_end - 12 and f["rect"].x0 < r.x1
+                and abs((f["rect"].y0 + f["rect"].y1) / 2 - (r.y0 + r.y1) / 2) <= 10]
+        if not over and len(item["text"]) - len(m.group(1)) >= 8:
+            # no field over it: the underscores are a line of their own, as
+            # any other typed blank is - left in the label, "Witness
+            # Signature: ____" came back with no line to sign on
+            item["text"] = m.group(1)
+            item["rect"] = fitz.Rect(r.x0, r.y0, label_end, r.y1)
+            added_rules.append({"what": "rule", "rect": fitz.Rect(label_end + 3, r.y0, r.x1, r.y1),
+                                "text": "", "base": item["base"], "size": item.get("size", 10.0),
+                                "bold": False, "italic": False})
+            continue
+        if len(over) != 1:
+            continue
+        f = over[0]
+        item["text"] = m.group(1)
+        item["rect"] = fitz.Rect(r.x0, r.y0, min(label_end, f["rect"].x0 - 1), r.y1)
+        f["base"] = item["base"]
+        f["unruled"] = False
+    items.extend(added_rules)
+
     ticks = [i["rect"] for i in items
              if i["what"] == "field" and i["kind"] in ("CheckBox", "RadioButton")]
     kept = []
@@ -4086,7 +4123,7 @@ def main():
         # room the block has nowhere to go on a page the rebuild has filled.
         signing_at = []
         found_here = (R.signing_areas(page)[0]
-                      if args.signing and house and not R.is_declaration(doc)
+                      if args.signing and (house or args.no_house) and not R.is_declaration(doc)
                       and R.signing_listed(args.input) else [])
         # Several areas close together on the form - "Owner Signature" rows
         # split by "(if two or more signatures are required)" - are read as
@@ -4444,7 +4481,10 @@ def main():
                                                "witnessing are left as the form has them"))
         for pg in out:
             done, said_notes = R.standardize_signing(pg, fonts, sheet.size,
-                                                     skip=not house or declared)
+                                                     # Libro's own pages behind an issuer's
+                                                     # (Milk) are Libro's to sign, header or not
+                                                     skip=(not house and not args.no_house)
+                                                     or declared)
             for rec in done:
                 SIGNING_DROPPED.extend(rec.get("dropped", []))
                 signing_boxes.setdefault(pg.number, []).append(

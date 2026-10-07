@@ -2572,7 +2572,8 @@ officer import from above per and applicant applicants co holder holders
 annuitant grantor spouse trustee trustees printed here sign s
 signed credit union libro representative
 witnessed by commissioner commissioners oaths notary public for request agent as office a
-if two more are required
+if two more are required limited
+authorization employee officers attorney attorneys
 """.split())
 # ("(if two or more signatures are required)" under PAD's joint owner lines
 #  cut its signing grid into pieces too small for the block)
@@ -2588,7 +2589,7 @@ SIGN_HEAD = re.compile(r"(?:farmers|producers|board|commission)\b.{0,60}hereby a
 SIGN_JOINS = {"and", "or", "of", "the", "per", "s", "a", "by", "for", "as"}
 # who is signing: an area has to name someone, or say sign. "Name: ___ and
 # ___" is in signing words from end to end and is a block of names.
-SIGN_ROLE = re.compile(r"sign|witness|borrower|owner|member|joint|producer|mortgagor|"
+SIGN_ROLE = re.compile(r"sign|witness|borrower|owner|member|joint|producer|mortgagor|attorney|"
                        r"lessee|applicant|holder|annuitant|grantor|spouse|trustee|"
                        r"officer|staff|authori[sz]ed", re.I)
 
@@ -2605,6 +2606,8 @@ DETAILS = re.compile(r"address|phone|fax|telephone|contact|institution|account|a
                      re.I)
 SIGNISH = re.compile(r"witness|date|agent|representative|sign|officer|staff|name|notary|"
                      r"commissioner", re.I)
+ACCEPTS = re.compile(r"\bI(?:/we)?\b.{0,90}\b(?:accept|agree|acknowledge|consent|authori[sz]e)|"
+                     r"\bby signing\b|\bsigned below\b", re.I)
 CORPORATE = re.compile(r"authority to bind|bind the (?:corporation|company)|"
                        r"\bcorporat|\bc/s\b", re.I)
 
@@ -2640,17 +2643,30 @@ def signing_areas(page, min_rules=2):
                           "box": fitz.Rect(w[:4])})
     if not rules:
         return [], []
-    lines = []
+    sig_fields = [fitz.Rect(w.rect) for w in page.widgets()
+                  if w.field_type == fitz.PDF_WIDGET_TYPE_SIGNATURE]
+    lines, frags = [], []
     for b in p.get_text("dict")["blocks"]:
         for ln in b.get("lines", ()):
             spans = [sp for sp in ln["spans"] if sp["text"].strip()
                      and not re.fullmatch(r"[_\s.:,]*", sp["text"])]
             if not spans:
+                # a lone comma or full stop where a blank used to end is a
+                # fragment too (see below), but never underscores: those are
+                # lines to write on
+                bits = [sp for sp in ln["spans"] if re.fullmatch(r"\s*[.:,;]+\s*", sp["text"])]
+                frags.extend((fitz.Rect(sp["bbox"]), sp["text"].strip()) for sp in bits)
                 continue
             box = fitz.Rect(spans[0]["bbox"])
             for sp in spans[1:]:
                 box |= fitz.Rect(sp["bbox"])
             text = " ".join("".join(sp["text"] for sp in spans).split())
+            if len(re.sub(r"\W", "", text)) <= 2:
+                # a stray glyph or two - RRIF's "h", "d", "ff", a comma left
+                # where a blank was - says nothing; it goes with an area it
+                # sits in, or the block is refused for drawing over it
+                frags.append((box, text))
+                continue
             said = signing_words(text)
             # "and" on its own - the "and ___ and ___" of a parties block -
             # is a joining word, not a caption: signing language has to say
@@ -2658,6 +2674,14 @@ def signing_areas(page, min_rules=2):
             lines.append({"box": box, "text": text,
                           "signing": bool(said) and all(w in SIGN_WORDS for w in said)
                                      and any(w not in SIGN_JOINS for w in said)})
+
+    # A line the width of the words just over it is their underline, not
+    # somewhere to sign: Safe Deposit's "Owner Signatures" heading had its
+    # underline read as a signature line, and the block was refused for
+    # being drawn over the heading.
+    rules = [r for r in rules if r["typed"] or not any(
+        -1 <= r["y"] - l["box"].y1 <= 4 and abs(r["x0"] - l["box"].x0) <= 4
+        and abs(r["x1"] - l["box"].x1) <= 6 for l in lines)]
 
     # which line each piece of text sits under, if any: the nearest one
     # above it that it overlaps. A caption belongs to that line alone.
@@ -2671,10 +2695,13 @@ def signing_areas(page, min_rules=2):
     for l in lines:
         if id(l) in labels:
             continue
-        above = [r for r in rules if 0 <= l["box"].y0 - r["y"] <= 24
+        # (a caption can start a point or two above its line: FHSA
+        # Designation's "Checked By / Entered By / Entry Date" did, went
+        # unowned, and their lines borrowed "Applicant Signature" from above)
+        above = [r for r in rules if -3 <= l["box"].y0 - r["y"] <= 24
                  and l["box"].x0 < r["x1"] and r["x0"] < l["box"].x1]
         if above:
-            owner_of[id(l)] = id(min(above, key=lambda r: l["box"].y0 - r["y"]))
+            owner_of[id(l)] = id(min(above, key=lambda r: abs(l["box"].y0 - r["y"])))
 
     def caption_of(r):
         """The text that says what a line is for: under it, before it on the
@@ -2687,7 +2714,11 @@ def signing_areas(page, min_rules=2):
         # first signing row and that row stopped counting as one
         over = [l for l in lines if 0 <= r["y"] - l["box"].y1 <= 30
                 and l["box"].x0 < r["x1"] and r["x0"] < l["box"].x1
-                and owner_of.get(id(l)) in (None, id(r)) and len(l["text"]) <= 40]
+                and owner_of.get(id(l)) in (None, id(r)) and len(l["text"]) <= 40
+                # (a label typed before another line is that line's: FHSA
+                #  Designation's ", in the Province of Ontario, on" captioned
+                #  the witness line under it and made the row "details")
+                and id(l) not in labels]
         for group in (left, under, over):
             if group:
                 return min(group, key=lambda l: abs(l["box"].y0 - r["y"]))
@@ -2702,7 +2733,7 @@ def signing_areas(page, min_rules=2):
             return "date"
         if "sign" in t:
             return "signature"
-        if re.search(r"staff|agent|\boffice\b|representative|credit union|libro", t):
+        if re.search(r"staff|employee|agent|\boffice\b|representative|credit union|libro", t):
             return "staff"            # "Authorized Office, as Agent" signs for Libro
         if re.fullmatch(r"\W*date\W*", t):
             return "date"
@@ -2761,8 +2792,27 @@ def signing_areas(page, min_rules=2):
         return any(CORPORATE.search(l["text"]) and -4 <= l["box"].y0 - r["y"] <= 30
                    and l["box"].x0 < r["x1"] and r["x0"] < l["box"].x1 for l in lines)
     corp_rows = [r["y"] for r in rules if corporate(r)]
+    # Uncaptioned pieces drawn end to end across most of the page are one
+    # line to write on - RRIF Payment's last "special instructions" line, in
+    # three pieces - not three places to sign. (A signing row drawn the same
+    # way has its captions, and stays.)
+    def chained(r):
+        row_ = sorted((o for o in rules if abs(o["y"] - r["y"]) <= 1), key=lambda o: o["x0"])
+        chain = [row_[0]]
+        for o in row_[1:]:
+            if o["x0"] - chain[-1]["x1"] <= 2:
+                chain.append(o)
+            elif r in chain:
+                break
+            else:
+                chain = [o]
+        return (r in chain and len(chain) > 1
+                and chain[-1]["x1"] - chain[0]["x0"] > page.rect.width * 0.7
+                and all(o["cap"] is None for o in chain))
+    long_lines = [r for r in rules if r["cap"] is None and chained(r)]
     usable = sorted((r for r in rules
-                     if not any(abs(r["y"] - y) <= 6 for y in corp_rows)
+                     if r not in long_lines
+                     and not any(abs(r["y"] - y) <= 6 for y in corp_rows)
                      and ((r["cap"] is None and not blank_of_something_else(r))
                           or (r["cap"] is not None and r["cap"]["signing"]))),
                     key=lambda r: (r["y"], r["x0"]))
@@ -2798,10 +2848,15 @@ def signing_areas(page, min_rules=2):
         # Withdrawal's "Date Signed" captions the line beside the bank's
         # address, and taken as a heading it was erased with the block)
         mine = {id(r) for r in run} | {None}
-        heads = [l for l in lines if l["signing"] and 0 <= top_y - l["box"].y1 <= 48
+        # (to 56pt: Appointment of Agent's "Signature(s)" stood 51pt over its
+        #  lines once rebuilt)
+        heads = [l for l in lines if l["signing"] and 0 <= top_y - l["box"].y1 <= 56
                  and l["box"].x0 < across[1] and across[0] < l["box"].x1
                  and owner_of.get(id(l)) in mine]
-        tails = [l for l in lines if l["signing"] and 0 <= l["box"].y0 - foot_y <= 24
+        # (to 32pt: RRIF's "Authorized Officer, as Agent" is the second line
+        #  of a caption, 27pt under its line, and left out it was "printing"
+        #  the block could not be drawn over)
+        tails = [l for l in lines if l["signing"] and 0 <= l["box"].y0 - foot_y <= 32
                  and l["box"].x0 < across[1] and across[0] < l["box"].x1
                  and owner_of.get(id(l)) in mine]
         # and anything in pure signing language between its first line and
@@ -2834,12 +2889,26 @@ def signing_areas(page, min_rules=2):
                          and "sign" in o["cap"]["text"].lower()}
                 members += max(1, len(named))
         what = f"{len(run)} line(s) at y={box.y0:.0f}"
-        if not any(SIGN_ROLE.search(t) for t in [l["text"] for l in own]):
+        # Lines under a member's own words of agreement are where they sign,
+        # captioned or not: the Letters of Engagement put "I have read,
+        # understood and accept the terms ..." over two bare lines and a Date.
+        # (up to 120pt: Authorization to Release has its officers' "I/We, the
+        #  undersigned, ... hereby authorize" two paragraphs over their lines)
+        accepts = any(ACCEPTS.search(l["text"]) and 0 <= box.y0 - l["box"].y1 <= 120
+                      for l in lines)
+        # and a line a signature field sits on is somewhere to sign, whatever
+        # is printed round it: Authorization to Release's officers' lines had
+        # only author's notes for captions, and those come off the page
+        accepts = accepts or any(
+            0 <= r["y"] - f.y1 + 6 <= 14 and f.x0 < r["x1"] and r["x0"] < f.x1
+            for r in run for f in sig_fields)
+        if not accepts and not any(SIGN_ROLE.search(t) for t in [l["text"] for l in own]):
             declined.append(f"{what}: no caption names anyone signing - a block of names")
             continue
         # Bare lines are somewhere to sign only if the area says so somewhere:
         # an agent's name and address lines have no caption at all.
-        said = any(r["cap"] is not None for r in run)
+        said = (accepts or any(r["cap"] is not None for r in run)
+                or any(SIGN_ROLE.search(l["text"]) for l in heads))
         # A line with a label before it that is not signing language - "Current
         # Date", "Farm/Business Name" - makes the run a block of details to
         # fill in, whatever the lines under it say.
@@ -2917,11 +2986,16 @@ def signing_areas(page, min_rules=2):
             declined.append(f"{what}: {members} signature line(s) - too little to go on")
             continue
         pieces = [fitz.Rect(l["box"]) for l in own]
+        bits = [(f, t) for f, t in frags
+                if box.x0 - 4 <= f.x0 and f.x1 <= box.x1 + 4
+                and box.y0 - 14 <= f.y0 and f.y1 <= box.y1 + 4]
+        pieces += [fitz.Rect(f) for f, _ in bits]
         for r in run:
             pieces.append(fitz.Rect(r["box"]) if r["typed"]
                           else fitz.Rect(r["x0"] - 1, r["y"] - 1.5, r["x1"] + 1, r["y"] + 1.5))
         found.append({"box": box, "members": members, "rules": run,
-                      "pieces": pieces, "text": [l["text"] for l in own]})
+                      "pieces": pieces, "text": [l["text"] for l in own],
+                      "frag_text": [t for _, t in bits]})
     return found, declined
 
 
@@ -3319,7 +3393,8 @@ def standard_signing(page, area, fonts, size, margin=36.0):
     return {"box": box, "bottom": y + size + 2, "gone_glyphs": gone_glyphs,
             "made_glyphs": made_glyphs, "made_rules": made_rules,
             "moved_glyphs": moved_glyphs, "placed": placed, "unplaced": unplaced,
-            "bare": bare, "members": area["members"], "was": area["text"],
+            "bare": bare, "members": area["members"],
+            "was": area["text"] + area.get("frag_text", []),
             "made_text": made_text, "lost_marks": lost_marks, "dropped": dropped}, None
 
 
@@ -3365,7 +3440,12 @@ def is_declaration(doc):
     by whoever the law says - a commissioner, any adult - and the client's own
     hand-cleaned Mortgagor's Declaration kept "Witness" exactly as it was.
     Decided by the first page's title (see title_declares)."""
-    return bool(doc.page_count) and bool(title_declares(doc[0], first=True))
+    # or by what it has its signer swear: Est135's "Renunciation of Designated
+    # Beneficiary" is a solemn declaration under the Evidence Act, witnessed
+    if not doc.page_count:
+        return False
+    return bool(title_declares(doc[0], first=True)) or bool(
+        re.search(r"solemn(?:ly)? declar", " ".join(p.get_text() for p in doc), re.I))
 
 
 def declared_pages(doc):
