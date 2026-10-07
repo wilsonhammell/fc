@@ -2570,9 +2570,22 @@ borrower borrowers producer producers mortgagor lessee lessees member members
 authorized authorizing authorised staff of the please print or type signing
 officer import from above per and applicant applicants co holder holders
 annuitant grantor spouse trustee trustees printed here sign s
+signed credit union libro representative
+witnessed by commissioner commissioners oaths notary public for request agent as office a
+if two more are required
 """.split())
-SIGN_HEAD = re.compile(r"office use|use only|for\s+\w+\s+use|dfo use", re.I)
-SIGN_JOINS = {"and", "or", "of", "the", "per", "s"}
+# ("(if two or more signatures are required)" under PAD's joint owner lines
+#  cut its signing grid into pieces too small for the block)
+# ("Date Signed" between a staff line and a signature line on TFSA's row was
+#  not signing language, so the block was refused for drawing over it; nor
+#  was "Credit Union Witness")
+# (and the marketing board's acknowledgement under a quota direction: "The
+#  Chicken Farmers of Ontario hereby acknowledge receipt ..." over one
+#  "Authorized Signature" line is the Board signing, not the member)
+SIGN_HEAD = re.compile(r"(?:farmers|producers|board|commission)\b.{0,60}hereby acknowledge|"
+                       r"office use|use only|for\s+\w+\s+use|dfo use|for use by|"
+                       r"institution only", re.I)
+SIGN_JOINS = {"and", "or", "of", "the", "per", "s", "a", "by", "for", "as"}
 # who is signing: an area has to name someone, or say sign. "Name: ___ and
 # ___" is in signing words from end to end and is a block of names.
 SIGN_ROLE = re.compile(r"sign|witness|borrower|owner|member|joint|producer|mortgagor|"
@@ -2585,8 +2598,15 @@ def signing_words(text):
     return [w for w in re.split(r"[^a-z]+", text.lower()) if w]
 
 
+# a caption for something other than signing, and one that still has to
+# do with it: "Phone", "Fax Number", "Name and address of Financial
+# Institution" against "Date of request", "Witnessed by ... Notary Public"
+DETAILS = re.compile(r"address|phone|fax|telephone|contact|institution|account|amount|e-?mail",
+                     re.I)
+SIGNISH = re.compile(r"witness|date|agent|representative|sign|officer|staff|name|notary|"
+                     r"commissioner", re.I)
 CORPORATE = re.compile(r"authority to bind|bind the (?:corporation|company)|"
-                       r"corporat|c/s", re.I)
+                       r"\bcorporat|\bc/s\b", re.I)
 
 
 def signing_areas(page, min_rules=2):
@@ -2677,10 +2697,13 @@ def signing_areas(page, min_rules=2):
         t = (cap["text"] if cap else "").lower()
         if "witness" in t:
             return "witness"
+        # "Date Signed" is a date, not a second signature line
+        if re.match(r"\W*date\b", t) and "signature" not in t:
+            return "date"
         if "sign" in t:
             return "signature"
-        if "staff" in t:
-            return "staff"
+        if re.search(r"staff|agent|\boffice\b|representative|credit union|libro", t):
+            return "staff"            # "Authorized Office, as Agent" signs for Libro
         if re.fullmatch(r"\W*date\W*", t):
             return "date"
         if "name" in t:
@@ -2689,6 +2712,17 @@ def signing_areas(page, min_rules=2):
 
     for r in rules:
         r["cap"] = caption_of(r)
+        # A typed line's label can be typed onto it: "Dated: ________" is one
+        # run of text, so nothing sat before the line and it read as a bare
+        # line to sign on - PAD's signing grid counted a fifth signer.
+        if r["cap"] is None and r["typed"]:
+            left_ = [w for w in words if abs(w[3] - 1 - r["y"]) <= 2
+                     and 0 <= r["x0"] - w[2] <= 12 and not re.fullmatch(r"[_.:,]*", w[4])]
+            if left_:
+                w = max(left_, key=lambda w: w[2])
+                said_ = signing_words(w[4])
+                r["cap"] = {"box": fitz.Rect(w[:4]), "text": w[4],
+                            "signing": bool(said_) and all(x in SIGN_WORDS for x in said_)}
         r["role"] = role(r["cap"])
     # Whose a line is can depend on the one above it. "Trustee: ___ Witness:
     # ___" over "Signature: ___ Signature: ___" is two people, each with a
@@ -2738,7 +2772,10 @@ def signing_areas(page, min_rules=2):
             gap_top, gap_bot = run[-1]["y"], r["y"]
             between = [l for l in lines if gap_top + 2 < l["box"].y0 < gap_bot - 2
                        and not l["signing"]]
-            if r["y"] - run[-1]["y"] > 100 or between:
+            # (a witness's or staff line can sit a little further down: PAD's
+            # "___ for Libro Credit Union / Witness" is 101pt under its grid)
+            reach_ = 130 if r["role"] in ("witness", "staff") else 100
+            if r["y"] - run[-1]["y"] > reach_ or between:
                 areas.append(run)
                 run = []
         run.append(r)
@@ -2757,10 +2794,16 @@ def signing_areas(page, min_rules=2):
         # signing language at the area's edges belongs to it: a heading over
         # it - "Signature(s)", "Name(s): (please print or type)" - and the
         # caption of its last line, which a form can set well below the line
+        # (a caption that belongs to some other line is that line's: FHSA
+        # Withdrawal's "Date Signed" captions the line beside the bank's
+        # address, and taken as a heading it was erased with the block)
+        mine = {id(r) for r in run} | {None}
         heads = [l for l in lines if l["signing"] and 0 <= top_y - l["box"].y1 <= 48
-                 and l["box"].x0 < across[1] and across[0] < l["box"].x1]
+                 and l["box"].x0 < across[1] and across[0] < l["box"].x1
+                 and owner_of.get(id(l)) in mine]
         tails = [l for l in lines if l["signing"] and 0 <= l["box"].y0 - foot_y <= 24
-                 and l["box"].x0 < across[1] and across[0] < l["box"].x1]
+                 and l["box"].x0 < across[1] and across[0] < l["box"].x1
+                 and owner_of.get(id(l)) in mine]
         # and anything in pure signing language between its first line and
         # its last is its own too, however far it sits from a line
         inner = [l for l in lines if l["signing"] and top_y - 2 <= l["box"].y0 <= foot_y + 2
@@ -2822,7 +2865,16 @@ def signing_areas(page, min_rules=2):
         # A line on a row that also holds a labelled detail - the second
         # blank of "Dated at ___, Ontario, ___" - belongs to that row, not to
         # the signing under it. It leaves the area; the rest stays.
-        mates = [r for r in run if any(labelled(o) and abs(o["y"] - r["y"]) <= 6
+        # and so does a row with a line captioned for something other than
+        # signing: "Contact Name | Date" over "Authorized Signature | Phone |
+        # Fax Number" is the relinquishing institution's section, and "Name
+        # and address of Financial Institution | Date Signed" is where the
+        # cheque goes - neither is the member signing
+        detail = lambda o: (o not in run and o["cap"] is not None
+                            and not o["cap"]["signing"] and not before(o["cap"], o)
+                            and (DETAILS.search(o["cap"]["text"])
+                                 or not SIGNISH.search(o["cap"]["text"])))
+        mates = [r for r in run if any((labelled(o) or detail(o)) and abs(o["y"] - r["y"]) <= 6
                                        for o in rules)]
         if mates:
             run = [r for r in run if r not in mates]
@@ -2831,9 +2883,12 @@ def signing_areas(page, min_rules=2):
                 continue
             box = fitz.Rect(min(r["x0"] for r in run), min(r["y"] for r in run) - 2,
                             max(r["x1"] for r in run), max(r["y"] for r in run) + 2)
+            # and the captions of the rows that left go with them: kept as
+            # the area's own, FHSA Withdrawal's "Date Signed" was erased with
+            # the block though its line stayed
+            own = [l for l in own if any(-14 <= l["box"].y0 - r["y"] <= 30 for r in run)]
             for l in own:
-                if any(abs(l["box"].y0 - r["y"]) <= 30 for r in run):
-                    box |= l["box"]
+                box |= l["box"]
             members = 0
             rows_of = []
             for r0 in sorted(run, key=lambda r: r["y"]):
@@ -2853,7 +2908,12 @@ def signing_areas(page, min_rules=2):
         if over:
             declined.append(f"{what}: under {over[-1]['text'][:40]!r} - not a member's area")
             continue
-        if len(run) < min_rules or members == 0:
+        # One line is enough where its caption says it is for signing - the
+        # standard block it becomes has two member rows whatever the form
+        # had. A bare line on its own is still too little to go on.
+        captioned = any(r["cap"] is not None and "sign" in r["cap"]["text"].lower()
+                        for r in run)
+        if members == 0 or (len(run) < min_rules and not captioned):
             declined.append(f"{what}: {members} signature line(s) - too little to go on")
             continue
         pieces = [fitz.Rect(l["box"]) for l in own]
@@ -2906,7 +2966,13 @@ def standard_signing(page, area, fonts, size, margin=36.0):
     # row's caption sitting on the "Quota No. / Address" rule under it
     ground = min(below + draws + [page.rect.height - margin])
     floor = ground - max(4.0, 2 * size)
-    rows = member_rows(area) + 1
+    # a staff row for each staff member who signs there: the estate forms
+    # have two Libro witnesses, each with a signature field of their own
+    staff_sigs = [w for w in page.widgets() if fitz.Rect(w.rect).intersects(box)
+                  and STAFFISH.search(w.field_name or "")
+                  and w.field_type == fitz.PDF_WIDGET_TYPE_SIGNATURE]
+    staff_rows = max(1, len(staff_sigs))
+    rows = member_rows(area) + staff_rows
     lead = size * 1.2                       # a caption line
     # a row has to hold the tallest field that will be moved onto it, with
     # the caption of the row above still clear of the field's top
@@ -2923,6 +2989,17 @@ def standard_signing(page, area, fonts, size, margin=36.0):
     text_right = max([w[2] for w in words] + [box.x1])
     left = box.x0
     right = min(page.rect.width - margin, max(box.x1, text_right))
+    # An area of one line on the right of the page - "Signature ____" set
+    # beside a date - is too narrow for three columns: "Authorized Name"
+    # ran into "Authorized Signature", and the staff caption off the page.
+    # It takes the text column's width, leftwards as far as anything printed
+    # beside it on the rows the block will cover.
+    text_left = max(margin * 0.5, min([w[0] for w in words] + [box.x0]))
+    if right - left < 330:
+        band = (box.y0, box.y0 + need)
+        beside = [w[2] for w in words if w[3] > band[0] and w[1] < band[1]
+                  and w[2] <= box.x0 - 1]
+        left = min(left, max([text_left] + [x + 10 for x in beside]))
     wide = right - left
     gutter = wide * 0.04
     cols = [(left, left + wide * 0.36),
@@ -2979,7 +3056,7 @@ def standard_signing(page, area, fonts, size, margin=36.0):
     SIG = fitz.PDF_WIDGET_TYPE_SIGNATURE
     # A witness's fields, or a staff member's, are the staff row's - never a
     # member's. Their names say so: "[Libro_witness1.fullname1]".
-    staffish = re.compile(r"witness|staff", re.I)
+    staffish = STAFFISH
     staff_held = [w for w in held if staffish.search(w.field_name or "")]
     held = [w for w in held if w not in staff_held]
     anchors = [w for w in held if w.field_type == SIG]
@@ -3182,22 +3259,38 @@ def standard_signing(page, area, fonts, size, margin=36.0):
         y += pitch
     # a group left over belonged to someone who is not a member signing - a
     # witness's line - and the staff row is where that signing now happens
-    staff = split(staff_held + (others.pop(0) if others else []))
-    # a witness's name field is the staff member's to fill: Est170's
-    # "[Libro_witness1.fullname1]" had no cell of its own on the staff row
-    if not staff[1] and staff[0]:
-        staff[1], staff[0] = staff[0], []
-    for (x0, x1), label, group in zip(cols[1:], ("Authorizing Staff Member", "Date"),
-                                      staff[1:]):
-        rule(x0, x1, y)
-        caption(x0, y + size + 1, label)
-        if (held or staff_held) and not seat(group, x0, x1, y):
-            bare += 1
+    # The staff rows: one per staff member signing, each with that member's
+    # fields - grouped round their signature fields - and the first taking a
+    # group left over from someone who was not a member signing. A staff
+    # member's name field goes in with their signature: the row is
+    # "Authorizing Staff Member | Date", and Est170's
+    # "[Libro_witness1.fullname1.label1.name]" otherwise had no cell at all.
+    staff_sigs = [w for w in staff_held if w.field_type == SIG]
+    staff_groups = [[w] for w in staff_sigs] or [[]]
+    for w in staff_held:
+        if w.field_type == SIG and staff_sigs:
+            continue
+        k = (min(range(len(staff_sigs)),
+                 key=lambda k: abs(fitz.Point((w.rect.x0 + w.rect.x1) / 2, (w.rect.y0 + w.rect.y1) / 2)
+                                   - fitz.Point((staff_sigs[k].rect.x0 + staff_sigs[k].rect.x1) / 2,
+                                                (staff_sigs[k].rect.y0 + staff_sigs[k].rect.y1) / 2)))
+             if staff_sigs else 0)
+        staff_groups[k].append(w)
+    if others:
+        staff_groups[0] += others.pop(0)
+    staff = [[], [], []]
+    for n, group_ in enumerate(staff_groups):
+        if n:
+            y += pitch
+        cells_ = split(group_)
+        cells_[1], cells_[0] = cells_[1] + cells_[0], []
+        for (x0, x1), label, group in zip(cols[1:], ("Authorizing Staff Member", "Date"),
+                                          cells_[1:]):
+            rule(x0, x1, y)
+            caption(x0, y + size + 1, label)
+            if (held or staff_held) and not seat(group, x0, x1, y):
+                bare += 1
     shape.commit()
-    # Signers past the second have no row: the client's block is two member
-    # rows whatever the form had. Their fields go - left where they stood they
-    # floated over the paper the area was taken from, SIGN tabs and all - and
-    # what each one drew is declared gone, by name, for the report.
     dropped = []        # (name, kind) of fields taken out: none, by the client's word
     unplaced = ([w.field_name for w in staff[0]] + [w.field_name for g in groups + others for w in g]
                 + [w.field_name for w in spare_sigs])
@@ -3306,6 +3399,10 @@ def kept_on_declaration(old, new):
     return bool(SIGNING_SWAPS.match(new.strip().rstrip(":"))) and not LIBRO_WITNESS.search(old)
 
 
+NO_ROOM_AREAS = []     # (page number, box, members) of areas the block did not fit
+STAFFISH = re.compile(r"witness|staff", re.I)   # a staff member's field, by its name
+
+
 def standardize_signing(page, fonts, size, skip=False):
     """Every member signing area on a page, brought to the client's standard.
 
@@ -3319,6 +3416,8 @@ def standardize_signing(page, fonts, size, skip=False):
     for area in sorted(areas, key=lambda a: -a["box"].y0):
         rec, why = standard_signing(page, area, fonts, size)
         if rec is None:
+            # for the rebuild, which can lay the page out again with the room
+            NO_ROOM_AREAS.append((page.number, fitz.Rect(area["box"]), area["members"]))
             notes.append(("SIGNING_AREA_NO_ROOM",
                           f"area at y={area['box'].y0:.0f} ({area['members']} "
                           f"member(s)) was left as it is: it {why}"))

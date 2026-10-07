@@ -14,6 +14,7 @@ rest is for a person to look at, which is what the proof is for.
     python redesign.py "input forms/A form.pdf" -o rebuilt.pdf --proof proof.png
 """
 import argparse
+import json
 import os
 import re
 import sys
@@ -275,6 +276,16 @@ def rows_with_fields(page, grids=()):
                       p.get_text("words"))
     SEPARATORS[page.number] = seps
     flat = [r for r in flat if tuple(round(v, 1) for v in r) not in seps]
+    # The top or bottom of a box, drawn side to side between its uprights, is
+    # the box's art, not a line to write on: LIRA Fed's "ANNUITANT
+    # IDENTIFICATION" box, Word's double border in thin strips, handed its
+    # bottom edge to the CONTRACT# field, which then started left of its label.
+    ups = R.upright_edges(p)
+    def box_edge(r):
+        y = (r.y0 + r.y1) / 2
+        meets = lambda x: any(abs(vx - x) <= 3 and vy0 - 3 <= y <= vy1 + 3 and vy1 - vy0 > 12
+                              for vx, vy0, vy1 in ups)
+        return meets(r.x0) and meets(r.x1)
     # The author's red notes are not the form's words. The restyle takes them
     # off; so does the rebuild - an instruction becomes the box it asks for,
     # unless the form has one there already, and a remark simply goes.
@@ -477,6 +488,8 @@ def rows_with_fields(page, grids=()):
             continue                      # part of a table, drawn with it
         if tuple(round(v, 1) for v in r) in SEPARATORS.get(page.number, ()):
             continue                      # a line under a row, carried with it
+        if box_edge(r):
+            continue                      # a box's top or bottom, carried with the box
         items.append({"what": "rule", "rect": fitz.Rect(r.x0, r.y0 - 9, r.x1, r.y1),
                       "text": "", "base": r.y1, "drawn": True,
                       "size": 10.0, "bold": False, "italic": False})
@@ -595,12 +608,28 @@ def rows_with_fields(page, grids=()):
     for item in items:
         hit = (next((t for t in ticks if (item["rect"] & t).get_area() > 1), None)
                if item["what"] == "text" and "□" in item["text"] else None)
+        tidy = lambda t: re.sub(r"\s{2,}", " ", t.replace("□", " ")).strip()
+        hits = (sorted((t for t in ticks if (item["rect"] & t).get_area() > 1),
+                       key=lambda t: t.x0)
+                if hit is not None else [])
+        if hit is not None and len(hits) > 1 and len(hits) == item["text"].count("□"):
+            # Every box in the line, each with its own words after it: split
+            # at the first box only, "Transfer to RRIF: ☐ New ☐ Existing RRIF
+            # Contract #" came out with both boxes after "Contract #".
+            r = item["rect"]
+            parts = item["text"].split("□")
+            edges = [r.x0] + [x for t in hits for x in (t.x0 - 1, t.x1 + 1)] + [r.x1]
+            for k, part in enumerate(parts):
+                x0, x1 = edges[2 * k], edges[2 * k + 1]
+                if tidy(part) and x1 > x0:
+                    kept.append(dict(item, text=tidy(part),
+                                     rect=fitz.Rect(x0, r.y0, max(x0 + 1, x1), r.y1)))
+            continue
         if hit is not None:
             # The words either side of the box go either side of the real box:
             # left spanning it, the text sorted ahead of the box and "Debit ☐
             # (Other FI's ...)" came out "Debit (Other FI's ...) ☐".
             k = item["text"].index("□")
-            tidy = lambda t: re.sub(r"\s{2,}", " ", t.replace("□", " ")).strip()
             head, tail = tidy(item["text"][:k]), tidy(item["text"][k + 1:])
             r = item["rect"]
             if head:
@@ -663,6 +692,26 @@ def rows_with_fields(page, grids=()):
             continue
         joined.append(row)
     rows = joined
+
+    # A tick box's words split off onto a row of their own: two columns set a
+    # few points out of step put RRSP Withdrawal's "☐ Refund of Undeducted
+    # Contributions" 5pt below the row its box was read into, and the box was
+    # rebuilt beside "Contract Termination" with its words on a line under it.
+    # Words that start right where a box on the row above ends are that box's.
+    k = 1
+    while k < len(rows):
+        row, up = rows[k], rows[k - 1]
+        if (len(row) == 1 and row[0]["what"] == "text"
+                and any(i["what"] == "field" and i.get("kind") in ("CheckBox", "RadioButton")
+                        and -2 <= row[0]["rect"].x0 - i["rect"].x1 <= 6
+                        and 0 < row[0]["base"] - i["base"] <= 6
+                        and not any(j is not i and j["rect"].x0 >= i["rect"].x1 - 1
+                                    and j["rect"].x0 < row[0]["rect"].x1 for j in up)
+                        for i in up)):
+            rows[k - 1] = up + row
+            del rows[k]
+            continue
+        k += 1
 
     # A short label set beside a block of two rows of choices, halfway down
     # it - Transfer Authorization's "Registered Type (check one)" beside its
@@ -3618,6 +3667,9 @@ def main():
                          "be tried without putting it in force "
                          "(default: relabel.txt)")
     ap.add_argument("--no-house", action="store_true", help=argparse.SUPPRESS)
+    # the form's rows a first run found the signing block had no room after:
+    # [[form page, top, bottom, members], ...] (see the end of main)
+    ap.add_argument("--signing-room", default=None, help=argparse.SUPPRESS)
     # pages of the form kept ahead of the ones rebuilt, so the proof numbers
     # pages as the whole form has them
     ap.add_argument("--kept", type=int, default=0, help=argparse.SUPPRESS)
@@ -3868,6 +3920,7 @@ def main():
         shown = R.printed(page)
         verts = R.upright_edges(shown, visible_only=True)
         lines_here = R.flat_rules(shown)
+        typed_words = shown.get_text("words")
         for row in rows:
             for i in row:
                 if i["what"] != "field" or i.get("kind") in ("CheckBox", "RadioButton"):
@@ -3886,6 +3939,13 @@ def main():
                 ruled = any(abs(y - r.y1) <= 4 and x0 < r.x1 and r.x0 < x1
                             and (x0 > side_l + 3 or x1 < side_r - 3)
                             for y, x0, x1, _, _ in lines_here)
+                # or typed: LIRA Fed's "NAME: ______" inside its identification
+                # box is a line of underscores, and read as a field in a cell
+                # it came back with nothing to write on
+                # ("ADDRESS:______" is typed as one word with its label)
+                ruled = ruled or any(re.search(r"_{4,}", w[4])
+                                     and abs(w[3] - r.y1) <= 6 and w[0] < r.x1 and r.x0 < w[2]
+                                     for w in typed_words)
                 if not ruled:
                     i["in_cell"] = True
         read.append({"grids": grids, "rows": rows,
@@ -4039,8 +4099,18 @@ def main():
             notes.append(("signing_area_left",
                           f"page {page.number + 1} of the form: its signing lines "
                           f"come in pieces with notes between them - no room kept"))
-        if not crowded:
-            for area in found_here:
+        # and the rows a first run found the block had no room after, read off
+        # the rebuilt page by the signing pass itself - whatever the form's own
+        # page let this reading see
+        hinted = [{"box": fitz.Rect(0, h[1], page.rect.width, h[2]),
+                   "pieces": [fitz.Rect(0, h[1], page.rect.width, h[2])],
+                   "members": h[3]}
+                  for h in json.loads(args.signing_room or "[]") if h[0] == page.number]
+        if hinted:
+            found_here = [a for a in found_here
+                          if not any(a["box"].intersects(h["box"]) for h in hinted)]
+        if True:
+            for area in ([] if crowded else found_here) + hinted:
                 # the rows that ARE the area: ones that touch its own captions
                 # or lines, not merely ones near it - the "Quota No." row under
                 # an area is its own thing, and splitting it from its captions
@@ -4308,9 +4378,15 @@ def main():
                 # its gaps, Egg's ACKNOWLEDGEMENT moved to a sheet of its own.
                 tail_fits = (k >= len(laid) and closes
                              and bare <= sheet.rect.height - sheet.bottom / 2 - sheet.y)
+                # A long section - most of a sheet - moves to keep it whole only
+                # from the lower part of a sheet: from higher up, moving it
+                # leaves most of the sheet empty - Federal RLIF's first sheet
+                # held only its title once the preamble under it moved on. A
+                # shorter one always moves (Est115's "This declaration ...").
+                left_here = sheet.rect.height - sheet.bottom - sheet.y
                 if tail_fits:
                     pass
-                elif whole <= usable:
+                elif whole <= usable and (whole <= 0.6 * usable or left_here < 0.45 * usable):
                     sheet.room(whole + 8, clear=False)
                 else:
                     follows = sum(sheet.measure(laid[j], right_edge)
@@ -4383,6 +4459,30 @@ def main():
                 else:
                     notes.append((kind, f"page {pg.number + 1}: {detail}"))
         sheet.said = +sheet.said        # drop the words taken out entirely
+    # An area the block had no room in: map it back to the rows of the form
+    # it was laid out from, and lay the form out once more with the room kept
+    # there. The reading of the form's own page can miss an area the rebuilt
+    # page shows plainly - a single "Holder's Signature" line, captions the
+    # form set in pieces - so the signing pass's own reading decides.
+    if R.NO_ROOM_AREAS and args.signing_room is None:
+        hints = {}
+        for pno, box, members in R.NO_ROOM_AREAS:
+            for orig_y, new_y, page_no, src in sheet.moved:
+                if page_no == pno and box.y0 - 14 <= new_y <= box.y1 + 2:
+                    h = hints.setdefault((src, round(box.y0)), [src, orig_y, orig_y, members])
+                    h[1], h[2] = min(h[1], orig_y), max(h[2], orig_y)
+        if hints:
+            import subprocess
+            retry = [h[:1] + [h[1] - 1, h[2] + 1] + h[3:] for h in hints.values()]
+            say(f"signing block had no room in {len(retry)} area(s); laying the form "
+                f"out again with room kept there")
+            r = subprocess.run([sys.executable, os.path.abspath(__file__)] + sys.argv[1:]
+                               + ["--signing-room", json.dumps(retry)],
+                               capture_output=True, text=True, encoding="utf-8")
+            sys.stdout.write(r.stdout)
+            if r.stderr:
+                sys.stderr.write(r.stderr)
+            return r.returncode
     bad = R.fix_tounicode(out, fonts)
     # PyMuPDF marks a file "append only" (SigFlags 3) when it adds a
     # signature field, as if one had been signed. Acrobat then treats the
