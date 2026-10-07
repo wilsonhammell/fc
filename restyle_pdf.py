@@ -1426,6 +1426,15 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
         if line_key(ln) in relabel:
             # the house wording, set in the label's own style
             spans = [dict(ln["spans"][0], text=relabel[line_key(ln)]["text"])]
+            if relabel[line_key(ln)].get("pushed") and line_key(ln) in inline:
+                # Wording too long for where its blank started pushed the
+                # blank along (plan_relabels): the blank goes where that left
+                # it. Typed on after the wording it moved whole, into
+                # "Telephone:" beside it. Wording that fits keeps its
+                # underscores typed on straight after it, as it always has.
+                label, style, _ = split_trailing_rule(spans)
+                if style is not None:
+                    spans, rule = label, (inline[line_key(ln)], style)
         elif line_key(ln) in inline:
             spans, style, _ = split_trailing_rule(ln["spans"])
             rule = (inline[line_key(ln)], style)
@@ -1590,7 +1599,9 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
             put(cut["x0"], cut["y"], "_" * n, fontname=alias,
                 fontfile=path, fontsize=item["size"], color=span_colour(style),
                 overlay=True)
-            expected[(cut["y"], ord("_"))] += n - cut["count"]
+            # a relabelled line has already had all its old glyphs taken off
+            # below, underscores and all
+            expected[(cut["y"], ord("_"))] += n - (0 if item["relabelled"] else cut["count"])
 
         if item["relabelled"]:
             # The census is told exactly which glyphs the new wording swaps,
@@ -2574,6 +2585,10 @@ def signing_words(text):
     return [w for w in re.split(r"[^a-z]+", text.lower()) if w]
 
 
+CORPORATE = re.compile(r"authority to bind|bind the (?:corporation|company)|"
+                       r"corporat|c/s", re.I)
+
+
 def signing_areas(page, min_rules=2):
     """Where a page asks its members to sign, and how many of them.
 
@@ -2704,9 +2719,18 @@ def signing_areas(page, min_rules=2):
                    and l["box"].x0 - 40 < r["x1"] and r["x0"] < l["box"].x1 + 40
                    for l in lines)
 
+    # A corporation signing - Hypothecation's "I/We have the authority to bind
+    # the corporation" under its officer's line, with the corporation's name
+    # over it - is not a member's area, and the client keeps it as printed.
+    # Its line, and whatever shares that row, stays out of every area.
+    def corporate(r):
+        return any(CORPORATE.search(l["text"]) and -4 <= l["box"].y0 - r["y"] <= 30
+                   and l["box"].x0 < r["x1"] and r["x0"] < l["box"].x1 for l in lines)
+    corp_rows = [r["y"] for r in rules if corporate(r)]
     usable = sorted((r for r in rules
-                     if (r["cap"] is None and not blank_of_something_else(r))
-                     or (r["cap"] is not None and r["cap"]["signing"])),
+                     if not any(abs(r["y"] - y) <= 6 for y in corp_rows)
+                     and ((r["cap"] is None and not blank_of_something_else(r))
+                          or (r["cap"] is not None and r["cap"]["signing"]))),
                     key=lambda r: (r["y"], r["x0"]))
     areas, run = [], []
     for r in usable:
@@ -2841,6 +2865,16 @@ def signing_areas(page, min_rules=2):
     return found, declined
 
 
+# The client's standard signing block has two member rows (2026-10-07: "two
+# member lines and a staff line is what they want") - more where the form had
+# more people signing, so joint owners 2 and 3 keep a row each.
+STANDARD_MEMBERS = 2
+
+
+def member_rows(area):
+    return max(STANDARD_MEMBERS, area["members"])
+
+
 def standard_signing(page, area, fonts, size, margin=36.0):
     """Replace one signing area with the client's standard, in place.
 
@@ -2872,7 +2906,7 @@ def standard_signing(page, area, fonts, size, margin=36.0):
     # row's caption sitting on the "Quota No. / Address" rule under it
     ground = min(below + draws + [page.rect.height - margin])
     floor = ground - max(4.0, 2 * size)
-    rows = area["members"] + 1
+    rows = member_rows(area) + 1
     lead = size * 1.2                       # a caption line
     # a row has to hold the tallest field that will be moved onto it, with
     # the caption of the row above still clear of the field's top
@@ -2884,7 +2918,7 @@ def standard_signing(page, area, fonts, size, margin=36.0):
     if box.y0 + need > floor and box.y0 + need <= ground - 4:
         floor = ground - 4                  # the air is a nicety; the block is not
     if box.y0 + need > floor:
-        return None, (f"needs {need:.0f}pt for {area['members']} member row(s) and "
+        return None, (f"needs {need:.0f}pt for {member_rows(area)} member row(s) and "
                       f"the staff row, and has {floor - box.y0:.0f}pt")
     text_right = max([w[2] for w in words] + [box.x1])
     left = box.x0
@@ -3133,7 +3167,11 @@ def standard_signing(page, area, fonts, size, margin=36.0):
 
     bare = 0
     y = box.y0 + pitch - size * 0.6
-    for n in range(area["members"]):
+    # the form's own signers, in order, and whoever else signed there - a
+    # witness's group, past the signers the area counted
+    others = groups[area["members"]:]
+    groups = groups[:area["members"]]
+    for n in range(member_rows(area)):
         cells = split(groups.pop(0)) if groups else [[], [], []]
         for (x0, x1), label, group in zip(cols, ("Authorized Name",
                                                 "Authorized Signature", "Date"), cells):
@@ -3144,7 +3182,11 @@ def standard_signing(page, area, fonts, size, margin=36.0):
         y += pitch
     # a group left over belonged to someone who is not a member signing - a
     # witness's line - and the staff row is where that signing now happens
-    staff = split(staff_held + (groups.pop(0) if groups else []))
+    staff = split(staff_held + (others.pop(0) if others else []))
+    # a witness's name field is the staff member's to fill: Est170's
+    # "[Libro_witness1.fullname1]" had no cell of its own on the staff row
+    if not staff[1] and staff[0]:
+        staff[1], staff[0] = staff[0], []
     for (x0, x1), label, group in zip(cols[1:], ("Authorizing Staff Member", "Date"),
                                       staff[1:]):
         rule(x0, x1, y)
@@ -3152,7 +3194,12 @@ def standard_signing(page, area, fonts, size, margin=36.0):
         if (held or staff_held) and not seat(group, x0, x1, y):
             bare += 1
     shape.commit()
-    unplaced = ([w.field_name for w in staff[0]] + [w.field_name for g in groups for w in g]
+    # Signers past the second have no row: the client's block is two member
+    # rows whatever the form had. Their fields go - left where they stood they
+    # floated over the paper the area was taken from, SIGN tabs and all - and
+    # what each one drew is declared gone, by name, for the report.
+    dropped = []        # (name, kind) of fields taken out: none, by the client's word
+    unplaced = ([w.field_name for w in staff[0]] + [w.field_name for g in groups + others for w in g]
                 + [w.field_name for w in spare_sigs])
     forget(page)
     # Where each moved field's own glyphs landed is measured, not predicted:
@@ -3180,7 +3227,7 @@ def standard_signing(page, area, fonts, size, margin=36.0):
             "made_glyphs": made_glyphs, "made_rules": made_rules,
             "moved_glyphs": moved_glyphs, "placed": placed, "unplaced": unplaced,
             "bare": bare, "members": area["members"], "was": area["text"],
-            "made_text": made_text, "lost_marks": lost_marks}, None
+            "made_text": made_text, "lost_marks": lost_marks, "dropped": dropped}, None
 
 
 DECLARATION = re.compile(r"declaration|affidavit|statutory", re.I)
@@ -3293,10 +3340,16 @@ def standardize_signing(page, fonts, size, skip=False):
                           f"{len(rec['placed'])} field(s) moved to their cells "
                           f"({', '.join(rec['placed'][:4])}); {rec['bare']} cell(s) "
                           f"have no field"))
+        for name, kind in rec["dropped"]:
+            notes.append(("signing_field_dropped",
+                          f"field {name!r} ({kind}) has no cell in the standard "
+                          f"block - a signer past the second, or a second field of "
+                          f"one kind for one signer; taken out"))
         notes.append(("signing_area_standard",
-                      f"area at y={rec['box'].y0:.0f} rebuilt as {rec['members']} "
+                      f"area at y={rec['box'].y0:.0f} rebuilt as {max(STANDARD_MEMBERS, rec['members'])} "
                       f"member row(s) - Authorized Name | Authorized Signature | "
-                      f"Date - and a staff row; it read "
+                      f"Date - and a staff row (the form had {rec['members']} "
+                      f"signer(s)); it read "
                       + "; ".join(repr(t[:30]) for t in rec["was"][:4])))
     return done, notes
 
@@ -4380,16 +4433,16 @@ def house_title(name, path=TITLES):
 def signing_listed(name, path=SIGNING_FORMS):
     """Is this form one whose signing area gets the client's standard block?
 
-    Only the forms listed in signing_forms.txt. The block was first applied
-    to every signing area the pass could find, and not every form needs it -
-    so it goes only where the client asked for it."""
+    The forms listed in signing_forms.txt, or every form where it has a line
+    "*" - the client's word on 2026-10-07 was that the standard goes on all
+    of them. (It was first only the forms they had named.)"""
     stem = " ".join(os.path.splitext(os.path.basename(name))[0].split()).casefold()
     if not os.path.exists(path):
         return False
     with open(path, encoding="utf-8") as fh:
         wanted = {" ".join(os.path.splitext(l.split("#", 1)[0].strip())[0].split()).casefold()
                   for l in fh}
-    return stem in wanted - {""}
+    return "*" in wanted or stem in wanted - {""}
 HOUSE_MARKS = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                            "assets", "libro_marks.json")
 # Lines worth a person's eye when the table leaves them alone: a witness or
@@ -4658,13 +4711,40 @@ def plan_relabels(doc, fonts, args, table, size, fine, plans):
                     fits = right_at - wide >= rm["left_stop"] + 2
                 else:
                     fits = room_for(measure)
+                pushed = None
+                blank = rm["blank"]
+                if (not fits and right_at is None and anchor is None and blank is not None
+                        and not rm["right"] and not rm["centred"]):
+                    # A label with its blank typed after it - "Folio# of Estate
+                    # Trustee: ______" - can push the blank along, the way the
+                    # restyle already does when Arial sets the label wider:
+                    # the blank starts later and keeps at least the width any
+                    # blank may shrink to. Only for a blank the restyle redraws
+                    # apart from its label, so there is a planned rule to move.
+                    planned = [r for r in (plans[pi] or {}).get("rules", [])
+                               if r.get("inline") == key]
+                    if planned:
+                        wide = line_width([dict(ln["spans"][0], text=measure)],
+                                          fonts, fine[pi].get(key, size))
+                        start = ln["spans"][0]["origin"][0] + wide + blank["gap"]
+                        width = blank["x1"] - blank["x0"]
+                        # it starts later but never ends later: grown into
+                        # the free room it ran up against "Telephone:"
+                        stop = planned[0]["x1"]
+                        if stop - start >= max(36.0, args.min_fill * width):
+                            fits, pushed = True, (planned, start, stop)
                 why = None if fits else f"{new!r} doesn't fit where the label sits"
+                if pushed is not None:
+                    planned, start, stop = pushed
+                    for r in planned:
+                        if r["x0"] < start:
+                            r["x0"] = start
             if why:
                 rows.append((pi + 1, "relabel_for_human", f"{text!r} -> {new.strip()!r}: {why}"))
             else:
                 # the line's own box, so the proof can point at what changed
                 found[key] = {"text": new, "centre": anchor, "was": text,
-                              "right_at": right_at,
+                              "right_at": right_at, "pushed": pushed is not None,
                               "box": fitz.Rect(ln["bbox"])}
                 rows.append((pi + 1, "relabelled", f"{text!r} -> {new.strip()!r}"
                              + (" (kept centred under its line)" if anchor is not None else "")))
@@ -5776,6 +5856,17 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                 rows += [[name, 1, issue, detail] for issue, detail in check_header(out[0], header)]
             rows += [[name, "", issue, detail]
                      for issue, detail in verify_field_behaviour(orig, out)]
+            # Every field the form had is still in the file, by name and kind,
+            # but for those the signing block took out on purpose. Until now
+            # the restyle checked what fields did, never that they were there.
+            had = Counter((w.field_name, w.field_type_string) for p in orig for w in p.widgets())
+            for recs in signed:
+                for rec in recs:
+                    had.subtract(Counter(rec.get("dropped", [])))
+            kept_ = Counter((w.field_name, w.field_type_string) for p in out for w in p.widgets())
+            for (fname, kind), n in sorted((had - kept_).items()):
+                rows.append([name, "", "FIELD_LOST", f"{fname} ({kind})"
+                             + (f" x{n}" if n > 1 else "")])
             rows += [[name, page, issue, detail]
                      for page, issue, detail in verify_looks(orig, out, header, signed, dys)]
             # Proofs come from the saved file too: the in-memory page has lost

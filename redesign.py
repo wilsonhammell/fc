@@ -664,6 +664,60 @@ def rows_with_fields(page, grids=()):
         joined.append(row)
     rows = joined
 
+    # A short label set beside a block of two rows of choices, halfway down
+    # it - Transfer Authorization's "Registered Type (check one)" beside its
+    # TFSA / RRSP ... boxes over FHSA / RRIF ... - is a row of its own by
+    # baseline, between the two, and was rebuilt on a line by itself with the
+    # first row of boxes above it. It goes on the first row, where it reads.
+    def choices(r, lab):
+        return (len(r) >= 2
+                and any(i["what"] == "field" and i.get("kind") in ("CheckBox", "RadioButton")
+                        for i in r)
+                and min(i["rect"].x0 for i in r) >= lab["rect"].x1 + 2)
+    k = 1
+    while k + 1 < len(rows):
+        row, up, down = rows[k], rows[k - 1], rows[k + 1]
+        lab = row[0] if len(row) == 1 and row[0]["what"] == "text" else None
+        if (lab is not None and len(lab["text"].split()) <= 6
+                and not lab["text"].rstrip().endswith(".")
+                and choices(up, lab) and choices(down, lab)):
+            size = lab.get("size", 10.0) or 10.0
+            words_up = [i for i in up if i["what"] == "text"] or up
+            words_down = [i for i in down if i["what"] == "text"] or down
+            ub = min(words_up, key=lambda i: i["rect"].x0)["base"]
+            db = min(words_down, key=lambda i: i["rect"].x0)["base"]
+            # the two rows of boxes a line apart, the label between them
+            if ub < lab["base"] < db and db - ub <= 2.2 * size:
+                font = ARIAL or R.resolve_fonts({})["regular"][2]
+                wide = font.text_length(lab["text"].strip(), 10.0) * 1.05
+                need = lab["rect"].x0 + wide + 6 - min(i["rect"].x0 for i in up + down)
+                reach = max(i["rect"].x1 for i in up + down)
+                # Too wide for the room in front of the boxes once set at
+                # 10pt it wrapped there, and the row it pushed along fell out
+                # of line with the one under it. Both rows move over together,
+                # as far as the label needs, where the page has the room.
+                if 0 < need and reach + need <= page.rect.width - 46:
+                    for i in up + down:
+                        i["rect"] = i["rect"] + (need, 0, need, 0)
+                    need = 0
+                if need <= 0:
+                    d = ub - lab["base"]
+                    rows[k - 1] = up + [dict(lab, base=ub, rect=lab["rect"] + (0, d, 0, d))]
+                    del rows[k]
+                    continue
+                # With no room for that either, set on a line of its own over
+                # the block, it still comes before the first box.
+                # Given the block's own baseline, it keeps the gap the form
+                # left above the block and sits a line over the boxes: placed
+                # halfway up that gap it read as the last line of the address
+                # block over it.
+                nb = ub - 0.5
+                d = nb - lab["base"]
+                rows[k - 1:k + 1] = [[dict(lab, base=nb, rect=lab["rect"] + (0, d, 0, d))], up]
+                k += 1
+                continue
+        k += 1
+
     for row in rows:
         row.sort(key=lambda i: i["rect"].x0)
     # Labels set flush right against a common edge - GIC's "Owner Name:",
@@ -1124,7 +1178,10 @@ def ran_out_of_room(line, nxt, right_edge, slack=6.0):
         return True
     size = line.get("size", 10.0) or 10.0
     font = ARIAL or R.resolve_fonts({})["regular"][2]
-    end = (line["rect"].x1 + 0.3 * size
+    # where its LAST line ends: a paragraph already joined up has a box as
+    # wide as its longest line, and measured from that, TFSA's "... written
+    # direction." looked full and the next paragraph ran on into it
+    end = (line.get("last_x1", line["rect"].x1) + 0.3 * size
            + font.text_length(words[0], size) + slack)
     return end > right_edge
 
@@ -1256,6 +1313,7 @@ def merge_prose(rows, right_edge=10 ** 6):
         out["runs"] = join_runs(a, b)
         out["base"] = b["base"]
         out["rect"] = a["rect"] | b["rect"]
+        out["last_x1"] = b.get("last_x1", b["rect"].x1)
         return out
 
     def hangs(a, b):
@@ -1296,8 +1354,15 @@ def merge_prose(rows, right_edge=10 ** 6):
                                fallback=max(ends.get(round(indent), [right_edge])
                                             + [tail["rect"].x1]))):
             # the rest of the item's sentence, which the form broke across
-            # lines; it belongs to the item, indent and all
-            out[-1] = [j if j is not tail else join(tail, row[0]) for j in last]
+            # lines; it belongs to the item, indent and all. The item keeps
+            # its own left edge: TFSA's "The holder hereby designates ..."
+            # runs on under its tick box, and taking that line's edge put the
+            # words in front of the box - the box went to the end of the line
+            # and the item's next line no longer read as part of it.
+            held = join(tail, row[0])
+            held["rect"] = fitz.Rect(tail["rect"].x0, held["rect"].y0,
+                                     held["rect"].x1, held["rect"].y1)
+            out[-1] = [j if j is not tail else held for j in last]
         elif (plain and last and len(last) == 1 and last[0]["what"] == "text"
                 and carries_on(last[0], row[0])):
             out[-1] = [join(last[0], row[0])]
@@ -1313,6 +1378,7 @@ def merge_prose(rows, right_edge=10 ** 6):
 
 
 UNFOLDED = []         # pages whose two columns of terms were read as one
+SIGNING_DROPPED = []  # (name, kind) of fields the standard signing block took out
 
 
 def column_region(rows, width):
@@ -2002,7 +2068,11 @@ class KeepShape:
         runs along the row above pushes one of them and not the other - and a
         signature line starting forty points to the left of its own caption
         looks like a mistake, because it is one."""
-        plan = self.plan(under, right_edge)
+        # where the captions will really go: place() lines them up with the
+        # row above as well, and planned without that TFSA's "Date of Birth"
+        # line started 16pt right of its caption, which had gone back under
+        # "TFSA Contract Number"
+        plan = self.line_up(self.plan(under, right_edge), right_edge)
         spots = sorted(rules, key=lambda i: i["rect"].x0)
         height = self.size * lead
         # A line and the caption that says what it is are one thing. Room has
@@ -2023,7 +2093,11 @@ class KeepShape:
                 x = near[1]
                 after = min((p[1] for p in plan if p[1] > x + 4), default=right_edge)
                 after = max(after, x + 40)
-                wide = max(min(max(item["rect"].width, near[2]), after - x - 4), 36.0)
+                # clear of the next line by as much as the form left, up to
+                # 8pt: 4pt read as one line running on
+                nxt = spots[n + 1]["rect"].x0 - item["rect"].x1 if n + 1 < len(spots) else 4.0
+                clear = min(8.0, max(4.0, nxt))
+                wide = max(min(max(item["rect"].width, near[2]), after - x - clear), 36.0)
             else:
                 x, wide = item["rect"].x0, item["rect"].width
             where.append((x, wide))
@@ -2094,6 +2168,10 @@ class KeepShape:
         sends when ticked, "1" or "Male" rather than PyMuPDF's "Yes" - and
         tick it if the form shipped it ticked ("Funds Transfer PAD")."""
         doc = self.page.parent
+        # read back as the PDF writes it, "did#20not#20differentiated": the
+        # #20s are spaces, and escaped again they became "#2320" - LIF
+        # Locking-in's tick box sent a value nobody's system knows
+        on = re.sub(r"#([0-9A-Fa-f]{2})", lambda m: chr(int(m.group(1), 16)), on)
         name = "/" + "".join(c if c.isalnum() or c in "-_." else "#%02X" % ord(c)
                              for c in on)
         for key in ("AP/N", "AP/D"):
@@ -3676,12 +3754,11 @@ def main():
         # The title is the file's name, and some of them are long - "FHSA
         # Designation of SH, Ben with disclaimer (use until ON legislation
         # update)". Set at 14pt and hung off the right margin it runs back
-        # across the logo. It gives up size first, then breaks over lines,
-        # and never starts left of the logo.
+        # across the logo. It breaks over lines and never starts left of the
+        # logo; it stays at 14pt, the client's title size - the logo is taller
+        # than three lines of it, so the header takes no more room.
         room = doc[0].rect.width - 36 - (logo_right + 14)
         at, lines = 14.0, [title]
-        while at > 9.0 and bold_font.text_length(title, at) > room:
-            at -= 0.5
         if bold_font.text_length(title, at) > room:
             lines, line = [], ""
             for word in title.split():
@@ -3978,7 +4055,7 @@ def main():
                     # and two lines of air under it (see R.standardize_signing):
                     # with less, the staff row sat on the "Quota No. / Address"
                     # row under it on the quota forms
-                    need = (sheet.size * (3.4 * (area["members"] + 1) + 1.2) + 4
+                    need = (sheet.size * (3.4 * (R.member_rows(area) + 1) + 1.2) + 4
                             + sheet.measure(laid[min(idx)], right_edge))
                     has = sum(sheet.measure(laid[k], right_edge)
                               for k in range(min(idx), max(idx) + 1))
@@ -4293,6 +4370,7 @@ def main():
             done, said_notes = R.standardize_signing(pg, fonts, sheet.size,
                                                      skip=not house or declared)
             for rec in done:
+                SIGNING_DROPPED.extend(rec.get("dropped", []))
                 signing_boxes.setdefault(pg.number, []).append(
                     R.signing_extent(rec, pg.rect.width) + (0, -6, 0, 6))
                 for t in rec["was"]:
@@ -4306,6 +4384,17 @@ def main():
                     notes.append((kind, f"page {pg.number + 1}: {detail}"))
         sheet.said = +sheet.said        # drop the words taken out entirely
     bad = R.fix_tounicode(out, fonts)
+    # PyMuPDF marks a file "append only" (SigFlags 3) when it adds a
+    # signature field, as if one had been signed. Acrobat then treats the
+    # whole form as signed and won't let anyone edit it - and nothing here
+    # is signed: the form's own empty signature boxes were only put back.
+    # The file gets the flags the form had.
+    sig_was = doc.xref_get_key(doc.pdf_catalog(), "AcroForm/SigFlags")
+    if out.xref_get_key(out.pdf_catalog(), "AcroForm")[0] != "null":
+        if sig_was[0] == "null":
+            out.xref_set_key(out.pdf_catalog(), "AcroForm/SigFlags", "null")
+        else:
+            out.xref_set_key(out.pdf_catalog(), "AcroForm/SigFlags", sig_was[1])
     out.save(args.output)
     # the calculation list is only settled when the file is written, so the
     # form's own order goes back into the saved file
@@ -4343,6 +4432,8 @@ def main():
     was = Counter((w.field_name, w.field_type_string)
                   for page in doc for w in page.widgets())
     was.update(ADDED)          # text boxes put in place of merge tags, on purpose
+    was.subtract(Counter(SIGNING_DROPPED))   # signers past the second, on purpose
+    was = +was
     if running:
         # the form's copies of a running block are gone, and one is set on
         # each sheet instead - same names, so a value typed once fills all
@@ -4384,6 +4475,12 @@ def main():
     if shown < sheet.placed:
         found.append(("IMAGE_LOST", f"{sheet.placed - shown} image(s) set on the "
                                     f"rebuilt pages are not in the saved file"))
+    with fitz.open(args.output) as saved:
+        sig_now = saved.xref_get_key(saved.pdf_catalog(), "AcroForm/SigFlags")
+    if sig_now[1] != sig_was[1]:
+        found.append(("FILE_LOCKED", f"signature flags {sig_now[1] or 'none'}, the form had "
+                                     f"{sig_was[1] or 'none'} - an 'append only' file is "
+                                     f"read as signed and can't be edited"))
     for issue, detail in found:
         say(f"{issue}: {detail}")
     if args.png:

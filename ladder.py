@@ -105,7 +105,13 @@ def wholly_theirs(path):
 
 def reached_10pt(report):
     """Which forms in a report held the target size. A form that had to drop
-    below it gets a `size_reduced` row; everything else made it."""
+    below it gets a `size_reduced` row; everything else made it.
+
+    A form whose first page has no room for the house header is NOT sent on
+    up: tried, Federal RLIF, LIF Locking-in and the Q-Trade agreement went to
+    the rebuild (no restyle rung made room), and came back far worse than the
+    form without a header - a first page holding only its title, a relabel
+    inside a sentence. They are listed at the end of the run instead."""
     try:
         rows = [r for r in csv.reader(open(report, encoding="utf-8")) if len(r) == 4]
     except OSError:
@@ -221,10 +227,51 @@ def main():
                     + BASE + extra)
             print(r.stdout[-700:] if r.stdout else r.stderr[-700:])
 
+        # A form whose signing area had no room for the client's standard
+        # block where it stood goes on to the rebuild, which lays the page
+        # out again with the room kept (the client's word, 2026-10-07). A
+        # restyle cannot push a page down to make that room. Only the real
+        # run knows - the dry runs never draw the block - so it is read from
+        # what the restyle rungs just reported, and their file and proof for
+        # the form are replaced.
+        if args.signing:
+            moved_up = []
+            for name, _ in RUNGS:
+                rep = os.path.join(os.path.dirname(args.report) or ".", f"rung_{name}.csv")
+                if not os.path.exists(rep):
+                    continue
+                rows_ = list(csv.reader(open(rep, encoding="utf-8")))
+                need = {r[0] for r in rows_ if len(r) > 2 and r[2] == "SIGNING_AREA_NO_ROOM"
+                        and rung_of.get(r[0]) == name}
+                if not need:
+                    continue
+                rows_ = [r for r in rows_ if not r or r[0] not in need] + [
+                    [n, "", "moved_to_rebuild",
+                     "its signing area had no room for the standard block where it stood"]
+                    for n in sorted(need)]
+                with open(rep, "w", encoding="utf-8", newline="") as fh:
+                    csv.writer(fh).writerows(rows_)
+                for n in need:
+                    rung_of[n] = "rebuild"
+                    counts[name] -= 1
+                    moved_up.append(n)
+                    stem = os.path.splitext(n)[0] + " ["
+                    for f in os.listdir(raw):
+                        if f.startswith(stem) and "[rebuilt]" not in f:
+                            os.remove(os.path.join(raw, f))
+            if moved_up:
+                print(f"\n{len(moved_up)} form(s) moved to the rebuild for the signing "
+                      f"block: " + ", ".join(sorted(moved_up)), flush=True)
+
         rebuilt = sorted(n for n, r in rung_of.items() if r == "rebuild")
         counts["rebuild"] = len(rebuilt)
         if rebuilt and args.top == "rebuild":
             print(f"\nrung 'rebuild': {len(rebuilt)} form(s)", flush=True)
+            # What each rebuild's checks found, kept like the other rungs'
+            # reports. Printed and thrown away, "see report" pointed at
+            # nothing, and TFSA's tick box moved to the end of its line
+            # without anyone reading the check that said so.
+            found = []
             for i, n in enumerate(rebuilt, 1):
                 r = run([REDESIGN, "--relabel", "--skip-third-party",
                          "--png", raw]
@@ -235,6 +282,17 @@ def main():
                            "-o", os.path.join(args.output, n)])
                 mark = "ok" if "checks: clean" in (r.stdout or "") else "see report"
                 print(f"   [{i}/{len(rebuilt)}] {n[:58]}  {mark}", flush=True)
+                for line in (r.stdout or "").splitlines():
+                    m = re.match(r"([A-Z][A-Z_]{3,}): (?:page (\d+)(?: of the form)?: )?(.*)", line)
+                    if m:
+                        found.append((n, m.group(2) or "", m.group(1), m.group(3)))
+                # (it exits non-zero whenever its checks found something;
+                # failing outright, it never gets as far as its checks)
+                if "checks:" not in (r.stdout or ""):
+                    found.append((n, "", "REBUILD_FAILED", (r.stderr or "")[-300:]))
+            with open(os.path.join(os.path.dirname(args.report) or ".", "rung_rebuild.csv"),
+                      "w", encoding="utf-8", newline="") as fh:
+                csv.writer(fh).writerows(found)
         elif rebuilt:
             print(f"\n{len(rebuilt)} form(s) left below 10pt (--top restructure)")
 
@@ -257,6 +315,12 @@ def main():
         if kept:
             print("         " + ", ".join(os.path.basename(k) for k in kept)
                   + "  (what each rung did, line by line)")
+        # forms that went out without the Libro header, said out loud: one
+        # row in a rung's report is easy to miss among hundreds
+        bare = sorted({r[0] for k in kept for r in csv.reader(open(k, encoding="utf-8"))
+                       if len(r) > 2 and r[2] in ("HEADER_NO_ROOM", "HEADER_SKIPPED")})
+        for n in bare:
+            print(f"NO_HEADER: {n} - its first page has no room for the Libro header")
     finally:
         shutil.rmtree(scratch, ignore_errors=True)
 

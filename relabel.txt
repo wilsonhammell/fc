@@ -145,3 +145,15 @@ Owner error - Admin will apply s/c to Owner    => Member error - Admin will appl
 Owner’s account at vendor not credited - Investigate and apply payment => Member’s account at vendor not credited - Investigate and apply payment
 AFT- Direct Credits- Libro Owner is DEBITED    => AFT- Direct Credits- Libro Member is DEBITED
 AFT- Direct Debits – Libro Owner is CREDITED   => AFT- Direct Debits – Libro Member is CREDITED
+
+# Folio -> Member (client request 2026-10-06: "folio # -> member #").
+# The number labels only. "Folio Name" and the agreements' own use of
+# "folio" in their wording ("a set of accounts ... under one general folio")
+# are left for a human.
+Folio #                                        => Member #
+Folio#                                         => Member#
+Libro Folio #                                  => Libro Member #
+Libro Folio Number                             => Libro Member Number
+Folio Number Designated                        => Member Number Designated
+Transferred to Folio #                         => Transferred to Member #
+Folio# of Estate Trustee                       => Member# of Estate Trustee

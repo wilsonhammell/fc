@@ -3,9 +3,12 @@
 # Authorizing Staff Member | Date. One form per line, by file name; the .pdf
 # and case don't matter. Lines starting with # are ignored.
 #
-# Only the forms the client asked for (review notes, 2026-09-22). Not every
-# form needs the standard block, so every other form keeps its signing area
-# as the form has it.
+# First only the forms the client named (review notes, 2026-09-22). On
+# 2026-10-07 they asked for the standard on every form, with two member rows
+# and the staff row: the "*" line below. Take it out to go back to the list.
+# Declarations and affidavits keep their own signing, whatever this says.
+
+*
 
 Appointment of Agent
 Authorization to Release Financial Info
