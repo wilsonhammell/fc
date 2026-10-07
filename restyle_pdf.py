@@ -3116,11 +3116,23 @@ def standard_signing(page, area, fonts, size, margin=36.0):
         beside = [w[2] for w in words if w[3] > band[0] and w[1] < band[1]
                   and w[2] <= box.x0 - 1]
         left = min(left, max([text_left] + [x + 10 for x in beside]))
-    wide = right - left
-    gutter = wide * 0.04
-    cols = [(left, left + wide * 0.36),
-            (left + wide * 0.36 + gutter, left + wide * 0.74 + gutter),
-            (left + wide * 0.74 + 2 * gutter, right)]
+    # The block is one shape on every form: the width of the text column,
+    # from its left margin to the right one (the client, 2026-10-07: "should
+    # be centred and consistent across forms"). Set from the area's own
+    # bounds it came out shifted and squeezed wherever the form's signing
+    # lines were. Only where that would cover something printed beside the
+    # area does it keep to the area.
+    def columns(left, right):
+        wide = right - left
+        gutter = wide * 0.04
+        return [(left, left + wide * 0.36),
+                (left + wide * 0.36 + gutter, left + wide * 0.74 + gutter),
+                (left + wide * 0.74 + 2 * gutter, right)]
+    narrow_cols = columns(left, right)
+    full_left = max(margin, text_left)
+    full_right = page.rect.width - full_left      # centred: the same margin each side
+    cols = columns(full_left, full_right)
+    left, right = full_left, full_right
 
     # --- what goes -----------------------------------------------------
     # Read the page as the census will: fresh from its bytes. A field's own
@@ -3155,6 +3167,11 @@ def standard_signing(page, area, fonts, size, margin=36.0):
     # land on anything that is staying
     block = fitz.Rect(left, box.y0, right, box.y0 + need)
     blocked = [r for ch, base, r in plain if not mine_(r) and r.intersects(block)]
+    if blocked:
+        cols = narrow_cols
+        left, right = cols[0][0], cols[2][1]
+        block = fitz.Rect(left, box.y0, right, box.y0 + need)
+        blocked = [r for ch, base, r in plain if not mine_(r) and r.intersects(block)]
     if blocked:
         near = min(blocked, key=lambda r: r.y0)
         return None, (f"would be drawn over printing that is not part of it, "
