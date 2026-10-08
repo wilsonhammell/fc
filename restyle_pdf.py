@@ -4776,8 +4776,10 @@ def house_title(name, path=TITLES):
                     continue
                 old, new = (part.strip() for part in line.split("=>", 1))
                 if " ".join(old.split()).casefold() == key and new:
-                    return new
-    return stem
+                    return new.upper()
+    # in capitals: the client's title style (2026-10-08) is bold, upper
+    # case, 14pt, set flush right
+    return " ".join(stem.split()).upper()
 
 
 def signing_listed(name, path=SIGNING_FORMS):
