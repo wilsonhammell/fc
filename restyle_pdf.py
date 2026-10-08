@@ -3165,12 +3165,23 @@ def standard_signing(page, area, fonts, size, margin=36.0):
                and any(r.intersects(p) for p in own)]
     # the standard block is drawn from the top of the area down; it may not
     # land on anything that is staying
-    block = fitz.Rect(left, box.y0, right, box.y0 + need)
+    block_top = box.y0
+    block = fitz.Rect(left, block_top, right, block_top + need)
     blocked = [r for ch, base, r in plain if not mine_(r) and r.intersects(block)]
+    # Something printed beside the area's first line - FHSA Withdrawal's
+    # "Cheque Number ___" on the row its signing lines start - is cleared by
+    # starting the block under it, at full width, where there is the room;
+    # kept to the area instead, the block came out shifted right and narrow.
+    if blocked and max(r.y1 for r in blocked) <= block_top + size * 2.2:
+        block_top_ = max(r.y1 for r in blocked) + size * 0.4
+        if block_top_ + need <= ground - 4:
+            block_ = fitz.Rect(left, block_top_, right, block_top_ + need)
+            if not [r for ch, base, r in plain if not mine_(r) and r.intersects(block_)]:
+                block_top, block, blocked = block_top_, block_, []
     if blocked:
         cols = narrow_cols
         left, right = cols[0][0], cols[2][1]
-        block = fitz.Rect(left, box.y0, right, box.y0 + need)
+        block = fitz.Rect(left, block_top, right, block_top + need)
         blocked = [r for ch, base, r in plain if not mine_(r) and r.intersects(block)]
     if blocked:
         near = min(blocked, key=lambda r: r.y0)
@@ -3376,7 +3387,7 @@ def standard_signing(page, area, fonts, size, margin=36.0):
         return cells
 
     bare = 0
-    y = box.y0 + pitch - size * 0.6
+    y = block_top + pitch - size * 0.6
     # the form's own signers, in order, and whoever else signed there - a
     # witness's group, past the signers the area counted
     others = groups[area["members"]:]
