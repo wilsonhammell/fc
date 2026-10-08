@@ -1062,6 +1062,8 @@ def relabel_rows(rows, table, notes, page_no=0, before=None, declared=False):
                 continue
             text = " ".join(item["text"].split())
             new = table.get(R.label_key(text))
+            if new is not None and R.signer_prompt(text, new):
+                new = None      # a party's name asked for, not a signature caption
             if new is not None and len(text.split()) == 1 and text[:1].islower():
                 new = None      # a wrapped word, not a label (see plan_relabels)
             if new is None:
