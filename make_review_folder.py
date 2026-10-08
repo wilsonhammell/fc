@@ -71,6 +71,27 @@ def main():
         if not mine and found:
             no_proof.append(stem.strip())
 
+    # the two lists, for whoever opens the folder: what each pilot form is
+    # made from, and which pilot forms have nothing to make them from yet
+    width = max(len(name) for name, _ in entries)
+    with open(os.path.join(args.output, "form mappings.txt"), "w", encoding="utf-8") as fh:
+        fh.write("Pilot form (production name)".ljust(width) + "   File in this folder
+")
+        fh.write("-" * (width + 3 + 40) + "
+")
+        for name, stem in entries:
+            if stem:
+                f_ = on_disk.get(key(stem))
+                fh.write(f"{name.ljust(width)}   {f_ if f_ else stem + '.pdf (not produced)'}
+")
+    with open(os.path.join(args.output, "missing forms.txt"), "w", encoding="utf-8") as fh:
+        fh.write(f"Pilot forms with no source file yet ({len(missing)}):
+
+")
+        for name in missing:
+            fh.write(f"{name}
+")
+
     print(f"{len(entries)} pilot form(s) listed; {len(stems)} input file(s) "
           f"copied to {args.output}")
     if missing:
