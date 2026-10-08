@@ -1508,6 +1508,28 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
                        f"{len(orphans)} run(s) invisible to the text extractor, redrawn"))
 
     orphans = [o for o in orphans if drawable(o["text"], style_of(o["flags"], fonts)[2])]
+    # Text the form draws inside another line's box that is not that line's
+    # words - Ln Renewal's "(months)" printed under "Total Monthly Payment",
+    # clipped out of sight - is erased with the line it hides under and was
+    # never seen, so it is not drawn again. The census is told, and the
+    # report says what it was, so a person can check it was meant to be hidden.
+    hidden_under = []
+    line_text = [(fitz.Rect(ln["bbox"]), " ".join("".join(sp["text"] for sp in ln["spans"]).split()))
+                 for ln in lines]
+    for tr in read_once(content, "trace", content.get_texttrace):
+        if tr.get("type") != 0:
+            continue
+        chars = [c for c in tr.get("chars", []) if c[0] > 32]
+        text = "".join(chr(c[0]) for c in chars)
+        if len(text) < 3 or not text.isascii():
+            continue
+        homes = [t for r, t in line_text if all(glyph_in(c[3], r) for c in chars)]
+        if homes and not any(text in t.replace(" ", "") for t in homes):
+            hidden_under.append((chars, text, homes[0]))
+    for chars, text, home in hidden_under:
+        issues.append(("hidden_text_left_out",
+                       f"{text!r}, drawn under {home[:40]!r} where it could not be seen, "
+                       f"left out"))
     left = [sp for ln in lines for sp in ln["spans"] if kept(sp)]
     if left:
         shown = ", ".join(sorted({repr(ch) for sp in left for ch in sp["text"] if not ch.isspace()}))
@@ -1536,6 +1558,9 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
     # --- redraw ------------------------------------------------------------
     expected = Counter()        # glyph-count changes made on purpose
     expected.update(dropped)
+    for chars, _text, _home in hidden_under:
+        for c in chars:
+            expected[(c[2][1], c[0])] -= 1
     # A ligature spelt out is one glyph before and two letters after, wherever
     # the line ends up: every path draws the span's text and accounts for it
     # at its own baseline, so declaring the swap once here balances all of them.
@@ -1591,6 +1616,12 @@ def restyle_page(page, fonts, size, pad, centre_tol, min_indent, keep_size_ratio
             # column or tab stop, so keep its original x.
             if prev_end_old is not None and (sp["bbox"][0] - prev_end_old) < gap_tol:
                 x = prev_end_new - dx
+            # and a column that the span before it has now grown into starts
+            # after it, a space clear: kept at its own x, Ln Renewal's "Sub"
+            # was drawn 10pt inside "«Customer_Number»", and taking the tag
+            # off the page took "Su" with it
+            elif prev_end_new is not None and x + dx < prev_end_new + at * 0.25:
+                x = prev_end_new + at * 0.25 - dx
 
             if kept(sp):                    # left where it was, in its own font
                 prev_end_old = prev_end_new = sp["bbox"][2]
@@ -1704,7 +1735,13 @@ def flat_rules(page):
     for d in read_once(page, "draw", page.get_drawings):
         colour = d.get("color") or d.get("fill") or (0, 0, 0)
         width = d.get("width") or 0.6
+        # the outline of a filled area is no rule: Ln Conversion's grey panels
+        # are drawn as filled shapes with straight sides, and their tops and
+        # bottoms were read as lines to sign on
+        filled_area = d["type"] == "f" and fitz.Rect(d["rect"]).height > 1.5
         for item in d["items"]:
+            if item[0] == "l" and filled_area:
+                continue
             if item[0] == "l":
                 p, q = item[1], item[2]
                 if abs(p.y - q.y) <= 0.6 and abs(p.x - q.x) >= 12:
@@ -2702,7 +2739,7 @@ def signing_areas(page, min_rules=2):
     # (centred under the words and about as wide: a heading the relabel
     #  rewrote keeps its old underline - "Owner Signatures" became
     #  "Authorized Signature", 9pt off at each end)
-    under_of = lambda r, l: (-1 <= r["y"] - l["box"].y1 <= 4
+    under_of = lambda r, l: (-3 <= r["y"] - l["box"].y1 <= 4
                              and abs((r["x0"] + r["x1"]) / 2 - (l["box"].x0 + l["box"].x1) / 2) <= 6
                              and 0.5 * l["box"].width <= r["x1"] - r["x0"] <= l["box"].width * 1.3 + 6)
     underlines_ = [(r, l) for r in rules if not r["typed"] for l in lines if under_of(r, l)]
@@ -3470,7 +3507,11 @@ def standard_signing(page, area, fonts, size, margin=36.0):
             "moved_glyphs": moved_glyphs, "placed": placed, "unplaced": unplaced,
             "bare": bare, "members": area["members"],
             "was": area["text"] + area.get("frag_text", []),
-            "made_text": made_text, "lost_marks": lost_marks, "dropped": dropped}, None
+            "made_text": made_text, "lost_marks": lost_marks, "dropped": dropped,
+            # the art the area actually lost, for the line-art check: its own
+            # lines and marks, not everything inside its bounds (a shaded
+            # panel the block is drawn over stays, and is no shape gained)
+            "gone_art": [r + (-1, -1, 1, 1) for r in lines_ + marks]}, None
 
 
 DECLARATION = re.compile(r"declaration|affidavit|statutory", re.I)
@@ -3610,7 +3651,9 @@ def asks_for_signature(doc):
 
 # (not "signed": the Assignment letter mentions a policy "signed by the
 #  above stated insured", which asks no one here to sign)
-SIGN_ANYWHERE = re.compile(r"signature|witness|(?<![a-z])sign(?![a-z])", re.I)
+# ("by signing this Agreement" asks for a signature too: Ln Conversion
+#  had its own area replaced and a second block added at its end)
+SIGN_ANYWHERE = re.compile(r"signature|witness|(?<![a-z])sign(?:ing)?(?![a-z])", re.I)
 
 
 def block_spot(doc):
@@ -5356,6 +5399,12 @@ def third_party(page, zone, marks, issuers):
             if abs(aspect - ref["aspect"]) / ref["aspect"] <= 0.15:
                 d = sum(abs(a - b) for a, b in zip(fp, ref["fp"])) / len(fp)
                 best = d if best is None else min(best, d)
+    # a mark that matches none of the stored ones, beside a letterhead that
+    # names Libro, is a Libro logo drawn another way: Ln Renewal's reads 44
+    # from every stored mark and its letterhead says "Libro Credit Union
+    # Limited ("Libro")". Another issuer named there was caught above.
+    if (best is None or best > 25) and re.search(r"\blibro\b", band):
+        return False, None
     if best is None or best > 25:
         return True, ("the letterhead mark isn't a Libro one"
                       + (f" (nearest match {best:.0f}, needs 25 or less)" if best else
@@ -5999,7 +6048,8 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
             rows += [[name, pno, issue, detail] for issue, detail in said]
             # A form that asks for no signature anywhere gets the block added
             # at the end of its fill-in part (the client's word, 2026-10-07).
-            if adding is not None and pno - 1 == adding[0]:
+            if (adding is not None and pno - 1 == adding[0]
+                    and not any(signed[:pno])):
                 rec, why = add_signing_block(page, fonts, min(size, 10.0), terms=adding[1])
                 if rec is None:
                     rows.append([name, pno, "SIGNING_AREA_NO_ROOM",
@@ -6206,8 +6256,11 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                 # the old title's boxes on the original, the header's band on
                 # the restyled one - because everything else on page 1 has
                 # moved down between them.
+                # (not the old logo's box: taking the logo off removes the
+                #  image only, never line art, and a table border touching the
+                #  logo's foot - the Loan Payout statements' - was counted gone
+                #  on the form and then "gained" once moved down)
                 gone = ([fitz.Rect(t["bbox"]) + (-2, -2, 2, 2) for t in header["old_titles"]]
-                        + [fitz.Rect(r) + (-2, -2, 2, 2) for r in header["old_logos"]]
                         if header and pno == 1 else [])
                 added = ([fitz.Rect(0, 0, page.rect.width, header["bottom"] + 4)]
                          if header and pno == 1 else [])
@@ -6228,7 +6281,7 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
                                      for g in underlines[pno - 1]
                                      if g.get("replaced") is not None]
                 for rec in signed[pno - 1]:
-                    gone = list(gone) + [rec["box"] + (-2, -2, 2, 2)]
+                    gone = list(gone) + rec.get("gone_art", [rec["box"] + (-2, -2, 2, 2)])
                     expect.update(rec["made_rules"])
                 for issue, detail in verify_line_art(orig[pno - 1], page,
                                                      gone, added, expect):
