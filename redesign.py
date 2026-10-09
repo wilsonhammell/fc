@@ -1427,7 +1427,10 @@ def merge_prose(rows, right_edge=10 ** 6):
             # consideration ...")
             bare = (re.fullmatch(r"\d{1,2}", mark) is not None and len(spots) > 1
                     and spots[1]["rect"].x0 - head["rect"].x1 >= 6)
-            if not (mark in ("•", "●", "-", "*") or LIST_MARK.match(mark) or lead_in or bare):
+            # ("o" and "○": Word's second-level bullet - Transfer In's wire
+            #  page ran its three sub-items together into one line)
+            if not (mark in ("•", "●", "-", "*", "o", "○", "◦", "▪", "■")
+                    or LIST_MARK.match(mark) or lead_in or bare):
                 return None
         else:
             return None
@@ -1482,7 +1485,9 @@ def merge_prose(rows, right_edge=10 ** 6):
                 and a["bold"] == b["bold"] and a["italic"] == b["italic"]
                 and 0 < b["base"] - a["base"] < 2.2 * b["size"]
                 and (not same_start or abs(a["rect"].x0 - b["rect"].x0) <= 2.5)
-                and not LIST_MARK.match(b["text"].lstrip())):
+                and not LIST_MARK.match(b["text"].lstrip())
+                # (Word's second-level bullet, an "o", is not lower case)
+                and not re.match(r"o\s", b["text"].lstrip())):
             return True
         reach = edges.get(round(column if column is not None else a["rect"].x0))
         if reach is None and fallback is not None:
@@ -1514,7 +1519,9 @@ def merge_prose(rows, right_edge=10 ** 6):
                 and (not same_start or abs(a["rect"].x0 - b["rect"].x0) <= 2.5)
                 and not a["text"].rstrip().endswith(":")
                 and not LIST_MARK.match(b["text"].lstrip())
-                and b["text"].lstrip()[:1] not in ("•", "●")
+                and b["text"].lstrip()[:1] not in ("•", "●", "○", "◦", "▪", "■")
+                # Word's second-level bullet is a plain "o" and a space
+                and not re.match(r"o\s", b["text"].lstrip())
                 and ran_out_of_room(a, b, reach))
 
     def join(a, b):
@@ -3873,6 +3880,8 @@ def main():
     # pages of the form kept ahead of the ones rebuilt, so the proof numbers
     # pages as the whole form has them
     ap.add_argument("--kept", type=int, default=0, help=argparse.SUPPRESS)
+    # and whether those kept pages ask for a signature themselves
+    ap.add_argument("--kept-signs", action="store_true", help=argparse.SUPPRESS)
     args = ap.parse_args()
 
     # A form that opens with another issuer's own pages - the Dairy Farmers'
@@ -3902,11 +3911,18 @@ def main():
                 argv[argv.index("--output") + 1] = rest_out
             else:
                 argv += ["-o", rest_out]
+            # the issuer's pages can be where the form asks for its signature
+            # - Transfer In's "Member's Signature" is on Kawartha's page - and
+            # the pages behind them are not a form that asks for none
+            signs = R.asks_for_signature(whole)
             r = subprocess.run([sys.executable, os.path.abspath(__file__)] + argv
-                               + ["--no-house", "--kept", str(k)],
+                               + ["--no-house", "--kept", str(k)]
+                               + (["--kept-signs"] if signs else []),
                                capture_output=True, text=True, encoding="utf-8")
             sys.stdout.write(r.stdout)
-            if r.returncode:
+            # (it exits non-zero whenever its checks found anything; only one
+            # that never got to them has nothing to put the form back with)
+            if r.returncode and ("checks:" not in r.stdout or not os.path.exists(rest_out)):
                 sys.stderr.write(r.stderr)
                 sys.exit(r.returncode)
             # the form itself, cut back to its issuer's pages, keeps their
@@ -4087,7 +4103,7 @@ def main():
     # never to get one. Room is kept for it as the form is laid out.
     adding = bool(args.signing and (house or args.no_house)
                   and R.signing_listed(args.input) and not R.signing_excluded(args.input)
-                  and not R.is_declaration(doc)
+                  and not R.is_declaration(doc) and not args.kept_signs
                   and not R.asks_for_signature(fitz.open("pdf", doc.tobytes()))
                   and not any(R.signing_areas(p)[0] for p in fitz.open("pdf", doc.tobytes())))
     block_need = sheet.size * (3.4 * (R.STANDARD_MEMBERS + 1) + 1.2) + 4
@@ -4433,7 +4449,12 @@ def main():
                     close_signing(a)
             texts = [i for i in row if i["what"] == "text"]
             has_field = any(i["what"] == "field" for i in row)
-            if not started and texts and texts[0]["size"] >= 12 and not has_field:
+            # (a title is at the head of the page: Wire Instructions sets its
+            # whole body at 12pt, and every row of it went as "the title")
+            # (and only where a header carries it: the pages behind an issuer's
+            # own get none, and Transfer In's wire page lost its title)
+            if (house and not started and texts and texts[0]["size"] >= 12 and not has_field
+                    and all(i["rect"].y1 <= page.rect.height * 0.16 for i in row)):
                 n += 1
                 continue                    # the form's own title; the header carries it
             feet = page_numbers(row, page)
@@ -4892,6 +4913,21 @@ def main():
     found = verify(fitz.open(args.output), sheet.said, was,
                    fitz.Rect(wrote.x0 - 1, 20.0, wrote.x1 + 6, 0))
     found += signing_issues
+    # The check above holds the file to what the rebuild drew - and a row the
+    # rebuild never drew is in neither. Transfer In's wire page came back as a
+    # logo and a signing block, "checks: clean". So each page of the FORM is
+    # held to the file too: most of its words have to be in it somewhere.
+    # (most, not all - its title, page numbers and relabelled words go by design)
+    word = lambda t: {w.casefold() for w in re.findall(r"[A-Za-z]{3,}", t)}
+    with fitz.open(args.output) as saved:
+        have = set().union(*(word(p.get_text()) for p in saved))
+    for page in doc:
+        own = word(R.printed(page).get_text())
+        if len(own) >= 20 and len(own & have) < 0.6 * len(own):
+            found.append(("TEXT_NOT_CARRIED",
+                          f"page {page.number + 1} of the form: only {len(own & have)} of its "
+                          f"{len(own)} words are anywhere in the rebuild - e.g. "
+                          + ", ".join(sorted(own - have)[:12])))
     found += R.verify_field_behaviour(doc, fitz.open(args.output))
     # Does it still look like the form? The rebuild lays every line out again,
     # and lost run-in bold headings, italic notes, shaded table heads and
@@ -4922,7 +4958,10 @@ def main():
                                     f"rebuilt pages are not in the saved file"))
     with fitz.open(args.output) as saved:
         sig_now = saved.xref_get_key(saved.pdf_catalog(), "AcroForm/SigFlags")
-    if sig_now[1] != sig_was[1]:
+    # (no flags at all and flags of 0 are the same file: unsigned, editable -
+    # a rebuild with no fields has no AcroForm to carry the form's 0)
+    flags = lambda v: int(v[1]) if v[0] == "int" else 0
+    if flags(sig_now) != flags(sig_was):
         found.append(("FILE_LOCKED", f"signature flags {sig_now[1] or 'none'}, the form had "
                                      f"{sig_was[1] or 'none'} - an 'append only' file is "
                                      f"read as signed and can't be edited"))

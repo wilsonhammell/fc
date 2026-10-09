@@ -3754,7 +3754,12 @@ def add_signing_block(page, fonts, size, terms=False, margin=36.0):
     body = [w for w in words if w[3] <= stop]
     draws = [fitz.Rect(d["rect"]) for d in p.get_drawings()
              if d["rect"].y1 <= stop and d["rect"].height < page.rect.height * 0.5]
-    bottom = max([w[3] for w in body] + [r.y1 for r in draws] + [margin])
+    # and the fields: a merge tag is a text box by now, gone from the printed
+    # page, and the letters' "«Members_FSR_Full_Name»" under their sign-off
+    # line had the block drawn over them
+    boxes = [fitz.Rect(w.rect) for w in page.widgets() if w.rect.y1 <= stop]
+    bottom = max([w[3] for w in body] + [r.y1 for r in draws]
+                 + [r.y1 for r in boxes] + [margin])
     left = max(margin * 0.5, min([w[0] for w in words] + [margin]))
     y = bottom + 2 * size
     area = {"box": fitz.Rect(left, y, page.rect.width - margin, y + 1), "members": 0,

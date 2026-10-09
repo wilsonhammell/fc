@@ -307,6 +307,12 @@ def main():
                 # failing outright, it never gets as far as its checks)
                 if "checks:" not in (r.stdout or ""):
                     found.append((n, "", "REBUILD_FAILED", (r.stderr or "")[-300:]))
+                # or got through its checks and still wrote nothing: a form
+                # with its issuer's pages kept is put together after them, and
+                # Transfer In was counted, proofed - and missing from the folder
+                elif not os.path.exists(os.path.join(args.output, n)):
+                    found.append((n, "", "REBUILD_FAILED", "no file written: "
+                                  + (r.stderr or "")[-250:]))
             # A form sent up only for the signing block's room comes back to
             # its own rung if rebuilding it cost more than the block gives:
             # Collection Request lost its boxes and came back scrambled. The

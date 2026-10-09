@@ -1,7 +1,7 @@
 """Build "forms for review" from the pilot list.
 
-    python make_review_folder.py [--list pilot_forms.txt] [--forms "forms at 10pt"]
-                                 [--proofs "final proofs"] [-o "forms for review"]
+    python make_review_folder.py [--list pilot_forms.txt] [--forms "final selection at 10pt"]
+                                 [--proofs "final selection proofs"] [-o "forms for review"]
 
 Copies, for each input file named in pilot_forms.txt, its form at 10pt and
 its proof into two folders under the output folder, which is emptied first.
@@ -33,8 +33,8 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--list", default=os.path.join(HERE, "pilot_forms.txt"))
-    ap.add_argument("--forms", default=os.path.join(HERE, "forms at 10pt"))
-    ap.add_argument("--proofs", default=os.path.join(HERE, "final proofs"))
+    ap.add_argument("--forms", default=os.path.join(HERE, "final selection at 10pt"))
+    ap.add_argument("--proofs", default=os.path.join(HERE, "final selection proofs"))
     ap.add_argument("-o", "--output", default=os.path.join(HERE, "forms for review"))
     args = ap.parse_args()
 
