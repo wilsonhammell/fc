@@ -1,0 +1,209 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's first (usual) name - the form splits Name into first and last"
+  },
+  "F2": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's surname"
+  },
+  "F3": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number",
+   "desc": "Member number"
+  },
+  "F4": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch",
+   "desc": "Member's branch. CHECK: name or number? PRIMARY_BRANCH is the number"
+  },
+  "F5": {
+   "name": "TRACE_REASON_NO_FUNDS",
+   "kind": "entry",
+   "label": "Member didn't receive any funds",
+   "desc": "Reason for trace, tick"
+  },
+  "F6": {
+   "name": "TRACE_REASON_PARTIAL_FUNDS",
+   "kind": "entry",
+   "label": "Entire amount requested not received",
+   "desc": "Reason for trace, tick"
+  },
+  "F7": {
+   "name": "TRACE_REASON_DECLINED_DEBITED",
+   "kind": "entry",
+   "label": "Transaction said decline but still debited account",
+   "desc": "Reason for trace, tick"
+  },
+  "F8": {
+   "name": "TRACE_REASON_DEBITED_TWICE",
+   "kind": "entry",
+   "label": "Account debited twice for same transaction",
+   "desc": "Reason for trace, tick"
+  },
+  "F9": {
+   "name": "TRACE_REASON_NOT_RECOGNIZED",
+   "kind": "entry",
+   "label": "Member does not recognize the transaction",
+   "desc": "Reason for trace, tick"
+  },
+  "F10": {
+   "name": "TRACE_REASON_OTHER",
+   "kind": "entry",
+   "label": "Other, please specify",
+   "desc": "Reason for trace, tick"
+  },
+  "F11": {
+   "name": "TRACE_REASON_OTHER_DETAIL",
+   "kind": "entry",
+   "label": "Other, please specify",
+   "desc": "The other reason, in words"
+  },
+  "F12": {
+   "name": "BRANCH_TRACE_CONTACT",
+   "kind": "entry",
+   "label": "Branch contact name for trace",
+   "desc": "Staff member Central 1 should contact. Could be REQUESTUSER if it is always the person filling the form"
+  },
+  "F13": {
+   "name": "ATM_TRANSACTION_DATE",
+   "kind": "entry",
+   "label": "Date of ATM transaction",
+   "desc": "Date of the ATM transaction"
+  },
+  "F14": {
+   "name": "ATM_TRANSACTION_AMOUNT",
+   "kind": "entry",
+   "label": "Amount of ATM transaction",
+   "desc": "Amount of the ATM transaction"
+  },
+  "F15": {
+   "name": "ATM_UNIT_ID",
+   "kind": "entry",
+   "label": "ATM unit identification number",
+   "desc": "ATM unit identification number"
+  },
+  "F16": {
+   "name": "ATM_PAN_NUMBER",
+   "kind": "entry",
+   "label": "PAN number used for the transaction (if available)",
+   "desc": "Card number (PAN) used at the ATM"
+  },
+  "F17": {
+   "name": "ATM_TRACER_NUMBER",
+   "kind": "entry",
+   "label": "Tracer number for the transaction",
+   "desc": "Tracer number of the ATM transaction"
+  },
+  "F18": {
+   "name": "POS_TRANSACTION_DATE",
+   "kind": "entry",
+   "label": "Date of POS transaction",
+   "desc": "Date of the POS transaction"
+  },
+  "F19": {
+   "name": "POS_TRANSACTION_AMOUNT",
+   "kind": "entry",
+   "label": "Amount of POS transaction",
+   "desc": "Amount of the POS transaction"
+  },
+  "F20": {
+   "name": "POS_UNIT_ID",
+   "kind": "entry",
+   "label": "ATM unit identification number",
+   "desc": "Terminal identification number (the form says ATM unit under POS)"
+  },
+  "F21": {
+   "name": "POS_PAN_NUMBER",
+   "kind": "entry",
+   "label": "PAN number used for the transaction (if available)",
+   "desc": "Card number (PAN) used at the POS"
+  },
+  "B9": {
+   "name": "POS_TRACER_NUMBER",
+   "kind": "entry",
+   "label": "Tracer number for the transaction",
+   "desc": "Tracer number of the POS transaction - the form had no box for it"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1"
+  },
+  "B2": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1"
+  },
+  "B3": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1"
+  },
+  "B4": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2"
+  },
+  "B5": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2"
+  },
+  "B6": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2"
+  },
+  "B7": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Staff member filling the form"
+  },
+  "B8": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date"
+  },
+  "F22": {
+   "name": "ADMIN_DATE_RECEIVED",
+   "kind": "entry",
+   "label": "Date received from branch",
+   "desc": "Admin office use only"
+  },
+  "F23": {
+   "name": "ADMIN_CENTRAL1_RESPONSE_RECEIVED",
+   "kind": "entry",
+   "label": "Response received from Central 1",
+   "desc": "Admin office use only"
+  },
+  "F24": {
+   "name": "ADMIN_BRANCH_CONTACTED",
+   "kind": "entry",
+   "label": "Branch Contacted",
+   "desc": "Admin office use only"
+  },
+  "F25": {
+   "name": "ADMIN_RESPONSE",
+   "kind": "entry",
+   "label": "Response",
+   "desc": "Admin office use only"
+  }
+ },
+ "drop": []
+}

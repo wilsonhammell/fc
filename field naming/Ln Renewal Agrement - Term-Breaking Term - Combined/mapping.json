@@ -1,0 +1,593 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Member name (address block)",
+   "desc": "Borrower's first name - moved onto one line with middle and surname",
+   "rect": [
+    59,
+    98,
+    150,
+    111
+   ]
+  },
+  "F2": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "Member name (address block)",
+   "desc": "Borrower's middle name/initial",
+   "rect": [
+    152,
+    98,
+    190,
+    111
+   ]
+  },
+  "F3": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Member name (address block)",
+   "desc": "Borrower's surname",
+   "rect": [
+    192,
+    98,
+    290,
+    111
+   ]
+  },
+  "F4": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "Co-borrower name (address block)",
+   "desc": "Co-borrower's first name. CHECK PRIMARY vs SIGNER1: here SIGNER1 is taken as the second person",
+   "rect": [
+    59,
+    111,
+    150,
+    124
+   ]
+  },
+  "F5": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "Co-borrower name (address block)",
+   "desc": "Co-borrower's middle name/initial",
+   "rect": [
+    152,
+    111,
+    190,
+    124
+   ]
+  },
+  "F6": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "Co-borrower name (address block)",
+   "desc": "Co-borrower's surname",
+   "rect": [
+    192,
+    111,
+    290,
+    124
+   ]
+  },
+  "F7": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address block",
+   "desc": "Mailing address line 1 (the DB list has only PRIMARY_MAIL_FULL_LINE, one line)",
+   "rect": [
+    59,
+    124,
+    290,
+    137
+   ]
+  },
+  "F8": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address block",
+   "desc": "Mailing address line 2",
+   "rect": [
+    59,
+    137,
+    290,
+    150
+   ]
+  },
+  "F9": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Address block",
+   "desc": "Mailing address line 3",
+   "rect": [
+    59,
+    150,
+    290,
+    163
+   ]
+  },
+  "F10": {
+   "name": "PRIMARY_BRANCH",
+   "kind": "db",
+   "label": "Loan No.",
+   "desc": "Loan number part 1: branch number (old merge tag Branch_No)"
+  },
+  "F11": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Loan No.",
+   "desc": "Loan number part 2: member number (old Customer_Number)"
+  },
+  "F12": {
+   "name": "LOAN_SUB",
+   "kind": "candidate",
+   "label": "Loan No.",
+   "desc": "Loan number part 3: the loan's sub number (old Sub)"
+  },
+  "F13": {
+   "name": "LOAN_ORIGINAL_AMOUNT",
+   "kind": "candidate",
+   "label": "amount of $ (the Principal Amount)",
+   "desc": "Original principal of the loan (old Loan_Approved_Amount). MORT_ACCOUNT_ORIGINALAMOUNT if this is a mortgage"
+  },
+  "F14": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "continue automatic payment of your Loan out of your account",
+   "desc": "Account the payments come from - the old merge tag was Customer_Number, so the same value as Loan No. part 2 (one field shown twice)"
+  },
+  "F15": {
+   "name": "PRIMARY_BRANCH_PHONE",
+   "kind": "db",
+   "label": "contact your branch office at",
+   "desc": "Branch phone"
+  },
+  "F16": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "(printed under signature line 1)",
+   "desc": "Borrower's first name, shown again under the signature"
+  },
+  "F17": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "(printed under signature line 1)",
+   "desc": "Borrower's middle"
+  },
+  "F18": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "(printed under signature line 1)",
+   "desc": "Borrower's surname"
+  },
+  "F19": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "(printed under signature line 2)",
+   "desc": "Co-borrower's first name"
+  },
+  "F20": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "(printed under signature line 2)",
+   "desc": "Co-borrower's middle"
+  },
+  "F21": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "(printed under signature line 2)",
+   "desc": "Co-borrower's surname"
+  },
+  "F22": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Owner Number",
+   "desc": "Member number, page 2 header"
+  },
+  "F23": {
+   "name": "LOAN_SUB",
+   "kind": "candidate",
+   "label": "Sub",
+   "desc": "Loan sub number, page 2 header"
+  },
+  "B1": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "(signature line 1)",
+   "desc": "Borrower's signature - this form keeps its own signing area (it was left for a person, no room for the standard block)"
+  },
+  "B2": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Borrower's date"
+  },
+  "B3": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "(signature line 2)",
+   "desc": "Co-borrower's signature"
+  },
+  "B4": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Co-borrower's date"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [
+  {
+   "page": 0,
+   "rect": [
+    186,
+    328,
+    237,
+    339
+   ],
+   "name": "LOAN_PROJECTED_BALANCE",
+   "kind": "candidate",
+   "label": "Projected balance at maturity",
+   "desc": "Projected balance at maturity.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    195,
+    341,
+    245,
+    353
+   ],
+   "name": "LOAN_INTEREST_RATE",
+   "kind": "candidate",
+   "label": "Interest rate",
+   "desc": "Current interest rate.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    205,
+    356,
+    245,
+    368
+   ],
+   "name": "LOAN_TERM_MONTHS",
+   "kind": "candidate",
+   "label": "Term (months)",
+   "desc": "Current term, months.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    205,
+    371,
+    245,
+    383
+   ],
+   "name": "LOAN_REMAINING_AMORTIZATION",
+   "kind": "candidate",
+   "label": "Remaining Amortization",
+   "desc": "Remaining amortization, months.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    190,
+    387,
+    260,
+    399
+   ],
+   "name": "LOAN_PAYMENT_FREQUENCY",
+   "kind": "candidate",
+   "label": "Payment Frequency",
+   "desc": "Payment frequency.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    372,
+    341,
+    420,
+    353
+   ],
+   "name": "LOAN_ORIGINAL_AMORTIZATION",
+   "kind": "candidate",
+   "label": "Original Amortization",
+   "desc": "Original amortization, months.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    370,
+    356,
+    420,
+    368
+   ],
+   "name": "LOAN_TOTAL_PAYMENT",
+   "kind": "candidate",
+   "label": "Total Monthly Payment",
+   "desc": "Current total payment.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    283,
+    413,
+    358,
+    426
+   ],
+   "name": "LOAN_PAYMENT_FREQUENCY",
+   "kind": "candidate",
+   "label": "YOUR OPTIONS FOR RENEWAL ARE AS FOLLOWS",
+   "desc": "Frequency the options are quoted at - the same value as Payment Frequency (one field shown twice).",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    66,
+    476,
+    77,
+    487
+   ],
+   "name": "RENEWAL_OPTION_1YR",
+   "kind": "entry",
+   "label": "Mark (x) - 1 year closed",
+   "desc": "Option the member chooses, tick",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    160,
+    476,
+    211,
+    487
+   ],
+   "name": "RENEWAL_RATE_1YR",
+   "kind": "candidate",
+   "label": "Interest Rate - 1 year closed",
+   "desc": "Rate offered for the 1 year closed term",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    262,
+    476,
+    358,
+    487
+   ],
+   "name": "RENEWAL_PAYMENT_1YR",
+   "kind": "candidate",
+   "label": "New Monthly Payment - 1 year closed",
+   "desc": "Payment at the 1 year closed rate.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    66,
+    491,
+    77,
+    502
+   ],
+   "name": "RENEWAL_OPTION_2YR",
+   "kind": "entry",
+   "label": "Mark (x) - 2 year closed",
+   "desc": "Option the member chooses, tick",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    160,
+    491,
+    211,
+    502
+   ],
+   "name": "RENEWAL_RATE_2YR",
+   "kind": "candidate",
+   "label": "Interest Rate - 2 year closed",
+   "desc": "Rate offered for the 2 year closed term",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    262,
+    491,
+    358,
+    502
+   ],
+   "name": "RENEWAL_PAYMENT_2YR",
+   "kind": "candidate",
+   "label": "New Monthly Payment - 2 year closed",
+   "desc": "Payment at the 2 year closed rate.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    66,
+    506,
+    77,
+    517
+   ],
+   "name": "RENEWAL_OPTION_3YR",
+   "kind": "entry",
+   "label": "Mark (x) - 3 year closed",
+   "desc": "Option the member chooses, tick",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    160,
+    506,
+    211,
+    516
+   ],
+   "name": "RENEWAL_RATE_3YR",
+   "kind": "candidate",
+   "label": "Interest Rate - 3 year closed",
+   "desc": "Rate offered for the 3 year closed term",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    262,
+    506,
+    358,
+    516
+   ],
+   "name": "RENEWAL_PAYMENT_3YR",
+   "kind": "candidate",
+   "label": "New Monthly Payment - 3 year closed",
+   "desc": "Payment at the 3 year closed rate.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    66,
+    520,
+    77,
+    531
+   ],
+   "name": "RENEWAL_OPTION_4YR",
+   "kind": "entry",
+   "label": "Mark (x) - 4 year closed",
+   "desc": "Option the member chooses, tick",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    160,
+    520,
+    211,
+    531
+   ],
+   "name": "RENEWAL_RATE_4YR",
+   "kind": "candidate",
+   "label": "Interest Rate - 4 year closed",
+   "desc": "Rate offered for the 4 year closed term",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    262,
+    520,
+    358,
+    531
+   ],
+   "name": "RENEWAL_PAYMENT_4YR",
+   "kind": "candidate",
+   "label": "New Monthly Payment - 4 year closed",
+   "desc": "Payment at the 4 year closed rate.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    66,
+    535,
+    77,
+    546
+   ],
+   "name": "RENEWAL_OPTION_5YR",
+   "kind": "entry",
+   "label": "Mark (x) - 5 year closed",
+   "desc": "Option the member chooses, tick",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    160,
+    535,
+    211,
+    546
+   ],
+   "name": "RENEWAL_RATE_5YR",
+   "kind": "candidate",
+   "label": "Interest Rate - 5 year closed",
+   "desc": "Rate offered for the 5 year closed term",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    262,
+    535,
+    358,
+    546
+   ],
+   "name": "RENEWAL_PAYMENT_5YR",
+   "kind": "candidate",
+   "label": "New Monthly Payment - 5 year closed",
+   "desc": "Payment at the 5 year closed rate.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    66,
+    553,
+    77,
+    564
+   ],
+   "name": "RENEWAL_OPTION_VARIABLE",
+   "kind": "entry",
+   "label": "Mark (x) - Variable",
+   "desc": "Option the member chooses, tick",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    160,
+    553,
+    258,
+    564
+   ],
+   "name": "RENEWAL_RATE_VARIABLE",
+   "kind": "candidate",
+   "label": "Interest Rate - Variable",
+   "desc": "Variable rate offered (Libro Prime + n).",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    262,
+    553,
+    358,
+    564
+   ],
+   "name": "RENEWAL_PAYMENT_VARIABLE",
+   "kind": "candidate",
+   "label": "New Monthly Payment - Variable",
+   "desc": "Payment at the Variable rate.",
+   "type": "text"
+  }
+ ],
+ "notes": [
+  "The table prints sample values ($100,000.00, 6.00%, 60, 240, Monthly, 300, $392.01, #VALUE!, $743.63, Libro Prime + 2 = 6.45%) - fields are placed over them, but the printed text has to come off the form or it shows through.",
+  "Three values the wording asks for have no room at all: the Renewal Date ('as of  (the Renewal Date)'), the prepayment penalty amount ('in the amount of $ and will be withdrawn'), and the date the penalty was calculated ('calculated as of and is valid'). Each needs a gap in the sentence before a field can go in: LOAN_RENEWAL_DATE, LOAN_PREPAYMENT_PENALTY, LOAN_PENALTY_CALC_DATE.",
+  "No MORT_ fields used: this is a commercial term loan, and the DB list has no loan group. If term loans live in the mortgage tables, the LOAN_ candidates map to MORT_ (MORT_ACCOUNT_ORIGINALAMOUNT, MORT_ACCOUNT_PAYMENT, MORT_ACCOUNT_PAYMENT_FREQ, MORT_ACCOUNT_MATURITY)."
+ ]
+}
