@@ -1,0 +1,120 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "Transfer of Funds to RRIF#",
+   "desc": "The spouse's RRIF contract # the funds went to. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "TRANSFER_AMOUNT",
+   "kind": "entry",
+   "label": "the sum of $",
+   "desc": "The sum transferred $",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "TRANSFER_DATE",
+   "kind": "entry",
+   "label": "on",
+   "desc": "Date the funds were transferred",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": []
+}

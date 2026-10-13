@@ -1,0 +1,772 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Name:",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "Name:",
+   "desc": "Member's middle name/initial",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Name:",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "Joint Owner:",
+   "desc": "Joint owner 1, first name",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "Joint Owner:",
+   "desc": "Joint owner 1, middle name/initial",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "Joint Owner:",
+   "desc": "Joint owner 1, surname",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "JointMember1Number",
+   "kind": "special",
+   "label": "Joint Owner Number:",
+   "desc": "Joint owner 1, member number",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "SIGNER2_NAME",
+   "kind": "db",
+   "label": "Joint Owner:",
+   "desc": "Joint owner 2, first name",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "SIGNER2_MIDDLE",
+   "kind": "db",
+   "label": "Joint Owner:",
+   "desc": "Joint owner 2, middle name/initial",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "SIGNER2_SURNAME",
+   "kind": "db",
+   "label": "Joint Owner:",
+   "desc": "Joint owner 2, surname",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "JointMember2Number",
+   "kind": "special",
+   "label": "Joint Owner Number:",
+   "desc": "Joint owner 2, member number",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "SIGNER3_NAME",
+   "kind": "db",
+   "label": "Joint Owner:",
+   "desc": "Joint owner 3, first name",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "SIGNER3_MIDDLE",
+   "kind": "db",
+   "label": "Joint Owner:",
+   "desc": "Joint owner 3, middle name/initial",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "SIGNER3_SURNAME",
+   "kind": "db",
+   "label": "Joint Owner:",
+   "desc": "Joint owner 3, surname",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "JointMember3Number",
+   "kind": "special",
+   "label": "Joint Owner Number:",
+   "desc": "Joint owner 3, member number",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "LOAN_SUB",
+   "kind": "candidate",
+   "label": "Sub:",
+   "desc": "The loan's sub number",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "LOAN_PRODUCT",
+   "kind": "candidate",
+   "label": "Loan Type:",
+   "desc": "Loan product",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "LOAN_PAYMENT_FREQUENCY",
+   "kind": "candidate",
+   "label": "Payment Frequency:",
+   "desc": "Loan payment frequency",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "LOAN_TOTAL_PAYMENT",
+   "kind": "candidate",
+   "label": "Payment Amount:",
+   "desc": "Loan's total payment",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "LOAN_APPROVED_AMOUNT",
+   "kind": "candidate",
+   "label": "Original Amount:",
+   "desc": "Loan's approved (original) amount",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "LOAN_BALANCE",
+   "kind": "candidate",
+   "label": "Balance Outstanding:",
+   "desc": "Loan's current balance",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "LOAN_APPROVAL_COMMITTEE",
+   "kind": "candidate",
+   "label": "Loan originally approved by:",
+   "desc": "Committee that approved the loan",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "LOAN_MATURITY_DATE",
+   "kind": "candidate",
+   "label": "Maturity Date:",
+   "desc": "Loan's maturity date",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "SECURITY_DOCUMENT_TYPE",
+   "kind": "entry",
+   "label": "but not limited to, the security set out in the",
+   "desc": "Security: the security document (dropdown)",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "SECURITY_DOCUMENT_DATE",
+   "kind": "entry",
+   "label": "dated",
+   "desc": "Security: dated",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "FIRST_EXTENSION_YES",
+   "kind": "entry",
+   "label": "Yes",
+   "desc": "First extension request: Yes",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F29": {
+   "name": "FIRST_EXTENSION_NO",
+   "kind": "entry",
+   "label": "No",
+   "desc": "First extension request: No",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F30": {
+   "name": "EXT_INTEREST_ONLY",
+   "kind": "entry",
+   "label": "Convert the current payment to an “interest only” payment beginning",
+   "desc": "Tick: convert the payment to interest only",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F31": {
+   "name": "EXT_INTEREST_ONLY_START",
+   "kind": "entry",
+   "label": "Convert the current payment to an “interest only” payment beginning",
+   "desc": "Interest only beginning (date)",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "EXT_INTEREST_ONLY_RESUME",
+   "kind": "entry",
+   "label": "to blended payments resuming",
+   "desc": "Blended payments resuming (date)",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "EXT_DEFER",
+   "kind": "entry",
+   "label": "Defer the current payment (enter the dates of the payment(s)",
+   "desc": "Tick: defer the current payment",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F34": {
+   "name": "EXT_DEFER_DATES",
+   "kind": "entry",
+   "label": "payment (enter the dates of the payment(s) to be deferred)",
+   "desc": "Dates of the payment(s) to be deferred",
+   "how": "reviewed"
+  },
+  "F35": {
+   "name": "EXT_REDUCE",
+   "kind": "entry",
+   "label": "Reduce the current payment to $",
+   "desc": "Tick: reduce the current payment",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F36": {
+   "name": "EXT_REDUCE_AMOUNT",
+   "kind": "entry",
+   "label": "Reduce the current payment to $",
+   "desc": "Reduce the payment to $",
+   "how": "reviewed"
+  },
+  "F37": {
+   "name": "EXT_REDUCE_START",
+   "kind": "entry",
+   "label": "beginning",
+   "desc": "Reduced payment beginning (date)",
+   "how": "reviewed"
+  },
+  "F38": {
+   "name": "EXT_REDUCE_RESUME",
+   "kind": "entry",
+   "label": "and returning to full blended payments resuming",
+   "desc": "Full blended payments resuming (date)",
+   "how": "reviewed"
+  },
+  "F39": {
+   "name": "EXT_NEW_MATURITY",
+   "kind": "entry",
+   "label": "Reason(s)",
+   "desc": "Tick: set a new maturity date",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F40": {
+   "name": "EXT_NEW_MATURITY_DATE",
+   "kind": "entry",
+   "label": "Set new maturity to",
+   "desc": "New maturity date",
+   "how": "reviewed"
+  },
+  "F41": {
+   "name": "EXT_REASONS",
+   "kind": "entry",
+   "label": "Loan Extension Fee: $ 250.00",
+   "desc": "Reason(s) for extension",
+   "how": "reviewed"
+  },
+  "F42": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Owner signer 1",
+   "how": "reviewed",
+   "rect": [
+    252,
+    584,
+    457,
+    596
+   ]
+  },
+  "F43": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Owner signer 1",
+   "how": "reviewed",
+   "rect": [
+    36,
+    582,
+    230,
+    596
+   ]
+  },
+  "F46": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Owner signer 1",
+   "how": "reviewed"
+  },
+  "F47": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Owner signer 2",
+   "how": "reviewed",
+   "rect": [
+    252,
+    616,
+    457,
+    628
+   ]
+  },
+  "F48": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Owner signer 2",
+   "how": "reviewed",
+   "rect": [
+    36,
+    614,
+    230,
+    628
+   ]
+  },
+  "F51": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Owner signer 2",
+   "how": "reviewed"
+  },
+  "F52": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Owner signer 3",
+   "how": "reviewed",
+   "rect": [
+    36,
+    645,
+    230,
+    659
+   ]
+  },
+  "F53": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Owner signer 3",
+   "how": "reviewed",
+   "rect": [
+    252,
+    647,
+    457,
+    659
+   ]
+  },
+  "F56": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Owner signer 3",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Owner signer 4",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Owner signer 4",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Owner signer 4",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "F60": {
+   "name": "GUARANTOR_CORP_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Corporate guarantor (or partnership): its name",
+   "how": "reviewed"
+  },
+  "F61": {
+   "name": "GUARANTOR_CORP1_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Corporate guarantor signer 1: signature",
+   "how": "reviewed"
+  },
+  "F62": {
+   "name": "GUARANTOR_CORP2_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Corporate guarantor signer 2: signature",
+   "how": "reviewed"
+  },
+  "F63": {
+   "name": "GUARANTOR_CORP3_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Corporate guarantor signer 3: signature",
+   "how": "reviewed"
+  },
+  "F64": {
+   "name": "GUARANTOR_CORP4_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Corporate guarantor signer 4: name",
+   "how": "reviewed"
+  },
+  "F65": {
+   "name": "GUARANTOR_CORP4_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Corporate guarantor signer 4: signature",
+   "how": "reviewed"
+  },
+  "F66": {
+   "name": "GUARANTOR_CORP5_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Corporate guarantor signer 5: signature",
+   "how": "reviewed"
+  },
+  "F67": {
+   "name": "GUARANTOR_CORP6_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Corporate guarantor signer 6: signature",
+   "how": "reviewed"
+  },
+  "F68": {
+   "name": "GUARANTOR_CORP7_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Corporate guarantor signer 7: name",
+   "how": "reviewed"
+  },
+  "F69": {
+   "name": "GUARANTOR_CORP7_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Corporate guarantor signer 7: signature",
+   "how": "reviewed"
+  },
+  "F70": {
+   "name": "GUARANTOR_CORP8_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Corporate guarantor signer 8: signature",
+   "how": "reviewed"
+  },
+  "F71": {
+   "name": "GUARANTOR_CORP9_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Corporate guarantor signer 9: signature",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "GUARANTOR_CORP1_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Corporate guarantor signer 1: name",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "GUARANTOR_CORP1_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Corporate guarantor signer 1: date",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "GUARANTOR_CORP2_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Corporate guarantor signer 2: name",
+   "how": "reviewed"
+  },
+  "B10": {
+   "name": "GUARANTOR_CORP2_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Corporate guarantor signer 2: date",
+   "how": "reviewed"
+  },
+  "B11": {
+   "name": "GUARANTOR_CORP3_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Corporate guarantor signer 3: name",
+   "how": "reviewed"
+  },
+  "B12": {
+   "name": "GUARANTOR_CORP3_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Corporate guarantor signer 3: date",
+   "how": "reviewed"
+  },
+  "B13": {
+   "name": "GUARANTOR_CORP4_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Corporate guarantor signer 4: date",
+   "how": "reviewed"
+  },
+  "B14": {
+   "name": "GUARANTOR_CORP5_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Corporate guarantor signer 5: name",
+   "how": "reviewed"
+  },
+  "B15": {
+   "name": "GUARANTOR_CORP5_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Corporate guarantor signer 5: date",
+   "how": "reviewed"
+  },
+  "B16": {
+   "name": "GUARANTOR_CORP6_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Corporate guarantor signer 6: name",
+   "how": "reviewed"
+  },
+  "B17": {
+   "name": "GUARANTOR_CORP6_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Corporate guarantor signer 6: date",
+   "how": "reviewed"
+  },
+  "B18": {
+   "name": "GUARANTOR_CORP7_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Corporate guarantor signer 7: date",
+   "how": "reviewed"
+  },
+  "B19": {
+   "name": "GUARANTOR_CORP8_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Corporate guarantor signer 8: name",
+   "how": "reviewed"
+  },
+  "B20": {
+   "name": "GUARANTOR_CORP8_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Corporate guarantor signer 8: date",
+   "how": "reviewed"
+  },
+  "B21": {
+   "name": "GUARANTOR_CORP9_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Corporate guarantor signer 9: name",
+   "how": "reviewed"
+  },
+  "B22": {
+   "name": "GUARANTOR_CORP9_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Corporate guarantor signer 9: date",
+   "how": "reviewed"
+  },
+  "B23": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member (guarantor section)",
+   "how": "reviewed"
+  },
+  "B24": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date (guarantor section)",
+   "how": "reviewed"
+  },
+  "F72": {
+   "name": "GUARANTOR1_SIGNATURE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Individual guarantor 1: signature (the line has no caption)",
+   "how": "reviewed"
+  },
+  "F73": {
+   "name": "GUARANTOR2_SIGNATURE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Individual guarantor 2: signature (the line has no caption)",
+   "how": "reviewed"
+  },
+  "F74": {
+   "name": "GUARANTOR3_SIGNATURE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Individual guarantor 3: signature (the line has no caption)",
+   "how": "reviewed"
+  },
+  "F75": {
+   "name": "GUARANTOR4_SIGNATURE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Individual guarantor 4: signature (the line has no caption)",
+   "how": "reviewed"
+  },
+  "F76": {
+   "name": "OFFICE_TRANSFER_UPDATED",
+   "kind": "entry",
+   "label": "Transfer Updated:",
+   "desc": "Office use: transfer updated (tick) - was a small text box",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F77": {
+   "name": "OFFICE_ENTERED_BY",
+   "kind": "entry",
+   "label": "",
+   "desc": "Office use: entered by",
+   "how": "reviewed"
+  },
+  "F78": {
+   "name": "OFFICE_ENTRY_DATE",
+   "kind": "entry",
+   "label": "Transfer Updated:",
+   "desc": "Office use: date",
+   "how": "reviewed",
+   "rect": [
+    226,
+    368,
+    400,
+    380
+   ]
+  },
+  "B25": {
+   "name": "GUARANTOR1_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Individual guarantor 1: name",
+   "how": "reviewed"
+  },
+  "B26": {
+   "name": "GUARANTOR1_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Individual guarantor 1: date",
+   "how": "reviewed"
+  },
+  "B27": {
+   "name": "GUARANTOR2_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Individual guarantor 2: name",
+   "how": "reviewed"
+  },
+  "B28": {
+   "name": "GUARANTOR2_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Individual guarantor 2: date",
+   "how": "reviewed"
+  },
+  "B29": {
+   "name": "GUARANTOR3_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Individual guarantor 3: name",
+   "how": "reviewed"
+  },
+  "B30": {
+   "name": "GUARANTOR3_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Individual guarantor 3: date",
+   "how": "reviewed"
+  },
+  "B31": {
+   "name": "GUARANTOR4_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Individual guarantor 4: name",
+   "how": "reviewed"
+  },
+  "B32": {
+   "name": "GUARANTOR4_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Individual guarantor 4: date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F44",
+  "F45",
+  "F49",
+  "F50",
+  "F54",
+  "F55",
+  "F57",
+  "F58",
+  "F59"
+ ],
+ "skip": {
+  "B1": "owner row 3's name line - F52 is placed on it"
+ },
+ "add": [],
+ "notes": [
+  "The owner rows held the old first/middle/surname merge boxes scattered across the name and date columns; each row is now one Member{i}Name dropdown.",
+  "Guarantors sign in their own sections (9 corporate rows, 4 individual) - not member signer rows; the designer caps signer rows at 6."
+ ]
+}

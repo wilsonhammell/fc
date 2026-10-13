@@ -1,0 +1,165 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH_PHONE",
+   "kind": "db",
+   "label": "T",
+   "desc": "Branch phone",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "",
+   "desc": "Joint owner 1, full name - the starter code fills it from SIGNER1",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "RE: Owner Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "LOAN_SUB",
+   "kind": "candidate",
+   "label": "Sub:",
+   "desc": "The loan's sub number",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "LOAN_APPROVED_AMOUNT",
+   "kind": "candidate",
+   "label": "Principal Amount:",
+   "desc": "Loan's approved (original) amount",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "LOAN_MATURITY_DATE",
+   "kind": "candidate",
+   "label": "New Maturity Date:",
+   "desc": "Loan's maturity date",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "ACCTMGR_FULL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "FSR signing the letter. CHECK: is the FSR the account manager",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "ACCTMGR_POSITION",
+   "kind": "candidate",
+   "label": "",
+   "desc": "The FSR's position / title",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B9": "not a blank - the space under 'We confirm the following'"
+ },
+ "add": [
+  {
+   "page": 0,
+   "rect": [
+    296,
+    451,
+    418,
+    464
+   ],
+   "name": "LOAN_EXTENSION_FEE",
+   "kind": "candidate",
+   "label": "Loan Extension Fee: $",
+   "desc": "Fee charged for the loan extension - the form had no box for it",
+   "type": "text"
+  }
+ ],
+ "notes": []
+}

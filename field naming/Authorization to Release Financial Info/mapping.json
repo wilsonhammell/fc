@@ -1,0 +1,116 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Farm/Business Name",
+   "desc": "Farm/business name (old tag Member_Surname - an organization keeps its name there)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Libro Member Number",
+   "desc": "Libro member number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "ACCOUNTING_FIRM",
+   "kind": "entry",
+   "label": "Designated Accounting Firm",
+   "desc": "Designated accounting firm",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "ORG_OFFICER1_NAME",
+   "kind": "candidate",
+   "label": "Name 1",
+   "desc": "Signing officer 1 of the firm",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "ORG_OFFICER2_NAME",
+   "kind": "candidate",
+   "label": "Name 2",
+   "desc": "Signing officer 2 of the firm",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 (signing officer)",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member - was a signature box laid across the staff line",
+   "how": "reviewed",
+   "rect": [
+    79,
+    674,
+    242,
+    688
+   ]
+  },
+  "F10": {
+   "name": "REQUESTDATETIME",
+   "kind": "db",
+   "label": "Current Date",
+   "desc": "Current date - the request's date",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F7"
+ ],
+ "skip": {
+  "B1": "the rule under the header, not a blank"
+ },
+ "add": [],
+ "notes": []
+}

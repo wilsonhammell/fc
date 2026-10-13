@@ -1,0 +1,133 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "(the Borrower)",
+   "desc": "The borrower whose debt is guaranteed",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "GUARANTEE_LIMIT_AMOUNT",
+   "kind": "entry",
+   "label": "Limited to the principal sum of $",
+   "desc": "Guarantee limited to the principal sum of $",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Guarantor signer 1",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Guarantor signer 2",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Guarantor signer 3",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Guarantor signer 1",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Guarantor signer 2",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Guarantor signer 3",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "GUARANTOR_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "The guarantor's name, above the signing block (unlabelled)",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Guarantor signer 3",
+   "how": "reviewed",
+   "rect": [
+    253,
+    733,
+    454,
+    758
+   ]
+  },
+  "F12": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Guarantor signer 2",
+   "how": "reviewed",
+   "rect": [
+    253,
+    693,
+    454,
+    717
+   ]
+  },
+  "F13": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Guarantor signer 1",
+   "how": "reviewed",
+   "rect": [
+    253,
+    652,
+    454,
+    674
+   ]
+  },
+  "B1": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": [
+  "The guarantor signs, not the borrower: Member1-3 rows are the guarantor's signers. CHECK whether the guarantor is in DNA's signer list for the borrower's account."
+ ]
+}

@@ -1,0 +1,194 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Borrower:",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "COMMITMENT_LETTER_DATE",
+   "kind": "entry",
+   "label": "as outlined in the Commitment Letter dated",
+   "desc": "Commitment letter dated",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "TAKEDOWN_FUNDING_DATE",
+   "kind": "entry",
+   "label": "Requested Funding Date:",
+   "desc": "Requested funding date",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "TAKEDOWN_PRINCIPAL_AMOUNT",
+   "kind": "entry",
+   "label": "Principal Amount:",
+   "desc": "Principal amount of the takedown",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "TAKEDOWN_AMORTIZATION",
+   "kind": "entry",
+   "label": "Amortization:(if applicable)",
+   "desc": "Amortization (if applicable)",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "TAKEDOWN_TERM",
+   "kind": "entry",
+   "label": "Term:",
+   "desc": "Term",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "TAKEDOWN_INTEREST_RATE",
+   "kind": "entry",
+   "label": "Interest Rate:",
+   "desc": "Interest rate",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "TAKEDOWN_PURPOSE",
+   "kind": "entry",
+   "label": "Purpose of Funds:",
+   "desc": "Purpose of funds",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "TAKEDOWN_REPAYMENT_DETAILS",
+   "kind": "entry",
+   "label": "All loan and repayment details will be disclosed in the Disclosure Letter which will be provided to the",
+   "desc": "Loan and repayment details",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "SECURITY_OPTION",
+   "kind": "entry",
+   "label": "the Libro form of Specific Security Agreement; or (2) new",
+   "desc": "Security: (1) Libro form specific security agreement, or (2) new ... (dropdown)",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "The borrower (corporation) named in the officers' certification",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "ORG_OFFICER1_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Signing officer 1's title",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "ORG_OFFICER2_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Signing officer 2's title",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "ORG_OFFICER3_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Signing officer 3's title",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B10": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B11": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "the rest of the member number line - F2 is on it",
+  "B2": "not a blank - the purpose box (F9) is under the label",
+  "B3": "not a blank"
+ },
+ "add": [],
+ "notes": []
+}

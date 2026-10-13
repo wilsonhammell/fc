@@ -127,10 +127,11 @@
    "desc": "Loan number part 3: the loan's sub number (old Sub)"
   },
   "F13": {
-   "name": "LOAN_ORIGINAL_AMOUNT",
+   "name": "LOAN_APPROVED_AMOUNT",
    "kind": "candidate",
    "label": "amount of $ (the Principal Amount)",
-   "desc": "Original principal of the loan (old Loan_Approved_Amount). MORT_ACCOUNT_ORIGINALAMOUNT if this is a mortgage"
+   "desc": "Loan's approved (original) amount (old merge tag Loan_Approved_Amount)",
+   "how": "reviewed"
   },
   "F14": {
    "name": "PRIMARY_MEMBER_NUMBER",

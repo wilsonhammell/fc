@@ -94,7 +94,21 @@ def problems(item_id, m):
     return out
 
 
-def add_field(page, rect, name, kind_of):
+SCRIPTS = ("script", "script_calc", "script_format", "script_change", "script_stroke",
+           "script_blur", "script_focus")
+
+
+def scripts_of(w):
+    """A widget's scripts - its calculation, format and keystroke code - so a
+    field rebuilt in place keeps them. GIC Authorization's maturity fields fill
+    one another from a calculation script, and a rebuilt field without it is a
+    form that quietly stops working."""
+    return {k: getattr(w, k) for k in SCRIPTS if getattr(w, k, None)}
+
+
+def add_field(page, rect, name, kind_of, choices=(), scripts=None):
+    if kind_of not in TYPES:
+        kind_of = "text"
     w = fitz.Widget()
     w.field_type = TYPES[kind_of]
     w.rect = fitz.Rect(rect)
@@ -102,10 +116,94 @@ def add_field(page, rect, name, kind_of):
     if kind_of != "checkbox":
         w.text_font, w.text_fontsize = "Helv", 10
     if kind_of == "dropdown":
-        # filled from DNA when the form opens; the designer gives it no options
-        w.choice_values = [" "]
+        # a signer's is filled from DNA when the form opens and the designer
+        # gives it no options; any other keeps the ones the form had
+        w.choice_values = [c for c in choices if c] or [" "]
+    for k, v in (scripts or {}).items():
+        setattr(w, k, v)
     w.border_color, w.border_width = (0.6, 0.6, 0.6), 0.5
     page.add_widget(w)
+
+
+# a field named in a script: getField("Name"), or one of AFSimple_Calculate's
+# quoted names; and a name built in code, getField("Rate" + i)
+NAMED = re.compile(r"""getField\(\s*(["'])(.+?)\1\s*\)|(["'])([^"'\n]{1,80})\3""")
+BUILT = re.compile(r"""getField\(\s*(["'])([^"']+)\1\s*\+""")
+
+
+def follow_renames(doc, renamed, original_names):
+    """Point every script at the fields' new names, and say what it cannot.
+
+    A script names the fields it reads by their exact quoted names, so a
+    rename is followed by rewriting those quotes - only for old names no field
+    still carries. A name a script builds in code ("Rate" + i) cannot be
+    followed: the fields it means keep their names or the script breaks, and
+    a mapping that renamed them is reported."""
+    said = []
+    now = {w.field_name for p in doc for w in p.widgets()}
+    gone = {o: n for o, n in renamed.items() if o not in now and o != n}
+    for page in doc:
+        for w in page.widgets():
+            changed = False
+            for k in SCRIPTS:
+                s = getattr(w, k, None)
+                if not s:
+                    continue
+                new = s
+                for old, nn in gone.items():
+                    new = re.sub(r"""(["'])""" + re.escape(old) + r"""\1""",
+                                 lambda m: m.group(1) + nn + m.group(1), new)
+                if new != s:
+                    setattr(w, k, new)
+                    changed = True
+                for m in BUILT.finditer(new):
+                    pre = m.group(2)
+                    lost = sorted(o for o in original_names if re.fullmatch(re.escape(pre) + r"\d+", o)
+                                  and o not in now)
+                    if lost:
+                        said.append(f"{w.field_name}: a script builds names from {pre!r} + a number, "
+                                    f"and {', '.join(lost[:4])} were renamed - the script breaks")
+                for m in NAMED.finditer(new):
+                    ref = m.group(2) or m.group(4)
+                    if ref in original_names and ref not in now and ref not in gone:
+                        said.append(f"{w.field_name}: a script still names {ref!r}, which is no longer on the form")
+            if changed:
+                w.update()
+    return sorted(set(said))
+
+
+def prune_fields(doc):
+    """Take off the form's field list every entry with no widget left under
+    it. A widget renamed by being rebuilt leaves the field it hung from - the
+    original's "[primary_applicant" over "fullname1" over "label2" - with no
+    kids, and a field list naming it shows the designer a field that is not
+    on any page. Returns how many went."""
+    acro = doc.xref_get_key(doc.pdf_catalog(), "AcroForm")
+    if acro[0] != "xref":
+        return 0
+    ax = int(acro[1].split()[0])
+    kind, val = doc.xref_get_key(ax, "Fields")
+    if kind not in ("array", "xref"):
+        return 0
+    if kind == "xref":
+        val = doc.xref_object(int(val.split()[0]))
+    live = {w.xref for p in doc for w in p.widgets()}
+
+    def has_live(x, depth=0):
+        if x in live:
+            return True
+        if depth > 16:
+            return False
+        k, v = doc.xref_get_key(x, "Kids")
+        if k == "xref":
+            v = doc.xref_object(int(v.split()[0]))
+        return any(has_live(int(c), depth + 1) for c in re.findall(r"(\d+) 0 R", v if k in ("array", "xref") else ""))
+
+    refs = [int(x) for x in re.findall(r"(\d+) 0 R", val)]
+    keep = [x for x in refs if has_live(x)]
+    if len(keep) != len(refs):
+        doc.xref_set_key(ax, "Fields", "[" + " ".join(f"{x} 0 R" for x in keep) + "]")
+    return len(refs) - len(keep)
 
 
 def merge_repeats(path):
@@ -120,7 +218,10 @@ def merge_repeats(path):
     for page in doc:
         for w in page.widgets():
             groups.setdefault(w.field_name, []).append(w.xref)
-    repeated = {n: xs for n, xs in groups.items() if len(xs) > 1}
+    # (a radio group is already one field over its options: its widgets
+    # have their parent, and wrapping them in another broke the group)
+    repeated = {n: xs for n, xs in groups.items() if len(xs) > 1
+                and not any(doc.xref_get_key(x, "Parent")[0] == "xref" for x in xs)}
     if not repeated:
         return 0
     fields_ref = doc.xref_get_key(cat, "AcroForm/Fields")
@@ -146,7 +247,16 @@ def merge_repeats(path):
             doc.update_object(x, "\n".join(kept))
             doc.xref_set_key(x, "Parent", f"{parent} 0 R")
         refs = [r for r in refs if r not in xrefs] + [parent]
-    doc.xref_set_key(cat, "AcroForm/Fields", "[" + " ".join(f"{r} 0 R" for r in refs) + "]")
+    # set on the AcroForm itself: through the catalog's "AcroForm/Fields" path,
+    # where the AcroForm is an object of its own, PyMuPDF writes the string
+    # "fitz: replace me!" in place of the array - eight forms lost their
+    # field list that way and pypdf could not read them
+    new_fields = "[" + " ".join(f"{r} 0 R" for r in refs) + "]"
+    acro = doc.xref_get_key(cat, "AcroForm")
+    if acro[0] == "xref":
+        doc.xref_set_key(int(acro[1].split()[0]), "Fields", new_fields)
+    else:
+        doc.xref_set_key(cat, "AcroForm/Fields", new_fields)
     doc.save(path + ".tmp", garbage=3, deflate=True)
     doc.close()
     os.replace(path + ".tmp", path)
@@ -180,28 +290,73 @@ def apply(folder):
     for n, m in enumerate(extra, 1):
         said += problems(f"add {n}", m)
 
-    # existing fields first, matched to their items by name and rect
+    # existing fields first, each matched to its item by name and the nearest
+    # rect - two fields can share a name and overlap (Assignment's old date
+    # boxes under the block's), and the first that merely touched was wrong
+    def near(item, w):
+        return sum(abs(a - b) for a, b in zip(item["rect"], fitz.Rect(w.rect)))
+
+    radios, renamed = {}, {}
+    original_names = {w.field_name for p in doc for w in p.widgets()}
     for page in doc:
         for w in list(page.widgets()):
-            item = next((i for i in ctx["items"] if i["existing"] == w.field_name
-                         and i["page"] == page.number
-                         and fitz.Rect(i["rect"]).intersects(w.rect)), None)
-            if item is None:
+            cands = [i for i in ctx["items"] if i["existing"] == w.field_name
+                     and i["page"] == page.number]
+            if not cands:
                 continue
+            item = min(cands, key=lambda i: near(i, w))
             if item["id"] in drop:
                 page.delete_widget(w)
                 continue
             m = named.get(item["id"])
             if not m:
                 continue
-            want = type_for(m["name"], HAS.get(w.field_type, "text"))
+            # a radio group is one field whose options are its widgets: it is
+            # named as a whole, below, never pulled apart
+            # (unless the mapping rebuilds it as something else: LIRA Trans
+            # Info's two Yes/No questions shared their groups by column)
+            if w.field_type == fitz.PDF_WIDGET_TYPE_RADIOBUTTON and not m.get("type"):
+                radios.setdefault(w.field_name, []).append((w.xref, item["id"], m["name"]))
+                continue
+            have = HAS.get(w.field_type, "text")
+            # (a mapping can ask for another type: Indemnity's tick boxes were
+            # small text fields)
+            want = type_for(m["name"], m.get("type") or (have if have in TYPES else "text"))
             rect = fitz.Rect(m.get("rect") or w.rect)
-            if HAS.get(w.field_type) != want or m.get("rect"):
+            # a widget that shares its field with others (one name placed
+            # twice on the original) is rebuilt as a field of its own, or
+            # renaming it renames its siblings too
+            shared = doc.xref_get_key(w.xref, "Parent")[0] == "xref"
+            renamed.setdefault(w.field_name, m["name"])
+            # a field keeping its name, type and place is left exactly as it
+            # is - the T4 worksheets' calculation fields keep their names on
+            # purpose, and rebuilt they lose their place in the calculation order
+            if m["name"] == w.field_name and have == want and not m.get("rect"):
+                continue
+            if have != want or m.get("rect") or shared:
+                choices = list(w.choice_values or []) if want == "dropdown" else []
+                kept = scripts_of(w)
                 page.delete_widget(w)
-                add_field(page, rect, m["name"], want)
+                add_field(page, rect, m["name"], want, choices, kept)
             else:
                 w.field_name = m["name"]
                 w.update()
+    for old, ws in radios.items():
+        names = {n for _, _, n in ws}
+        if len(names) > 1:
+            said.append(f"radio group {old!r} ({', '.join(i for _, i, _ in ws)}) was given "
+                        f"{len(names)} names - a group takes one; left as it was")
+            continue
+        new = names.pop()
+        # named on the parent where the group has one; where its options are
+        # fields of their own that only share a name (Bill Payment's Group1),
+        # on each, and merge_repeats makes them one group after
+        parent = doc.xref_get_key(ws[0][0], "Parent")
+        targets = ({int(parent[1].split()[0])} if parent[0] == "xref"
+                   else {x for x, _, _ in ws})
+        for target in targets:
+            doc.xref_set_key(target, "T", fitz.get_pdf_str(new))
+        renamed[old] = new
     for k, m in named.items():
         i = by_id.get(k)
         if i is None or i["existing"] is not None:
@@ -212,6 +367,15 @@ def apply(folder):
     for m in extra:
         add_field(doc[m["page"]], m["rect"], m["name"], type_for(m["name"], m.get("type", "text")))
 
+    said += follow_renames(doc, renamed, original_names)
+    import restyle_pdf
+    pruned = prune_fields(doc)
+    if pruned:
+        print(f"   ({pruned} empty parent field(s) left by the renaming taken off the field list)")
+    unlisted = restyle_pdf.list_all_fields(doc)
+    if unlisted:
+        said.append(f"{unlisted} field(s) were missing from the form's field list - put back "
+                    f"(the form at 10pt had them unlisted)")
     out_pdf = os.path.join(folder, f"{stem}.pdf")
     doc.save(out_pdf, garbage=3, deflate=True)
     doc.close()
@@ -271,6 +435,25 @@ def apply(folder):
     return rows, said
 
 
+# areas of the missing-from-DB list: (name pattern, area, note for the area)
+GROUPS = [
+    (r"PRIMARY_MAIL_(ADDR_LINE|CARE_OF)", "Member mailing address, as letter lines",
+     "The forms' merge set the address as 3 lines (and a c/o line). Either the feed adds them, or the forms take PRIMARY_MAIL_FULL_LINE or PRIMARY_LEGAL_STREET/CTY/PRV/PST instead."),
+    (r"PRIMARY_(DATE_OF_DEATH|DEATH_)", "Member's date of death",
+     "One value to add (PRIMARY_DATE_OF_DEATH). Some forms show it whole, others as day / month / year boxes."),
+    (r"SPOUSE_", "Spouse / common-law partner",
+     "The DB list has only SPOUSE_FULL_NAME. Also wanted on forms as day/month/year: SPOUSE_DATE_OF_BIRTH."),
+    (r"(REQUESTUSER|ACCTMGR)_", "Staff member preparing or signing", "REQUESTUSER and ACCTMGR_FULL_NAME exist; their position and email do not."),
+    (r"ORG_OFFICER", "Organization signing officers", "Officer names come from the signer dropdowns (NAMES_MDAS); their titles do not."),
+    (r"LOAN_PAYOUT_", "Loan payout statements", "No loan group in the DB list."),
+    (r"RENEWAL_", "Loan renewal / conversion offers", "The rates and payments offered per term."),
+    (r"LOAN_", "Loans", "No loan group in the DB list. If loans live in the mortgage tables, these are MORT_ fields (MORT_ACCOUNT_ORIGINALAMOUNT, MORT_ACCOUNT_PAYMENT, ...)."),
+    (r"TERM_", "Term deposits / GICs", "Beyond the TERM_ fields already listed: sub number and maturity/interest instructions."),
+    (r"SDB_", "Safe deposit boxes", ""),
+    (r"ESTATE_", "Estates", ""),
+]
+
+
 def gather(root):
     """One list across every form named so far, for the people who build the
     datafeed: each candidate value once, with what it is and every form and
@@ -295,16 +478,52 @@ def gather(root):
                     checks.append((stem, r["name"], r["label on form"], r["what goes there"]))
                 elif r.get("id") == "NOTE":
                     checks.append((stem, "", "", r["what goes there"]))
-    with open(os.path.join(root, "DB candidates.csv"), "w", newline="", encoding="utf-8-sig") as fh:
+    # one list for the people who build the datafeed, by area: what the forms
+    # ask the DB for that dbFields.json does not list yet
+    order = []
+    rows = []
+    for n, c in cands.items():
+        g, note = next(((g, note) for pat, g, note in GROUPS if re.match(pat, n)), ("Other", ""))
+        if g not in order:
+            order.append(g)
+        rows.append((g, n, c, note))
+    rank = {g: k for k, (_, g, _) in enumerate(GROUPS)}
+    rows.sort(key=lambda r: (rank.get(r[0], 99), r[1]))
+    stale = os.path.join(root, "DB candidates.csv")
+    if os.path.exists(stale):
+        os.remove(stale)
+    with open(os.path.join(root, "missing from DB.csv"), "w", newline="", encoding="utf-8-sig") as fh:
         wr = csv.writer(fh)
-        wr.writerow(["proposed name", "what it is", "labels on the forms", "forms"])
-        for n, c in sorted(cands.items()):
-            wr.writerow([n, c["desc"], " | ".join(c["labels"]), " | ".join(c["forms"])])
+        wr.writerow(["area", "proposed DB field", "what it is", "forms using it", "labels on the forms",
+                     "forms", "note"])
+        for g, n, c, note in rows:
+            wr.writerow([g, n, c["desc"], len(c["forms"]), " | ".join(c["labels"]),
+                         " | ".join(c["forms"]), note])
+    # every field of every form in one table, and every named form in one
+    # folder - the per-form folders hold the same, one form at a time
+    import shutil
+    named = os.path.join(root, "named forms")
+    os.makedirs(named, exist_ok=True)
+    every = []
+    for stem in sorted(os.listdir(root)):
+        path = os.path.join(root, stem, "fields.csv")
+        if not os.path.exists(path):
+            continue
+        with open(path, encoding="utf-8-sig") as fh:
+            every += [{"form": stem, **r} for r in csv.DictReader(fh) if r.get("id") not in ("NOTE", "CHECK")]
+        pdf = os.path.join(root, stem, f"{stem}.pdf")
+        if os.path.exists(pdf):
+            shutil.copy2(pdf, named)
+    with open(os.path.join(root, "all fields.csv"), "w", newline="", encoding="utf-8-sig") as fh:
+        wr = csv.DictWriter(fh, fieldnames=["form", "page", "name", "kind", "label on form",
+                                            "what goes there", "id", "was"], extrasaction="ignore")
+        wr.writeheader()
+        wr.writerows(every)
     with open(os.path.join(root, "to confirm.csv"), "w", newline="", encoding="utf-8-sig") as fh:
         wr = csv.writer(fh)
         wr.writerow(["form", "field", "label on form", "question"])
         wr.writerows(checks)
-    print(f"{len(cands)} candidate value(s) across the forms -> DB candidates.csv; "
+    print(f"{len(cands)} value(s) missing from the DB list -> missing from DB.csv; "
           f"{len(checks)} thing(s) to confirm -> to confirm.csv")
 
 
@@ -315,6 +534,8 @@ def main():
     args = ap.parse_args()
     bad = 0
     for f in args.folders:
+        if not os.path.exists(os.path.join(f, "context.json")):
+            continue                  # "named forms" and the like: not a form
         _, said = apply(f)
         bad += len(said)
     gather(os.path.dirname(os.path.normpath(args.folders[0])))

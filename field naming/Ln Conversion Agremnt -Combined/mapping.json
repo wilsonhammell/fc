@@ -1,0 +1,538 @@
+{
+ "items": {
+  "F1": {
+   "name": "LOAN_APPROVED_AMOUNT",
+   "kind": "candidate",
+   "label": "principal amount of $",
+   "desc": "Loan's original principal amount",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "The conversion of your",
+   "desc": "Account the payments come from (old merge tag Customer_Number)",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_BRANCH_PHONE",
+   "kind": "db",
+   "label": "contact your branch office at",
+   "desc": "Branch phone",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed",
+   "rect": [
+    77,
+    169,
+    300,
+    182
+   ]
+  },
+  "F5": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed",
+   "rect": [
+    77,
+    182,
+    300,
+    195
+   ]
+  },
+  "F6": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Further to the loan agreement",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed",
+   "rect": [
+    77,
+    195,
+    300,
+    208
+   ]
+  },
+  "F7": {
+   "name": "PRIMARY_BRANCH",
+   "kind": "db",
+   "label": "Mortgage/Loan No.:",
+   "desc": "Loan number part 1: branch number",
+   "how": "reviewed",
+   "rect": [
+    403,
+    160,
+    440,
+    173
+   ]
+  },
+  "F8": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Mortgage/Loan No.:",
+   "desc": "Loan number part 2: member number",
+   "how": "reviewed",
+   "rect": [
+    443,
+    160,
+    520,
+    173
+   ]
+  },
+  "F9": {
+   "name": "LOAN_SUB",
+   "kind": "candidate",
+   "label": "Mortgage/Loan No.:",
+   "desc": "Loan number part 3: the loan's sub number",
+   "how": "reviewed",
+   "rect": [
+    523,
+    160,
+    576,
+    173
+   ]
+  },
+  "F10": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    72.0,
+    833.4,
+    238.5,
+    847.4
+   ]
+  },
+  "F13": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    72.0,
+    865.2,
+    238.5,
+    879.2
+   ]
+  },
+  "F16": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Borrower's first name - address block, one line per person",
+   "how": "reviewed",
+   "rect": [
+    77,
+    143,
+    160,
+    156
+   ]
+  },
+  "F17": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "",
+   "desc": "Borrower's middle name/initial",
+   "how": "reviewed",
+   "rect": [
+    162,
+    143,
+    200,
+    156
+   ]
+  },
+  "F18": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Borrower's surname",
+   "how": "reviewed",
+   "rect": [
+    202,
+    143,
+    300,
+    156
+   ]
+  },
+  "F19": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Co-borrower's first name",
+   "how": "reviewed",
+   "rect": [
+    77,
+    156,
+    160,
+    169
+   ]
+  },
+  "F20": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "",
+   "desc": "Co-borrower's middle",
+   "how": "reviewed",
+   "rect": [
+    162,
+    156,
+    200,
+    169
+   ]
+  },
+  "F21": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Co-borrower's surname",
+   "how": "reviewed",
+   "rect": [
+    202,
+    156,
+    300,
+    169
+   ]
+  },
+  "B2": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "LOAN_CONVERSION_DATE",
+   "kind": "candidate",
+   "label": "Loan (the “Loan”) to a Fixed Rate Term Loan as",
+   "desc": "Date the loan converts to a fixed rate term loan (as of ___)",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Owner Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "LOAN_SUB",
+   "kind": "candidate",
+   "label": "Sub:",
+   "desc": "Loan sub number, page 2 header",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F11",
+  "F12",
+  "F14",
+  "F15"
+ ],
+ "skip": {
+  "B1": "an unlabelled line above the signing rows - nothing says what it is for",
+  "B9": "not a blank"
+ },
+ "add": [
+  {
+   "page": 0,
+   "rect": [
+    255,
+    320,
+    320,
+    333
+   ],
+   "name": "LOAN_PRINCIPAL_BALANCE",
+   "kind": "candidate",
+   "label": "Principal Balance",
+   "desc": "Current principal balance. Printed sample value under it - the value must come off the page.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    290,
+    334,
+    320,
+    347
+   ],
+   "name": "LOAN_REMAINING_AMORTIZATION",
+   "kind": "candidate",
+   "label": "Remaining Amortization (months)",
+   "desc": "Remaining amortization, months. Printed sample value under it - the value must come off the page.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    378,
+    362,
+    556,
+    376
+   ],
+   "name": "LOAN_PAYMENT_FREQUENCY",
+   "kind": "candidate",
+   "label": "YOUR OPTIONS FOR CONVERSION",
+   "desc": "Frequency the options are quoted at. Printed sample value under it - the value must come off the page.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    85,
+    427.0,
+    96,
+    438.0
+   ],
+   "name": "RENEWAL_OPTION_1YR",
+   "kind": "entry",
+   "label": "Mark (x) - 1 year closed",
+   "desc": "Option the member chooses, tick",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    230,
+    427.0,
+    281,
+    438.0
+   ],
+   "name": "RENEWAL_RATE_1YR",
+   "kind": "candidate",
+   "label": "Interest Rate - 1 year closed",
+   "desc": "Rate offered for the 1 year closed term",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    352,
+    427.0,
+    556,
+    438.0
+   ],
+   "name": "RENEWAL_PAYMENT_1YR",
+   "kind": "candidate",
+   "label": "New Monthly Payment - 1 year closed",
+   "desc": "Payment at the 1 year rate. Printed sample value under it - the value must come off the page.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    85,
+    441.6,
+    96,
+    452.6
+   ],
+   "name": "RENEWAL_OPTION_2YR",
+   "kind": "entry",
+   "label": "Mark (x) - 2 year closed",
+   "desc": "Option the member chooses, tick",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    230,
+    441.6,
+    281,
+    452.6
+   ],
+   "name": "RENEWAL_RATE_2YR",
+   "kind": "candidate",
+   "label": "Interest Rate - 2 year closed",
+   "desc": "Rate offered for the 2 year closed term",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    352,
+    441.6,
+    556,
+    452.6
+   ],
+   "name": "RENEWAL_PAYMENT_2YR",
+   "kind": "candidate",
+   "label": "New Monthly Payment - 2 year closed",
+   "desc": "Payment at the 2 year rate. Printed sample value under it - the value must come off the page.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    85,
+    456.1,
+    96,
+    467.1
+   ],
+   "name": "RENEWAL_OPTION_3YR",
+   "kind": "entry",
+   "label": "Mark (x) - 3 year closed",
+   "desc": "Option the member chooses, tick",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    230,
+    456.1,
+    281,
+    467.1
+   ],
+   "name": "RENEWAL_RATE_3YR",
+   "kind": "candidate",
+   "label": "Interest Rate - 3 year closed",
+   "desc": "Rate offered for the 3 year closed term",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    352,
+    456.1,
+    556,
+    467.1
+   ],
+   "name": "RENEWAL_PAYMENT_3YR",
+   "kind": "candidate",
+   "label": "New Monthly Payment - 3 year closed",
+   "desc": "Payment at the 3 year rate. Printed sample value under it - the value must come off the page.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    85,
+    470.7,
+    96,
+    481.7
+   ],
+   "name": "RENEWAL_OPTION_4YR",
+   "kind": "entry",
+   "label": "Mark (x) - 4 year closed",
+   "desc": "Option the member chooses, tick",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    230,
+    470.7,
+    281,
+    481.7
+   ],
+   "name": "RENEWAL_RATE_4YR",
+   "kind": "candidate",
+   "label": "Interest Rate - 4 year closed",
+   "desc": "Rate offered for the 4 year closed term",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    352,
+    470.7,
+    556,
+    481.7
+   ],
+   "name": "RENEWAL_PAYMENT_4YR",
+   "kind": "candidate",
+   "label": "New Monthly Payment - 4 year closed",
+   "desc": "Payment at the 4 year rate. Printed sample value under it - the value must come off the page.",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    85,
+    485.2,
+    96,
+    496.2
+   ],
+   "name": "RENEWAL_OPTION_5YR",
+   "kind": "entry",
+   "label": "Mark (x) - 5 year closed",
+   "desc": "Option the member chooses, tick",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    230,
+    485.2,
+    281,
+    496.2
+   ],
+   "name": "RENEWAL_RATE_5YR",
+   "kind": "candidate",
+   "label": "Interest Rate - 5 year closed",
+   "desc": "Rate offered for the 5 year closed term",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    352,
+    485.2,
+    556,
+    496.2
+   ],
+   "name": "RENEWAL_PAYMENT_5YR",
+   "kind": "candidate",
+   "label": "New Monthly Payment - 5 year closed",
+   "desc": "Payment at the 5 year rate. Printed sample value under it - the value must come off the page.",
+   "type": "text"
+  }
+ ],
+ "notes": [
+  "The conversion table prints sample values ($100,000.00, 240, Monthly, #VALUE!) - fields are placed over them, but the printed text has to come off the form.",
+  "No MORT_ fields used: a term loan; if term loans live in the mortgage tables, the LOAN_ candidates map to MORT_."
+ ]
+}

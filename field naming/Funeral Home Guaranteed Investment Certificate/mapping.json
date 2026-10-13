@@ -1,0 +1,176 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Account Number:",
+   "desc": "Account (member) number",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "TERM_ACCOUNT_SUB",
+   "kind": "candidate",
+   "label": "Deposit Number:",
+   "desc": "GIC deposit (sub) number (old merge tag Sub)",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "TERM_ACCOUNT_TYPE",
+   "kind": "db",
+   "label": "Plan Type:",
+   "desc": "Plan type",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "TERM_ACCOUNT_AMOUNT",
+   "kind": "db",
+   "label": "Principal Amount",
+   "desc": "Principal amount",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "TERM_ACCOUNT_OPENED",
+   "kind": "db",
+   "label": "Date of Deposit",
+   "desc": "Date of deposit. CHECK: or TERM_ACCOUNT_INTDATE",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "TERM_ACCOUNT_MATURITY",
+   "kind": "db",
+   "label": "Maturity Date",
+   "desc": "Maturity date",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "TERM_ACCOUNT_TERMFREQUENCY",
+   "kind": "db",
+   "label": "Term Length",
+   "desc": "Term length, the number. CHECK: TERMFREQUENCY vs TERMPER",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "TERM_ACCOUNT_TERMPER",
+   "kind": "db",
+   "label": "Term Length",
+   "desc": "Term length, the unit",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "TERM_ACCOUNT_RATE1",
+   "kind": "db",
+   "label": "Interest Rate",
+   "desc": "Interest rate, %",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Received From:",
+   "desc": "Received from: member first (usual) name",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Joint owner 1, usual (first) name",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Joint owner 1, surname",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "SIGNER2_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Joint owner 2, usual (first) name",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "SIGNER2_SURNAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Joint owner 2, surname",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "TERM_MATURITY_DISPOSITION",
+   "kind": "candidate",
+   "label": "Maturity Option",
+   "desc": "What happens at maturity (old merge tag Maturity_Diposition)",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "TERM_MATURITY_TRANSFER_ACCT_TYPE",
+   "kind": "candidate",
+   "label": "Transfer Account Details (if any)",
+   "desc": "Account type maturity funds go to",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "TERM_MATURITY_TRANSFER_ACCT",
+   "kind": "candidate",
+   "label": "Transfer Account Details (if any)",
+   "desc": "Account number maturity funds go to",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "TERM_EARLY_REDEMPTION",
+   "kind": "candidate",
+   "label": "Early Redemption Option",
+   "desc": "Early redemption option permitted (old merge tag Early_Withdraw_Permitted)",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "TERM_ACCOUNT_INTSCHED",
+   "kind": "db",
+   "label": "Interest Frequency",
+   "desc": "Interest frequency",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "TERM_INTEREST_DISPOSITION",
+   "kind": "candidate",
+   "label": "Interest Paid to:",
+   "desc": "Where interest is paid (old merge tag Interest_Disposition)",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "TERM_INTEREST_TRANSFER_ACCT_TYPE",
+   "kind": "candidate",
+   "label": "Interest Paid to:",
+   "desc": "Account type interest goes to",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "TERM_INTEREST_TRANSFER_ACCT",
+   "kind": "candidate",
+   "label": "Interest Paid to:",
+   "desc": "Account number interest goes to",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "STAFF_SIGNATURE",
+   "kind": "entry",
+   "label": "Per:",
+   "desc": "Signed for Libro (Per:)",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": []
+}

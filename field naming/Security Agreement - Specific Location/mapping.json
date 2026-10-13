@@ -1,0 +1,282 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "I/WE",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "I/WE",
+   "desc": "Member's middle name/initial",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "I/WE",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, first name",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, middle name/initial",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, surname",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "SIGNER2_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, first name",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "SIGNER2_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, middle name/initial",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "SIGNER2_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, surname",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "SIGNER3_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, first name",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "SIGNER3_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, middle name/initial",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "SIGNER3_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, surname",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "PROPERTY_LEGAL_DESCRIPTION",
+   "kind": "entry",
+   "label": "legally described as",
+   "desc": "The property's legal description - moved from the end of the line above onto 'legally described as'",
+   "how": "reviewed",
+   "rect": [
+    259,
+    531,
+    576,
+    545
+   ]
+  },
+  "F15": {
+   "name": "PROPERTY_PIN",
+   "kind": "entry",
+   "label": "being all of PIN",
+   "desc": "The property's PIN",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "PROPERTY_PIN",
+   "kind": "entry",
+   "label": "3.09 Real Estate Real property, legally described",
+   "desc": "PIN, page 2 (the original shared this box with page 1's PIN)",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "PROPERTY_LEGAL_DESCRIPTION",
+   "kind": "entry",
+   "label": "3.09 Real Estate Real property, legally described",
+   "desc": "Legal description, page 2 (shared with page 1) - CHECK the order: page 2 reads description then PIN",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line",
+   "how": "reviewed",
+   "rect": [
+    36,
+    258,
+    228,
+    272
+   ]
+  },
+  "F19": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Signer 1",
+   "how": "reviewed",
+   "rect": [
+    252,
+    260,
+    457,
+    272
+   ]
+  },
+  "F22": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed",
+   "rect": [
+    36,
+    300,
+    228,
+    314
+   ]
+  },
+  "F24": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Signer 2",
+   "how": "reviewed",
+   "rect": [
+    252,
+    302,
+    457,
+    314
+   ]
+  },
+  "F27": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3",
+   "how": "reviewed",
+   "rect": [
+    36,
+    342,
+    228,
+    356
+   ]
+  },
+  "F29": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Signer 3",
+   "how": "reviewed",
+   "rect": [
+    252,
+    344,
+    457,
+    356
+   ]
+  },
+  "F32": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F20",
+  "F21",
+  "F25",
+  "F26",
+  "F30",
+  "F31",
+  "F33",
+  "F34",
+  "F35"
+ ],
+ "skip": {
+  "B1": "not a blank",
+  "B2": "signer 3's name line - F28 is placed on it"
+ },
+ "add": [],
+ "notes": [
+  "The signing rows held first/middle/surname merge boxes (row 3 held two people's); each row is now one Member{i}Name dropdown."
+ ]
+}

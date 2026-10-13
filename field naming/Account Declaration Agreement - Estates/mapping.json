@@ -1,0 +1,206 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Folio Name: Estate of",
+   "desc": "The estate's name (Folio Name: Estate of ...)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Credit Union Branch:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member #:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "ESTATE_TRUSTEE_BY_WILL",
+   "kind": "entry",
+   "label": "document, and",
+   "desc": "Tick: trustee appointed in the Last Will",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F5": {
+   "name": "ESTATE_TRUSTEE_BY_CERTIFICATE",
+   "kind": "entry",
+   "label": "as appointed in the Certificate of Appointment of Estate Trustee",
+   "desc": "Tick: trustee appointed in the Certificate of Appointment",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F6": {
+   "name": "SIGNED_AT_CITY",
+   "kind": "entry",
+   "label": "at",
+   "desc": "City the agreement is signed at",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "ESTATE_CORRESPONDENCE_ADDRESS",
+   "kind": "candidate",
+   "label": "Estate Trustee Address for",
+   "desc": "Estate trustee's address for correspondence, c/o line. Could be SIGNER1_MAIL_FULL_LINE",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Estate Trustee:",
+   "desc": "Estate trustee 1 (signer 1)",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "SIGNER1_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member# of Estate",
+   "desc": "Estate trustee 1's member number. CHECK: SIGNER numbering vs the trustee picked in Member1Name",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "SIGNER1_HOME_PHONE",
+   "kind": "db",
+   "label": "Telephone:",
+   "desc": "Estate trustee 1's telephone. CHECK: home, work or cell",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Estate Trustee:",
+   "desc": "Estate trustee 2",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "SIGNER2_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member# of Estate",
+   "desc": "Estate trustee 2's member number",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "SIGNER2_HOME_PHONE",
+   "kind": "db",
+   "label": "Telephone:",
+   "desc": "Estate trustee 2's telephone",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Estate Trustee:",
+   "desc": "Estate trustee 3",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "SIGNER3_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member# of Estate",
+   "desc": "Estate trustee 3's member number",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "SIGNER3_HOME_PHONE",
+   "kind": "db",
+   "label": "Telephone:",
+   "desc": "Estate trustee 3's telephone",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Estate Trustee:",
+   "desc": "Estate trustee 4",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "SIGNER4_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member# of Estate",
+   "desc": "Estate trustee 4's member number",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "SIGNER4_HOME_PHONE",
+   "kind": "db",
+   "label": "Telephone:",
+   "desc": "Estate trustee 4's telephone",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Coach",
+   "desc": "Coach (staff member) name",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Signature:",
+   "desc": "Estate trustee 1",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Signature:",
+   "desc": "Estate trustee 2",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Signature:",
+   "desc": "Estate trustee 3",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Signature:",
+   "desc": "Estate trustee 4",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "STAFF_SIGNATURE",
+   "kind": "entry",
+   "label": "Coach",
+   "desc": "Coach (staff member) signature",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "This agreement is being signed on",
+   "desc": "Date the agreement is signed",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "SIGNED_AT_PROVINCE",
+   "kind": "entry",
+   "label": "in the Province of",
+   "desc": "Province the agreement is signed in",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "ESTATE_CORRESPONDENCE_ADDRESS_2",
+   "kind": "candidate",
+   "label": "Correspondence:",
+   "desc": "Correspondence address, second line",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": []
+}

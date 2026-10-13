@@ -1,0 +1,238 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's middle name",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Account Number",
+   "desc": "Account number (member number part)",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "LOAN_SUB",
+   "kind": "candidate",
+   "label": "Sub:",
+   "desc": "The loan's sub number",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "LOAN_PAYOUT_DATE",
+   "kind": "candidate",
+   "label": "Payout Date",
+   "desc": "Payout statement date",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "LOAN_PAYOUT_PRINCIPAL",
+   "kind": "candidate",
+   "label": "Principal Balance",
+   "desc": "Payout: principal",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "LOAN_PAYOUT_DATE",
+   "kind": "candidate",
+   "label": "Interest: Up to + Excluding",
+   "desc": "Payout statement date",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "LOAN_PAYOUT_INTEREST_DUE",
+   "kind": "candidate",
+   "label": "+",
+   "desc": "Payout: interest due",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "LOAN_PAYOUT_PENALTY",
+   "kind": "candidate",
+   "label": "+",
+   "desc": "Payout: prepayment charge",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "LOAN_PAYOUT_INTEREST_DIFF",
+   "kind": "candidate",
+   "label": "+",
+   "desc": "Payout: prepayment charge, interest rate differential",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "LOAN_PAYOUT_TAX_BALANCE",
+   "kind": "candidate",
+   "label": "-",
+   "desc": "Payout: tax account balance",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "LOAN_PAYOUT_DISCHARGE_FEE",
+   "kind": "candidate",
+   "label": "+",
+   "desc": "Payout: discharge fee",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "LOAN_PAYOUT_PER_DIEM",
+   "kind": "candidate",
+   "label": "$",
+   "desc": "Payout: per diem interest",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "LOAN_PAYOUT_DATE",
+   "kind": "candidate",
+   "label": "being paid out on",
+   "desc": "Payout statement date",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "",
+   "desc": "Staff member preparing the form",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "REQUESTUSER_POSITION",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Staff member's position / title",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "REQUESTUSER_POSITION",
+   "kind": "candidate",
+   "label": "1-800-265-5935 Extension:",
+   "desc": "Staff member's position - the old merge tag repeats User_Position on a second line; CHECK whether it should be something else",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B2": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B3": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B4": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B5": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B6": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B7": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B8": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B9": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B10": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B11": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B12": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B13": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B14": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B15": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B16": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B17": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B18": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B19": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B20": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B21": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B22": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B23": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B24": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B25": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B26": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B27": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B28": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B29": "a border of the To / Email / Re table or the payout table, not a blank",
+  "B30": "a border of the To / Email / Re table or the payout table, not a blank"
+ },
+ "add": [
+  {
+   "page": 0,
+   "rect": [
+    68,
+    90,
+    98,
+    103
+   ],
+   "name": "SOLICITOR_NAME",
+   "kind": "entry",
+   "label": "To: ___, Barrister and Solicitor",
+   "desc": "The member's solicitor - only 30pt of room before ', Barrister and Solicitor'",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    83,
+    107,
+    590,
+    119
+   ],
+   "name": "SOLICITOR_EMAIL",
+   "kind": "entry",
+   "label": "Email:",
+   "desc": "Solicitor's email",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    98,
+    166,
+    590,
+    187
+   ],
+   "name": "PROPERTY_ADDRESS",
+   "kind": "entry",
+   "label": "Municipal Address/Legal Description of Property",
+   "desc": "Address or legal description of the mortgaged property",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    383,
+    402,
+    473,
+    415
+   ],
+   "name": "LOAN_PAYOUT_TOTAL",
+   "kind": "candidate",
+   "label": "Total Required to Pay Out",
+   "desc": "Total required to pay out - the form prints a sample $90.00 here, which has to come off",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    392,
+    307,
+    473,
+    319
+   ],
+   "name": "LOAN_PAYOUT_CASHBACK",
+   "kind": "candidate",
+   "label": "CASHBACK: $",
+   "desc": "Cashback to be repaid - the row had no box",
+   "type": "text"
+  }
+ ],
+ "notes": [
+  "Electronic Registration Fee prints a fixed $90.00 - left as printed text."
+ ]
+}

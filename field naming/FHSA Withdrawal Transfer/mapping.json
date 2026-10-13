@@ -1,0 +1,602 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "Contract Number:",
+   "desc": "FHSA contract number. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "Holder's SIN:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "TAXABLE_WITHDRAWAL",
+   "kind": "entry",
+   "label": "Taxable Withdrawal",
+   "desc": "Tick: taxable withdrawal",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F11": {
+   "name": "QUALIFYING_WITHDRAWAL",
+   "kind": "entry",
+   "label": "Qualifying Withdrawal (no tax withheld)",
+   "desc": "Tick: qualifying withdrawal (no tax withheld)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F12": {
+   "name": "TRANSFER_TO_LIBRO",
+   "kind": "entry",
+   "label": "Transfer to Libro FHSA, RRSP or RRIF",
+   "desc": "Tick: transfer to Libro FHSA, RRSP or RRIF",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F13": {
+   "name": "TRANSFER_TO_NEW_CONTRACT",
+   "kind": "entry",
+   "label": "RRSP",
+   "desc": "Tick: to a new contract",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F14": {
+   "name": "TRANSFER_TO_EXISTING_CONTRACT",
+   "kind": "entry",
+   "label": "Existing FHSA, RRSP or RIF Contract #",
+   "desc": "Tick: to an existing contract",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F15": {
+   "name": "TRANSFER_EXISTING_CONTRACT_NUMBER",
+   "kind": "entry",
+   "label": "Existing FHSA, RRSP or RIF Contract #",
+   "desc": "Existing FHSA, RRSP or RIF contract #",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "TRANSFER_TO_OTHER_FI",
+   "kind": "entry",
+   "label": "Transfer to Other FI FHSA, RRIF or RRSP",
+   "desc": "Tick: transfer to another FI FHSA, RRIF or RRSP",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F17": {
+   "name": "DEATH",
+   "kind": "entry",
+   "label": "Death",
+   "desc": "Tick: death",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F18": {
+   "name": "FULL_CONTRACT_TERMINATION",
+   "kind": "entry",
+   "label": "Full Contract Termination OR",
+   "desc": "Tick: full contract termination",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F19": {
+   "name": "PARTIAL_CONTRACT_TERMINATION",
+   "kind": "entry",
+   "label": "Partial Contract Termination",
+   "desc": "Tick: partial contract termination",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F20": {
+   "name": "AUTO_TRANSFER_CHANGE_NO",
+   "kind": "entry",
+   "label": "Yes",
+   "desc": "Change to automatic transfer required: No",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F21": {
+   "name": "AUTO_TRANSFER_CHANGE_YES",
+   "kind": "entry",
+   "label": "Sub#",
+   "desc": "Change to automatic transfer required: Yes",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F22": {
+   "name": "AUTO_TRANSFER_SUB",
+   "kind": "entry",
+   "label": "Sub#",
+   "desc": "Automatic transfer: sub #",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "WD1_FHSA_SUB",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 1: FHSA (sub) #",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "WD1_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "(dd/mm/yy)",
+   "desc": "Withdrawal row 1: expiry date",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "WD1_TYPE",
+   "kind": "entry",
+   "label": "S=Specified Amt.",
+   "desc": "Withdrawal row 1: A principal + interest / S specified amount",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "WD1_AMOUNT",
+   "kind": "entry",
+   "label": "Amt. Amount",
+   "desc": "Withdrawal row 1: withdrawal/transfer amount",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "WD1_ACCRUED_INTEREST",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 1: accrued interest",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "WD1_TOTAL",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 1: total",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "WD2_FHSA_SUB",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: FHSA (sub) #",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "WD2_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: expiry date",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "WD2_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: A principal + interest / S specified amount",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "WD2_AMOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: withdrawal/transfer amount",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "WD2_ACCRUED_INTEREST",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: accrued interest",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "WD2_TOTAL",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: total",
+   "how": "reviewed"
+  },
+  "F35": {
+   "name": "WD3_FHSA_SUB",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: FHSA (sub) #",
+   "how": "reviewed"
+  },
+  "F36": {
+   "name": "WD3_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: expiry date",
+   "how": "reviewed"
+  },
+  "F37": {
+   "name": "WD3_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: A principal + interest / S specified amount",
+   "how": "reviewed"
+  },
+  "F38": {
+   "name": "WD3_AMOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: withdrawal/transfer amount",
+   "how": "reviewed"
+  },
+  "F39": {
+   "name": "WD3_ACCRUED_INTEREST",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: accrued interest",
+   "how": "reviewed"
+  },
+  "F40": {
+   "name": "WD3_TOTAL",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: total",
+   "how": "reviewed"
+  },
+  "F41": {
+   "name": "WD4_FHSA_SUB",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: FHSA (sub) #",
+   "how": "reviewed"
+  },
+  "F42": {
+   "name": "WD4_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: expiry date",
+   "how": "reviewed"
+  },
+  "F43": {
+   "name": "WD4_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: A principal + interest / S specified amount",
+   "how": "reviewed"
+  },
+  "F44": {
+   "name": "WD4_AMOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: withdrawal/transfer amount",
+   "how": "reviewed"
+  },
+  "F45": {
+   "name": "WD4_ACCRUED_INTEREST",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: accrued interest",
+   "how": "reviewed"
+  },
+  "F46": {
+   "name": "WD4_TOTAL",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: total",
+   "how": "reviewed"
+  },
+  "F47": {
+   "name": "WD_TOTAL",
+   "kind": "entry",
+   "label": "Total",
+   "desc": "Total withdrawal",
+   "how": "reviewed"
+  },
+  "F48": {
+   "name": "WD_FEE",
+   "kind": "entry",
+   "label": "Less Fee (if any)",
+   "desc": "Less fee (if any)",
+   "how": "reviewed"
+  },
+  "F49": {
+   "name": "WD_SUBTOTAL",
+   "kind": "entry",
+   "label": "Subtotal",
+   "desc": "Subtotal",
+   "how": "reviewed"
+  },
+  "F50": {
+   "name": "OFFICE_DATE_PROCESSED",
+   "kind": "entry",
+   "label": "Date Processed",
+   "desc": "Office use: date processed (dd/mm/yy)",
+   "how": "reviewed"
+  },
+  "F51": {
+   "name": "OFFICE_PROCESSED_BY",
+   "kind": "entry",
+   "label": "Processed By",
+   "desc": "Office use: processed by",
+   "how": "reviewed"
+  },
+  "F52": {
+   "name": "WD_TAX_RATE",
+   "kind": "entry",
+   "label": "Less Withholding Tax at",
+   "desc": "Withholding tax rate, %",
+   "how": "reviewed"
+  },
+  "F53": {
+   "name": "WD_TAX_AMOUNT",
+   "kind": "entry",
+   "label": "%",
+   "desc": "Withholding tax amount",
+   "how": "reviewed"
+  },
+  "F54": {
+   "name": "WD_TOTAL_PROCEEDS",
+   "kind": "entry",
+   "label": "TOTAL PROCEEDS",
+   "desc": "Total proceeds",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "DEATH_DETAIL_1",
+   "kind": "entry",
+   "label": "Death",
+   "desc": "Line after Death, unlabelled - CHECK what it asks for",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "DEATH_DETAIL_2",
+   "kind": "entry",
+   "label": "Death",
+   "desc": "Line after Death, unlabelled",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "DEATH_DETAIL_3",
+   "kind": "entry",
+   "label": "Death",
+   "desc": "Line after Death, unlabelled",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "DEATH_DETAIL_4",
+   "kind": "entry",
+   "label": "Death",
+   "desc": "Line after Death, unlabelled",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "WD5_FHSA_SUB",
+   "kind": "entry",
+   "label": "Withholding",
+   "desc": "Withdrawal row 5: FHSA (sub) #",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "WD5_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "Withholding Tax Rates (for taxable",
+   "desc": "Withdrawal row 5: expiry date",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "WD5_TYPE",
+   "kind": "entry",
+   "label": "taxable withdrawal):",
+   "desc": "Withdrawal row 5: A principal + interest / S specified amount",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "WD5_AMOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 5: withdrawal/transfer amount",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "WD5_ACCRUED_INTEREST",
+   "kind": "entry",
+   "label": "Total",
+   "desc": "Withdrawal row 5: accrued interest",
+   "how": "reviewed"
+  },
+  "F56": {
+   "name": "DEPOSIT_TO_MY_ACCOUNT",
+   "kind": "entry",
+   "label": "Please deposit to my account",
+   "desc": "Tick: deposit to my account",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F57": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Please deposit to my account",
+   "desc": "Deposit to: member #",
+   "how": "reviewed"
+  },
+  "F58": {
+   "name": "DEPOSIT_DEMAND_PRODUCT",
+   "kind": "entry",
+   "label": "Please deposit to my account",
+   "desc": "Deposit to: demand product (could load from DMD_PRODNBR)",
+   "how": "reviewed"
+  },
+  "F59": {
+   "name": "DEPOSIT_SUB",
+   "kind": "entry",
+   "label": "Please deposit to my account",
+   "desc": "Deposit to: sub #",
+   "how": "reviewed"
+  },
+  "F60": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Please deposit to my account",
+   "desc": "Libro representative",
+   "how": "reviewed"
+  },
+  "F61": {
+   "name": "SEND_CHEQUE_TO_FI",
+   "kind": "entry",
+   "label": "Please send cheque to",
+   "desc": "Tick: send cheque to another financial institution (transfers only)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F62": {
+   "name": "OTHER_FI_NAME_ADDRESS_2",
+   "kind": "entry",
+   "label": "the following Financial",
+   "desc": "Name and address of the financial institution, line 2",
+   "how": "reviewed"
+  },
+  "F63": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "the following Financial",
+   "desc": "Date signed",
+   "how": "reviewed"
+  },
+  "F64": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F65": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed",
+   "rect": [
+    254,
+    224,
+    451,
+    236
+   ]
+  },
+  "F66": {
+   "name": "CHEQUE_NUMBER",
+   "kind": "entry",
+   "label": "Cheque Number",
+   "desc": "Cheque number",
+   "how": "reviewed"
+  },
+  "B12": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B13": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B14": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B15": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B16": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B17": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "B18": {
+   "name": "OTHER_FI_NAME_ADDRESS",
+   "kind": "entry",
+   "label": "Please send cheque to",
+   "desc": "Name and address of the financial institution, line 1",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F55"
+ ],
+ "skip": {
+  "B10": "not a blank - beside the qualifying withdrawal line",
+  "B11": "not a blank"
+ },
+ "add": [],
+ "notes": [
+  "Four unlabelled lines follow the Death tick box (DEATH_DETAIL_1-4) - what they ask for is not printed.",
+  "An unlabelled box (old Text1) under Date Processed was dropped."
+ ]
+}

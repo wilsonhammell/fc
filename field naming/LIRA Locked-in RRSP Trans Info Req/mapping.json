@@ -1,0 +1,175 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_DATE_OF_BIRTH",
+   "kind": "db",
+   "label": "Date of Birth:",
+   "desc": "Member's date of birth",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "LOCKED_IN_AMOUNT",
+   "kind": "entry",
+   "label": "Amount of Locked-In Funds applicable to this",
+   "desc": "Amount of locked-in funds applicable to this transfer",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "EMPLOYER_NAME",
+   "kind": "entry",
+   "label": "Name of Employer:",
+   "desc": "Name of the employer (the pension plan's sponsor)",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "EMPLOYER_ADDRESS",
+   "kind": "entry",
+   "label": "Employer Address:",
+   "desc": "Employer's address",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "AMOUNT_UNISEX_BASIS",
+   "kind": "entry",
+   "label": "$",
+   "desc": "If no: dollar amount on a unisex basis",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "AMOUNT_SEX_DISTINCT_BASIS",
+   "kind": "entry",
+   "label": "$",
+   "desc": "and/or dollar amount on a sex distinct basis",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "EARLIEST_RETIREMENT_AGE",
+   "kind": "entry",
+   "label": "What is the EARLIEST retirement age?",
+   "desc": "Earliest retirement age under the plan",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "PENSION_FEDERAL",
+   "kind": "entry",
+   "label": "Is the pension plan governed under federal legislation?",
+   "desc": "Radio: is the pension plan governed under federal legislation? Yes / No",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "PENSION_FEDERAL",
+   "kind": "entry",
+   "label": "Yes",
+   "desc": "Yes",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "PENSION_PROVINCE",
+   "kind": "entry",
+   "label": "pension plan is governed by what Provincial Pension Benefits Act?",
+   "desc": "If no: what provincial Pension Benefits Act",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "UNISEX_RATE_YES",
+   "kind": "entry",
+   "label": "required for jurisdictions of Ontario, New Brunswick and Nova Scotia)",
+   "desc": "Is the locked-in value calculated on a unisex rate basis? Yes (was a radio button grouped with the other question)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F12": {
+   "name": "ALL_FUNDS_UNISEX_YES",
+   "kind": "entry",
+   "label": "are all funds to be applied on a unisex basis?",
+   "desc": "If yes, are all funds to be applied on a unisex basis? Yes",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F13": {
+   "name": "UNISEX_RATE_NO",
+   "kind": "entry",
+   "label": "Yes",
+   "desc": "Unisex rate basis? No",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F14": {
+   "name": "ALL_FUNDS_UNISEX_NO",
+   "kind": "entry",
+   "label": "Yes",
+   "desc": "All funds on a unisex basis? No",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F15": {
+   "name": "COMPLETED_BY_COMPANY",
+   "kind": "entry",
+   "label": "Name of Company",
+   "desc": "Name of company completing the form",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name of Owner:",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address of Owner:",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address of Owner:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Address of Owner:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "SIN:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "COMPLETED_DATE",
+   "kind": "entry",
+   "label": "Date Completed",
+   "desc": "Date completed",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "COMPLETED_BY_NAME_TITLE",
+   "kind": "entry",
+   "label": "Form Completed By: (Name & Title)",
+   "desc": "Form completed by (name & title) - the plan administrator",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "COMPLETED_BY_PHONE",
+   "kind": "entry",
+   "label": "______",
+   "desc": "Telephone no. of the contact person",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": [
+  "Two Yes/No questions shared their radio groups by column (both Yes buttons in one group, both No in the other), so answering one cleared the other. They are four tick boxes now."
+ ]
+}

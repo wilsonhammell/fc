@@ -1,0 +1,359 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "Contract Number:",
+   "desc": "FHSA contract number. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "First Home Savings Account (FHSA) Holder’s Name (Surname, Given Name):",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": ",",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "DESIGNATION_INITIAL",
+   "kind": "entry",
+   "label": "Initial",
+   "desc": "Tick: initial designation",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F7": {
+   "name": "DESIGNATION_CHANGE",
+   "kind": "entry",
+   "label": "Change Designation of Survivor/Successor Holder/Beneficiary",
+   "desc": "Tick: change of designation of survivor / successor holder / beneficiary",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F8": {
+   "name": "BENE1_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 1: name",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "BENE1_ACCOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 1: account the designation is for",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "BENE1_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 1: date of birth",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "BENE1_RELATIONSHIP",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 1: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "BENE1_TYPE",
+   "kind": "entry",
+   "label": "Alternate (A)",
+   "desc": "Beneficiary 1: designation: SH successor holder, P primary, A alternate",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "BENE1_SIN",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 1: SIN",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "BENE1_PERCENT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 1: share, %",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "BENE2_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: name",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "BENE2_ACCOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: account the designation is for",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "BENE2_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: date of birth",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "BENE2_RELATIONSHIP",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "BENE2_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: designation: SH successor holder, P primary, A alternate",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "BENE2_SIN",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: SIN",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "BENE2_PERCENT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: share, %",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "BENE3_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: name",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "BENE3_ACCOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: account the designation is for",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "BENE3_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: date of birth",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "BENE3_RELATIONSHIP",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "BENE3_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: designation: SH successor holder, P primary, A alternate",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "BENE3_SIN",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: SIN",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "BENE3_PERCENT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: share, %",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "MINOR1_NAME",
+   "kind": "entry",
+   "label": "Name of Minor",
+   "desc": "Beneficiary who is a minor, 1: name",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "MINOR1_TRUSTEE_NAME",
+   "kind": "entry",
+   "label": "Name of Trustee for Minor",
+   "desc": "Minor 1's trustee: name",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "MINOR1_TRUSTEE_ADDRESS",
+   "kind": "entry",
+   "label": "Address of Trustee",
+   "desc": "Minor 1's trustee: address",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "MINOR2_NAME",
+   "kind": "entry",
+   "label": "Name of Minor Name of Trustee for Minor Address",
+   "desc": "Beneficiary who is a minor, 2: name",
+   "how": "reviewed",
+   "rect": [
+    54,
+    632,
+    180,
+    644
+   ]
+  },
+  "F33": {
+   "name": "MINOR2_TRUSTEE_NAME",
+   "kind": "entry",
+   "label": "Name of Trustee for Minor",
+   "desc": "Minor 2's trustee: name",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "MINOR2_TRUSTEE_ADDRESS",
+   "kind": "entry",
+   "label": "Address of Trustee",
+   "desc": "Minor 2's trustee: address",
+   "how": "reviewed"
+  },
+  "F35": {
+   "name": "SIGNED_AT_CITY",
+   "kind": "entry",
+   "label": "Dated at",
+   "desc": "Dated at (place), Ontario",
+   "how": "reviewed"
+  },
+  "F36": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": ", in the Province of Ontario, on",
+   "desc": "Date signed by the holder",
+   "how": "reviewed"
+  },
+  "F37": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member (old field: Witness Name)",
+   "how": "reviewed",
+   "rect": [
+    50,
+    262,
+    234,
+    276
+   ]
+  },
+  "F39": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed",
+   "rect": [
+    255,
+    182,
+    449,
+    194
+   ]
+  },
+  "F40": {
+   "name": "OFFICE_CHECKED_BY",
+   "kind": "entry",
+   "label": "Checked By",
+   "desc": "Office use: checked by",
+   "how": "reviewed"
+  },
+  "F41": {
+   "name": "OFFICE_ENTERED_BY",
+   "kind": "entry",
+   "label": "Entered By",
+   "desc": "Office use: entered by",
+   "how": "reviewed"
+  },
+  "F42": {
+   "name": "OFFICE_ENTRY_DATE",
+   "kind": "entry",
+   "label": "Entry Date",
+   "desc": "Office use: entry date",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F38"
+ ],
+ "skip": {},
+ "add": [],
+ "notes": []
+}

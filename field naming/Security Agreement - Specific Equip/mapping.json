@@ -1,0 +1,263 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "BETWEEN:",
+   "desc": "Joint owner 1, first name",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "BETWEEN:",
+   "desc": "Joint owner 1, middle name/initial",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "BETWEEN:",
+   "desc": "Joint owner 1, surname",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "SIGNER2_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, first name",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "SIGNER2_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, middle name/initial",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "SIGNER2_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, surname",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "SIGNER3_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, first name",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "SIGNER3_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, middle name/initial",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "SIGNER3_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, surname",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "SIGNER4_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 4, first name",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "SIGNER4_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 4, middle name/initial",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "SIGNER4_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 4, surname",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "COLLATERAL_DESCRIPTION",
+   "kind": "entry",
+   "label": "",
+   "desc": "Security agreement: the collateral described",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line",
+   "how": "reviewed",
+   "rect": [
+    43,
+    90,
+    230,
+    104
+   ]
+  },
+  "F16": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed",
+   "rect": [
+    253,
+    92,
+    457,
+    104
+   ]
+  },
+  "F19": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2 - one dropdown across the Name line",
+   "how": "reviewed",
+   "rect": [
+    43,
+    132,
+    230,
+    146
+   ]
+  },
+  "F21": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Signer 2",
+   "how": "reviewed",
+   "rect": [
+    253,
+    134,
+    457,
+    146
+   ]
+  },
+  "F24": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3 - one dropdown across the Name line",
+   "how": "reviewed",
+   "rect": [
+    43,
+    174,
+    230,
+    188
+   ]
+  },
+  "F26": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Signer 3",
+   "how": "reviewed",
+   "rect": [
+    253,
+    176,
+    457,
+    188
+   ]
+  },
+  "F29": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4 - one dropdown across the Name line",
+   "how": "reviewed",
+   "rect": [
+    43,
+    216,
+    230,
+    230
+   ]
+  },
+  "F31": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Signer 4",
+   "how": "reviewed",
+   "rect": [
+    253,
+    218,
+    457,
+    230
+   ]
+  },
+  "F34": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F17",
+  "F18",
+  "F22",
+  "F23",
+  "F27",
+  "F28",
+  "F32",
+  "F33"
+ ],
+ "skip": {},
+ "add": [],
+ "notes": [
+  "The borrower is named from Join1-Join4 merge tags here (SIGNER1-4), not the Member tags - CHECK whether the first should be PRIMARY."
+ ]
+}

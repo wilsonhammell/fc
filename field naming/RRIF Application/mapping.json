@@ -1,0 +1,506 @@
+{
+ "items": {
+  "F1": {
+   "name": "PLAN_TYPE_RIF",
+   "kind": "entry",
+   "label": "RIF",
+   "desc": "Tick: RIF",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F2": {
+   "name": "PLAN_TYPE_LIF_ON",
+   "kind": "entry",
+   "label": "LIF (ON)",
+   "desc": "Tick: LIF (Ontario)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F3": {
+   "name": "PLAN_TYPE_RLIF_FED",
+   "kind": "entry",
+   "label": "RLIF (FED)",
+   "desc": "Tick: RLIF (federal)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F4": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "RSP_ACCOUNT_OPENED",
+   "kind": "db",
+   "label": "Contract Date",
+   "desc": "Contract date. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "Contract Number",
+   "desc": "Contract number. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Annuitant’s Last Name",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Annuitant’s First Name",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "Social Insurance Number",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "PRIMARY_DATE_OF_BIRTH",
+   "kind": "db",
+   "label": "Date of Birth",
+   "desc": "Member's date of birth",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address/Postal Code:",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address/Postal Code:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Address/Postal Code:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "SPOUSAL_NO",
+   "kind": "entry",
+   "label": "SPOUSAL",
+   "desc": "N: no funds came from an RRSP the spouse contributed to",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F16": {
+   "name": "SPOUSAL_YES",
+   "kind": "entry",
+   "label": "",
+   "desc": "Y: funds came from an RRSP the spouse contributed to",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F17": {
+   "name": "SPOUSE_MEMBER_NUMBER",
+   "kind": "candidate",
+   "label": "Spouse/Common-law Partner Account #",
+   "desc": "Spouse / common-law partner's account #",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "SPOUSE_FULL_NAME",
+   "kind": "db",
+   "label": "Spouse/Common-law Partner Name:",
+   "desc": "Spouse / common-law partner's name",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "SPOUSE_SIN",
+   "kind": "candidate",
+   "label": "Spouse/Common-law Partner S.I.N.:",
+   "desc": "Spouse / common-law partner's SIN - the DB list has no spouse SIN",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "DESIGNATION_SUCCESSOR",
+   "kind": "entry",
+   "label": "DESIGNATION",
+   "desc": "S/CLP: designation of successor annuitant",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F21": {
+   "name": "DESIGNATION_BENEFICIARY",
+   "kind": "entry",
+   "label": "",
+   "desc": "B: designation of beneficiary only",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F22": {
+   "name": "DESIGNATION_NONE",
+   "kind": "entry",
+   "label": "",
+   "desc": "N: no beneficiary designated",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F23": {
+   "name": "PAY_DUE_15TH",
+   "kind": "entry",
+   "label": "15th",
+   "desc": "Pay due on the 15th",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F24": {
+   "name": "PAY_DUE_28TH",
+   "kind": "entry",
+   "label": "28th",
+   "desc": "Pay due on the 28th",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F25": {
+   "name": "PAYMENT_START_DATE",
+   "kind": "entry",
+   "label": "Start Date:",
+   "desc": "Payment start date",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "PAYMENT_SPECIFIED",
+   "kind": "entry",
+   "label": "Specified $",
+   "desc": "Payment: specified amount",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F27": {
+   "name": "PAYMENT_SPECIFIED_AMOUNT",
+   "kind": "entry",
+   "label": "Specified $",
+   "desc": "Specified amount $",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "PAYMENT_NET",
+   "kind": "entry",
+   "label": "Net (after tax)",
+   "desc": "Net (after tax)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F29": {
+   "name": "PAYMENT_GROSS",
+   "kind": "entry",
+   "label": "Minimum",
+   "desc": "Gross (before tax)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F30": {
+   "name": "PAYMENT_MINIMUM",
+   "kind": "entry",
+   "label": "Minimum",
+   "desc": "Payment: minimum",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F31": {
+   "name": "MINIMUM_NO_TAX",
+   "kind": "entry",
+   "label": "$",
+   "desc": "No tax on minimum",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F32": {
+   "name": "MINIMUM_YES_TAX",
+   "kind": "entry",
+   "label": "Yes – Tax on Minimum",
+   "desc": "Yes, tax on minimum",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F33": {
+   "name": "PAYMENT_MAXIMUM",
+   "kind": "entry",
+   "label": "Gross",
+   "desc": "Maximum (LIF/RLIF only)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F34": {
+   "name": "EXTRA_TAX_NO",
+   "kind": "entry",
+   "label": "No",
+   "desc": "Withhold extra taxes: no",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F35": {
+   "name": "EXTRA_TAX_YES",
+   "kind": "entry",
+   "label": "Yes (if Yes)",
+   "desc": "Withhold extra taxes: yes",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F36": {
+   "name": "EXTRA_TAX_AMOUNT",
+   "kind": "entry",
+   "label": "Percentage or Amount",
+   "desc": "Extra tax: percentage or amount",
+   "how": "reviewed"
+  },
+  "F37": {
+   "name": "PAY_FREQ_MONTHLY",
+   "kind": "entry",
+   "label": "Monthly",
+   "desc": "Pay frequency: monthly",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F38": {
+   "name": "PAY_FREQ_QUARTERLY",
+   "kind": "entry",
+   "label": "Quarterly",
+   "desc": "quarterly",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F39": {
+   "name": "PAY_FREQ_SEMI_ANNUAL",
+   "kind": "entry",
+   "label": "Semi-Annually",
+   "desc": "semi-annually",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F40": {
+   "name": "PAY_FREQ_ANNUAL",
+   "kind": "entry",
+   "label": "Annual",
+   "desc": "annual",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F41": {
+   "name": "CONTINUE_PAYMENT_YES",
+   "kind": "entry",
+   "label": "Yes",
+   "desc": "Continue same payment next year: yes",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F42": {
+   "name": "CONTINUE_PAYMENT_NO",
+   "kind": "entry",
+   "label": "No",
+   "desc": "no",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F43": {
+   "name": "AGE_BASE_ANNUITANT",
+   "kind": "entry",
+   "label": "AGE",
+   "desc": "A: age of annuitant",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F44": {
+   "name": "AGE_BASE_SPOUSE",
+   "kind": "entry",
+   "label": "",
+   "desc": "S/CLP: spouse's age",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F45": {
+   "name": "SPOUSE_BIRTH_DAY",
+   "kind": "entry",
+   "label": "DD MM",
+   "desc": "Spouse's birthdate, DD (SPOUSE_DATE_OF_BIRTH would load it whole)",
+   "how": "reviewed"
+  },
+  "F46": {
+   "name": "SPOUSE_BIRTH_MONTH",
+   "kind": "entry",
+   "label": "MM YY",
+   "desc": "Spouse's birthdate, MM",
+   "how": "reviewed"
+  },
+  "F47": {
+   "name": "SPOUSE_BIRTH_YEAR",
+   "kind": "entry",
+   "label": "YY",
+   "desc": "Spouse's birthdate, YY",
+   "how": "reviewed"
+  },
+  "F48": {
+   "name": "DEPOSIT_TO_ACCOUNT",
+   "kind": "entry",
+   "label": "PAYMENT",
+   "desc": "Payment method: deposit to account",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F49": {
+   "name": "PAY_FROM_TYPE",
+   "kind": "entry",
+   "label": "Type:",
+   "desc": "Select from: type",
+   "how": "reviewed"
+  },
+  "F50": {
+   "name": "PAY_FROM_SUB",
+   "kind": "entry",
+   "label": "Sub:",
+   "desc": "Select from: sub",
+   "how": "reviewed"
+  },
+  "F52": {
+   "name": "PAY_TO_TYPE",
+   "kind": "entry",
+   "label": "Type:",
+   "desc": "Select to: type",
+   "how": "reviewed"
+  },
+  "F53": {
+   "name": "PAY_TO_SUB",
+   "kind": "entry",
+   "label": "",
+   "desc": "Select to: sub",
+   "how": "reviewed"
+  },
+  "F54": {
+   "name": "PAY_TO_ACCOUNT",
+   "kind": "entry",
+   "label": "Acct:",
+   "desc": "Select to: account",
+   "how": "reviewed"
+  },
+  "F55": {
+   "name": "INVESTMENT_INSTRUCTIONS_1",
+   "kind": "entry",
+   "label": "INVESTMENT INSTRUCTIONS FOR FUNDS",
+   "desc": "Investment instructions for funds, line 1",
+   "how": "reviewed"
+  },
+  "F56": {
+   "name": "INVESTMENT_INSTRUCTIONS_2",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 2",
+   "how": "reviewed"
+  },
+  "F57": {
+   "name": "INVESTMENT_INSTRUCTIONS_3",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 3",
+   "how": "reviewed"
+  },
+  "F58": {
+   "name": "INVESTMENT_INSTRUCTIONS_4",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 4",
+   "how": "reviewed"
+  },
+  "F59": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F60": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed",
+   "rect": [
+    252,
+    377,
+    457,
+    389
+   ]
+  },
+  "B5": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B10": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F51"
+ ],
+ "skip": {
+  "B1": "a rule after the Yes/No boxes",
+  "B2": "a rule",
+  "B3": "a rule",
+  "B4": "not a blank - the contributor line"
+ },
+ "add": [],
+ "notes": [
+  "An old wide 'Select to' box overlapping the type/sub/account boxes was dropped."
+ ]
+}

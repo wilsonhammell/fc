@@ -1,0 +1,215 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name:",
+   "desc": "Owner's full name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Member’s Home Branch:",
+   "desc": "Owner's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Branch Contact:",
+   "desc": "Staff member preparing the form",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Owner (member) number",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "BRANCH_ERROR",
+   "kind": "entry",
+   "label": "Branch error - Admin will apply s/c to Branch GL",
+   "desc": "Tick: branch error - admin will apply fee",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F6": {
+   "name": "MEMBER_ERROR",
+   "kind": "entry",
+   "label": "Member error - Admin will apply s/c to Member",
+   "desc": "Tick: member error - admin will apply fee",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F7": {
+   "name": "VENDOR_NAME",
+   "kind": "entry",
+   "label": "Vendor name:",
+   "desc": "Vendor name:",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "VENDOR_ACCOUNT_NUMBER",
+   "kind": "entry",
+   "label": "Vendor Account # paid:",
+   "desc": "Vendor account # paid",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "PAYMENT_AMOUNT",
+   "kind": "entry",
+   "label": "Payment Amount $",
+   "desc": "Payment amount",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "PAYMENT_DATE",
+   "kind": "entry",
+   "label": "Payment Date:",
+   "desc": "Payment Date:",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "TRACE_REASON",
+   "kind": "entry",
+   "label": "Reason",
+   "desc": "Reason for trace (radio group: one choice - account not credited, incorrect amount, incorrect vendor, incorrect account, other)",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "TRACE_REASON",
+   "kind": "entry",
+   "label": "Incorrect amount paid. Paid:$",
+   "desc": "Incorrect amount paid. Paid:$",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "AMOUNT_PAID",
+   "kind": "entry",
+   "label": "Incorrect amount paid. Paid:$",
+   "desc": "Incorrect amount paid: the amount paid",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "CORRECT_AMOUNT",
+   "kind": "entry",
+   "label": "Correct Amount $",
+   "desc": "Incorrect amount paid: the correct amount",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "REFUND_REQUEST_AMOUNT",
+   "kind": "entry",
+   "label": "Refund request: $",
+   "desc": "Incorrect amount paid: refund requested",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "TRACE_REASON",
+   "kind": "entry",
+   "label": "Payment made to Incorrect Vendor. Refund requested for: $",
+   "desc": "Payment made to Incorrect Vendor. Refund requested for: $",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "REFUND_INCORRECT_VENDOR_AMOUNT",
+   "kind": "entry",
+   "label": "Payment made to Incorrect Vendor. Refund requested for: $",
+   "desc": "Paid to incorrect vendor: refund requested for",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "TRACE_REASON",
+   "kind": "entry",
+   "label": "Payment is made to incorrect account number. Correct account:",
+   "desc": "Payment is made to incorrect account number. Correct account:",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "CORRECT_ACCOUNT_NUMBER",
+   "kind": "entry",
+   "label": "Payment is made to incorrect account number. Correct account:",
+   "desc": "Paid to incorrect account: the correct account",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "TRACE_REASON",
+   "kind": "entry",
+   "label": "Other(specify):",
+   "desc": "Other(specify):",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "TRACE_REASON_OTHER_DETAIL",
+   "kind": "entry",
+   "label": "",
+   "desc": "Other reason, in words",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B9": "not a blank - the 'if refund is preferred' note"
+ },
+ "add": [],
+ "notes": []
+}

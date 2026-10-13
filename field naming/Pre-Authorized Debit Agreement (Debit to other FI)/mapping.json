@@ -1,0 +1,489 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_BRANCH",
+   "kind": "db",
+   "label": "Branch:",
+   "desc": "Branch (old merge tag Branch_TransitNo). CHECK: is the transit number the branch number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Joint owner 1, full name - the starter code fills it from SIGNER1",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "JointMember2Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Joint owner 2, full name - the starter code fills it from SIGNER2",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "JointMember3Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Joint owner 3, full name - the starter code fills it from SIGNER3",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "PAD_AMOUNT",
+   "kind": "entry",
+   "label": "for the amount of $",
+   "desc": "Debit amount $",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "PAD_START_DATE",
+   "kind": "entry",
+   "label": "starting on",
+   "desc": "Starting on",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "PAD_FREQUENCY",
+   "kind": "entry",
+   "label": "at a frequency of",
+   "desc": "At a frequency of",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "PAD_ACCOUNT_NAME",
+   "kind": "entry",
+   "label": "Account Name",
+   "desc": "Libro account: account name (could load from DMD_ACCOUNT_DESC)",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "PAD_BENEFIT_TYPE",
+   "kind": "entry",
+   "label": "Account Benefit Type",
+   "desc": "Libro account: account benefit type",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "PAD_SUB",
+   "kind": "entry",
+   "label": "Account Sub #",
+   "desc": "Libro account: sub #",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "PAD_TYPE_FUNDS_TRANSFER",
+   "kind": "entry",
+   "label": "Funds Transfer PAD",
+   "desc": "Tick: funds transfer PAD",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F19": {
+   "name": "PAD_TYPE_PERSONAL",
+   "kind": "entry",
+   "label": "Personal PAD",
+   "desc": "Tick: personal PAD",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F20": {
+   "name": "PAD_TYPE_BUSINESS",
+   "kind": "entry",
+   "label": "Business PAD",
+   "desc": "Tick: business PAD",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F21": {
+   "name": "PAD_REASON",
+   "kind": "entry",
+   "label": "For the reason of:",
+   "desc": "For the reason of",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Dated:",
+   "desc": "Dated:",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Signer 2 - the joint signature box ran across the date column",
+   "how": "reviewed",
+   "rect": [
+    254,
+    680,
+    450,
+    692
+   ]
+  },
+  "F25": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B10": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "PAD_CHANGE",
+   "kind": "entry",
+   "label": "CHANGE – Please change this Debit Agreement effective immediately.",
+   "desc": "Tick: change this debit agreement",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F27": {
+   "name": "PAD_CHANGE_AMOUNT",
+   "kind": "entry",
+   "label": "Amount",
+   "desc": "Change: amount",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "PAD_CHANGE_DUE_DATE",
+   "kind": "entry",
+   "label": "Due Date",
+   "desc": "Change: due date",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "PAD_CHANGE_FREQUENCY",
+   "kind": "entry",
+   "label": "Frequency",
+   "desc": "Change: frequency",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "PAD_CHANGE_FI_INFO",
+   "kind": "entry",
+   "label": "Change Financial Institution Information Only",
+   "desc": "Tick: change financial institution information",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F31": {
+   "name": "PAD_CHANGE_BRANCH",
+   "kind": "entry",
+   "label": "Branch",
+   "desc": "Change: branch",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "PAD_CHANGE_MEMBER_NUMBER",
+   "kind": "entry",
+   "label": "Member Number",
+   "desc": "Change: member number",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "PAD_CHANGE_ACCOUNT_NAME",
+   "kind": "entry",
+   "label": "Account Name",
+   "desc": "Change: account name",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "PAD_CHANGE_BENEFIT_TYPE",
+   "kind": "entry",
+   "label": "Account Benefit Type",
+   "desc": "Change: account benefit type",
+   "how": "reviewed"
+  },
+  "F35": {
+   "name": "PAD_CHANGE_SUB",
+   "kind": "entry",
+   "label": "Account Sub #",
+   "desc": "Change: account sub #",
+   "how": "reviewed"
+  },
+  "F36": {
+   "name": "PAD_CANCEL",
+   "kind": "entry",
+   "label": "CANCELLATION – Please cancel this Debit Agreement effective immediately.",
+   "desc": "Tick: cancel this debit agreement effective immediately",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "B12": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Dated:",
+   "desc": "Dated: (change)",
+   "how": "reviewed"
+  },
+  "B14": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B15": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B16": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B17": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B18": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B19": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B20": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B21": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "B22": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Dated:",
+   "desc": "Dated: (cancellation)",
+   "how": "reviewed"
+  },
+  "B24": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B25": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B26": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B27": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B28": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B29": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B30": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B31": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B11": "not a blank",
+  "B13": "an unlabelled line under Dated: (change)",
+  "B23": "an unlabelled line under Dated: (cancellation)"
+ },
+ "add": [
+  {
+   "page": 0,
+   "rect": [
+    471,
+    680,
+    564,
+    692
+   ],
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2 - the date line had no box",
+   "type": "text"
+  }
+ ],
+ "notes": [
+  "The agreement, change and cancellation sections each have their own signing block; their rows repeat Member1/Member2 - the same signers, one value shown in each."
+ ]
+}

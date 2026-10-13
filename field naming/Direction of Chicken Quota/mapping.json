@@ -1,0 +1,404 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name:",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Joint owner 1, full name - the starter code fills it from SIGNER1",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "JointMember2Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Joint owner 2, full name - the starter code fills it from SIGNER2",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "JointMember3Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Joint owner 3, full name - the starter code fills it from SIGNER3",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "SIGNED_AT_CITY",
+   "kind": "entry",
+   "label": "Dated at",
+   "desc": "Dated at (city), Ontario",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": ", Ontario,",
+   "desc": "Date of the direction",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed",
+   "rect": [
+    253,
+    686,
+    452,
+    698
+   ]
+  },
+  "F9": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed",
+   "rect": [
+    253,
+    727,
+    452,
+    739
+   ]
+  },
+  "F10": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member - was a signature box",
+   "how": "reviewed",
+   "rect": [
+    43,
+    767,
+    232,
+    779
+   ]
+  },
+  "F11": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed",
+   "rect": [
+    475,
+    727,
+    570,
+    739
+   ]
+  },
+  "F12": {
+   "name": "QUOTA_NUMBER",
+   "kind": "entry",
+   "label": "Quota No.",
+   "desc": "Quota number",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "QUOTA_PREMISES_ADDRESS",
+   "kind": "entry",
+   "label": "Address",
+   "desc": "Address of the quota premises",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "BOARD_ACK_CITY",
+   "kind": "entry",
+   "label": "Dated at",
+   "desc": "Acknowledgement by the marketing board: dated at (city)",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "BOARD_ACK_DAY",
+   "kind": "entry",
+   "label": ", Ontario, this",
+   "desc": "Acknowledgement: day",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "BOARD_ACK_MONTH",
+   "kind": "entry",
+   "label": "day of",
+   "desc": "Acknowledgement: month",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "BOARD_ACK_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorized Signature:",
+   "desc": "Marketing board's authorized signature",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "BETWEEN:",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "BETWEEN:",
+   "desc": "Member's middle name/initial",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "BETWEEN:",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, first name",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, middle name/initial",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, surname",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "SIGNER2_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, first name",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "SIGNER2_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, middle name/initial",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "SIGNER2_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, surname",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "SIGNER3_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, first name",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "SIGNER3_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, middle name/initial",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "SIGNER3_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, surname",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "COLLATERAL_DESCRIPTION",
+   "kind": "entry",
+   "label": "",
+   "desc": "Security agreement: the collateral (quota / proceeds) described",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    42.6,
+    560.7,
+    230.3,
+    574.7
+   ]
+  },
+  "F29": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    42.6,
+    602.7,
+    230.3,
+    616.7
+   ]
+  },
+  "F32": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    42.6,
+    644.7,
+    230.3,
+    658.7
+   ]
+  },
+  "F35": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F37": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    42.6,
+    686.7,
+    230.3,
+    700.7
+   ]
+  },
+  "F38": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B10": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B11": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B12": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B13": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B14": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F30",
+  "F33",
+  "F36",
+  "F39"
+ ],
+ "skip": {},
+ "add": [],
+ "notes": []
+}

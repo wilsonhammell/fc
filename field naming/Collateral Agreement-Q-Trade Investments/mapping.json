@@ -1,0 +1,915 @@
+{
+ "items": {
+  "F1": {
+   "name": "AGENT_NAME",
+   "kind": "entry",
+   "label": "(the Agent)",
+   "desc": "The investment agent (Qtrade Investor Inc.)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "AND:",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "AND:",
+   "desc": "Member's middle name/initial",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "AND:",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, first name",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, middle name/initial",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, surname",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "SIGNER2_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, first name",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "SIGNER2_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, middle name/initial",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "SIGNER2_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, surname",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "SIGNER3_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, first name",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "SIGNER3_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, middle name/initial",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "SIGNER3_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, surname",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "AGENT_NOTICE_ADDRESS_1",
+   "kind": "entry",
+   "label": "For the Agent:",
+   "desc": "Agent's address for notices, line 1",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "AGENT_NOTICE_ADDRESS_2",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 2",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "AGENT_NOTICE_ADDRESS_3",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 3",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "For the Borrower:",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "For the Borrower:",
+   "desc": "Member's middle name/initial",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "For the Borrower:",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, first name",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, middle name/initial",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, surname",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "SIGNER2_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, first name",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "SIGNER2_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, middle name/initial",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "SIGNER2_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, surname",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "SIGNER3_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, first name",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "SIGNER3_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, middle name/initial",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "SIGNER3_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, surname",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "and",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "and",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "STAFF_SIGNATURE",
+   "kind": "entry",
+   "label": "Per:",
+   "desc": "Libro (the Lender) signature",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    64.9,
+    441.5,
+    236.5,
+    456.0
+   ]
+  },
+  "F36": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    64.9,
+    483.5,
+    236.5,
+    498.0
+   ]
+  },
+  "F39": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    64.9,
+    525.5,
+    236.5,
+    540.0
+   ]
+  },
+  "F42": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    64.9,
+    567.5,
+    236.5,
+    582.0
+   ]
+  },
+  "F45": {
+   "name": "AGENT_SIGNATURE",
+   "kind": "entry",
+   "label": "Per:",
+   "desc": "Agent's authorized signature",
+   "how": "reviewed"
+  },
+  "F46": {
+   "name": "AGENT_SIGNER_NAME",
+   "kind": "entry",
+   "label": "Name:",
+   "desc": "Agent's signer, name",
+   "how": "reviewed"
+  },
+  "F47": {
+   "name": "AGENT_SIGNER_TITLE",
+   "kind": "entry",
+   "label": "Title:",
+   "desc": "Agent's signer, title",
+   "how": "reviewed"
+  },
+  "F48": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "",
+   "desc": "Libro's signing officer, name",
+   "how": "reviewed"
+  },
+  "F49": {
+   "name": "REQUESTUSER_POSITION",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Staff member's position / title",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "AGENT_NAME",
+   "kind": "entry",
+   "label": "(the Agent)",
+   "desc": "The agent, signing",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B10": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B11": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B12": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B13": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B14": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B15": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "F50": {
+   "name": "AGENT_NAME",
+   "kind": "entry",
+   "label": "AND TO: (the Agent)",
+   "desc": "The agent",
+   "how": "reviewed"
+  },
+  "F51": {
+   "name": "AGENT_NOTICE_ADDRESS_1",
+   "kind": "entry",
+   "label": "",
+   "desc": "Agent's address line 1",
+   "how": "reviewed"
+  },
+  "F52": {
+   "name": "AGENT_NOTICE_ADDRESS_2",
+   "kind": "entry",
+   "label": "",
+   "desc": "Agent's address line 2",
+   "how": "reviewed"
+  },
+  "F53": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F54": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F55": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F56": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "F57": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    39.7,
+    383.3,
+    229.4,
+    397.7
+   ]
+  },
+  "F60": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    39.7,
+    425.3,
+    229.4,
+    439.7
+   ]
+  },
+  "F63": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    39.7,
+    467.3,
+    229.4,
+    481.7
+   ]
+  },
+  "F66": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    39.7,
+    509.3,
+    229.4,
+    523.7
+   ]
+  },
+  "B16": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B17": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B18": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B19": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B20": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B21": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "F69": {
+   "name": "AGENT_NAME",
+   "kind": "entry",
+   "label": "TO: (the Agent)",
+   "desc": "The agent",
+   "how": "reviewed"
+  },
+  "F70": {
+   "name": "AGENT_NOTICE_ADDRESS_1",
+   "kind": "entry",
+   "label": "",
+   "desc": "Agent's address line 1",
+   "how": "reviewed"
+  },
+  "F71": {
+   "name": "AGENT_NOTICE_ADDRESS_2",
+   "kind": "entry",
+   "label": "",
+   "desc": "Agent's address line 2",
+   "how": "reviewed"
+  },
+  "F72": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "NAME:",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F73": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "NAME:",
+   "desc": "Member's middle name/initial",
+   "how": "reviewed"
+  },
+  "F74": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "NAME:",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F75": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, first name",
+   "how": "reviewed"
+  },
+  "F76": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, middle name/initial",
+   "how": "reviewed"
+  },
+  "F77": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, surname",
+   "how": "reviewed"
+  },
+  "F78": {
+   "name": "SIGNER2_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, first name",
+   "how": "reviewed"
+  },
+  "F79": {
+   "name": "SIGNER2_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, middle name/initial",
+   "how": "reviewed"
+  },
+  "F80": {
+   "name": "SIGNER2_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, surname",
+   "how": "reviewed"
+  },
+  "F81": {
+   "name": "SIGNER3_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, first name",
+   "how": "reviewed"
+  },
+  "F82": {
+   "name": "SIGNER3_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, middle name/initial",
+   "how": "reviewed"
+  },
+  "F83": {
+   "name": "SIGNER3_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, surname",
+   "how": "reviewed"
+  },
+  "F84": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Account Name:",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F85": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "Account Name:",
+   "desc": "Member's middle name/initial",
+   "how": "reviewed"
+  },
+  "F86": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Account Name:",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F87": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, first name",
+   "how": "reviewed"
+  },
+  "F88": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, middle name/initial",
+   "how": "reviewed"
+  },
+  "F89": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, surname",
+   "how": "reviewed"
+  },
+  "F90": {
+   "name": "SIGNER2_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, first name",
+   "how": "reviewed"
+  },
+  "F91": {
+   "name": "SIGNER2_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, middle name/initial",
+   "how": "reviewed"
+  },
+  "F92": {
+   "name": "SIGNER2_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, surname",
+   "how": "reviewed"
+  },
+  "F93": {
+   "name": "SIGNER3_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, first name",
+   "how": "reviewed"
+  },
+  "F94": {
+   "name": "SIGNER3_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, middle name/initial",
+   "how": "reviewed"
+  },
+  "F95": {
+   "name": "SIGNER3_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, surname",
+   "how": "reviewed"
+  },
+  "F96": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    70.0,
+    595.2,
+    237.9,
+    609.6
+   ]
+  },
+  "F99": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    70.0,
+    624.6,
+    237.9,
+    639.0
+   ]
+  },
+  "F102": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    70.0,
+    654.0,
+    237.9,
+    668.4
+   ]
+  },
+  "F105": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    70.0,
+    683.4,
+    237.9,
+    697.8
+   ]
+  },
+  "F108": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F109": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F110": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F111": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "ACCOUNT NO.",
+   "desc": "ACCOUNT NO., first box - the old merge tag was Customer_Number. CHECK: or the Qtrade account",
+   "how": "reviewed"
+  },
+  "F112": {
+   "name": "QTRADE_ACCOUNT_NUMBER",
+   "kind": "entry",
+   "label": "ACCOUNT NO.",
+   "desc": "The Qtrade account to be designated",
+   "how": "reviewed"
+  },
+  "B22": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B23": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B24": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B25": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B26": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B27": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B28": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B29": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B30": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B31": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F34",
+  "F35",
+  "F37",
+  "F38",
+  "F40",
+  "F41",
+  "F43",
+  "F44",
+  "F58",
+  "F59",
+  "F61",
+  "F62",
+  "F64",
+  "F65",
+  "F67",
+  "F68",
+  "F97",
+  "F98",
+  "F100",
+  "F101",
+  "F103",
+  "F104",
+  "F106",
+  "F107"
+ ],
+ "skip": {
+  "B1": "Borrower initials - an initials marker in the designer, not a field",
+  "B2": "Borrower initials - an initials marker in the designer, not a field",
+  "B3": "Borrower initials - an initials marker in the designer, not a field",
+  "B4": "Borrower initials - an initials marker in the designer, not a field"
+ },
+ "add": [],
+ "notes": []
+}

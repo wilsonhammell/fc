@@ -1,0 +1,229 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name:",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Second party (and ___)",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "DOC_CERTIFIED_CHEQUE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Tick: the document is a credit union certified cheque",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F5": {
+   "name": "CERTIFIED_CHEQUE_CAD",
+   "kind": "entry",
+   "label": "$Cdn",
+   "desc": "Certified cheque in $Cdn",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F6": {
+   "name": "CERTIFIED_CHEQUE_NUMBER",
+   "kind": "entry",
+   "label": "Cheque Number & $Amount:",
+   "desc": "Certified cheque number",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "CERTIFIED_CHEQUE_AMOUNT",
+   "kind": "entry",
+   "label": "$",
+   "desc": "Certified cheque amount $",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "CERTIFIED_CHEQUE_USD",
+   "kind": "entry",
+   "label": "$U S",
+   "desc": "Certified cheque in $US",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F9": {
+   "name": "CERTIFIED_CHEQUE_PAYEE",
+   "kind": "entry",
+   "label": "Payee:",
+   "desc": "Certified cheque payee",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "DOC_OFFICIAL_CHEQUE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Tick: the document is an official credit union cheque",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F11": {
+   "name": "OFFICIAL_CHEQUE_CAD",
+   "kind": "entry",
+   "label": "$Cdn",
+   "desc": "Official cheque in $Cdn",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F12": {
+   "name": "OFFICIAL_CHEQUE_NUMBER",
+   "kind": "entry",
+   "label": "Cheque Number & $Amount:",
+   "desc": "Official cheque number",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "OFFICIAL_CHEQUE_AMOUNT",
+   "kind": "entry",
+   "label": "$",
+   "desc": "Official cheque amount $",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "OFFICIAL_CHEQUE_USD",
+   "kind": "entry",
+   "label": "$U S",
+   "desc": "Official cheque in $US",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F15": {
+   "name": "OFFICIAL_CHEQUE_PAYEE",
+   "kind": "entry",
+   "label": "Payee:",
+   "desc": "Official cheque payee",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "REQUEST_DETAIL",
+   "kind": "entry",
+   "label": "have asked and you have agreed to: [choose one only]",
+   "desc": "Box after 'I have asked and you have agreed to: [choose one only]' - CHECK it is wanted, the choice is the tick boxes below",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "REQUEST_PAY_AMOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Tick: pay to me the amount of the document - was a text box",
+   "how": "reviewed",
+   "type": "checkbox",
+   "rect": [
+    56,
+    421,
+    66,
+    431
+   ]
+  },
+  "F18": {
+   "name": "REQUEST_STOP_PAYMENT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Tick: process a stop payment on the document - was a text box",
+   "how": "reviewed",
+   "type": "checkbox",
+   "rect": [
+    56,
+    437,
+    66,
+    447
+   ]
+  },
+  "F19": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F23"
+ ],
+ "skip": {
+  "B4": "not a blank - the definitions wording"
+ },
+ "add": [
+  {
+   "page": 0,
+   "rect": [
+    56,
+    408,
+    66,
+    418
+   ],
+   "name": "REQUEST_DUPLICATE",
+   "kind": "entry",
+   "label": "issue a duplicate to replace the Document",
+   "desc": "Tick: issue a duplicate - the form had no box for it",
+   "type": "checkbox"
+  }
+ ],
+ "notes": []
+}

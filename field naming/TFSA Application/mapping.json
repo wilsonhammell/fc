@@ -1,0 +1,354 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Holder Number",
+   "desc": "Holder's member number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "RSP_ACCOUNT_OPENED",
+   "kind": "db",
+   "label": "Contract Date",
+   "desc": "TFSA contract date. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "TFSA Contract Number",
+   "desc": "TFSA contract number. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Holder’s Last Name",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Holder’s First Name",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "Social Insurance Number",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "PRIMARY_DATE_OF_BIRTH",
+   "kind": "db",
+   "label": "Date of Birth",
+   "desc": "Member's date of birth",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address/Postal Code:",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address/Postal Code:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Address/Postal Code:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "INVESTMENT_INSTRUCTIONS_1",
+   "kind": "entry",
+   "label": "INVESTMENT INSTRUCTIONS FOR FUNDS",
+   "desc": "Investment instructions for funds, line 1",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "INVESTMENT_INSTRUCTIONS_2",
+   "kind": "entry",
+   "label": "",
+   "desc": "Investment instructions for funds, line 2",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "INVESTMENT_INSTRUCTIONS_3",
+   "kind": "entry",
+   "label": "",
+   "desc": "Investment instructions for funds, line 3",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "INVESTMENT_INSTRUCTIONS_4",
+   "kind": "entry",
+   "label": "",
+   "desc": "Investment instructions for funds, line 4",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "INVESTMENT_INSTRUCTIONS_5",
+   "kind": "entry",
+   "label": "",
+   "desc": "Investment instructions for funds, line 5",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "INVESTMENT_INSTRUCTIONS_6",
+   "kind": "entry",
+   "label": "",
+   "desc": "Investment instructions for funds, line 6",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "INVESTMENT_INSTRUCTIONS_7",
+   "kind": "entry",
+   "label": "",
+   "desc": "Investment instructions for funds, line 7",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "HOLDER_DECLINES_BENEFICIARY",
+   "kind": "entry",
+   "label": "The holder declines to designate a beneficiary of the proceeds",
+   "desc": "Tick: the holder declines to designate a beneficiary / successor holder",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F20": {
+   "name": "HOLDER_DESIGNATES_BENEFICIARY",
+   "kind": "entry",
+   "label": "The holder hereby designates the following person(s) as the holder’s",
+   "desc": "Tick: the holder designates the following beneficiary(ies)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F21": {
+   "name": "BENE1_ACCOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 1: account the designation is for",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "BENE1_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 1: name",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "BENE1_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 1: date of birth",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "BENE1_RELATIONSHIP",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 1: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "BENE1_TYPE",
+   "kind": "entry",
+   "label": "Holder*",
+   "desc": "Beneficiary 1: designation: SH successor holder, P primary, A alternate",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "BENE2_ACCOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: account the designation is for",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "BENE2_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: name",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "BENE2_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: date of birth",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "BENE2_RELATIONSHIP",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "BENE2_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 2: designation: SH successor holder, P primary, A alternate",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "BENE3_ACCOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: account the designation is for",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "BENE3_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: name",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "BENE3_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: date of birth",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "BENE3_RELATIONSHIP",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F35": {
+   "name": "BENE3_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 3: designation: SH successor holder, P primary, A alternate",
+   "how": "reviewed"
+  },
+  "F36": {
+   "name": "BENE4_ACCOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 4: account the designation is for",
+   "how": "reviewed"
+  },
+  "F37": {
+   "name": "BENE4_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 4: name",
+   "how": "reviewed"
+  },
+  "F38": {
+   "name": "BENE4_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 4: date of birth",
+   "how": "reviewed"
+  },
+  "F39": {
+   "name": "BENE4_RELATIONSHIP",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 4: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F40": {
+   "name": "BENE4_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary 4: designation: SH successor holder, P primary, A alternate",
+   "how": "reviewed"
+  },
+  "F41": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F42": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed",
+   "rect": [
+    252,
+    392,
+    457,
+    404
+   ]
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B7": "a rule under the terms heading"
+ },
+ "add": [],
+ "notes": []
+}

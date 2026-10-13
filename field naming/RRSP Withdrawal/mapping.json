@@ -1,0 +1,650 @@
+{
+ "items": {
+  "F1": {
+   "name": "WITHDRAWAL",
+   "kind": "entry",
+   "label": "☐",
+   "desc": "Tick: withdrawal (w, to, oc)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F2": {
+   "name": "TRANSFER_TO_OTHER_FI",
+   "kind": "entry",
+   "label": "☐",
+   "desc": "Tick: transfer to another financial institution (oct)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F3": {
+   "name": "TRANSFER_TO_RRIF",
+   "kind": "entry",
+   "label": "☐",
+   "desc": "Tick: transfer to RRIF",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F4": {
+   "name": "REFUND_UNDEDUCTED",
+   "kind": "entry",
+   "label": "☐",
+   "desc": "Tick: refund of undeducted contributions (roe)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F5": {
+   "name": "TRANSFER_RRIF_NEW",
+   "kind": "entry",
+   "label": "Undeducted",
+   "desc": "Transfer to RRIF: new",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F6": {
+   "name": "TRANSFER_RRIF_EXISTING",
+   "kind": "entry",
+   "label": "Contributions",
+   "desc": "Transfer to RRIF: existing",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F7": {
+   "name": "TRANSFER_RRIF_CONTRACT",
+   "kind": "entry",
+   "label": "Transfer to RRIF: ☐ New ☐ Existing RRIF Contract #",
+   "desc": "Existing RRIF contract #",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "DECEASED_PAYOUT",
+   "kind": "entry",
+   "label": "☐",
+   "desc": "Tick: deceased payout (dec)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F9": {
+   "name": "OTHER_TRANSACTION",
+   "kind": "entry",
+   "label": "☐",
+   "desc": "Tick: other",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F10": {
+   "name": "CONTRACT_TERMINATION",
+   "kind": "entry",
+   "label": "☐",
+   "desc": "Tick: contract termination",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F11": {
+   "name": "AUTOMATIC_TRANSFERS",
+   "kind": "entry",
+   "label": "☐",
+   "desc": "Tick: automatic transfers",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F12": {
+   "name": "OTHER_TRANSACTION_DETAIL",
+   "kind": "entry",
+   "label": "☐ Other",
+   "desc": "Other: what",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "TERMINATION_FULL",
+   "kind": "entry",
+   "label": "☐ Continuing",
+   "desc": "Termination: full",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F14": {
+   "name": "TERMINATION_PARTIAL",
+   "kind": "entry",
+   "label": "☐",
+   "desc": "Termination: partial",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F15": {
+   "name": "AUTO_TRANSFERS_CONTINUING",
+   "kind": "entry",
+   "label": "☐",
+   "desc": "Automatic transfers: continuing",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F16": {
+   "name": "AUTO_TRANSFERS_CANCELLED",
+   "kind": "entry",
+   "label": "☐ Partial",
+   "desc": "Automatic transfers: cancelled",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F17": {
+   "name": "WD1_RRSP_SUB",
+   "kind": "entry",
+   "label": "Sub #",
+   "desc": "Withdrawal row 1: RRSP (sub) #",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "WD1_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "DD/MM/YY",
+   "desc": "Withdrawal row 1: expiry date",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "WD1_TYPE",
+   "kind": "entry",
+   "label": "S=Specified Amt.",
+   "desc": "Withdrawal row 1: A principal + interest / S specified amount",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "WD1_AMOUNT",
+   "kind": "entry",
+   "label": "Amount",
+   "desc": "Withdrawal row 1: withdrawal/transfer amount",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "WD1_ACCRUED_INTEREST",
+   "kind": "entry",
+   "label": "Accrued Interest",
+   "desc": "Withdrawal row 1: accrued interest",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "WD1_TOTAL",
+   "kind": "entry",
+   "label": "Total",
+   "desc": "Withdrawal row 1: total",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "WD2_RRSP_SUB",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: RRSP (sub) #",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "WD2_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: expiry date",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "WD2_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: A principal + interest / S specified amount",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "WD2_AMOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: withdrawal/transfer amount",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "WD2_ACCRUED_INTEREST",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: accrued interest",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "WD2_TOTAL",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 2: total",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "WD3_RRSP_SUB",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: RRSP (sub) #",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "WD3_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: expiry date",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "WD3_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: A principal + interest / S specified amount",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "WD3_AMOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: withdrawal/transfer amount",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "WD3_ACCRUED_INTEREST",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: accrued interest",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "WD3_TOTAL",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 3: total",
+   "how": "reviewed"
+  },
+  "F35": {
+   "name": "WD4_RRSP_SUB",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: RRSP (sub) #",
+   "how": "reviewed"
+  },
+  "F36": {
+   "name": "WD4_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: expiry date",
+   "how": "reviewed"
+  },
+  "F37": {
+   "name": "WD4_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: A principal + interest / S specified amount",
+   "how": "reviewed"
+  },
+  "F38": {
+   "name": "WD4_AMOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: withdrawal/transfer amount",
+   "how": "reviewed"
+  },
+  "F39": {
+   "name": "WD4_ACCRUED_INTEREST",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: accrued interest",
+   "how": "reviewed"
+  },
+  "F40": {
+   "name": "WD4_TOTAL",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 4: total",
+   "how": "reviewed"
+  },
+  "F41": {
+   "name": "WD5_RRSP_SUB",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 5: RRSP (sub) #",
+   "how": "reviewed"
+  },
+  "F42": {
+   "name": "WD5_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 5: expiry date",
+   "how": "reviewed"
+  },
+  "F43": {
+   "name": "WD5_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 5: A principal + interest / S specified amount",
+   "how": "reviewed"
+  },
+  "F44": {
+   "name": "WD5_AMOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 5: withdrawal/transfer amount",
+   "how": "reviewed"
+  },
+  "F45": {
+   "name": "WD5_ACCRUED_INTEREST",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 5: accrued interest",
+   "how": "reviewed"
+  },
+  "F46": {
+   "name": "WD5_TOTAL",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 5: total",
+   "how": "reviewed"
+  },
+  "F47": {
+   "name": "WD6_RRSP_SUB",
+   "kind": "entry",
+   "label": "Withholding Tax Rates:",
+   "desc": "Withdrawal row 6: RRSP (sub) #",
+   "how": "reviewed"
+  },
+  "F48": {
+   "name": "WD6_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "Rates:",
+   "desc": "Withdrawal row 6: expiry date",
+   "how": "reviewed"
+  },
+  "F49": {
+   "name": "WD6_TYPE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 6: A principal + interest / S specified amount",
+   "how": "reviewed"
+  },
+  "F50": {
+   "name": "WD6_AMOUNT",
+   "kind": "entry",
+   "label": "Less Withholding",
+   "desc": "Withdrawal row 6: withdrawal/transfer amount",
+   "how": "reviewed"
+  },
+  "F51": {
+   "name": "WD6_ACCRUED_INTEREST",
+   "kind": "entry",
+   "label": "Withholding Tax @ _____%",
+   "desc": "Withdrawal row 6: accrued interest",
+   "how": "reviewed"
+  },
+  "F52": {
+   "name": "WD6_TOTAL",
+   "kind": "entry",
+   "label": "",
+   "desc": "Withdrawal row 6: total",
+   "how": "reviewed"
+  },
+  "F53": {
+   "name": "WD_TAX_RATE",
+   "kind": "entry",
+   "label": "Less Withholding Tax @",
+   "desc": "Withholding tax rate, %",
+   "how": "reviewed"
+  },
+  "F54": {
+   "name": "WD_TAX_AMOUNT",
+   "kind": "entry",
+   "label": "Less Withholding Tax @ _____%",
+   "desc": "Less withholding tax",
+   "how": "reviewed"
+  },
+  "F55": {
+   "name": "WD_PENALTIES",
+   "kind": "entry",
+   "label": "= 20% $15000.01 and over = 30% Less Other Penalties",
+   "desc": "Less other penalties",
+   "how": "reviewed"
+  },
+  "F56": {
+   "name": "OFFICE_DATE_PROCESSED",
+   "kind": "entry",
+   "label": "Date Processed",
+   "desc": "Office use: date processed (dd/mm/yy)",
+   "how": "reviewed"
+  },
+  "F57": {
+   "name": "OFFICE_PROCESSED_BY",
+   "kind": "entry",
+   "label": "Processed By",
+   "desc": "Office use: processed by",
+   "how": "reviewed"
+  },
+  "F58": {
+   "name": "WD_TOTAL_PROCEEDS",
+   "kind": "entry",
+   "label": "Total Proceeds",
+   "desc": "Total proceeds",
+   "how": "reviewed"
+  },
+  "F59": {
+   "name": "CREDIT_OWNER_ACCOUNT",
+   "kind": "entry",
+   "label": "Please credit owner’s account: Owner Number",
+   "desc": "Tick: credit the owner's account",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F60": {
+   "name": "SEND_CHEQUE_TO_FI",
+   "kind": "entry",
+   "label": "Please send cheque to financial Institution:",
+   "desc": "Tick: send cheque to financial institution",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F61": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "☐",
+   "desc": "Credit to: owner number",
+   "how": "reviewed"
+  },
+  "F62": {
+   "name": "DEPOSIT_DEMAND_PRODUCT",
+   "kind": "entry",
+   "label": "__________________ Demand Product",
+   "desc": "Credit to: demand product (could load from DMD_PRODNBR)",
+   "how": "reviewed"
+  },
+  "F63": {
+   "name": "DEPOSIT_SUB",
+   "kind": "entry",
+   "label": "__________________ Demand Product _________________ Sub #",
+   "desc": "Credit to: sub #",
+   "how": "reviewed"
+  },
+  "F64": {
+   "name": "OTHER_FI_NAME_ADDRESS",
+   "kind": "entry",
+   "label": "☐",
+   "desc": "The financial institution",
+   "how": "reviewed"
+  },
+  "F65": {
+   "name": "CHEQUE_NUMBER",
+   "kind": "entry",
+   "label": "_________________________________ Cheque",
+   "desc": "Cheque #",
+   "how": "reviewed"
+  },
+  "F66": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "F67": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Annuitant's authorized signature - the form keeps its own signing (left for a person)",
+   "how": "reviewed"
+  },
+  "F68": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "________________________________________",
+   "desc": "Date signed",
+   "how": "reviewed"
+  },
+  "F69": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch:",
+   "desc": "Branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed",
+   "rect": [
+    52,
+    118,
+    202,
+    131
+   ]
+  },
+  "F70": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Owner Number:",
+   "desc": "Owner number",
+   "how": "reviewed",
+   "rect": [
+    89,
+    130,
+    207,
+    143
+   ]
+  },
+  "F71": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "Contract Number:",
+   "desc": "RRSP contract number - moved off its label onto the underscores. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed",
+   "rect": [
+    255,
+    130,
+    405,
+    143
+   ]
+  },
+  "F72": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "Annuitant's SIN:",
+   "desc": "Annuitant's SIN",
+   "how": "reviewed",
+   "rect": [
+    91,
+    143,
+    241,
+    156
+   ]
+  },
+  "F73": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "__________________________________",
+   "desc": "Member's first name",
+   "how": "reviewed",
+   "rect": [
+    45,
+    156,
+    164,
+    169
+   ]
+  },
+  "F74": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "Name:_____________________ ____",
+   "desc": "Member's middle name/initial",
+   "how": "reviewed",
+   "rect": [
+    167,
+    156,
+    189,
+    169
+   ]
+  },
+  "F75": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Name:_____________________ ____",
+   "desc": "Member's surname",
+   "how": "reviewed",
+   "rect": [
+    192,
+    156,
+    331,
+    169
+   ]
+  },
+  "F76": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Contributor’s Name and SIN (if applicable):____________________________________________________",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed",
+   "rect": [
+    60,
+    168,
+    249,
+    181
+   ]
+  },
+  "F77": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed",
+   "rect": [
+    253,
+    168,
+    420,
+    181
+   ]
+  },
+  "F78": {
+   "name": "SPOUSE_FULL_NAME",
+   "kind": "db",
+   "label": "Spousal Contributor's Name and SIN (if applicable):",
+   "desc": "Spousal contributor's name (if applicable)",
+   "how": "reviewed",
+   "rect": [
+    250,
+    181,
+    536,
+    194
+   ]
+  },
+  "F79": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Address: __________________________________",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed",
+   "rect": [
+    423,
+    168,
+    592,
+    181
+   ]
+  },
+  "B1": {
+   "name": "SPOUSE_SIN",
+   "kind": "candidate",
+   "label": "_",
+   "desc": "Spousal contributor's SIN - the label asks for name and SIN; the second line",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": []
+}

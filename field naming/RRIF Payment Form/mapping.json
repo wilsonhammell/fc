@@ -1,0 +1,325 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "Contract Number",
+   "desc": "Contract number. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Annuitant’s Last Name",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Annuitant’s First Name Social",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "Social Insurance Number",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "PRIMARY_DATE_OF_BIRTH",
+   "kind": "db",
+   "label": "Date of Birth",
+   "desc": "Member's date of birth",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "PAY_DUE_15TH",
+   "kind": "entry",
+   "label": "15th",
+   "desc": "Pay due on the 15th",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F9": {
+   "name": "PAY_DUE_29TH",
+   "kind": "entry",
+   "label": "29th",
+   "desc": "Pay due on the 29th",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F10": {
+   "name": "PAYMENT_START_DATE",
+   "kind": "entry",
+   "label": "Start Date:",
+   "desc": "Payment start date",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "PAYMENT_MINIMUM",
+   "kind": "entry",
+   "label": "Minimum Amount",
+   "desc": "Payment option: minimum amount",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F12": {
+   "name": "PAYMENT_SPECIFIED",
+   "kind": "entry",
+   "label": "Specified",
+   "desc": "Payment option: specified",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F13": {
+   "name": "PAYMENT_MAXIMUM",
+   "kind": "entry",
+   "label": "Maximum (for LIF/RLIF only)",
+   "desc": "Maximum (LIF/RLIF only)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F14": {
+   "name": "MINIMUM_NO_TAX",
+   "kind": "entry",
+   "label": "Always",
+   "desc": "No tax on minimum",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F15": {
+   "name": "MINIMUM_YES_TAX",
+   "kind": "entry",
+   "label": "no matter",
+   "desc": "Yes, tax on minimum",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F16": {
+   "name": "PAYMENT_NET",
+   "kind": "entry",
+   "label": "Net (after tax)",
+   "desc": "Net (after tax)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F17": {
+   "name": "PAYMENT_GROSS",
+   "kind": "entry",
+   "label": "Gross (before tax)",
+   "desc": "Gross (before tax)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F18": {
+   "name": "EXTRA_TAX",
+   "kind": "entry",
+   "label": "Withhold Extra Taxes?",
+   "desc": "Radio: withhold extra taxes? No / Yes",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "EXTRA_TAX",
+   "kind": "entry",
+   "label": "No",
+   "desc": "No",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "PAY_FREQ_MONTHLY",
+   "kind": "entry",
+   "label": "Monthly",
+   "desc": "Pay frequency: monthly",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F21": {
+   "name": "PAY_FREQ_QUARTERLY",
+   "kind": "entry",
+   "label": "Quarterly",
+   "desc": "quarterly",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F22": {
+   "name": "PAY_FREQ_SEMI_ANNUAL",
+   "kind": "entry",
+   "label": "Semi-Annually",
+   "desc": "semi-annually",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F23": {
+   "name": "PAY_FREQ_ANNUAL",
+   "kind": "entry",
+   "label": "Annual",
+   "desc": "annual",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F24": {
+   "name": "CONTINUE_PAYMENT",
+   "kind": "entry",
+   "label": "Continue same payment for the next year",
+   "desc": "Radio: continue same payment for the next year? Yes / No",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "CONTINUE_PAYMENT",
+   "kind": "entry",
+   "label": "Yes",
+   "desc": "Yes",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "PAY_FROM_TYPE",
+   "kind": "entry",
+   "label": "Type:",
+   "desc": "Select from: type",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "PAY_FROM_SUB",
+   "kind": "entry",
+   "label": "Sub:",
+   "desc": "Select from: sub",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "PAY_TO_TYPE",
+   "kind": "entry",
+   "label": "Type:",
+   "desc": "Select to: type",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "PAY_TO_SUB",
+   "kind": "entry",
+   "label": "Sub:",
+   "desc": "Select to: sub",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "PAY_TO_ACCOUNT",
+   "kind": "entry",
+   "label": "To Acct:",
+   "desc": "Select to: account",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "SPECIAL_INSTRUCTIONS_1",
+   "kind": "entry",
+   "label": "SPECIAL INSTRUCTIONS FOR PAYMENT",
+   "desc": "Special instructions for payment, line 1",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "SPECIAL_INSTRUCTIONS_2",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 2",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Date",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "PLAN_TYPE_RIF",
+   "kind": "entry",
+   "label": "LIF",
+   "desc": "Tick: RIF",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F35": {
+   "name": "PLAN_TYPE_LIF",
+   "kind": "entry",
+   "label": "RLIF",
+   "desc": "Tick: LIF",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F36": {
+   "name": "PLAN_TYPE_RLIF",
+   "kind": "entry",
+   "label": "",
+   "desc": "Tick: RLIF",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F37": {
+   "name": "PAYMENT_SPECIFIED_AMOUNT",
+   "kind": "entry",
+   "label": "$",
+   "desc": "Specified amount $",
+   "how": "reviewed"
+  },
+  "F38": {
+   "name": "EXTRA_TAX_PERCENT",
+   "kind": "entry",
+   "label": "Percentage",
+   "desc": "Extra tax percentage",
+   "how": "reviewed"
+  },
+  "F39": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Annuitant’s Authorization",
+   "desc": "Annuitant's authorization - the form keeps its own signing (left for a person, no room for the standard block)",
+   "how": "reviewed"
+  },
+  "F40": {
+   "name": "DEPOSIT_TO_ACCOUNT",
+   "kind": "entry",
+   "label": "Deposit to account Select from:",
+   "desc": "Payment method: deposit to account",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "B13": {
+   "name": "STAFF_SIGNATURE",
+   "kind": "entry",
+   "label": "Employee Authorization",
+   "desc": "Employee authorization",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "a rule of the form's tables, not a blank",
+  "B2": "a rule of the form's tables, not a blank",
+  "B3": "a rule of the form's tables, not a blank",
+  "B4": "a rule of the form's tables, not a blank",
+  "B5": "a rule of the form's tables, not a blank",
+  "B6": "a rule of the form's tables, not a blank",
+  "B7": "a rule of the form's tables, not a blank",
+  "B8": "a rule of the form's tables, not a blank",
+  "B9": "a rule of the form's tables, not a blank",
+  "B10": "a rule of the form's tables, not a blank",
+  "B11": "a rule of the form's tables, not a blank",
+  "B12": "a rule of the form's tables, not a blank"
+ },
+ "add": [],
+ "notes": []
+}

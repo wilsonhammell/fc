@@ -1,0 +1,271 @@
+{
+ "items": {
+  "F1": {
+   "name": "SDB_NUMBER",
+   "kind": "candidate",
+   "label": "All contents of Box #",
+   "desc": "Safe deposit box #",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "SDB_RELEASE_DAY",
+   "kind": "entry",
+   "label": "this",
+   "desc": "Contents released this ___ day",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "SDB_RELEASE_MONTH",
+   "kind": "entry",
+   "label": "_ day of",
+   "desc": "of ___ (month)",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "SDB_RELEASE_YEAR",
+   "kind": "entry",
+   "label": ", 20",
+   "desc": ", 20__",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Estate trustee 1",
+   "how": "reviewed",
+   "rect": [
+    50,
+    418,
+    234,
+    432
+   ]
+  },
+  "F6": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Estate trustee 1 - was a box two lines tall across the signature and date",
+   "how": "reviewed",
+   "rect": [
+    255,
+    418,
+    457,
+    432
+   ]
+  },
+  "F7": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Estate trustee 2",
+   "how": "reviewed",
+   "rect": [
+    50,
+    462,
+    234,
+    476
+   ]
+  },
+  "F8": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Estate trustee 2 - was a box two lines tall across the signature and date",
+   "how": "reviewed",
+   "rect": [
+    255,
+    462,
+    457,
+    476
+   ]
+  },
+  "F9": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Estate trustee 3",
+   "how": "reviewed",
+   "rect": [
+    50,
+    506,
+    234,
+    520
+   ]
+  },
+  "F10": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Estate trustee 4",
+   "how": "reviewed",
+   "rect": [
+    50,
+    550,
+    234,
+    564
+   ]
+  },
+  "F11": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Libro witness 1 (authorizing staff member): name",
+   "how": "reviewed",
+   "rect": [
+    50,
+    593,
+    146,
+    607
+   ]
+  },
+  "F12": {
+   "name": "STAFF2_NAME",
+   "kind": "entry",
+   "label": "Authorizing Staff Member",
+   "desc": "Libro witness 2: name",
+   "how": "reviewed",
+   "rect": [
+    50,
+    637,
+    146,
+    651
+   ]
+  },
+  "F13": {
+   "name": "STAFF2_SIGNATURE",
+   "kind": "entry",
+   "label": "Member",
+   "desc": "Libro witness 2: signature",
+   "how": "reviewed",
+   "rect": [
+    148,
+    637,
+    367,
+    651
+   ]
+  },
+  "F14": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "of:",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "of:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Late",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Estate trustee 3 - was a box two lines tall across the signature and date",
+   "how": "reviewed",
+   "rect": [
+    255,
+    506,
+    457,
+    520
+   ]
+  },
+  "F20": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Estate trustee 4 - was a box two lines tall across the signature and date",
+   "how": "reviewed",
+   "rect": [
+    255,
+    550,
+    457,
+    564
+   ]
+  },
+  "F21": {
+   "name": "STAFF_SIGNATURE",
+   "kind": "entry",
+   "label": "Member",
+   "desc": "Libro witness 1: signature",
+   "how": "reviewed",
+   "rect": [
+    148,
+    593,
+    367,
+    607
+   ]
+  },
+  "B1": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Estate trustee 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Estate trustee 2",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Estate trustee 3",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Estate trustee 4",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Libro witness 1: date",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "STAFF2_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Libro witness 2: date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": [
+  "The estate trustees sign as Member1-4; CHECK the trustees are in DNA's signer list for the estate account."
+ ]
+}

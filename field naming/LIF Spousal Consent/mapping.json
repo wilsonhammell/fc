@@ -1,0 +1,155 @@
+{
+ "items": {
+  "F1": {
+   "name": "SPOUSE_FULL_NAME",
+   "kind": "db",
+   "label": "I,",
+   "desc": "The spouse giving consent (I, ___, am the spouse)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "(Name of pension plan member/former member/annuitant of LIRA)",
+   "desc": "The pension plan member / annuitant of the LIRA",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "LIRA_ADMINISTRATOR_NAME",
+   "kind": "entry",
+   "label": "who has requested a transfer of locked-in money from",
+   "desc": "Name of the pension plan or organization administering the LIRA",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "SIGNED_AT_CITY",
+   "kind": "entry",
+   "label": "Dated at",
+   "desc": "Dated at (city)",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "SIGNED_AT_PROVINCE",
+   "kind": "entry",
+   "label": ", in the province of",
+   "desc": "in the province of",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "SIGNED_DAY",
+   "kind": "entry",
+   "label": ", this",
+   "desc": "this ___ day",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "SIGNED_MONTH",
+   "kind": "entry",
+   "label": "of",
+   "desc": "of ___ (month)",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "SIGNED_YEAR",
+   "kind": "entry",
+   "label": ", in the year",
+   "desc": "in the year",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature Date",
+   "desc": "Signer 1 (the spouse)",
+   "how": "reviewed",
+   "rect": [
+    259,
+    544,
+    437,
+    556
+   ]
+  },
+  "F10": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - the spouse giving consent. CHECK the spouse is in DNA's signer list, or this row is SPOUSE_FULL_NAME / a spouse signature",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "SPOUSE_ADDRESS",
+   "kind": "candidate",
+   "label": "Address of Spouse:",
+   "desc": "Spouse's address - the DB list has only SPOUSE_FULL_NAME",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "STAFF_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorizing Staff Member",
+   "desc": "Witness (staff member) signature - was the old witness signature box",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Witness (staff member) name",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [
+  {
+   "page": 0,
+   "rect": [
+    456,
+    543,
+    540,
+    556
+   ],
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1 - the date line had no box",
+   "type": "text"
+  }
+ ],
+ "notes": []
+}

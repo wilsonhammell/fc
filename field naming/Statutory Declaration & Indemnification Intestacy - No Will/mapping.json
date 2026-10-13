@@ -1,0 +1,522 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "of:",
+   "desc": "The deceased's name (estate of)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PRIMARY_DEATH_DAY",
+   "kind": "candidate",
+   "label": "1. THAT the Deceased died on the",
+   "desc": "Day of the member's death",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "PRIMARY_DEATH_MONTH_YEAR",
+   "kind": "candidate",
+   "label": "day of",
+   "desc": "Month and year of the member's death",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "RRSP_CONTRACTS",
+   "kind": "entry",
+   "label": "□ RRSP contract No.(s)",
+   "desc": "The deceased's RRSP contract number(s)",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "TFSA_CONTRACTS",
+   "kind": "entry",
+   "label": "□ TFSA contract No.(s)",
+   "desc": "The deceased's TFSA contract number(s)",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "TERM_DEPOSIT_NUMBERS",
+   "kind": "entry",
+   "label": "□ Term Deposit/GIC No.(s)",
+   "desc": "The deceased's term deposit / GIC number(s)",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "DEPOSIT_ACCOUNT_NUMBERS",
+   "kind": "entry",
+   "label": "□ Deposit Account No.(s)",
+   "desc": "The deceased's deposit account number(s)",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "CLASS_P_SHARES",
+   "kind": "entry",
+   "label": "□ Class P Profit Shares",
+   "desc": "The deceased's Class P profit shares",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "MEMBERSHIP_SHARES_AMOUNT",
+   "kind": "entry",
+   "label": "$",
+   "desc": "The deceased's membership shares $",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "HEIR1_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 1: name",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "HEIR1_RELATIONSHIP",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 1: relationship to the deceased",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "HEIR1_BIRTHDATE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 1: birthdate",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "HEIR1_SIN",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 1: SIN",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "HEIR2_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 2: name",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "HEIR2_RELATIONSHIP",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 2: relationship to the deceased",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "HEIR2_BIRTHDATE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 2: birthdate",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "HEIR2_SIN",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 2: SIN",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "HEIR3_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 3: name",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "HEIR3_RELATIONSHIP",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 3: relationship to the deceased",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "HEIR3_BIRTHDATE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 3: birthdate",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "HEIR3_SIN",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 3: SIN",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "HEIR4_NAME",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 4: name",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "HEIR4_RELATIONSHIP",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 4: relationship to the deceased",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "HEIR4_BIRTHDATE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 4: birthdate",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "HEIR4_SIN",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 4: SIN",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "ASSET_RRSP",
+   "kind": "entry",
+   "label": "□",
+   "desc": "Tick: RRSP contract(s) - the form typed a box with no field",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "B6": {
+   "name": "ASSET_TFSA",
+   "kind": "entry",
+   "label": "□",
+   "desc": "Tick: TFSA contract(s)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "B7": {
+   "name": "ASSET_TERM_DEPOSIT",
+   "kind": "entry",
+   "label": "□",
+   "desc": "Tick: term deposit / GIC",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "B8": {
+   "name": "ASSET_DEPOSIT_ACCOUNT",
+   "kind": "entry",
+   "label": "□",
+   "desc": "Tick: deposit account(s)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "B9": {
+   "name": "ASSET_CLASS_P_SHARES",
+   "kind": "entry",
+   "label": "□",
+   "desc": "Tick: Class P profit shares",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "B10": {
+   "name": "ASSET_MEMBERSHIP_SHARES",
+   "kind": "entry",
+   "label": "THAT",
+   "desc": "Tick: membership shares",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F30": {
+   "name": "ESTATE_ASSETS_VALUE",
+   "kind": "entry",
+   "label": "joint deposits and registered funds with Designation of Beneficiary): $",
+   "desc": "Value of all assets on deposit in the deceased's name $",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "TRANSFER_TERM_DEPOSITS",
+   "kind": "entry",
+   "label": "THEREFORE,",
+   "desc": "Tick: term deposits / GIC's only, transferred into the following name(s)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F32": {
+   "name": "TERM_DEPOSIT_TRANSFER_NAMES",
+   "kind": "entry",
+   "label": "Term Deposits/GIC's only Transferred into the following name(s):",
+   "desc": "Name(s) the term deposits go to",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "TERM_DEPOSIT_TRANSFER_NAMES_2",
+   "kind": "entry",
+   "label": "If more than one name:",
+   "desc": "Name(s), continued",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "SEPARATE_CERTIFICATES",
+   "kind": "entry",
+   "label": "more",
+   "desc": "If more than one name: separate certificates",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F35": {
+   "name": "SINGLE_CERTIFICATE",
+   "kind": "entry",
+   "label": "Single Certificate, [in equal shares only]",
+   "desc": "If more than one name: single certificate, equal shares",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F36": {
+   "name": "TRANSFER_TO_MEMBER",
+   "kind": "entry",
+   "label": "Transferred to Member #",
+   "desc": "Tick: transferred to member #",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F37": {
+   "name": "TRANSFER_TO_MEMBER_NUMBER",
+   "kind": "entry",
+   "label": "Transferred to Member #",
+   "desc": "Transferred to member #",
+   "how": "reviewed"
+  },
+  "F38": {
+   "name": "TRANSFER_TO_MEMBER_NAMES",
+   "kind": "entry",
+   "label": "in the name(s) of",
+   "desc": "in the name(s) of",
+   "how": "reviewed"
+  },
+  "F39": {
+   "name": "TRANSFER_TO_MEMBER_NAMES_2",
+   "kind": "entry",
+   "label": "",
+   "desc": "in the name(s) of, continued - was a 169pt-wide check box",
+   "how": "reviewed",
+   "type": "text"
+  },
+  "F40": {
+   "name": "OTHER_ASSETS_TO_MEMBER",
+   "kind": "entry",
+   "label": "Transferred to Member #",
+   "desc": "Tick: all other assets cashed and transferred to member #",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F41": {
+   "name": "OTHER_ASSETS_MEMBER_NUMBER",
+   "kind": "entry",
+   "label": "Transferred to Member #",
+   "desc": "Other assets: transferred to member #",
+   "how": "reviewed"
+  },
+  "F42": {
+   "name": "OTHER_ASSETS_NAMES",
+   "kind": "entry",
+   "label": "in the name(s) of",
+   "desc": "Other assets: in the name(s) of",
+   "how": "reviewed"
+  },
+  "F43": {
+   "name": "PAY_EACH_CLAIMANT",
+   "kind": "entry",
+   "label": "Pay to each Claimant that has signed this form and",
+   "desc": "Tick: pay each claimant by cheque or AFT",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F44": {
+   "name": "CLAIMANT_DETAILS",
+   "kind": "entry",
+   "label": "",
+   "desc": "Each claimant's name, address, phone and entitlement",
+   "how": "reviewed"
+  },
+  "F45": {
+   "name": "CLAIMANT1_NAME",
+   "kind": "entry",
+   "label": "I,",
+   "desc": "Claimant 1 making the declaration (I, ___)",
+   "how": "reviewed"
+  },
+  "F46": {
+   "name": "DECLARED1_AT_CITY",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 1: declared before me at",
+   "how": "reviewed"
+  },
+  "F47": {
+   "name": "DECLARED1_AT_PROVINCE",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 1: in the Province of",
+   "how": "reviewed"
+  },
+  "F48": {
+   "name": "DECLARED1_YEAR",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 1: A.D. 20__ (the box sits before \", this\")",
+   "how": "reviewed"
+  },
+  "F49": {
+   "name": "CLAIMANT1_SIGNATURE",
+   "kind": "entry",
+   "label": ", this )",
+   "desc": "Signature of claimant 1",
+   "how": "reviewed"
+  },
+  "F50": {
+   "name": "DECLARED1_DAY",
+   "kind": "entry",
+   "label": "Province",
+   "desc": "Claimant 1: this ___ day",
+   "how": "reviewed"
+  },
+  "F51": {
+   "name": "DECLARED1_MONTH",
+   "kind": "entry",
+   "label": "day of",
+   "desc": "Claimant 1: day of ___ (month)",
+   "how": "reviewed"
+  },
+  "F52": {
+   "name": "COMMISSIONER1_PROVINCE",
+   "kind": "entry",
+   "label": "in and for the Province of",
+   "desc": "Commissioner 1: in and for the Province of",
+   "how": "reviewed"
+  },
+  "F53": {
+   "name": "COMMISSIONER1_APPOINTMENT_EXPIRES",
+   "kind": "entry",
+   "label": "My appointment expires on",
+   "desc": "Commissioner 1: appointment expires on",
+   "how": "reviewed"
+  },
+  "F54": {
+   "name": "CLAIMANT2_NAME",
+   "kind": "entry",
+   "label": "I,",
+   "desc": "Claimant 2 making the declaration (I, ___)",
+   "how": "reviewed"
+  },
+  "F55": {
+   "name": "DECLARED2_AT_CITY",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 2: declared before me at",
+   "how": "reviewed"
+  },
+  "F56": {
+   "name": "DECLARED2_AT_PROVINCE",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 2: in the Province of",
+   "how": "reviewed"
+  },
+  "F57": {
+   "name": "DECLARED2_YEAR",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 2: A.D. 20__ (the box sits before \", this\")",
+   "how": "reviewed"
+  },
+  "F58": {
+   "name": "CLAIMANT2_SIGNATURE",
+   "kind": "entry",
+   "label": ", this )",
+   "desc": "Signature of claimant 2",
+   "how": "reviewed"
+  },
+  "F59": {
+   "name": "DECLARED2_DAY",
+   "kind": "entry",
+   "label": "Province",
+   "desc": "Claimant 2: this ___ day",
+   "how": "reviewed"
+  },
+  "F60": {
+   "name": "DECLARED2_MONTH",
+   "kind": "entry",
+   "label": "day of",
+   "desc": "Claimant 2: day of ___ (month)",
+   "how": "reviewed"
+  },
+  "F61": {
+   "name": "COMMISSIONER2_PROVINCE",
+   "kind": "entry",
+   "label": "in and for the Province of",
+   "desc": "Commissioner 2: in and for the Province of",
+   "how": "reviewed"
+  },
+  "F62": {
+   "name": "COMMISSIONER2_APPOINTMENT_EXPIRES",
+   "kind": "entry",
+   "label": "My appointment expires on",
+   "desc": "Commissioner 2: appointment expires on",
+   "how": "reviewed"
+  },
+  "B13": {
+   "name": "COMMISSIONER1_SIGNATURE",
+   "kind": "entry",
+   "label": "A Commissioner for Oaths/Notary Public",
+   "desc": "Commissioner for oaths / notary public, claimant 1",
+   "how": "reviewed"
+  },
+  "B14": {
+   "name": "COMMISSIONER2_SIGNATURE",
+   "kind": "entry",
+   "label": "A Commissioner for Oaths/Notary Public",
+   "desc": "Commissioner for oaths / notary public, claimant 2",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "a rule of the heirs table",
+  "B2": "a rule of the heirs table",
+  "B3": "a rule of the heirs table",
+  "B4": "a rule of the heirs table",
+  "B11": "not a blank",
+  "B12": "not a blank",
+  "B15": "(Affix Seal) - the seal, not a field",
+  "B16": "(Affix Seal)"
+ },
+ "add": [],
+ "notes": [
+  "Declarations are sworn before a commissioner - the claimants and commissioners sign here, no member signer rows."
+ ]
+}

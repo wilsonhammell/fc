@@ -1,0 +1,408 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "Contract Number:",
+   "desc": "RRSP contract number. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Annuitant’s Name (Surname first and at least one Given Name):",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Annuitant’s Name (Surname first and at least one Given Name):",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "DESIGNATION_INITIAL",
+   "kind": "entry",
+   "label": "New",
+   "desc": "Tick: new designation",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F7": {
+   "name": "DESIGNATION_CHANGE",
+   "kind": "entry",
+   "label": "Change Designation of Beneficiary",
+   "desc": "Tick: change of designation of beneficiary",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F8": {
+   "name": "BENE1_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Beneficiary 1: name",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "BENE1_ACCOUNT",
+   "kind": "entry",
+   "label": "Acct #",
+   "desc": "Beneficiary 1: account the designation is for",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "BENE1_RELATIONSHIP",
+   "kind": "entry",
+   "label": "Relationship",
+   "desc": "Beneficiary 1: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "BENE1_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "Date of Birth",
+   "desc": "Beneficiary 1: date of birth",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "BENE1_SIN",
+   "kind": "entry",
+   "label": "SIN",
+   "desc": "Beneficiary 1: SIN",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "BENE1_PERCENT",
+   "kind": "entry",
+   "label": "%",
+   "desc": "Beneficiary 1: share, %",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "BENE2_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Beneficiary 2: name",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "BENE2_ACCOUNT",
+   "kind": "entry",
+   "label": "Acct #",
+   "desc": "Beneficiary 2: account the designation is for",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "BENE2_RELATIONSHIP",
+   "kind": "entry",
+   "label": "Relationship",
+   "desc": "Beneficiary 2: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "BENE2_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "Date of Birth",
+   "desc": "Beneficiary 2: date of birth",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "BENE2_SIN",
+   "kind": "entry",
+   "label": "SIN",
+   "desc": "Beneficiary 2: SIN",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "BENE2_PERCENT",
+   "kind": "entry",
+   "label": "%",
+   "desc": "Beneficiary 2: share, %",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "BENE3_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Beneficiary 3: name",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "BENE3_ACCOUNT",
+   "kind": "entry",
+   "label": "Acct #",
+   "desc": "Beneficiary 3: account the designation is for",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "BENE3_RELATIONSHIP",
+   "kind": "entry",
+   "label": "Relationship",
+   "desc": "Beneficiary 3: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "BENE3_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "Date of Birth",
+   "desc": "Beneficiary 3: date of birth",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "BENE3_SIN",
+   "kind": "entry",
+   "label": "SIN",
+   "desc": "Beneficiary 3: SIN",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "BENE3_PERCENT",
+   "kind": "entry",
+   "label": "%",
+   "desc": "Beneficiary 3: share, %",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "ALTBENE1_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Alternate beneficiary 1: name",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "ALTBENE1_ACCOUNT",
+   "kind": "entry",
+   "label": "Acct#",
+   "desc": "Alternate beneficiary 1: account the designation is for",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "ALTBENE1_RELATIONSHIP",
+   "kind": "entry",
+   "label": "Relationship",
+   "desc": "Alternate beneficiary 1: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "ALTBENE1_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "Date of Birth",
+   "desc": "Alternate beneficiary 1: date of birth",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "ALTBENE1_SIN",
+   "kind": "entry",
+   "label": "SIN",
+   "desc": "Alternate beneficiary 1: SIN",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "ALTBENE1_PERCENT",
+   "kind": "entry",
+   "label": "%",
+   "desc": "Alternate beneficiary 1: share, %",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "ALTBENE2_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Alternate beneficiary 2: name",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "ALTBENE2_ACCOUNT",
+   "kind": "entry",
+   "label": "Acct#",
+   "desc": "Alternate beneficiary 2: account the designation is for",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "ALTBENE2_RELATIONSHIP",
+   "kind": "entry",
+   "label": "Relationship",
+   "desc": "Alternate beneficiary 2: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F35": {
+   "name": "ALTBENE2_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "Date of Birth",
+   "desc": "Alternate beneficiary 2: date of birth",
+   "how": "reviewed"
+  },
+  "F36": {
+   "name": "ALTBENE2_SIN",
+   "kind": "entry",
+   "label": "SIN",
+   "desc": "Alternate beneficiary 2: SIN",
+   "how": "reviewed"
+  },
+  "F37": {
+   "name": "ALTBENE2_PERCENT",
+   "kind": "entry",
+   "label": "%",
+   "desc": "Alternate beneficiary 2: share, %",
+   "how": "reviewed"
+  },
+  "F38": {
+   "name": "ALTBENE3_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Alternate beneficiary 3: name",
+   "how": "reviewed"
+  },
+  "F39": {
+   "name": "ALTBENE3_ACCOUNT",
+   "kind": "entry",
+   "label": "Acct#",
+   "desc": "Alternate beneficiary 3: account the designation is for",
+   "how": "reviewed"
+  },
+  "F40": {
+   "name": "ALTBENE3_RELATIONSHIP",
+   "kind": "entry",
+   "label": "Relationship",
+   "desc": "Alternate beneficiary 3: relationship to the holder",
+   "how": "reviewed"
+  },
+  "F41": {
+   "name": "ALTBENE3_DATE_OF_BIRTH",
+   "kind": "entry",
+   "label": "Date of Birth",
+   "desc": "Alternate beneficiary 3: date of birth",
+   "how": "reviewed"
+  },
+  "F42": {
+   "name": "ALTBENE3_SIN",
+   "kind": "entry",
+   "label": "SIN",
+   "desc": "Alternate beneficiary 3: SIN",
+   "how": "reviewed"
+  },
+  "F43": {
+   "name": "ALTBENE3_PERCENT",
+   "kind": "entry",
+   "label": "%",
+   "desc": "Alternate beneficiary 3: share, %",
+   "how": "reviewed"
+  },
+  "F44": {
+   "name": "SIGNED_AT_CITY",
+   "kind": "entry",
+   "label": "Dated at (City or Town)",
+   "desc": "Dated at (city or town), Ontario",
+   "how": "reviewed"
+  },
+  "F45": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": ", in the Province of Ontario, on (date)",
+   "desc": "on (date)",
+   "how": "reviewed"
+  },
+  "F46": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed",
+   "rect": [
+    252,
+    449,
+    457,
+    461
+   ]
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "OFFICE_CHECKED_BY",
+   "kind": "entry",
+   "label": "Checked By",
+   "desc": "Office use: checked by",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "OFFICE_ENTERED_BY",
+   "kind": "entry",
+   "label": "Entered By",
+   "desc": "Office use: entered by",
+   "how": "reviewed"
+  },
+  "B10": {
+   "name": "OFFICE_ENTRY_DATE",
+   "kind": "entry",
+   "label": "Entry Date",
+   "desc": "Office use: entry date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": []
+}

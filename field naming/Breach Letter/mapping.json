@@ -1,0 +1,307 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Libro Credit Union (“Libro” or “we” or “our”) loan(s) to",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "ACCTMGR_FULL_NAME",
+   "kind": "db",
+   "label": "Relationship Manager name",
+   "desc": "Relationship manager signing the letter. CHECK: is the RM the account manager",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "ACCTMGR_POSITION",
+   "kind": "candidate",
+   "label": ",",
+   "desc": "The FSR's position / title",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "BREACH_YEAR_END_1",
+   "kind": "entry",
+   "label": "Year-end",
+   "desc": "Year-end of the breached covenant, row 1 - moved into the table cell (it hung outside it)",
+   "how": "reviewed",
+   "rect": [
+    74,
+    342,
+    138,
+    356
+   ]
+  },
+  "B1": {
+   "name": "STAFF_SIGNATURE",
+   "kind": "entry",
+   "label": "NAME:",
+   "desc": "Relationship manager's signature for Libro",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "ATTENTION",
+   "kind": "entry",
+   "label": "Attention:",
+   "desc": "Attention: the person the letter is addressed to",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Acknowledged date:",
+   "desc": "Acknowledged date",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Per:",
+   "desc": "Borrower's authorized signature 1 (Per:)",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "GUARANTOR_CORP_SIGNATURE_1",
+   "kind": "entry",
+   "label": "Per:",
+   "desc": "Corporate guarantor signature 1 (Per:)",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Per:",
+   "desc": "Borrower's authorized signature 2 (Per:)",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "GUARANTOR_CORP_SIGNATURE_2",
+   "kind": "entry",
+   "label": "Per:",
+   "desc": "Corporate guarantor signature 2 (Per:)",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "WITNESS_SIGNATURE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Witness as to the signature",
+   "how": "reviewed"
+  },
+  "B10": {
+   "name": "GUARANTOR_PERSONAL_SIGNATURE",
+   "kind": "entry",
+   "label": "_______________________",
+   "desc": "Personal guarantor signature",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B3": "not a blank - beside the borrower's name"
+ },
+ "add": [
+  {
+   "page": 0,
+   "rect": [
+    74,
+    359,
+    138,
+    373
+   ],
+   "name": "BREACH_YEAR_END_2",
+   "kind": "entry",
+   "label": "Year-end",
+   "desc": "Year-end, row 2",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    142,
+    342,
+    572,
+    356
+   ],
+   "name": "BREACH_COVENANT_1",
+   "kind": "entry",
+   "label": "Financial/Reporting Covenant(s)",
+   "desc": "Covenant not complied with, row 1",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    142,
+    359,
+    572,
+    373
+   ],
+   "name": "BREACH_COVENANT_2",
+   "kind": "entry",
+   "label": "Financial/Reporting Covenant(s)",
+   "desc": "Covenant, row 2",
+   "type": "text"
+  },
+  {
+   "page": 0,
+   "rect": [
+    342,
+    463,
+    452,
+    476
+   ],
+   "name": "ACKNOWLEDGE_BY_DATE",
+   "kind": "entry",
+   "label": "Please sign ... and return to Libro by",
+   "desc": "Date to return the acknowledgment by: 14 days from today (the red note on the form)",
+   "type": "text"
+  },
+  {
+   "page": 1,
+   "rect": [
+    105.4,
+    267.4,
+    216,
+    280.5
+   ],
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name:",
+   "desc": "Borrower signer 1 name",
+   "type": "text"
+  },
+  {
+   "page": 1,
+   "rect": [
+    97.6,
+    291.2,
+    216,
+    304.4
+   ],
+   "name": "ORG_OFFICER1_TITLE",
+   "kind": "candidate",
+   "label": "Title:",
+   "desc": "Borrower signer 1's title",
+   "type": "text"
+  },
+  {
+   "page": 1,
+   "rect": [
+    105.4,
+    362.7,
+    216,
+    375.8
+   ],
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name:",
+   "desc": "Borrower signer 2 name",
+   "type": "text"
+  },
+  {
+   "page": 1,
+   "rect": [
+    97.6,
+    386.6,
+    216,
+    399.7
+   ],
+   "name": "ORG_OFFICER2_TITLE",
+   "kind": "candidate",
+   "label": "Title:",
+   "desc": "Borrower signer 2's title",
+   "type": "text"
+  },
+  {
+   "page": 1,
+   "rect": [
+    360.6,
+    267.4,
+    470,
+    280.5
+   ],
+   "name": "GUARANTOR_CORP_SIGNER1_NAME",
+   "kind": "entry",
+   "label": "Name:",
+   "desc": "Corporate guarantor signer 1 name",
+   "type": "text"
+  },
+  {
+   "page": 1,
+   "rect": [
+    352.8,
+    291.2,
+    470,
+    304.4
+   ],
+   "name": "GUARANTOR_CORP_SIGNER1_TITLE",
+   "kind": "entry",
+   "label": "Title:",
+   "desc": "Corporate guarantor signer 1 title",
+   "type": "text"
+  },
+  {
+   "page": 1,
+   "rect": [
+    360.6,
+    362.7,
+    470,
+    375.8
+   ],
+   "name": "GUARANTOR_CORP_SIGNER2_NAME",
+   "kind": "entry",
+   "label": "Name:",
+   "desc": "Corporate guarantor signer 2 name",
+   "type": "text"
+  },
+  {
+   "page": 1,
+   "rect": [
+    352.8,
+    386.6,
+    470,
+    399.7
+   ],
+   "name": "GUARANTOR_CORP_SIGNER2_TITLE",
+   "kind": "entry",
+   "label": "Title:",
+   "desc": "Corporate guarantor signer 2 title",
+   "type": "text"
+  }
+ ],
+ "notes": [
+  "The form carries author notes printed in red ('details', 'Auto-input date 14 days from today', 'Relationship Manager name and position') - they print on the letter.",
+  "'Commitment letter between Libro and the Borrower dated (the Commitment)' asks for a date with no room for it: COMMITMENT_DATE needs a gap in the sentence."
+ ]
+}

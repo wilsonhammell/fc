@@ -1,0 +1,50 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's usual (first) name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_MAIL_CARE_OF",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Mailing address 'care of' line",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": []
+}

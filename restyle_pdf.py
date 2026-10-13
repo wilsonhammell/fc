@@ -351,6 +351,37 @@ def tick_boxes(page):
             if w.field_type in TICKS]
 
 
+def list_all_fields(doc):
+    """Make the form's field list name every field its pages carry, and say
+    how many it had to put back. A field missing from the list is a box on
+    the page that Acrobat, and the requirements designer, do not treat as a
+    field at all. The list is read as references to each widget's topmost
+    field (its own dictionary, or the parent it shares)."""
+    acro = doc.xref_get_key(doc.pdf_catalog(), "AcroForm")
+    if acro[0] != "xref":
+        return 0
+    ax = int(acro[1].split()[0])
+    kind, val = doc.xref_get_key(ax, "Fields")
+    if kind == "xref":
+        val = doc.xref_object(int(val.split()[0]))
+    listed = [int(x) for x in re.findall(r"(\d+) 0 R", val if kind in ("array", "xref") else "")]
+    tops = []
+    for page in doc:
+        for w in page.widgets():
+            x = w.xref
+            for _ in range(16):
+                par = doc.xref_get_key(x, "Parent")
+                if par[0] != "xref":
+                    break
+                x = int(par[1].split()[0])
+            if x not in tops:
+                tops.append(x)
+    lost = [x for x in tops if x not in listed]
+    if lost:
+        doc.xref_set_key(ax, "Fields", "[" + " ".join(f"{x} 0 R" for x in listed + lost) + "]")
+    return len(lost)
+
+
 def printed(page):
     """The page's printed content only: a copy with its annotations dropped,
     at the same coordinates. Text extraction also reads what form fields
@@ -359,7 +390,10 @@ def printed(page):
     copy. Everything that decides what gets restyled reads this instead."""
     def build():
         tmp = fitz.open()
-        tmp.insert_pdf(page.parent, from_page=page.number, to_page=page.number)
+        # without its widgets: the copy drops its annotations anyway, and
+        # copying them (PyMuPDF 1.26) empties the SOURCE form's field list -
+        # 26 restyled forms went out with their fields unlisted that way
+        tmp.insert_pdf(page.parent, from_page=page.number, to_page=page.number, widgets=False)
         tmp.xref_set_key(tmp[0].xref, "Annots", "null")
         tmp._no_annots = True             # so its reads can be remembered
         # A tick box or a radio button is a field, but it is also a box a
@@ -2379,6 +2413,9 @@ def close_label_gaps(page, found, pad=3.0):
 # grey print - "Click or tap here to enter text." - are the same thing: a
 # blank for someone to fill in.
 MERGE_TAG = re.compile(r"«[^»\n]{1,60}»|<<[^>\n]{1,60}>>"
+                       # or wrapped once inside a narrow table cell: Funeral
+                       # Home's "«Term_Maturity_ / Date»" printed as it stood
+                       r"|«[^»\n]{1,60}\n[^»\n«]{0,60}»"
                        # any space between the words: re-set in Arial they
                        # read back as no-break spaces
                        r"|Click\s+or\s+tap\s+here\s+to\s+enter\s+text\."
@@ -2390,6 +2427,8 @@ def merge_tag_name(tag, before=""):
     one of Word's prompts, the last few words before it ("...Transfer of
     Funds to RRIF#" gives Funds_to_RRIF)."""
     if tag.startswith(("«", "<<")):
+        # a tag wrapped in its cell is read back with the break in it
+        tag = tag.replace("\n", "")
         return re.sub(r"\W+", "_", tag.strip("«»<> ")).strip("_") or "field"
     words = re.sub(r"[^\w\s]", " ", before).split()[-3:]
     stem = "_".join(words) or ("date" if "date" in tag else "text")
@@ -2414,16 +2453,26 @@ def merge_tags_to_fields(page, taken, min_width=90.0, margin=36.0):
     words = page.get_text("words")
     right = page.rect.width - margin
     found = []
+    # The page's lines read as one text, a line break between each, so a tag
+    # a narrow cell wrapped onto two lines is still one tag - Funeral Home's
+    # "«Term_Maturity_" and "Date»" are even blocks of their own. The break
+    # is no glyph (None) and nothing is taken for it.
+    chars, text = [], ""
     for block in raw["blocks"]:
         for ln in block.get("lines", ()):
-            chars = [c for sp in ln["spans"] for c in sp["chars"]]
-            text = "".join(c["c"] for c in chars)
+            if chars:
+                chars.append(None)
+                text += "\n"
+            got = [c for sp in ln["spans"] for c in sp["chars"]]
+            chars += got
+            text += "".join(c["c"] for c in got)
+    if True:
+        if True:
             for m in MERGE_TAG.finditer(text):
-                glyphs = chars[m.start():m.end()]
+                glyphs = [c for c in chars[m.start():m.end()] if c is not None]
                 box = fitz.Rect(glyphs[0]["bbox"])
                 for c in glyphs[1:]:
                     box |= fitz.Rect(c["bbox"])
-                base = glyphs[0]["origin"][1]
                 # room to the right: up to the next word on this line, else
                 # the margin - never over anything already printed
                 after = [w[0] for w in words
@@ -2432,7 +2481,9 @@ def merge_tags_to_fields(page, taken, min_width=90.0, margin=36.0):
                 # and never over a character that followed the tag in the same
                 # word - the full stop in "branch at «Branch_Phone»." is part
                 # of the tag's word, so the word boxes alone would miss it
-                rest = [c for c in chars[m.end():] if not c["c"].isspace()]
+                tail = chars[m.end():]
+                tail = tail[:tail.index(None)] if None in tail else tail
+                rest = [c for c in tail if not c["c"].isspace()]
                 if rest:
                     limit = min(limit, rest[0]["bbox"][0] - 1)
                 wide = max(box.width, min(min_width, limit - box.x0))
@@ -2444,7 +2495,7 @@ def merge_tags_to_fields(page, taken, min_width=90.0, margin=36.0):
                 found.append({"tag": m.group(0), "name": name, "ink": box,
                               "rect": fitz.Rect(box.x0, box.y0 - 1,
                                                 box.x0 + wide, box.y1 + 1),
-                              "glyphs": [(base, c["c"]) for c in glyphs]})
+                              "glyphs": [(c["origin"][1], c["c"]) for c in glyphs]})
     if not found:
         return []
     forget(page)
@@ -6391,6 +6442,11 @@ def process_file(src, dst, fonts, args, speller=None, relabels=None):
 
     if not args.dry_run:
         rows += [[name, "", issue, detail] for issue, detail in fix_tounicode(doc, fonts)]
+        unlisted = list_all_fields(doc)
+        if unlisted:
+            rows.append([name, "", "FIELDS_UNLISTED",
+                         f"{unlisted} field(s) on the pages were missing from the form's "
+                         f"field list - put back, but something dropped them"])
         doc.save(dst, garbage=3, deflate=True)
     doc.close()
 

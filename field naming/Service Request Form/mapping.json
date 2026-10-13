@@ -1,0 +1,187 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name(s):",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "Name(s):",
+   "desc": "Joint owner 1",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "JointMember2Name",
+   "kind": "special",
+   "label": "Name(s):",
+   "desc": "Joint owner 2",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "JointMember3Name",
+   "kind": "special",
+   "label": "Name(s):",
+   "desc": "Joint owner 3",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "SERVICE_REQUEST_DETAIL",
+   "kind": "entry",
+   "label": "co-signers and guarantors sign below as applicable.",
+   "desc": "Service and/or change request, in words",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "ADMIN_APPROVAL_DATE",
+   "kind": "entry",
+   "label": "Date:",
+   "desc": "Administration use only: date approved",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "ADMIN_APPROVER_NAME",
+   "kind": "entry",
+   "label": "Name of Libro Staﬀ",
+   "desc": "Administration: name of Libro staff approving",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "ADMIN_APPROVER_SIGNATURE",
+   "kind": "entry",
+   "label": "Signature of Libro Staﬀ",
+   "desc": "Administration: signature of Libro staff",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "ADMIN_COMMENTS",
+   "kind": "entry",
+   "label": "",
+   "desc": "Administration: additional comments",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "an unlabelled rule above the signing rows",
+  "B2": "signer 3's name line - F14 is on it",
+  "B5": "not a blank"
+ },
+ "add": [],
+ "notes": []
+}

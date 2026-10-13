@@ -1,0 +1,101 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Our Account:",
+   "desc": "Our Account: the member number",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_BRANCH_PHONE",
+   "kind": "db",
+   "label": "have any questions or concerns, please contact the branch at",
+   "desc": "Branch phone",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "",
+   "desc": "Staff member signing the letter",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "REQUESTUSER_POSITION",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Staff member's position / title",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "INSURANCE_POLICY_NUMBER",
+   "kind": "entry",
+   "label": "Your Policy:",
+   "desc": "Life insurance policy number",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B9": "the space after 'Sincerely,' - the letter's own sign-off, F3/F4 under it"
+ },
+ "add": [],
+ "notes": []
+}

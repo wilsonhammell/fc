@@ -1,0 +1,256 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "I/WE,",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "I/WE,",
+   "desc": "Member's middle name/initial",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "I/WE,",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, first name",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, middle name/initial",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, surname",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "SIGNER2_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, first name",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "SIGNER2_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, middle name/initial",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "SIGNER2_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, surname",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "SIGNER3_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, first name",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "SIGNER3_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, middle name/initial",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "SIGNER3_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, surname - the original's merge tag here was Join2_Surname, a copy-paste slip",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line, in place of the first/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    36,
+    251,
+    228,
+    265
+   ]
+  },
+  "F15": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed",
+   "rect": [
+    252,
+    253,
+    457,
+    265
+   ]
+  },
+  "F18": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2 - one dropdown across the Name line, in place of the first/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    36,
+    293,
+    228,
+    307
+   ]
+  },
+  "F20": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed",
+   "rect": [
+    252,
+    295,
+    457,
+    307
+   ]
+  },
+  "F23": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3 - one dropdown across the Name line, in place of the first/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    36,
+    335,
+    228,
+    349
+   ]
+  },
+  "F25": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed",
+   "rect": [
+    252,
+    337,
+    457,
+    349
+   ]
+  },
+  "F28": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4 - one dropdown across the Name line, in place of the first/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    36,
+    377,
+    228,
+    391
+   ]
+  },
+  "F30": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed",
+   "rect": [
+    252,
+    379,
+    457,
+    391
+   ]
+  },
+  "F33": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F16",
+  "F17",
+  "F21",
+  "F22",
+  "F26",
+  "F27",
+  "F31",
+  "F32"
+ ],
+ "skip": {},
+ "add": [],
+ "notes": [
+  "The signing rows held first/middle/surname merge boxes; the middle initials sat in the date column. Each row is now one Member{i}Name dropdown."
+ ]
+}

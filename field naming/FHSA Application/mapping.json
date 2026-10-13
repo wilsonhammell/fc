@@ -1,0 +1,164 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Holder Number",
+   "desc": "Holder's member number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "RSP_ACCOUNT_OPENED",
+   "kind": "db",
+   "label": "Contract Date",
+   "desc": "FHSA contract date. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "FHSA Contract Number",
+   "desc": "FHSA contract number. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Holder’s Last Name",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Holder’s First Name",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "Social Insurance Number",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "PRIMARY_DATE_OF_BIRTH",
+   "kind": "db",
+   "label": "Date of Birth",
+   "desc": "Member's date of birth",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Holder’s First Name Social",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Social Insurance Number",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "PRIMARY_LEGAL_PST",
+   "kind": "db",
+   "label": "Postal Code",
+   "desc": "Member's postal code",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "HOLDER_DECLINES_BENEFICIARY",
+   "kind": "entry",
+   "label": "The holder declines to designate a beneficiary of the proceeds",
+   "desc": "Tick: the holder declines to designate a beneficiary / successor holder",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F14": {
+   "name": "HOLDER_CONFIRMS_DESIGNATION_FORM",
+   "kind": "entry",
+   "label": "The holder confirms completion of an FHSA Beneficiary Designation Form",
+   "desc": "Tick: the holder confirms completion of the FHSA designation form",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F15": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 (old field: Credit Union Representative)",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": []
+}

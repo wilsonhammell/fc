@@ -1,0 +1,231 @@
+{
+ "items": {
+  "F1": {
+   "name": "BENEFICIARY_NAME",
+   "kind": "entry",
+   "label": "I,",
+   "desc": "The designated beneficiary renouncing (I, ___)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "BENEFICIARY_CITY",
+   "kind": "entry",
+   "label": ", of",
+   "desc": "Beneficiary's city (of ___)",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_DEATH_DAY",
+   "kind": "candidate",
+   "label": "THAT the Deceased died on the",
+   "desc": "Day of the member's death - the DB list has no date of death",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_DEATH_MONTH",
+   "kind": "candidate",
+   "label": "day of",
+   "desc": "Month of the member's death",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_DEATH_YEAR",
+   "kind": "candidate",
+   "label": ", 20",
+   "desc": "Year of the member's death",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "DESIGNATION_FORM_MONTH",
+   "kind": "entry",
+   "label": "__ day of",
+   "desc": "Designation form dated: month",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "SIGNED_AT_CITY",
+   "kind": "entry",
+   "label": "Date at",
+   "desc": "Date at (city)",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "SIGNED_AT_PROVINCE",
+   "kind": "entry",
+   "label": "In the province of",
+   "desc": "In the province of",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "BENEFICIARY_NAME",
+   "kind": "entry",
+   "label": "Date at ________________________________",
+   "desc": "Name of designated beneficiary, at the signature",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "SIGNED_DAY",
+   "kind": "entry",
+   "label": "This",
+   "desc": "This ___ day",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "SIGNED_MONTH",
+   "kind": "entry",
+   "label": "This _____________ day",
+   "desc": "day of ___ (month)",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "SIGNED_YEAR",
+   "kind": "entry",
+   "label": "This _____________ day of",
+   "desc": ", 20__",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "WITNESS_NAME",
+   "kind": "entry",
+   "label": "My full name is:",
+   "desc": "Witness's full name (the witness is relabelled Authorizing Staff Member)",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "WITNESS_ADDRESS_2",
+   "kind": "entry",
+   "label": "My phone number is: _____________________________",
+   "desc": "Witness's address, continued",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "WITNESS_ADDRESS",
+   "kind": "entry",
+   "label": "My address",
+   "desc": "Witness's address",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "of:",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "SIN:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "BENEFICIARY_PROVINCE",
+   "kind": "entry",
+   "label": ", in the Province of",
+   "desc": "Beneficiary's province",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "RRSP_CONTRACTS",
+   "kind": "entry",
+   "label": "RRSP contract",
+   "desc": "The deceased's RRSP contract number(s)",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "TFSA_CONTRACTS",
+   "kind": "entry",
+   "label": "TFSA contract",
+   "desc": "The deceased's TFSA contract number(s)",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "DESIGNATION_FORM_DAY",
+   "kind": "entry",
+   "label": "the proceeds",
+   "desc": "Beneficiary designation form dated: day",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "DESIGNATION_FORM_YEAR",
+   "kind": "entry",
+   "label": ", 20",
+   "desc": "Designation form dated: year",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "DECLARANT_SIGNATURE",
+   "kind": "entry",
+   "label": "(Signature of Designated Beneficiary)",
+   "desc": "Signature of the designated beneficiary",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "BENEFICIARY_OF_RRSP",
+   "kind": "entry",
+   "label": "THAT",
+   "desc": "Tick: RRSP contract(s)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F28": {
+   "name": "BENEFICIARY_OF_TFSA",
+   "kind": "entry",
+   "label": "TFSA contract No.(s) __________________________________________________________",
+   "desc": "Tick: TFSA contract(s)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F29": {
+   "name": "WITNESS_PHONE",
+   "kind": "entry",
+   "label": "My phone number is:",
+   "desc": "Witness's phone number",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "WITNESS_SIGNATURE",
+   "kind": "entry",
+   "label": "My full name is: ________________________________",
+   "desc": "Witness's signature (captioned Authorizing Staff Member)",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "WITNESS_DATE",
+   "kind": "entry",
+   "label": "My phone number is: _____________________________",
+   "desc": "Date of the witness signature",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "the 20__ of the year - F12 covers it",
+  "B2": "not a blank",
+  "B3": "not a blank"
+ },
+ "add": [],
+ "notes": []
+}

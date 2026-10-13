@@ -1,0 +1,197 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Owner/Policy Holder:",
+   "desc": "Owner/policy holder 1",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Owner/policy holder 2",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "JointMember2Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Owner/policy holder 3",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "JointMember3Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Owner/policy holder 4",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "INSURANCE_POLICY_NUMBER",
+   "kind": "entry",
+   "label": "Life Insurance Policy Number:",
+   "desc": "Life insurance policy number",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "INSURANCE_POLICY_AMOUNT",
+   "kind": "entry",
+   "label": "in the amount of $",
+   "desc": "Policy amount",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "INSURANCE_COMPANY",
+   "kind": "entry",
+   "label": "Insurance Company:",
+   "desc": "Insurance company",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "INSURANCE_COMPANY_ADDRESS",
+   "kind": "entry",
+   "label": "Address:",
+   "desc": "Insurance company's address",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "SIGNED_AT_CITY",
+   "kind": "entry",
+   "label": "Executed at",
+   "desc": "City the assignment is executed at",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "COMPANY_SIGNED_AT_CITY",
+   "kind": "entry",
+   "label": "Executed at",
+   "desc": "Acknowledgment: city the insurer executes at",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "COMPANY_ACK_DATE",
+   "kind": "entry",
+   "label": "Date:",
+   "desc": "Acknowledgment: date",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "INSURANCE_COMPANY_SIGNATURE",
+   "kind": "entry",
+   "label": "I/We have authority to bind the Company.",
+   "desc": "Insurer's signature (I/We have authority to bind the Company)",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F10",
+  "F13",
+  "F17",
+  "F20"
+ ],
+ "skip": {
+  "B10": "not a blank - the wording above the acknowledgment date"
+ },
+ "add": [],
+ "notes": []
+}

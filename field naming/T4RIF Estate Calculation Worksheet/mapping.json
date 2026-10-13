@@ -1,0 +1,492 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "SIN",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "RECIPIENT_NAME",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Recipient of funds: name",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "RECIPIENT_ADDRESS_1",
+   "kind": "entry",
+   "label": "Address",
+   "desc": "Recipient of funds: address, line 1",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "RECIPIENT_ADDRESS_2",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 2",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "RECIPIENT_ADDRESS_3",
+   "kind": "entry",
+   "label": "Box 12",
+   "desc": "line 3",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "RECIPIENT_SIN",
+   "kind": "entry",
+   "label": "SIN",
+   "desc": "Recipient of funds: SIN",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "",
+   "desc": "Contract number (on all slips). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "LIBRO_BUSINESS_NUMBER",
+   "kind": "entry",
+   "label": "Libro Business Number",
+   "desc": "Libro's business number (on the slip)",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "PRIMARY_DATE_OF_DEATH",
+   "kind": "candidate",
+   "label": "Date of Death",
+   "desc": "The annuitant's date of death - the DB list has no date of death",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "PAYOUT_DATE",
+   "kind": "entry",
+   "label": "Date of Payout",
+   "desc": "Date of payout",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "ValueAtDateOfDeath",
+   "kind": "entry",
+   "label": "Value at Date of Death (required for year of death)",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "DeceasedAmountReceived",
+   "kind": "entry",
+   "label": "Amount received by Deceased in year of death",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "DeceasedIncomeTax",
+   "kind": "entry",
+   "label": "+",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "DeceasedTaxableAmounts",
+   "kind": "entry",
+   "label": "=",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "DeceasedAnnualMinimum",
+   "kind": "entry",
+   "label": "-",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "DeceasedExcessAmount",
+   "kind": "entry",
+   "label": "=",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "SpousePaymentAmount1",
+   "kind": "entry",
+   "label": "Amount received after date of death (payment)",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "SpouseIncomeTax1",
+   "kind": "entry",
+   "label": "+",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "SpouseTaxableAmounts1",
+   "kind": "entry",
+   "label": "=",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "SpouseAnnualMinimum1",
+   "kind": "entry",
+   "label": "-",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "SpouseExcessAmount1",
+   "kind": "entry",
+   "label": "=",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "SpousePaymentAmount2",
+   "kind": "entry",
+   "label": "Total amount received as payments",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "SpouseTransfer2",
+   "kind": "entry",
+   "label": "+",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "SpouseIncomeTax2",
+   "kind": "entry",
+   "label": "+",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "SpouseTaxableAmounts2",
+   "kind": "entry",
+   "label": "=",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "SpouseAnnualMinimum2",
+   "kind": "entry",
+   "label": "-",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "SpouseExcessAmount2",
+   "kind": "entry",
+   "label": "=",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "ValueAtDateOfPayout",
+   "kind": "entry",
+   "label": "Principal + accrued interest at date of payout",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "ValueAtDateOfDeath",
+   "kind": "entry",
+   "label": "-",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "BeneficiaryTotalInterestIncome",
+   "kind": "entry",
+   "label": "=",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F35": {
+   "name": "BeneficiarySplitType",
+   "kind": "entry",
+   "label": "Beneficiary Split Type",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F36": {
+   "name": "numBeneficiaries",
+   "kind": "entry",
+   "label": "Number of Beneficiaries",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F37": {
+   "name": "WS_BENE1_NAME",
+   "kind": "entry",
+   "label": "1",
+   "desc": "Beneficiary 1: name (old field Beneficiary Name1, no script reads it)",
+   "how": "reviewed"
+  },
+  "F38": {
+   "name": "Rate1",
+   "kind": "entry",
+   "label": "1",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F39": {
+   "name": "Amount1",
+   "kind": "entry",
+   "label": "1",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F40": {
+   "name": "WS_BENE2_NAME",
+   "kind": "entry",
+   "label": "2",
+   "desc": "Beneficiary 2: name (old field Beneficiary Name2, no script reads it)",
+   "how": "reviewed"
+  },
+  "F41": {
+   "name": "Rate2",
+   "kind": "entry",
+   "label": "2",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F42": {
+   "name": "Amount2",
+   "kind": "entry",
+   "label": "2",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F43": {
+   "name": "WS_BENE3_NAME",
+   "kind": "entry",
+   "label": "3",
+   "desc": "Beneficiary 3: name (old field Beneficiary Name3, no script reads it)",
+   "how": "reviewed"
+  },
+  "F44": {
+   "name": "Rate3",
+   "kind": "entry",
+   "label": "3",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F45": {
+   "name": "Amount3",
+   "kind": "entry",
+   "label": "3",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F46": {
+   "name": "WS_BENE4_NAME",
+   "kind": "entry",
+   "label": "4",
+   "desc": "Beneficiary 4: name (old field Beneficiary Name4, no script reads it)",
+   "how": "reviewed"
+  },
+  "F47": {
+   "name": "Rate4",
+   "kind": "entry",
+   "label": "4",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F48": {
+   "name": "Amount4",
+   "kind": "entry",
+   "label": "4",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F49": {
+   "name": "WS_BENE5_NAME",
+   "kind": "entry",
+   "label": "5",
+   "desc": "Beneficiary 5: name (old field Beneficiary Name5, no script reads it)",
+   "how": "reviewed"
+  },
+  "F50": {
+   "name": "Rate5",
+   "kind": "entry",
+   "label": "5",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F51": {
+   "name": "Amount5",
+   "kind": "entry",
+   "label": "5",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F52": {
+   "name": "WS_BENE6_NAME",
+   "kind": "entry",
+   "label": "6",
+   "desc": "Beneficiary 6: name (old field Beneficiary Name6, no script reads it)",
+   "how": "reviewed"
+  },
+  "F53": {
+   "name": "Rate6",
+   "kind": "entry",
+   "label": "6",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F54": {
+   "name": "Amount6",
+   "kind": "entry",
+   "label": "6",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F55": {
+   "name": "WS_BENE7_NAME",
+   "kind": "entry",
+   "label": "7",
+   "desc": "Beneficiary 7: name (old field Beneficiary Name7, no script reads it)",
+   "how": "reviewed"
+  },
+  "F56": {
+   "name": "Rate7",
+   "kind": "entry",
+   "label": "7",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F57": {
+   "name": "Amount7",
+   "kind": "entry",
+   "label": "7",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F58": {
+   "name": "WS_BENE8_NAME",
+   "kind": "entry",
+   "label": "8",
+   "desc": "Beneficiary 8: name (old field Beneficiary Name8, no script reads it)",
+   "how": "reviewed"
+  },
+  "F59": {
+   "name": "Rate8",
+   "kind": "entry",
+   "label": "8",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F60": {
+   "name": "Amount8",
+   "kind": "entry",
+   "label": "8",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F61": {
+   "name": "WS_BENE9_NAME",
+   "kind": "entry",
+   "label": "9",
+   "desc": "Beneficiary 9: name (old field Beneficiary Name9, no script reads it)",
+   "how": "reviewed"
+  },
+  "F62": {
+   "name": "Rate9",
+   "kind": "entry",
+   "label": "9",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F63": {
+   "name": "Amount9",
+   "kind": "entry",
+   "label": "9",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F64": {
+   "name": "WS_BENE10_NAME",
+   "kind": "entry",
+   "label": "10",
+   "desc": "Beneficiary 10: name (old field Beneficiary Name10, no script reads it)",
+   "how": "reviewed"
+  },
+  "F65": {
+   "name": "Rate10",
+   "kind": "entry",
+   "label": "10",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F66": {
+   "name": "Amount10",
+   "kind": "entry",
+   "label": "10",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F67": {
+   "name": "RateTotal",
+   "kind": "entry",
+   "label": "Total",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  },
+  "F68": {
+   "name": "AmountTotal",
+   "kind": "entry",
+   "label": "Total",
+   "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "not a blank - a heading beside the calculation boxes",
+  "B2": "not a blank - a heading beside the calculation boxes",
+  "B3": "not a blank - a heading beside the calculation boxes",
+  "B4": "not a blank - a heading beside the calculation boxes",
+  "B5": "not a blank - a heading beside the calculation boxes"
+ },
+ "add": [],
+ "notes": [
+  "The worksheet calculates: its calculation fields keep their names, since the scripts read them by name and build some names in code."
+ ]
+}

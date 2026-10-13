@@ -224,7 +224,8 @@ def proof(doc, items, folder, stem):
     made = []
     for page in doc:
         pix_doc = fitz.open()
-        pix_doc.insert_pdf(doc, from_page=page.number, to_page=page.number)
+        # (widgets=False: copying them empties the source's field list)
+        pix_doc.insert_pdf(doc, from_page=page.number, to_page=page.number, widgets=False)
         pg = pix_doc[0]
         for i in items:
             if i["page"] != page.number:

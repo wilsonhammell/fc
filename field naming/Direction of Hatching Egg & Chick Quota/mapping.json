@@ -1,0 +1,136 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "QUOTA_HOLDER_NAME_ADDRESS",
+   "kind": "entry",
+   "label": "FROM: Name, Address of Individual(s)",
+   "desc": "FROM: name and address of the individual(s) - one line for both; PRIMARY_FULL_LEGAL_NAME and the mailing address hold the parts",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRODUCER_NUMBER",
+   "kind": "entry",
+   "label": "PRODUCER*",
+   "desc": "Producer #",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "GROWER_NUMBER",
+   "kind": "entry",
+   "label": "GROWER#",
+   "desc": "Grower #",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "SIGNED_AT_CITY",
+   "kind": "entry",
+   "label": "Dated at",
+   "desc": "Dated at (city), Ontario",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": ", Ontario,",
+   "desc": "Date of the direction",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "QUOTA_HOLDER_REGISTERED_NAME",
+   "kind": "entry",
+   "label": "Name of quota holder as registered by O.B.H.E.C.C.",
+   "desc": "Name of quota holder as registered with the board",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "CORPORATE_SIGNATURE",
+   "kind": "entry",
+   "label": "per",
+   "desc": "If a corporation: signature per (I have the authority to bind the corporation)",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "BOARD_HATCHING_EGG_UNITS",
+   "kind": "entry",
+   "label": "held for hatching egg production at time of acknowledgement by",
+   "desc": "Board: units held for hatching egg production at acknowledgement",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "BOARD_BREEDER_GROWING_UNITS",
+   "kind": "entry",
+   "label": "units held for breeder growing at time of acknowledgement by",
+   "desc": "Board: units held for breeder growing (20 week grower) at acknowledgement",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "not a blank - the board's address"
+ },
+ "add": [],
+ "notes": []
+}

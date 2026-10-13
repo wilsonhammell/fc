@@ -1,0 +1,115 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Libro Member #",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "CHEQUE_NUMBER",
+   "kind": "entry",
+   "label": "Cheque #",
+   "desc": "Cheque # of the lost item",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "CHEQUE_DATE_ISSUED",
+   "kind": "entry",
+   "label": "Date Issued",
+   "desc": "Date the cheque was issued",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "CHEQUE_PAYEE",
+   "kind": "entry",
+   "label": "Cheque Payable To Payee",
+   "desc": "Cheque payable to (payee)",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "CHEQUE_AMOUNT",
+   "kind": "entry",
+   "label": "Cheque Amount",
+   "desc": "Cheque amount $",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Signature of Above Named Payee",
+   "desc": "Signature of the above named payee (the member) - affidavit, its own signing kept",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "WITNESS_NAME",
+   "kind": "entry",
+   "label": "Name of Witness (Payor) [print or type]",
+   "desc": "Name of witness (payor), print or type",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date of Signature",
+   "desc": "Date of the payee's signature",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "WITNESS_DATE",
+   "kind": "entry",
+   "label": "Date of Signature",
+   "desc": "Date of the witness signature",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "WITNESS_SIGNATURE",
+   "kind": "entry",
+   "label": "Signature of Witness",
+   "desc": "Signature of witness",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "a border of the details table",
+  "B2": "a border of the details table",
+  "B3": "a border of the details table",
+  "B4": "a border of the details table",
+  "B5": "a border of the details table",
+  "B6": "a border of the details table",
+  "B7": "the rule under the payee signature caption",
+  "B10": "the rule under the witness signature caption"
+ },
+ "add": [],
+ "notes": []
+}

@@ -1,0 +1,251 @@
+{
+ "items": {
+  "F1": {
+   "name": "WILL_DATED_DAY",
+   "kind": "entry",
+   "label": "day of ____________, _________, leaving a Will dated the",
+   "desc": "Will dated: day",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "WILL_DATED_MONTH",
+   "kind": "entry",
+   "label": "____________, _________, leaving a Will dated the __________ day of",
+   "desc": "month",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_DEATH_MONTH",
+   "kind": "candidate",
+   "label": "day of",
+   "desc": "Month of the member's death",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_DEATH_YEAR",
+   "kind": "candidate",
+   "label": "day of ____________,",
+   "desc": "Year of the member's death",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "The above named Member, whose Branch and Account number are",
+   "desc": "The deceased member's account number",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "WILL_DATED_YEAR",
+   "kind": "entry",
+   "label": "_________, leaving a Will dated the __________ day of __________,",
+   "desc": "year",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Estate Trustee Name (printed)",
+   "desc": "Estate trustee 1: name (printed)",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "",
+   "desc": "Estate trustee 2: name (printed)",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "",
+   "desc": "Estate trustee 3: name (printed)",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "",
+   "desc": "Estate trustee 4: name (printed)",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "REVIEWER_NAME",
+   "kind": "entry",
+   "label": "Name of Branch Manager or Estate Specialist",
+   "desc": "Request reviewed by: name of branch manager or estate representative",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "REVIEWER_SIGNATURE",
+   "kind": "entry",
+   "label": "Signature of Branch Manager or Estate Specialist",
+   "desc": "Request reviewed by: signature",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "APPROVER_SUPERVISOR_NAME",
+   "kind": "entry",
+   "label": "Name of Estate & Trust Supervisor (printed)",
+   "desc": "Estate & trust supervisor: name",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "APPROVER_SUPERVISOR_SIGNATURE",
+   "kind": "entry",
+   "label": "Signature of Estate & Trust Supervisor",
+   "desc": "Estate & trust supervisor: signature",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "APPROVER_DIRECTOR_NAME",
+   "kind": "entry",
+   "label": "Name of Director, Centralized Services (printed)",
+   "desc": "Director, centralized services: name",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "APPROVER_DIRECTOR_SIGNATURE",
+   "kind": "entry",
+   "label": "Signature of Director, Centralized Services",
+   "desc": "Director, centralized services: signature",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Of:",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "SIN:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "The above named Member, whose Branch and Account number are",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "PRIMARY_DEATH_DAY",
+   "kind": "candidate",
+   "label": "whose Branch and Account number are ___________________, died on the",
+   "desc": "Day of the member's death",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "ESTATE_ACCOUNT_NOT_OPERATED",
+   "kind": "entry",
+   "label": "Notarized",
+   "desc": "Tick: an estate account is not going to be operated",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F25": {
+   "name": "ESTATE_ACCOUNT_OPERATED",
+   "kind": "entry",
+   "label": "An Estate account IS expected to be operated with Libro",
+   "desc": "Tick: an estate account IS expected to be operated",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F26": {
+   "name": "REQUEST_REASON",
+   "kind": "entry",
+   "label": "The",
+   "desc": "Tick: reason in detail for the request",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F27": {
+   "name": "ESTATE_VALUE_RANGE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Radio: total estate value range",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "ESTATE_VALUE_RANGE",
+   "kind": "entry",
+   "label": "Total Estate Valued $700,000.01+",
+   "desc": "Total Estate Valued $700,000.01+",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "APPROVAL_GRANTED",
+   "kind": "entry",
+   "label": "Approval Granted*:",
+   "desc": "Radio: approval granted? Yes / No",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "APPROVAL_GRANTED",
+   "kind": "entry",
+   "label": "Yes",
+   "desc": "Yes",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Estate trustee 1: authorized signature",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "",
+   "desc": "Estate trustee 2: authorized signature",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "",
+   "desc": "Estate trustee 3: authorized signature",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "",
+   "desc": "Estate trustee 4: authorized signature",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": [
+  "The estate trustees sign as Member1-4; CHECK the trustees are in DNA's signer list for the estate account."
+ ]
+}

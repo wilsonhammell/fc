@@ -4861,6 +4861,12 @@ def main():
             out.xref_set_key(out.pdf_catalog(), "AcroForm/SigFlags", "null")
         else:
             out.xref_set_key(out.pdf_catalog(), "AcroForm/SigFlags", sig_was[1])
+    # every field the pages carry is on the form's field list (see
+    # R.list_all_fields - a page copy once emptied the list)
+    unlisted = R.list_all_fields(out)
+    if unlisted:
+        signing_issues.append(("FIELDS_UNLISTED", f"{unlisted} field(s) were missing from the "
+                                                  f"form's field list - put back"))
     out.save(args.output)
     # the calculation list is only settled when the file is written, so the
     # form's own order goes back into the saved file

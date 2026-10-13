@@ -1,0 +1,134 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "I/We,",
+   "desc": "The payor(s) making the claim (I/We, ___)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PAD_CLAIM_AMOUNT",
+   "kind": "entry",
+   "label": "of $",
+   "desc": "Amount of the PAD claimed $",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PAD_PAYEE",
+   "kind": "entry",
+   "label": "of $ ___________ drawn in favour",
+   "desc": "The PAD was drawn in favour of (the payee)",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PAD_ACCOUNT_NUMBER",
+   "kind": "entry",
+   "label": "account number",
+   "desc": "The member's account the PAD was drawn on (PRIMARY_MEMBER_NUMBER holds the member number)",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PAD_DEBIT_DATE",
+   "kind": "entry",
+   "label": "account number",
+   "desc": "Date the PAD was debited (on ___)",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PAD_DESCRIPTION",
+   "kind": "entry",
+   "label": "for",
+   "desc": "What the PAD was for (for ___, the PAD)",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "CLAIM_NOT_PER_AGREEMENT",
+   "kind": "entry",
+   "label": "The PAD was not processed in accordance with my/our Payor’s",
+   "desc": "Tick 1: the PAD was not processed per the PAD agreement",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F8": {
+   "name": "CLAIM_AGREEMENT_CANCELLED",
+   "kind": "entry",
+   "label": "My/our Payor’s PAD Agreement was cancelled/revoked and notice of such",
+   "desc": "Tick 2: the payor's PAD agreement was cancelled/revoked",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F9": {
+   "name": "CLAIM_NO_PRENOTIFICATION",
+   "kind": "entry",
+   "label": "Agreement",
+   "desc": "Tick 3(a): no pre-notification of the PAD",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F10": {
+   "name": "CLAIM_NO_CONFIRMATION",
+   "kind": "entry",
+   "label": "time",
+   "desc": "Tick 3(b): no confirmation of the electronic agreement",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F11": {
+   "name": "CLAIM_NO_AGREEMENT",
+   "kind": "entry",
+   "label": "days",
+   "desc": "Tick 4: I/we have no payor's PAD agreement with the payee",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F12": {
+   "name": "CLAIM_PERMIT_FI",
+   "kind": "entry",
+   "label": "I/We permit",
+   "desc": "I/We permit ___ (the financial institution) to provide this form",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Where the Payor’s account agreement persons are required for the purposes",
+   "desc": "Date",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "CLAIM_CANCELLATION_DATE",
+   "kind": "entry",
+   "label": "Cancellation/revocation was provided to the PAYEE",
+   "desc": "Notice of cancellation/revocation was given to the payee on (date)",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "the PAYEE and to the financial institution acting",
+   "desc": "Payor signature 1",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "acting on behalf of the PAYEE for their records.",
+   "desc": "Payor signature 2",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "STAFF_SIGNATURE",
+   "kind": "entry",
+   "label": "___________________________",
+   "desc": "Financial institution representative",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B2": "not a blank"
+ },
+ "add": [],
+ "notes": []
+}

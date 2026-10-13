@@ -1,0 +1,856 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "LIRA Contract #:",
+   "desc": "LIRA contract number (on every page). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "TRUSTEE_AGENT_NAME",
+   "kind": "entry",
+   "label": "Agent for Libro Credit Union Limited:",
+   "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N.:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed",
+   "rect": [
+    219,
+    188,
+    310,
+    200
+   ]
+  },
+  "F8": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "LIRA Contract #:",
+   "desc": "LIRA contract number (on every page). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "TRUSTEE_AGENT_NAME",
+   "kind": "entry",
+   "label": "Agent for Libro Credit Union Limited:",
+   "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N.:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "LIRA Contract #:",
+   "desc": "LIRA contract number (on every page). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "TRUSTEE_AGENT_NAME",
+   "kind": "entry",
+   "label": "Agent for Libro Credit Union Limited:",
+   "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N.:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "PENSION_DIFFERENTIATED",
+   "kind": "entry",
+   "label": "Differentiated on the basis of sex",
+   "desc": "Tick: the pension plan differentiated on the basis of sex",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F29": {
+   "name": "PENSION_NOT_DIFFERENTIATED",
+   "kind": "entry",
+   "label": "pension",
+   "desc": "Tick: the pension plan did not differentiate",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F30": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "LIRA Contract #:",
+   "desc": "LIRA contract number (on every page). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "TRUSTEE_AGENT_NAME",
+   "kind": "entry",
+   "label": "Agent for Libro Credit Union Limited:",
+   "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
+   "how": "reviewed"
+  },
+  "F34": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F35": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N.:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F36": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F37": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F38": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F39": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F40": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F41": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "LIRA Contract #:",
+   "desc": "LIRA contract number (on every page). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F42": {
+   "name": "TRUSTEE_AGENT_NAME",
+   "kind": "entry",
+   "label": "Agent for Libro Credit Union Limited:",
+   "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
+   "how": "reviewed"
+  },
+  "F43": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F44": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N.:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F45": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F46": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F47": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F48": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F49": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F50": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "LIRA Contract #:",
+   "desc": "LIRA contract number (on every page). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F51": {
+   "name": "TRUSTEE_AGENT_NAME",
+   "kind": "entry",
+   "label": "Agent for Libro Credit Union Limited:",
+   "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
+   "how": "reviewed"
+  },
+  "F52": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F53": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N.:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F54": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F55": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F56": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F57": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F58": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F59": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "LIRA Contract #:",
+   "desc": "LIRA contract number (on every page). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F60": {
+   "name": "TRUSTEE_AGENT_NAME",
+   "kind": "entry",
+   "label": "Agent for Libro Credit Union Limited:",
+   "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
+   "how": "reviewed"
+  },
+  "F61": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F62": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N.:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F63": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F64": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F65": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F66": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F67": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F68": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "LIRA Contract #:",
+   "desc": "LIRA contract number (on every page). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F69": {
+   "name": "TRUSTEE_AGENT_NAME",
+   "kind": "entry",
+   "label": "Agent for Libro Credit Union Limited:",
+   "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
+   "how": "reviewed"
+  },
+  "F70": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F71": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N.:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F72": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F73": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F74": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F75": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F76": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F77": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "LIRA Contract #:",
+   "desc": "LIRA contract number (on every page). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F78": {
+   "name": "TRUSTEE_AGENT_NAME",
+   "kind": "entry",
+   "label": "Agent for Libro Credit Union Limited:",
+   "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
+   "how": "reviewed"
+  },
+  "F79": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F80": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N.:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F81": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F82": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F83": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F84": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F85": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F86": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "LIRA Contract #:",
+   "desc": "LIRA contract number (on every page). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F87": {
+   "name": "TRUSTEE_AGENT_NAME",
+   "kind": "entry",
+   "label": "Agent for Libro Credit Union Limited:",
+   "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
+   "how": "reviewed"
+  },
+  "F88": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F89": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N.:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F90": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F91": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F92": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F93": {
+   "name": "EXECUTED_PLACE_TYPE",
+   "kind": "entry",
+   "label": "Executed at the",
+   "desc": "Executed at the (city, town, village ...)",
+   "how": "reviewed"
+  },
+  "F94": {
+   "name": "SIGNED_AT_CITY",
+   "kind": "entry",
+   "label": "of",
+   "desc": "of (name of place)",
+   "how": "reviewed"
+  },
+  "F95": {
+   "name": "SIGNED_AT_PROVINCE",
+   "kind": "entry",
+   "label": ", in the Province of",
+   "desc": "in the Province of",
+   "how": "reviewed"
+  },
+  "F96": {
+   "name": "SIGNED_DAY",
+   "kind": "entry",
+   "label": ", this",
+   "desc": "this ___ day",
+   "how": "reviewed"
+  },
+  "F97": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F98": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Branch/Member#:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F99": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "LIRA Contract #:",
+   "desc": "LIRA contract number (on every page). CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F100": {
+   "name": "TRUSTEE_AGENT_NAME",
+   "kind": "entry",
+   "label": "Agent for Libro Credit Union Limited:",
+   "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
+   "how": "reviewed"
+  },
+  "F101": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F102": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N.:",
+   "desc": "Member's SIN",
+   "how": "reviewed"
+  },
+  "F103": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F104": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F105": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "S.I.N.:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F106": {
+   "name": "SIGNED_MONTH",
+   "kind": "entry",
+   "label": "day of",
+   "desc": "day of ___ (month)",
+   "how": "reviewed"
+  },
+  "F107": {
+   "name": "SIGNED_YEAR",
+   "kind": "entry",
+   "label": ", A.D.",
+   "desc": "A.D.",
+   "how": "reviewed"
+  },
+  "F108": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed",
+   "rect": [
+    259,
+    176,
+    437,
+    188
+   ]
+  },
+  "F109": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member - was the witness signature box",
+   "how": "reviewed",
+   "rect": [
+    72,
+    241,
+    240,
+    253
+   ]
+  },
+  "B21": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B22": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B23": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B24": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B25": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B26": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "not a blank - the second line of a two-line label; its box is beside it",
+  "B2": "not a blank - the second line of a two-line label; its box is beside it",
+  "B3": "not a blank - the second line of a two-line label; its box is beside it",
+  "B4": "not a blank - the second line of a two-line label; its box is beside it",
+  "B5": "not a blank - the second line of a two-line label; its box is beside it",
+  "B6": "not a blank - the second line of a two-line label; its box is beside it",
+  "B7": "not a blank - the second line of a two-line label; its box is beside it",
+  "B8": "not a blank - the second line of a two-line label; its box is beside it",
+  "B9": "not a blank - the second line of a two-line label; its box is beside it",
+  "B10": "not a blank - the second line of a two-line label; its box is beside it",
+  "B11": "not a blank - the second line of a two-line label; its box is beside it",
+  "B12": "not a blank - the second line of a two-line label; its box is beside it",
+  "B13": "not a blank - the second line of a two-line label; its box is beside it",
+  "B14": "not a blank - the second line of a two-line label; its box is beside it",
+  "B15": "not a blank - the second line of a two-line label; its box is beside it",
+  "B16": "not a blank - the second line of a two-line label; its box is beside it",
+  "B17": "not a blank - the second line of a two-line label; its box is beside it",
+  "B18": "not a blank - the second line of a two-line label; its box is beside it",
+  "B19": "not a blank - the second line of a two-line label; its box is beside it",
+  "B20": "not a blank - the second line of a two-line label; its box is beside it",
+  "B27": "not a blank - the second line of a two-line label; its box is beside it",
+  "B28": "not a blank - the second line of a two-line label; its box is beside it"
+ },
+ "add": [],
+ "notes": []
+}

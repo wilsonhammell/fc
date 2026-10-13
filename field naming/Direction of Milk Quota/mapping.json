@@ -1,0 +1,293 @@
+{
+ "items": {
+  "F1": {
+   "name": "DFO_LICENCE_NUMBER",
+   "kind": "entry",
+   "label": "DFO Licence No.",
+   "desc": "DFO licence number",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Lender, Customer or Loan No. (optional)",
+   "desc": "Lender, customer or loan no. (optional) - the old field was Owner No",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "DFO_LICENCE_NAME",
+   "kind": "entry",
+   "label": "Name on DFO Licence",
+   "desc": "Name on the DFO licence (often PRIMARY_FULL_LEGAL_NAME)",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "QUOTA_KILOGRAMS",
+   "kind": "entry",
+   "label": "Kilograms",
+   "desc": "Kilograms of quota under the direction",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "DIRECTION_START_DATE",
+   "kind": "entry",
+   "label": "Start date",
+   "desc": "Start date of the direction",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "DIRECTION_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "Expiry date",
+   "desc": "Expiry date of the direction",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "LENDER_NAME",
+   "kind": "entry",
+   "label": "Name of Lender",
+   "desc": "Payable to: name of lender (printed as Libro Credit Union Limited)",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "LENDER_ADDRESS",
+   "kind": "entry",
+   "label": "Address",
+   "desc": "Lender's address, line 1 (printed as 217 York Street)",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "LENDER_PHONE",
+   "kind": "entry",
+   "label": "Telephone No.",
+   "desc": "Lender's telephone (printed as 519-672-0124)",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "LENDER_FAX",
+   "kind": "entry",
+   "label": "Fax No.",
+   "desc": "Lender's fax",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "LENDER_EMAIL",
+   "kind": "entry",
+   "label": "E-mail",
+   "desc": "Lender's e-mail",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "WITNESS_NAME_1",
+   "kind": "entry",
+   "label": "Producer Authorization",
+   "desc": "Witness's name (non-family member), row 1",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "DIRECTOR'S (Producer) NAME",
+   "desc": "Director's (producer's) name, row 1",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "WITNESS_NAME_2",
+   "kind": "entry",
+   "label": "WITNESS’ NAME (non-family member) (please print)",
+   "desc": "Witness's name, row 2",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "DIRECTOR'S (Producer) NAME",
+   "desc": "Director's (producer's) name, row 2",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "LENDER_ADDRESS_2",
+   "kind": "entry",
+   "label": "Fax No.",
+   "desc": "Lender's address, line 2",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "STAFF_SIGNATURE",
+   "kind": "entry",
+   "label": "Signature of the lender or lender’s authorized representative",
+   "desc": "Signature of the lender's authorized representative",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date signed by lender",
+   "desc": "Date signed by lender",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "WITNESS_SIGNATURE_1",
+   "kind": "entry",
+   "label": "",
+   "desc": "Witness's signature, row 1",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "DIRECTOR'S (Producer) SIGNATURE",
+   "desc": "Director's (producer's) signature, row 1",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "DATE SIGNED",
+   "desc": "Date signed, row 1",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "WITNESS_SIGNATURE_2",
+   "kind": "entry",
+   "label": "WITNESS’ SIGNATURE",
+   "desc": "Witness's signature, row 2",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "DIRECTOR'S (Producer) SIGNATURE",
+   "desc": "Director's (producer's) signature, row 2",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "DATE SIGNED",
+   "desc": "Date signed, row 2",
+   "how": "reviewed"
+  },
+  "B10": {
+   "name": "DFO_EFFECTIVE_DATE",
+   "kind": "entry",
+   "label": "Effective Date",
+   "desc": "DFO use only: effective date",
+   "how": "reviewed"
+  },
+  "B11": {
+   "name": "DFO_EXPIRY_DATE",
+   "kind": "entry",
+   "label": "Expiry Date",
+   "desc": "DFO use only: expiry date",
+   "how": "reviewed"
+  },
+  "B12": {
+   "name": "DFO_SIGNATURE",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "DFO use only: authorized signature",
+   "how": "reviewed"
+  },
+  "B13": {
+   "name": "DFO_DATE",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "DFO use only: date",
+   "how": "reviewed"
+  },
+  "F16": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "BETWEEN:",
+   "desc": "Security agreement: the borrower (BETWEEN:)",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "COLLATERAL_DESCRIPTION",
+   "kind": "entry",
+   "label": "",
+   "desc": "Security agreement: description of the quota",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "has hereunto set his hand and seal or has affixed its corporate behalf, on the day and year first above written.",
+   "desc": "Legal name of the borrower corporation (IN WITNESS WHEREOF ...)",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B14": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B15": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B16": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B17": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B18": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B19": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B20": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F21"
+ ],
+ "skip": {},
+ "add": [],
+ "notes": [
+  "Page 1 is the Dairy Farmers of Ontario's own form, kept as printed. Its DFO acknowledgement tick boxes and the '____ kg of quota' blank are DFO use only and get no field.",
+  "A stray 'Name of Second Borrower' box sat on the staff row of the security agreement's block; dropped (Member2Name is the block's own row)."
+ ]
+}

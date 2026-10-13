@@ -1,0 +1,196 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Name:",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Name:",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address:",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address:",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Address:",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Account number:",
+   "desc": "Account number - moved onto its typed blank (it sat a line above)",
+   "how": "reviewed",
+   "rect": [
+    138,
+    213,
+    244,
+    226
+   ]
+  },
+  "F7": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Account number:___________________Branch:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "Contract number:",
+   "desc": "RLIF contract number. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "TRANSFER_AMOUNT_CHOICE",
+   "kind": "entry",
+   "label": "lesser of",
+   "desc": "Radio: transfer the lesser of 50% of the amount recently transferred, OR a specified $ amount",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "TRANSFER_AMOUNT_CHOICE",
+   "kind": "entry",
+   "label": "OR",
+   "desc": "OR",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "TRANSFER_SPECIFIED_AMOUNT",
+   "kind": "entry",
+   "label": "$",
+   "desc": "The specified $ amount",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "TRANSFER_TO_EXISTING_RRIF",
+   "kind": "entry",
+   "label": "complete",
+   "desc": "Tick: to an existing RRIF with this institution",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F13": {
+   "name": "TRANSFER_RRIF_CONTRACT",
+   "kind": "entry",
+   "label": "Contract #",
+   "desc": "Existing RRIF contract #",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "TRANSFER_TO_NEW_RRIF",
+   "kind": "entry",
+   "label": "New RRIF with this institution",
+   "desc": "Tick: to a new RRIF with this institution",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F15": {
+   "name": "TRANSFER_TO_EXISTING_RRSP",
+   "kind": "entry",
+   "label": "Existing RRSP (must be age eligible) with this institution",
+   "desc": "Tick: to an existing RRSP (must be age eligible)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F16": {
+   "name": "TRANSFER_RRSP_CONTRACT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Existing RRSP contract #",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "TRANSFER_TO_NEW_RRSP",
+   "kind": "entry",
+   "label": "New RRSP (must be age eligible) with this institution",
+   "desc": "Tick: to a new RRSP (must be age eligible)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F18": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B7": "the account number box (F6) is moved here",
+  "B8": "not a blank - beside the new RRIF line"
+ },
+ "add": [],
+ "notes": []
+}

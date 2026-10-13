@@ -1,0 +1,214 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Of:",
+   "desc": "The deceased's name (estate of)",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Account Number",
+   "desc": "The deceased's account (member) number",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "ESTATE_ASSET1_ACCOUNT",
+   "kind": "entry",
+   "label": "Account Number",
+   "desc": "Deceased's asset 1: account number",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "ESTATE_ASSET1_AMOUNT",
+   "kind": "entry",
+   "label": "Amount",
+   "desc": "Asset 1: amount",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "ESTATE_ASSET2_ACCOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Asset 2: account number",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "ESTATE_ASSET2_AMOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Asset 2: amount",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "ESTATE_ASSET3_ACCOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Asset 3: account number",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "ESTATE_ASSET3_AMOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Asset 3: amount",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "ESTATE_TRANSFER_ACCOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2: estate account # the assets go to",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "SPOUSE_TRANSFER_ACCOUNT",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #4: surviving spouse's account #",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "NO_CERTIFICATE_OF_APPOINTMENT",
+   "kind": "entry",
+   "label": "A Certificate of Appointment was not obtained due to the",
+   "desc": "Tick: a Certificate of Appointment was not obtained",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F12": {
+   "name": "NOTARIZED_WILL_ATTACHED",
+   "kind": "entry",
+   "label": "A notarized copy of the Deceased’s Will is attached; and",
+   "desc": "Tick: notarized copy of the deceased's will attached",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F13": {
+   "name": "PROOF_OF_DEATH_ATTACHED",
+   "kind": "entry",
+   "label": "A copy of the Proof of Death Certificate is attached.",
+   "desc": "Tick: proof of death certificate attached",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F14": {
+   "name": "LEGALLY_MARRIED_TO_DECEASED",
+   "kind": "entry",
+   "label": "The Deceased and I were legally married at the Deceased’s",
+   "desc": "Tick: the deceased and I were legally married",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F15": {
+   "name": "DIED_INTESTATE",
+   "kind": "entry",
+   "label": "The Deceased died intestate, and the estate is equal to",
+   "desc": "Tick: the deceased died intestate",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F16": {
+   "name": "PROOF_OF_DEATH_ATTACHED_2",
+   "kind": "entry",
+   "label": "A copy of the Proof of Death Certificate is attached.",
+   "desc": "Tick: proof of death certificate attached (intestate case)",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F17": {
+   "name": "DECLARED_AT_CITY",
+   "kind": "entry",
+   "label": "___________, this _______ day",
+   "desc": "Declared before me in the city of",
+   "how": "reviewed"
+  },
+  "F18": {
+   "name": "DECLARED_AT_PROVINCE",
+   "kind": "entry",
+   "label": "A.D. 20___.",
+   "desc": "Declared in the province of",
+   "how": "reviewed"
+  },
+  "F19": {
+   "name": "DECLARED_DAY",
+   "kind": "entry",
+   "label": "___________, this",
+   "desc": "Declared this ___ day",
+   "how": "reviewed"
+  },
+  "F20": {
+   "name": "DECLARED_MONTH",
+   "kind": "entry",
+   "label": "___________, this _______ day of",
+   "desc": "of ___ (month)",
+   "how": "reviewed"
+  },
+  "F21": {
+   "name": "DECLARANT_NAME",
+   "kind": "entry",
+   "label": "Declarant Name:",
+   "desc": "Declarant's name",
+   "how": "reviewed"
+  },
+  "F22": {
+   "name": "DECLARANT_ADDRESS_1",
+   "kind": "entry",
+   "label": "Declarant Address:",
+   "desc": "Declarant's address line 1",
+   "how": "reviewed"
+  },
+  "F23": {
+   "name": "DECLARANT_ADDRESS_2",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 2",
+   "how": "reviewed"
+  },
+  "F24": {
+   "name": "DECLARANT_ADDRESS_3",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 3",
+   "how": "reviewed"
+  },
+  "F25": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Credit Union Witness Name",
+   "desc": "Credit union witness (staff member) name",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "STAFF_SIGNATURE",
+   "kind": "entry",
+   "label": "Credit Union Witness Signature",
+   "desc": "Credit union witness signature",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "DECLARANT_SIGNATURE",
+   "kind": "entry",
+   "label": "Declarant Signature",
+   "desc": "Declarant's signature - the declarant is not necessarily a signer on the deceased's account",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "DECLARED_YEAR",
+   "kind": "entry",
+   "label": "A.D.",
+   "desc": "A.D. 20__",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "the city line is F17; not a blank"
+ },
+ "add": [],
+ "notes": [
+  "Options #1-#4 (what to do with the assets) have no tick boxes on the form - the choice can only be marked by hand."
+ ]
+}

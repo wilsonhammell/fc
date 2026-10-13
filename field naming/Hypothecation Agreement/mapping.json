@@ -1,0 +1,1192 @@
+{
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "In consideration of advances made or to be made",
+   "desc": "Member's first name",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "PRIMARY_MIDDLE",
+   "kind": "db",
+   "label": "In consideration of advances made or to be made to",
+   "desc": "Member's middle name/initial",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "In consideration of advances made or to be made to",
+   "desc": "Member's surname",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "SIGNER2_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, first name",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "SIGNER2_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, middle name/initial",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "SIGNER2_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 2, surname",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "SIGNER1_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 1, first name",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "SIGNER1_MIDDLE",
+   "kind": "db",
+   "label": "advances",
+   "desc": "Joint owner 1, middle name/initial",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "SIGNER1_SURNAME",
+   "kind": "db",
+   "label": "made or to be made to",
+   "desc": "Joint owner 1, surname",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "SIGNER3_NAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, first name",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "SIGNER3_MIDDLE",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, middle name/initial",
+   "how": "reviewed"
+  },
+  "F12": {
+   "name": "SIGNER3_SURNAME",
+   "kind": "db",
+   "label": "and",
+   "desc": "Joint owner 3, surname",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    45.6,
+    671.3,
+    231.1,
+    689.3
+   ]
+  },
+  "F17": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    45.6,
+    755.3,
+    231.1,
+    773.3
+   ]
+  },
+  "F20": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    45.6,
+    713.3,
+    231.1,
+    731.3
+   ]
+  },
+  "F23": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    45.6,
+    797.3,
+    231.1,
+    815.3
+   ]
+  },
+  "B1": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B10": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "F26": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F27": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F28": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F29": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Where the Borrower is a Corporation:",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F30": {
+   "name": "ORG_OFFICER1_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 1, title",
+   "how": "reviewed"
+  },
+  "F31": {
+   "name": "ORG_OFFICER2_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 2, title",
+   "how": "reviewed"
+  },
+  "F32": {
+   "name": "ORG_OFFICER3_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 3, title",
+   "how": "reviewed"
+  },
+  "B11": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B12": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B13": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B14": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B15": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B16": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B17": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B18": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "F33": {
+   "name": "RETURN_TO_LONDON",
+   "kind": "entry",
+   "label": "London,",
+   "desc": "Acknowledgement: return to 217 York Street, London",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F34": {
+   "name": "RETURN_TO_ESSEX",
+   "kind": "entry",
+   "label": "Essex,",
+   "desc": "Acknowledgement: return to 154 Talbot Street N., Essex",
+   "how": "reviewed",
+   "type": "checkbox"
+  },
+  "F35": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F36": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Acknowledgement: signer 1 date",
+   "how": "reviewed"
+  },
+  "B19": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B20": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B21": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B22": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B23": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B24": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "F37": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    50.0,
+    288.7,
+    232.3,
+    306.7
+   ]
+  },
+  "F40": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    50.0,
+    372.7,
+    232.3,
+    390.7
+   ]
+  },
+  "F43": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    50.0,
+    330.7,
+    232.3,
+    348.7
+   ]
+  },
+  "F46": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    50.0,
+    414.7,
+    232.3,
+    432.7
+   ]
+  },
+  "F49": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F50": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F51": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F52": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F53": {
+   "name": "ORG_OFFICER1_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 1, title",
+   "how": "reviewed"
+  },
+  "F54": {
+   "name": "ORG_OFFICER2_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 2, title",
+   "how": "reviewed"
+  },
+  "F55": {
+   "name": "ORG_OFFICER3_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 3, title",
+   "how": "reviewed"
+  },
+  "F56": {
+   "name": "MF_CUSTODIAN",
+   "kind": "entry",
+   "label": "All mutual funds under custody of",
+   "desc": "Mutual funds: under custody of",
+   "how": "reviewed"
+  },
+  "F57": {
+   "name": "MF_ACCOUNT_NUMBER",
+   "kind": "entry",
+   "label": "Account No.",
+   "desc": "Mutual funds: account no.",
+   "how": "reviewed"
+  },
+  "F58": {
+   "name": "MF_MAX_VALUE",
+   "kind": "entry",
+   "label": "value hypothecated at any given time shall not exceed $",
+   "desc": "Mutual funds: total value hypothecated shall not exceed $",
+   "how": "reviewed"
+  },
+  "B25": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B26": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B27": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B28": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B29": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B30": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B31": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B32": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B33": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B34": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "B35": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B36": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B37": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B38": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B39": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B40": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B41": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B42": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "F59": {
+   "name": "STOCKS_CUSTODIAN",
+   "kind": "entry",
+   "label": "All stocks under custody of",
+   "desc": "Stocks: under custody of",
+   "how": "reviewed"
+  },
+  "F60": {
+   "name": "STOCKS_ACCOUNT_NUMBER",
+   "kind": "entry",
+   "label": "Account No.",
+   "desc": "Stocks: account no.",
+   "how": "reviewed"
+  },
+  "F61": {
+   "name": "STOCKS_MAX_VALUE",
+   "kind": "entry",
+   "label": "not exceed $",
+   "desc": "Stocks: total value shall not exceed $",
+   "how": "reviewed"
+  },
+  "F62": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    50.0,
+    322.4,
+    232.3,
+    340.4
+   ]
+  },
+  "F65": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    50.0,
+    406.4,
+    232.3,
+    424.4
+   ]
+  },
+  "F68": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    50.0,
+    364.4,
+    232.3,
+    382.4
+   ]
+  },
+  "F71": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    50.0,
+    448.4,
+    232.3,
+    466.4
+   ]
+  },
+  "F74": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F75": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F76": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F77": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F78": {
+   "name": "ORG_OFFICER1_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 1, title",
+   "how": "reviewed"
+  },
+  "F79": {
+   "name": "ORG_OFFICER2_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 2, title",
+   "how": "reviewed"
+  },
+  "F80": {
+   "name": "ORG_OFFICER3_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 3, title",
+   "how": "reviewed"
+  },
+  "B43": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B44": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B45": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B46": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B47": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B48": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B49": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B50": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B51": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B52": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "B53": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B54": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B55": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B56": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B57": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B58": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B59": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B60": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "F81": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    45.6,
+    310.4,
+    231.1,
+    328.4
+   ]
+  },
+  "F84": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    45.6,
+    394.4,
+    231.1,
+    412.4
+   ]
+  },
+  "F87": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    45.6,
+    352.4,
+    231.1,
+    370.4
+   ]
+  },
+  "F90": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4 - one dropdown across the Name line, in place of the first/middle/surname merge fields",
+   "how": "reviewed",
+   "rect": [
+    45.6,
+    436.4,
+    231.1,
+    454.4
+   ]
+  },
+  "F93": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "F94": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "F95": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "F96": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "The borrower corporation's name, Bonds direction - moved off the staff line it was laid over",
+   "how": "reviewed",
+   "rect": [
+    46,
+    512,
+    452,
+    528
+   ]
+  },
+  "F97": {
+   "name": "ORG_OFFICER1_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 1, title",
+   "how": "reviewed"
+  },
+  "F98": {
+   "name": "ORG_OFFICER2_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 2, title",
+   "how": "reviewed"
+  },
+  "F99": {
+   "name": "ORG_OFFICER3_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Organization signing officer 3, title",
+   "how": "reviewed"
+  },
+  "F100": {
+   "name": "BONDS_CUSTODIAN",
+   "kind": "entry",
+   "label": "All government and corporate bonds under custody of",
+   "desc": "Bonds: under custody of",
+   "how": "reviewed"
+  },
+  "F101": {
+   "name": "BONDS_ACCOUNT_NUMBER",
+   "kind": "entry",
+   "label": "Account No.",
+   "desc": "Bonds: account no.",
+   "how": "reviewed"
+  },
+  "F102": {
+   "name": "BONDS_MAX_VALUE",
+   "kind": "entry",
+   "label": "given time shall not exceed $",
+   "desc": "Bonds: total value shall not exceed $",
+   "how": "reviewed"
+  },
+  "B61": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B62": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B63": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B64": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B65": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B66": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B67": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B68": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4",
+   "how": "reviewed"
+  },
+  "B69": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date (Bonds direction, individual block)",
+   "how": "reviewed"
+  },
+  "B70": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B71": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B72": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B73": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B74": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B75": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3",
+   "how": "reviewed"
+  },
+  "B76": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B77": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  }
+ },
+ "drop": [
+  "F15",
+  "F16",
+  "F18",
+  "F19",
+  "F21",
+  "F22",
+  "F24",
+  "F25",
+  "F38",
+  "F39",
+  "F41",
+  "F42",
+  "F44",
+  "F45",
+  "F47",
+  "F48",
+  "F63",
+  "F64",
+  "F66",
+  "F67",
+  "F69",
+  "F70",
+  "F72",
+  "F73",
+  "F82",
+  "F83",
+  "F85",
+  "F86",
+  "F88",
+  "F89",
+  "F91",
+  "F92"
+ ],
+ "skip": {},
+ "add": [
+  {
+   "page": 6,
+   "rect": [
+    46,
+    483,
+    233,
+    496
+   ],
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member (Bonds direction) - the line was under the corporation name box",
+   "type": "text"
+  }
+ ],
+ "notes": [
+  "One file carries the Bonds, Mutual Funds and Stocks agreements; every signing block repeats Member1-4 (individuals) or Member1-3 with officer titles (corporations) - the same signers, one value shown in each.",
+  "On the Bonds page the corporation's name box sat on the staff line of the individual block - a layout fault in the restyled form; moved for now, but the page wants a look."
+ ]
+}

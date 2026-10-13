@@ -1,0 +1,89 @@
+{
+ "items": {
+  "F1": {
+   "name": "SIGNED_AT_CITY",
+   "kind": "entry",
+   "label": "",
+   "desc": "Dated in the city of",
+   "how": "reviewed"
+  },
+  "F2": {
+   "name": "SIGNED_DAY",
+   "kind": "entry",
+   "label": "",
+   "desc": "this ___ day",
+   "how": "reviewed"
+  },
+  "F3": {
+   "name": "SIGNED_MONTH_YEAR",
+   "kind": "entry",
+   "label": "DATED IN THE CITY OF",
+   "desc": "of ___ (month, year)",
+   "how": "reviewed"
+  },
+  "F4": {
+   "name": "WITNESS_SIGNATURE",
+   "kind": "entry",
+   "label": "",
+   "desc": "Witness signature",
+   "how": "reviewed"
+  },
+  "F5": {
+   "name": "MORTGAGE_TO",
+   "kind": "entry",
+   "label": "Mortgage to:",
+   "desc": "RE: Mortgage to: (as the mortgage names it)",
+   "how": "reviewed"
+  },
+  "F6": {
+   "name": "PROPERTY_ADDRESS",
+   "kind": "entry",
+   "label": "Property:",
+   "desc": "The mortgaged property",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "I,",
+   "desc": "The mortgagor (I, ___ of the Province of Ontario)",
+   "how": "reviewed"
+  },
+  "F8": {
+   "name": "EXECUTION_PLAINTIFF",
+   "kind": "entry",
+   "label": "am advised that there is an execution in favour of",
+   "desc": "Execution in favour of (the plaintiff)",
+   "how": "reviewed"
+  },
+  "F9": {
+   "name": "EXECUTION_PLAINTIFF_2",
+   "kind": "entry",
+   "label": "wherein the said Plantiff was awarded",
+   "desc": "Plaintiff, continued",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "EXECUTION_DEFENDANT",
+   "kind": "entry",
+   "label": "as Plaintiff, against ,",
+   "desc": "Against (the defendant)",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "_________________",
+   "desc": "Mortgagor's signature - declaration, its own signing kept",
+   "how": "reviewed"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "not a blank"
+ },
+ "add": [],
+ "notes": [
+  "The witness prints their name under the signature - there is no line for it."
+ ]
+}
