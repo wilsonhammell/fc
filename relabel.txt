@@ -74,6 +74,10 @@ Witness Signature                              => Authorizing Staff Member
 Printed Name of Witness                        => Authorizing Staff Member
 Witness Name                                   => Authorizing Staff Member
 Staff name                                     => Authorizing Staff Member
+#     "Coach" is Libro's word for the staff member (2026-10-13)
+Coach                                          => Authorizing Staff Member
+Coach Name                                     => Authorizing Staff Member Name
+Coach Signature                                => Authorizing Staff Member Signature
 
 # v. Member signing -> Authorized Signature
 #    (2026-09-20: the member signing their own plan)

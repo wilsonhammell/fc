@@ -5130,9 +5130,11 @@ def plan_relabels(doc, fonts, args, table, size, fine, plans):
     document or moves anything else. A word inside a sentence is never
     touched. Everything that didn't qualify is reported for a human, as is
     any line mentioning a witness or staff that the table doesn't cover.
-    Reads the document, changes nothing. Each entry is {"text", "centre"},
+    Reads the document and changes nothing in it but this: a field the
+    longer wording would run into starts after it. Each entry is {"text", "centre"},
     centre being the x to keep when the label was centred under its line."""
     out, rows = [], []
+    fields_moved = []                 # (widget xref, new left edge)
     declared_at = declared_pages(doc)
     for pi, page in enumerate(doc):
         declared = declared_at[pi]
@@ -5290,6 +5292,24 @@ def plan_relabels(doc, fonts, args, table, size, fine, plans):
                     for r in planned:
                         if r["x0"] < start:
                             r["x0"] = start
+            # A field on the label's row that the longer wording now runs
+            # into starts after it instead - "Coach Name:" became "Authorizing
+            # Staff Member Name:" and ran 90pt into the box beside it. The
+            # field keeps its right edge and at least 36pt, or the relabel is
+            # left for a person.
+            if not why and anchor is None and right_at is None and not rm["right"] and not rm["centred"]:
+                b = ln["bbox"]
+                end = ln["spans"][0]["origin"][0] + line_width(
+                    [dict(ln["spans"][0], text=measure)], fonts, fine[pi].get(key, size))
+                for w in page.widgets():
+                    r = fitz.Rect(w.rect)
+                    level = min(r.y1, b.y1) - max(r.y0, b.y0) > 0.4 * min(r.height, b.height)
+                    if not level or r.x1 <= end or r.x0 >= end + 2 or r.x0 < b.x0:
+                        continue
+                    if r.x1 - (end + 4) < 36:
+                        why = f"{new!r} would run into the field {w.field_name!r} beside it"
+                        break
+                    fields_moved.append((w.xref, end + 4))
             if why:
                 rows.append((pi + 1, "relabel_for_human", f"{text!r} -> {new.strip()!r}: {why}"))
             else:
@@ -5299,6 +5319,17 @@ def plan_relabels(doc, fonts, args, table, size, fine, plans):
                               "box": fitz.Rect(ln["bbox"])}
                 rows.append((pi + 1, "relabelled", f"{text!r} -> {new.strip()!r}"
                              + (" (kept centred under its line)" if anchor is not None else "")))
+    for xref, x0 in fields_moved:
+        for pi, page in enumerate(doc):
+            w = next((w for w in page.widgets() if w.xref == xref), None)
+            if w is not None:
+                r = fitz.Rect(w.rect)
+                w.rect = fitz.Rect(x0, r.y0, r.x1, r.y1)
+                w.update()
+                forget(page)
+                rows.append((pi + 1, "field_moved_for_label",
+                             f"{w.field_name!r} starts at {x0:.0f}pt, after the longer label"))
+                break
     return out, rows
 
 

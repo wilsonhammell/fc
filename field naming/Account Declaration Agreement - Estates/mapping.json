@@ -191,7 +191,7 @@
    "desc": "Province the agreement is signed in",
    "how": "reviewed"
   },
-  "B1": {
+  "B2": {
    "name": "ESTATE_CORRESPONDENCE_ADDRESS_2",
    "kind": "candidate",
    "label": "Correspondence:",
@@ -200,7 +200,9 @@
   }
  },
  "drop": [],
- "skip": {},
+ "skip": {
+  "B1": "the rule under the staff row - the staff name and signature fields are on it"
+ },
  "add": [],
  "notes": []
 }
