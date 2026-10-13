@@ -499,6 +499,9 @@ def gather(root):
         for g, n, c, note in rows:
             wr.writerow([g, n, c["desc"], len(c["forms"]), " | ".join(c["labels"]),
                          " | ".join(c["forms"]), note])
+    # and the names alone, one per line, for whoever just wants the list
+    with open(os.path.join(root, "missing from DB.txt"), "w", encoding="utf-8") as fh:
+        fh.write("\n".join(n for _, n, _, _ in rows) + "\n")
     # every field of every form in one table, and every named form in one
     # folder - the per-form folders hold the same, one form at a time
     import shutil
