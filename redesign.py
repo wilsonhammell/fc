@@ -4026,8 +4026,9 @@ def main():
         # logo; it stays at 14pt, the client's title size - the logo is taller
         # than three lines of it, so the header takes no more room.
         room = doc[0].rect.width - 36 - (logo_right + 14)
-        at, lines = 14.0, [title]
-        if bold_font.text_length(title, at) > room:
+        # A letter carries the logo alone (house_title gives it no title).
+        at, lines = 14.0, [title] if title else []
+        if title and bold_font.text_length(title, at) > room:
             lines, line = [], ""
             for word in title.split():
                 trial = (line + " " + word).strip()
@@ -4842,12 +4843,18 @@ def main():
             retry = [h[:1] + [h[1] - 1, h[2] + 1] + h[3:] for h in hints.values()]
             say(f"signing block had no room in {len(retry)} area(s); laying the form "
                 f"out again with room kept there")
+            # (the child writes UTF-8 whatever the console's code page: on
+            # Windows it wrote cp1252, RLIF's footer "© Concentra" failed to
+            # decode, and the whole rebuild died with nothing written)
             r = subprocess.run([sys.executable, os.path.abspath(__file__)] + sys.argv[1:]
                                + ["--signing-room", json.dumps(retry)],
-                               capture_output=True, text=True, encoding="utf-8")
-            sys.stdout.write(r.stdout)
-            if r.stderr:
-                sys.stderr.write(r.stderr)
+                               capture_output=True, text=True, encoding="utf-8",
+                               errors="replace",
+                               env=dict(os.environ, PYTHONIOENCODING="utf-8"))
+            for out, text in ((sys.stdout, r.stdout), (sys.stderr, r.stderr)):
+                if text:
+                    enc = out.encoding or "utf-8"
+                    out.write(text.encode(enc, "replace").decode(enc))
             return r.returncode
     bad = R.fix_tounicode(out, fonts)
     # PyMuPDF marks a file "append only" (SigFlags 3) when it adds a

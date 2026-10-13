@@ -4939,6 +4939,10 @@ def house_title(name, path=TITLES):
     the typo."""
     stem = os.path.splitext(os.path.basename(name))[0]
     key = " ".join(stem.split()).casefold()
+    # a letter carries the logo alone, no written title (client, 2026-10-13):
+    # "Breach Letter", "LOC Repricing Letter", "... - Letter"
+    if re.search(r"\bletter\b", key):
+        return ""
     if os.path.exists(path):
         with open(path, encoding="utf-8") as fh:
             for line in fh:
@@ -5706,7 +5710,7 @@ def plan_header(page, title, fonts, args):
     def layout(top_of_logo):
         logo = fitz.Rect(ext.x0, top_of_logo, ext.x0 + args.logo_size * aspect,
                          top_of_logo + args.logo_size)
-        texts = wrap_title(title, font, size, args.title_width)
+        texts = wrap_title(title, font, size, args.title_width) if title else []
         block = (len(texts) - 1) * lead + asc + desc
         first = (logo.y0 + logo.y1) / 2 - block / 2 + asc
         lines = []
@@ -5722,7 +5726,7 @@ def plan_header(page, title, fonts, args):
     clash = [r for r in [logo] + [ln["rect"] for ln in lines] if r.intersects(BUTTON_ZONE)]
     if clash:          # drop the whole header below the signing-button row
         logo, lines = layout(args.logo_top + BUTTON_ZONE.y1 + 2 - min(r.y0 for r in clash))
-    if min(ln["rect"].x0 for ln in lines) < logo.x1 + 12:
+    if lines and min(ln["rect"].x0 for ln in lines) < logo.x1 + 12:
         return None, [("HEADER_SKIPPED", f"title {title!r} is too wide to sit beside "
                                          "the logo; shorten it or lower --title-width")]
 
@@ -5758,7 +5762,8 @@ def plan_header(page, title, fonts, args):
                                            f"y={r.y0:.0f}-{r.y1:.0f}") for r in old_logos]
     what = (f"logo {os.path.basename(logo_file)} at {logo.width:.0f}x{logo.height:.0f}pt"
             if logo_file else f"{args.logo_size:g}pt logo placeholder")
-    issues.append(("header", f"title {title!r} in {len(lines)} line(s) at {size:g}pt, "
+    issues.append(("header", (f"title {title!r} in {len(lines)} line(s) at {size:g}pt, " if title
+                              else "no title (a letter: the logo alone), ") +
                              f"{what}, content moved down {dy:.1f}pt"))
     return {"old_titles": old_titles, "old_logos": old_logos, "logo": logo,
             "logo_file": logo_file, "lines": lines, "bottom": bottom, "dy": dy,
