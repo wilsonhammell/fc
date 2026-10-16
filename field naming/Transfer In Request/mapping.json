@@ -48,7 +48,8 @@
    "label": "☐No",
    "desc": "Please credit my: RRSP",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one receiving plan (CREDIT_RRSP, CREDIT_SPRSP, CREDIT_LIRA, CREDIT_RLSP, CREDIT_RRIF, CREDIT_SPRIF, CREDIT_LIF, CREDIT_RLIF, CREDIT_TFSA, CREDIT_NON_REGISTERED) must be ticked"
   },
   "F8": {
    "name": "CREDIT_SPRSP",
@@ -128,7 +129,8 @@
    "label": "Number:",
    "desc": "Receiving plan locked-in: yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of CREDIT_LOCKED_IN_YES and CREDIT_LOCKED_IN_NO must be ticked"
   },
   "F18": {
    "name": "CREDIT_LOCKED_IN_NO",
@@ -144,7 +146,8 @@
    "label": "☐LIRA/Locked-in",
    "desc": "Receiving plan jurisdiction: Ontario",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When CREDIT_LOCKED_IN_YES is ticked, exactly one of CREDIT_JURISDICTION_ONTARIO and CREDIT_JURISDICTION_FEDERAL must be ticked"
   },
   "F20": {
    "name": "CREDIT_JURISDICTION_FEDERAL",
@@ -174,7 +177,8 @@
    "label": "Locked-In:",
    "desc": "Transfer my: RRSP",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "At least one plan to transfer from (TRANSFER_FROM_*) must be ticked"
   },
   "F24": {
    "name": "TRANSFER_FROM_SPRSP",
@@ -278,7 +282,8 @@
    "label": "Name:",
    "desc": "Plan being transferred is locked-in: yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of FROM_LOCKED_IN_YES and FROM_LOCKED_IN_NO must be ticked"
   },
   "F37": {
    "name": "FROM_LOCKED_IN_NO",
@@ -294,7 +299,8 @@
    "label": "☐RLSP",
    "desc": "Plan being transferred, jurisdiction: Ontario",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When FROM_LOCKED_IN_YES is ticked, exactly one of FROM_JURISDICTION_ONTARIO and FROM_JURISDICTION_FEDERAL must be ticked"
   },
   "F39": {
    "name": "FROM_JURISDICTION_FEDERAL",
@@ -309,56 +315,64 @@
    "kind": "entry",
    "label": "Institution Name:",
    "desc": "Relinquishing institution: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F41": {
    "name": "RELINQUISHING_FI_ADDRESS",
    "kind": "entry",
    "label": "Address:",
    "desc": "address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F42": {
    "name": "RELINQUISHING_FI_CITY",
    "kind": "entry",
    "label": "City:",
    "desc": "city",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F43": {
    "name": "RELINQUISHING_FI_PROVINCE",
    "kind": "entry",
    "label": "Province:",
    "desc": "province",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F44": {
    "name": "RELINQUISHING_FI_POSTAL",
    "kind": "entry",
    "label": "Postal Code:",
    "desc": "postal code",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F45": {
    "name": "RELINQUISHING_ACCOUNT_NUMBER",
    "kind": "entry",
    "label": "Client Account number:",
    "desc": "The member's account number at the relinquishing institution",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F46": {
    "name": "INVESTMENT1_SYMBOL",
    "kind": "entry",
    "label": "1) Symbol and/or Certificate/Policy Number:",
    "desc": "Investment 1: symbol and/or certificate/policy number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F47": {
    "name": "INVESTMENT1_AMOUNT",
    "kind": "entry",
    "label": "Amount: $",
    "desc": "Investment 1: amount $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F48": {
    "name": "INVESTMENT1_PARTIAL_CASH",
@@ -366,7 +380,8 @@
    "label": "",
    "desc": "Investment 1: partial in cash",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of INVESTMENT1_PARTIAL_CASH and INVESTMENT1_FULL_CASH must be ticked"
   },
   "F49": {
    "name": "INVESTMENT1_FULL_CASH",

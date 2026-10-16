@@ -6,179 +6,138 @@
    "label": "Name",
    "desc": "Member's first (usual) name - the form splits Name into first and last"
   },
-  "F2": {
+  "F21": {
    "name": "PRIMARY_SURNAME",
    "kind": "db",
    "label": "Name",
    "desc": "Member's surname"
   },
-  "F3": {
+  "F2": {
    "name": "PRIMARY_MEMBER_NUMBER",
    "kind": "db",
    "label": "Member Number",
    "desc": "Member number"
   },
-  "F4": {
+  "F3": {
    "name": "PRIMARY_BRANCH_NAME",
    "kind": "db",
    "label": "Branch",
    "desc": "Member's branch. CHECK: name or number? PRIMARY_BRANCH is the number"
   },
-  "F5": {
+  "F4": {
    "name": "TRACE_REASON_NO_FUNDS",
    "kind": "entry",
    "label": "Member didn't receive any funds",
-   "desc": "Reason for trace, tick"
+   "desc": "Reason for trace, tick",
+   "custom": "At least one Reason for trace box must be ticked (TRACE_REASON_NO_FUNDS, _PARTIAL_FUNDS, _DECLINED_DEBITED, _DEBITED_TWICE, _NOT_RECOGNIZED, _OTHER)"
   },
-  "F6": {
+  "F5": {
    "name": "TRACE_REASON_PARTIAL_FUNDS",
    "kind": "entry",
    "label": "Entire amount requested not received",
    "desc": "Reason for trace, tick"
   },
-  "F7": {
+  "F6": {
    "name": "TRACE_REASON_DECLINED_DEBITED",
    "kind": "entry",
    "label": "Transaction said decline but still debited account",
    "desc": "Reason for trace, tick"
   },
-  "F8": {
+  "F7": {
    "name": "TRACE_REASON_DEBITED_TWICE",
    "kind": "entry",
    "label": "Account debited twice for same transaction",
    "desc": "Reason for trace, tick"
   },
-  "F9": {
+  "F8": {
    "name": "TRACE_REASON_NOT_RECOGNIZED",
    "kind": "entry",
    "label": "Member does not recognize the transaction",
    "desc": "Reason for trace, tick"
   },
-  "F10": {
+  "F9": {
    "name": "TRACE_REASON_OTHER",
    "kind": "entry",
    "label": "Other, please specify",
    "desc": "Reason for trace, tick"
   },
-  "F11": {
+  "F10": {
    "name": "TRACE_REASON_OTHER_DETAIL",
    "kind": "entry",
    "label": "Other, please specify",
-   "desc": "The other reason, in words"
+   "desc": "The other reason, in words",
+   "custom": "Required when TRACE_REASON_OTHER is ticked"
   },
-  "F12": {
+  "F11": {
    "name": "BRANCH_TRACE_CONTACT",
    "kind": "entry",
    "label": "Branch contact name for trace",
-   "desc": "Staff member Central 1 should contact. Could be REQUESTUSER if it is always the person filling the form"
+   "desc": "Staff member Central 1 should contact. Could be REQUESTUSER if it is always the person filling the form",
+   "save": true
   },
-  "F13": {
+  "F12": {
    "name": "ATM_TRANSACTION_DATE",
    "kind": "entry",
    "label": "Date of ATM transaction",
-   "desc": "Date of the ATM transaction"
+   "desc": "Date of the ATM transaction",
+   "custom": "Either the ATM section (ATM_TRANSACTION_DATE, _AMOUNT, ATM_UNIT_ID, ATM_PAN_NUMBER, ATM_TRACER_NUMBER) or the POS section must be filled in"
   },
-  "F14": {
+  "F13": {
    "name": "ATM_TRANSACTION_AMOUNT",
    "kind": "entry",
    "label": "Amount of ATM transaction",
-   "desc": "Amount of the ATM transaction"
+   "desc": "Amount of the ATM transaction",
+   "custom": "Required when the ATM section is used (ATM_TRANSACTION_DATE filled in)"
   },
-  "F15": {
+  "F14": {
    "name": "ATM_UNIT_ID",
    "kind": "entry",
    "label": "ATM unit identification number",
    "desc": "ATM unit identification number"
   },
-  "F16": {
+  "F15": {
    "name": "ATM_PAN_NUMBER",
    "kind": "entry",
    "label": "PAN number used for the transaction (if available)",
    "desc": "Card number (PAN) used at the ATM"
   },
-  "F17": {
+  "F16": {
    "name": "ATM_TRACER_NUMBER",
    "kind": "entry",
    "label": "Tracer number for the transaction",
    "desc": "Tracer number of the ATM transaction"
   },
-  "F18": {
+  "F17": {
    "name": "POS_TRANSACTION_DATE",
    "kind": "entry",
    "label": "Date of POS transaction",
-   "desc": "Date of the POS transaction"
+   "desc": "Date of the POS transaction",
+   "custom": "Either the POS section (POS_TRANSACTION_DATE, _AMOUNT, POS_UNIT_ID, POS_PAN_NUMBER, POS_TRACER_NUMBER) or the ATM section must be filled in"
   },
-  "F19": {
+  "F18": {
    "name": "POS_TRANSACTION_AMOUNT",
    "kind": "entry",
    "label": "Amount of POS transaction",
-   "desc": "Amount of the POS transaction"
+   "desc": "Amount of the POS transaction",
+   "custom": "Required when the POS section is used (POS_TRANSACTION_DATE filled in)"
   },
-  "F20": {
+  "F19": {
    "name": "POS_UNIT_ID",
    "kind": "entry",
    "label": "ATM unit identification number",
    "desc": "Terminal identification number (the form says ATM unit under POS)"
   },
-  "F21": {
+  "F20": {
    "name": "POS_PAN_NUMBER",
    "kind": "entry",
    "label": "PAN number used for the transaction (if available)",
    "desc": "Card number (PAN) used at the POS"
   },
-  "B9": {
+  "B3": {
    "name": "POS_TRACER_NUMBER",
    "kind": "entry",
    "label": "Tracer number for the transaction",
    "desc": "Tracer number of the POS transaction - the form had no box for it"
-  },
-  "B1": {
-   "name": "Member1Name",
-   "kind": "special",
-   "label": "Name",
-   "desc": "Signer 1"
-  },
-  "B2": {
-   "name": "Member1Signature",
-   "kind": "special",
-   "label": "Authorized Signature",
-   "desc": "Signer 1"
-  },
-  "B3": {
-   "name": "Member1SignDate",
-   "kind": "special",
-   "label": "Date",
-   "desc": "Signer 1"
-  },
-  "B4": {
-   "name": "Member2Name",
-   "kind": "special",
-   "label": "Name",
-   "desc": "Signer 2"
-  },
-  "B5": {
-   "name": "Member2Signature",
-   "kind": "special",
-   "label": "Authorized Signature",
-   "desc": "Signer 2"
-  },
-  "B6": {
-   "name": "Member2SignDate",
-   "kind": "special",
-   "label": "Date",
-   "desc": "Signer 2"
-  },
-  "B7": {
-   "name": "REQUESTUSER",
-   "kind": "db",
-   "label": "Authorizing Staff Member",
-   "desc": "Staff member filling the form"
-  },
-  "B8": {
-   "name": "PRIMARY_SIGN_DATE",
-   "kind": "db",
-   "label": "Date",
-   "desc": "Staff date"
   },
   "F22": {
    "name": "ADMIN_DATE_RECEIVED",
@@ -205,5 +164,9 @@
    "desc": "Admin office use only"
   }
  },
- "drop": []
+ "drop": [],
+ "skip": {
+  "B1": "part of the underline of the field beside it on the plain rung - not a place of its own",
+  "B2": "part of the underline of the field beside it on the plain rung - not a place of its own"
+ }
 }

@@ -102,14 +102,16 @@
     531,
     576,
     545
-   ]
+   ],
+   "save": true
   },
   "F15": {
    "name": "PROPERTY_PIN",
    "kind": "entry",
    "label": "being all of PIN",
    "desc": "The property's PIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F16": {
    "name": "PROPERTY_PIN",

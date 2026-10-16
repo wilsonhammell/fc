@@ -12,7 +12,8 @@
    "kind": "candidate",
    "label": "Deposit Number:",
    "desc": "GIC deposit (sub) number (old merge tag Sub)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F3": {
    "name": "TERM_ACCOUNT_TYPE",
@@ -110,7 +111,8 @@
    "kind": "candidate",
    "label": "Maturity Option",
    "desc": "What happens at maturity (old merge tag Maturity_Diposition)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F17": {
    "name": "TERM_MATURITY_TRANSFER_ACCT_TYPE",
@@ -145,7 +147,8 @@
    "kind": "candidate",
    "label": "Interest Paid to:",
    "desc": "Where interest is paid (old merge tag Interest_Disposition)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F22": {
    "name": "TERM_INTEREST_TRANSFER_ACCT_TYPE",

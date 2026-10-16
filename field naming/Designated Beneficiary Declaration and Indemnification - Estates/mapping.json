@@ -40,42 +40,48 @@
    "kind": "entry",
    "label": "I, (full name)",
    "desc": "Designated beneficiary's full name (the declarant)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "BENEFICIARY_CITY",
    "kind": "entry",
    "label": "of the City of",
    "desc": "Beneficiary's city",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "BENEFICIARY_PROVINCE",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Beneficiary's province",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F9": {
    "name": "BENEFICIARY_RELATIONSHIP",
    "kind": "entry",
    "label": "do hereby certify that I am the ___ of the deceased",
    "desc": "Beneficiary's relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F10": {
    "name": "PRIMARY_DEATH_DAY",
    "kind": "candidate",
    "label": "died on the ___ day",
    "desc": "Day of the member's death - the DB list has no date of death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "PRIMARY_DEATH_MONTH_YEAR",
    "kind": "candidate",
    "label": "of ___ (month/year)",
    "desc": "Month and year of the member's death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F12": {
    "name": "BENEFICIARY_OF_RRSP",
@@ -83,14 +89,16 @@
    "label": "THAT",
    "desc": "Tick: named beneficiary of RRSP contract(s)",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "At least one of BENEFICIARY_OF_RRSP and BENEFICIARY_OF_TFSA must be ticked"
   },
   "F13": {
    "name": "RRSP_CONTRACTS",
    "kind": "entry",
    "label": "RRSP Contract(s)",
    "desc": "The deceased's RRSP contract number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when BENEFICIARY_OF_RRSP is ticked"
   },
   "F14": {
    "name": "BENEFICIARY_OF_TFSA",
@@ -105,42 +113,48 @@
    "kind": "entry",
    "label": "TFSA Contract(s)",
    "desc": "The deceased's TFSA contract number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when BENEFICIARY_OF_TFSA is ticked"
   },
   "F16": {
    "name": "BENEFICIARY_BIRTH_DAY",
    "kind": "entry",
    "label": "entitled to the proceeds",
    "desc": "Beneficiary's date of birth, day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F17": {
    "name": "BENEFICIARY_BIRTH_MONTH",
    "kind": "entry",
    "label": "proceeds and claim the",
    "desc": "Beneficiary's date of birth, month",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F18": {
    "name": "BENEFICIARY_BIRTH_YEAR",
    "kind": "entry",
    "label": "the said funds",
    "desc": "Beneficiary's date of birth, year",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F19": {
    "name": "BENEFICIARY_SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Beneficiary's SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F20": {
    "name": "BENEFICIARY_ADDRESS_1",
    "kind": "entry",
    "label": "Address:",
    "desc": "Beneficiary's permanent address, line 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F21": {
    "name": "BENEFICIARY_ADDRESS_2",
@@ -169,21 +183,24 @@
    "label": "Option #1a – RRSP only",
    "desc": "Tick: Option #1a - transfer RRSP to my RRSP",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "At least one payout option (OPTION_1A_RRSP, OPTION_1B_TFSA, OPTION_2_RRIF, OPTION_3_DEPOSIT, OPTION_4) must be ticked"
   },
   "F25": {
    "name": "OPTION_1A_RRSP_CONTRACT",
    "kind": "entry",
    "label": "Application/Subsequent Deposit Form attached)",
    "desc": "Option #1a: beneficiary's RRSP contract #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when OPTION_1A_RRSP is ticked"
   },
   "F26": {
    "name": "OPTION_1A_RRSP_ACCOUNT",
    "kind": "entry",
    "label": "attached)",
    "desc": "Option #1a: account #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when OPTION_1A_RRSP is ticked"
   },
   "F27": {
    "name": "OPTION_1B_TFSA",
@@ -198,14 +215,16 @@
    "kind": "entry",
    "label": "Application/Subsequent Deposit Form attached)",
    "desc": "Option #1b: beneficiary's TFSA contract #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when OPTION_1B_TFSA is ticked"
   },
   "F29": {
    "name": "OPTION_1B_TFSA_ACCOUNT",
    "kind": "entry",
    "label": "attached)",
    "desc": "Option #1b: account #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when OPTION_1B_TFSA is ticked"
   },
   "F30": {
    "name": "OPTION_2_RRIF",
@@ -220,14 +239,16 @@
    "kind": "entry",
    "label": "Transferred to my RRIF Contract#",
    "desc": "Option #2: RRIF contract #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when OPTION_2_RRIF is ticked"
   },
   "F32": {
    "name": "OPTION_2_RRIF_ACCOUNT",
    "kind": "entry",
    "label": "Transferred to my RRIF Contract# __________________, Acct#",
    "desc": "Option #2: account #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when OPTION_2_RRIF is ticked"
   },
   "F33": {
    "name": "OPTION_3_DEPOSIT",
@@ -242,7 +263,8 @@
    "kind": "entry",
    "label": "Deposit the funds to my Libro demand account#",
    "desc": "Option #3: demand account #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when OPTION_3_DEPOSIT is ticked"
   },
   "F35": {
    "name": "OPTION_3_DEMAND_SUB",
@@ -264,7 +286,8 @@
    "kind": "entry",
    "label": "*No cash withdrawals are allowed.",
    "desc": "Additional instructions",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when OPTION_4 is ticked"
   },
   "F38": {
    "name": "BENEFICIARY_NAME",
@@ -278,7 +301,8 @@
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (city)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F40": {
    "name": "DECLARANT_SIGNATURE",
@@ -292,28 +316,32 @@
    "kind": "entry",
    "label": "Dated at _________________________,",
    "desc": "in the Province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F42": {
    "name": "DECLARED_DAY",
    "kind": "entry",
    "label": "___________, this",
    "desc": "this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F43": {
    "name": "DECLARED_MONTH",
    "kind": "entry",
    "label": "___________, this _______ day of",
    "desc": "of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F44": {
    "name": "DECLARED_YEAR",
    "kind": "entry",
    "label": "___________, this _______ day of __________, A.D.",
    "desc": "A.D. 20__",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F45": {
    "name": "WITNESS_SIGNATURE",
@@ -327,14 +355,16 @@
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness's full name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F47": {
    "name": "WITNESS_ADDRESS",
    "kind": "entry",
    "label": "My address is:",
    "desc": "Witness's address, line 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F48": {
    "name": "WITNESS_ADDRESS_2",
@@ -376,7 +406,8 @@
    "kind": "candidate",
    "label": "",
    "desc": "Staff member's position / title",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F54": {
    "name": "REQUESTUSER_EMAIL",

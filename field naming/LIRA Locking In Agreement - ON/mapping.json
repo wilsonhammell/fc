@@ -26,7 +26,8 @@
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -53,7 +54,8 @@
     188,
     310,
     200
-   ]
+   ],
+   "save": true
   },
   "F8": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -201,7 +203,8 @@
    "label": "Differentiated on the basis of sex",
    "desc": "Tick: the pension plan differentiated on the basis of sex",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of PENSION_DIFFERENTIATED and PENSION_NOT_DIFFERENTIATED must be ticked"
   },
   "F29": {
    "name": "PENSION_NOT_DIFFERENTIATED",
@@ -657,28 +660,32 @@
    "kind": "entry",
    "label": "Executed at the",
    "desc": "Executed at the (city, town, village ...)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F94": {
    "name": "SIGNED_AT_CITY",
    "kind": "entry",
    "label": "of",
    "desc": "of (name of place)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F95": {
    "name": "SIGNED_AT_PROVINCE",
    "kind": "entry",
    "label": ", in the Province of",
    "desc": "in the Province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F96": {
    "name": "SIGNED_DAY",
    "kind": "entry",
    "label": ", this",
    "desc": "this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F97": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -748,14 +755,16 @@
    "kind": "entry",
    "label": "day of",
    "desc": "day of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F107": {
    "name": "SIGNED_YEAR",
    "kind": "entry",
    "label": ", A.D.",
    "desc": "A.D.",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F108": {
    "name": "Member1Signature",

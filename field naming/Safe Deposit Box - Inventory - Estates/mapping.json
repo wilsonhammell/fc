@@ -19,7 +19,8 @@
    "kind": "candidate",
    "label": "Late of:",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -40,35 +41,40 @@
    "kind": "candidate",
    "label": "Safe Deposit Box #",
    "desc": "Safe deposit box #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "SDB_ACCESS_DAY",
    "kind": "entry",
    "label": "was accessed on the",
    "desc": "Box accessed on the ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "SDB_ACCESS_MONTH",
    "kind": "entry",
    "label": "day of",
    "desc": "of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F9": {
    "name": "SDB_ACCESS_YEAR",
    "kind": "entry",
    "label": ", 20",
    "desc": ", 20__",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F10": {
    "name": "SDB_CONTENTS_1",
    "kind": "entry",
    "label": "1.",
    "desc": "Contents found in the box, item 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "SDB_CONTENTS_2",
@@ -222,7 +228,8 @@
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Libro representative 2: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F33": {
    "name": "STAFF2_SIGNATURE",
@@ -271,7 +278,8 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Libro representative 2: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
  "drop": [],

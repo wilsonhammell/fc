@@ -27,7 +27,8 @@
    "label": "",
    "desc": "Tick: the document is a credit union certified cheque",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of DOC_CERTIFIED_CHEQUE and DOC_OFFICIAL_CHEQUE must be ticked"
   },
   "F5": {
    "name": "CERTIFIED_CHEQUE_CAD",
@@ -35,21 +36,24 @@
    "label": "$Cdn",
    "desc": "Certified cheque in $Cdn",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When DOC_CERTIFIED_CHEQUE is ticked, exactly one of CERTIFIED_CHEQUE_CAD and CERTIFIED_CHEQUE_USD must be ticked"
   },
   "F6": {
    "name": "CERTIFIED_CHEQUE_NUMBER",
    "kind": "entry",
    "label": "Cheque Number & $Amount:",
    "desc": "Certified cheque number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DOC_CERTIFIED_CHEQUE is ticked"
   },
   "F7": {
    "name": "CERTIFIED_CHEQUE_AMOUNT",
    "kind": "entry",
    "label": "$",
    "desc": "Certified cheque amount $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DOC_CERTIFIED_CHEQUE is ticked"
   },
   "F8": {
    "name": "CERTIFIED_CHEQUE_USD",
@@ -64,7 +68,8 @@
    "kind": "entry",
    "label": "Payee:",
    "desc": "Certified cheque payee",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DOC_CERTIFIED_CHEQUE is ticked"
   },
   "F10": {
    "name": "DOC_OFFICIAL_CHEQUE",
@@ -80,21 +85,24 @@
    "label": "$Cdn",
    "desc": "Official cheque in $Cdn",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When DOC_OFFICIAL_CHEQUE is ticked, exactly one of OFFICIAL_CHEQUE_CAD and OFFICIAL_CHEQUE_USD must be ticked"
   },
   "F12": {
    "name": "OFFICIAL_CHEQUE_NUMBER",
    "kind": "entry",
    "label": "Cheque Number & $Amount:",
    "desc": "Official cheque number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DOC_OFFICIAL_CHEQUE is ticked"
   },
   "F13": {
    "name": "OFFICIAL_CHEQUE_AMOUNT",
    "kind": "entry",
    "label": "$",
    "desc": "Official cheque amount $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DOC_OFFICIAL_CHEQUE is ticked"
   },
   "F14": {
    "name": "OFFICIAL_CHEQUE_USD",
@@ -109,7 +117,8 @@
    "kind": "entry",
    "label": "Payee:",
    "desc": "Official cheque payee",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DOC_OFFICIAL_CHEQUE is ticked"
   },
   "F16": {
    "name": "REQUEST_DETAIL",
@@ -130,7 +139,8 @@
     421,
     66,
     431
-   ]
+   ],
+   "custom": "Exactly one of REQUEST_PAY_AMOUNT and REQUEST_STOP_PAYMENT must be marked"
   },
   "F18": {
    "name": "REQUEST_STOP_PAYMENT",

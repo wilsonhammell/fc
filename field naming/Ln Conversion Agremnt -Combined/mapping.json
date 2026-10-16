@@ -5,7 +5,8 @@
    "kind": "candidate",
    "label": "principal amount of $",
    "desc": "Loan's original principal amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F2": {
    "name": "PRIMARY_MEMBER_NUMBER",
@@ -32,7 +33,8 @@
     169,
     300,
     182
-   ]
+   ],
+   "save": true
   },
   "F5": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -97,7 +99,8 @@
     160,
     576,
     173
-   ]
+   ],
+   "save": true
   },
   "F10": {
    "name": "Member1Name",
@@ -250,7 +253,8 @@
    "kind": "candidate",
    "label": "Loan (the “Loan”) to a Fixed Rate Term Loan as",
    "desc": "Date the loan converts to a fixed rate term loan (as of ___)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F22": {
    "name": "PRIMARY_MEMBER_NUMBER",

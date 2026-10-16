@@ -19,14 +19,16 @@
    "kind": "entry",
    "label": "Designated Accounting Firm",
    "desc": "Designated accounting firm",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "ORG_OFFICER1_NAME",
    "kind": "candidate",
    "label": "Name 1",
    "desc": "Signing officer 1 of the firm",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "ORG_OFFICER2_NAME",

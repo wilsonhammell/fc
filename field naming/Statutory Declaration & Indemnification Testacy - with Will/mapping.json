@@ -19,7 +19,8 @@
    "kind": "candidate",
    "label": "Late of:",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -40,21 +41,24 @@
    "kind": "candidate",
    "label": "1. THAT the Deceased died on the",
    "desc": "Day of the member's death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "PRIMARY_DEATH_MONTH",
    "kind": "candidate",
    "label": "day of",
    "desc": "Month of the member's death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "PRIMARY_DEATH_YEAR",
    "kind": "candidate",
    "label": ",",
    "desc": "Year of the member's death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F9": {
    "name": "ASSET_DEPOSIT_ACCOUNT",
@@ -62,14 +66,16 @@
    "label": "Deposit Account(s)",
    "desc": "Tick: deposit account(s)",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "At least one asset type (ASSET_DEPOSIT_ACCOUNT, ASSET_TERM_DEPOSIT, ASSET_RRSP, ASSET_TFSA, ASSET_CLASS_P_SHARES, ASSET_MEMBERSHIP_SHARES) must be ticked"
   },
   "F10": {
    "name": "DEPOSIT_ACCOUNT_NUMBERS",
    "kind": "entry",
    "label": "Deposit Account(s)",
    "desc": "The deceased's deposit account number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_DEPOSIT_ACCOUNT is ticked"
   },
   "F11": {
    "name": "ASSET_TERM_DEPOSIT",
@@ -84,7 +90,8 @@
    "kind": "entry",
    "label": "Term Deposit/GIC(s)",
    "desc": "The deceased's term deposit / GIC number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_TERM_DEPOSIT is ticked"
   },
   "F13": {
    "name": "ASSET_RRSP",
@@ -99,7 +106,8 @@
    "kind": "entry",
    "label": "RRSP Contract(s)",
    "desc": "The deceased's RRSP contract number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_RRSP is ticked"
   },
   "F15": {
    "name": "ASSET_TFSA",
@@ -114,7 +122,8 @@
    "kind": "entry",
    "label": "TFSA Contract(s)",
    "desc": "The deceased's TFSA contract number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_TFSA is ticked"
   },
   "F17": {
    "name": "ASSET_CLASS_P_SHARES",
@@ -129,7 +138,8 @@
    "kind": "entry",
    "label": "$",
    "desc": "Class P profit shares $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_CLASS_P_SHARES is ticked"
   },
   "F19": {
    "name": "ASSET_MEMBERSHIP_SHARES",
@@ -144,42 +154,48 @@
    "kind": "entry",
    "label": "$",
    "desc": "Membership shares $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_MEMBERSHIP_SHARES is ticked"
   },
   "F21": {
    "name": "WILL_DATED_DAY",
    "kind": "entry",
    "label": "3. THAT the deceased had a will dated",
    "desc": "Will dated: day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F22": {
    "name": "WILL_DATED_MONTH",
    "kind": "entry",
    "label": "day of",
    "desc": "month",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F23": {
    "name": "WILL_DATED_YEAR",
    "kind": "entry",
    "label": ",",
    "desc": "year",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F24": {
    "name": "WILL_BENE1_NAME",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary under the will 1: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F25": {
    "name": "WILL_BENE1_RELATIONSHIP",
    "kind": "entry",
    "label": "Relationship to Deceased",
    "desc": "Beneficiary under the will 1: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F26": {
    "name": "WILL_BENE1_BIRTHDATE",
@@ -340,14 +356,16 @@
    "kind": "entry",
    "label": "and registered funds with a valid Designation of Beneﬁciary): $",
    "desc": "Value of all assets in the deceased's name $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F50": {
    "name": "OPTION1_CLAIMANT1_NAME",
    "kind": "entry",
    "label": "(enter % or exact amount)",
    "desc": "Option #1, claimant 1: claimant name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Either Option #1 (OPTION1_CLAIMANT1_NAME, _MEMBER_NUMBER, _ENTITLEMENT) or Option #2 (OPTION2_CLAIMANT1_NAME, _ADDRESS, _PHONE, _ENTITLEMENT) must be completed for at least one claimant"
   },
   "F51": {
    "name": "OPTION1_CLAIMANT1_MEMBER_NUMBER",
@@ -452,7 +470,8 @@
    "kind": "entry",
    "label": "(enter % or exact amount)",
    "desc": "Option #2, claimant 1: claimant name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Either Option #2 or Option #1 must be completed for at least one claimant (see OPTION1_CLAIMANT1_NAME)"
   },
   "F66": {
    "name": "OPTION2_CLAIMANT1_ADDRESS",
@@ -599,14 +618,16 @@
    "kind": "entry",
    "label": "I/WE,",
    "desc": "The estate trustees named in the will (I/WE, ___)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F87": {
    "name": "DECLARED1_AT_CITY",
    "kind": "entry",
    "label": "DECLARED BEFORE ME at",
    "desc": "Declaration 1: declared before me at",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F88": {
    "name": "TRUSTEE1_SIGNATURE",
@@ -620,28 +641,32 @@
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Declaration 1: in the Province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F90": {
    "name": "DECLARED1_DAY",
    "kind": "entry",
    "label": ", this",
    "desc": "Declaration 1: this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F91": {
    "name": "DECLARED1_MONTH",
    "kind": "entry",
    "label": "of",
    "desc": "Declaration 1: of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F92": {
    "name": "DECLARED1_YEAR",
    "kind": "entry",
    "label": ", A.D. 20",
    "desc": "Declaration 1: A.D. 20__",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F93": {
    "name": "TRUSTEE2_SIGNATURE",
@@ -774,7 +799,8 @@
    "kind": "candidate",
    "label": "",
    "desc": "Staff member's position / title",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F112": {
    "name": "REQUESTUSER_EMAIL",

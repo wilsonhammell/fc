@@ -33,21 +33,24 @@
    "kind": "candidate",
    "label": "Sub:",
    "desc": "The loan's sub number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F6": {
    "name": "LOAN_PAYOUT_DATE",
    "kind": "candidate",
    "label": "Payout Date",
    "desc": "Payout statement date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "LOAN_PAYOUT_PRINCIPAL",
    "kind": "candidate",
    "label": "Principal Balance",
    "desc": "Payout: principal",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "LOAN_PAYOUT_DATE",
@@ -61,7 +64,8 @@
    "kind": "candidate",
    "label": "+",
    "desc": "Payout: interest due",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F10": {
    "name": "LOAN_PAYOUT_PENALTY",
@@ -96,7 +100,8 @@
    "kind": "candidate",
    "label": "$",
    "desc": "Payout: per diem interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F15": {
    "name": "LOAN_PAYOUT_DATE",
@@ -117,7 +122,8 @@
    "kind": "candidate",
    "label": "",
    "desc": "Staff member's position / title",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F18": {
    "name": "REQUESTUSER_POSITION",
@@ -150,15 +156,7 @@
   "B19": "a border of the To / Email / Re table or the payout table, not a blank",
   "B20": "a border of the To / Email / Re table or the payout table, not a blank",
   "B21": "a border of the To / Email / Re table or the payout table, not a blank",
-  "B22": "a border of the To / Email / Re table or the payout table, not a blank",
-  "B23": "a border of the To / Email / Re table or the payout table, not a blank",
-  "B24": "a border of the To / Email / Re table or the payout table, not a blank",
-  "B25": "a border of the To / Email / Re table or the payout table, not a blank",
-  "B26": "a border of the To / Email / Re table or the payout table, not a blank",
-  "B27": "a border of the To / Email / Re table or the payout table, not a blank",
-  "B28": "a border of the To / Email / Re table or the payout table, not a blank",
-  "B29": "a border of the To / Email / Re table or the payout table, not a blank",
-  "B30": "a border of the To / Email / Re table or the payout table, not a blank"
+  "B22": "a border of the To / Email / Re table or the payout table, not a blank"
  },
  "add": [
   {

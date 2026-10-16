@@ -40,14 +40,16 @@
    "kind": "entry",
    "label": "Name",
    "desc": "Recipient of funds: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "RECIPIENT_ADDRESS_1",
    "kind": "entry",
    "label": "Address",
    "desc": "Recipient of funds: address, line 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "RECIPIENT_ADDRESS_2",
@@ -68,7 +70,8 @@
    "kind": "entry",
    "label": "SIN",
    "desc": "Recipient of funds: SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "RSP_ACCOUNT_CONTRACT",
@@ -89,21 +92,24 @@
    "kind": "candidate",
    "label": "Date of Death",
    "desc": "The annuitant's date of death - the DB list has no date of death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F14": {
    "name": "PAYOUT_DATE",
    "kind": "entry",
    "label": "Date of Payout",
    "desc": "Date of payout",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F15": {
    "name": "ValueAtDateOfDeath",
    "kind": "entry",
    "label": "Value at Date of Death (required for year of death)",
    "desc": "T4RIF worksheet calculation field - keeps its name: the worksheet's scripts read it by name (some build names in code, \"Rate\" + i)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F16": {
    "name": "DeceasedAmountReceived",

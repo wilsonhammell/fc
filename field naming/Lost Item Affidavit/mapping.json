@@ -12,7 +12,8 @@
    "kind": "candidate",
    "label": "Address",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F3": {
    "name": "PRIMARY_MEMBER_NUMBER",
@@ -26,28 +27,32 @@
    "kind": "entry",
    "label": "Cheque #",
    "desc": "Cheque # of the lost item",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "CHEQUE_DATE_ISSUED",
    "kind": "entry",
    "label": "Date Issued",
    "desc": "Date the cheque was issued",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F6": {
    "name": "CHEQUE_PAYEE",
    "kind": "entry",
    "label": "Cheque Payable To Payee",
    "desc": "Cheque payable to (payee)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "CHEQUE_AMOUNT",
    "kind": "entry",
    "label": "Cheque Amount",
    "desc": "Cheque amount $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "Member1Signature",
@@ -61,7 +66,8 @@
    "kind": "entry",
    "label": "Name of Witness (Payor) [print or type]",
    "desc": "Name of witness (payor), print or type",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F10": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -89,7 +95,8 @@
    "kind": "entry",
    "label": "Date of Signature",
    "desc": "Date of the witness signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B9": {
    "name": "WITNESS_SIGNATURE",

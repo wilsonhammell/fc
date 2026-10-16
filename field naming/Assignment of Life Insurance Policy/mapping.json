@@ -33,35 +33,40 @@
    "kind": "entry",
    "label": "Life Insurance Policy Number:",
    "desc": "Life insurance policy number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F6": {
    "name": "INSURANCE_POLICY_AMOUNT",
    "kind": "entry",
    "label": "in the amount of $",
    "desc": "Policy amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "INSURANCE_COMPANY",
    "kind": "entry",
    "label": "Insurance Company:",
    "desc": "Insurance company",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "INSURANCE_COMPANY_ADDRESS",
    "kind": "entry",
    "label": "Address:",
    "desc": "Insurance company's address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F9": {
    "name": "SIGNED_AT_CITY",
    "kind": "entry",
    "label": "Executed at",
    "desc": "City the assignment is executed at",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "Member1Signature",

@@ -1,0 +1,2157 @@
+[
+ {
+  "production name": "Account Declaration Agreement - Estates",
+  "file": "Account Declaration Agreement - Estates",
+  "folder": "Account Declaration Agreement - Estates",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 2,
+  "row name": "Account Declaration Agreement - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Account Declaration Agreement - Estates",
+   "formId": "L_ACI",
+   "formDescription": "Estate Account Declaration Agreement",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Assignment of Life Ins Policy - Letter",
+  "file": "Assignment of Life Ins Policy - Letter",
+  "folder": "Assignment of Life Ins Policy - Letter",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 3,
+  "row name": "Assignment of Life Ins Policy - Letter",
+  "closest": "",
+  "config": {
+   "formName": "Assignment of Life Ins Policy - Letter",
+   "formId": "L_ALIPL",
+   "formDescription": "Assignment of Life Ins Policy - Letter",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "combined",
+   "productCodes": "L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Assignment of Life Insurance Policy",
+  "file": "Assignment of Life Insurance Policy",
+  "folder": "Assignment of Life Insurance Policy",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 4,
+  "row name": "Assignment of Life Insurance Policy",
+  "closest": "",
+  "config": {
+   "formName": "Assignment of Life Insurance Policy",
+   "formId": "L_ALIP",
+   "formDescription": "Assignment of Life Insurance Policy",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "combined",
+   "productCodes": "D, L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "ATM & POS Trace Request",
+  "file": "ATM & POS Trace Request",
+  "folder": "ATM & POS Trace Request",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 5,
+  "row name": "ATM & POS Trace Request",
+  "closest": "",
+  "config": {
+   "formName": "ATM & POS Trace Request",
+   "formId": "L_ATPO",
+   "formDescription": "ATM & POS Trace Request",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "SubmitForProcessingButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Authorization to Release Financial Info",
+  "file": "Authorization to Release Financial Info",
+  "folder": "Authorization to Release Financial Info",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 6,
+  "row name": "Authorization to Release Financial Info",
+  "closest": "",
+  "config": {
+   "formName": "Authorization to Release Financial Info",
+   "formId": "L_ARFI",
+   "formDescription": "Authorization to Release Financial Info",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Bill Payment Trace",
+  "file": "Bill Payment Trace",
+  "folder": "Bill Payment Trace",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 7,
+  "row name": "Bill Payment Trace",
+  "closest": "",
+  "config": {
+   "formName": "Bill Payment Trace",
+   "formId": "L_BPT",
+   "formDescription": "Bill Payment Trace",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "SubmitForProcessingButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Bond of Indemnity - Estates",
+  "file": "Bond of Indemnity - Estates",
+  "folder": "Bond of Indemnity - Estates",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 8,
+  "row name": "Bond of Indemnity - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Bond of Indemnity - Estates",
+   "formId": "L_BOIE",
+   "formDescription": "Estate - Bond of Indemnity",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Breach Letter",
+  "file": "Breach Letter",
+  "folder": "Breach Letter",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 9,
+  "row name": "Breach Letter",
+  "closest": "",
+  "config": {
+   "formName": "Breach Letter",
+   "formId": "L_BREL",
+   "formDescription": "Breach Letter",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "D, L, M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Collateral Agreement-Q-Trade Investments",
+  "file": "Collateral Agreement-Q-Trade Investments",
+  "folder": "Collateral Agreement-Q-Trade Investments",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 10,
+  "row name": "Collateral Agreement-Q-Trade Investments",
+  "closest": "",
+  "config": {
+   "formName": "Collateral Agreement-Q-Trade Investments",
+   "formId": "L_CAQT",
+   "formDescription": "Collateral Agreement-Q-Trade Investments",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "combined",
+   "productCodes": "L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Designated Beneficiary Declaration and Indemnification - Estates",
+  "file": "Designated Beneficiary Declaration and Indemnification - Estates",
+  "folder": "Designated Beneficiary Declaration and Indemnification - Estates",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 11,
+  "row name": "Designated Beneficiary Declaration and Indemnification - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Designated Beneficiary Declaration and Indemnification - Estates",
+   "formId": "L_DBDI",
+   "formDescription": "Est125-Designated Beneficiary Decl and Indemn",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Direction of Chicken Quota",
+  "file": "Direction of Chicken Quota",
+  "folder": "Direction of Chicken Quota",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 12,
+  "row name": "Direction of Chicken Quota",
+  "closest": "",
+  "config": {
+   "formName": "Direction of Chicken Quota",
+   "formId": "L_DCQ",
+   "formDescription": "Direction of Chicken Quota",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "D, L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Direction of Egg Quota",
+  "file": "Direction of Egg Quota",
+  "folder": "Direction of Egg Quota",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 13,
+  "row name": "Direction of Egg Quota",
+  "closest": "",
+  "config": {
+   "formName": "Direction of Egg Quota",
+   "formId": "L_DEQ",
+   "formDescription": "Direction of Egg Quota",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "D, L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Direction of Hatching Egg & Chicken Quota",
+  "file": "Direction of Hatching Egg & Chick Quota",
+  "folder": "Direction of Hatching Egg & Chick Quota",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 14,
+  "row name": "Direction of Hatching Egg & Chicken Quota",
+  "closest": "",
+  "config": {
+   "formName": "Direction of Hatching Egg & Chicken Quota",
+   "formId": "L_DHECQ",
+   "formDescription": "Direction of Hatching Egg & Chicken Quota",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "D, L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Direction of Milk Quota Proceeds",
+  "file": "Direction of Milk Quota",
+  "folder": "Direction of Milk Quota",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 15,
+  "row name": "Direction of Milk Quota Proceeds",
+  "closest": "",
+  "config": {
+   "formName": "Direction of Milk Quota Proceeds",
+   "formId": "L_DMQ",
+   "formDescription": "Direction of Milk Quota Proceeds",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "D, L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Direction of Turkey Quota",
+  "file": "Direction of Turkey Quota",
+  "folder": "Direction of Turkey Quota",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 16,
+  "row name": "Direction of Turkey Quota",
+  "closest": "",
+  "config": {
+   "formName": "Direction of Turkey Quota",
+   "formId": "L_DTQ",
+   "formDescription": "Direction of Turkey Quota",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "D, L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Disclosure letter - Business",
+  "file": "Disclosure letter - Business",
+  "folder": "Disclosure letter - Business",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 17,
+  "row name": "Disclosure letter - Business",
+  "closest": "",
+  "config": {
+   "formName": "Disclosure letter - Business",
+   "formDescription": "Disclosure Letter - Business",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true,
+   "SubmitForProcessingButton": false
+  },
+  "notes": []
+ },
+ {
+  "production name": "Disclosure Letter - Pre Approved Loan Extension - Business",
+  "file": "Disclosure Letter - Pre Approved Loan Extension - Business",
+  "folder": "Disclosure Letter - Pre Approved Loan Extension - Business",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 18,
+  "row name": "Disclosure Letter - Pre Approved Loan Extension - Business",
+  "closest": "",
+  "config": {
+   "formName": "Disclosure Letter - Pre Approved Loan Extension - Business",
+   "formDescription": "Disclosure Letter - Pre Approved Loan Extension - Business",
+   "foCabinet": "Lending",
+   "productCodes": "L",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "PrintButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"YES\" not recognised.",
+   "Remote eSign \"Organization (Business)\" not recognised."
+  ]
+ },
+ {
+  "production name": "Envelope",
+  "file": "Envelope",
+  "folder": "Envelope",
+  "match": "unmatched - the workbook says 'Not Required'",
+  "score": 0.303,
+  "sheet": "",
+  "row": "",
+  "row name": "",
+  "closest": "FO Data Line row 34",
+  "config": {},
+  "buttons": {},
+  "notes": []
+ },
+ {
+  "production name": "Federal RLIF Locking-In Agreement",
+  "file": "Federal RLIF Locking-In Agreement",
+  "folder": "Federal RLIF Locking-In Agreement",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 19,
+  "row name": "Federal RLIF Locking-In Agreement",
+  "closest": "",
+  "config": {
+   "formName": "Federal RLIF Locking-In Agreement",
+   "formId": "L_FLA",
+   "formDescription": "Federal RLIF Locking-In Agreement",
+   "foCabinet": "Investments",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"NO\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "Federal RLIF Transfer - up to 50% of new RLIF",
+  "file": "Federal RLIF Transfer - up to 50% of new RLIF",
+  "folder": "Federal RLIF Transfer - up to 50% of new RLIF",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 20,
+  "row name": "Federal RLIF Transfer - up to 50% of new RLIF",
+  "closest": "",
+  "config": {
+   "formName": "Federal RLIF Transfer - up to 50% of new RLIF",
+   "formId": "L_FT",
+   "formDescription": "Federal RLIF Transfer - up to 50% of new RLIF",
+   "foCabinet": "investments",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"YES\" not recognised.",
+   "Support Services \"33966\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "FHSA Application",
+  "file": "FHSA Application",
+  "folder": "FHSA Application",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 21,
+  "row name": "FHSA Application",
+  "closest": "",
+  "config": {
+   "formName": "FHSA Application",
+   "formId": "L_FHSA",
+   "formDescription": "FHSA Application",
+   "foCabinet": "Investments",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"YES\" not recognised.",
+   "Support Services \"33969\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "FHSA Designation of SH, Ben",
+  "file": "FHSA Designation of SH, Ben",
+  "folder": "FHSA Designation of SH, Ben",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 22,
+  "row name": "FHSA Designation of SH, Ben",
+  "closest": "",
+  "config": {
+   "formName": "FHSA Designation of SH, Ben",
+   "formId": "L_FHSAB",
+   "formDescription": "FHSA Designation of SH, Ben",
+   "foCabinet": "Investments",
+   "productCodes": "D",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"YES\" not recognised.",
+   "Support Services \"33986\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+  "file": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+  "folder": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 23,
+  "row name": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+  "closest": "",
+  "config": {
+   "formName": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+   "formId": "L_FHSABD",
+   "formDescription": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+   "foCabinet": "Investments",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"YES\" not recognised.",
+   "Support Services \"33971\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "FHSA Withdrawal Transfer",
+  "file": "FHSA Withdrawal Transfer",
+  "folder": "FHSA Withdrawal Transfer",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 24,
+  "row name": "FHSA Withdrawal Transfer",
+  "closest": "",
+  "config": {
+   "formName": "FHSA Withdrawal Transfer",
+   "formId": "L_FHSAWT",
+   "formDescription": "FHSA Withdrawal Transfer",
+   "foCabinet": "Investments",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"YES\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "Funeral Home Guaranteed Investment Certificate",
+  "file": "Funeral Home Guaranteed Investment Certificate",
+  "folder": "Funeral Home Guaranteed Investment Certificate",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 25,
+  "row name": "Funeral Home Guaranteed Investment Certificate",
+  "closest": "",
+  "config": {
+   "formName": "Funeral Home Guaranteed Investment Certificate",
+   "formId": "L_FHGIC",
+   "formDescription": "Funeral Home Guaranteed Investment Certificate",
+   "foCabinet": "Investments",
+   "productCodes": "T",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "PrintButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"NO\" not recognised.",
+   "Remote eSign \"Combined\" not recognised."
+  ]
+ },
+ {
+  "production name": "Guarantee",
+  "file": "Guarantee",
+  "folder": "Guarantee",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 26,
+  "row name": "Guarantee",
+  "closest": "",
+  "config": {
+   "formName": "Guarantee",
+   "formId": "L_GUA",
+   "formDescription": "Guarantee",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Personal Lending and Business Lending",
+   "formType": "combined",
+   "productCodes": "D, L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Guaranteed Investment Certificate Authorization",
+  "file": "Guaranteed Investment Certificate Authorization",
+  "folder": "Guaranteed Investment Certificate Authorization",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 27,
+  "row name": "Guaranteed Investment Certificate Authorization",
+  "closest": "",
+  "config": {
+   "formName": "Guaranteed Investment Certificate Authorization",
+   "formId": "L_GICA",
+   "formDescription": "Guaranteed Investment Certificate Authorization",
+   "foCabinet": "Investments",
+   "productCodes": "T",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "PrintButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"NO\" not recognised.",
+   "Remote eSign \"Combined\" not recognised."
+  ]
+ },
+ {
+  "production name": "Hypothecation Agreement - Bonds",
+  "file": "Hypothecation Agreement",
+  "folder": "Hypothecation Agreement",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 28,
+  "row name": "Hypothecation Agreement - Bonds",
+  "closest": "",
+  "config": {
+   "formName": "Hypothecation Agreement - Bonds",
+   "formId": "L_HAB",
+   "formDescription": "Hypothecation Agreement - Bonds",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "combined",
+   "productCodes": "D, L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Hypothecation Agreement - Mutual Funds",
+  "file": "Hypothecation Agreement",
+  "folder": "Hypothecation Agreement",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 29,
+  "row name": "Hypothecation Agreement - Mutual Funds",
+  "closest": "",
+  "config": {
+   "formName": "Hypothecation Agreement - Mutual Funds",
+   "formId": "L_HAMF",
+   "formDescription": "Hypothecation Agreement - Mutual Funds",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "combined",
+   "productCodes": "D, L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Hypothecation Agreement - Stocks",
+  "file": "Hypothecation Agreement",
+  "folder": "Hypothecation Agreement",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 30,
+  "row name": "Hypothecation Agreement - Stocks",
+  "closest": "",
+  "config": {
+   "formName": "Hypothecation Agreement - Stocks",
+   "formId": "L_HAS",
+   "formDescription": "Hypothecation Agreement - Stocks",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "combined",
+   "productCodes": "D, L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Indemnity agreement",
+  "file": "Indemnity Agreement",
+  "folder": "Indemnity Agreement",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 31,
+  "row name": "Indemnity agreement",
+  "closest": "",
+  "config": {
+   "formName": "Indemnity agreement",
+   "formDescription": "Indemnity agreement",
+   "foCabinet": "Member Records",
+   "productCodes": "D, M",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"NO\" not recognised.",
+   "Remote eSign \"Combined\" not recognised."
+  ]
+ },
+ {
+  "production name": "LIF Locking-in Agreement - ON",
+  "file": "LIF Locking-in Agreement - ON",
+  "folder": "LIF Locking-in Agreement - ON",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 33,
+  "row name": "LIF Locking-in Agreement - ON",
+  "closest": "",
+  "config": {
+   "formName": "LIF Locking-in Agreement - ON",
+   "formDescription": "LIF Locking-in Agreement - ON",
+   "foCabinet": "investments",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"NO\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "LIF Spousal Consent",
+  "file": "LIF Spousal Consent",
+  "folder": "LIF Spousal Consent",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 34,
+  "row name": "LIF Spousal Consent",
+  "closest": "",
+  "config": {
+   "formName": "LIF Spousal Consent",
+   "formDescription": "LIF Spousal Consent",
+   "foCabinet": "investments",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"NO\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "LIRA Declaration No Spouse",
+  "file": "LIRA Declaration No Spouse",
+  "folder": "LIRA Declaration No Spouse",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 35,
+  "row name": "LIRA Declaration No Spouse",
+  "closest": "",
+  "config": {
+   "formName": "LIRA Declaration No Spouse",
+   "formDescription": "LIRA Declaration No Spouse",
+   "foCabinet": "Investments",
+   "formMenuGroups": "RRSP",
+   "formType": "person",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "LIRA Locking In Agreement - Fed",
+  "file": "LIRA Locking In Agreement - Fed",
+  "folder": "LIRA Locking In Agreement - Fed",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 36,
+  "row name": "LIRA Locking In Agreement - Fed",
+  "closest": "",
+  "config": {
+   "formName": "LIRA Locking In Agreement - Fed",
+   "formDescription": "LIRA Locking In Agreement - Fed",
+   "foCabinet": "Investments",
+   "formMenuGroups": "RRSP",
+   "formType": "person",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "LIRA Locking In Agreement - ON",
+  "file": "LIRA Locking In Agreement - ON",
+  "folder": "LIRA Locking In Agreement - ON",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 37,
+  "row name": "LIRA Locking In Agreement - ON",
+  "closest": "",
+  "config": {
+   "formName": "LIRA Locking In Agreement - ON",
+   "formDescription": "LIRA Locking In Agreement - ON",
+   "foCabinet": "Investments",
+   "formMenuGroups": "RRSP",
+   "formType": "person",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Loan Conversion Agreement",
+  "file": "Ln Conversion Agremnt -Combined",
+  "folder": "Ln Conversion Agremnt -Combined",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 38,
+  "row name": "Loan Conversion Agreement",
+  "closest": "",
+  "config": {
+   "formName": "Loan Conversion Agreement",
+   "formDescription": "Loan Conversion Agreement",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Personal Lending and Business Lending",
+   "formType": "combined",
+   "productCodes": "L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Loan Extension Request - Small Business",
+  "file": "Loan Extension Request - Small Business",
+  "folder": "Loan Extension Request - Small Business",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 39,
+  "row name": "Loan Extension Request - Small Business",
+  "closest": "",
+  "config": {
+   "formName": "Loan Extension Request - Small Business",
+   "formDescription": "Loan Extension Request - Small Business",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Loan Payout Statement - Business",
+  "file": "Loan Payout Statement - Business",
+  "folder": "Loan Payout Statement - Business",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 40,
+  "row name": "Loan Payout Statement - Business",
+  "closest": "",
+  "config": {
+   "formName": "Loan Payout Statement - Business",
+   "formDescription": "Loan Payout Statement - Business",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Loan Payout Statement - LOC - Business",
+  "file": "Loan Payout Statement - LOC - Business",
+  "folder": "Loan Payout Statement - LOC - Business",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 41,
+  "row name": "Loan Payout Statement - LOC - Business",
+  "closest": "",
+  "config": {
+   "formName": "Loan Payout Statement - LOC - Business",
+   "formDescription": "Loan Payout Statement - LOC - Business",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "D, L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Loan Renewal Agreement - Breaking Term",
+  "file": "Ln Renewal Agrement - Term-Breaking Term - Combined",
+  "folder": "Ln Renewal Agrement - Term-Breaking Term - Combined",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 42,
+  "row name": "Loan Renewal Agreement - Breaking Term",
+  "closest": "",
+  "config": {
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "formDescription": "Loan Renewal Agreement - Breaking Term",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "LOC Repricing Letter",
+  "file": "LOC Repricing Letter",
+  "folder": "LOC Repricing Letter",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 43,
+  "row name": "LOC Repricing Letter",
+  "closest": "",
+  "config": {
+   "formName": "LOC Repricing Letter",
+   "formDescription": "LOC Repricing Letter",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true,
+   "SubmitForProcessingButton": false
+  },
+  "notes": []
+ },
+ {
+  "production name": "Lost Item Affidavit",
+  "file": "Lost Item Affidavit",
+  "folder": "Lost Item Affidavit",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 44,
+  "row name": "Lost Item Affidavit",
+  "closest": "",
+  "config": {
+   "formName": "Lost Item Affidavit",
+   "formId": "L_LIA",
+   "formDescription": "Lost Item Affidavit",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "D, M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Masterline Takedown Facility Authorization",
+  "file": "Masterline Takedown Facility Authorization",
+  "folder": "Masterline Takedown Facility Authorization",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 45,
+  "row name": "Masterline Takedown Facility Authorization",
+  "closest": "",
+  "config": {
+   "formName": "Masterline Takedown Facility Authorization",
+   "formDescription": "Masterline Takedown Facility Authorization",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Mortgagor's Declaration as to Execution(s)",
+  "file": "Mortgagor's Declaration as to Execution(s)",
+  "folder": "Mortgagor's Declaration as to Execution(s)",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 46,
+  "row name": "Mortgagor's Declaration as to Execution(s)",
+  "closest": "",
+  "config": {
+   "formName": "Mortgagor's Declaration as to Execution(s)",
+   "formDescription": "Mortgagor's Declaration as to Execution(s)",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "combined",
+   "productCodes": "L, M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Pre-Authorized Credit Agreement (Credit to other FI)",
+  "file": "Pre-Authorized Credit Agreement (Credit to other FI)",
+  "folder": "Pre-Authorized Credit Agreement (Credit to other FI)",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 47,
+  "row name": "Pre-Authorized Credit Agreement (Credit to other FI)",
+  "closest": "",
+  "config": {
+   "formName": "Pre-Authorized Credit Agreement (Credit to other FI)",
+   "formId": "L_PACA",
+   "formDescription": "Pre-Authorized Credit Agreement (Credit to other FI)",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "D, M, T",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Pre-Authorized Debit Agreement (Debit to other FI)",
+  "file": "Pre-Authorized Debit Agreement (Debit to other FI)",
+  "folder": "Pre-Authorized Debit Agreement (Debit to other FI)",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 48,
+  "row name": "Pre-Authorized Debit Agreement (Debit to other FI)",
+  "closest": "",
+  "config": {
+   "formName": "Pre-Authorized Debit Agreement (Debit to other FI)",
+   "formId": "L_PADA",
+   "formDescription": "Pre-Authorized Debit Agreement (Debit to other FI)",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "D, L, M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Reimbursement Claim Form",
+  "file": "Reimbursment Claim Form",
+  "folder": "Reimbursment Claim Form",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 49,
+  "row name": "Reimbursement Claim Form",
+  "closest": "",
+  "config": {
+   "formName": "Reimbursement Claim Form",
+   "formId": "L_RC",
+   "formDescription": "Reimbursement Claim Form",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Renounciation of Designated Beneficiary - Estates",
+  "file": "Renounciation of Designated Beneficiary - Estates",
+  "folder": "Renounciation of Designated Beneficiary - Estates",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 50,
+  "row name": "Renounciation of Designated Beneficiary - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Renounciation of Designated Beneficiary - Estates",
+   "formId": "L_REI",
+   "formDescription": "Est135-Renounce Design Beneficiary",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "RRIF Application",
+  "file": "RRIF Application",
+  "folder": "RRIF Application",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 51,
+  "row name": "RRIF Application",
+  "closest": "",
+  "config": {
+   "formName": "RRIF Application",
+   "formDescription": "RRIF Application",
+   "foCabinet": "Investments",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"YES\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "RRIF Designation of Beneficiary",
+  "file": "RRIF Designation of Beneficiary",
+  "folder": "RRIF Designation of Beneficiary",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 52,
+  "row name": "RRIF Designation of Beneficiary",
+  "closest": "",
+  "config": {
+   "formName": "RRIF Designation of Beneficiary",
+   "formDescription": "RRIF Designation of Beneficiary",
+   "foCabinet": "Investments",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"YES\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "RRIF Payment Form",
+  "file": "RRIF Payment Form",
+  "folder": "RRIF Payment Form",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 53,
+  "row name": "RRIF Payment Form",
+  "closest": "",
+  "config": {
+   "formName": "RRIF Payment Form",
+   "formDescription": "RRIF Payment Form",
+   "foCabinet": "Investments",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"YES\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "RRIF Withdrawal Transfer",
+  "file": "RRIF Withdrawal Transfer",
+  "folder": "RRIF Withdrawal Transfer",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 54,
+  "row name": "RRIF Withdrawal Transfer",
+  "closest": "",
+  "config": {
+   "formName": "RRIF Withdrawal Transfer",
+   "formDescription": "RRIF Withdrawal Transfer",
+   "foCabinet": "Investments",
+   "productCodes": "D, M, T",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"YES\" not recognised.",
+   "Remote eSign \"Person (Retail)\" not recognised."
+  ]
+ },
+ {
+  "production name": "RRSP Application",
+  "file": "RRSP Application",
+  "folder": "RRSP Application",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 55,
+  "row name": "RRSP Application",
+  "closest": "",
+  "config": {
+   "formName": "RRSP Application",
+   "formDescription": "RRSP Application",
+   "foCabinet": "Investments",
+   "formMenuGroups": "RRSP",
+   "formType": "person",
+   "productCodes": "M, T",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "RRSP Designation of Beneficiary",
+  "file": "RRSP Designation of Beneficiary",
+  "folder": "RRSP Designation of Beneficiary",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 56,
+  "row name": "RRSP Designation of Beneficiary",
+  "closest": "",
+  "config": {
+   "formName": "RRSP Designation of Beneficiary",
+   "formDescription": "RRSP Designation of Beneficiary",
+   "foCabinet": "Investments",
+   "formMenuGroups": "RRSP",
+   "formType": "person",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "RRSP Withdrawal",
+  "file": "RRSP Withdrawal",
+  "folder": "RRSP Withdrawal",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 57,
+  "row name": "RRSP Withdrawal",
+  "closest": "",
+  "config": {
+   "formName": "RRSP Withdrawal",
+   "formDescription": "RRSP Withdrawal",
+   "foCabinet": "Investments",
+   "formMenuGroups": "RRSP",
+   "formType": "person",
+   "productCodes": "D, M, T",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Safe Deposit Box - Access - Estates",
+  "file": "Safe Deposit Box - Access - Estates",
+  "folder": "Safe Deposit Box - Access - Estates",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 58,
+  "row name": "Safe Deposit Box - Access - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Safe Deposit Box - Access - Estates",
+   "formId": "L_SDBA",
+   "formDescription": "Est171-Notice of Safe Deposit Box Access",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Safe Deposit Box - Contents Receipt - Estates",
+  "file": "Safe Deposit Box - Contents Receipt - Estates",
+  "folder": "Safe Deposit Box - Contents Receipt - Estates",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 59,
+  "row name": "Safe Deposit Box - Contents Receipt - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Safe Deposit Box - Contents Receipt - Estates",
+   "formId": "L_SDBC",
+   "formDescription": "Est170-Receipt for Safe Deposit Box Contents",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Safe Deposit Box - Inventory - Estates",
+  "file": "Safe Deposit Box - Inventory - Estates",
+  "folder": "Safe Deposit Box - Inventory - Estates",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 60,
+  "row name": "Safe Deposit Box - Inventory - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Safe Deposit Box - Inventory - Estates",
+   "formId": "L_SDBI",
+   "formDescription": "Est172-Safe Deposit Box Inventory",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Safe Deposit Box - Statutory Declaration - Estates",
+  "file": "Safe Deposit Box - Statutory Declaration - Estates",
+  "folder": "Safe Deposit Box - Statutory Declaration - Estates",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 61,
+  "row name": "Safe Deposit Box - Statutory Declaration - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Safe Deposit Box - Statutory Declaration - Estates",
+   "formId": "L_SDSDB",
+   "formDescription": "Est107-Statutory Decl Safe Deposit Box",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Security Agreement - General",
+  "file": "Security Agreement - General",
+  "folder": "Security Agreement - General",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 62,
+  "row name": "Security Agreement - General",
+  "closest": "",
+  "config": {
+   "formName": "Security Agreement - General",
+   "formDescription": "Security Agreement - General",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "D, L, M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Security Agreement - Specific Equipment",
+  "file": "Security Agreement - Specific Equip",
+  "folder": "Security Agreement - Specific Equip",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 63,
+  "row name": "Security Agreement - Specific Equipment",
+  "closest": "",
+  "config": {
+   "formName": "Security Agreement - Specific Equipment",
+   "formDescription": "Security Agreement - Specific Equipment",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Security Agreement - Specific Location",
+  "file": "Security Agreement - Specific Location",
+  "folder": "Security Agreement - Specific Location",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 64,
+  "row name": "Security Agreement - Specific Location",
+  "closest": "",
+  "config": {
+   "formName": "Security Agreement - Specific Location",
+   "formDescription": "Security Agreement - Specific Location",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "L",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Service Request Form",
+  "file": "Service Request Form",
+  "folder": "Service Request Form",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 65,
+  "row name": "Service Request Form",
+  "closest": "",
+  "config": {
+   "formName": "Service Request Form",
+   "formId": "L_SR",
+   "formDescription": "Service Request Form",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing, Estates",
+   "formType": "combined",
+   "productCodes": "D, L, M",
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": [
+   "Post Processing Queue \"Yes - Optional\" not recognised."
+  ]
+ },
+ {
+  "production name": "Statutory Declaration & Indemnification Intestacy - No Will",
+  "file": "Statutory Declaration & Indemnification Intestacy - No Will",
+  "folder": "Statutory Declaration & Indemnification Intestacy - No Will",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 66,
+  "row name": "Statutory Declaration & Indemnification Intestacy - No Will",
+  "closest": "",
+  "config": {
+   "formName": "Statutory Declaration & Indemnification Intestacy - No Will",
+   "formId": "L_SDII",
+   "formDescription": "Est115-Statutory Decl. and Indemn.  Intestacy",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Statutory Declaration & Indemnification Testacy - with Will",
+  "file": "Statutory Declaration & Indemnification Testacy - with Will",
+  "folder": "Statutory Declaration & Indemnification Testacy - with Will",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 67,
+  "row name": "Statutory Declaration & Indemnification Testacy - with Will",
+  "closest": "",
+  "config": {
+   "formName": "Statutory Declaration & Indemnification Testacy - with Will",
+   "formId": "L_SDIT",
+   "formDescription": "Est120-Statutory Decl and Indemn Testacy",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "TFSA",
+  "file": "TFSA Application",
+  "folder": "TFSA Application",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 68,
+  "row name": "TFSA",
+  "closest": "",
+  "config": {
+   "formName": "TFSA",
+   "formId": "L_TFSAA",
+   "formDescription": "TFSA Application",
+   "foCabinet": "Investments",
+   "formMenuGroups": "TFSA",
+   "formType": "person",
+   "productCodes": "D, M, T",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "TFSA Designation of Beneficiary",
+  "file": "TFSA Designation of Ben-SH",
+  "folder": "TFSA Designation of Ben-SH",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 69,
+  "row name": "TFSA Designation of Beneficiary",
+  "closest": "",
+  "config": {
+   "formName": "TFSA Designation of Beneficiary",
+   "formDescription": "TFSA Designation of Beneficiary",
+   "foCabinet": "Investments",
+   "formMenuGroups": "TFSA",
+   "formType": "person",
+   "productCodes": "D, M, T",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Transfer In Request",
+  "file": "Transfer In Request",
+  "folder": "Transfer In Request",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 70,
+  "row name": "Transfer In Request",
+  "closest": "",
+  "config": {
+   "formName": "Transfer In Request",
+   "formDescription": "Transfer In Request",
+   "foCabinet": "Investments",
+   "productCodes": "D, M, T",
+   "postProcessing": false,
+   "adminQueue": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true
+  },
+  "notes": [
+   "Membership \"Type\" \"NO\" not recognised.",
+   "Remote eSign \"Combined\" not recognised."
+  ]
+ },
+ {
+  "production name": "Waive Cert Appointment of Estate Trustee",
+  "file": "Waive Cert Appointment of Estate Trustee",
+  "folder": "Waive Cert Appointment of Estate Trustee",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 71,
+  "row name": "Waive Cert Appointment of Estate Trustee",
+  "closest": "",
+  "config": {
+   "formName": "Waive Cert Appointment of Estate Trustee",
+   "formId": "L_WCAE",
+   "formDescription": "Est190-Request Waive Cert Appt of Estate Trustee",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Wire Instructions CAD",
+  "file": "Wire Instructions CAD",
+  "folder": "Wire Instructions CAD",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 72,
+  "row name": "Wire Instructions CAD",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions CAD",
+   "formDescription": "Wire Instructions CAD",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "D",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Wire Instructions EUR",
+  "file": "Wire Instructions EUR",
+  "folder": "Wire Instructions EUR",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 73,
+  "row name": "Wire Instructions EUR",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions EUR",
+   "formDescription": "Wire Instructions EUR",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "D",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Wire Instructions OTHER CURRENCIES",
+  "file": "Wire Instructions OTHER CURRENCIES",
+  "folder": "Wire Instructions OTHER CURRENCIES",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 74,
+  "row name": "Wire Instructions OTHER CURRENCIES",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions OTHER CURRENCIES",
+   "formDescription": "Wire Instructions OTHER CURRENCIES",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "D",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Wire Instructions USD",
+  "file": "Wire Instructions USD",
+  "folder": "Wire Instructions USD",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 75,
+  "row name": "Wire Instructions USD",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions USD",
+   "formDescription": "Wire Instructions USD",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "D",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "LIRA Locked-in RRSP Trans Info Req",
+  "file": "LIRA Locked-in RRSP Trans Info Req",
+  "folder": "LIRA Locked-in RRSP Trans Info Req",
+  "match": "unmatched - the workbook says 'To be removed from CRM'",
+  "score": 0.567,
+  "sheet": "",
+  "row": "",
+  "row name": "",
+  "closest": "FO Data Line row 114",
+  "config": {},
+  "buttons": {},
+  "notes": []
+ },
+ {
+  "production name": "RRIF Receipt Letter to Living Spouse",
+  "file": "RRIF Receipt Letter to Living Spouse",
+  "folder": "RRIF Receipt Letter to Living Spouse",
+  "match": "unmatched - the workbook says 'To be removed from CRM'",
+  "score": 0.484,
+  "sheet": "",
+  "row": "",
+  "row name": "",
+  "closest": "FO Data Line row 115",
+  "config": {},
+  "buttons": {},
+  "notes": []
+ },
+ {
+  "production name": "T4RIF Estate Calculation Worksheet",
+  "file": "T4RIF Estate Calculation Worksheet",
+  "folder": "T4RIF Estate Calculation Worksheet",
+  "match": "unmatched - the workbook says 'To be removed from CRM'",
+  "score": 0.543,
+  "sheet": "",
+  "row": "",
+  "row name": "",
+  "closest": "FO Data Line row 116",
+  "config": {},
+  "buttons": {},
+  "notes": []
+ },
+ {
+  "production name": "T4RSP Estate Calculation Worksheet",
+  "file": "T4RSP Estate Calculation Worksheet",
+  "folder": "T4RSP Estate Calculation Worksheet",
+  "match": "unmatched - the workbook says 'To be removed from CRM'",
+  "score": 0.543,
+  "sheet": "",
+  "row": "",
+  "row name": "",
+  "closest": "FO Data Line row 117",
+  "config": {},
+  "buttons": {},
+  "notes": []
+ }
+]

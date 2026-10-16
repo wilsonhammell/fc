@@ -6,7 +6,8 @@
    "label": "RIF",
    "desc": "Tick: RIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of PLAN_TYPE_RIF, PLAN_TYPE_LIF_ON and PLAN_TYPE_RLIF_FED must be ticked"
   },
   "F2": {
    "name": "PLAN_TYPE_LIF_ON",
@@ -85,7 +86,8 @@
    "kind": "candidate",
    "label": "Address/Postal Code:",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F13": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -107,7 +109,8 @@
    "label": "SPOUSAL",
    "desc": "N: no funds came from an RRSP the spouse contributed to",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of SPOUSAL_NO and SPOUSAL_YES must be ticked"
   },
   "F16": {
    "name": "SPOUSAL_YES",
@@ -122,7 +125,8 @@
    "kind": "candidate",
    "label": "Spouse/Common-law Partner Account #",
    "desc": "Spouse / common-law partner's account #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when SPOUSAL_YES is ticked"
   },
   "F18": {
    "name": "SPOUSE_FULL_NAME",
@@ -136,7 +140,8 @@
    "kind": "candidate",
    "label": "Spouse/Common-law Partner S.I.N.:",
    "desc": "Spouse / common-law partner's SIN - the DB list has no spouse SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when SPOUSAL_YES is ticked"
   },
   "F20": {
    "name": "DESIGNATION_SUCCESSOR",
@@ -144,7 +149,8 @@
    "label": "DESIGNATION",
    "desc": "S/CLP: designation of successor annuitant",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of DESIGNATION_SUCCESSOR, DESIGNATION_BENEFICIARY and DESIGNATION_NONE must be ticked"
   },
   "F21": {
    "name": "DESIGNATION_BENEFICIARY",
@@ -168,7 +174,8 @@
    "label": "15th",
    "desc": "Pay due on the 15th",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of PAY_DUE_15TH and PAY_DUE_28TH must be ticked"
   },
   "F24": {
    "name": "PAY_DUE_28TH",
@@ -183,7 +190,8 @@
    "kind": "entry",
    "label": "Start Date:",
    "desc": "Payment start date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F26": {
    "name": "PAYMENT_SPECIFIED",
@@ -191,14 +199,16 @@
    "label": "Specified $",
    "desc": "Payment: specified amount",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one payment option (PAYMENT_SPECIFIED, PAYMENT_MINIMUM, PAYMENT_MAXIMUM) must be ticked"
   },
   "F27": {
    "name": "PAYMENT_SPECIFIED_AMOUNT",
    "kind": "entry",
    "label": "Specified $",
    "desc": "Specified amount $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PAYMENT_SPECIFIED is ticked"
   },
   "F28": {
    "name": "PAYMENT_NET",
@@ -206,7 +216,8 @@
    "label": "Net (after tax)",
    "desc": "Net (after tax)",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When PAYMENT_SPECIFIED is ticked, exactly one of PAYMENT_NET and PAYMENT_GROSS must be ticked"
   },
   "F29": {
    "name": "PAYMENT_GROSS",
@@ -230,7 +241,8 @@
    "label": "$",
    "desc": "No tax on minimum",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When PAYMENT_MINIMUM is ticked, exactly one of MINIMUM_NO_TAX and MINIMUM_YES_TAX must be ticked"
   },
   "F32": {
    "name": "MINIMUM_YES_TAX",
@@ -254,7 +266,8 @@
    "label": "No",
    "desc": "Withhold extra taxes: no",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of EXTRA_TAX_NO and EXTRA_TAX_YES must be ticked"
   },
   "F35": {
    "name": "EXTRA_TAX_YES",
@@ -269,7 +282,8 @@
    "kind": "entry",
    "label": "Percentage or Amount",
    "desc": "Extra tax: percentage or amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when EXTRA_TAX_YES is ticked"
   },
   "F37": {
    "name": "PAY_FREQ_MONTHLY",
@@ -277,7 +291,8 @@
    "label": "Monthly",
    "desc": "Pay frequency: monthly",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one pay frequency (PAY_FREQ_MONTHLY, _QUARTERLY, _SEMI_ANNUAL, _ANNUAL) must be ticked"
   },
   "F38": {
    "name": "PAY_FREQ_QUARTERLY",
@@ -309,7 +324,8 @@
    "label": "Yes",
    "desc": "Continue same payment next year: yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of CONTINUE_PAYMENT_YES and CONTINUE_PAYMENT_NO must be ticked"
   },
   "F42": {
    "name": "CONTINUE_PAYMENT_NO",
@@ -325,7 +341,8 @@
    "label": "AGE",
    "desc": "A: age of annuitant",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of AGE_BASE_ANNUITANT and AGE_BASE_SPOUSE must be ticked"
   },
   "F44": {
    "name": "AGE_BASE_SPOUSE",
@@ -340,7 +357,8 @@
    "kind": "entry",
    "label": "DD MM",
    "desc": "Spouse's birthdate, DD (SPOUSE_DATE_OF_BIRTH would load it whole)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when AGE_BASE_SPOUSE is ticked (with SPOUSE_BIRTH_MONTH and SPOUSE_BIRTH_YEAR)"
   },
   "F46": {
    "name": "SPOUSE_BIRTH_MONTH",
@@ -369,21 +387,24 @@
    "kind": "entry",
    "label": "Type:",
    "desc": "Select from: type",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F50": {
    "name": "PAY_FROM_SUB",
    "kind": "entry",
    "label": "Sub:",
    "desc": "Select from: sub",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F52": {
    "name": "PAY_TO_TYPE",
    "kind": "entry",
    "label": "Type:",
    "desc": "Select to: type",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DEPOSIT_TO_ACCOUNT is ticked"
   },
   "F53": {
    "name": "PAY_TO_SUB",
@@ -397,7 +418,8 @@
    "kind": "entry",
    "label": "Acct:",
    "desc": "Select to: account",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DEPOSIT_TO_ACCOUNT is ticked"
   },
   "F55": {
    "name": "INVESTMENT_INSTRUCTIONS_1",

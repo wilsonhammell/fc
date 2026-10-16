@@ -40,7 +40,8 @@
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (city), Ontario",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "PRIMARY_SIGN_DATE",
@@ -106,14 +107,16 @@
    "kind": "entry",
    "label": "Quota No.",
    "desc": "Quota number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F13": {
    "name": "QUOTA_PREMISES_ADDRESS",
    "kind": "entry",
    "label": "Address",
    "desc": "Address of the quota premises",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B1": {
    "name": "Member1Name",
@@ -267,7 +270,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Security agreement: the collateral (quota / proceeds) described",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F28": {
    "name": "Member1Name",

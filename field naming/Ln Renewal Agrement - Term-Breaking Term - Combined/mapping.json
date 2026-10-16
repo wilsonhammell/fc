@@ -82,7 +82,8 @@
     124,
     290,
     137
-   ]
+   ],
+   "save": true
   },
   "F8": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -124,14 +125,16 @@
    "name": "LOAN_SUB",
    "kind": "candidate",
    "label": "Loan No.",
-   "desc": "Loan number part 3: the loan's sub number (old Sub)"
+   "desc": "Loan number part 3: the loan's sub number (old Sub)",
+   "save": true
   },
   "F13": {
    "name": "LOAN_APPROVED_AMOUNT",
    "kind": "candidate",
    "label": "amount of $ (the Principal Amount)",
    "desc": "Loan's approved (original) amount (old merge tag Loan_Approved_Amount)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F14": {
    "name": "PRIMARY_MEMBER_NUMBER",

@@ -6,7 +6,8 @@
    "label": "☐",
    "desc": "Tick: withdrawal (w, to, oc)",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "At least one type of transaction (WITHDRAWAL, DECEASED_PAYOUT, TRANSFER_TO_OTHER_FI, OTHER_TRANSACTION, TRANSFER_TO_RRIF, CONTRACT_TERMINATION, REFUND_UNDEDUCTED, AUTOMATIC_TRANSFERS) must be ticked"
   },
   "F2": {
    "name": "TRANSFER_TO_OTHER_FI",
@@ -38,7 +39,8 @@
    "label": "Undeducted",
    "desc": "Transfer to RRIF: new",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When TRANSFER_TO_RRIF is ticked, exactly one of TRANSFER_RRIF_NEW and TRANSFER_RRIF_EXISTING must be ticked"
   },
   "F6": {
    "name": "TRANSFER_RRIF_EXISTING",
@@ -53,7 +55,8 @@
    "kind": "entry",
    "label": "Transfer to RRIF: ☐ New ☐ Existing RRIF Contract #",
    "desc": "Existing RRIF contract #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRANSFER_RRIF_EXISTING is ticked"
   },
   "F8": {
    "name": "DECEASED_PAYOUT",
@@ -92,7 +95,8 @@
    "kind": "entry",
    "label": "☐ Other",
    "desc": "Other: what",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when OTHER_TRANSACTION is ticked"
   },
   "F13": {
    "name": "TERMINATION_FULL",
@@ -100,7 +104,8 @@
    "label": "☐ Continuing",
    "desc": "Termination: full",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When CONTRACT_TERMINATION is ticked, exactly one of TERMINATION_FULL and TERMINATION_PARTIAL must be ticked"
   },
   "F14": {
    "name": "TERMINATION_PARTIAL",
@@ -116,7 +121,8 @@
    "label": "☐",
    "desc": "Automatic transfers: continuing",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When AUTOMATIC_TRANSFERS is ticked, exactly one of AUTO_TRANSFERS_CONTINUING and AUTO_TRANSFERS_CANCELLED must be ticked"
   },
   "F16": {
    "name": "AUTO_TRANSFERS_CANCELLED",
@@ -131,7 +137,8 @@
    "kind": "entry",
    "label": "Sub #",
    "desc": "Withdrawal row 1: RRSP (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F18": {
    "name": "WD1_EXPIRY_DATE",
@@ -145,14 +152,16 @@
    "kind": "entry",
    "label": "S=Specified Amt.",
    "desc": "Withdrawal row 1: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F20": {
    "name": "WD1_AMOUNT",
    "kind": "entry",
    "label": "Amount",
    "desc": "Withdrawal row 1: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F21": {
    "name": "WD1_ACCRUED_INTEREST",
@@ -383,7 +392,8 @@
    "kind": "entry",
    "label": "Less Withholding Tax @",
    "desc": "Withholding tax rate, %",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WITHDRAWAL is ticked"
   },
   "F54": {
    "name": "WD_TAX_AMOUNT",
@@ -418,7 +428,8 @@
    "kind": "entry",
    "label": "Total Proceeds",
    "desc": "Total proceeds",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F59": {
    "name": "CREDIT_OWNER_ACCOUNT",
@@ -426,7 +437,8 @@
    "label": "Please credit owner’s account: Owner Number",
    "desc": "Tick: credit the owner's account",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of CREDIT_OWNER_ACCOUNT and SEND_CHEQUE_TO_FI must be ticked"
   },
   "F60": {
    "name": "SEND_CHEQUE_TO_FI",
@@ -448,21 +460,24 @@
    "kind": "entry",
    "label": "__________________ Demand Product",
    "desc": "Credit to: demand product (could load from DMD_PRODNBR)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when CREDIT_OWNER_ACCOUNT is ticked"
   },
   "F63": {
    "name": "DEPOSIT_SUB",
    "kind": "entry",
    "label": "__________________ Demand Product _________________ Sub #",
    "desc": "Credit to: sub #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when CREDIT_OWNER_ACCOUNT is ticked"
   },
   "F64": {
    "name": "OTHER_FI_NAME_ADDRESS",
    "kind": "entry",
    "label": "☐",
    "desc": "The financial institution",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when SEND_CHEQUE_TO_FI is ticked"
   },
   "F65": {
    "name": "CHEQUE_NUMBER",
@@ -594,7 +609,8 @@
     168,
     249,
     181
-   ]
+   ],
+   "save": true
   },
   "F77": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",

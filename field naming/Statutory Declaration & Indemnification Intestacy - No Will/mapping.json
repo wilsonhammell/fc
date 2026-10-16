@@ -19,7 +19,8 @@
    "kind": "candidate",
    "label": "Late of:",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -40,84 +41,96 @@
    "kind": "candidate",
    "label": "1. THAT the Deceased died on the",
    "desc": "Day of the member's death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "PRIMARY_DEATH_MONTH_YEAR",
    "kind": "candidate",
    "label": "day of",
    "desc": "Month and year of the member's death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "RRSP_CONTRACTS",
    "kind": "entry",
    "label": "□ RRSP contract No.(s)",
    "desc": "The deceased's RRSP contract number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_RRSP is ticked"
   },
   "F9": {
    "name": "TFSA_CONTRACTS",
    "kind": "entry",
    "label": "□ TFSA contract No.(s)",
    "desc": "The deceased's TFSA contract number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_TFSA is ticked"
   },
   "F10": {
    "name": "TERM_DEPOSIT_NUMBERS",
    "kind": "entry",
    "label": "□ Term Deposit/GIC No.(s)",
    "desc": "The deceased's term deposit / GIC number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_TERM_DEPOSIT is ticked"
   },
   "F11": {
    "name": "DEPOSIT_ACCOUNT_NUMBERS",
    "kind": "entry",
    "label": "□ Deposit Account No.(s)",
    "desc": "The deceased's deposit account number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_DEPOSIT_ACCOUNT is ticked"
   },
   "F12": {
    "name": "CLASS_P_SHARES",
    "kind": "entry",
    "label": "□ Class P Profit Shares",
    "desc": "The deceased's Class P profit shares",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_CLASS_P_SHARES is ticked"
   },
   "F13": {
    "name": "MEMBERSHIP_SHARES_AMOUNT",
    "kind": "entry",
    "label": "$",
    "desc": "The deceased's membership shares $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ASSET_MEMBERSHIP_SHARES is ticked"
   },
   "F14": {
    "name": "HEIR1_NAME",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 1: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F15": {
    "name": "HEIR1_RELATIONSHIP",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 1: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F16": {
    "name": "HEIR1_BIRTHDATE",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 1: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F17": {
    "name": "HEIR1_SIN",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 1: SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F18": {
    "name": "HEIR2_NAME",
@@ -209,7 +222,8 @@
    "label": "□",
    "desc": "Tick: RRSP contract(s) - the form typed a box with no field",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "At least one asset type (ASSET_RRSP, ASSET_TFSA, ASSET_TERM_DEPOSIT, ASSET_DEPOSIT_ACCOUNT, ASSET_CLASS_P_SHARES, ASSET_MEMBERSHIP_SHARES) must be ticked"
   },
   "B6": {
    "name": "ASSET_TFSA",
@@ -256,7 +270,8 @@
    "kind": "entry",
    "label": "joint deposits and registered funds with Designation of Beneficiary): $",
    "desc": "Value of all assets on deposit in the deceased's name $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F31": {
    "name": "TRANSFER_TERM_DEPOSITS",
@@ -264,14 +279,16 @@
    "label": "THEREFORE,",
    "desc": "Tick: term deposits / GIC's only, transferred into the following name(s)",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "At least one way of distributing the estate (TRANSFER_TERM_DEPOSITS, TRANSFER_TO_MEMBER, OTHER_ASSETS_TO_MEMBER, PAY_EACH_CLAIMANT) must be ticked"
   },
   "F32": {
    "name": "TERM_DEPOSIT_TRANSFER_NAMES",
    "kind": "entry",
    "label": "Term Deposits/GIC's only Transferred into the following name(s):",
    "desc": "Name(s) the term deposits go to",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRANSFER_TERM_DEPOSITS is ticked"
   },
   "F33": {
    "name": "TERM_DEPOSIT_TRANSFER_NAMES_2",
@@ -286,7 +303,8 @@
    "label": "more",
    "desc": "If more than one name: separate certificates",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When TRANSFER_TERM_DEPOSITS is ticked for more than one name, exactly one of SEPARATE_CERTIFICATES and SINGLE_CERTIFICATE must be ticked"
   },
   "F35": {
    "name": "SINGLE_CERTIFICATE",
@@ -309,14 +327,16 @@
    "kind": "entry",
    "label": "Transferred to Member #",
    "desc": "Transferred to member #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRANSFER_TO_MEMBER is ticked"
   },
   "F38": {
    "name": "TRANSFER_TO_MEMBER_NAMES",
    "kind": "entry",
    "label": "in the name(s) of",
    "desc": "in the name(s) of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRANSFER_TO_MEMBER is ticked"
   },
   "F39": {
    "name": "TRANSFER_TO_MEMBER_NAMES_2",
@@ -339,14 +359,16 @@
    "kind": "entry",
    "label": "Transferred to Member #",
    "desc": "Other assets: transferred to member #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when OTHER_ASSETS_TO_MEMBER is ticked"
   },
   "F42": {
    "name": "OTHER_ASSETS_NAMES",
    "kind": "entry",
    "label": "in the name(s) of",
    "desc": "Other assets: in the name(s) of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when OTHER_ASSETS_TO_MEMBER is ticked"
   },
   "F43": {
    "name": "PAY_EACH_CLAIMANT",
@@ -361,35 +383,40 @@
    "kind": "entry",
    "label": "",
    "desc": "Each claimant's name, address, phone and entitlement",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PAY_EACH_CLAIMANT is ticked"
   },
   "F45": {
    "name": "CLAIMANT1_NAME",
    "kind": "entry",
    "label": "I,",
    "desc": "Claimant 1 making the declaration (I, ___)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F46": {
    "name": "DECLARED1_AT_CITY",
    "kind": "entry",
    "label": "Province of",
    "desc": "Claimant 1: declared before me at",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F47": {
    "name": "DECLARED1_AT_PROVINCE",
    "kind": "entry",
    "label": "Province of",
    "desc": "Claimant 1: in the Province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F48": {
    "name": "DECLARED1_YEAR",
    "kind": "entry",
    "label": "Province of",
    "desc": "Claimant 1: A.D. 20__ (the box sits before \", this\")",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F49": {
    "name": "CLAIMANT1_SIGNATURE",
@@ -403,14 +430,16 @@
    "kind": "entry",
    "label": "Province",
    "desc": "Claimant 1: this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F51": {
    "name": "DECLARED1_MONTH",
    "kind": "entry",
    "label": "day of",
    "desc": "Claimant 1: day of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F52": {
    "name": "COMMISSIONER1_PROVINCE",

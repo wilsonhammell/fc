@@ -47,7 +47,8 @@
    "kind": "candidate",
    "label": ",",
    "desc": "The FSR's position / title",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "BREACH_YEAR_END_1",
@@ -60,7 +61,8 @@
     342,
     138,
     356
-   ]
+   ],
+   "save": true
   },
   "B1": {
    "name": "STAFF_SIGNATURE",

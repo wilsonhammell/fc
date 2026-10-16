@@ -12,28 +12,32 @@
    "kind": "entry",
    "label": "FROM: Name, Address of Individual(s)",
    "desc": "FROM: name and address of the individual(s) - one line for both; PRIMARY_FULL_LEGAL_NAME and the mailing address hold the parts",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F3": {
    "name": "PRODUCER_NUMBER",
    "kind": "entry",
    "label": "PRODUCER*",
    "desc": "Producer #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "GROWER_NUMBER",
    "kind": "entry",
    "label": "GROWER#",
    "desc": "Grower #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "SIGNED_AT_CITY",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (city), Ontario",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F6": {
    "name": "PRIMARY_SIGN_DATE",
@@ -47,7 +51,8 @@
    "kind": "entry",
    "label": "Name of quota holder as registered by O.B.H.E.C.C.",
    "desc": "Name of quota holder as registered with the board",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "Member1Name",

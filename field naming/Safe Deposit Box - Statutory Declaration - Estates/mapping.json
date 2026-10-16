@@ -19,7 +19,8 @@
    "kind": "candidate",
    "label": "Late of:",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -40,49 +41,56 @@
    "kind": "entry",
    "label": "I/We",
    "desc": "The declaring estate trustee(s) (I/We, ___)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "ESTATE_TRUSTEE_CITY",
    "kind": "entry",
    "label": ", of",
    "desc": "Trustee's city (of ___)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "ESTATE_TRUSTEE_PROVINCE",
    "kind": "entry",
    "label": ", in the Province of",
    "desc": "Trustee's province",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F9": {
    "name": "ESTATE_TRUSTEE_RELATIONSHIP",
    "kind": "entry",
    "label": "THAT I/We am/are the",
    "desc": "Trustee's relationship to the estate (am/are the ___ of the estate)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F10": {
    "name": "PRIMARY_DEATH_DAY",
    "kind": "candidate",
    "label": "THAT the Deceased died on the",
    "desc": "Day of the member's death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "PRIMARY_DEATH_MONTH",
    "kind": "candidate",
    "label": "day of",
    "desc": "Month of the member's death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F12": {
    "name": "PRIMARY_DEATH_YEAR",
    "kind": "candidate",
    "label": ",",
    "desc": "Year of the member's death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F13": {
    "name": "WILL_DATED_DAY",
@@ -110,28 +118,32 @@
    "kind": "candidate",
    "label": "Libro Credit Union Limited release to the contents of safe",
    "desc": "Safe deposit box #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F17": {
    "name": "SDB_BRANCH",
    "kind": "entry",
    "label": ",",
    "desc": "Branch the box is at",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F18": {
    "name": "TRUSTEE1_SIGNED_AT_CITY",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Estate trustee 1: dated at (city)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F19": {
    "name": "TRUSTEE1_SIGNED_AT_PROVINCE",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Estate trustee 1: in the province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F20": {
    "name": "Member1Name",
@@ -152,28 +164,32 @@
    "kind": "entry",
    "label": "this",
    "desc": "Estate trustee 1: this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F23": {
    "name": "TRUSTEE1_SIGNED_MONTH",
    "kind": "entry",
    "label": "day of",
    "desc": "Estate trustee 1: month",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F24": {
    "name": "TRUSTEE1_SIGNED_YEAR",
    "kind": "entry",
    "label": ", 20",
    "desc": "Estate trustee 1: year",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F25": {
    "name": "WITNESS1_NAME",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 1: full name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F26": {
    "name": "WITNESS1_SIGNATURE",
@@ -187,7 +203,8 @@
    "kind": "entry",
    "label": "My address is:",
    "desc": "Witness to estate trustee 1: address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F28": {
    "name": "WITNESS1_ADDRESS_2",
@@ -208,7 +225,8 @@
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 1: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F31": {
    "name": "TRUSTEE2_SIGNED_AT_CITY",
@@ -530,21 +548,24 @@
    "kind": "entry",
    "label": "this",
    "desc": "Contents released this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F77": {
    "name": "SDB_RELEASE_MONTH",
    "kind": "entry",
    "label": "day of",
    "desc": "month",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F78": {
    "name": "SDB_RELEASE_YEAR",
    "kind": "entry",
    "label": ", 20",
    "desc": "year",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F79": {
    "name": "Member1Name",
@@ -621,7 +642,8 @@
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Libro witness 2: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F90": {
    "name": "STAFF2_SIGNATURE",

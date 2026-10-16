@@ -26,7 +26,8 @@
    "kind": "candidate",
    "label": "Address:",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",

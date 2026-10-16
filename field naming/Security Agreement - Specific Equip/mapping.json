@@ -96,7 +96,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Security agreement: the collateral described",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F15": {
    "name": "Member1Name",

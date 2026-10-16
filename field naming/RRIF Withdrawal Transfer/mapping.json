@@ -54,7 +54,8 @@
    "kind": "candidate",
    "label": "Address",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F9": {
    "name": "PRIMARY_MAIL_ADDR_LINE3",
@@ -76,7 +77,8 @@
    "label": "CHECK",
    "desc": "Tick: withdrawal (w, to, oc)",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "At least one type of transaction (WITHDRAWAL, TRANSFER_TO_OTHER_FI, TRANSFER_TO_ANOTHER_RRIF, TRANSFER_TO_RRSP, DEATH) must be ticked"
   },
   "F12": {
    "name": "TRANSFER_TO_OTHER_FI",
@@ -100,7 +102,8 @@
    "label": "Institution",
    "desc": "Another RRIF: new",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When TRANSFER_TO_ANOTHER_RRIF is ticked, exactly one of TRANSFER_RRIF_NEW and TRANSFER_RRIF_EXISTING must be ticked"
   },
   "F15": {
    "name": "TRANSFER_RRIF_EXISTING",
@@ -115,7 +118,8 @@
    "kind": "entry",
    "label": "RRIF Contract #",
    "desc": "RRIF contract #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRANSFER_RRIF_EXISTING is ticked"
   },
   "F17": {
    "name": "TRANSFER_TO_RRSP",
@@ -131,7 +135,8 @@
    "label": "New",
    "desc": "RRSP: new",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When TRANSFER_TO_RRSP is ticked, exactly one of TRANSFER_RRSP_NEW and TRANSFER_RRSP_EXISTING must be ticked"
   },
   "F19": {
    "name": "TRANSFER_RRSP_EXISTING",
@@ -146,7 +151,8 @@
    "kind": "entry",
    "label": "RRSP Contract #",
    "desc": "RRSP contract #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRANSFER_RRSP_EXISTING is ticked"
   },
   "F21": {
    "name": "DEATH",
@@ -162,7 +168,8 @@
    "label": "Full Contract Termination OR",
    "desc": "Tick: full contract termination",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of FULL_CONTRACT_TERMINATION and PARTIAL_CONTRACT_TERMINATION must be ticked"
   },
   "F23": {
    "name": "PARTIAL_CONTRACT_TERMINATION",
@@ -178,7 +185,8 @@
    "label": "Yes",
    "desc": "Change to automatic transfer required: No",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of AUTO_TRANSFER_CHANGE_NO and AUTO_TRANSFER_CHANGE_YES must be ticked"
   },
   "F25": {
    "name": "AUTO_TRANSFER_CHANGE_YES",
@@ -193,14 +201,16 @@
    "kind": "entry",
    "label": "Sub#",
    "desc": "Automatic transfer: sub #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when AUTO_TRANSFER_CHANGE_YES is ticked"
   },
   "F27": {
    "name": "WD1_RRIF_SUB",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 1: RRIF (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F28": {
    "name": "WD1_EXPIRY_DATE",
@@ -214,14 +224,16 @@
    "kind": "entry",
    "label": "S=Specified Amt.",
    "desc": "Withdrawal row 1: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F30": {
    "name": "WD1_AMOUNT",
    "kind": "entry",
    "label": "Amt. Amount",
    "desc": "Withdrawal row 1: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F31": {
    "name": "WD1_ACCRUED_INTEREST",
@@ -368,7 +380,8 @@
    "kind": "entry",
    "label": "Total",
    "desc": "Total withdrawal",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F52": {
    "name": "WD_FEE",
@@ -403,7 +416,8 @@
    "kind": "entry",
    "label": "Less Withholding Tax at",
    "desc": "Withholding tax rate, %",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WITHDRAWAL is ticked"
   },
   "F57": {
    "name": "WD_TAX_AMOUNT",
@@ -417,7 +431,8 @@
    "kind": "entry",
    "label": "TOTAL PROCEEDS",
    "desc": "Total proceeds",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B2": {
    "name": "DEATH_DETAIL_1",
@@ -495,7 +510,8 @@
    "label": "Please deposit to my account",
    "desc": "Tick: deposit to my account - was a small text box",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of DEPOSIT_TO_MY_ACCOUNT and SEND_CHEQUE_TO_FI must be marked"
   },
   "F61": {
    "name": "PRIMARY_MEMBER_NUMBER",
@@ -509,14 +525,16 @@
    "kind": "entry",
    "label": "Please deposit to my account",
    "desc": "Deposit to: demand product (could load from DMD_PRODNBR)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DEPOSIT_TO_MY_ACCOUNT is marked"
   },
   "F63": {
    "name": "DEPOSIT_SUB",
    "kind": "entry",
    "label": "Please deposit to my account",
    "desc": "Deposit to: sub #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DEPOSIT_TO_MY_ACCOUNT is marked"
   },
   "F64": {
    "name": "SEND_CHEQUE_TO_FI",
@@ -627,7 +645,8 @@
    "kind": "entry",
    "label": "Please send cheque to",
    "desc": "Name and address of the financial institution, line 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when SEND_CHEQUE_TO_FI is marked"
   }
  },
  "drop": [

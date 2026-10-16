@@ -1,186 +1,142 @@
 {
  "items": {
-  "F1": {
+  "F8": {
    "name": "LOAN_FUND_DATE",
    "kind": "candidate",
    "label": "",
    "desc": "Date the loan was funded",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
-  "F2": {
+  "F9": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "",
    "desc": "Member's full name",
    "how": "reviewed"
   },
-  "F3": {
+  "F10": {
    "name": "JointMember1Name",
    "kind": "special",
    "label": "",
    "desc": "Joint owner 1, full name - the starter code fills it from SIGNER1",
    "how": "reviewed"
   },
-  "F4": {
+  "F11": {
    "name": "PRIMARY_MAIL_ADDR_LINE1",
    "kind": "candidate",
    "label": "",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
-  "F5": {
+  "F12": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
    "kind": "candidate",
    "label": "",
    "desc": "Member's mailing address, line 2",
    "how": "reviewed"
   },
-  "F6": {
+  "F13": {
    "name": "PRIMARY_MAIL_ADDR_LINE3",
    "kind": "candidate",
    "label": "",
    "desc": "Member's mailing address, line 3",
    "how": "reviewed"
   },
-  "F7": {
+  "F14": {
    "name": "PRIMARY_MEMBER_NUMBER",
    "kind": "db",
    "label": "RE: Owner Number:",
    "desc": "Member number",
    "how": "reviewed"
   },
-  "F8": {
+  "F15": {
    "name": "LOAN_SUB",
    "kind": "candidate",
    "label": "Sub:",
    "desc": "The loan's sub number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
-  "F9": {
+  "F1": {
    "name": "LOAN_APPROVED_AMOUNT",
    "kind": "candidate",
    "label": "Principal Amount Borrowed:",
    "desc": "Loan's approved (original) amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
-  "F10": {
+  "F18": {
    "name": "LOAN_RATE_INCREMENT",
    "kind": "candidate",
    "label": "%",
    "desc": "Rate over prime",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
-  "F11": {
+  "F2": {
    "name": "LOAN_TERM_YEARS",
    "kind": "candidate",
    "label": "Term:",
    "desc": "Loan term, years",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
-  "F12": {
+  "F3": {
    "name": "LOAN_AMORTIZATION_YEARS",
    "kind": "candidate",
    "label": "Amortization:",
    "desc": "Loan amortization, years",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
-  "F13": {
+  "F4": {
    "name": "LOAN_MATURITY_DATE",
    "kind": "candidate",
    "label": "Maturity Date:",
    "desc": "Loan's maturity date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
-  "F14": {
+  "F5": {
    "name": "LOAN_PAYMENT_FREQUENCY",
    "kind": "candidate",
    "label": "Payment Frequency:",
    "desc": "Loan payment frequency",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
-  "F15": {
+  "F6": {
    "name": "LOAN_PAYMENT_AMOUNT",
    "kind": "candidate",
    "label": "Payment Amount:",
    "desc": "Payment amount (principal and interest; old field PI_Amount)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
-  "F16": {
+  "F7": {
    "name": "LOAN_NEXT_PAYMENT_DATE",
    "kind": "candidate",
    "label": "First Payment Date:",
    "desc": "Loan's next payment date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
-  "F17": {
+  "F16": {
    "name": "ACCTMGR_FULL_NAME",
    "kind": "db",
    "label": "Thank you for your business!",
    "desc": "FSR signing the letter. CHECK: is the FSR the account manager",
    "how": "reviewed"
   },
-  "F18": {
+  "F17": {
    "name": "ACCTMGR_POSITION",
    "kind": "candidate",
    "label": "",
    "desc": "The FSR's position / title",
-   "how": "reviewed"
-  },
-  "B1": {
-   "name": "Member1Name",
-   "kind": "special",
-   "label": "Name",
-   "desc": "Signer 1",
-   "how": "reviewed"
-  },
-  "B2": {
-   "name": "Member1Signature",
-   "kind": "special",
-   "label": "Authorized Signature",
-   "desc": "Signer 1",
-   "how": "reviewed"
-  },
-  "B3": {
-   "name": "Member1SignDate",
-   "kind": "special",
-   "label": "Date",
-   "desc": "Signer 1",
-   "how": "reviewed"
-  },
-  "B4": {
-   "name": "Member2Name",
-   "kind": "special",
-   "label": "Name",
-   "desc": "Signer 2",
-   "how": "reviewed"
-  },
-  "B5": {
-   "name": "Member2Signature",
-   "kind": "special",
-   "label": "Authorized Signature",
-   "desc": "Signer 2",
-   "how": "reviewed"
-  },
-  "B6": {
-   "name": "Member2SignDate",
-   "kind": "special",
-   "label": "Date",
-   "desc": "Signer 2",
-   "how": "reviewed"
-  },
-  "B7": {
-   "name": "REQUESTUSER",
-   "kind": "db",
-   "label": "Authorizing Staff Member",
-   "desc": "Authorizing staff member",
-   "how": "reviewed"
-  },
-  "B8": {
-   "name": "PRIMARY_SIGN_DATE",
-   "kind": "db",
-   "label": "Date",
-   "desc": "Staff date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
  "drop": [],

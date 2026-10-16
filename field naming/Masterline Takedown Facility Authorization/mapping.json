@@ -19,21 +19,24 @@
    "kind": "entry",
    "label": "as outlined in the Commitment Letter dated",
    "desc": "Commitment letter dated",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "TAKEDOWN_FUNDING_DATE",
    "kind": "entry",
    "label": "Requested Funding Date:",
    "desc": "Requested funding date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "TAKEDOWN_PRINCIPAL_AMOUNT",
    "kind": "entry",
    "label": "Principal Amount:",
    "desc": "Principal amount of the takedown",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F6": {
    "name": "TAKEDOWN_AMORTIZATION",
@@ -47,35 +50,40 @@
    "kind": "entry",
    "label": "Term:",
    "desc": "Term",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "TAKEDOWN_INTEREST_RATE",
    "kind": "entry",
    "label": "Interest Rate:",
    "desc": "Interest rate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F9": {
    "name": "TAKEDOWN_PURPOSE",
    "kind": "entry",
    "label": "Purpose of Funds:",
    "desc": "Purpose of funds",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F10": {
    "name": "TAKEDOWN_REPAYMENT_DETAILS",
    "kind": "entry",
    "label": "All loan and repayment details will be disclosed in the Disclosure Letter which will be provided to the",
    "desc": "Loan and repayment details",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "SECURITY_OPTION",
    "kind": "entry",
    "label": "the Libro form of Specific Security Agreement; or (2) new",
    "desc": "Security: (1) Libro form specific security agreement, or (2) new ... (dropdown)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F12": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -96,7 +104,8 @@
    "kind": "candidate",
    "label": "",
    "desc": "Signing officer 1's title",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F15": {
    "name": "Member2Name",

@@ -61,7 +61,8 @@
    "kind": "candidate",
    "label": "Annuitant's Address:",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F10": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -83,7 +84,8 @@
    "label": "",
    "desc": "Tick: the pension plan differentiated on the basis of sex",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of PENSION_DIFFERENTIATED and PENSION_NOT_DIFFERENTIATED must be ticked"
   },
   "F13": {
    "name": "PENSION_NOT_DIFFERENTIATED",
@@ -98,42 +100,48 @@
    "kind": "entry",
    "label": "Executed at the",
    "desc": "Executed at the (city, town, village ...)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F15": {
    "name": "SIGNED_DAY",
    "kind": "entry",
    "label": "Executed at the",
    "desc": "this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F16": {
    "name": "SIGNED_AT_CITY",
    "kind": "entry",
    "label": "of",
    "desc": "of (name of place)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F17": {
    "name": "SIGNED_AT_PROVINCE",
    "kind": "entry",
    "label": "Executed at the",
    "desc": "in the Province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F18": {
    "name": "SIGNED_MONTH",
    "kind": "entry",
    "label": "day of",
    "desc": "of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F19": {
    "name": "SIGNED_YEAR",
    "kind": "entry",
    "label": ", A.D.",
    "desc": "A.D.",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F20": {
    "name": "Member1Signature",

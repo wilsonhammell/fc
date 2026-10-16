@@ -5,7 +5,8 @@
    "kind": "entry",
    "label": "DFO Licence No.",
    "desc": "DFO licence number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F2": {
    "name": "PRIMARY_MEMBER_NUMBER",
@@ -19,49 +20,56 @@
    "kind": "entry",
    "label": "Name on DFO Licence",
    "desc": "Name on the DFO licence (often PRIMARY_FULL_LEGAL_NAME)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "QUOTA_KILOGRAMS",
    "kind": "entry",
    "label": "Kilograms",
    "desc": "Kilograms of quota under the direction",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "DIRECTION_START_DATE",
    "kind": "entry",
    "label": "Start date",
    "desc": "Start date of the direction",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F6": {
    "name": "DIRECTION_EXPIRY_DATE",
    "kind": "entry",
    "label": "Expiry date",
    "desc": "Expiry date of the direction",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "LENDER_NAME",
    "kind": "entry",
    "label": "Name of Lender",
    "desc": "Payable to: name of lender (printed as Libro Credit Union Limited)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "LENDER_ADDRESS",
    "kind": "entry",
    "label": "Address",
    "desc": "Lender's address, line 1 (printed as 217 York Street)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F9": {
    "name": "LENDER_PHONE",
    "kind": "entry",
    "label": "Telephone No.",
    "desc": "Lender's telephone (printed as 519-672-0124)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F10": {
    "name": "LENDER_FAX",
@@ -82,7 +90,8 @@
    "kind": "entry",
    "label": "Producer Authorization",
    "desc": "Witness's name (non-family member), row 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F13": {
    "name": "Member1Name",
@@ -215,7 +224,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Security agreement: description of the quota",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F19": {
    "name": "PRIMARY_FULL_LEGAL_NAME",

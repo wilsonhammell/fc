@@ -19,7 +19,8 @@
    "kind": "candidate",
    "label": "Address:",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -66,9 +67,10 @@
    "name": "TRANSFER_AMOUNT_CHOICE",
    "kind": "entry",
    "label": "lesser of",
-   "desc": "Check box group (pick one): transfer the lesser of 50% of the amount recently transferred, OR a specified $ amount",
+   "desc": "Pick one: transfer the lesser of 50% of the amount recently transferred, OR a specified $ amount",
    "how": "reviewed",
-   "option": "Percent50"
+   "option": "Percent50",
+   "save": true
   },
   "F10": {
    "name": "TRANSFER_AMOUNT_CHOICE",
@@ -76,14 +78,16 @@
    "label": "OR",
    "desc": "OR",
    "how": "reviewed",
-   "option": "Amount"
+   "option": "Amount",
+   "save": true
   },
   "F11": {
    "name": "TRANSFER_SPECIFIED_AMOUNT",
    "kind": "entry",
    "label": "$",
    "desc": "The specified $ amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRANSFER_AMOUNT_CHOICE is Amount"
   },
   "F12": {
    "name": "TRANSFER_TO_EXISTING_RRIF",
@@ -91,14 +95,16 @@
    "label": "complete",
    "desc": "Tick: to an existing RRIF with this institution",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of TRANSFER_TO_EXISTING_RRIF, TRANSFER_TO_NEW_RRIF, TRANSFER_TO_EXISTING_RRSP and TRANSFER_TO_NEW_RRSP must be ticked"
   },
   "F13": {
    "name": "TRANSFER_RRIF_CONTRACT",
    "kind": "entry",
    "label": "Contract #",
    "desc": "Existing RRIF contract #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRANSFER_TO_EXISTING_RRIF is ticked"
   },
   "F14": {
    "name": "TRANSFER_TO_NEW_RRIF",
@@ -121,7 +127,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Existing RRSP contract #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRANSFER_TO_EXISTING_RRSP is ticked"
   },
   "F17": {
    "name": "TRANSFER_TO_NEW_RRSP",

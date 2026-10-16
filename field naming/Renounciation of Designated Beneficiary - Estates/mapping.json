@@ -5,56 +5,64 @@
    "kind": "entry",
    "label": "I,",
    "desc": "The designated beneficiary renouncing (I, ___)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F2": {
    "name": "BENEFICIARY_CITY",
    "kind": "entry",
    "label": ", of",
    "desc": "Beneficiary's city (of ___)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F3": {
    "name": "PRIMARY_DEATH_DAY",
    "kind": "candidate",
    "label": "THAT the Deceased died on the",
    "desc": "Day of the member's death - the DB list has no date of death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "PRIMARY_DEATH_MONTH",
    "kind": "candidate",
    "label": "day of",
    "desc": "Month of the member's death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "PRIMARY_DEATH_YEAR",
    "kind": "candidate",
    "label": ", 20",
    "desc": "Year of the member's death",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F6": {
    "name": "DESIGNATION_FORM_MONTH",
    "kind": "entry",
    "label": "__ day of",
    "desc": "Designation form dated: month",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "SIGNED_AT_CITY",
    "kind": "entry",
    "label": "Date at",
    "desc": "Date at (city)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "SIGNED_AT_PROVINCE",
    "kind": "entry",
    "label": "In the province of",
    "desc": "In the province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F9": {
    "name": "BENEFICIARY_NAME",
@@ -68,28 +76,32 @@
    "kind": "entry",
    "label": "This",
    "desc": "This ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "SIGNED_MONTH",
    "kind": "entry",
    "label": "This _____________ day",
    "desc": "day of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F12": {
    "name": "SIGNED_YEAR",
    "kind": "entry",
    "label": "This _____________ day of",
    "desc": ", 20__",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F13": {
    "name": "WITNESS_NAME",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness's full name (the witness is relabelled Authorizing Staff Member)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F14": {
    "name": "WITNESS_ADDRESS_2",
@@ -103,7 +115,8 @@
    "kind": "entry",
    "label": "My address",
    "desc": "Witness's address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F16": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -145,35 +158,40 @@
    "kind": "entry",
    "label": ", in the Province of",
    "desc": "Beneficiary's province",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F22": {
    "name": "RRSP_CONTRACTS",
    "kind": "entry",
    "label": "RRSP contract",
    "desc": "The deceased's RRSP contract number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when BENEFICIARY_OF_RRSP is ticked"
   },
   "F23": {
    "name": "TFSA_CONTRACTS",
    "kind": "entry",
    "label": "TFSA contract",
    "desc": "The deceased's TFSA contract number(s)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when BENEFICIARY_OF_TFSA is ticked"
   },
   "F24": {
    "name": "DESIGNATION_FORM_DAY",
    "kind": "entry",
    "label": "the proceeds",
    "desc": "Beneficiary designation form dated: day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F25": {
    "name": "DESIGNATION_FORM_YEAR",
    "kind": "entry",
    "label": ", 20",
    "desc": "Designation form dated: year",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F26": {
    "name": "DECLARANT_SIGNATURE",
@@ -188,7 +206,8 @@
    "label": "THAT",
    "desc": "Tick: RRSP contract(s)",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "At least one of BENEFICIARY_OF_RRSP and BENEFICIARY_OF_TFSA must be ticked"
   },
   "F28": {
    "name": "BENEFICIARY_OF_TFSA",

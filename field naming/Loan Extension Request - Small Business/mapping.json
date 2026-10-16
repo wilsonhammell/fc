@@ -124,7 +124,8 @@
    "kind": "candidate",
    "label": "Sub:",
    "desc": "The loan's sub number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F19": {
    "name": "LOAN_PRODUCT",
@@ -159,7 +160,8 @@
    "kind": "candidate",
    "label": "Balance Outstanding:",
    "desc": "Loan's current balance",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F24": {
    "name": "LOAN_APPROVAL_COMMITTEE",
@@ -173,21 +175,24 @@
    "kind": "candidate",
    "label": "Maturity Date:",
    "desc": "Loan's maturity date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F26": {
    "name": "SECURITY_DOCUMENT_TYPE",
    "kind": "entry",
    "label": "but not limited to, the security set out in the",
    "desc": "Security: the security document (dropdown)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F27": {
    "name": "SECURITY_DOCUMENT_DATE",
    "kind": "entry",
    "label": "dated",
    "desc": "Security: dated",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F28": {
    "name": "FIRST_EXTENSION_YES",
@@ -195,7 +200,8 @@
    "label": "Yes",
    "desc": "First extension request: Yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of FIRST_EXTENSION_YES and FIRST_EXTENSION_NO must be ticked"
   },
   "F29": {
    "name": "FIRST_EXTENSION_NO",
@@ -211,21 +217,24 @@
    "label": "Convert the current payment to an “interest only” payment beginning",
    "desc": "Tick: convert the payment to interest only",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "At least one extension type (EXT_INTEREST_ONLY, EXT_DEFER, EXT_REDUCE, EXT_NEW_MATURITY) must be ticked"
   },
   "F31": {
    "name": "EXT_INTEREST_ONLY_START",
    "kind": "entry",
    "label": "Convert the current payment to an “interest only” payment beginning",
    "desc": "Interest only beginning (date)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when EXT_INTEREST_ONLY is ticked"
   },
   "F32": {
    "name": "EXT_INTEREST_ONLY_RESUME",
    "kind": "entry",
    "label": "to blended payments resuming",
    "desc": "Blended payments resuming (date)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when EXT_INTEREST_ONLY is ticked"
   },
   "F33": {
    "name": "EXT_DEFER",
@@ -240,7 +249,8 @@
    "kind": "entry",
    "label": "payment (enter the dates of the payment(s) to be deferred)",
    "desc": "Dates of the payment(s) to be deferred",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when EXT_DEFER is ticked"
   },
   "F35": {
    "name": "EXT_REDUCE",
@@ -255,21 +265,24 @@
    "kind": "entry",
    "label": "Reduce the current payment to $",
    "desc": "Reduce the payment to $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when EXT_REDUCE is ticked"
   },
   "F37": {
    "name": "EXT_REDUCE_START",
    "kind": "entry",
    "label": "beginning",
    "desc": "Reduced payment beginning (date)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when EXT_REDUCE is ticked"
   },
   "F38": {
    "name": "EXT_REDUCE_RESUME",
    "kind": "entry",
    "label": "and returning to full blended payments resuming",
    "desc": "Full blended payments resuming (date)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when EXT_REDUCE is ticked"
   },
   "F39": {
    "name": "EXT_NEW_MATURITY",
@@ -284,14 +297,16 @@
    "kind": "entry",
    "label": "Set new maturity to",
    "desc": "New maturity date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when EXT_NEW_MATURITY is ticked"
   },
   "F41": {
    "name": "EXT_REASONS",
    "kind": "entry",
    "label": "Loan Extension Fee: $ 250.00",
    "desc": "Reason(s) for extension",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F42": {
    "name": "Member1Signature",

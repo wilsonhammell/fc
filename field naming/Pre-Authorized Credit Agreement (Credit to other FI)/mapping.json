@@ -33,7 +33,8 @@
    "kind": "candidate",
    "label": "Address",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F6": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -68,42 +69,48 @@
    "kind": "entry",
    "label": "Account Name",
    "desc": "Libro account: account name (could load from DMD_ACCOUNT_DESC)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
   },
   "F11": {
    "name": "PAC_BENEFIT_TYPE",
    "kind": "entry",
    "label": "Account Benefit Type",
    "desc": "Libro account: account benefit type",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
   },
   "F12": {
    "name": "PAC_SUB",
    "kind": "entry",
    "label": "Account Sub #",
    "desc": "Libro account: sub #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
   },
   "F13": {
    "name": "PAC_AMOUNT",
    "kind": "entry",
    "label": "for the amount of $",
    "desc": "Credit amount $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
   },
   "F14": {
    "name": "PAC_START_DATE",
    "kind": "entry",
    "label": "starting on",
    "desc": "Starting on",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
   },
   "F15": {
    "name": "PAC_FREQUENCY",
    "kind": "entry",
    "label": "at a frequency of",
    "desc": "At a frequency of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
   },
   "F16": {
    "name": "PAC_REASON",
@@ -187,7 +194,8 @@
    "kind": "entry",
    "label": "CHANGE – Please change this Debit Agreement effective:",
    "desc": "Change effective (date)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PAC_CHANGE is ticked"
   },
   "F27": {
    "name": "PAC_CHANGE_AMOUNT",
@@ -223,14 +231,16 @@
    "kind": "entry",
    "label": "Branch",
    "desc": "Change: branch",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PAC_CHANGE_FI_INFO is ticked"
   },
   "F32": {
    "name": "PAC_CHANGE_MEMBER_NUMBER",
    "kind": "entry",
    "label": "Member Number",
    "desc": "Change: member number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PAC_CHANGE_FI_INFO is ticked"
   },
   "F33": {
    "name": "PAC_CHANGE_ACCOUNT_NAME",
@@ -405,7 +415,8 @@
    "kind": "entry",
    "label": "CANCELLATION – Please cancel this Debit Agreement effective:",
    "desc": "Cancel effective (date)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PAC_CANCEL is ticked"
   },
   "B13": {
    "name": "Member1Name",

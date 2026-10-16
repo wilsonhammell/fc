@@ -47,7 +47,8 @@
    "kind": "candidate",
    "label": "Address",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -68,21 +69,24 @@
    "kind": "entry",
    "label": "for the amount of $",
    "desc": "Debit amount $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
   },
   "F11": {
    "name": "PAD_START_DATE",
    "kind": "entry",
    "label": "starting on",
    "desc": "Starting on",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
   },
   "F12": {
    "name": "PAD_FREQUENCY",
    "kind": "entry",
    "label": "at a frequency of",
    "desc": "At a frequency of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
   },
   "F13": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -103,21 +107,24 @@
    "kind": "entry",
    "label": "Account Name",
    "desc": "Libro account: account name (could load from DMD_ACCOUNT_DESC)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
   },
   "F16": {
    "name": "PAD_BENEFIT_TYPE",
    "kind": "entry",
    "label": "Account Benefit Type",
    "desc": "Libro account: account benefit type",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
   },
   "F17": {
    "name": "PAD_SUB",
    "kind": "entry",
    "label": "Account Sub #",
    "desc": "Libro account: sub #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
   },
   "F18": {
    "name": "PAD_TYPE_FUNDS_TRANSFER",
@@ -125,7 +132,8 @@
    "label": "Funds Transfer PAD",
    "desc": "Tick: funds transfer PAD",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "For a new agreement, exactly one of PAD_TYPE_FUNDS_TRANSFER, PAD_TYPE_PERSONAL and PAD_TYPE_BUSINESS must be ticked"
   },
   "F19": {
    "name": "PAD_TYPE_PERSONAL",
@@ -267,7 +275,8 @@
    "kind": "entry",
    "label": "Amount",
    "desc": "Change: amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "When PAD_CHANGE is ticked, at least one of PAD_CHANGE_AMOUNT, PAD_CHANGE_DUE_DATE and PAD_CHANGE_FREQUENCY must be filled in"
   },
   "F28": {
    "name": "PAD_CHANGE_DUE_DATE",
@@ -296,14 +305,16 @@
    "kind": "entry",
    "label": "Branch",
    "desc": "Change: branch",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PAD_CHANGE_FI_INFO is ticked"
   },
   "F32": {
    "name": "PAD_CHANGE_MEMBER_NUMBER",
    "kind": "entry",
    "label": "Member Number",
    "desc": "Change: member number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PAD_CHANGE_FI_INFO is ticked"
   },
   "F33": {
    "name": "PAD_CHANGE_ACCOUNT_NAME",

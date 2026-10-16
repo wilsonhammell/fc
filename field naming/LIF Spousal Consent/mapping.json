@@ -19,42 +19,48 @@
    "kind": "entry",
    "label": "who has requested a transfer of locked-in money from",
    "desc": "Name of the pension plan or organization administering the LIRA",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "SIGNED_AT_CITY",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (city)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "SIGNED_AT_PROVINCE",
    "kind": "entry",
    "label": ", in the province of",
    "desc": "in the province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F6": {
    "name": "SIGNED_DAY",
    "kind": "entry",
    "label": ", this",
    "desc": "this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "SIGNED_MONTH",
    "kind": "entry",
    "label": "of",
    "desc": "of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "SIGNED_YEAR",
    "kind": "entry",
    "label": ", in the year",
    "desc": "in the year",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F9": {
    "name": "Member1Signature",
@@ -81,7 +87,8 @@
    "kind": "candidate",
    "label": "Address of Spouse:",
    "desc": "Spouse's address - the DB list has only SPOUSE_FULL_NAME",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F12": {
    "name": "STAFF_SIGNATURE",

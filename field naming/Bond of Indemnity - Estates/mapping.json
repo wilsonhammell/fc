@@ -19,14 +19,16 @@
    "kind": "entry",
    "label": "Account Number",
    "desc": "Deceased's asset 1: account number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "ESTATE_ASSET1_AMOUNT",
    "kind": "entry",
    "label": "Amount",
    "desc": "Asset 1: amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "ESTATE_ASSET2_ACCOUNT",
@@ -76,7 +78,8 @@
    "label": "A Certificate of Appointment was not obtained due to the",
    "desc": "Tick: a Certificate of Appointment was not obtained",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Either the will case (NO_CERTIFICATE_OF_APPOINTMENT, NOTARIZED_WILL_ATTACHED, PROOF_OF_DEATH_ATTACHED) or the intestate case (LEGALLY_MARRIED_TO_DECEASED, DIED_INTESTATE, PROOF_OF_DEATH_ATTACHED_2) must be ticked in full"
   },
   "F12": {
    "name": "NOTARIZED_WILL_ATTACHED",
@@ -123,42 +126,48 @@
    "kind": "entry",
    "label": "___________, this _______ day",
    "desc": "Declared before me in the city of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F18": {
    "name": "DECLARED_AT_PROVINCE",
    "kind": "entry",
    "label": "A.D. 20___.",
    "desc": "Declared in the province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F19": {
    "name": "DECLARED_DAY",
    "kind": "entry",
    "label": "___________, this",
    "desc": "Declared this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F20": {
    "name": "DECLARED_MONTH",
    "kind": "entry",
    "label": "___________, this _______ day of",
    "desc": "of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F21": {
    "name": "DECLARANT_NAME",
    "kind": "entry",
    "label": "Declarant Name:",
    "desc": "Declarant's name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F22": {
    "name": "DECLARANT_ADDRESS_1",
    "kind": "entry",
    "label": "Declarant Address:",
    "desc": "Declarant's address line 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F23": {
    "name": "DECLARANT_ADDRESS_2",
@@ -200,7 +209,8 @@
    "kind": "entry",
    "label": "A.D.",
    "desc": "A.D. 20__",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
  "drop": [],

@@ -5,7 +5,8 @@
    "kind": "entry",
    "label": "(the Agent)",
    "desc": "The investment agent (Qtrade Investor Inc.)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F2": {
    "name": "PRIMARY_NAME",
@@ -96,7 +97,8 @@
    "kind": "entry",
    "label": "For the Agent:",
    "desc": "Agent's address for notices, line 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F15": {
    "name": "AGENT_NOTICE_ADDRESS_2",
@@ -309,7 +311,8 @@
    "kind": "candidate",
    "label": "",
    "desc": "Staff member's position / title",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B5": {
    "name": "AGENT_NAME",
@@ -805,7 +808,8 @@
    "kind": "entry",
    "label": "ACCOUNT NO.",
    "desc": "The Qtrade account to be designated",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B22": {
    "name": "Member1Signature",

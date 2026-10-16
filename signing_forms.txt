@@ -29,3 +29,17 @@ Direction of Egg Quota
 -T4RSP Estate Calculation Worksheet
 # an envelope is addressed, not signed (2026-10-09)
 -Envelope
+# Print Only and Submit for Processing forms: the form table offers them no
+# Phone Auth or eSign, and the PDF Standardization sheet says they need no
+# member signature section, so none is added or standardized (2026-10-16)
+-Assignment of Life Ins Policy - Letter
+-ATM & POS Trace Request
+-Bill Payment Trace
+-Disclosure letter - Business
+-Disclosure Letter - Pre Approved Loan Extension - Business
+-Funeral Home Guaranteed Investment Certificate
+-Guaranteed Investment Certificate Authorization
+-Loan Payout Statement - Business
+-Loan Payout Statement - LOC - Business
+-LOC Repricing Letter
+-Statutory Declaration & Indemnification Intestacy - No Will

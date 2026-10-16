@@ -6,7 +6,8 @@
    "label": "differentiated",
    "desc": "Tick: the pension plan differentiated on the basis of sex",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of PENSION_DIFFERENTIATED and PENSION_NOT_DIFFERENTIATED must be ticked"
   },
   "F2": {
    "name": "PENSION_NOT_DIFFERENTIATED",
@@ -21,21 +22,24 @@
    "kind": "entry",
    "label": "Signed this",
    "desc": "Signed this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F4": {
    "name": "SIGNED_MONTH",
    "kind": "entry",
    "label": "day of",
    "desc": "of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "SIGNED_YEAR",
    "kind": "entry",
    "label": ", 20",
    "desc": ", 20__",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F6": {
    "name": "PRIMARY_FULL_LEGAL_NAME",

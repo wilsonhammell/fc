@@ -6,3 +6,6 @@ reports/
 *.pdf
 __pycache__/
 handover/
+designer/jobs/
+designer/out/
+designer/build_report.json

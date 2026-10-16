@@ -61,7 +61,8 @@
    "kind": "candidate",
    "label": "Address/Postal Code:",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F10": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -132,7 +133,8 @@
    "label": "The holder declines to designate a beneficiary of the proceeds",
    "desc": "Tick: the holder declines to designate a beneficiary / successor holder",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of HOLDER_DECLINES_BENEFICIARY and HOLDER_DESIGNATES_BENEFICIARY must be ticked"
   },
   "F20": {
    "name": "HOLDER_DESIGNATES_BENEFICIARY",
@@ -154,7 +156,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 1: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when HOLDER_DESIGNATES_BENEFICIARY is ticked"
   },
   "F23": {
    "name": "BENE1_DATE_OF_BIRTH",
@@ -168,14 +171,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 1: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when HOLDER_DESIGNATES_BENEFICIARY is ticked"
   },
   "F25": {
    "name": "BENE1_TYPE",
    "kind": "entry",
    "label": "Holder*",
    "desc": "Beneficiary 1: designation: SH successor holder, P primary, A alternate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when HOLDER_DESIGNATES_BENEFICIARY is ticked"
   },
   "F26": {
    "name": "BENE2_ACCOUNT",

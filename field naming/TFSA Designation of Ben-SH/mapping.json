@@ -41,7 +41,8 @@
    "label": "first and",
    "desc": "Tick: new designation",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of DESIGNATION_INITIAL and DESIGNATION_CHANGE must be ticked"
   },
   "F7": {
    "name": "DESIGNATION_CHANGE",
@@ -112,7 +113,8 @@
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 1: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F17": {
    "name": "BENE1_ACCOUNT",
@@ -126,7 +128,8 @@
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 1: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F19": {
    "name": "BENE1_DATE_OF_BIRTH",
@@ -147,14 +150,16 @@
    "kind": "entry",
    "label": "%",
    "desc": "Beneficiary 1: share, %",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required, and the shares of the primary beneficiaries named must add up to 100"
   },
   "F22": {
    "name": "BENE2_NAME",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 2: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when beneficiary 2 is used (any BENE2_ field filled in): name, relationship and share"
   },
   "F23": {
    "name": "BENE2_ACCOUNT",
@@ -196,7 +201,8 @@
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 3: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when beneficiary 3 is used (any BENE3_ field filled in): name, relationship and share"
   },
   "F29": {
    "name": "BENE3_ACCOUNT",
@@ -364,7 +370,8 @@
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (place), Ontario",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F53": {
    "name": "PRIMARY_SIGN_DATE",

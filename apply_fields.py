@@ -47,6 +47,8 @@ import sys
 
 import fitz
 
+import restyle_pdf
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 DB = {d["identifier"] for d in json.load(open(os.path.join(HERE, "dbFields.json"), encoding="utf-8"))}
 FORMS = os.path.join(HERE, "final selection at 10pt")
@@ -106,18 +108,57 @@ def scripts_of(w):
     return {k: getattr(w, k) for k in SCRIPTS if getattr(w, k, None)}
 
 
-def box_group(doc, xref):
-    """The group a check box hangs under, or None: a parent that is only a
-    name over its boxes (no type of its own), as restyle_pdf's
-    radios_to_checkboxes makes them."""
+def fix_export_values(doc):
+    """A check box's export value has to be letters, digits, dot, dash and
+    underscore, or a value filled into it can never match (the designer
+    reports it as an error). LIF Locking-in Agreement - ON's box exported
+    "did not differentiated", spaces and all. Each such value becomes the
+    same words joined by "_"; returns [(field, was, now)]."""
+    out = []
+    for page in doc:
+        for w in page.widgets():
+            if w.field_type != fitz.PDF_WIDGET_TYPE_CHECKBOX:
+                continue
+            for key in ("AP/N", "AP/D"):
+                kind, val = doc.xref_get_key(w.xref, key)
+                if kind != "dict":
+                    continue
+                names = [n for n in re.findall(r"/([^\s/<>\[\]()]+)", val) if n != "Off"]
+                for raw in names:
+                    text = re.sub(r"#([0-9A-Fa-f]{2})", lambda m: chr(int(m.group(1), 16)), raw)
+                    if re.fullmatch(r"[A-Za-z0-9_.-]+", text):
+                        continue
+                    new = re.sub(r"[^A-Za-z0-9_.-]+", "_", text).strip("_") or "Yes"
+                    doc.xref_set_key(w.xref, key, val.replace(f"/{raw}", f"/{new}"))
+                    if doc.xref_get_key(w.xref, "AS")[1] == f"/{raw}":
+                        doc.xref_set_key(w.xref, "AS", f"/{new}")
+                    if key == "AP/N":
+                        out.append((w.field_name, text, new))
+    return out
+
+
+def top_field(doc, xref):
+    """The field a widget belongs to: itself, or the parent it hangs from."""
+    for _ in range(16):
+        par = doc.xref_get_key(xref, "Parent")
+        if par[0] != "xref":
+            break
+        xref = int(par[1].split()[0])
+    return xref
+
+
+def pick_one(doc, xref):
+    """Is this check box one box of a pick-one field - a parent carrying the
+    name and type over two or more boxes, as restyle_pdf's
+    build_choice_groups makes them?"""
     par = doc.xref_get_key(xref, "Parent")
     if par[0] != "xref":
-        return None
+        return False
     px = int(par[1].split()[0])
-    if doc.xref_get_key(px, "FT")[0] != "null":
-        return None
-    t = doc.xref_get_key(px, "T")
-    return t[1] if t[0] == "string" else None
+    if doc.xref_get_key(px, "FT")[1] != "/Btn":
+        return False
+    kids = doc.xref_get_key(px, "Kids")
+    return kids[0] == "array" and len(re.findall(r"\d+ 0 R", kids[1])) > 1
 
 
 def add_field(page, rect, name, kind_of, choices=(), scripts=None):
@@ -192,15 +233,9 @@ def prune_fields(doc):
     original's "[primary_applicant" over "fullname1" over "label2" - with no
     kids, and a field list naming it shows the designer a field that is not
     on any page. Returns how many went."""
-    acro = doc.xref_get_key(doc.pdf_catalog(), "AcroForm")
-    if acro[0] != "xref":
+    refs, write = restyle_pdf.field_list(doc)   # either kind of AcroForm
+    if write is None:
         return 0
-    ax = int(acro[1].split()[0])
-    kind, val = doc.xref_get_key(ax, "Fields")
-    if kind not in ("array", "xref"):
-        return 0
-    if kind == "xref":
-        val = doc.xref_object(int(val.split()[0]))
     live = {w.xref for p in doc for w in p.widgets()}
 
     def has_live(x, depth=0):
@@ -213,10 +248,9 @@ def prune_fields(doc):
             v = doc.xref_object(int(v.split()[0]))
         return any(has_live(int(c), depth + 1) for c in re.findall(r"(\d+) 0 R", v if k in ("array", "xref") else ""))
 
-    refs = [int(x) for x in re.findall(r"(\d+) 0 R", val)]
     keep = [x for x in refs if has_live(x)]
     if len(keep) != len(refs):
-        doc.xref_set_key(ax, "Fields", "[" + " ".join(f"{x} 0 R" for x in keep) + "]")
+        write(keep)
     return len(refs) - len(keep)
 
 
@@ -311,8 +345,13 @@ def apply(folder):
         return sum(abs(a - b) for a, b in zip(item["rect"], fitz.Rect(w.rect)))
 
     radios, renamed = {}, {}
+    # pick-one check boxes the mapping (re)builds: a box given an "option" is
+    # one box of the field it names, exporting that value (LIRA's two Yes/No
+    # questions, which the form grouped by column)
+    pick_ones, order = {}, {}
     original_names = {w.field_name for p in doc for w in p.widgets()}
     for page in doc:
+        order[page.number] = restyle_pdf.annot_order(page)
         for w in list(page.widgets()):
             cands = [i for i in ctx["items"] if i["existing"] == w.field_name
                      and i["page"] == page.number]
@@ -329,19 +368,19 @@ def apply(folder):
             # named as a whole, below, never pulled apart
             # (unless the mapping rebuilds it as something else: LIRA Trans
             # Info's two Yes/No questions shared their groups by column)
-            if w.field_type == fitz.PDF_WIDGET_TYPE_RADIOBUTTON and not m.get("type"):
-                radios.setdefault(w.field_name, []).append((w.xref, item["id"], m["name"]))
+            if m.get("option"):
+                pick_ones.setdefault(m["name"], []).append({
+                    "page": page.number, "rect": fitz.Rect(m.get("rect") or w.rect),
+                    "on": m["option"], "tip": w.field_label, "was": w.xref,
+                    "top": top_field(doc, w.xref), "readonly": (w.field_flags or 0) & 1,
+                    "border": (w.border_color, w.border_width, w.fill_color)})
+                page.delete_widget(w)
                 continue
-            # and so is a check box group - the radio buttons the restyle
-            # made check boxes, "Group1.Choice1" under "Group1": the group
-            # takes the name, each box keeps its option's (or the mapping's
-            # "option" for it)
-            if (w.field_type == fitz.PDF_WIDGET_TYPE_CHECKBOX and not m.get("type")
-                    and box_group(doc, w.xref)):
-                radios.setdefault(box_group(doc, w.xref), []).append(
-                    (w.xref, item["id"], m["name"]))
-                if m.get("option"):
-                    doc.xref_set_key(w.xref, "T", fitz.get_pdf_str(m["option"]))
+            # and so are the pick-one check boxes the restyle made of one:
+            # one field over its boxes, renamed as a whole
+            if ((w.field_type == fitz.PDF_WIDGET_TYPE_RADIOBUTTON or pick_one(doc, w.xref))
+                    and not m.get("type")):
+                radios.setdefault(w.field_name, []).append((w.xref, item["id"], m["name"]))
                 continue
             have = HAS.get(w.field_type, "text")
             # (a mapping can ask for another type: Indemnity's tick boxes were
@@ -386,14 +425,30 @@ def apply(folder):
         i = by_id.get(k)
         if i is None or i["existing"] is not None:
             continue
+        if m.get("option"):
+            pick_ones.setdefault(m["name"], []).append({
+                "page": i["page"], "rect": fitz.Rect(m.get("rect") or i["rect"]), "on": m["option"]})
+            continue
         asked = m.get("type") or ("checkbox" if i["type"] == "tick" else "text")
         add_field(doc[i["page"]], m.get("rect") or i["rect"], m["name"], type_for(m["name"], asked))
+    for name, opts in pick_ones.items():
+        ons = [o["on"] for o in opts]
+        if len(opts) < 2 or len(set(ons)) != len(ons):
+            said.append(f"pick-one {name!r}: options {ons} - a pick-one field needs two or more "
+                        f"boxes, each exporting its own value")
+        bad = [o for o in ons if not re.fullmatch(r"[A-Za-z0-9_.-]+", o)]
+        if bad:
+            said.append(f"pick-one {name!r}: export value(s) {bad} - letters, digits, dot, dash "
+                        f"and underscore only")
+    restyle_pdf.build_choice_groups(doc, pick_ones, order)
 
     for m in extra:
         add_field(doc[m["page"]], m["rect"], m["name"], type_for(m["name"], m.get("type", "text")))
 
     said += follow_renames(doc, renamed, original_names)
-    import restyle_pdf
+    for name, was, now in fix_export_values(doc):
+        print(f"   ({name}: export value {was!r} made {now!r} - letters, digits, dot, dash "
+              f"and underscore only, or nothing filled into it can match)")
     pruned = prune_fields(doc)
     if pruned:
         print(f"   ({pruned} empty parent field(s) left by the renaming taken off the field list)")
@@ -408,14 +463,10 @@ def apply(folder):
 
     for k, m in named.items():
         i = by_id.get(k, {})
-        # (a check box group's box is named as the group's option)
-        full = f"{m['name']}.{m['option']}" if m.get("option") else m["name"]
-        if (not m.get("option") and not m.get("type") and i.get("type") == "CheckBox"
-                and "." in (i.get("existing") or "")):
-            full = f"{m['name']}.{i['existing'].rsplit('.', 1)[1]}"
-        rows.append({"id": k, "page": i.get("page", -1) + 1, "name": full, "kind": m["kind"],
+        rows.append({"id": k, "page": i.get("page", -1) + 1, "name": m["name"], "kind": m["kind"],
                      "label on form": m.get("label", ""), "what goes there": m.get("desc", ""),
-                     "was": i.get("existing") or f"(new, on a {i.get('type')})"})
+                     "was": i.get("existing") or f"(new, on a {i.get('type')})",
+                     "export value": m.get("option", "")})
     for n, m in enumerate(extra, 1):
         rows.append({"id": f"A{n}", "page": m["page"] + 1, "name": m["name"], "kind": m["kind"],
                      "label on form": m.get("label", ""), "what goes there": m.get("desc", ""),
@@ -429,7 +480,8 @@ def apply(folder):
     rows.sort(key=lambda r: (r["page"], (by_id.get(r["id"], {}).get("rect")
                                          or where.get(r["id"]) or [0, 0])[1]))
     with open(os.path.join(folder, "fields.csv"), "w", newline="", encoding="utf-8-sig") as fh:
-        wr = csv.DictWriter(fh, fieldnames=list(rows[0]) if rows else ["id"])
+        # every column any row has (the export value is on pick-one boxes only)
+        wr = csv.DictWriter(fh, fieldnames=list(dict.fromkeys(k for r in rows for k in r)) or ["id"])
         wr.writeheader()
         wr.writerows(rows)
         for n in notes:

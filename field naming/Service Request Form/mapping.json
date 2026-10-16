@@ -47,7 +47,8 @@
    "kind": "entry",
    "label": "co-signers and guarantors sign below as applicable.",
    "desc": "Service and/or change request, in words",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "Member1Name",

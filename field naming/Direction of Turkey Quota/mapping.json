@@ -40,7 +40,8 @@
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (city)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "PRIMARY_SIGN_DATE",
@@ -100,7 +101,8 @@
    "kind": "entry",
    "label": "Quota/License No.",
    "desc": "Quota / licence number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B1": {
    "name": "Member1Name",
@@ -296,7 +298,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Security agreement: the collateral (quota / proceeds) described",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F27": {
    "name": "Member1Name",

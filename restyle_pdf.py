@@ -356,15 +356,12 @@ def list_all_fields(doc):
     how many it had to put back. A field missing from the list is a box on
     the page that Acrobat, and the requirements designer, do not treat as a
     field at all. The list is read as references to each widget's topmost
-    field (its own dictionary, or the parent it shares)."""
-    acro = doc.xref_get_key(doc.pdf_catalog(), "AcroForm")
-    if acro[0] != "xref":
+    field (its own dictionary, or the parent it shares). An entry that is
+    not a top field - a box listed beside the field it hangs from - comes off
+    and counts too."""
+    listed, write = field_list(doc)
+    if write is None:
         return 0
-    ax = int(acro[1].split()[0])
-    kind, val = doc.xref_get_key(ax, "Fields")
-    if kind == "xref":
-        val = doc.xref_object(int(val.split()[0]))
-    listed = [int(x) for x in re.findall(r"(\d+) 0 R", val if kind in ("array", "xref") else "")]
     tops = []
     for page in doc:
         for w in page.widgets():
@@ -377,20 +374,48 @@ def list_all_fields(doc):
             if x not in tops:
                 tops.append(x)
     lost = [x for x in tops if x not in listed]
-    if lost:
-        doc.xref_set_key(ax, "Fields", "[" + " ".join(f"{x} 0 R" for x in listed + lost) + "]")
-    return len(lost)
+    nested = [x for x in listed if doc.xref_get_key(x, "Parent")[0] == "xref"]
+    if lost or nested:
+        write([x for x in listed if x not in nested] + lost)
+    return len(lost) + len(nested)
+
+
+def field_list(doc):
+    """The form's field list, as xrefs, and a function that writes it back.
+    The AcroForm is an object of its own on most forms and a dictionary
+    written into the catalog on some (Federal RLIF Transfer), and both have
+    to be read and written - reading only the first, the field-list check
+    passed every form of the second kind without looking. (write is None
+    when the form has no AcroForm.)"""
+    cat = doc.pdf_catalog()
+    acro = doc.xref_get_key(cat, "AcroForm")
+    if acro[0] == "xref":
+        ax = int(acro[1].split()[0])
+        kind, val = doc.xref_get_key(ax, "Fields")
+        set_ = lambda v: doc.xref_set_key(ax, "Fields", v)
+    elif acro[0] == "dict":
+        kind, val = doc.xref_get_key(cat, "AcroForm/Fields")
+        # set on the catalog's path only here: where the AcroForm is an
+        # object of its own, PyMuPDF writes "fitz: replace me!" through it
+        set_ = lambda v: doc.xref_set_key(cat, "AcroForm/Fields", v)
+    else:
+        return [], None
+    if kind == "xref":
+        val = doc.xref_object(int(val.split()[0]))
+    listed = [int(x) for x in re.findall(r"(\d+) 0 R", val if kind in ("array", "xref") else "")]
+    return listed, lambda refs: set_("[" + " ".join(f"{x} 0 R" for x in refs) + "]")
 
 
 def option_names(states):
-    """What each option of a radio group is called as a check box: its
-    export value, without the "_2" a second group's copy of "Yes" was given
-    to keep it apart; "Choice<n>" where that says nothing or is taken."""
+    """What each option of a radio group exports as a check box: the export
+    value it had, which is what a value filled into the form has to match -
+    renaming them (a "Yes_2" made "Yes") lost them, and the field check said
+    so. "Choice<n>" only where the old one could not be an export value
+    (letters, digits, dot, dash and underscore) or another option has it."""
     names = []
     for k, on in enumerate(states, 1):
-        opt = re.sub(r"_\d+$", "", str(on or ""))
-        opt = re.sub(r"[^A-Za-z0-9_-]+", "_", opt).strip("_")
-        if not opt or opt.lower() in ("off", "undefined") or opt in names:
+        opt = str(on or "")
+        if not re.fullmatch(r"[A-Za-z0-9_.-]+", opt) or opt == "Off" or opt in names:
             opt = f"Choice{k}"
         while opt in names:
             opt += "_"
@@ -400,29 +425,98 @@ def option_names(states):
 
 def fields_expected(doc):
     """The form's fields by (name, kind) as they should come out: a radio
-    group's options as the check boxes radios_to_checkboxes makes of them.
-    Worked out from the original on its own, so a conversion that went
-    wrong still shows as a field lost or gained."""
-    had, radios = Counter(), {}
+    group's options as the check boxes radios_to_checkboxes makes of them,
+    one box per option under the group's name. Worked out from the
+    original on its own, so a conversion that went wrong still shows as a
+    field lost or gained."""
+    had = Counter()
     for page in doc:
         for w in page.widgets():
-            if w.field_type == fitz.PDF_WIDGET_TYPE_RADIOBUTTON:
-                radios.setdefault(w.field_name, []).append(w.on_state())
-            else:
-                had[(w.field_name, w.field_type_string)] += 1
-    for group, states in radios.items():
-        for opt in option_names(states):
-            had[(f"{group}.{opt}", "CheckBox")] += 1
+            kind = ("CheckBox" if w.field_type == fitz.PDF_WIDGET_TYPE_RADIOBUTTON
+                    else w.field_type_string)
+            had[(w.field_name, kind)] += 1
     return had
+
+
+def annot_order(page):
+    """The page's widgets and other annotations, in its /Annots order: the
+    order Tab moves in, and the order field naming numbers them."""
+    return [a[0] for a in page.annot_xrefs()]
+
+
+def build_choice_groups(doc, groups, order):
+    """Pick-one check boxes: each name in groups becomes ONE check box field
+    with a box per option, and each box exports its own value - the way the
+    business's forms ask a Yes/No question (ContractWithCompany, /No and
+    /Yes). Ticking one box clears the others. (Several answers would be
+    dotted names instead, Reason.A and Reason.B, which this does not make.)
+
+    groups is {name: [option, ...]}, an option being
+    {page, rect, on, border: (colour, width, fill), tip, readonly, was, top}:
+    on is the box's export value; was the annotation it replaces, which the
+    caller has already deleted, so the box takes its place in the page's
+    order (order is {page: annot_order before the deletions}); top the
+    field that annotation belonged to, which comes off the field list.
+    Returns {name: [box xrefs]}."""
+    made, new_of, gone, parents = {}, {}, set(), []
+    for name, opts in groups.items():
+        kids = []
+        for o in opts:
+            w = fitz.Widget()
+            w.field_type = fitz.PDF_WIDGET_TYPE_CHECKBOX
+            # the option's own place and look - with no border or fill of
+            # its own where the form prints the box: a square drawn inside
+            # the printed one (RRIF, Waive Cert) came out as a box in a box
+            w.rect = fitz.Rect(o["rect"])
+            w.border_color, w.border_width, w.fill_color = o.get("border") or ((0, 0, 0), 0.5, None)
+            w.field_name = name
+            if o.get("tip"):
+                w.field_label = o["tip"]
+            x = doc[o["page"]].add_widget(w).xref
+            # its on-state is the option's export value: PyMuPDF draws /Yes
+            ap = doc.xref_get_key(x, "AP/N")[1]
+            doc.xref_set_key(x, "AP/N", ap.replace("/Yes ", f"/{o['on']} "))
+            kids.append(x)
+            if o.get("was"):
+                new_of[o["was"]] = x
+            if o.get("top"):
+                gone.add(o["top"])
+        # one field over its boxes: the name, type and value on the parent,
+        # the place and on-state on each box
+        readonly = any(o.get("readonly") for o in opts)
+        px = doc.get_new_xref()
+        doc.update_object(px, "<</T %s /FT /Btn /Ff %d /V /Off /Kids [%s]>>" % (
+            fitz.get_pdf_str(name), 1 if readonly else 0, " ".join(f"{x} 0 R" for x in kids)))
+        for x in kids:
+            # taken off the box, not set to null: xref_set_key(.., "null")
+            # writes "/T null", and pypdf reading the name failed on it
+            kept = [ln for ln in doc.xref_object(x).splitlines()
+                    if not re.match(r"^  /(T|FT|Ff|V)\b", ln)]
+            doc.update_object(x, "\n".join(kept))
+            doc.xref_set_key(x, "Parent", f"{px} 0 R")
+            gone.add(x)
+        parents.append(px)
+        made[name] = kids
+    for pno, was in order.items():
+        page = doc[pno]
+        now = annot_order(page)
+        kept = [new_of.get(x, x) for x in was if x in new_of or x in now]
+        kept += [x for x in now if x not in kept]
+        doc.xref_set_key(page.xref, "Annots", "[" + " ".join(f"{x} 0 R" for x in kept) + "]")
+    # the field list: the old fields and the boxes' own entries out, the new
+    # parents in
+    listed, write = field_list(doc)
+    if write is not None:
+        write([x for x in listed if x not in gone] + parents)
+    return made
 
 
 def radios_to_checkboxes(doc):
     """Every radio button becomes a check box (client, 2026-10-16: the
-    builder's form filler cannot fill a radio group - its name and type sit
-    on a parent the filler never reads). A group becomes the builder's own
-    check box group: a parent named as the group was, with one box per
-    option under it - "Group1.Choice1", "EXTRA_TAX.Yes" - each a field of
-    its own that the filler can tick, in the option's place with its border.
+    builder's form filler cannot fill a radio group). A group keeps its name
+    and becomes pick-one check boxes, one box per option exporting the
+    option's value - "Group1" with /Choice1, /Choice2; "EXTRA_TAX" with /Yes,
+    /No - in the option's place with its border (see build_choice_groups).
     Says what it changed, one line per group."""
     groups, order = {}, {}
     for page in doc:
@@ -431,7 +525,7 @@ def radios_to_checkboxes(doc):
             if w.field_type != fitz.PDF_WIDGET_TYPE_RADIOBUTTON:
                 continue
             if page.number not in order:
-                order[page.number] = [a[0] for a in page.annot_xrefs()]
+                order[page.number] = annot_order(page)
             if art is None:
                 # ruled edges only: a page can carry the buttons' own circles
                 # as curves that never show (Waive Cert, Federal RLIF)
@@ -455,63 +549,18 @@ def radios_to_checkboxes(doc):
             groups.setdefault(w.field_name, []).append(
                 {"page": page.number, "rect": fitz.Rect(w.rect), "on": w.on_state() or "",
                  "readonly": w.field_flags & 1, "tip": w.field_label, "top": top,
-                 "xref": w.xref,
+                 "was": w.xref,
                  "border": ((None, 0, None) if box else
                             (w.border_color, w.border_width, w.fill_color))})
             page.delete_widget(w)
     if not groups:
         return []
-    said, gone, made, new_of = [], set(), [], {}
-    for group, opts in groups.items():
-        kids = []
+    for opts in groups.values():
         for o, opt in zip(opts, option_names([o["on"] for o in opts])):
-            w = fitz.Widget()
-            w.field_type = fitz.PDF_WIDGET_TYPE_CHECKBOX
-            # the option's own place and look - with no border or fill of
-            # its own where the form prints the box: a square drawn inside
-            # the printed one (RRIF, Waive Cert) came out as a box in a box
-            w.rect = o["rect"]
-            w.border_color, w.border_width, w.fill_color = o["border"]
-            w.field_name = f"{group}.{opt}"
-            if o["tip"]:
-                w.field_label = o["tip"]
-            if o["readonly"]:
-                w.field_flags = 1
-            kids.append((doc[o["page"]].add_widget(w).xref, opt))
-            new_of[o["xref"]] = kids[-1][0]
-            gone.add(o["top"])
-        # the group as a parent the boxes hang under: the dotted name is
-        # the parent's name and the box's own, not one name with a dot in it
-        px = doc.get_new_xref()
-        doc.update_object(px, "<</T %s /Kids [%s]>>" % (
-            fitz.get_pdf_str(group), " ".join(f"{x} 0 R" for x, _ in kids)))
-        for x, opt in kids:
-            doc.xref_set_key(x, "T", fitz.get_pdf_str(opt))
-            doc.xref_set_key(x, "Parent", f"{px} 0 R")
-            gone.add(x)
-        made.append(px)
-        said.append(f"radio group {group!r} -> {len(kids)} check box(es): "
-                    + ", ".join(f"{group}.{opt}" for _, opt in kids))
-    # each box where its button was in the page's list of widgets: that
-    # is the order Tab moves in, and the order field naming numbers them
-    for pno, was in order.items():
-        page = doc[pno]
-        now = [a[0] for a in page.annot_xrefs()]
-        kept = [new_of.get(x, x) for x in was if x in new_of or x in now]
-        kept += [x for x in now if x not in kept]
-        doc.xref_set_key(page.xref, "Annots", "[" + " ".join(f"{x} 0 R" for x in kept) + "]")
-    # the field list: the old groups and the boxes' own entries out, the
-    # new parents in
-    acro = doc.xref_get_key(doc.pdf_catalog(), "AcroForm")
-    if acro[0] == "xref":
-        ax = int(acro[1].split()[0])
-        kind, val = doc.xref_get_key(ax, "Fields")
-        if kind == "xref":
-            val = doc.xref_object(int(val.split()[0]))
-        listed = [int(x) for x in re.findall(r"(\d+) 0 R", val if kind in ("array", "xref") else "")]
-        keep = [x for x in listed if x not in gone] + made
-        doc.xref_set_key(ax, "Fields", "[" + " ".join(f"{x} 0 R" for x in keep) + "]")
-    return said
+            o["on"] = opt
+    build_choice_groups(doc, groups, order)
+    return [f"radio group {group!r} -> {len(opts)} pick-one check box(es) exporting "
+            + ", ".join(o["on"] for o in opts) for group, opts in groups.items()]
 
 
 def printed(page):

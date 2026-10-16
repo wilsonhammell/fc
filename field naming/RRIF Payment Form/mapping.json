@@ -55,7 +55,8 @@
    "label": "15th",
    "desc": "Pay due on the 15th",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of PAY_DUE_15TH and PAY_DUE_29TH must be ticked"
   },
   "F9": {
    "name": "PAY_DUE_29TH",
@@ -70,7 +71,8 @@
    "kind": "entry",
    "label": "Start Date:",
    "desc": "Payment start date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "PAYMENT_MINIMUM",
@@ -78,7 +80,8 @@
    "label": "Minimum Amount",
    "desc": "Payment option: minimum amount",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one payment option (PAYMENT_MINIMUM, PAYMENT_SPECIFIED, PAYMENT_MAXIMUM) must be ticked"
   },
   "F12": {
    "name": "PAYMENT_SPECIFIED",
@@ -102,7 +105,8 @@
    "label": "Always",
    "desc": "No tax on minimum",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When PAYMENT_MINIMUM is ticked, exactly one of MINIMUM_NO_TAX and MINIMUM_YES_TAX must be ticked"
   },
   "F15": {
    "name": "MINIMUM_YES_TAX",
@@ -118,7 +122,8 @@
    "label": "Net (after tax)",
    "desc": "Net (after tax)",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "When PAYMENT_SPECIFIED is ticked, exactly one of PAYMENT_NET and PAYMENT_GROSS must be ticked"
   },
   "F17": {
    "name": "PAYMENT_GROSS",
@@ -132,9 +137,10 @@
    "name": "EXTRA_TAX",
    "kind": "entry",
    "label": "Withhold Extra Taxes?",
-   "desc": "Check box group (pick one): withhold extra taxes? No / Yes",
+   "desc": "Pick one: withhold extra taxes? No / Yes",
    "how": "reviewed",
-   "option": "No"
+   "option": "No",
+   "save": true
   },
   "F19": {
    "name": "EXTRA_TAX",
@@ -142,7 +148,8 @@
    "label": "No",
    "desc": "No",
    "how": "reviewed",
-   "option": "Yes"
+   "option": "Yes",
+   "save": true
   },
   "F20": {
    "name": "PAY_FREQ_MONTHLY",
@@ -150,7 +157,8 @@
    "label": "Monthly",
    "desc": "Pay frequency: monthly",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one pay frequency (PAY_FREQ_MONTHLY, _QUARTERLY, _SEMI_ANNUAL, _ANNUAL) must be ticked"
   },
   "F21": {
    "name": "PAY_FREQ_QUARTERLY",
@@ -180,9 +188,10 @@
    "name": "CONTINUE_PAYMENT",
    "kind": "entry",
    "label": "Continue same payment for the next year",
-   "desc": "Check box group (pick one): continue same payment for the next year? Yes / No",
+   "desc": "Pick one: continue same payment for the next year? Yes / No",
    "how": "reviewed",
-   "option": "Yes"
+   "option": "Yes",
+   "save": true
   },
   "F25": {
    "name": "CONTINUE_PAYMENT",
@@ -190,28 +199,32 @@
    "label": "Yes",
    "desc": "Yes",
    "how": "reviewed",
-   "option": "No"
+   "option": "No",
+   "save": true
   },
   "F26": {
    "name": "PAY_FROM_TYPE",
    "kind": "entry",
    "label": "Type:",
    "desc": "Select from: type",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F27": {
    "name": "PAY_FROM_SUB",
    "kind": "entry",
    "label": "Sub:",
    "desc": "Select from: sub",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F28": {
    "name": "PAY_TO_TYPE",
    "kind": "entry",
    "label": "Type:",
    "desc": "Select to: type",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DEPOSIT_TO_ACCOUNT is ticked"
   },
   "F29": {
    "name": "PAY_TO_SUB",
@@ -225,7 +238,8 @@
    "kind": "entry",
    "label": "To Acct:",
    "desc": "Select to: account",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DEPOSIT_TO_ACCOUNT is ticked"
   },
   "F31": {
    "name": "SPECIAL_INSTRUCTIONS_1",
@@ -254,7 +268,8 @@
    "label": "LIF",
    "desc": "Tick: RIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of PLAN_TYPE_RIF, PLAN_TYPE_LIF and PLAN_TYPE_RLIF must be ticked"
   },
   "F35": {
    "name": "PLAN_TYPE_LIF",
@@ -277,14 +292,16 @@
    "kind": "entry",
    "label": "$",
    "desc": "Specified amount $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PAYMENT_SPECIFIED is ticked"
   },
   "F38": {
    "name": "EXTRA_TAX_PERCENT",
    "kind": "entry",
    "label": "Percentage",
    "desc": "Extra tax percentage",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when EXTRA_TAX is Yes"
   },
   "F39": {
    "name": "Member1Signature",

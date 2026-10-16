@@ -27,7 +27,8 @@
    "label": "document, and",
    "desc": "Tick: trustee appointed in the Last Will",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of ESTATE_TRUSTEE_BY_WILL and ESTATE_TRUSTEE_BY_CERTIFICATE must be ticked"
   },
   "F5": {
    "name": "ESTATE_TRUSTEE_BY_CERTIFICATE",
@@ -42,14 +43,16 @@
    "kind": "entry",
    "label": "at",
    "desc": "City the agreement is signed at",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F7": {
    "name": "ESTATE_CORRESPONDENCE_ADDRESS",
    "kind": "candidate",
    "label": "Estate Trustee Address for",
    "desc": "Estate trustee's address for correspondence, c/o line. Could be SIGNER1_MAIL_FULL_LINE",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "Member1Name",
@@ -189,7 +192,8 @@
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Province the agreement is signed in",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B2": {
    "name": "ESTATE_CORRESPONDENCE_ADDRESS_2",

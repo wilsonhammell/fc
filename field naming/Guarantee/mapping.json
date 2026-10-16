@@ -12,7 +12,8 @@
    "kind": "entry",
    "label": "Limited to the principal sum of $",
    "desc": "Guarantee limited to the principal sum of $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when the guarantee is limited to a principal sum (the limited option is initialled)"
   },
   "F3": {
    "name": "PRIMARY_MEMBER_NUMBER",
@@ -68,7 +69,8 @@
    "kind": "entry",
    "label": "",
    "desc": "The guarantor's name, above the signing block (unlabelled)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "Member3Signature",

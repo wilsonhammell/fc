@@ -27,7 +27,8 @@
    "label": "Legislation",
    "desc": "Tick: governed by the (Ontario) Pension Benefits Act",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of LEGISLATION_ONTARIO and LEGISLATION_FEDERAL must be ticked"
   },
   "F5": {
    "name": "LEGISLATION_FEDERAL",
@@ -49,7 +50,8 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Date of the witness signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "WITNESS_SIGNATURE",

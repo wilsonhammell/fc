@@ -34,7 +34,8 @@
    "label": "Branch error - Admin will apply s/c to Branch GL",
    "desc": "Tick: branch error - admin will apply fee",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Exactly one of BRANCH_ERROR and MEMBER_ERROR must be ticked"
   },
   "F6": {
    "name": "MEMBER_ERROR",
@@ -49,36 +50,41 @@
    "kind": "entry",
    "label": "Vendor name:",
    "desc": "Vendor name:",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F8": {
    "name": "VENDOR_ACCOUNT_NUMBER",
    "kind": "entry",
    "label": "Vendor Account # paid:",
    "desc": "Vendor account # paid",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F9": {
    "name": "PAYMENT_AMOUNT",
    "kind": "entry",
    "label": "Payment Amount $",
    "desc": "Payment amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F10": {
    "name": "PAYMENT_DATE",
    "kind": "entry",
    "label": "Payment Date:",
    "desc": "Payment Date:",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "TRACE_REASON",
    "kind": "entry",
    "label": "Reason",
-   "desc": "Reason for trace (check box group, pick one - account not credited, incorrect amount, incorrect vendor, incorrect account, other)",
+   "desc": "Reason for trace (pick one: account not credited, incorrect amount, incorrect vendor, incorrect account, other)",
    "how": "reviewed",
-   "option": "NotCredited"
+   "option": "NotCredited",
+   "save": true
   },
   "F12": {
    "name": "TRACE_REASON",
@@ -86,134 +92,87 @@
    "label": "Incorrect amount paid. Paid:$",
    "desc": "Incorrect amount paid. Paid:$",
    "how": "reviewed",
-   "option": "IncorrectAmount"
+   "option": "IncorrectAmount",
+   "save": true
   },
-  "F13": {
+  "F16": {
    "name": "AMOUNT_PAID",
    "kind": "entry",
    "label": "Incorrect amount paid. Paid:$",
    "desc": "Incorrect amount paid: the amount paid",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRACE_REASON is IncorrectAmount"
   },
-  "F14": {
+  "F17": {
    "name": "CORRECT_AMOUNT",
    "kind": "entry",
    "label": "Correct Amount $",
    "desc": "Incorrect amount paid: the correct amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRACE_REASON is IncorrectAmount"
   },
-  "F15": {
+  "F18": {
    "name": "REFUND_REQUEST_AMOUNT",
    "kind": "entry",
    "label": "Refund request: $",
    "desc": "Incorrect amount paid: refund requested",
    "how": "reviewed"
   },
-  "F16": {
+  "F13": {
    "name": "TRACE_REASON",
    "kind": "entry",
    "label": "Payment made to Incorrect Vendor. Refund requested for: $",
    "desc": "Payment made to Incorrect Vendor. Refund requested for: $",
    "how": "reviewed",
-   "option": "IncorrectVendor"
+   "option": "IncorrectVendor",
+   "save": true
   },
-  "F17": {
+  "F19": {
    "name": "REFUND_INCORRECT_VENDOR_AMOUNT",
    "kind": "entry",
    "label": "Payment made to Incorrect Vendor. Refund requested for: $",
    "desc": "Paid to incorrect vendor: refund requested for",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRACE_REASON is IncorrectVendor"
   },
-  "F18": {
+  "F14": {
    "name": "TRACE_REASON",
    "kind": "entry",
    "label": "Payment is made to incorrect account number. Correct account:",
    "desc": "Payment is made to incorrect account number. Correct account:",
    "how": "reviewed",
-   "option": "IncorrectAccount"
+   "option": "IncorrectAccount",
+   "save": true
   },
-  "F19": {
+  "F20": {
    "name": "CORRECT_ACCOUNT_NUMBER",
    "kind": "entry",
    "label": "Payment is made to incorrect account number. Correct account:",
    "desc": "Paid to incorrect account: the correct account",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRACE_REASON is IncorrectAccount"
   },
-  "F20": {
+  "F15": {
    "name": "TRACE_REASON",
    "kind": "entry",
    "label": "Other(specify):",
    "desc": "Other(specify):",
    "how": "reviewed",
-   "option": "Other"
+   "option": "Other",
+   "save": true
   },
   "F21": {
    "name": "TRACE_REASON_OTHER_DETAIL",
    "kind": "entry",
    "label": "",
    "desc": "Other reason, in words",
-   "how": "reviewed"
-  },
-  "B1": {
-   "name": "Member1Name",
-   "kind": "special",
-   "label": "Name",
-   "desc": "Signer 1",
-   "how": "reviewed"
-  },
-  "B2": {
-   "name": "Member1Signature",
-   "kind": "special",
-   "label": "Authorized Signature",
-   "desc": "Signer 1",
-   "how": "reviewed"
-  },
-  "B3": {
-   "name": "Member1SignDate",
-   "kind": "special",
-   "label": "Date",
-   "desc": "Signer 1",
-   "how": "reviewed"
-  },
-  "B4": {
-   "name": "Member2Name",
-   "kind": "special",
-   "label": "Name",
-   "desc": "Signer 2",
-   "how": "reviewed"
-  },
-  "B5": {
-   "name": "Member2Signature",
-   "kind": "special",
-   "label": "Authorized Signature",
-   "desc": "Signer 2",
-   "how": "reviewed"
-  },
-  "B6": {
-   "name": "Member2SignDate",
-   "kind": "special",
-   "label": "Date",
-   "desc": "Signer 2",
-   "how": "reviewed"
-  },
-  "B7": {
-   "name": "REQUESTUSER",
-   "kind": "db",
-   "label": "Authorizing Staff Member",
-   "desc": "Authorizing staff member",
-   "how": "reviewed"
-  },
-  "B8": {
-   "name": "PRIMARY_SIGN_DATE",
-   "kind": "db",
-   "label": "Date",
-   "desc": "Staff date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TRACE_REASON is Other"
   }
  },
  "drop": [],
  "skip": {
-  "B9": "not a blank - the 'if refund is preferred' note"
+  "B1": "not a blank - the 'if refund is preferred' note"
  },
  "add": [],
  "notes": []

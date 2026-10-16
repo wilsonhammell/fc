@@ -4,7 +4,8 @@
    "name": "PLAN_TYPE_RSP",
    "kind": "entry",
    "label": "RSP",
-   "desc": "Plan type, tick. Could load from RSP_ACCOUNT_TYPE / RSP_LOCKED once their values are known"
+   "desc": "Plan type, tick. Could load from RSP_ACCOUNT_TYPE / RSP_LOCKED once their values are known",
+   "custom": "Exactly one of PLAN_TYPE_RSP, PLAN_TYPE_LIRA and PLAN_TYPE_FEDERAL_LRSP must be ticked"
   },
   "F2": {
    "name": "PLAN_TYPE_LIRA",
@@ -71,7 +72,8 @@
    "kind": "candidate",
    "label": "Address/Postal Code",
    "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F13": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -247,7 +249,8 @@
    "name": "INVESTMENT_INSTRUCTIONS_1",
    "kind": "entry",
    "label": "Investment Instructions for Funds",
-   "desc": "Line 1 of the investment instructions"
+   "desc": "Line 1 of the investment instructions",
+   "save": true
   },
   "F40": {
    "name": "INVESTMENT_INSTRUCTIONS_2",
