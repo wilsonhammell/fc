@@ -76,15 +76,17 @@
    "name": "TRACE_REASON",
    "kind": "entry",
    "label": "Reason",
-   "desc": "Reason for trace (radio group: one choice - account not credited, incorrect amount, incorrect vendor, incorrect account, other)",
-   "how": "reviewed"
+   "desc": "Reason for trace (check box group, pick one - account not credited, incorrect amount, incorrect vendor, incorrect account, other)",
+   "how": "reviewed",
+   "option": "NotCredited"
   },
   "F12": {
    "name": "TRACE_REASON",
    "kind": "entry",
    "label": "Incorrect amount paid. Paid:$",
    "desc": "Incorrect amount paid. Paid:$",
-   "how": "reviewed"
+   "how": "reviewed",
+   "option": "IncorrectAmount"
   },
   "F13": {
    "name": "AMOUNT_PAID",
@@ -112,7 +114,8 @@
    "kind": "entry",
    "label": "Payment made to Incorrect Vendor. Refund requested for: $",
    "desc": "Payment made to Incorrect Vendor. Refund requested for: $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "option": "IncorrectVendor"
   },
   "F17": {
    "name": "REFUND_INCORRECT_VENDOR_AMOUNT",
@@ -126,7 +129,8 @@
    "kind": "entry",
    "label": "Payment is made to incorrect account number. Correct account:",
    "desc": "Payment is made to incorrect account number. Correct account:",
-   "how": "reviewed"
+   "how": "reviewed",
+   "option": "IncorrectAccount"
   },
   "F19": {
    "name": "CORRECT_ACCOUNT_NUMBER",
@@ -140,7 +144,8 @@
    "kind": "entry",
    "label": "Other(specify):",
    "desc": "Other(specify):",
-   "how": "reviewed"
+   "how": "reviewed",
+   "option": "Other"
   },
   "F21": {
    "name": "TRACE_REASON_OTHER_DETAIL",

@@ -53,15 +53,17 @@
    "name": "PENSION_FEDERAL",
    "kind": "entry",
    "label": "Is the pension plan governed under federal legislation?",
-   "desc": "Radio: is the pension plan governed under federal legislation? Yes / No",
-   "how": "reviewed"
+   "desc": "Check box group (pick one): is the pension plan governed under federal legislation? Yes / No",
+   "how": "reviewed",
+   "option": "Yes"
   },
   "F9": {
    "name": "PENSION_FEDERAL",
    "kind": "entry",
    "label": "Yes",
    "desc": "Yes",
-   "how": "reviewed"
+   "how": "reviewed",
+   "option": "No"
   },
   "F10": {
    "name": "PENSION_PROVINCE",

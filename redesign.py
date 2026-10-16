@@ -4870,6 +4870,8 @@ def main():
             out.xref_set_key(out.pdf_catalog(), "AcroForm/SigFlags", sig_was[1])
     # every field the pages carry is on the form's field list (see
     # R.list_all_fields - a page copy once emptied the list)
+    for detail in R.radios_to_checkboxes(out):
+        notes.append(("radio_to_checkbox", detail))
     unlisted = R.list_all_fields(out)
     if unlisted:
         signing_issues.append(("FIELDS_UNLISTED", f"{unlisted} field(s) were missing from the "
@@ -4908,8 +4910,7 @@ def main():
         say(f"left out, drawn in white on white by the form: {HIDDEN}")
     for kind, detail in NOTES_OFF:
         say(f"{kind.upper()}: {detail}")
-    was = Counter((w.field_name, w.field_type_string)
-                  for page in doc for w in page.widgets())
+    was = R.fields_expected(doc)    # radio groups as the check boxes they became
     was.update(ADDED)          # text boxes put in place of merge tags, on purpose
     was.subtract(Counter(SIGNING_DROPPED))   # signers past the second, on purpose
     was = +was

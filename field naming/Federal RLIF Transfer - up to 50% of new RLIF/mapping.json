@@ -66,15 +66,17 @@
    "name": "TRANSFER_AMOUNT_CHOICE",
    "kind": "entry",
    "label": "lesser of",
-   "desc": "Radio: transfer the lesser of 50% of the amount recently transferred, OR a specified $ amount",
-   "how": "reviewed"
+   "desc": "Check box group (pick one): transfer the lesser of 50% of the amount recently transferred, OR a specified $ amount",
+   "how": "reviewed",
+   "option": "Percent50"
   },
   "F10": {
    "name": "TRANSFER_AMOUNT_CHOICE",
    "kind": "entry",
    "label": "OR",
    "desc": "OR",
-   "how": "reviewed"
+   "how": "reviewed",
+   "option": "Amount"
   },
   "F11": {
    "name": "TRANSFER_SPECIFIED_AMOUNT",

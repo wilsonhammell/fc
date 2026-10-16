@@ -106,6 +106,20 @@ def scripts_of(w):
     return {k: getattr(w, k) for k in SCRIPTS if getattr(w, k, None)}
 
 
+def box_group(doc, xref):
+    """The group a check box hangs under, or None: a parent that is only a
+    name over its boxes (no type of its own), as restyle_pdf's
+    radios_to_checkboxes makes them."""
+    par = doc.xref_get_key(xref, "Parent")
+    if par[0] != "xref":
+        return None
+    px = int(par[1].split()[0])
+    if doc.xref_get_key(px, "FT")[0] != "null":
+        return None
+    t = doc.xref_get_key(px, "T")
+    return t[1] if t[0] == "string" else None
+
+
 def add_field(page, rect, name, kind_of, choices=(), scripts=None):
     if kind_of not in TYPES:
         kind_of = "text"
@@ -318,6 +332,17 @@ def apply(folder):
             if w.field_type == fitz.PDF_WIDGET_TYPE_RADIOBUTTON and not m.get("type"):
                 radios.setdefault(w.field_name, []).append((w.xref, item["id"], m["name"]))
                 continue
+            # and so is a check box group - the radio buttons the restyle
+            # made check boxes, "Group1.Choice1" under "Group1": the group
+            # takes the name, each box keeps its option's (or the mapping's
+            # "option" for it)
+            if (w.field_type == fitz.PDF_WIDGET_TYPE_CHECKBOX and not m.get("type")
+                    and box_group(doc, w.xref)):
+                radios.setdefault(box_group(doc, w.xref), []).append(
+                    (w.xref, item["id"], m["name"]))
+                if m.get("option"):
+                    doc.xref_set_key(w.xref, "T", fitz.get_pdf_str(m["option"]))
+                continue
             have = HAS.get(w.field_type, "text")
             # (a mapping can ask for another type: Indemnity's tick boxes were
             # small text fields)
@@ -383,7 +408,12 @@ def apply(folder):
 
     for k, m in named.items():
         i = by_id.get(k, {})
-        rows.append({"id": k, "page": i.get("page", -1) + 1, "name": m["name"], "kind": m["kind"],
+        # (a check box group's box is named as the group's option)
+        full = f"{m['name']}.{m['option']}" if m.get("option") else m["name"]
+        if (not m.get("option") and not m.get("type") and i.get("type") == "CheckBox"
+                and "." in (i.get("existing") or "")):
+            full = f"{m['name']}.{i['existing'].rsplit('.', 1)[1]}"
+        rows.append({"id": k, "page": i.get("page", -1) + 1, "name": full, "kind": m["kind"],
                      "label on form": m.get("label", ""), "what goes there": m.get("desc", ""),
                      "was": i.get("existing") or f"(new, on a {i.get('type')})"})
     for n, m in enumerate(extra, 1):
@@ -468,7 +498,8 @@ def gather(root):
         with open(path, encoding="utf-8-sig") as fh:
             for r in csv.DictReader(fh):
                 if r.get("kind") == "candidate":
-                    c = cands.setdefault(r["name"], {"desc": r["what goes there"],
+                    # (a box of a check box group is asked for as its group)
+                    c = cands.setdefault(r["name"].split(".")[0], {"desc": r["what goes there"],
                                                      "labels": [], "forms": []})
                     if r["label on form"] and r["label on form"] not in c["labels"]:
                         c["labels"].append(r["label on form"])

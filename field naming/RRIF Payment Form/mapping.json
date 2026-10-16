@@ -132,15 +132,17 @@
    "name": "EXTRA_TAX",
    "kind": "entry",
    "label": "Withhold Extra Taxes?",
-   "desc": "Radio: withhold extra taxes? No / Yes",
-   "how": "reviewed"
+   "desc": "Check box group (pick one): withhold extra taxes? No / Yes",
+   "how": "reviewed",
+   "option": "No"
   },
   "F19": {
    "name": "EXTRA_TAX",
    "kind": "entry",
    "label": "No",
    "desc": "No",
-   "how": "reviewed"
+   "how": "reviewed",
+   "option": "Yes"
   },
   "F20": {
    "name": "PAY_FREQ_MONTHLY",
@@ -178,15 +180,17 @@
    "name": "CONTINUE_PAYMENT",
    "kind": "entry",
    "label": "Continue same payment for the next year",
-   "desc": "Radio: continue same payment for the next year? Yes / No",
-   "how": "reviewed"
+   "desc": "Check box group (pick one): continue same payment for the next year? Yes / No",
+   "how": "reviewed",
+   "option": "Yes"
   },
   "F25": {
    "name": "CONTINUE_PAYMENT",
    "kind": "entry",
    "label": "Yes",
    "desc": "Yes",
-   "how": "reviewed"
+   "how": "reviewed",
+   "option": "No"
   },
   "F26": {
    "name": "PAY_FROM_TYPE",

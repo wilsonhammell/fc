@@ -189,29 +189,33 @@
    "name": "ESTATE_VALUE_RANGE",
    "kind": "entry",
    "label": "",
-   "desc": "Radio: total estate value range",
-   "how": "reviewed"
+   "desc": "Check box group (pick one): total estate value range",
+   "how": "reviewed",
+   "option": "Upto700K"
   },
   "F28": {
    "name": "ESTATE_VALUE_RANGE",
    "kind": "entry",
    "label": "Total Estate Valued $700,000.01+",
    "desc": "Total Estate Valued $700,000.01+",
-   "how": "reviewed"
+   "how": "reviewed",
+   "option": "Over700K"
   },
   "F29": {
    "name": "APPROVAL_GRANTED",
    "kind": "entry",
    "label": "Approval Granted*:",
-   "desc": "Radio: approval granted? Yes / No",
-   "how": "reviewed"
+   "desc": "Check box group (pick one): approval granted? Yes / No",
+   "how": "reviewed",
+   "option": "Yes"
   },
   "F30": {
    "name": "APPROVAL_GRANTED",
    "kind": "entry",
    "label": "Yes",
    "desc": "Yes",
-   "how": "reviewed"
+   "how": "reviewed",
+   "option": "No"
   },
   "F31": {
    "name": "Member1Signature",
