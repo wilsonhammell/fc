@@ -15,7 +15,7 @@
    "how": "reviewed"
   },
   "F3": {
-   "name": "ACCOUNTING_FIRM",
+   "name": "AccountingFirm",
    "kind": "entry",
    "label": "Designated Accounting Firm",
    "desc": "Designated accounting firm",

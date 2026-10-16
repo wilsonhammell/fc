@@ -332,7 +332,7 @@
     96,
     438.0
    ],
-   "name": "RENEWAL_OPTION_1YR",
+   "name": "RenewalOption1Yr",
    "kind": "entry",
    "label": "Mark (x) - 1 year closed",
    "desc": "Option the member chooses, tick",
@@ -374,7 +374,7 @@
     96,
     452.6
    ],
-   "name": "RENEWAL_OPTION_2YR",
+   "name": "RenewalOption2Yr",
    "kind": "entry",
    "label": "Mark (x) - 2 year closed",
    "desc": "Option the member chooses, tick",
@@ -416,7 +416,7 @@
     96,
     467.1
    ],
-   "name": "RENEWAL_OPTION_3YR",
+   "name": "RenewalOption3Yr",
    "kind": "entry",
    "label": "Mark (x) - 3 year closed",
    "desc": "Option the member chooses, tick",
@@ -458,7 +458,7 @@
     96,
     481.7
    ],
-   "name": "RENEWAL_OPTION_4YR",
+   "name": "RenewalOption4Yr",
    "kind": "entry",
    "label": "Mark (x) - 4 year closed",
    "desc": "Option the member chooses, tick",
@@ -500,7 +500,7 @@
     96,
     496.2
    ],
-   "name": "RENEWAL_OPTION_5YR",
+   "name": "RenewalOption5Yr",
    "kind": "entry",
    "label": "Mark (x) - 5 year closed",
    "desc": "Option the member chooses, tick",

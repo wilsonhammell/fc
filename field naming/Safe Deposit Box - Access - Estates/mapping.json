@@ -45,7 +45,7 @@
    "save": true
   },
   "F7": {
-   "name": "SDB_ACCESS_DAY",
+   "name": "SDBAccessDay",
    "kind": "entry",
    "label": "was accessed on the",
    "desc": "Box accessed on the ___ day",
@@ -53,7 +53,7 @@
    "save": true
   },
   "F8": {
-   "name": "SDB_ACCESS_MONTH",
+   "name": "SDBAccessMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "of ___ (month)",
@@ -61,7 +61,7 @@
    "save": true
   },
   "F9": {
-   "name": "SDB_ACCESS_YEAR",
+   "name": "SDBAccessYear",
    "kind": "entry",
    "label": ", 20",
    "desc": ", 20__",
@@ -69,21 +69,21 @@
    "save": true
   },
   "F10": {
-   "name": "WILL_DATED_DAY",
+   "name": "WillDatedDay",
    "kind": "entry",
    "label": "Nothing was removed except the Original Will dated:",
    "desc": "Original will dated: day",
    "how": "reviewed"
   },
   "F11": {
-   "name": "WILL_DATED_MONTH",
+   "name": "WillDatedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "month",
    "how": "reviewed"
   },
   "F12": {
-   "name": "WILL_DATED_YEAR",
+   "name": "WillDatedYear",
    "kind": "entry",
    "label": ", 20",
    "desc": "year",
@@ -201,14 +201,14 @@
    "how": "reviewed"
   },
   "F25": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Member",
    "desc": "Libro witness 1: signature",
    "how": "reviewed"
   },
   "F26": {
-   "name": "STAFF2_NAME",
+   "name": "Staff2Name",
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Libro witness 2: name",
@@ -216,7 +216,7 @@
    "save": true
   },
   "F27": {
-   "name": "STAFF2_SIGNATURE",
+   "name": "Staff2Signature",
    "kind": "entry",
    "label": "Member",
    "desc": "Libro witness 2: signature",
@@ -258,7 +258,7 @@
    "how": "reviewed"
   },
   "B6": {
-   "name": "STAFF2_DATE",
+   "name": "Staff2Date",
    "kind": "entry",
    "label": "Date",
    "desc": "Libro witness 2: date",

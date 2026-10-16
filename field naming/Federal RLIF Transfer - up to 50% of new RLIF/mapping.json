@@ -64,7 +64,7 @@
    "how": "reviewed"
   },
   "F9": {
-   "name": "TRANSFER_AMOUNT_CHOICE",
+   "name": "TransferAmountChoice",
    "kind": "entry",
    "label": "lesser of",
    "desc": "Pick one: transfer the lesser of 50% of the amount recently transferred, OR a specified $ amount",
@@ -73,7 +73,7 @@
    "save": true
   },
   "F10": {
-   "name": "TRANSFER_AMOUNT_CHOICE",
+   "name": "TransferAmountChoice",
    "kind": "entry",
    "label": "OR",
    "desc": "OR",
@@ -82,61 +82,64 @@
    "save": true
   },
   "F11": {
-   "name": "TRANSFER_SPECIFIED_AMOUNT",
+   "name": "TransferSpecifiedAmount",
    "kind": "entry",
    "label": "$",
    "desc": "The specified $ amount",
    "how": "reviewed",
-   "custom": "Required when TRANSFER_AMOUNT_CHOICE is Amount"
+   "custom": "Required when TransferAmountChoice is Amount"
   },
   "F12": {
-   "name": "TRANSFER_TO_EXISTING_RRIF",
+   "name": "TransferTo",
    "kind": "entry",
    "label": "complete",
    "desc": "Tick: to an existing RRIF with this institution",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of TRANSFER_TO_EXISTING_RRIF, TRANSFER_TO_NEW_RRIF, TRANSFER_TO_EXISTING_RRSP and TRANSFER_TO_NEW_RRSP must be ticked"
+   "option": "ExistingRRIF",
+   "save": true
   },
   "F13": {
-   "name": "TRANSFER_RRIF_CONTRACT",
+   "name": "TransferRRIFContract",
    "kind": "entry",
    "label": "Contract #",
    "desc": "Existing RRIF contract #",
    "how": "reviewed",
-   "custom": "Required when TRANSFER_TO_EXISTING_RRIF is ticked"
+   "custom": "Required when TransferTo is ExistingRRIF"
   },
   "F14": {
-   "name": "TRANSFER_TO_NEW_RRIF",
+   "name": "TransferTo",
    "kind": "entry",
    "label": "New RRIF with this institution",
    "desc": "Tick: to a new RRIF with this institution",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "NewRRIF",
+   "save": true
   },
   "F15": {
-   "name": "TRANSFER_TO_EXISTING_RRSP",
+   "name": "TransferTo",
    "kind": "entry",
    "label": "Existing RRSP (must be age eligible) with this institution",
    "desc": "Tick: to an existing RRSP (must be age eligible)",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "ExistingRRSP",
+   "save": true
   },
   "F16": {
-   "name": "TRANSFER_RRSP_CONTRACT",
+   "name": "TransferRRSPContract",
    "kind": "entry",
    "label": "",
    "desc": "Existing RRSP contract #",
    "how": "reviewed",
-   "custom": "Required when TRANSFER_TO_EXISTING_RRSP is ticked"
+   "custom": "Required when TransferTo is ExistingRRSP"
   },
   "F17": {
-   "name": "TRANSFER_TO_NEW_RRSP",
+   "name": "TransferTo",
    "kind": "entry",
    "label": "New RRSP (must be age eligible) with this institution",
    "desc": "Tick: to a new RRSP (must be age eligible)",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "NewRRSP",
+   "save": true
   },
   "F18": {
    "name": "Member1SignDate",

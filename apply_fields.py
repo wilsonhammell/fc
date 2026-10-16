@@ -57,7 +57,8 @@ SPECIAL = re.compile(r"^(Member[1-6](Name|Signature|SignDate)|JointMember[1-5](N
 KINDS = ("db", "special", "candidate", "entry")
 # what a field name may be made of: the filler matches it exactly, and the
 # designer's export values allow no more
-NAME_OK = re.compile(r"^[A-Za-z0-9_]+$")
+# one dot at most: Group.Option, a box of a tick-any group
+NAME_OK = re.compile(r"^[A-Za-z0-9_]+(\.[A-Za-z0-9_]+)?$")
 
 TYPES = {"text": fitz.PDF_WIDGET_TYPE_TEXT, "checkbox": fitz.PDF_WIDGET_TYPE_CHECKBOX,
          "dropdown": fitz.PDF_WIDGET_TYPE_COMBOBOX}
@@ -135,6 +136,48 @@ def fix_export_values(doc):
                     if key == "AP/N":
                         out.append((w.field_name, text, new))
     return out
+
+
+def nest_dotted(doc):
+    """Dotted names made the PDF's own way: TraceReason.NoFunds is a parent
+    field TraceReason over a field NoFunds. A period inside one field's name
+    is not allowed (PDF 32000-1, 12.7.3.2), and the designer reads the parent
+    and the part after the dot as a check box group - any number ticked,
+    Save Validation meaning at least one. Returns how many groups."""
+    members = {}
+    for page in doc:
+        for w in page.widgets():
+            # the dictionary carrying the dotted name: the box itself, or the
+            # field it hangs from when one name has several boxes
+            x = w.xref
+            for _ in range(16):
+                t = doc.xref_get_key(x, "T")
+                if t[0] == "string":
+                    break
+                par = doc.xref_get_key(x, "Parent")
+                if par[0] != "xref":
+                    break
+                x = int(par[1].split()[0])
+            if t[0] != "string" or "." not in t[1] or doc.xref_get_key(x, "Parent")[0] == "xref":
+                continue
+            prefix, _, part = t[1].rpartition(".")
+            members.setdefault(prefix, {})[x] = part
+    if not members:
+        return 0
+    listed, write = restyle_pdf.field_list(doc)
+    gone, parents = set(), []
+    for prefix, kids in members.items():
+        px = doc.get_new_xref()
+        doc.update_object(px, "<</T %s /Kids [%s]>>" % (
+            fitz.get_pdf_str(prefix), " ".join(f"{x} 0 R" for x in kids)))
+        for x, part in kids.items():
+            doc.xref_set_key(x, "T", fitz.get_pdf_str(part))
+            doc.xref_set_key(x, "Parent", f"{px} 0 R")
+            gone.add(x)
+        parents.append(px)
+    if write is not None:
+        write([x for x in listed if x not in gone] + parents)
+    return len(members)
 
 
 def top_field(doc, xref):
@@ -445,6 +488,8 @@ def apply(folder):
     for m in extra:
         add_field(doc[m["page"]], m["rect"], m["name"], type_for(m["name"], m.get("type", "text")))
 
+    # a tick-any group's boxes, named Group.Option, under their group
+    nest_dotted(doc)
     said += follow_renames(doc, renamed, original_names)
     for name, was, now in fix_export_values(doc):
         print(f"   ({name}: export value {was!r} made {now!r} - letters, digits, dot, dash "

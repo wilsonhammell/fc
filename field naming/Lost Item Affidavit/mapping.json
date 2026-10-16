@@ -23,7 +23,7 @@
    "how": "reviewed"
   },
   "F4": {
-   "name": "CHEQUE_NUMBER",
+   "name": "ChequeNumber",
    "kind": "entry",
    "label": "Cheque #",
    "desc": "Cheque # of the lost item",
@@ -31,7 +31,7 @@
    "save": true
   },
   "F5": {
-   "name": "CHEQUE_DATE_ISSUED",
+   "name": "ChequeDateIssued",
    "kind": "entry",
    "label": "Date Issued",
    "desc": "Date the cheque was issued",
@@ -39,7 +39,7 @@
    "save": true
   },
   "F6": {
-   "name": "CHEQUE_PAYEE",
+   "name": "ChequePayee",
    "kind": "entry",
    "label": "Cheque Payable To Payee",
    "desc": "Cheque payable to (payee)",
@@ -47,7 +47,7 @@
    "save": true
   },
   "F7": {
-   "name": "CHEQUE_AMOUNT",
+   "name": "ChequeAmount",
    "kind": "entry",
    "label": "Cheque Amount",
    "desc": "Cheque amount $",
@@ -62,7 +62,7 @@
    "how": "reviewed"
   },
   "F9": {
-   "name": "WITNESS_NAME",
+   "name": "WitnessName",
    "kind": "entry",
    "label": "Name of Witness (Payor) [print or type]",
    "desc": "Name of witness (payor), print or type",
@@ -91,7 +91,7 @@
    "how": "reviewed"
   },
   "B8": {
-   "name": "WITNESS_DATE",
+   "name": "WitnessDate",
    "kind": "entry",
    "label": "Date of Signature",
    "desc": "Date of the witness signature",
@@ -99,7 +99,7 @@
    "save": true
   },
   "B9": {
-   "name": "WITNESS_SIGNATURE",
+   "name": "WitnessSignature",
    "kind": "entry",
    "label": "Signature of Witness",
    "desc": "Signature of witness",

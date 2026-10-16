@@ -22,21 +22,22 @@
    "how": "reviewed"
   },
   "F4": {
-   "name": "LEGISLATION_ONTARIO",
+   "name": "Legislation",
    "kind": "entry",
    "label": "Legislation",
    "desc": "Tick: governed by the (Ontario) Pension Benefits Act",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of LEGISLATION_ONTARIO and LEGISLATION_FEDERAL must be ticked"
+   "option": "Ontario",
+   "save": true
   },
   "F5": {
-   "name": "LEGISLATION_FEDERAL",
+   "name": "Legislation",
    "kind": "entry",
    "label": "(FEDERAL) PENSION BENEFITS STANDARD ACT",
    "desc": "Tick: governed by the (federal) Pension Benefits Standards Act",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Federal",
+   "save": true
   },
   "F6": {
    "name": "Member1SignDate",
@@ -46,7 +47,7 @@
    "how": "reviewed"
   },
   "F7": {
-   "name": "WITNESS_DATE",
+   "name": "WitnessDate",
    "kind": "entry",
    "label": "Date",
    "desc": "Date of the witness signature",
@@ -54,7 +55,7 @@
    "save": true
   },
   "F8": {
-   "name": "WITNESS_SIGNATURE",
+   "name": "WitnessSignature",
    "kind": "entry",
    "label": "Signature of Witness",
    "desc": "Signature of witness",

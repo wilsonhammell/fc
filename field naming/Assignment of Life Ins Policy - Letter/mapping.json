@@ -30,7 +30,7 @@
    "save": true
   },
   "F5": {
-   "name": "INSURANCE_POLICY_NUMBER",
+   "name": "InsurancePolicyNumber",
    "kind": "entry",
    "label": "Your Policy:",
    "desc": "Life insurance policy number",

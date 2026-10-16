@@ -22,24 +22,25 @@
    "how": "reviewed"
   },
   "F4": {
-   "name": "ESTATE_TRUSTEE_BY_WILL",
+   "name": "EstateTrustee",
    "kind": "entry",
    "label": "document, and",
    "desc": "Tick: trustee appointed in the Last Will",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of ESTATE_TRUSTEE_BY_WILL and ESTATE_TRUSTEE_BY_CERTIFICATE must be ticked"
+   "option": "Will",
+   "save": true
   },
   "F5": {
-   "name": "ESTATE_TRUSTEE_BY_CERTIFICATE",
+   "name": "EstateTrustee",
    "kind": "entry",
    "label": "as appointed in the Certificate of Appointment of Estate Trustee",
    "desc": "Tick: trustee appointed in the Certificate of Appointment",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Certificate",
+   "save": true
   },
   "F6": {
-   "name": "SIGNED_AT_CITY",
+   "name": "SignedAtCity",
    "kind": "entry",
    "label": "at",
    "desc": "City the agreement is signed at",
@@ -174,7 +175,7 @@
    "how": "reviewed"
   },
   "F25": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Coach",
    "desc": "Coach (staff member) signature",
@@ -188,7 +189,7 @@
    "how": "reviewed"
   },
   "F27": {
-   "name": "SIGNED_AT_PROVINCE",
+   "name": "SignedAtProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Province the agreement is signed in",

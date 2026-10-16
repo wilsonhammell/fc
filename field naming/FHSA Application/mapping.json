@@ -86,21 +86,22 @@
    "how": "reviewed"
   },
   "F13": {
-   "name": "HOLDER_DECLINES_BENEFICIARY",
+   "name": "BeneficiaryDesignation",
    "kind": "entry",
    "label": "The holder declines to designate a beneficiary of the proceeds",
    "desc": "Tick: the holder declines to designate a beneficiary / successor holder",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of HOLDER_DECLINES_BENEFICIARY and HOLDER_CONFIRMS_DESIGNATION_FO must be ticked"
+   "option": "Declines",
+   "save": true
   },
   "F14": {
-   "name": "HOLDER_CONFIRMS_DESIGNATION_FORM",
+   "name": "BeneficiaryDesignation",
    "kind": "entry",
    "label": "The holder confirms completion of an FHSA Beneficiary Designation Form",
    "desc": "Tick: the holder confirms completion of the FHSA designation form",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Confirms",
+   "save": true
   },
   "F15": {
    "name": "Member1Name",

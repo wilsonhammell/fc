@@ -29,24 +29,25 @@
    "how": "reviewed"
   },
   "F5": {
-   "name": "BRANCH_ERROR",
+   "name": "ErrorType",
    "kind": "entry",
    "label": "Branch error - Admin will apply s/c to Branch GL",
    "desc": "Tick: branch error - admin will apply fee",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of BRANCH_ERROR and MEMBER_ERROR must be ticked"
+   "option": "Branch",
+   "save": true
   },
   "F6": {
-   "name": "MEMBER_ERROR",
+   "name": "ErrorType",
    "kind": "entry",
    "label": "Member error - Admin will apply s/c to Member",
    "desc": "Tick: member error - admin will apply fee",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Member",
+   "save": true
   },
   "F7": {
-   "name": "VENDOR_NAME",
+   "name": "VendorName",
    "kind": "entry",
    "label": "Vendor name:",
    "desc": "Vendor name:",
@@ -54,7 +55,7 @@
    "save": true
   },
   "F8": {
-   "name": "VENDOR_ACCOUNT_NUMBER",
+   "name": "VendorAccountNumber",
    "kind": "entry",
    "label": "Vendor Account # paid:",
    "desc": "Vendor account # paid",
@@ -62,7 +63,7 @@
    "save": true
   },
   "F9": {
-   "name": "PAYMENT_AMOUNT",
+   "name": "PaymentAmount",
    "kind": "entry",
    "label": "Payment Amount $",
    "desc": "Payment amount",
@@ -70,7 +71,7 @@
    "save": true
   },
   "F10": {
-   "name": "PAYMENT_DATE",
+   "name": "PaymentDate",
    "kind": "entry",
    "label": "Payment Date:",
    "desc": "Payment Date:",
@@ -78,7 +79,7 @@
    "save": true
   },
   "F11": {
-   "name": "TRACE_REASON",
+   "name": "TraceReason",
    "kind": "entry",
    "label": "Reason",
    "desc": "Reason for trace (pick one: account not credited, incorrect amount, incorrect vendor, incorrect account, other)",
@@ -87,7 +88,7 @@
    "save": true
   },
   "F12": {
-   "name": "TRACE_REASON",
+   "name": "TraceReason",
    "kind": "entry",
    "label": "Incorrect amount paid. Paid:$",
    "desc": "Incorrect amount paid. Paid:$",
@@ -96,30 +97,30 @@
    "save": true
   },
   "F16": {
-   "name": "AMOUNT_PAID",
+   "name": "AmountPaid",
    "kind": "entry",
    "label": "Incorrect amount paid. Paid:$",
    "desc": "Incorrect amount paid: the amount paid",
    "how": "reviewed",
-   "custom": "Required when TRACE_REASON is IncorrectAmount"
+   "custom": "Required when TraceReason is IncorrectAmount"
   },
   "F17": {
-   "name": "CORRECT_AMOUNT",
+   "name": "CorrectAmount",
    "kind": "entry",
    "label": "Correct Amount $",
    "desc": "Incorrect amount paid: the correct amount",
    "how": "reviewed",
-   "custom": "Required when TRACE_REASON is IncorrectAmount"
+   "custom": "Required when TraceReason is IncorrectAmount"
   },
   "F18": {
-   "name": "REFUND_REQUEST_AMOUNT",
+   "name": "RefundRequestAmount",
    "kind": "entry",
    "label": "Refund request: $",
    "desc": "Incorrect amount paid: refund requested",
    "how": "reviewed"
   },
   "F13": {
-   "name": "TRACE_REASON",
+   "name": "TraceReason",
    "kind": "entry",
    "label": "Payment made to Incorrect Vendor. Refund requested for: $",
    "desc": "Payment made to Incorrect Vendor. Refund requested for: $",
@@ -128,15 +129,15 @@
    "save": true
   },
   "F19": {
-   "name": "REFUND_INCORRECT_VENDOR_AMOUNT",
+   "name": "RefundIncorrectVendorAmount",
    "kind": "entry",
    "label": "Payment made to Incorrect Vendor. Refund requested for: $",
    "desc": "Paid to incorrect vendor: refund requested for",
    "how": "reviewed",
-   "custom": "Required when TRACE_REASON is IncorrectVendor"
+   "custom": "Required when TraceReason is IncorrectVendor"
   },
   "F14": {
-   "name": "TRACE_REASON",
+   "name": "TraceReason",
    "kind": "entry",
    "label": "Payment is made to incorrect account number. Correct account:",
    "desc": "Payment is made to incorrect account number. Correct account:",
@@ -145,15 +146,15 @@
    "save": true
   },
   "F20": {
-   "name": "CORRECT_ACCOUNT_NUMBER",
+   "name": "CorrectAccountNumber",
    "kind": "entry",
    "label": "Payment is made to incorrect account number. Correct account:",
    "desc": "Paid to incorrect account: the correct account",
    "how": "reviewed",
-   "custom": "Required when TRACE_REASON is IncorrectAccount"
+   "custom": "Required when TraceReason is IncorrectAccount"
   },
   "F15": {
-   "name": "TRACE_REASON",
+   "name": "TraceReason",
    "kind": "entry",
    "label": "Other(specify):",
    "desc": "Other(specify):",
@@ -162,12 +163,12 @@
    "save": true
   },
   "F21": {
-   "name": "TRACE_REASON_OTHER_DETAIL",
+   "name": "TraceReasonOtherDetail",
    "kind": "entry",
    "label": "",
    "desc": "Other reason, in words",
    "how": "reviewed",
-   "custom": "Required when TRACE_REASON is Other"
+   "custom": "Required when TraceReason is Other"
   }
  },
  "drop": [],

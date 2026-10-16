@@ -1,24 +1,25 @@
 {
  "items": {
   "F1": {
-   "name": "PENSION_DIFFERENTIATED",
+   "name": "PensionDifferentiation",
    "kind": "entry",
    "label": "determined",
    "desc": "Tick: the pension plan differentiated on the basis of sex",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of PENSION_DIFFERENTIATED and PENSION_NOT_DIFFERENTIATED must be ticked"
+   "option": "Differentiated",
+   "save": true
   },
   "F2": {
-   "name": "PENSION_NOT_DIFFERENTIATED",
+   "name": "PensionDifferentiation",
    "kind": "entry",
    "label": "did not differentiate on the basis of sex; and",
    "desc": "Tick: the pension plan did not differentiate",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "NotDifferentiated",
+   "save": true
   },
   "F3": {
-   "name": "SIGNED_DAY",
+   "name": "SignedDay",
    "kind": "entry",
    "label": "Signed this",
    "desc": "Signed this ___ day",
@@ -26,7 +27,7 @@
    "save": true
   },
   "F4": {
-   "name": "SIGNED_MONTH",
+   "name": "SignedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "of ___ (month)",
@@ -34,7 +35,7 @@
    "save": true
   },
   "F5": {
-   "name": "SIGNED_YEAR",
+   "name": "SignedYear",
    "kind": "entry",
    "label": ", 20",
    "desc": ", 20__",
@@ -98,7 +99,7 @@
    "how": "reviewed"
   },
   "B9": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "",
    "desc": "Accepted by authorized officer, as agent for the trustee",

@@ -36,7 +36,7 @@
    "how": "reviewed"
   },
   "F6": {
-   "name": "SIGNED_AT_CITY",
+   "name": "SignedAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (city), Ontario",
@@ -91,7 +91,7 @@
    ]
   },
   "F12": {
-   "name": "QUOTA_NUMBER",
+   "name": "QuotaNumber",
    "kind": "entry",
    "label": "Quota No.",
    "desc": "Quota number",
@@ -99,7 +99,7 @@
    "save": true
   },
   "F13": {
-   "name": "QUOTA_PREMISES_ADDRESS",
+   "name": "QuotaPremisesAddress",
    "kind": "entry",
    "label": "Address",
    "desc": "Address of the quota premises",
@@ -135,21 +135,21 @@
    "how": "reviewed"
   },
   "B5": {
-   "name": "BOARD_ACK_CITY",
+   "name": "BoardAckCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Acknowledgement by the marketing board: dated at (city)",
    "how": "reviewed"
   },
   "B6": {
-   "name": "BOARD_ACK_DATE",
+   "name": "BoardAckDate",
    "kind": "entry",
    "label": ", Ontario, this",
    "desc": "Acknowledgement: date",
    "how": "reviewed"
   },
   "B7": {
-   "name": "BOARD_ACK_SIGNATURE",
+   "name": "BoardAckSignature",
    "kind": "entry",
    "label": "Authorized Signature:",
    "desc": "Marketing board's authorized signature",
@@ -240,7 +240,7 @@
    "how": "reviewed"
   },
   "F26": {
-   "name": "COLLATERAL_DESCRIPTION",
+   "name": "CollateralDescription",
    "kind": "entry",
    "label": "",
    "desc": "Security agreement: the collateral (quota / proceeds) described",

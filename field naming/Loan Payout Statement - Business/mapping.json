@@ -167,7 +167,7 @@
     98,
     103
    ],
-   "name": "SOLICITOR_NAME",
+   "name": "SolicitorName",
    "kind": "entry",
    "label": "To: ___, Barrister and Solicitor",
    "desc": "The member's solicitor - only 30pt of room before ', Barrister and Solicitor'",
@@ -181,7 +181,7 @@
     590,
     119
    ],
-   "name": "SOLICITOR_EMAIL",
+   "name": "SolicitorEmail",
    "kind": "entry",
    "label": "Email:",
    "desc": "Solicitor's email",
@@ -195,7 +195,7 @@
     590,
     187
    ],
-   "name": "PROPERTY_ADDRESS",
+   "name": "PropertyAddress",
    "kind": "entry",
    "label": "Municipal Address/Legal Description of Property",
    "desc": "Address or legal description of the mortgaged property",

@@ -22,139 +22,143 @@
    "how": "reviewed"
   },
   "F4": {
-   "name": "DOC_CERTIFIED_CHEQUE",
+   "name": "DocumentType",
    "kind": "entry",
    "label": "",
    "desc": "Tick: the document is a credit union certified cheque",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of DOC_CERTIFIED_CHEQUE and DOC_OFFICIAL_CHEQUE must be ticked"
+   "option": "CertifiedCheque",
+   "save": true
   },
   "F5": {
-   "name": "CERTIFIED_CHEQUE_CAD",
+   "name": "CertifiedChequeCurrency",
    "kind": "entry",
    "label": "$Cdn",
    "desc": "Certified cheque in $Cdn",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "When DOC_CERTIFIED_CHEQUE is ticked, exactly one of CERTIFIED_CHEQUE_CAD and CERTIFIED_CHEQUE_USD must be ticked"
+   "option": "CAD",
+   "custom": "Required when DocumentType is CertifiedCheque"
   },
   "F6": {
-   "name": "CERTIFIED_CHEQUE_NUMBER",
+   "name": "CertifiedChequeNumber",
    "kind": "entry",
    "label": "Cheque Number & $Amount:",
    "desc": "Certified cheque number",
    "how": "reviewed",
-   "custom": "Required when DOC_CERTIFIED_CHEQUE is ticked"
+   "custom": "Required when DocumentType is CertifiedCheque"
   },
   "F7": {
-   "name": "CERTIFIED_CHEQUE_AMOUNT",
+   "name": "CertifiedChequeAmount",
    "kind": "entry",
    "label": "$",
    "desc": "Certified cheque amount $",
    "how": "reviewed",
-   "custom": "Required when DOC_CERTIFIED_CHEQUE is ticked"
+   "custom": "Required when DocumentType is CertifiedCheque"
   },
   "F8": {
-   "name": "CERTIFIED_CHEQUE_USD",
+   "name": "CertifiedChequeCurrency",
    "kind": "entry",
    "label": "$U S",
    "desc": "Certified cheque in $US",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "USD",
+   "custom": "Required when DocumentType is CertifiedCheque"
   },
   "F9": {
-   "name": "CERTIFIED_CHEQUE_PAYEE",
+   "name": "CertifiedChequePayee",
    "kind": "entry",
    "label": "Payee:",
    "desc": "Certified cheque payee",
    "how": "reviewed",
-   "custom": "Required when DOC_CERTIFIED_CHEQUE is ticked"
+   "custom": "Required when DocumentType is CertifiedCheque"
   },
   "F10": {
-   "name": "DOC_OFFICIAL_CHEQUE",
+   "name": "DocumentType",
    "kind": "entry",
    "label": "",
    "desc": "Tick: the document is an official credit union cheque",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "OfficialCheque",
+   "save": true
   },
   "F11": {
-   "name": "OFFICIAL_CHEQUE_CAD",
+   "name": "OfficialChequeCurrency",
    "kind": "entry",
    "label": "$Cdn",
    "desc": "Official cheque in $Cdn",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "When DOC_OFFICIAL_CHEQUE is ticked, exactly one of OFFICIAL_CHEQUE_CAD and OFFICIAL_CHEQUE_USD must be ticked"
+   "option": "CAD",
+   "custom": "Required when DocumentType is OfficialCheque"
   },
   "F12": {
-   "name": "OFFICIAL_CHEQUE_NUMBER",
+   "name": "OfficialChequeNumber",
    "kind": "entry",
    "label": "Cheque Number & $Amount:",
    "desc": "Official cheque number",
    "how": "reviewed",
-   "custom": "Required when DOC_OFFICIAL_CHEQUE is ticked"
+   "custom": "Required when DocumentType is OfficialCheque"
   },
   "F13": {
-   "name": "OFFICIAL_CHEQUE_AMOUNT",
+   "name": "OfficialChequeAmount",
    "kind": "entry",
    "label": "$",
    "desc": "Official cheque amount $",
    "how": "reviewed",
-   "custom": "Required when DOC_OFFICIAL_CHEQUE is ticked"
+   "custom": "Required when DocumentType is OfficialCheque"
   },
   "F14": {
-   "name": "OFFICIAL_CHEQUE_USD",
+   "name": "OfficialChequeCurrency",
    "kind": "entry",
    "label": "$U S",
    "desc": "Official cheque in $US",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "USD",
+   "custom": "Required when DocumentType is OfficialCheque"
   },
   "F15": {
-   "name": "OFFICIAL_CHEQUE_PAYEE",
+   "name": "OfficialChequePayee",
    "kind": "entry",
    "label": "Payee:",
    "desc": "Official cheque payee",
    "how": "reviewed",
-   "custom": "Required when DOC_OFFICIAL_CHEQUE is ticked"
+   "custom": "Required when DocumentType is OfficialCheque"
   },
   "F16": {
-   "name": "REQUEST_DETAIL",
+   "name": "RequestDetail",
    "kind": "entry",
    "label": "have asked and you have agreed to: [choose one only]",
    "desc": "Box after 'I have asked and you have agreed to: [choose one only]' - CHECK it is wanted, the choice is the tick boxes below",
    "how": "reviewed"
   },
   "F17": {
-   "name": "REQUEST_PAY_AMOUNT",
+   "name": "Request",
    "kind": "entry",
    "label": "",
    "desc": "Tick: pay to me the amount of the document - was a text box",
    "how": "reviewed",
-   "type": "checkbox",
    "rect": [
     56,
     421,
     66,
     431
    ],
-   "custom": "Exactly one of REQUEST_PAY_AMOUNT and REQUEST_STOP_PAYMENT must be marked"
+   "option": "PayAmount",
+   "save": true
   },
   "F18": {
-   "name": "REQUEST_STOP_PAYMENT",
+   "name": "Request",
    "kind": "entry",
    "label": "",
    "desc": "Tick: process a stop payment on the document - was a text box",
    "how": "reviewed",
-   "type": "checkbox",
    "rect": [
     56,
     437,
     66,
     447
-   ]
+   ],
+   "option": "StopPayment",
+   "save": true
   },
   "F19": {
    "name": "Member1Signature",
@@ -228,7 +232,7 @@
     66,
     418
    ],
-   "name": "REQUEST_DUPLICATE",
+   "name": "RequestDuplicate",
    "kind": "entry",
    "label": "issue a duplicate to replace the Document",
    "desc": "Tick: issue a duplicate - the form had no box for it",

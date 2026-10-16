@@ -1,7 +1,7 @@
 {
  "items": {
   "F1": {
-   "name": "BENEFICIARY_NAME",
+   "name": "BeneficiaryName",
    "kind": "entry",
    "label": "I,",
    "desc": "The designated beneficiary renouncing (I, ___)",
@@ -9,7 +9,7 @@
    "save": true
   },
   "F2": {
-   "name": "BENEFICIARY_CITY",
+   "name": "BeneficiaryCity",
    "kind": "entry",
    "label": ", of",
    "desc": "Beneficiary's city (of ___)",
@@ -41,7 +41,7 @@
    "save": true
   },
   "F6": {
-   "name": "DESIGNATION_FORM_MONTH",
+   "name": "DesignationFormMonth",
    "kind": "entry",
    "label": "__ day of",
    "desc": "Designation form dated: month",
@@ -49,7 +49,7 @@
    "save": true
   },
   "F7": {
-   "name": "SIGNED_AT_CITY",
+   "name": "SignedAtCity",
    "kind": "entry",
    "label": "Date at",
    "desc": "Date at (city)",
@@ -57,7 +57,7 @@
    "save": true
   },
   "F8": {
-   "name": "SIGNED_AT_PROVINCE",
+   "name": "SignedAtProvince",
    "kind": "entry",
    "label": "In the province of",
    "desc": "In the province of",
@@ -65,14 +65,14 @@
    "save": true
   },
   "F9": {
-   "name": "BENEFICIARY_NAME",
+   "name": "BeneficiaryName",
    "kind": "entry",
    "label": "Date at ________________________________",
    "desc": "Name of designated beneficiary, at the signature",
    "how": "reviewed"
   },
   "F10": {
-   "name": "SIGNED_DAY",
+   "name": "SignedDay",
    "kind": "entry",
    "label": "This",
    "desc": "This ___ day",
@@ -80,7 +80,7 @@
    "save": true
   },
   "F11": {
-   "name": "SIGNED_MONTH",
+   "name": "SignedMonth",
    "kind": "entry",
    "label": "This _____________ day",
    "desc": "day of ___ (month)",
@@ -88,7 +88,7 @@
    "save": true
   },
   "F12": {
-   "name": "SIGNED_YEAR",
+   "name": "SignedYear",
    "kind": "entry",
    "label": "This _____________ day of",
    "desc": ", 20__",
@@ -96,7 +96,7 @@
    "save": true
   },
   "F13": {
-   "name": "WITNESS_NAME",
+   "name": "WitnessName",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness's full name (the witness is relabelled Authorizing Staff Member)",
@@ -104,14 +104,14 @@
    "save": true
   },
   "F14": {
-   "name": "WITNESS_ADDRESS_2",
+   "name": "WitnessAddress2",
    "kind": "entry",
    "label": "My phone number is: _____________________________",
    "desc": "Witness's address, continued",
    "how": "reviewed"
   },
   "F15": {
-   "name": "WITNESS_ADDRESS",
+   "name": "WitnessAddress",
    "kind": "entry",
    "label": "My address",
    "desc": "Witness's address",
@@ -154,7 +154,7 @@
    "how": "reviewed"
   },
   "F21": {
-   "name": "BENEFICIARY_PROVINCE",
+   "name": "BeneficiaryProvince",
    "kind": "entry",
    "label": ", in the Province of",
    "desc": "Beneficiary's province",
@@ -162,23 +162,23 @@
    "save": true
   },
   "F22": {
-   "name": "RRSP_CONTRACTS",
+   "name": "RRSPContracts",
    "kind": "entry",
    "label": "RRSP contract",
    "desc": "The deceased's RRSP contract number(s)",
    "how": "reviewed",
-   "custom": "Required when BENEFICIARY_OF_RRSP is ticked"
+   "custom": "Required when BeneficiaryOf.RRSP is ticked"
   },
   "F23": {
-   "name": "TFSA_CONTRACTS",
+   "name": "TFSAContracts",
    "kind": "entry",
    "label": "TFSA contract",
    "desc": "The deceased's TFSA contract number(s)",
    "how": "reviewed",
-   "custom": "Required when BENEFICIARY_OF_TFSA is ticked"
+   "custom": "Required when BeneficiaryOf.TFSA is ticked"
   },
   "F24": {
-   "name": "DESIGNATION_FORM_DAY",
+   "name": "DesignationFormDay",
    "kind": "entry",
    "label": "the proceeds",
    "desc": "Beneficiary designation form dated: day",
@@ -186,7 +186,7 @@
    "save": true
   },
   "F25": {
-   "name": "DESIGNATION_FORM_YEAR",
+   "name": "DesignationFormYear",
    "kind": "entry",
    "label": ", 20",
    "desc": "Designation form dated: year",
@@ -194,45 +194,44 @@
    "save": true
   },
   "F26": {
-   "name": "DECLARANT_SIGNATURE",
+   "name": "DeclarantSignature",
    "kind": "entry",
    "label": "(Signature of Designated Beneficiary)",
    "desc": "Signature of the designated beneficiary",
    "how": "reviewed"
   },
   "F27": {
-   "name": "BENEFICIARY_OF_RRSP",
+   "name": "BeneficiaryOf.RRSP",
    "kind": "entry",
    "label": "THAT",
    "desc": "Tick: RRSP contract(s)",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "At least one of BENEFICIARY_OF_RRSP and BENEFICIARY_OF_TFSA must be ticked"
+   "save": true
   },
   "F28": {
-   "name": "BENEFICIARY_OF_TFSA",
+   "name": "BeneficiaryOf.TFSA",
    "kind": "entry",
    "label": "TFSA contract No.(s) __________________________________________________________",
    "desc": "Tick: TFSA contract(s)",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F29": {
-   "name": "WITNESS_PHONE",
+   "name": "WitnessPhone",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness's phone number",
    "how": "reviewed"
   },
   "F30": {
-   "name": "WITNESS_SIGNATURE",
+   "name": "WitnessSignature",
    "kind": "entry",
    "label": "My full name is: ________________________________",
    "desc": "Witness's signature (captioned Authorizing Staff Member)",
    "how": "reviewed"
   },
   "F31": {
-   "name": "WITNESS_DATE",
+   "name": "WitnessDate",
    "kind": "entry",
    "label": "My phone number is: _____________________________",
    "desc": "Date of the witness signature",

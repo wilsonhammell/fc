@@ -319,21 +319,22 @@
    "how": "reviewed"
   },
   "F33": {
-   "name": "RETURN_TO_LONDON",
+   "name": "ReturnTo",
    "kind": "entry",
    "label": "London,",
    "desc": "Acknowledgement: return to 217 York Street, London",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of RETURN_TO_LONDON and RETURN_TO_ESSEX must be ticked"
+   "option": "London",
+   "save": true
   },
   "F34": {
-   "name": "RETURN_TO_ESSEX",
+   "name": "ReturnTo",
    "kind": "entry",
    "label": "Essex,",
    "desc": "Acknowledgement: return to 154 Talbot Street N., Essex",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Essex",
+   "save": true
   },
   "F35": {
    "name": "Member1Name",
@@ -493,7 +494,7 @@
    "how": "reviewed"
   },
   "F56": {
-   "name": "MF_CUSTODIAN",
+   "name": "MFCustodian",
    "kind": "entry",
    "label": "All mutual funds under custody of",
    "desc": "Mutual funds: under custody of",
@@ -503,7 +504,7 @@
    ]
   },
   "F57": {
-   "name": "MF_ACCOUNT_NUMBER",
+   "name": "MFAccountNumber",
    "kind": "entry",
    "label": "Account No.",
    "desc": "Mutual funds: account no.",
@@ -513,7 +514,7 @@
    ]
   },
   "F58": {
-   "name": "MF_MAX_VALUE",
+   "name": "MFMaxValue",
    "kind": "entry",
    "label": "value hypothecated at any given time shall not exceed $",
    "desc": "Mutual funds: total value hypothecated shall not exceed $",
@@ -649,7 +650,7 @@
    "how": "reviewed"
   },
   "F59": {
-   "name": "STOCKS_CUSTODIAN",
+   "name": "StocksCustodian",
    "kind": "entry",
    "label": "All stocks under custody of",
    "desc": "Stocks: under custody of",
@@ -659,7 +660,7 @@
    ]
   },
   "F60": {
-   "name": "STOCKS_ACCOUNT_NUMBER",
+   "name": "StocksAccountNumber",
    "kind": "entry",
    "label": "Account No.",
    "desc": "Stocks: account no.",
@@ -669,7 +670,7 @@
    ]
   },
   "F61": {
-   "name": "STOCKS_MAX_VALUE",
+   "name": "StocksMaxValue",
    "kind": "entry",
    "label": "not exceed $",
    "desc": "Stocks: total value shall not exceed $",
@@ -1013,7 +1014,7 @@
    "how": "reviewed"
   },
   "F100": {
-   "name": "BONDS_CUSTODIAN",
+   "name": "BondsCustodian",
    "kind": "entry",
    "label": "All government and corporate bonds under custody of",
    "desc": "Bonds: under custody of",
@@ -1023,7 +1024,7 @@
    ]
   },
   "F101": {
-   "name": "BONDS_ACCOUNT_NUMBER",
+   "name": "BondsAccountNumber",
    "kind": "entry",
    "label": "Account No.",
    "desc": "Bonds: account no.",
@@ -1033,7 +1034,7 @@
    ]
   },
   "F102": {
-   "name": "BONDS_MAX_VALUE",
+   "name": "BondsMaxValue",
    "kind": "entry",
    "label": "given time shall not exceed $",
    "desc": "Bonds: total value shall not exceed $",

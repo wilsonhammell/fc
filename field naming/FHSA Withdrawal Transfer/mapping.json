@@ -65,115 +65,117 @@
    "how": "reviewed"
   },
   "F10": {
-   "name": "TAXABLE_WITHDRAWAL",
+   "name": "TransactionType.TaxableWithdrawal",
    "kind": "entry",
    "label": "Taxable Withdrawal",
    "desc": "Tick: taxable withdrawal",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "At least one type of transaction (TAXABLE_WITHDRAWAL, QUALIFYING_WITHDRAWAL, TRANSFER_TO_LIBRO, TRANSFER_TO_OTHER_FI, DEATH) must be ticked"
+   "save": true
   },
   "F11": {
-   "name": "QUALIFYING_WITHDRAWAL",
+   "name": "TransactionType.QualifyingWithdrawal",
    "kind": "entry",
    "label": "Qualifying Withdrawal (no tax withheld)",
    "desc": "Tick: qualifying withdrawal (no tax withheld)",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F12": {
-   "name": "TRANSFER_TO_LIBRO",
+   "name": "TransactionType.TransferToLibro",
    "kind": "entry",
    "label": "Transfer to Libro FHSA, RRSP or RRIF",
    "desc": "Tick: transfer to Libro FHSA, RRSP or RRIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F13": {
-   "name": "TRANSFER_TO_NEW_CONTRACT",
+   "name": "TransferContract",
    "kind": "entry",
    "label": "RRSP",
    "desc": "Tick: to a new contract",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "When TRANSFER_TO_LIBRO is ticked, exactly one of TRANSFER_TO_NEW_CONTRACT and TRANSFER_TO_EXISTING_CONTRACT must be ticked"
+   "option": "New",
+   "custom": "Required when TransactionType.TransferToLibro is ticked"
   },
   "F14": {
-   "name": "TRANSFER_TO_EXISTING_CONTRACT",
+   "name": "TransferContract",
    "kind": "entry",
    "label": "Existing FHSA, RRSP or RIF Contract #",
    "desc": "Tick: to an existing contract",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Existing",
+   "custom": "Required when TransactionType.TransferToLibro is ticked"
   },
   "F15": {
-   "name": "TRANSFER_EXISTING_CONTRACT_NUMBER",
+   "name": "TransferExistingContractNumber",
    "kind": "entry",
    "label": "Existing FHSA, RRSP or RIF Contract #",
    "desc": "Existing FHSA, RRSP or RIF contract #",
    "how": "reviewed",
-   "custom": "Required when TRANSFER_TO_EXISTING_CONTRACT is ticked"
+   "custom": "Required when TransferContract is Existing"
   },
   "F16": {
-   "name": "TRANSFER_TO_OTHER_FI",
+   "name": "TransactionType.TransferToOtherFI",
    "kind": "entry",
    "label": "Transfer to Other FI FHSA, RRIF or RRSP",
    "desc": "Tick: transfer to another FI FHSA, RRIF or RRSP",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F17": {
-   "name": "DEATH",
+   "name": "TransactionType.Death",
    "kind": "entry",
    "label": "Death",
    "desc": "Tick: death",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F18": {
-   "name": "FULL_CONTRACT_TERMINATION",
+   "name": "ContractTermination",
    "kind": "entry",
    "label": "Full Contract Termination OR",
    "desc": "Tick: full contract termination",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of FULL_CONTRACT_TERMINATION and PARTIAL_CONTRACT_TERMINATION must be ticked"
+   "option": "Full",
+   "save": true
   },
   "F19": {
-   "name": "PARTIAL_CONTRACT_TERMINATION",
+   "name": "ContractTermination",
    "kind": "entry",
    "label": "Partial Contract Termination",
    "desc": "Tick: partial contract termination",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Partial",
+   "save": true
   },
   "F20": {
-   "name": "AUTO_TRANSFER_CHANGE_NO",
+   "name": "AutoTransferChange",
    "kind": "entry",
    "label": "Yes",
    "desc": "Change to automatic transfer required: No",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of AUTO_TRANSFER_CHANGE_NO and AUTO_TRANSFER_CHANGE_YES must be ticked"
+   "option": "No",
+   "save": true
   },
   "F21": {
-   "name": "AUTO_TRANSFER_CHANGE_YES",
+   "name": "AutoTransferChange",
    "kind": "entry",
    "label": "Sub#",
    "desc": "Change to automatic transfer required: Yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Yes",
+   "save": true
   },
   "F22": {
-   "name": "AUTO_TRANSFER_SUB",
+   "name": "AutoTransferSub",
    "kind": "entry",
    "label": "Sub#",
    "desc": "Automatic transfer: sub #",
    "how": "reviewed",
-   "custom": "Required when AUTO_TRANSFER_CHANGE_YES is ticked"
+   "custom": "Required when AutoTransferChange is Yes"
   },
   "F23": {
-   "name": "WD1_FHSA_SUB",
+   "name": "Withdrawal1FHSASub",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 1: FHSA (sub) #",
@@ -181,14 +183,14 @@
    "save": true
   },
   "F24": {
-   "name": "WD1_EXPIRY_DATE",
+   "name": "Withdrawal1ExpiryDate",
    "kind": "entry",
    "label": "(dd/mm/yy)",
    "desc": "Withdrawal row 1: expiry date",
    "how": "reviewed"
   },
   "F25": {
-   "name": "WD1_TYPE",
+   "name": "Withdrawal1Type",
    "kind": "entry",
    "label": "S=Specified Amt.",
    "desc": "Withdrawal row 1: A principal + interest / S specified amount",
@@ -196,7 +198,7 @@
    "save": true
   },
   "F26": {
-   "name": "WD1_AMOUNT",
+   "name": "Withdrawal1Amount",
    "kind": "entry",
    "label": "Amt. Amount",
    "desc": "Withdrawal row 1: withdrawal/transfer amount",
@@ -204,147 +206,147 @@
    "save": true
   },
   "F27": {
-   "name": "WD1_ACCRUED_INTEREST",
+   "name": "Withdrawal1AccruedInterest",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 1: accrued interest",
    "how": "reviewed"
   },
   "F28": {
-   "name": "WD1_TOTAL",
+   "name": "Withdrawal1Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 1: total",
    "how": "reviewed"
   },
   "F29": {
-   "name": "WD2_FHSA_SUB",
+   "name": "Withdrawal2FHSASub",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: FHSA (sub) #",
    "how": "reviewed"
   },
   "F30": {
-   "name": "WD2_EXPIRY_DATE",
+   "name": "Withdrawal2ExpiryDate",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: expiry date",
    "how": "reviewed"
   },
   "F31": {
-   "name": "WD2_TYPE",
+   "name": "Withdrawal2Type",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: A principal + interest / S specified amount",
    "how": "reviewed"
   },
   "F32": {
-   "name": "WD2_AMOUNT",
+   "name": "Withdrawal2Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: withdrawal/transfer amount",
    "how": "reviewed"
   },
   "F33": {
-   "name": "WD2_ACCRUED_INTEREST",
+   "name": "Withdrawal2AccruedInterest",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: accrued interest",
    "how": "reviewed"
   },
   "F34": {
-   "name": "WD2_TOTAL",
+   "name": "Withdrawal2Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: total",
    "how": "reviewed"
   },
   "F35": {
-   "name": "WD3_FHSA_SUB",
+   "name": "Withdrawal3FHSASub",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: FHSA (sub) #",
    "how": "reviewed"
   },
   "F36": {
-   "name": "WD3_EXPIRY_DATE",
+   "name": "Withdrawal3ExpiryDate",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: expiry date",
    "how": "reviewed"
   },
   "F37": {
-   "name": "WD3_TYPE",
+   "name": "Withdrawal3Type",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: A principal + interest / S specified amount",
    "how": "reviewed"
   },
   "F38": {
-   "name": "WD3_AMOUNT",
+   "name": "Withdrawal3Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: withdrawal/transfer amount",
    "how": "reviewed"
   },
   "F39": {
-   "name": "WD3_ACCRUED_INTEREST",
+   "name": "Withdrawal3AccruedInterest",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: accrued interest",
    "how": "reviewed"
   },
   "F40": {
-   "name": "WD3_TOTAL",
+   "name": "Withdrawal3Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: total",
    "how": "reviewed"
   },
   "F41": {
-   "name": "WD4_FHSA_SUB",
+   "name": "Withdrawal4FHSASub",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: FHSA (sub) #",
    "how": "reviewed"
   },
   "F42": {
-   "name": "WD4_EXPIRY_DATE",
+   "name": "Withdrawal4ExpiryDate",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: expiry date",
    "how": "reviewed"
   },
   "F43": {
-   "name": "WD4_TYPE",
+   "name": "Withdrawal4Type",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: A principal + interest / S specified amount",
    "how": "reviewed"
   },
   "F44": {
-   "name": "WD4_AMOUNT",
+   "name": "Withdrawal4Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: withdrawal/transfer amount",
    "how": "reviewed"
   },
   "F45": {
-   "name": "WD4_ACCRUED_INTEREST",
+   "name": "Withdrawal4AccruedInterest",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: accrued interest",
    "how": "reviewed"
   },
   "F46": {
-   "name": "WD4_TOTAL",
+   "name": "Withdrawal4Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: total",
    "how": "reviewed"
   },
   "F47": {
-   "name": "WD_TOTAL",
+   "name": "WithdrawalTotal",
    "kind": "entry",
    "label": "Total",
    "desc": "Total withdrawal",
@@ -352,50 +354,50 @@
    "save": true
   },
   "F48": {
-   "name": "WD_FEE",
+   "name": "WithdrawalFee",
    "kind": "entry",
    "label": "Less Fee (if any)",
    "desc": "Less fee (if any)",
    "how": "reviewed"
   },
   "F49": {
-   "name": "WD_SUBTOTAL",
+   "name": "WithdrawalSubtotal",
    "kind": "entry",
    "label": "Subtotal",
    "desc": "Subtotal",
    "how": "reviewed"
   },
   "F50": {
-   "name": "OFFICE_DATE_PROCESSED",
+   "name": "OfficeDateProcessed",
    "kind": "entry",
    "label": "Date Processed",
    "desc": "Office use: date processed (dd/mm/yy)",
    "how": "reviewed"
   },
   "F51": {
-   "name": "OFFICE_PROCESSED_BY",
+   "name": "OfficeProcessedBy",
    "kind": "entry",
    "label": "Processed By",
    "desc": "Office use: processed by",
    "how": "reviewed"
   },
   "F52": {
-   "name": "WD_TAX_RATE",
+   "name": "WithdrawalTaxRate",
    "kind": "entry",
    "label": "Less Withholding Tax at",
    "desc": "Withholding tax rate, %",
    "how": "reviewed",
-   "custom": "Required when TAXABLE_WITHDRAWAL is ticked"
+   "custom": "Required when TransactionType.TaxableWithdrawal is ticked"
   },
   "F53": {
-   "name": "WD_TAX_AMOUNT",
+   "name": "WithdrawalTaxAmount",
    "kind": "entry",
    "label": "%",
    "desc": "Withholding tax amount",
    "how": "reviewed"
   },
   "F54": {
-   "name": "WD_TOTAL_PROCEEDS",
+   "name": "WithdrawalTotalProceeds",
    "kind": "entry",
    "label": "TOTAL PROCEEDS",
    "desc": "Total proceeds",
@@ -403,76 +405,76 @@
    "save": true
   },
   "B1": {
-   "name": "DEATH_DETAIL_1",
+   "name": "DeathDetail1",
    "kind": "entry",
    "label": "Death",
    "desc": "Line after Death, unlabelled - CHECK what it asks for",
    "how": "reviewed"
   },
   "B2": {
-   "name": "DEATH_DETAIL_2",
+   "name": "DeathDetail2",
    "kind": "entry",
    "label": "Death",
    "desc": "Line after Death, unlabelled",
    "how": "reviewed"
   },
   "B3": {
-   "name": "DEATH_DETAIL_3",
+   "name": "DeathDetail3",
    "kind": "entry",
    "label": "Death",
    "desc": "Line after Death, unlabelled",
    "how": "reviewed"
   },
   "B4": {
-   "name": "DEATH_DETAIL_4",
+   "name": "DeathDetail4",
    "kind": "entry",
    "label": "Death",
    "desc": "Line after Death, unlabelled",
    "how": "reviewed"
   },
   "B5": {
-   "name": "WD5_FHSA_SUB",
+   "name": "Withdrawal5FHSASub",
    "kind": "entry",
    "label": "Withholding",
    "desc": "Withdrawal row 5: FHSA (sub) #",
    "how": "reviewed"
   },
   "B6": {
-   "name": "WD5_EXPIRY_DATE",
+   "name": "Withdrawal5ExpiryDate",
    "kind": "entry",
    "label": "Withholding Tax Rates (for taxable",
    "desc": "Withdrawal row 5: expiry date",
    "how": "reviewed"
   },
   "B7": {
-   "name": "WD5_TYPE",
+   "name": "Withdrawal5Type",
    "kind": "entry",
    "label": "taxable withdrawal):",
    "desc": "Withdrawal row 5: A principal + interest / S specified amount",
    "how": "reviewed"
   },
   "B8": {
-   "name": "WD5_AMOUNT",
+   "name": "Withdrawal5Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 5: withdrawal/transfer amount",
    "how": "reviewed"
   },
   "B9": {
-   "name": "WD5_ACCRUED_INTEREST",
+   "name": "Withdrawal5AccruedInterest",
    "kind": "entry",
    "label": "Total",
    "desc": "Withdrawal row 5: accrued interest",
    "how": "reviewed"
   },
   "F56": {
-   "name": "DEPOSIT_TO_MY_ACCOUNT",
+   "name": "PaymentMethod",
    "kind": "entry",
    "label": "Please deposit to my account",
    "desc": "Tick: deposit to my account",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of DEPOSIT_TO_MY_ACCOUNT and SEND_CHEQUE_TO_FI must be ticked"
+   "option": "Deposit",
+   "save": true
   },
   "F57": {
    "name": "PRIMARY_MEMBER_NUMBER",
@@ -482,20 +484,20 @@
    "how": "reviewed"
   },
   "F58": {
-   "name": "DEPOSIT_DEMAND_PRODUCT",
+   "name": "DepositDemandProduct",
    "kind": "entry",
    "label": "Please deposit to my account",
    "desc": "Deposit to: demand product (could load from DMD_PRODNBR)",
    "how": "reviewed",
-   "custom": "Required when DEPOSIT_TO_MY_ACCOUNT is ticked"
+   "custom": "Required when PaymentMethod is Deposit"
   },
   "F59": {
-   "name": "DEPOSIT_SUB",
+   "name": "DepositSub",
    "kind": "entry",
    "label": "Please deposit to my account",
    "desc": "Deposit to: sub #",
    "how": "reviewed",
-   "custom": "Required when DEPOSIT_TO_MY_ACCOUNT is ticked"
+   "custom": "Required when PaymentMethod is Deposit"
   },
   "F60": {
    "name": "REQUESTUSER",
@@ -505,15 +507,16 @@
    "how": "reviewed"
   },
   "F61": {
-   "name": "SEND_CHEQUE_TO_FI",
+   "name": "PaymentMethod",
    "kind": "entry",
    "label": "Please send cheque to",
    "desc": "Tick: send cheque to another financial institution (transfers only)",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "ChequeToFI",
+   "save": true
   },
   "F62": {
-   "name": "OTHER_FI_NAME_ADDRESS_2",
+   "name": "OtherFINameAddress2",
    "kind": "entry",
    "label": "the following Financial",
    "desc": "Name and address of the financial institution, line 2",
@@ -547,7 +550,7 @@
    ]
   },
   "F66": {
-   "name": "CHEQUE_NUMBER",
+   "name": "ChequeNumber",
    "kind": "entry",
    "label": "Cheque Number",
    "desc": "Cheque number",
@@ -596,12 +599,12 @@
    "how": "reviewed"
   },
   "B18": {
-   "name": "OTHER_FI_NAME_ADDRESS",
+   "name": "OtherFINameAddress",
    "kind": "entry",
    "label": "Please send cheque to",
    "desc": "Name and address of the financial institution, line 1",
    "how": "reviewed",
-   "custom": "Required when SEND_CHEQUE_TO_FI is ticked"
+   "custom": "Required when PaymentMethod is ChequeToFI"
   }
  },
  "drop": [

@@ -36,7 +36,7 @@
    "how": "reviewed"
   },
   "F6": {
-   "name": "BENEFICIARY_NAME",
+   "name": "BeneficiaryName",
    "kind": "entry",
    "label": "I, (full name)",
    "desc": "Designated beneficiary's full name (the declarant)",
@@ -44,7 +44,7 @@
    "save": true
   },
   "F7": {
-   "name": "BENEFICIARY_CITY",
+   "name": "BeneficiaryCity",
    "kind": "entry",
    "label": "of the City of",
    "desc": "Beneficiary's city",
@@ -52,7 +52,7 @@
    "save": true
   },
   "F8": {
-   "name": "BENEFICIARY_PROVINCE",
+   "name": "BeneficiaryProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Beneficiary's province",
@@ -60,7 +60,7 @@
    "save": true
   },
   "F9": {
-   "name": "BENEFICIARY_RELATIONSHIP",
+   "name": "BeneficiaryRelationship",
    "kind": "entry",
    "label": "do hereby certify that I am the ___ of the deceased",
    "desc": "Beneficiary's relationship to the deceased",
@@ -84,40 +84,39 @@
    "save": true
   },
   "F12": {
-   "name": "BENEFICIARY_OF_RRSP",
+   "name": "BeneficiaryOf.RRSP",
    "kind": "entry",
    "label": "THAT",
    "desc": "Tick: named beneficiary of RRSP contract(s)",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "At least one of BENEFICIARY_OF_RRSP and BENEFICIARY_OF_TFSA must be ticked"
+   "save": true
   },
   "F13": {
-   "name": "RRSP_CONTRACTS",
+   "name": "RRSPContracts",
    "kind": "entry",
    "label": "RRSP Contract(s)",
    "desc": "The deceased's RRSP contract number(s)",
    "how": "reviewed",
-   "custom": "Required when BENEFICIARY_OF_RRSP is ticked"
+   "custom": "Required when BeneficiaryOf.RRSP is ticked"
   },
   "F14": {
-   "name": "BENEFICIARY_OF_TFSA",
+   "name": "BeneficiaryOf.TFSA",
    "kind": "entry",
    "label": "TFSA Contract(s)",
    "desc": "Tick: named beneficiary of TFSA contract(s)",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F15": {
-   "name": "TFSA_CONTRACTS",
+   "name": "TFSAContracts",
    "kind": "entry",
    "label": "TFSA Contract(s)",
    "desc": "The deceased's TFSA contract number(s)",
    "how": "reviewed",
-   "custom": "Required when BENEFICIARY_OF_TFSA is ticked"
+   "custom": "Required when BeneficiaryOf.TFSA is ticked"
   },
   "F16": {
-   "name": "BENEFICIARY_BIRTH_DAY",
+   "name": "BeneficiaryBirthDay",
    "kind": "entry",
    "label": "entitled to the proceeds",
    "desc": "Beneficiary's date of birth, day",
@@ -125,7 +124,7 @@
    "save": true
   },
   "F17": {
-   "name": "BENEFICIARY_BIRTH_MONTH",
+   "name": "BeneficiaryBirthMonth",
    "kind": "entry",
    "label": "proceeds and claim the",
    "desc": "Beneficiary's date of birth, month",
@@ -133,7 +132,7 @@
    "save": true
   },
   "F18": {
-   "name": "BENEFICIARY_BIRTH_YEAR",
+   "name": "BeneficiaryBirthYear",
    "kind": "entry",
    "label": "the said funds",
    "desc": "Beneficiary's date of birth, year",
@@ -141,7 +140,7 @@
    "save": true
   },
   "F19": {
-   "name": "BENEFICIARY_SIN",
+   "name": "BeneficiarySIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Beneficiary's SIN",
@@ -149,7 +148,7 @@
    "save": true
   },
   "F20": {
-   "name": "BENEFICIARY_ADDRESS_1",
+   "name": "BeneficiaryAddress1",
    "kind": "entry",
    "label": "Address:",
    "desc": "Beneficiary's permanent address, line 1",
@@ -157,147 +156,146 @@
    "save": true
   },
   "F21": {
-   "name": "BENEFICIARY_ADDRESS_2",
+   "name": "BeneficiaryAddress2",
    "kind": "entry",
    "label": "",
    "desc": "line 2",
    "how": "reviewed"
   },
   "F22": {
-   "name": "BENEFICIARY_ADDRESS_3",
+   "name": "BeneficiaryAddress3",
    "kind": "entry",
    "label": "",
    "desc": "line 3",
    "how": "reviewed"
   },
   "F23": {
-   "name": "BENEFICIARY_PHONE",
+   "name": "BeneficiaryPhone",
    "kind": "entry",
    "label": "Phone Number:",
    "desc": "Beneficiary's phone number",
    "how": "reviewed"
   },
   "F24": {
-   "name": "OPTION_1A_RRSP",
+   "name": "PayoutOption.1A",
    "kind": "entry",
    "label": "Option #1a – RRSP only",
    "desc": "Tick: Option #1a - transfer RRSP to my RRSP",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "At least one payout option (OPTION_1A_RRSP, OPTION_1B_TFSA, OPTION_2_RRIF, OPTION_3_DEPOSIT, OPTION_4) must be ticked"
+   "save": true
   },
   "F25": {
-   "name": "OPTION_1A_RRSP_CONTRACT",
+   "name": "Option1ARRSPContract",
    "kind": "entry",
    "label": "Application/Subsequent Deposit Form attached)",
    "desc": "Option #1a: beneficiary's RRSP contract #",
    "how": "reviewed",
-   "custom": "Required when OPTION_1A_RRSP is ticked"
+   "custom": "Required when PayoutOption.1A is ticked"
   },
   "F26": {
-   "name": "OPTION_1A_RRSP_ACCOUNT",
+   "name": "Option1ARRSPAccount",
    "kind": "entry",
    "label": "attached)",
    "desc": "Option #1a: account #",
    "how": "reviewed",
-   "custom": "Required when OPTION_1A_RRSP is ticked"
+   "custom": "Required when PayoutOption.1A is ticked"
   },
   "F27": {
-   "name": "OPTION_1B_TFSA",
+   "name": "PayoutOption.1B",
    "kind": "entry",
    "label": "Option #1b – TFSA only",
    "desc": "Tick: Option #1b - transfer TFSA to my TFSA",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F28": {
-   "name": "OPTION_1B_TFSA_CONTRACT",
+   "name": "Option1BTFSAContract",
    "kind": "entry",
    "label": "Application/Subsequent Deposit Form attached)",
    "desc": "Option #1b: beneficiary's TFSA contract #",
    "how": "reviewed",
-   "custom": "Required when OPTION_1B_TFSA is ticked"
+   "custom": "Required when PayoutOption.1B is ticked"
   },
   "F29": {
-   "name": "OPTION_1B_TFSA_ACCOUNT",
+   "name": "Option1BTFSAAccount",
    "kind": "entry",
    "label": "attached)",
    "desc": "Option #1b: account #",
    "how": "reviewed",
-   "custom": "Required when OPTION_1B_TFSA is ticked"
+   "custom": "Required when PayoutOption.1B is ticked"
   },
   "F30": {
-   "name": "OPTION_2_RRIF",
+   "name": "PayoutOption.2",
    "kind": "entry",
    "label": "Option #2 – RRSP only",
    "desc": "Tick: Option #2 - transfer RRSP to my RRIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F31": {
-   "name": "OPTION_2_RRIF_CONTRACT",
+   "name": "Option2RRIFContract",
    "kind": "entry",
    "label": "Transferred to my RRIF Contract#",
    "desc": "Option #2: RRIF contract #",
    "how": "reviewed",
-   "custom": "Required when OPTION_2_RRIF is ticked"
+   "custom": "Required when PayoutOption.2 is ticked"
   },
   "F32": {
-   "name": "OPTION_2_RRIF_ACCOUNT",
+   "name": "Option2RRIFAccount",
    "kind": "entry",
    "label": "Transferred to my RRIF Contract# __________________, Acct#",
    "desc": "Option #2: account #",
    "how": "reviewed",
-   "custom": "Required when OPTION_2_RRIF is ticked"
+   "custom": "Required when PayoutOption.2 is ticked"
   },
   "F33": {
-   "name": "OPTION_3_DEPOSIT",
+   "name": "PayoutOption.3",
    "kind": "entry",
    "label": "Option #3 – RRSP and/or TFSA",
    "desc": "Tick: Option #3 - deposit to my Libro demand account",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F34": {
-   "name": "OPTION_3_DEMAND_ACCOUNT",
+   "name": "Option3DemandAccount",
    "kind": "entry",
    "label": "Deposit the funds to my Libro demand account#",
    "desc": "Option #3: demand account #",
    "how": "reviewed",
-   "custom": "Required when OPTION_3_DEPOSIT is ticked"
+   "custom": "Required when PayoutOption.3 is ticked"
   },
   "F35": {
-   "name": "OPTION_3_DEMAND_SUB",
+   "name": "Option3DemandSub",
    "kind": "entry",
    "label": "Deposit the funds to my Libro demand account# __________________, Sub#",
    "desc": "Option #3: sub #",
    "how": "reviewed"
   },
   "F36": {
-   "name": "OPTION_4",
+   "name": "PayoutOption.4",
    "kind": "entry",
    "label": "Option #4 – RRSP and/or TFSA",
    "desc": "Tick: Option #4 - RRSP and/or TFSA, other",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F37": {
-   "name": "ADDITIONAL_INSTRUCTIONS",
+   "name": "AdditionalInstructions",
    "kind": "entry",
    "label": "*No cash withdrawals are allowed.",
    "desc": "Additional instructions",
    "how": "reviewed",
-   "custom": "Required when OPTION_4 is ticked"
+   "custom": "Required when PayoutOption.4 is ticked"
   },
   "F38": {
-   "name": "BENEFICIARY_NAME",
+   "name": "BeneficiaryName",
    "kind": "entry",
    "label": "I,",
    "desc": "The declarant's name (I, ___ make this solemn declaration)",
    "how": "reviewed"
   },
   "F39": {
-   "name": "DECLARED_AT_CITY",
+   "name": "DeclaredAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (city)",
@@ -305,14 +303,14 @@
    "save": true
   },
   "F40": {
-   "name": "DECLARANT_SIGNATURE",
+   "name": "DeclarantSignature",
    "kind": "entry",
    "label": "Signature of Designated",
    "desc": "Signature of the designated beneficiary",
    "how": "reviewed"
   },
   "F41": {
-   "name": "DECLARED_AT_PROVINCE",
+   "name": "DeclaredAtProvince",
    "kind": "entry",
    "label": "Dated at _________________________,",
    "desc": "in the Province of",
@@ -320,7 +318,7 @@
    "save": true
   },
   "F42": {
-   "name": "DECLARED_DAY",
+   "name": "DeclaredDay",
    "kind": "entry",
    "label": "___________, this",
    "desc": "this ___ day",
@@ -328,7 +326,7 @@
    "save": true
   },
   "F43": {
-   "name": "DECLARED_MONTH",
+   "name": "DeclaredMonth",
    "kind": "entry",
    "label": "___________, this _______ day of",
    "desc": "of ___ (month)",
@@ -336,7 +334,7 @@
    "save": true
   },
   "F44": {
-   "name": "DECLARED_YEAR",
+   "name": "DeclaredYear",
    "kind": "entry",
    "label": "___________, this _______ day of __________, A.D.",
    "desc": "A.D. 20__",
@@ -344,14 +342,14 @@
    "save": true
   },
   "F45": {
-   "name": "WITNESS_SIGNATURE",
+   "name": "WitnessSignature",
    "kind": "entry",
    "label": "Signature of Witness",
    "desc": "Signature of witness",
    "how": "reviewed"
   },
   "F46": {
-   "name": "WITNESS_NAME",
+   "name": "WitnessName",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness's full name",
@@ -359,7 +357,7 @@
    "save": true
   },
   "F47": {
-   "name": "WITNESS_ADDRESS",
+   "name": "WitnessAddress",
    "kind": "entry",
    "label": "My address is:",
    "desc": "Witness's address, line 1",
@@ -367,21 +365,21 @@
    "save": true
   },
   "F48": {
-   "name": "WITNESS_ADDRESS_2",
+   "name": "WitnessAddress2",
    "kind": "entry",
    "label": "My phone number is: ________________________________",
    "desc": "Witness's address, line 2",
    "how": "reviewed"
   },
   "F49": {
-   "name": "WITNESS_PHONE",
+   "name": "WitnessPhone",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness's phone number",
    "how": "reviewed"
   },
   "F50": {
-   "name": "WITNESS_DATE",
+   "name": "WitnessDate",
    "kind": "entry",
    "label": "My phone number is: ________________________________",
    "desc": "Date of the witness signature",

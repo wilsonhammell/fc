@@ -22,7 +22,7 @@
    "how": "reviewed"
   },
   "F4": {
-   "name": "TRUSTEE_AGENT_NAME",
+   "name": "TrusteeAgentName",
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
@@ -93,7 +93,7 @@
    "how": "reviewed"
   },
   "F13": {
-   "name": "TRUSTEE_AGENT_NAME",
+   "name": "TrusteeAgentName",
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
@@ -156,7 +156,7 @@
    "how": "reviewed"
   },
   "F22": {
-   "name": "TRUSTEE_AGENT_NAME",
+   "name": "TrusteeAgentName",
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
@@ -198,21 +198,22 @@
    "how": "reviewed"
   },
   "F28": {
-   "name": "PENSION_DIFFERENTIATED",
+   "name": "PensionDifferentiation",
    "kind": "entry",
    "label": "Differentiated on the basis of sex",
    "desc": "Tick: the pension plan differentiated on the basis of sex",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of PENSION_DIFFERENTIATED and PENSION_NOT_DIFFERENTIATED must be ticked"
+   "option": "Differentiated",
+   "save": true
   },
   "F29": {
-   "name": "PENSION_NOT_DIFFERENTIATED",
+   "name": "PensionDifferentiation",
    "kind": "entry",
    "label": "pension",
    "desc": "Tick: the pension plan did not differentiate",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "NotDifferentiated",
+   "save": true
   },
   "F30": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -236,7 +237,7 @@
    "how": "reviewed"
   },
   "F33": {
-   "name": "TRUSTEE_AGENT_NAME",
+   "name": "TrusteeAgentName",
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
@@ -299,7 +300,7 @@
    "how": "reviewed"
   },
   "F42": {
-   "name": "TRUSTEE_AGENT_NAME",
+   "name": "TrusteeAgentName",
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
@@ -362,7 +363,7 @@
    "how": "reviewed"
   },
   "F51": {
-   "name": "TRUSTEE_AGENT_NAME",
+   "name": "TrusteeAgentName",
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
@@ -425,7 +426,7 @@
    "how": "reviewed"
   },
   "F60": {
-   "name": "TRUSTEE_AGENT_NAME",
+   "name": "TrusteeAgentName",
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
@@ -488,7 +489,7 @@
    "how": "reviewed"
   },
   "F69": {
-   "name": "TRUSTEE_AGENT_NAME",
+   "name": "TrusteeAgentName",
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
@@ -551,7 +552,7 @@
    "how": "reviewed"
   },
   "F78": {
-   "name": "TRUSTEE_AGENT_NAME",
+   "name": "TrusteeAgentName",
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
@@ -614,7 +615,7 @@
    "how": "reviewed"
   },
   "F87": {
-   "name": "TRUSTEE_AGENT_NAME",
+   "name": "TrusteeAgentName",
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
@@ -656,7 +657,7 @@
    "how": "reviewed"
   },
   "F93": {
-   "name": "EXECUTED_PLACE_TYPE",
+   "name": "ExecutedPlaceType",
    "kind": "entry",
    "label": "Executed at the",
    "desc": "Executed at the (city, town, village ...)",
@@ -664,7 +665,7 @@
    "save": true
   },
   "F94": {
-   "name": "SIGNED_AT_CITY",
+   "name": "SignedAtCity",
    "kind": "entry",
    "label": "of",
    "desc": "of (name of place)",
@@ -672,7 +673,7 @@
    "save": true
   },
   "F95": {
-   "name": "SIGNED_AT_PROVINCE",
+   "name": "SignedAtProvince",
    "kind": "entry",
    "label": ", in the Province of",
    "desc": "in the Province of",
@@ -680,7 +681,7 @@
    "save": true
   },
   "F96": {
-   "name": "SIGNED_DAY",
+   "name": "SignedDay",
    "kind": "entry",
    "label": ", this",
    "desc": "this ___ day",
@@ -709,7 +710,7 @@
    "how": "reviewed"
   },
   "F100": {
-   "name": "TRUSTEE_AGENT_NAME",
+   "name": "TrusteeAgentName",
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
@@ -751,7 +752,7 @@
    "how": "reviewed"
   },
   "F106": {
-   "name": "SIGNED_MONTH",
+   "name": "SignedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "day of ___ (month)",
@@ -759,7 +760,7 @@
    "save": true
   },
   "F107": {
-   "name": "SIGNED_YEAR",
+   "name": "SignedYear",
    "kind": "entry",
    "label": ", A.D.",
    "desc": "A.D.",

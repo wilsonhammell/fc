@@ -43,119 +43,130 @@
    "how": "reviewed"
   },
   "F7": {
-   "name": "CREDIT_RRSP",
+   "name": "CreditPlan",
    "kind": "entry",
    "label": "☐No",
    "desc": "Please credit my: RRSP",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one receiving plan (CREDIT_RRSP, CREDIT_SPRSP, CREDIT_LIRA, CREDIT_RLSP, CREDIT_RRIF, CREDIT_SPRIF, CREDIT_LIF, CREDIT_RLIF, CREDIT_TFSA, CREDIT_NON_REGISTERED) must be ticked"
+   "option": "RRSP",
+   "save": true
   },
   "F8": {
-   "name": "CREDIT_SPRSP",
+   "name": "CreditPlan",
    "kind": "entry",
    "label": "Jurisdiction:",
    "desc": "Please credit my: SPRSP",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "SPRSP",
+   "save": true
   },
   "F9": {
-   "name": "CREDIT_LIRA",
+   "name": "CreditPlan",
    "kind": "entry",
    "label": "☐Ontario",
    "desc": "Please credit my: LIRA",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "LIRA",
+   "save": true
   },
   "F10": {
-   "name": "CREDIT_RLSP",
+   "name": "CreditPlan",
    "kind": "entry",
    "label": "",
    "desc": "Please credit my: RLSP",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "RLSP",
+   "save": true
   },
   "F11": {
-   "name": "CREDIT_RRIF",
+   "name": "CreditPlan",
    "kind": "entry",
    "label": "(519)",
    "desc": "Please credit my: RRIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "RRIF",
+   "save": true
   },
   "F12": {
-   "name": "CREDIT_SPRIF",
+   "name": "CreditPlan",
    "kind": "entry",
    "label": "672-8040",
    "desc": "Please credit my: SPRIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "SPRIF",
+   "save": true
   },
   "F13": {
-   "name": "CREDIT_LIF",
+   "name": "CreditPlan",
    "kind": "entry",
    "label": "☐RLIF ☐TFSA ☐ Non-Registered",
    "desc": "Please credit my: LIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "LIF",
+   "save": true
   },
   "F14": {
-   "name": "CREDIT_RLIF",
+   "name": "CreditPlan",
    "kind": "entry",
    "label": "",
    "desc": "Please credit my: RLIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "RLIF",
+   "save": true
   },
   "F15": {
-   "name": "CREDIT_TFSA",
+   "name": "CreditPlan",
    "kind": "entry",
    "label": "",
    "desc": "Please credit my: TFSA",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "TFSA",
+   "save": true
   },
   "F16": {
-   "name": "CREDIT_NON_REGISTERED",
+   "name": "CreditPlan",
    "kind": "entry",
    "label": "Non-Registered",
    "desc": "Please credit my: NON_REGISTERED",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "NonRegistered",
+   "save": true
   },
   "F17": {
-   "name": "CREDIT_LOCKED_IN_YES",
+   "name": "CreditLockedIn",
    "kind": "entry",
    "label": "Number:",
    "desc": "Receiving plan locked-in: yes",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of CREDIT_LOCKED_IN_YES and CREDIT_LOCKED_IN_NO must be ticked"
+   "option": "Yes",
+   "save": true
   },
   "F18": {
-   "name": "CREDIT_LOCKED_IN_NO",
+   "name": "CreditLockedIn",
    "kind": "entry",
    "label": "Number:",
    "desc": "locked-in: no",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "No",
+   "save": true
   },
   "F19": {
-   "name": "CREDIT_JURISDICTION_ONTARIO",
+   "name": "CreditJurisdiction",
    "kind": "entry",
    "label": "☐LIRA/Locked-in",
    "desc": "Receiving plan jurisdiction: Ontario",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "When CREDIT_LOCKED_IN_YES is ticked, exactly one of CREDIT_JURISDICTION_ONTARIO and CREDIT_JURISDICTION_FEDERAL must be ticked"
+   "option": "Ontario",
+   "custom": "Required when CreditLockedIn is Yes"
   },
   "F20": {
-   "name": "CREDIT_JURISDICTION_FEDERAL",
+   "name": "CreditJurisdiction",
    "kind": "entry",
    "label": "☐LIRA/Locked-in",
    "desc": "jurisdiction: federal",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Federal",
+   "custom": "Required when CreditLockedIn is Yes"
   },
   "F21": {
    "name": "RSP_ACCOUNT_CONTRACT",
@@ -172,146 +183,147 @@
    "how": "reviewed"
   },
   "F23": {
-   "name": "TRANSFER_FROM_RRSP",
+   "name": "TransferFrom.RRSP",
    "kind": "entry",
    "label": "Locked-In:",
    "desc": "Transfer my: RRSP",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "At least one plan to transfer from (TRANSFER_FROM_*) must be ticked"
+   "save": true
   },
   "F24": {
-   "name": "TRANSFER_FROM_SPRSP",
+   "name": "TransferFrom.SPRSP",
    "kind": "entry",
    "label": "☐Yes Locked-In:",
    "desc": "Transfer my: SPRSP",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F25": {
-   "name": "TRANSFER_FROM_LIRA",
+   "name": "TransferFrom.LIRA",
    "kind": "entry",
    "label": "☐No",
    "desc": "Transfer my: LIRA",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F26": {
-   "name": "TRANSFER_FROM_RLSP",
+   "name": "TransferFrom.RLSP",
    "kind": "entry",
    "label": "☐Ontario Jurisdiction:",
    "desc": "Transfer my: RLSP",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F27": {
-   "name": "TRANSFER_FROM_RRIF",
+   "name": "TransferFrom.RRIF",
    "kind": "entry",
    "label": "☐Ontario ☐Federal",
    "desc": "Transfer my: RRIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F28": {
-   "name": "TRANSFER_FROM_SPRIF",
+   "name": "TransferFrom.SPRIF",
    "kind": "entry",
    "label": "☐Federal",
    "desc": "Transfer my: SPRIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F29": {
-   "name": "TRANSFER_FROM_LIF",
+   "name": "TransferFrom.LIF",
    "kind": "entry",
    "label": "",
    "desc": "Transfer my: LIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F30": {
-   "name": "TRANSFER_FROM_RLIF",
+   "name": "TransferFrom.RLIF",
    "kind": "entry",
    "label": "",
    "desc": "Transfer my: RLIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F31": {
-   "name": "TRANSFER_FROM_TFSA",
+   "name": "TransferFrom.TFSA",
    "kind": "entry",
    "label": "",
    "desc": "Transfer my: TFSA",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F32": {
-   "name": "TRANSFER_FROM_RPP",
+   "name": "TransferFrom.RPP",
    "kind": "entry",
    "label": "",
    "desc": "Transfer my: RPP",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F33": {
-   "name": "TRANSFER_FROM_DPSP",
+   "name": "TransferFrom.DPSP",
    "kind": "entry",
    "label": "",
    "desc": "Transfer my: DPSP",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F34": {
-   "name": "TRANSFER_FROM_RETIRING_ALLOWANCE",
+   "name": "TransferFrom.RetiringAllowance",
    "kind": "entry",
    "label": "",
    "desc": "Transfer my: RETIRING_ALLOWANCE",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F35": {
-   "name": "TRANSFER_FROM_NON_REGISTERED",
+   "name": "TransferFrom.NonRegistered",
    "kind": "entry",
    "label": "",
    "desc": "Transfer my: NON_REGISTERED",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F36": {
-   "name": "FROM_LOCKED_IN_YES",
+   "name": "FromLockedIn",
    "kind": "entry",
    "label": "Name:",
    "desc": "Plan being transferred is locked-in: yes",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of FROM_LOCKED_IN_YES and FROM_LOCKED_IN_NO must be ticked"
+   "option": "Yes",
+   "save": true
   },
   "F37": {
-   "name": "FROM_LOCKED_IN_NO",
+   "name": "FromLockedIn",
    "kind": "entry",
    "label": "Name:",
    "desc": "locked-in: no",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "No",
+   "save": true
   },
   "F38": {
-   "name": "FROM_JURISDICTION_ONTARIO",
+   "name": "FromJurisdiction",
    "kind": "entry",
    "label": "☐RLSP",
    "desc": "Plan being transferred, jurisdiction: Ontario",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "When FROM_LOCKED_IN_YES is ticked, exactly one of FROM_JURISDICTION_ONTARIO and FROM_JURISDICTION_FEDERAL must be ticked"
+   "option": "Ontario",
+   "custom": "Required when FromLockedIn is Yes"
   },
   "F39": {
-   "name": "FROM_JURISDICTION_FEDERAL",
+   "name": "FromJurisdiction",
    "kind": "entry",
    "label": "☐RRIF",
    "desc": "jurisdiction: federal",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Federal",
+   "custom": "Required when FromLockedIn is Yes"
   },
   "F40": {
-   "name": "RELINQUISHING_FI_NAME",
+   "name": "RelinquishingFIName",
    "kind": "entry",
    "label": "Institution Name:",
    "desc": "Relinquishing institution: name",
@@ -319,7 +331,7 @@
    "save": true
   },
   "F41": {
-   "name": "RELINQUISHING_FI_ADDRESS",
+   "name": "RelinquishingFIAddress",
    "kind": "entry",
    "label": "Address:",
    "desc": "address",
@@ -327,7 +339,7 @@
    "save": true
   },
   "F42": {
-   "name": "RELINQUISHING_FI_CITY",
+   "name": "RelinquishingFICity",
    "kind": "entry",
    "label": "City:",
    "desc": "city",
@@ -335,7 +347,7 @@
    "save": true
   },
   "F43": {
-   "name": "RELINQUISHING_FI_PROVINCE",
+   "name": "RelinquishingFIProvince",
    "kind": "entry",
    "label": "Province:",
    "desc": "province",
@@ -343,7 +355,7 @@
    "save": true
   },
   "F44": {
-   "name": "RELINQUISHING_FI_POSTAL",
+   "name": "RelinquishingFIPostal",
    "kind": "entry",
    "label": "Postal Code:",
    "desc": "postal code",
@@ -351,7 +363,7 @@
    "save": true
   },
   "F45": {
-   "name": "RELINQUISHING_ACCOUNT_NUMBER",
+   "name": "RelinquishingAccountNumber",
    "kind": "entry",
    "label": "Client Account number:",
    "desc": "The member's account number at the relinquishing institution",
@@ -359,7 +371,7 @@
    "save": true
   },
   "F46": {
-   "name": "INVESTMENT1_SYMBOL",
+   "name": "Investment1Symbol",
    "kind": "entry",
    "label": "1) Symbol and/or Certificate/Policy Number:",
    "desc": "Investment 1: symbol and/or certificate/policy number",
@@ -367,7 +379,7 @@
    "save": true
   },
   "F47": {
-   "name": "INVESTMENT1_AMOUNT",
+   "name": "Investment1Amount",
    "kind": "entry",
    "label": "Amount: $",
    "desc": "Investment 1: amount $",
@@ -375,51 +387,52 @@
    "save": true
   },
   "F48": {
-   "name": "INVESTMENT1_PARTIAL_CASH",
+   "name": "Investment1Cash",
    "kind": "entry",
    "label": "",
    "desc": "Investment 1: partial in cash",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of INVESTMENT1_PARTIAL_CASH and INVESTMENT1_FULL_CASH must be ticked"
+   "option": "Partial",
+   "save": true
   },
   "F49": {
-   "name": "INVESTMENT1_FULL_CASH",
+   "name": "Investment1Cash",
    "kind": "entry",
    "label": "",
    "desc": "Investment 1: full in cash",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Full",
+   "save": true
   },
   "F50": {
-   "name": "INVESTMENT2_SYMBOL",
+   "name": "Investment2Symbol",
    "kind": "entry",
    "label": "2) Symbol and/or Certificate/Policy Number:",
    "desc": "Investment 2: symbol and/or certificate/policy number",
    "how": "reviewed"
   },
   "F51": {
-   "name": "INVESTMENT2_AMOUNT",
+   "name": "Investment2Amount",
    "kind": "entry",
    "label": "Amount: $",
    "desc": "Investment 2: amount $",
    "how": "reviewed"
   },
   "F52": {
-   "name": "INVESTMENT2_PARTIAL_CASH",
+   "name": "Investment2Cash",
    "kind": "entry",
    "label": "",
    "desc": "Investment 2: partial in cash",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Partial"
   },
   "F53": {
-   "name": "INVESTMENT2_FULL_CASH",
+   "name": "Investment2Cash",
    "kind": "entry",
    "label": "",
    "desc": "Investment 2: full in cash",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Full"
   },
   "F54": {
    "name": "Member1SignDate",
@@ -436,201 +449,201 @@
    "how": "reviewed"
   },
   "B2": {
-   "name": "KAWARTHA_SIGNATURE_GUARANTEE",
+   "name": "KawarthaSignatureGuarantee",
    "kind": "entry",
    "label": "Kawartha Financial Services Signature Guaranteed",
    "desc": "Kawartha Financial Services signature guaranteed",
    "how": "reviewed"
   },
   "B3": {
-   "name": "TRANSFEROR_CONTRIBUTOR_SIN",
+   "name": "TransferorContributorSIN",
    "kind": "entry",
    "label": "SIN:",
    "desc": "Transferor section: spousal contributor SIN",
    "how": "reviewed"
   },
   "B4": {
-   "name": "TRANSFEROR_RETIRING_ALLOWANCE_AMOUNT",
+   "name": "TransferorRetiringAllowanceAmount",
    "kind": "entry",
    "label": "66 (eligible retiring allowance) of the employee’s T4 slip. $",
    "desc": "Retiring allowance amount (T4 box 66) $",
    "how": "reviewed"
   },
   "B5": {
-   "name": "TRANSFEROR_RPP_NOT_TRANSFERRED",
+   "name": "TransferorRPPNotTransferred",
    "kind": "entry",
    "label": "☐Yes ☐No We did not transfer $",
    "desc": "From RPP: amount not transferred $",
    "how": "reviewed"
   },
   "B6": {
-   "name": "TRANSFEROR_PENSION_JURISDICTION",
+   "name": "TransferorPensionJurisdiction",
    "kind": "entry",
    "label": "• Pension Jurisdiction:",
    "desc": "Pension jurisdiction (province or federal)",
    "how": "reviewed"
   },
   "B7": {
-   "name": "TRANSFEROR_EARNED_INCOME",
+   "name": "TransferorEarnedIncome",
    "kind": "entry",
    "label": "what is the earned income for year of transfer $",
    "desc": "If yes, earned income for the year of transfer $",
    "how": "reviewed"
   },
   "B8": {
-   "name": "TRANSFEROR_ORIGINAL_RPP_NAME",
+   "name": "TransferorOriginalRPPName",
    "kind": "entry",
    "label": "• Original RPP name:",
    "desc": "Original RPP name",
    "how": "reviewed"
   },
   "B9": {
-   "name": "TRANSFEROR_EMPLOYER_NAME",
+   "name": "TransferorEmployerName",
    "kind": "entry",
    "label": "• Name of Employer:",
    "desc": "Name of employer",
    "how": "reviewed"
   },
   "B10": {
-   "name": "TRANSFEROR_RETIREMENT_AGE_NORMAL",
+   "name": "TransferorRetirementAgeNormal",
    "kind": "entry",
    "label": "• Retirement age specified under RPP:",
    "desc": "Retirement age under RPP: normal",
    "how": "reviewed"
   },
   "B11": {
-   "name": "TRANSFEROR_RETIREMENT_AGE_EARLY",
+   "name": "TransferorRetirementAgeEarly",
    "kind": "entry",
    "label": "(normal)",
    "desc": "early",
    "how": "reviewed"
   },
   "B12": {
-   "name": "TRANSFEROR_ANNUITY_RATE_UNISEX",
+   "name": "TransferorAnnuityRateUnisex",
    "kind": "entry",
    "label": "• Annuity Rate Breakdown: $",
    "desc": "Annuity rate breakdown: unisex $",
    "how": "reviewed"
   },
   "B13": {
-   "name": "TRANSFEROR_ANNUITY_RATE_SEX_DISTINCT",
+   "name": "TransferorAnnuityRateSexDistinct",
    "kind": "entry",
    "label": "(unisex) $",
    "desc": "sex distinct $",
    "how": "reviewed"
   },
   "B14": {
-   "name": "TRANSFEROR_SIGNATURE",
+   "name": "TransferorSignature",
    "kind": "entry",
    "label": "(authorized signature of transferor institution)",
    "desc": "Authorized signature of the transferor institution",
    "how": "reviewed"
   },
   "B15": {
-   "name": "TRANSFEROR_CONTACT_PHONE",
+   "name": "TransferorContactPhone",
    "kind": "entry",
    "label": "(contact phone number)",
    "desc": "Transferor contact phone number",
    "how": "reviewed"
   },
   "B34": {
-   "name": "TRANSFEROR_SPOUSAL_YES",
+   "name": "TransferorSpousal",
    "kind": "entry",
    "label": "☐Yes",
    "desc": "Transferor: spousal plan yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Yes"
   },
   "B35": {
-   "name": "TRANSFEROR_SPOUSAL_NO",
+   "name": "TransferorSpousal",
    "kind": "entry",
    "label": "☐No",
    "desc": "spousal plan no",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "No"
   },
   "B36": {
-   "name": "TRANSFEROR_LOCKED_IN_YES",
+   "name": "TransferorLockedIn",
    "kind": "entry",
    "label": "allowance:",
    "desc": "Transferor: locked-in funds yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Yes"
   },
   "B37": {
-   "name": "TRANSFEROR_LOCKED_IN_NO",
+   "name": "TransferorLockedIn",
    "kind": "entry",
    "label": "(if yes please complete locked in information below)",
    "desc": "locked-in funds no",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "No"
   },
   "B38": {
-   "name": "TRANSFEROR_RETIRING_ALLOWANCE_YES",
+   "name": "TransferorRetiringAllowance",
    "kind": "entry",
    "label": "☐Yes",
    "desc": "Transferor: retiring allowance yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Yes"
   },
   "B39": {
-   "name": "TRANSFEROR_RETIRING_ALLOWANCE_NO",
+   "name": "TransferorRetiringAllowance",
    "kind": "entry",
    "label": "☐No",
    "desc": "retiring allowance no",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "No"
   },
   "B40": {
-   "name": "TRANSFEROR_FROM_RIF_YES",
+   "name": "TransferorFromRIF",
    "kind": "entry",
    "label": "as income",
    "desc": "Transferor: from RIF yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Yes"
   },
   "B41": {
-   "name": "TRANSFEROR_FROM_RIF_NO",
+   "name": "TransferorFromRIF",
    "kind": "entry",
    "label": "income of",
    "desc": "from RIF no",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "No"
   },
   "B42": {
-   "name": "TRANSFEROR_FROM_RPP_YES",
+   "name": "TransferorFromRPP",
    "kind": "entry",
    "label": "Locked-in",
    "desc": "Transferor: from RPP yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Yes"
   },
   "B43": {
-   "name": "TRANSFEROR_FROM_RPP_NO",
+   "name": "TransferorFromRPP",
    "kind": "entry",
    "label": "Locked-in Under",
    "desc": "from RPP no",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "No"
   },
   "B44": {
-   "name": "TRANSFEROR_HELD_IN_LIF_YES",
+   "name": "TransferorHeldInLIF",
    "kind": "entry",
    "label": "Federal)",
    "desc": "Funds held in a LIF/LRIF/RLIF during the year: yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Yes"
   },
   "B45": {
-   "name": "TRANSFEROR_HELD_IN_LIF_NO",
+   "name": "TransferorHeldInLIF",
    "kind": "entry",
    "label": "Federal)",
    "desc": "no",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "No"
   },
   "B46": {
-   "name": "TRANSFEROR_LOCKED_PENSION_AMOUNT",
+   "name": "TransferorLockedPensionAmount",
    "kind": "entry",
    "label": "• Locked in pension amount $",
    "desc": "Locked in pension amount $",
@@ -667,7 +680,7 @@
     188,
     737
    ],
-   "name": "TRANSFEROR_DATE",
+   "name": "TransferorDate",
    "kind": "entry",
    "label": "Date (dd/mm/yyyy)",
    "desc": "Transferor section: date - the line had no box",

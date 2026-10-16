@@ -15,7 +15,7 @@
    "how": "reviewed"
   },
   "F3": {
-   "name": "ESTATE_ASSET1_ACCOUNT",
+   "name": "EstateAsset1Account",
    "kind": "entry",
    "label": "Account Number",
    "desc": "Deceased's asset 1: account number",
@@ -23,7 +23,7 @@
    "save": true
   },
   "F4": {
-   "name": "ESTATE_ASSET1_AMOUNT",
+   "name": "EstateAsset1Amount",
    "kind": "entry",
    "label": "Amount",
    "desc": "Asset 1: amount",
@@ -31,58 +31,58 @@
    "save": true
   },
   "F5": {
-   "name": "ESTATE_ASSET2_ACCOUNT",
+   "name": "EstateAsset2Account",
    "kind": "entry",
    "label": "",
    "desc": "Asset 2: account number",
    "how": "reviewed"
   },
   "F6": {
-   "name": "ESTATE_ASSET2_AMOUNT",
+   "name": "EstateAsset2Amount",
    "kind": "entry",
    "label": "",
    "desc": "Asset 2: amount",
    "how": "reviewed"
   },
   "F7": {
-   "name": "ESTATE_ASSET3_ACCOUNT",
+   "name": "EstateAsset3Account",
    "kind": "entry",
    "label": "",
    "desc": "Asset 3: account number",
    "how": "reviewed"
   },
   "F8": {
-   "name": "ESTATE_ASSET3_AMOUNT",
+   "name": "EstateAsset3Amount",
    "kind": "entry",
    "label": "",
    "desc": "Asset 3: amount",
    "how": "reviewed"
   },
   "F9": {
-   "name": "ESTATE_TRANSFER_ACCOUNT",
+   "name": "EstateTransferAccount",
    "kind": "entry",
    "label": "",
    "desc": "Option #2: estate account # the assets go to",
    "how": "reviewed"
   },
   "F10": {
-   "name": "SPOUSE_TRANSFER_ACCOUNT",
+   "name": "SpouseTransferAccount",
    "kind": "entry",
    "label": "",
    "desc": "Option #4: surviving spouse's account #",
    "how": "reviewed"
   },
   "F11": {
-   "name": "NO_CERTIFICATE_OF_APPOINTMENT",
+   "name": "NoCertificateOfAppointment",
    "kind": "entry",
    "label": "A Certificate of Appointment was not obtained due to the",
    "desc": "Tick: a Certificate of Appointment was not obtained",
    "how": "reviewed",
    "type": "checkbox",
-   "custom": "Either the will case (NO_CERTIFICATE_OF_APPOINTMENT, NOTARIZED_WILL_ATTACHED, PROOF_OF_DEATH_ATTACHED) or the intestate case (LEGALLY_MARRIED_TO_DECEASED, DIED_INTESTATE, PROOF_OF_DEATH_ATTACHED_2) must be ticked in full"
+   "custom": "Either the will case (NoCertificateOfAppointment, NotarizedWillAttached, ProofOfDeathAttached) or the intestate case (LegallyMarriedToDeceased, DiedIntestate, ProofOfDeathAttached2) must be ticked in full"
   },
   "F12": {
-   "name": "NOTARIZED_WILL_ATTACHED",
+   "name": "NotarizedWillAttached",
    "kind": "entry",
    "label": "A notarized copy of the Deceased’s Will is attached; and",
    "desc": "Tick: notarized copy of the deceased's will attached",
@@ -90,7 +90,7 @@
    "type": "checkbox"
   },
   "F13": {
-   "name": "PROOF_OF_DEATH_ATTACHED",
+   "name": "ProofOfDeathAttached",
    "kind": "entry",
    "label": "A copy of the Proof of Death Certificate is attached.",
    "desc": "Tick: proof of death certificate attached",
@@ -98,7 +98,7 @@
    "type": "checkbox"
   },
   "F14": {
-   "name": "LEGALLY_MARRIED_TO_DECEASED",
+   "name": "LegallyMarriedToDeceased",
    "kind": "entry",
    "label": "The Deceased and I were legally married at the Deceased’s",
    "desc": "Tick: the deceased and I were legally married",
@@ -106,7 +106,7 @@
    "type": "checkbox"
   },
   "F15": {
-   "name": "DIED_INTESTATE",
+   "name": "DiedIntestate",
    "kind": "entry",
    "label": "The Deceased died intestate, and the estate is equal to",
    "desc": "Tick: the deceased died intestate",
@@ -114,7 +114,7 @@
    "type": "checkbox"
   },
   "F16": {
-   "name": "PROOF_OF_DEATH_ATTACHED_2",
+   "name": "ProofOfDeathAttached2",
    "kind": "entry",
    "label": "A copy of the Proof of Death Certificate is attached.",
    "desc": "Tick: proof of death certificate attached (intestate case)",
@@ -122,7 +122,7 @@
    "type": "checkbox"
   },
   "F17": {
-   "name": "DECLARED_AT_CITY",
+   "name": "DeclaredAtCity",
    "kind": "entry",
    "label": "___________, this _______ day",
    "desc": "Declared before me in the city of",
@@ -130,7 +130,7 @@
    "save": true
   },
   "F18": {
-   "name": "DECLARED_AT_PROVINCE",
+   "name": "DeclaredAtProvince",
    "kind": "entry",
    "label": "A.D. 20___.",
    "desc": "Declared in the province of",
@@ -138,7 +138,7 @@
    "save": true
   },
   "F19": {
-   "name": "DECLARED_DAY",
+   "name": "DeclaredDay",
    "kind": "entry",
    "label": "___________, this",
    "desc": "Declared this ___ day",
@@ -146,7 +146,7 @@
    "save": true
   },
   "F20": {
-   "name": "DECLARED_MONTH",
+   "name": "DeclaredMonth",
    "kind": "entry",
    "label": "___________, this _______ day of",
    "desc": "of ___ (month)",
@@ -154,7 +154,7 @@
    "save": true
   },
   "F21": {
-   "name": "DECLARANT_NAME",
+   "name": "DeclarantName",
    "kind": "entry",
    "label": "Declarant Name:",
    "desc": "Declarant's name",
@@ -162,7 +162,7 @@
    "save": true
   },
   "F22": {
-   "name": "DECLARANT_ADDRESS_1",
+   "name": "DeclarantAddress1",
    "kind": "entry",
    "label": "Declarant Address:",
    "desc": "Declarant's address line 1",
@@ -170,14 +170,14 @@
    "save": true
   },
   "F23": {
-   "name": "DECLARANT_ADDRESS_2",
+   "name": "DeclarantAddress2",
    "kind": "entry",
    "label": "",
    "desc": "line 2",
    "how": "reviewed"
   },
   "F24": {
-   "name": "DECLARANT_ADDRESS_3",
+   "name": "DeclarantAddress3",
    "kind": "entry",
    "label": "",
    "desc": "line 3",
@@ -191,21 +191,21 @@
    "how": "reviewed"
   },
   "F26": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Credit Union Witness Signature",
    "desc": "Credit union witness signature",
    "how": "reviewed"
   },
   "F27": {
-   "name": "DECLARANT_SIGNATURE",
+   "name": "DeclarantSignature",
    "kind": "entry",
    "label": "Declarant Signature",
    "desc": "Declarant's signature - the declarant is not necessarily a signer on the deceased's account",
    "how": "reviewed"
   },
   "F28": {
-   "name": "DECLARED_YEAR",
+   "name": "DeclaredYear",
    "kind": "entry",
    "label": "A.D.",
    "desc": "A.D. 20__",

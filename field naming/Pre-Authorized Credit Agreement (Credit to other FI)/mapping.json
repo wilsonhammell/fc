@@ -65,55 +65,55 @@
    "how": "reviewed"
   },
   "F10": {
-   "name": "PAC_ACCOUNT_NAME",
+   "name": "PACAccountName",
    "kind": "entry",
    "label": "Account Name",
    "desc": "Libro account: account name (could load from DMD_ACCOUNT_DESC)",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PACChange nor PACCancel is ticked"
   },
   "F11": {
-   "name": "PAC_BENEFIT_TYPE",
+   "name": "PACBenefitType",
    "kind": "entry",
    "label": "Account Benefit Type",
    "desc": "Libro account: account benefit type",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PACChange nor PACCancel is ticked"
   },
   "F12": {
-   "name": "PAC_SUB",
+   "name": "PACSub",
    "kind": "entry",
    "label": "Account Sub #",
    "desc": "Libro account: sub #",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PACChange nor PACCancel is ticked"
   },
   "F13": {
-   "name": "PAC_AMOUNT",
+   "name": "PACAmount",
    "kind": "entry",
    "label": "for the amount of $",
    "desc": "Credit amount $",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PACChange nor PACCancel is ticked"
   },
   "F14": {
-   "name": "PAC_START_DATE",
+   "name": "PACStartDate",
    "kind": "entry",
    "label": "starting on",
    "desc": "Starting on",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PACChange nor PACCancel is ticked"
   },
   "F15": {
-   "name": "PAC_FREQUENCY",
+   "name": "PACFrequency",
    "kind": "entry",
    "label": "at a frequency of",
    "desc": "At a frequency of",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAC_CHANGE nor PAC_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PACChange nor PACCancel is ticked"
   },
   "F16": {
-   "name": "PAC_REASON",
+   "name": "PACReason",
    "kind": "entry",
    "label": "For the reason of:",
    "desc": "For the reason of",
@@ -147,42 +147,42 @@
    ]
   },
   "F20": {
-   "name": "OFFICE_ACCOUNT_ENCODING",
+   "name": "OfficeAccountEncoding",
    "kind": "entry",
    "label": "Account Encoding:",
    "desc": "Office: account encoding",
    "how": "reviewed"
   },
   "F21": {
-   "name": "OFFICE_ACCOUNT_ENCODING_2",
+   "name": "OfficeAccountEncoding2",
    "kind": "entry",
    "label": "",
    "desc": "Office: account encoding, part 2 (unlabelled)",
    "how": "reviewed"
   },
   "F22": {
-   "name": "OFFICE_ACCOUNT_ENCODING_3",
+   "name": "OfficeAccountEncoding3",
    "kind": "entry",
    "label": "",
    "desc": "Office: account encoding, part 3 (unlabelled)",
    "how": "reviewed"
   },
   "F23": {
-   "name": "OFFICE_ACCOUNT_ENCODING_4",
+   "name": "OfficeAccountEncoding4",
    "kind": "entry",
    "label": "",
    "desc": "Office: account encoding, part 4 (unlabelled)",
    "how": "reviewed"
   },
   "F24": {
-   "name": "OFFICE_TRANSACTION_TYPE",
+   "name": "OfficeTransactionType",
    "kind": "entry",
    "label": "Transaction Type:",
    "desc": "Office: transaction type",
    "how": "reviewed"
   },
   "F25": {
-   "name": "PAC_CHANGE",
+   "name": "PACChange",
    "kind": "entry",
    "label": "CHANGE – Please change this Debit Agreement effective:",
    "desc": "Tick: change this agreement",
@@ -190,36 +190,36 @@
    "type": "checkbox"
   },
   "F26": {
-   "name": "PAC_CHANGE_EFFECTIVE",
+   "name": "PACChangeEffective",
    "kind": "entry",
    "label": "CHANGE – Please change this Debit Agreement effective:",
    "desc": "Change effective (date)",
    "how": "reviewed",
-   "custom": "Required when PAC_CHANGE is ticked"
+   "custom": "Required when PACChange is ticked"
   },
   "F27": {
-   "name": "PAC_CHANGE_AMOUNT",
+   "name": "PACChangeAmount",
    "kind": "entry",
    "label": "Amount",
    "desc": "Change: amount",
    "how": "reviewed"
   },
   "F28": {
-   "name": "PAC_CHANGE_DUE_DATE",
+   "name": "PACChangeDueDate",
    "kind": "entry",
    "label": "Due Date",
    "desc": "Change: due date",
    "how": "reviewed"
   },
   "F29": {
-   "name": "PAC_CHANGE_FREQUENCY",
+   "name": "PACChangeFrequency",
    "kind": "entry",
    "label": "Frequency",
    "desc": "Change: frequency",
    "how": "reviewed"
   },
   "F30": {
-   "name": "PAC_CHANGE_FI_INFO",
+   "name": "PACChangeFIInfo",
    "kind": "entry",
    "label": "Change Financial Institution Information",
    "desc": "Tick: change financial institution information",
@@ -227,37 +227,37 @@
    "type": "checkbox"
   },
   "F31": {
-   "name": "PAC_CHANGE_BRANCH",
+   "name": "PACChangeBranch",
    "kind": "entry",
    "label": "Branch",
    "desc": "Change: branch",
    "how": "reviewed",
-   "custom": "Required when PAC_CHANGE_FI_INFO is ticked"
+   "custom": "Required when PACChangeFIInfo is ticked"
   },
   "F32": {
-   "name": "PAC_CHANGE_MEMBER_NUMBER",
+   "name": "PACChangeMemberNumber",
    "kind": "entry",
    "label": "Member Number",
    "desc": "Change: member number",
    "how": "reviewed",
-   "custom": "Required when PAC_CHANGE_FI_INFO is ticked"
+   "custom": "Required when PACChangeFIInfo is ticked"
   },
   "F33": {
-   "name": "PAC_CHANGE_ACCOUNT_NAME",
+   "name": "PACChangeAccountName",
    "kind": "entry",
    "label": "Account Name",
    "desc": "Change: account name",
    "how": "reviewed"
   },
   "F34": {
-   "name": "PAC_CHANGE_BENEFIT_TYPE",
+   "name": "PACChangeBenefitType",
    "kind": "entry",
    "label": "Account Benefit Type",
    "desc": "Change: account benefit type",
    "how": "reviewed"
   },
   "F35": {
-   "name": "PAC_CHANGE_SUB",
+   "name": "PACChangeSub",
    "kind": "entry",
    "label": "Account Sub #",
    "desc": "Change: account sub #",
@@ -368,42 +368,42 @@
    "how": "reviewed"
   },
   "F38": {
-   "name": "OFFICE2_ACCOUNT_ENCODING",
+   "name": "Office2AccountEncoding",
    "kind": "entry",
    "label": "Account Encoding:",
    "desc": "Office (change): account encoding",
    "how": "reviewed"
   },
   "F39": {
-   "name": "OFFICE2_ACCOUNT_ENCODING_2",
+   "name": "Office2AccountEncoding2",
    "kind": "entry",
    "label": "",
    "desc": "Office (change): encoding part 2",
    "how": "reviewed"
   },
   "F40": {
-   "name": "OFFICE2_ACCOUNT_ENCODING_3",
+   "name": "Office2AccountEncoding3",
    "kind": "entry",
    "label": "",
    "desc": "Office (change): encoding part 3",
    "how": "reviewed"
   },
   "F41": {
-   "name": "OFFICE2_ACCOUNT_ENCODING_4",
+   "name": "Office2AccountEncoding4",
    "kind": "entry",
    "label": "",
    "desc": "Office (change): encoding part 4",
    "how": "reviewed"
   },
   "F42": {
-   "name": "OFFICE2_TRANSACTION_TYPE",
+   "name": "Office2TransactionType",
    "kind": "entry",
    "label": "Transaction Type:",
    "desc": "Office (change): transaction type",
    "how": "reviewed"
   },
   "F43": {
-   "name": "PAC_CANCEL",
+   "name": "PACCancel",
    "kind": "entry",
    "label": "CANCELLATION – Please cancel this Debit Agreement effective:",
    "desc": "Tick: cancel this agreement",
@@ -411,12 +411,12 @@
    "type": "checkbox"
   },
   "F44": {
-   "name": "PAC_CANCEL_EFFECTIVE",
+   "name": "PACCancelEffective",
    "kind": "entry",
    "label": "CANCELLATION – Please cancel this Debit Agreement effective:",
    "desc": "Cancel effective (date)",
    "how": "reviewed",
-   "custom": "Required when PAC_CANCEL is ticked"
+   "custom": "Required when PACCancel is ticked"
   },
   "B13": {
    "name": "Member1Name",

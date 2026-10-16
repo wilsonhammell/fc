@@ -65,28 +65,28 @@
    "how": "reviewed"
   },
   "F10": {
-   "name": "PAD_AMOUNT",
+   "name": "PADAmount",
    "kind": "entry",
    "label": "for the amount of $",
    "desc": "Debit amount $",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PADChange nor PADCancel is ticked"
   },
   "F11": {
-   "name": "PAD_START_DATE",
+   "name": "PADStartDate",
    "kind": "entry",
    "label": "starting on",
    "desc": "Starting on",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PADChange nor PADCancel is ticked"
   },
   "F12": {
-   "name": "PAD_FREQUENCY",
+   "name": "PADFrequency",
    "kind": "entry",
    "label": "at a frequency of",
    "desc": "At a frequency of",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PADChange nor PADCancel is ticked"
   },
   "F13": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -103,56 +103,58 @@
    "how": "reviewed"
   },
   "F15": {
-   "name": "PAD_ACCOUNT_NAME",
+   "name": "PADAccountName",
    "kind": "entry",
    "label": "Account Name",
    "desc": "Libro account: account name (could load from DMD_ACCOUNT_DESC)",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PADChange nor PADCancel is ticked"
   },
   "F16": {
-   "name": "PAD_BENEFIT_TYPE",
+   "name": "PADBenefitType",
    "kind": "entry",
    "label": "Account Benefit Type",
    "desc": "Libro account: account benefit type",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PADChange nor PADCancel is ticked"
   },
   "F17": {
-   "name": "PAD_SUB",
+   "name": "PADSub",
    "kind": "entry",
    "label": "Account Sub #",
    "desc": "Libro account: sub #",
    "how": "reviewed",
-   "custom": "Required for a new agreement - when neither PAD_CHANGE nor PAD_CANCEL is ticked"
+   "custom": "Required for a new agreement - when neither PADChange nor PADCancel is ticked"
   },
   "F18": {
-   "name": "PAD_TYPE_FUNDS_TRANSFER",
+   "name": "PADType",
    "kind": "entry",
    "label": "Funds Transfer PAD",
    "desc": "Tick: funds transfer PAD",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "For a new agreement, exactly one of PAD_TYPE_FUNDS_TRANSFER, PAD_TYPE_PERSONAL and PAD_TYPE_BUSINESS must be ticked"
+   "option": "FundsTransfer",
+   "custom": "Required for a new agreement - when neither PADChange nor PADCancel is ticked"
   },
   "F19": {
-   "name": "PAD_TYPE_PERSONAL",
+   "name": "PADType",
    "kind": "entry",
    "label": "Personal PAD",
    "desc": "Tick: personal PAD",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Personal",
+   "custom": "Required for a new agreement - when neither PADChange nor PADCancel is ticked"
   },
   "F20": {
-   "name": "PAD_TYPE_BUSINESS",
+   "name": "PADType",
    "kind": "entry",
    "label": "Business PAD",
    "desc": "Tick: business PAD",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Business",
+   "custom": "Required for a new agreement - when neither PADChange nor PADCancel is ticked"
   },
   "F21": {
-   "name": "PAD_REASON",
+   "name": "PADReason",
    "kind": "entry",
    "label": "For the reason of:",
    "desc": "For the reason of",
@@ -263,7 +265,7 @@
    "how": "reviewed"
   },
   "F26": {
-   "name": "PAD_CHANGE",
+   "name": "PADChange",
    "kind": "entry",
    "label": "CHANGE – Please change this Debit Agreement effective immediately.",
    "desc": "Tick: change this debit agreement",
@@ -271,29 +273,29 @@
    "type": "checkbox"
   },
   "F27": {
-   "name": "PAD_CHANGE_AMOUNT",
+   "name": "PADChangeAmount",
    "kind": "entry",
    "label": "Amount",
    "desc": "Change: amount",
    "how": "reviewed",
-   "custom": "When PAD_CHANGE is ticked, at least one of PAD_CHANGE_AMOUNT, PAD_CHANGE_DUE_DATE and PAD_CHANGE_FREQUENCY must be filled in"
+   "custom": "When PADChange is ticked, at least one of PADChangeAmount, PADChangeDueDate and PADChangeFrequency must be filled in"
   },
   "F28": {
-   "name": "PAD_CHANGE_DUE_DATE",
+   "name": "PADChangeDueDate",
    "kind": "entry",
    "label": "Due Date",
    "desc": "Change: due date",
    "how": "reviewed"
   },
   "F29": {
-   "name": "PAD_CHANGE_FREQUENCY",
+   "name": "PADChangeFrequency",
    "kind": "entry",
    "label": "Frequency",
    "desc": "Change: frequency",
    "how": "reviewed"
   },
   "F30": {
-   "name": "PAD_CHANGE_FI_INFO",
+   "name": "PADChangeFIInfo",
    "kind": "entry",
    "label": "Change Financial Institution Information Only",
    "desc": "Tick: change financial institution information",
@@ -301,44 +303,44 @@
    "type": "checkbox"
   },
   "F31": {
-   "name": "PAD_CHANGE_BRANCH",
+   "name": "PADChangeBranch",
    "kind": "entry",
    "label": "Branch",
    "desc": "Change: branch",
    "how": "reviewed",
-   "custom": "Required when PAD_CHANGE_FI_INFO is ticked"
+   "custom": "Required when PADChangeFIInfo is ticked"
   },
   "F32": {
-   "name": "PAD_CHANGE_MEMBER_NUMBER",
+   "name": "PADChangeMemberNumber",
    "kind": "entry",
    "label": "Member Number",
    "desc": "Change: member number",
    "how": "reviewed",
-   "custom": "Required when PAD_CHANGE_FI_INFO is ticked"
+   "custom": "Required when PADChangeFIInfo is ticked"
   },
   "F33": {
-   "name": "PAD_CHANGE_ACCOUNT_NAME",
+   "name": "PADChangeAccountName",
    "kind": "entry",
    "label": "Account Name",
    "desc": "Change: account name",
    "how": "reviewed"
   },
   "F34": {
-   "name": "PAD_CHANGE_BENEFIT_TYPE",
+   "name": "PADChangeBenefitType",
    "kind": "entry",
    "label": "Account Benefit Type",
    "desc": "Change: account benefit type",
    "how": "reviewed"
   },
   "F35": {
-   "name": "PAD_CHANGE_SUB",
+   "name": "PADChangeSub",
    "kind": "entry",
    "label": "Account Sub #",
    "desc": "Change: account sub #",
    "how": "reviewed"
   },
   "F36": {
-   "name": "PAD_CANCEL",
+   "name": "PADCancel",
    "kind": "entry",
    "label": "CANCELLATION – Please cancel this Debit Agreement effective immediately.",
    "desc": "Tick: cancel this debit agreement effective immediately",

@@ -36,21 +36,22 @@
    "how": "reviewed"
   },
   "F6": {
-   "name": "DESIGNATION_INITIAL",
+   "name": "Designation",
    "kind": "entry",
    "label": "first and",
    "desc": "Tick: new designation",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of DESIGNATION_INITIAL and DESIGNATION_CHANGE must be ticked"
+   "option": "New",
+   "save": true
   },
   "F7": {
-   "name": "DESIGNATION_CHANGE",
+   "name": "Designation",
    "kind": "entry",
    "label": "least",
    "desc": "Tick: change of designation",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Change",
+   "save": true
   },
   "F8": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -81,7 +82,7 @@
    "how": "reviewed"
   },
   "F12": {
-   "name": "SPOUSE_RELATIONSHIP",
+   "name": "SpouseRelationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Spouse or common-law partner",
@@ -109,7 +110,7 @@
    "how": "reviewed"
   },
   "F16": {
-   "name": "BENE1_NAME",
+   "name": "Beneficiary1Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 1: name",
@@ -117,14 +118,14 @@
    "save": true
   },
   "F17": {
-   "name": "BENE1_ACCOUNT",
+   "name": "Beneficiary1Account",
    "kind": "entry",
    "label": "Acct #",
    "desc": "Beneficiary 1: account the designation is for",
    "how": "reviewed"
   },
   "F18": {
-   "name": "BENE1_RELATIONSHIP",
+   "name": "Beneficiary1Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 1: relationship to the holder",
@@ -132,21 +133,21 @@
    "save": true
   },
   "F19": {
-   "name": "BENE1_DATE_OF_BIRTH",
+   "name": "Beneficiary1DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Beneficiary 1: date of birth",
    "how": "reviewed"
   },
   "F20": {
-   "name": "BENE1_SIN",
+   "name": "Beneficiary1SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Beneficiary 1: SIN",
    "how": "reviewed"
   },
   "F21": {
-   "name": "BENE1_PERCENT",
+   "name": "Beneficiary1Percent",
    "kind": "entry",
    "label": "%",
    "desc": "Beneficiary 1: share, %",
@@ -154,7 +155,7 @@
    "custom": "Required, and the shares of the primary beneficiaries named must add up to 100"
   },
   "F22": {
-   "name": "BENE2_NAME",
+   "name": "Beneficiary2Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 2: name",
@@ -162,42 +163,42 @@
    "custom": "Required when beneficiary 2 is used (any BENE2_ field filled in): name, relationship and share"
   },
   "F23": {
-   "name": "BENE2_ACCOUNT",
+   "name": "Beneficiary2Account",
    "kind": "entry",
    "label": "Acct #",
    "desc": "Beneficiary 2: account the designation is for",
    "how": "reviewed"
   },
   "F24": {
-   "name": "BENE2_RELATIONSHIP",
+   "name": "Beneficiary2Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 2: relationship to the holder",
    "how": "reviewed"
   },
   "F25": {
-   "name": "BENE2_DATE_OF_BIRTH",
+   "name": "Beneficiary2DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Beneficiary 2: date of birth",
    "how": "reviewed"
   },
   "F26": {
-   "name": "BENE2_SIN",
+   "name": "Beneficiary2SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Beneficiary 2: SIN",
    "how": "reviewed"
   },
   "F27": {
-   "name": "BENE2_PERCENT",
+   "name": "Beneficiary2Percent",
    "kind": "entry",
    "label": "%",
    "desc": "Beneficiary 2: share, %",
    "how": "reviewed"
   },
   "F28": {
-   "name": "BENE3_NAME",
+   "name": "Beneficiary3Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 3: name",
@@ -205,168 +206,168 @@
    "custom": "Required when beneficiary 3 is used (any BENE3_ field filled in): name, relationship and share"
   },
   "F29": {
-   "name": "BENE3_ACCOUNT",
+   "name": "Beneficiary3Account",
    "kind": "entry",
    "label": "Acct #",
    "desc": "Beneficiary 3: account the designation is for",
    "how": "reviewed"
   },
   "F30": {
-   "name": "BENE3_RELATIONSHIP",
+   "name": "Beneficiary3Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 3: relationship to the holder",
    "how": "reviewed"
   },
   "F31": {
-   "name": "BENE3_DATE_OF_BIRTH",
+   "name": "Beneficiary3DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Beneficiary 3: date of birth",
    "how": "reviewed"
   },
   "F32": {
-   "name": "BENE3_SIN",
+   "name": "Beneficiary3SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Beneficiary 3: SIN",
    "how": "reviewed"
   },
   "F33": {
-   "name": "BENE3_PERCENT",
+   "name": "Beneficiary3Percent",
    "kind": "entry",
    "label": "%",
    "desc": "Beneficiary 3: share, %",
    "how": "reviewed"
   },
   "F34": {
-   "name": "ALTBENE1_NAME",
+   "name": "AlternateBeneficiary1Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Alternate beneficiary 1: name",
    "how": "reviewed"
   },
   "F35": {
-   "name": "ALTBENE1_ACCOUNT",
+   "name": "AlternateBeneficiary1Account",
    "kind": "entry",
    "label": "Acct #",
    "desc": "Alternate beneficiary 1: account the designation is for",
    "how": "reviewed"
   },
   "F36": {
-   "name": "ALTBENE1_RELATIONSHIP",
+   "name": "AlternateBeneficiary1Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Alternate beneficiary 1: relationship to the holder",
    "how": "reviewed"
   },
   "F37": {
-   "name": "ALTBENE1_DATE_OF_BIRTH",
+   "name": "AlternateBeneficiary1DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Alternate beneficiary 1: date of birth",
    "how": "reviewed"
   },
   "F38": {
-   "name": "ALTBENE1_SIN",
+   "name": "AlternateBeneficiary1SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Alternate beneficiary 1: SIN",
    "how": "reviewed"
   },
   "F39": {
-   "name": "ALTBENE1_PERCENT",
+   "name": "AlternateBeneficiary1Percent",
    "kind": "entry",
    "label": "%",
    "desc": "Alternate beneficiary 1: share, %",
    "how": "reviewed"
   },
   "F40": {
-   "name": "ALTBENE2_NAME",
+   "name": "AlternateBeneficiary2Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Alternate beneficiary 2: name",
    "how": "reviewed"
   },
   "F41": {
-   "name": "ALTBENE2_ACCOUNT",
+   "name": "AlternateBeneficiary2Account",
    "kind": "entry",
    "label": "Acct #",
    "desc": "Alternate beneficiary 2: account the designation is for",
    "how": "reviewed"
   },
   "F42": {
-   "name": "ALTBENE2_RELATIONSHIP",
+   "name": "AlternateBeneficiary2Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Alternate beneficiary 2: relationship to the holder",
    "how": "reviewed"
   },
   "F43": {
-   "name": "ALTBENE2_DATE_OF_BIRTH",
+   "name": "AlternateBeneficiary2DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Alternate beneficiary 2: date of birth",
    "how": "reviewed"
   },
   "F44": {
-   "name": "ALTBENE2_SIN",
+   "name": "AlternateBeneficiary2SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Alternate beneficiary 2: SIN",
    "how": "reviewed"
   },
   "F45": {
-   "name": "ALTBENE2_PERCENT",
+   "name": "AlternateBeneficiary2Percent",
    "kind": "entry",
    "label": "%",
    "desc": "Alternate beneficiary 2: share, %",
    "how": "reviewed"
   },
   "F46": {
-   "name": "ALTBENE3_NAME",
+   "name": "AlternateBeneficiary3Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Alternate beneficiary 3: name",
    "how": "reviewed"
   },
   "F47": {
-   "name": "ALTBENE3_ACCOUNT",
+   "name": "AlternateBeneficiary3Account",
    "kind": "entry",
    "label": "Acct #",
    "desc": "Alternate beneficiary 3: account the designation is for",
    "how": "reviewed"
   },
   "F48": {
-   "name": "ALTBENE3_RELATIONSHIP",
+   "name": "AlternateBeneficiary3Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Alternate beneficiary 3: relationship to the holder",
    "how": "reviewed"
   },
   "F49": {
-   "name": "ALTBENE3_DATE_OF_BIRTH",
+   "name": "AlternateBeneficiary3DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Alternate beneficiary 3: date of birth",
    "how": "reviewed"
   },
   "F50": {
-   "name": "ALTBENE3_SIN",
+   "name": "AlternateBeneficiary3SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Alternate beneficiary 3: SIN",
    "how": "reviewed"
   },
   "F51": {
-   "name": "ALTBENE3_PERCENT",
+   "name": "AlternateBeneficiary3Percent",
    "kind": "entry",
    "label": "%",
    "desc": "Alternate beneficiary 3: share, %",
    "how": "reviewed"
   },
   "F52": {
-   "name": "SIGNED_AT_CITY",
+   "name": "SignedAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (place), Ontario",
@@ -443,21 +444,21 @@
    "how": "reviewed"
   },
   "B8": {
-   "name": "OFFICE_CHECKED_BY",
+   "name": "OfficeCheckedBy",
    "kind": "entry",
    "label": "Checked By",
    "desc": "Office use: checked by",
    "how": "reviewed"
   },
   "B9": {
-   "name": "OFFICE_ENTERED_BY",
+   "name": "OfficeEnteredBy",
    "kind": "entry",
    "label": "Entered By",
    "desc": "Office use: entered by",
    "how": "reviewed"
   },
   "B10": {
-   "name": "OFFICE_ENTRY_DATE",
+   "name": "OfficeEntryDate",
    "kind": "entry",
    "label": "Entry Date",
    "desc": "Office use: entry date",

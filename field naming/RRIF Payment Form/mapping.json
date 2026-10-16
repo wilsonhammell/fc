@@ -50,24 +50,25 @@
    "how": "reviewed"
   },
   "F8": {
-   "name": "PAY_DUE_15TH",
+   "name": "PayDue",
    "kind": "entry",
    "label": "15th",
    "desc": "Pay due on the 15th",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of PAY_DUE_15TH and PAY_DUE_29TH must be ticked"
+   "option": "Day15",
+   "save": true
   },
   "F9": {
-   "name": "PAY_DUE_29TH",
+   "name": "PayDue",
    "kind": "entry",
    "label": "29th",
    "desc": "Pay due on the 29th",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Day29",
+   "save": true
   },
   "F10": {
-   "name": "PAYMENT_START_DATE",
+   "name": "PaymentStartDate",
    "kind": "entry",
    "label": "Start Date:",
    "desc": "Payment start date",
@@ -75,66 +76,70 @@
    "save": true
   },
   "F11": {
-   "name": "PAYMENT_MINIMUM",
+   "name": "PaymentOption",
    "kind": "entry",
    "label": "Minimum Amount",
    "desc": "Payment option: minimum amount",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one payment option (PAYMENT_MINIMUM, PAYMENT_SPECIFIED, PAYMENT_MAXIMUM) must be ticked"
+   "option": "Minimum",
+   "save": true
   },
   "F12": {
-   "name": "PAYMENT_SPECIFIED",
+   "name": "PaymentOption",
    "kind": "entry",
    "label": "Specified",
    "desc": "Payment option: specified",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Specified",
+   "save": true
   },
   "F13": {
-   "name": "PAYMENT_MAXIMUM",
+   "name": "PaymentOption",
    "kind": "entry",
    "label": "Maximum (for LIF/RLIF only)",
    "desc": "Maximum (LIF/RLIF only)",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Maximum",
+   "save": true
   },
   "F14": {
-   "name": "MINIMUM_NO_TAX",
+   "name": "MinimumTax",
    "kind": "entry",
    "label": "Always",
    "desc": "No tax on minimum",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "When PAYMENT_MINIMUM is ticked, exactly one of MINIMUM_NO_TAX and MINIMUM_YES_TAX must be ticked"
+   "option": "No",
+   "custom": "Required when PaymentOption is Minimum"
   },
   "F15": {
-   "name": "MINIMUM_YES_TAX",
+   "name": "MinimumTax",
    "kind": "entry",
    "label": "no matter",
    "desc": "Yes, tax on minimum",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Yes",
+   "custom": "Required when PaymentOption is Minimum"
   },
   "F16": {
-   "name": "PAYMENT_NET",
+   "name": "PaymentBasis",
    "kind": "entry",
    "label": "Net (after tax)",
    "desc": "Net (after tax)",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "When PAYMENT_SPECIFIED is ticked, exactly one of PAYMENT_NET and PAYMENT_GROSS must be ticked"
+   "option": "Net",
+   "custom": "Required when PaymentOption is Specified"
   },
   "F17": {
-   "name": "PAYMENT_GROSS",
+   "name": "PaymentBasis",
    "kind": "entry",
    "label": "Gross (before tax)",
    "desc": "Gross (before tax)",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Gross",
+   "custom": "Required when PaymentOption is Specified"
   },
   "F18": {
-   "name": "EXTRA_TAX",
+   "name": "ExtraTax",
    "kind": "entry",
    "label": "Withhold Extra Taxes?",
    "desc": "Pick one: withhold extra taxes? No / Yes",
@@ -143,7 +148,7 @@
    "save": true
   },
   "F19": {
-   "name": "EXTRA_TAX",
+   "name": "ExtraTax",
    "kind": "entry",
    "label": "No",
    "desc": "No",
@@ -152,40 +157,43 @@
    "save": true
   },
   "F20": {
-   "name": "PAY_FREQ_MONTHLY",
+   "name": "PayFrequency",
    "kind": "entry",
    "label": "Monthly",
    "desc": "Pay frequency: monthly",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one pay frequency (PAY_FREQ_MONTHLY, _QUARTERLY, _SEMI_ANNUAL, _ANNUAL) must be ticked"
+   "option": "Monthly",
+   "save": true
   },
   "F21": {
-   "name": "PAY_FREQ_QUARTERLY",
+   "name": "PayFrequency",
    "kind": "entry",
    "label": "Quarterly",
    "desc": "quarterly",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Quarterly",
+   "save": true
   },
   "F22": {
-   "name": "PAY_FREQ_SEMI_ANNUAL",
+   "name": "PayFrequency",
    "kind": "entry",
    "label": "Semi-Annually",
    "desc": "semi-annually",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "SemiAnnual",
+   "save": true
   },
   "F23": {
-   "name": "PAY_FREQ_ANNUAL",
+   "name": "PayFrequency",
    "kind": "entry",
    "label": "Annual",
    "desc": "annual",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Annual",
+   "save": true
   },
   "F24": {
-   "name": "CONTINUE_PAYMENT",
+   "name": "ContinuePayment",
    "kind": "entry",
    "label": "Continue same payment for the next year",
    "desc": "Pick one: continue same payment for the next year? Yes / No",
@@ -194,7 +202,7 @@
    "save": true
   },
   "F25": {
-   "name": "CONTINUE_PAYMENT",
+   "name": "ContinuePayment",
    "kind": "entry",
    "label": "Yes",
    "desc": "Yes",
@@ -203,7 +211,7 @@
    "save": true
   },
   "F26": {
-   "name": "PAY_FROM_TYPE",
+   "name": "PayFromType",
    "kind": "entry",
    "label": "Type:",
    "desc": "Select from: type",
@@ -211,7 +219,7 @@
    "save": true
   },
   "F27": {
-   "name": "PAY_FROM_SUB",
+   "name": "PayFromSub",
    "kind": "entry",
    "label": "Sub:",
    "desc": "Select from: sub",
@@ -219,37 +227,37 @@
    "save": true
   },
   "F28": {
-   "name": "PAY_TO_TYPE",
+   "name": "PayToType",
    "kind": "entry",
    "label": "Type:",
    "desc": "Select to: type",
    "how": "reviewed",
-   "custom": "Required when DEPOSIT_TO_ACCOUNT is ticked"
+   "custom": "Required when DepositToAccount is ticked"
   },
   "F29": {
-   "name": "PAY_TO_SUB",
+   "name": "PayToSub",
    "kind": "entry",
    "label": "Sub:",
    "desc": "Select to: sub",
    "how": "reviewed"
   },
   "F30": {
-   "name": "PAY_TO_ACCOUNT",
+   "name": "PayToAccount",
    "kind": "entry",
    "label": "To Acct:",
    "desc": "Select to: account",
    "how": "reviewed",
-   "custom": "Required when DEPOSIT_TO_ACCOUNT is ticked"
+   "custom": "Required when DepositToAccount is ticked"
   },
   "F31": {
-   "name": "SPECIAL_INSTRUCTIONS_1",
+   "name": "SpecialInstructions1",
    "kind": "entry",
    "label": "SPECIAL INSTRUCTIONS FOR PAYMENT",
    "desc": "Special instructions for payment, line 1",
    "how": "reviewed"
   },
   "F32": {
-   "name": "SPECIAL_INSTRUCTIONS_2",
+   "name": "SpecialInstructions2",
    "kind": "entry",
    "label": "",
    "desc": "line 2",
@@ -263,45 +271,47 @@
    "how": "reviewed"
   },
   "F34": {
-   "name": "PLAN_TYPE_RIF",
+   "name": "PlanType",
    "kind": "entry",
    "label": "LIF",
    "desc": "Tick: RIF",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of PLAN_TYPE_RIF, PLAN_TYPE_LIF and PLAN_TYPE_RLIF must be ticked"
+   "option": "RIF",
+   "save": true
   },
   "F35": {
-   "name": "PLAN_TYPE_LIF",
+   "name": "PlanType",
    "kind": "entry",
    "label": "RLIF",
    "desc": "Tick: LIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "LIF",
+   "save": true
   },
   "F36": {
-   "name": "PLAN_TYPE_RLIF",
+   "name": "PlanType",
    "kind": "entry",
    "label": "",
    "desc": "Tick: RLIF",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "RLIF",
+   "save": true
   },
   "F37": {
-   "name": "PAYMENT_SPECIFIED_AMOUNT",
+   "name": "PaymentSpecifiedAmount",
    "kind": "entry",
    "label": "$",
    "desc": "Specified amount $",
    "how": "reviewed",
-   "custom": "Required when PAYMENT_SPECIFIED is ticked"
+   "custom": "Required when PaymentOption is Specified"
   },
   "F38": {
-   "name": "EXTRA_TAX_PERCENT",
+   "name": "ExtraTaxPercent",
    "kind": "entry",
    "label": "Percentage",
    "desc": "Extra tax percentage",
    "how": "reviewed",
-   "custom": "Required when EXTRA_TAX is Yes"
+   "custom": "Required when ExtraTax is Yes"
   },
   "F39": {
    "name": "Member1Signature",
@@ -311,7 +321,7 @@
    "how": "reviewed"
   },
   "F40": {
-   "name": "DEPOSIT_TO_ACCOUNT",
+   "name": "DepositToAccount",
    "kind": "entry",
    "label": "Deposit to account Select from:",
    "desc": "Payment method: deposit to account",
@@ -319,7 +329,7 @@
    "type": "checkbox"
   },
   "B13": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Employee Authorization",
    "desc": "Employee authorization",

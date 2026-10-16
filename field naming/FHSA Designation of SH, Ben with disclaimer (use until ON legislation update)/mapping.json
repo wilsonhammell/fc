@@ -36,24 +36,25 @@
    "how": "reviewed"
   },
   "F6": {
-   "name": "DESIGNATION_INITIAL",
+   "name": "Designation",
    "kind": "entry",
    "label": "Initial",
    "desc": "Tick: initial designation",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of DESIGNATION_INITIAL and DESIGNATION_CHANGE must be ticked"
+   "option": "Initial",
+   "save": true
   },
   "F7": {
-   "name": "DESIGNATION_CHANGE",
+   "name": "Designation",
    "kind": "entry",
    "label": "Change Designation of Survivor/Successor Holder/Beneficiary",
    "desc": "Tick: change of designation of survivor / successor holder / beneficiary",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Change",
+   "save": true
   },
   "F8": {
-   "name": "BENE1_NAME",
+   "name": "Beneficiary1Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 1: name",
@@ -61,21 +62,21 @@
    "save": true
   },
   "F9": {
-   "name": "BENE1_ACCOUNT",
+   "name": "Beneficiary1Account",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 1: account the designation is for",
    "how": "reviewed"
   },
   "F10": {
-   "name": "BENE1_DATE_OF_BIRTH",
+   "name": "Beneficiary1DateOfBirth",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 1: date of birth",
    "how": "reviewed"
   },
   "F11": {
-   "name": "BENE1_RELATIONSHIP",
+   "name": "Beneficiary1Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 1: relationship to the holder",
@@ -83,7 +84,7 @@
    "save": true
   },
   "F12": {
-   "name": "BENE1_TYPE",
+   "name": "Beneficiary1Type",
    "kind": "entry",
    "label": "Alternate (A)",
    "desc": "Beneficiary 1: designation: SH successor holder, P primary, A alternate",
@@ -91,22 +92,22 @@
    "save": true
   },
   "F13": {
-   "name": "BENE1_SIN",
+   "name": "Beneficiary1SIN",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 1: SIN",
    "how": "reviewed"
   },
   "F14": {
-   "name": "BENE1_PERCENT",
+   "name": "Beneficiary1Percent",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 1: share, %",
    "how": "reviewed",
-   "custom": "Required, and the shares of all the beneficiaries named (BENE1_PERCENT, BENE2_PERCENT, BENE3_PERCENT) must add up to 100"
+   "custom": "Required, and the shares of all the beneficiaries named (Beneficiary1Percent, Beneficiary2Percent, Beneficiary3Percent) must add up to 100"
   },
   "F15": {
-   "name": "BENE2_NAME",
+   "name": "Beneficiary2Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: name",
@@ -114,49 +115,49 @@
    "custom": "Required when beneficiary 2 is used (any BENE2_ field filled in): name, relationship, type and share"
   },
   "F16": {
-   "name": "BENE2_ACCOUNT",
+   "name": "Beneficiary2Account",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: account the designation is for",
    "how": "reviewed"
   },
   "F17": {
-   "name": "BENE2_DATE_OF_BIRTH",
+   "name": "Beneficiary2DateOfBirth",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: date of birth",
    "how": "reviewed"
   },
   "F18": {
-   "name": "BENE2_RELATIONSHIP",
+   "name": "Beneficiary2Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: relationship to the holder",
    "how": "reviewed"
   },
   "F19": {
-   "name": "BENE2_TYPE",
+   "name": "Beneficiary2Type",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: designation: SH successor holder, P primary, A alternate",
    "how": "reviewed"
   },
   "F20": {
-   "name": "BENE2_SIN",
+   "name": "Beneficiary2SIN",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: SIN",
    "how": "reviewed"
   },
   "F21": {
-   "name": "BENE2_PERCENT",
+   "name": "Beneficiary2Percent",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: share, %",
    "how": "reviewed"
   },
   "F22": {
-   "name": "BENE3_NAME",
+   "name": "Beneficiary3Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: name",
@@ -164,72 +165,72 @@
    "custom": "Required when beneficiary 3 is used (any BENE3_ field filled in): name, relationship, type and share"
   },
   "F23": {
-   "name": "BENE3_ACCOUNT",
+   "name": "Beneficiary3Account",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: account the designation is for",
    "how": "reviewed"
   },
   "F24": {
-   "name": "BENE3_DATE_OF_BIRTH",
+   "name": "Beneficiary3DateOfBirth",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: date of birth",
    "how": "reviewed"
   },
   "F25": {
-   "name": "BENE3_RELATIONSHIP",
+   "name": "Beneficiary3Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: relationship to the holder",
    "how": "reviewed"
   },
   "F26": {
-   "name": "BENE3_TYPE",
+   "name": "Beneficiary3Type",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: designation: SH successor holder, P primary, A alternate",
    "how": "reviewed"
   },
   "F27": {
-   "name": "BENE3_SIN",
+   "name": "Beneficiary3SIN",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: SIN",
    "how": "reviewed"
   },
   "F28": {
-   "name": "BENE3_PERCENT",
+   "name": "Beneficiary3Percent",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: share, %",
    "how": "reviewed"
   },
   "F29": {
-   "name": "MINOR1_NAME",
+   "name": "Minor1Name",
    "kind": "entry",
    "label": "Name of Minor",
    "desc": "Beneficiary who is a minor, 1: name",
    "how": "reviewed"
   },
   "F30": {
-   "name": "MINOR1_TRUSTEE_NAME",
+   "name": "Minor1TrusteeName",
    "kind": "entry",
    "label": "Name of Trustee for Minor",
    "desc": "Minor 1's trustee: name",
    "how": "reviewed",
-   "custom": "Required when MINOR1_NAME is filled in"
+   "custom": "Required when Minor1Name is filled in"
   },
   "F31": {
-   "name": "MINOR1_TRUSTEE_ADDRESS",
+   "name": "Minor1TrusteeAddress",
    "kind": "entry",
    "label": "Address of Trustee",
    "desc": "Minor 1's trustee: address",
    "how": "reviewed",
-   "custom": "Required when MINOR1_NAME is filled in"
+   "custom": "Required when Minor1Name is filled in"
   },
   "F32": {
-   "name": "MINOR2_NAME",
+   "name": "Minor2Name",
    "kind": "entry",
    "label": "The holder acknowledges they have been advised by Libro that:",
    "desc": "Beneficiary who is a minor, 2: name",
@@ -242,23 +243,23 @@
    ]
   },
   "F33": {
-   "name": "MINOR2_TRUSTEE_NAME",
+   "name": "Minor2TrusteeName",
    "kind": "entry",
    "label": "have been advised by Libro that:",
    "desc": "Minor 2's trustee: name",
    "how": "reviewed",
-   "custom": "Required when MINOR2_NAME is filled in"
+   "custom": "Required when Minor2Name is filled in"
   },
   "F34": {
-   "name": "MINOR2_TRUSTEE_ADDRESS",
+   "name": "Minor2TrusteeAddress",
    "kind": "entry",
    "label": "Address of Trustee",
    "desc": "Minor 2's trustee: address",
    "how": "reviewed",
-   "custom": "Required when MINOR2_NAME is filled in"
+   "custom": "Required when Minor2Name is filled in"
   },
   "F35": {
-   "name": "SIGNED_AT_CITY",
+   "name": "SignedAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (place), Ontario",
@@ -299,21 +300,21 @@
    ]
   },
   "F40": {
-   "name": "OFFICE_CHECKED_BY",
+   "name": "OfficeCheckedBy",
    "kind": "entry",
    "label": "Checked By",
    "desc": "Office use: checked by",
    "how": "reviewed"
   },
   "F41": {
-   "name": "OFFICE_ENTERED_BY",
+   "name": "OfficeEnteredBy",
    "kind": "entry",
    "label": "Entered By",
    "desc": "Office use: entered by",
    "how": "reviewed"
   },
   "F42": {
-   "name": "OFFICE_ENTRY_DATE",
+   "name": "OfficeEntryDate",
    "kind": "entry",
    "label": "Entry Date",
    "desc": "Office use: entry date",

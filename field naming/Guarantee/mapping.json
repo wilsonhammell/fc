@@ -8,7 +8,7 @@
    "how": "reviewed"
   },
   "F2": {
-   "name": "GUARANTEE_LIMIT_AMOUNT",
+   "name": "GuaranteeLimitAmount",
    "kind": "entry",
    "label": "Limited to the principal sum of $",
    "desc": "Guarantee limited to the principal sum of $",
@@ -65,7 +65,7 @@
    "how": "reviewed"
   },
   "F10": {
-   "name": "GUARANTOR_NAME",
+   "name": "GuarantorName",
    "kind": "entry",
    "label": "",
    "desc": "The guarantor's name, above the signing block (unlabelled)",

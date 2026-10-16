@@ -36,7 +36,7 @@
    "how": "reviewed"
   },
   "F6": {
-   "name": "RECIPIENT_NAME",
+   "name": "RecipientName",
    "kind": "entry",
    "label": "Name",
    "desc": "Recipient of funds: name",
@@ -44,7 +44,7 @@
    "save": true
   },
   "F7": {
-   "name": "RECIPIENT_ADDRESS_1",
+   "name": "RecipientAddress1",
    "kind": "entry",
    "label": "Address",
    "desc": "Recipient of funds: address, line 1",
@@ -52,21 +52,21 @@
    "save": true
   },
   "F8": {
-   "name": "RECIPIENT_ADDRESS_2",
+   "name": "RecipientAddress2",
    "kind": "entry",
    "label": "",
    "desc": "line 2",
    "how": "reviewed"
   },
   "F9": {
-   "name": "RECIPIENT_ADDRESS_3",
+   "name": "RecipientAddress3",
    "kind": "entry",
    "label": "Box 12",
    "desc": "line 3",
    "how": "reviewed"
   },
   "F10": {
-   "name": "RECIPIENT_SIN",
+   "name": "RecipientSIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Recipient of funds: SIN",
@@ -81,7 +81,7 @@
    "how": "reviewed"
   },
   "F12": {
-   "name": "LIBRO_BUSINESS_NUMBER",
+   "name": "LibroBusinessNumber",
    "kind": "entry",
    "label": "",
    "desc": "Libro's business number (dropdown - changes if profit share)",
@@ -96,7 +96,7 @@
    "save": true
   },
   "F14": {
-   "name": "PAYOUT_DATE",
+   "name": "PayoutDate",
    "kind": "entry",
    "label": "Date of Payout",
    "desc": "Date of payout",
@@ -175,7 +175,7 @@
    "how": "reviewed"
   },
   "F25": {
-   "name": "WS_BENE1_NAME",
+   "name": "WorksheetBeneficiary1Name",
    "kind": "entry",
    "label": "1",
    "desc": "Beneficiary 1: name (old field Beneficiary Name1, no script reads it)",
@@ -196,7 +196,7 @@
    "how": "reviewed"
   },
   "F28": {
-   "name": "WS_BENE2_NAME",
+   "name": "WorksheetBeneficiary2Name",
    "kind": "entry",
    "label": "2",
    "desc": "Beneficiary 2: name (old field Beneficiary Name2, no script reads it)",
@@ -217,7 +217,7 @@
    "how": "reviewed"
   },
   "F31": {
-   "name": "WS_BENE3_NAME",
+   "name": "WorksheetBeneficiary3Name",
    "kind": "entry",
    "label": "3",
    "desc": "Beneficiary 3: name (old field Beneficiary Name3, no script reads it)",
@@ -238,7 +238,7 @@
    "how": "reviewed"
   },
   "F34": {
-   "name": "WS_BENE4_NAME",
+   "name": "WorksheetBeneficiary4Name",
    "kind": "entry",
    "label": "4",
    "desc": "Beneficiary 4: name (old field Beneficiary Name4, no script reads it)",
@@ -259,7 +259,7 @@
    "how": "reviewed"
   },
   "F37": {
-   "name": "WS_BENE5_NAME",
+   "name": "WorksheetBeneficiary5Name",
    "kind": "entry",
    "label": "5",
    "desc": "Beneficiary 5: name (old field Beneficiary Name5, no script reads it)",
@@ -280,7 +280,7 @@
    "how": "reviewed"
   },
   "F40": {
-   "name": "WS_BENE6_NAME",
+   "name": "WorksheetBeneficiary6Name",
    "kind": "entry",
    "label": "6",
    "desc": "Beneficiary 6: name (old field Beneficiary Name6, no script reads it)",
@@ -301,7 +301,7 @@
    "how": "reviewed"
   },
   "F43": {
-   "name": "WS_BENE7_NAME",
+   "name": "WorksheetBeneficiary7Name",
    "kind": "entry",
    "label": "7",
    "desc": "Beneficiary 7: name (old field Beneficiary Name7, no script reads it)",
@@ -322,7 +322,7 @@
    "how": "reviewed"
   },
   "F46": {
-   "name": "WS_BENE8_NAME",
+   "name": "WorksheetBeneficiary8Name",
    "kind": "entry",
    "label": "8",
    "desc": "Beneficiary 8: name (old field Beneficiary Name8, no script reads it)",
@@ -343,7 +343,7 @@
    "how": "reviewed"
   },
   "F49": {
-   "name": "WS_BENE9_NAME",
+   "name": "WorksheetBeneficiary9Name",
    "kind": "entry",
    "label": "9",
    "desc": "Beneficiary 9: name (old field Beneficiary Name9, no script reads it)",
@@ -364,7 +364,7 @@
    "how": "reviewed"
   },
   "F52": {
-   "name": "WS_BENE10_NAME",
+   "name": "WorksheetBeneficiary10Name",
    "kind": "entry",
    "label": "10",
    "desc": "Beneficiary 10: name (old field Beneficiary Name10, no script reads it)",

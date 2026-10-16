@@ -1,7 +1,7 @@
 {
  "items": {
   "F1": {
-   "name": "DFO_LICENCE_NUMBER",
+   "name": "DFOLicenceNumber",
    "kind": "entry",
    "label": "DFO Licence No.",
    "desc": "DFO licence number",
@@ -16,7 +16,7 @@
    "how": "reviewed"
   },
   "F3": {
-   "name": "DFO_LICENCE_NAME",
+   "name": "DFOLicenceName",
    "kind": "entry",
    "label": "Name on DFO Licence",
    "desc": "Name on the DFO licence (often PRIMARY_FULL_LEGAL_NAME)",
@@ -24,7 +24,7 @@
    "save": true
   },
   "F4": {
-   "name": "QUOTA_KILOGRAMS",
+   "name": "QuotaKilograms",
    "kind": "entry",
    "label": "Kilograms",
    "desc": "Kilograms of quota under the direction",
@@ -32,7 +32,7 @@
    "save": true
   },
   "F5": {
-   "name": "DIRECTION_START_DATE",
+   "name": "DirectionStartDate",
    "kind": "entry",
    "label": "Start date",
    "desc": "Start date of the direction",
@@ -40,7 +40,7 @@
    "save": true
   },
   "F6": {
-   "name": "DIRECTION_EXPIRY_DATE",
+   "name": "DirectionExpiryDate",
    "kind": "entry",
    "label": "Expiry date",
    "desc": "Expiry date of the direction",
@@ -48,7 +48,7 @@
    "save": true
   },
   "F7": {
-   "name": "LENDER_NAME",
+   "name": "LenderName",
    "kind": "entry",
    "label": "Name of Lender",
    "desc": "Payable to: name of lender (printed as Libro Credit Union Limited)",
@@ -56,7 +56,7 @@
    "save": true
   },
   "F8": {
-   "name": "LENDER_ADDRESS",
+   "name": "LenderAddress",
    "kind": "entry",
    "label": "Address",
    "desc": "Lender's address, line 1 (printed as 217 York Street)",
@@ -64,7 +64,7 @@
    "save": true
   },
   "F9": {
-   "name": "LENDER_PHONE",
+   "name": "LenderPhone",
    "kind": "entry",
    "label": "Telephone No.",
    "desc": "Lender's telephone (printed as 519-672-0124)",
@@ -72,21 +72,21 @@
    "save": true
   },
   "F10": {
-   "name": "LENDER_FAX",
+   "name": "LenderFax",
    "kind": "entry",
    "label": "Fax No.",
    "desc": "Lender's fax",
    "how": "reviewed"
   },
   "F11": {
-   "name": "LENDER_EMAIL",
+   "name": "LenderEmail",
    "kind": "entry",
    "label": "E-mail",
    "desc": "Lender's e-mail",
    "how": "reviewed"
   },
   "F12": {
-   "name": "WITNESS_NAME_1",
+   "name": "WitnessName1",
    "kind": "entry",
    "label": "Producer Authorization",
    "desc": "Witness's name (non-family member), row 1",
@@ -101,7 +101,7 @@
    "how": "reviewed"
   },
   "F14": {
-   "name": "WITNESS_NAME_2",
+   "name": "WitnessName2",
    "kind": "entry",
    "label": "WITNESS’ NAME (non-family member) (please print)",
    "desc": "Witness's name, row 2",
@@ -115,14 +115,14 @@
    "how": "reviewed"
   },
   "B1": {
-   "name": "LENDER_ADDRESS_2",
+   "name": "LenderAddress2",
    "kind": "entry",
    "label": "Fax No.",
    "desc": "Lender's address, line 2",
    "how": "reviewed"
   },
   "B2": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Signature of the lender or lender’s authorized representative",
    "desc": "Signature of the lender's authorized representative",
@@ -136,7 +136,7 @@
    "how": "reviewed"
   },
   "B4": {
-   "name": "WITNESS_SIGNATURE_1",
+   "name": "WitnessSignature1",
    "kind": "entry",
    "label": "",
    "desc": "Witness's signature, row 1",
@@ -157,7 +157,7 @@
    "how": "reviewed"
   },
   "B7": {
-   "name": "WITNESS_SIGNATURE_2",
+   "name": "WitnessSignature2",
    "kind": "entry",
    "label": "WITNESS’ SIGNATURE",
    "desc": "Witness's signature, row 2",
@@ -178,28 +178,28 @@
    "how": "reviewed"
   },
   "B10": {
-   "name": "DFO_EFFECTIVE_DATE",
+   "name": "DFOEffectiveDate",
    "kind": "entry",
    "label": "Effective Date",
    "desc": "DFO use only: effective date",
    "how": "reviewed"
   },
   "B11": {
-   "name": "DFO_EXPIRY_DATE",
+   "name": "DFOExpiryDate",
    "kind": "entry",
    "label": "Expiry Date",
    "desc": "DFO use only: expiry date",
    "how": "reviewed"
   },
   "B12": {
-   "name": "DFO_SIGNATURE",
+   "name": "DFOSignature",
    "kind": "entry",
    "label": "Authorized Signature",
    "desc": "DFO use only: authorized signature",
    "how": "reviewed"
   },
   "B13": {
-   "name": "DFO_DATE",
+   "name": "DFODate",
    "kind": "entry",
    "label": "Date",
    "desc": "DFO use only: date",
@@ -220,7 +220,7 @@
    "how": "reviewed"
   },
   "F18": {
-   "name": "COLLATERAL_DESCRIPTION",
+   "name": "CollateralDescription",
    "kind": "entry",
    "label": "",
    "desc": "Security agreement: description of the quota",

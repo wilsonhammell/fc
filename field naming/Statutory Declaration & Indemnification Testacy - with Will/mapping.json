@@ -61,104 +61,103 @@
    "save": true
   },
   "F9": {
-   "name": "ASSET_DEPOSIT_ACCOUNT",
+   "name": "AssetType.DepositAccount",
    "kind": "entry",
    "label": "Deposit Account(s)",
    "desc": "Tick: deposit account(s)",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "At least one asset type (ASSET_DEPOSIT_ACCOUNT, ASSET_TERM_DEPOSIT, ASSET_RRSP, ASSET_TFSA, ASSET_CLASS_P_SHARES, ASSET_MEMBERSHIP_SHARES) must be ticked"
+   "save": true
   },
   "F10": {
-   "name": "DEPOSIT_ACCOUNT_NUMBERS",
+   "name": "DepositAccountNumbers",
    "kind": "entry",
    "label": "Deposit Account(s)",
    "desc": "The deceased's deposit account number(s)",
    "how": "reviewed",
-   "custom": "Required when ASSET_DEPOSIT_ACCOUNT is ticked"
+   "custom": "Required when AssetType.DepositAccount is ticked"
   },
   "F11": {
-   "name": "ASSET_TERM_DEPOSIT",
+   "name": "AssetType.TermDeposit",
    "kind": "entry",
    "label": "Term Deposit/GIC(s)",
    "desc": "Tick: term deposit / GIC(s)",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F12": {
-   "name": "TERM_DEPOSIT_NUMBERS",
+   "name": "TermDepositNumbers",
    "kind": "entry",
    "label": "Term Deposit/GIC(s)",
    "desc": "The deceased's term deposit / GIC number(s)",
    "how": "reviewed",
-   "custom": "Required when ASSET_TERM_DEPOSIT is ticked"
+   "custom": "Required when AssetType.TermDeposit is ticked"
   },
   "F13": {
-   "name": "ASSET_RRSP",
+   "name": "AssetType.RRSP",
    "kind": "entry",
    "label": "RRSP Contract(s)",
    "desc": "Tick: RRSP contract(s)",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F14": {
-   "name": "RRSP_CONTRACTS",
+   "name": "RRSPContracts",
    "kind": "entry",
    "label": "RRSP Contract(s)",
    "desc": "The deceased's RRSP contract number(s)",
    "how": "reviewed",
-   "custom": "Required when ASSET_RRSP is ticked"
+   "custom": "Required when AssetType.RRSP is ticked"
   },
   "F15": {
-   "name": "ASSET_TFSA",
+   "name": "AssetType.TFSA",
    "kind": "entry",
    "label": "TFSA Contract(s)",
    "desc": "Tick: TFSA contract(s)",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F16": {
-   "name": "TFSA_CONTRACTS",
+   "name": "TFSAContracts",
    "kind": "entry",
    "label": "TFSA Contract(s)",
    "desc": "The deceased's TFSA contract number(s)",
    "how": "reviewed",
-   "custom": "Required when ASSET_TFSA is ticked"
+   "custom": "Required when AssetType.TFSA is ticked"
   },
   "F17": {
-   "name": "ASSET_CLASS_P_SHARES",
+   "name": "AssetType.ClassPShares",
    "kind": "entry",
    "label": "Class P Proﬁt Shares",
    "desc": "Tick: Class P profit shares",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F18": {
-   "name": "CLASS_P_SHARES",
+   "name": "ClassPShares",
    "kind": "entry",
    "label": "$",
    "desc": "Class P profit shares $",
    "how": "reviewed",
-   "custom": "Required when ASSET_CLASS_P_SHARES is ticked"
+   "custom": "Required when AssetType.ClassPShares is ticked"
   },
   "F19": {
-   "name": "ASSET_MEMBERSHIP_SHARES",
+   "name": "AssetType.MembershipShares",
    "kind": "entry",
    "label": "Membership Shares",
    "desc": "Tick: membership shares",
    "how": "reviewed",
-   "type": "checkbox"
+   "save": true
   },
   "F20": {
-   "name": "MEMBERSHIP_SHARES_AMOUNT",
+   "name": "MembershipSharesAmount",
    "kind": "entry",
    "label": "$",
    "desc": "Membership shares $",
    "how": "reviewed",
-   "custom": "Required when ASSET_MEMBERSHIP_SHARES is ticked"
+   "custom": "Required when AssetType.MembershipShares is ticked"
   },
   "F21": {
-   "name": "WILL_DATED_DAY",
+   "name": "WillDatedDay",
    "kind": "entry",
    "label": "3. THAT the deceased had a will dated",
    "desc": "Will dated: day",
@@ -166,7 +165,7 @@
    "save": true
   },
   "F22": {
-   "name": "WILL_DATED_MONTH",
+   "name": "WillDatedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "month",
@@ -174,7 +173,7 @@
    "save": true
   },
   "F23": {
-   "name": "WILL_DATED_YEAR",
+   "name": "WillDatedYear",
    "kind": "entry",
    "label": ",",
    "desc": "year",
@@ -182,7 +181,7 @@
    "save": true
   },
   "F24": {
-   "name": "WILL_BENE1_NAME",
+   "name": "WillBeneficiary1Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary under the will 1: name",
@@ -190,7 +189,7 @@
    "save": true
   },
   "F25": {
-   "name": "WILL_BENE1_RELATIONSHIP",
+   "name": "WillBeneficiary1Relationship",
    "kind": "entry",
    "label": "Relationship to Deceased",
    "desc": "Beneficiary under the will 1: relationship to the deceased",
@@ -198,161 +197,161 @@
    "save": true
   },
   "F26": {
-   "name": "WILL_BENE1_BIRTHDATE",
+   "name": "WillBeneficiary1Birthdate",
    "kind": "entry",
    "label": "Birthdate",
    "desc": "Beneficiary under the will 1: birthdate",
    "how": "reviewed"
   },
   "F27": {
-   "name": "WILL_BENE2_NAME",
+   "name": "WillBeneficiary2Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 2: name",
    "how": "reviewed"
   },
   "F28": {
-   "name": "WILL_BENE2_RELATIONSHIP",
+   "name": "WillBeneficiary2Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 2: relationship to the deceased",
    "how": "reviewed"
   },
   "F29": {
-   "name": "WILL_BENE2_BIRTHDATE",
+   "name": "WillBeneficiary2Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 2: birthdate",
    "how": "reviewed"
   },
   "F30": {
-   "name": "WILL_BENE3_NAME",
+   "name": "WillBeneficiary3Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 3: name",
    "how": "reviewed"
   },
   "F31": {
-   "name": "WILL_BENE3_RELATIONSHIP",
+   "name": "WillBeneficiary3Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 3: relationship to the deceased",
    "how": "reviewed"
   },
   "F32": {
-   "name": "WILL_BENE3_BIRTHDATE",
+   "name": "WillBeneficiary3Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 3: birthdate",
    "how": "reviewed"
   },
   "F33": {
-   "name": "WILL_BENE4_NAME",
+   "name": "WillBeneficiary4Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 4: name",
    "how": "reviewed"
   },
   "F34": {
-   "name": "WILL_BENE4_RELATIONSHIP",
+   "name": "WillBeneficiary4Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 4: relationship to the deceased",
    "how": "reviewed"
   },
   "F35": {
-   "name": "WILL_BENE4_BIRTHDATE",
+   "name": "WillBeneficiary4Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 4: birthdate",
    "how": "reviewed"
   },
   "F36": {
-   "name": "WILL_BENE5_NAME",
+   "name": "WillBeneficiary5Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 5: name",
    "how": "reviewed"
   },
   "F37": {
-   "name": "WILL_BENE5_RELATIONSHIP",
+   "name": "WillBeneficiary5Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 5: relationship to the deceased",
    "how": "reviewed"
   },
   "F38": {
-   "name": "WILL_BENE5_BIRTHDATE",
+   "name": "WillBeneficiary5Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 5: birthdate",
    "how": "reviewed"
   },
   "F39": {
-   "name": "WILL_BENE6_NAME",
+   "name": "WillBeneficiary6Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 6: name",
    "how": "reviewed"
   },
   "F40": {
-   "name": "WILL_BENE6_RELATIONSHIP",
+   "name": "WillBeneficiary6Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 6: relationship to the deceased",
    "how": "reviewed"
   },
   "F41": {
-   "name": "WILL_BENE6_BIRTHDATE",
+   "name": "WillBeneficiary6Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 6: birthdate",
    "how": "reviewed"
   },
   "F42": {
-   "name": "WILL_BENE7_NAME",
+   "name": "WillBeneficiary7Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 7: name",
    "how": "reviewed"
   },
   "F43": {
-   "name": "WILL_BENE7_RELATIONSHIP",
+   "name": "WillBeneficiary7Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 7: relationship to the deceased",
    "how": "reviewed"
   },
   "F44": {
-   "name": "WILL_BENE7_BIRTHDATE",
+   "name": "WillBeneficiary7Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 7: birthdate",
    "how": "reviewed"
   },
   "F45": {
-   "name": "WILL_BENE8_NAME",
+   "name": "WillBeneficiary8Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 8: name",
    "how": "reviewed"
   },
   "F46": {
-   "name": "WILL_BENE8_RELATIONSHIP",
+   "name": "WillBeneficiary8Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 8: relationship to the deceased",
    "how": "reviewed"
   },
   "F47": {
-   "name": "WILL_BENE8_BIRTHDATE",
+   "name": "WillBeneficiary8Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 8: birthdate",
    "how": "reviewed"
   },
   "F49": {
-   "name": "ESTATE_ASSETS_VALUE",
+   "name": "EstateAssetsValue",
    "kind": "entry",
    "label": "and registered funds with a valid Designation of Beneﬁciary): $",
    "desc": "Value of all assets in the deceased's name $",
@@ -360,261 +359,261 @@
    "save": true
   },
   "F50": {
-   "name": "OPTION1_CLAIMANT1_NAME",
+   "name": "Option1Claimant1Name",
    "kind": "entry",
    "label": "(enter % or exact amount)",
    "desc": "Option #1, claimant 1: claimant name",
    "how": "reviewed",
-   "custom": "Either Option #1 (OPTION1_CLAIMANT1_NAME, _MEMBER_NUMBER, _ENTITLEMENT) or Option #2 (OPTION2_CLAIMANT1_NAME, _ADDRESS, _PHONE, _ENTITLEMENT) must be completed for at least one claimant"
+   "custom": "Either Option #1 (Option1Claimant1Name, Option1Claimant1MemberNumber, Option1Claimant1Entitlement) or Option #2 (Option2Claimant1Name, Option2Claimant1Address, Option2Claimant1Phone, Option2Claimant1Entitlement) must be completed for at least one claimant"
   },
   "F51": {
-   "name": "OPTION1_CLAIMANT1_MEMBER_NUMBER",
+   "name": "Option1Claimant1MemberNumber",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 1: Libro folio (member) #",
    "how": "reviewed"
   },
   "F52": {
-   "name": "OPTION1_CLAIMANT1_ENTITLEMENT",
+   "name": "Option1Claimant1Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 1: entitlement, % or amount",
    "how": "reviewed"
   },
   "F53": {
-   "name": "OPTION1_CLAIMANT2_NAME",
+   "name": "Option1Claimant2Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 2: claimant name",
    "how": "reviewed"
   },
   "F54": {
-   "name": "OPTION1_CLAIMANT2_MEMBER_NUMBER",
+   "name": "Option1Claimant2MemberNumber",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 2: Libro folio (member) #",
    "how": "reviewed"
   },
   "F55": {
-   "name": "OPTION1_CLAIMANT2_ENTITLEMENT",
+   "name": "Option1Claimant2Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 2: entitlement, % or amount",
    "how": "reviewed"
   },
   "F56": {
-   "name": "OPTION1_CLAIMANT3_NAME",
+   "name": "Option1Claimant3Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 3: claimant name",
    "how": "reviewed"
   },
   "F57": {
-   "name": "OPTION1_CLAIMANT3_MEMBER_NUMBER",
+   "name": "Option1Claimant3MemberNumber",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 3: Libro folio (member) #",
    "how": "reviewed"
   },
   "F58": {
-   "name": "OPTION1_CLAIMANT3_ENTITLEMENT",
+   "name": "Option1Claimant3Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 3: entitlement, % or amount",
    "how": "reviewed"
   },
   "F59": {
-   "name": "OPTION1_CLAIMANT4_NAME",
+   "name": "Option1Claimant4Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 4: claimant name",
    "how": "reviewed"
   },
   "F60": {
-   "name": "OPTION1_CLAIMANT4_MEMBER_NUMBER",
+   "name": "Option1Claimant4MemberNumber",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 4: Libro folio (member) #",
    "how": "reviewed"
   },
   "F61": {
-   "name": "OPTION1_CLAIMANT4_ENTITLEMENT",
+   "name": "Option1Claimant4Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 4: entitlement, % or amount",
    "how": "reviewed"
   },
   "F62": {
-   "name": "OPTION1_CLAIMANT5_NAME",
+   "name": "Option1Claimant5Name",
    "kind": "entry",
    "label": "Option #2",
    "desc": "Option #1, claimant 5: claimant name",
    "how": "reviewed"
   },
   "F63": {
-   "name": "OPTION1_CLAIMANT5_MEMBER_NUMBER",
+   "name": "Option1Claimant5MemberNumber",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 5: Libro folio (member) #",
    "how": "reviewed"
   },
   "F64": {
-   "name": "OPTION1_CLAIMANT5_ENTITLEMENT",
+   "name": "Option1Claimant5Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 5: entitlement, % or amount",
    "how": "reviewed"
   },
   "F65": {
-   "name": "OPTION2_CLAIMANT1_NAME",
+   "name": "Option2Claimant1Name",
    "kind": "entry",
    "label": "(enter % or exact amount)",
    "desc": "Option #2, claimant 1: claimant name",
    "how": "reviewed",
-   "custom": "Either Option #2 or Option #1 must be completed for at least one claimant (see OPTION1_CLAIMANT1_NAME)"
+   "custom": "Either Option #2 or Option #1 must be completed for at least one claimant (see Option1Claimant1Name)"
   },
   "F66": {
-   "name": "OPTION2_CLAIMANT1_ADDRESS",
+   "name": "Option2Claimant1Address",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 1: full address",
    "how": "reviewed"
   },
   "F67": {
-   "name": "OPTION2_CLAIMANT1_PHONE",
+   "name": "Option2Claimant1Phone",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 1: phone number",
    "how": "reviewed"
   },
   "F68": {
-   "name": "OPTION2_CLAIMANT1_ENTITLEMENT",
+   "name": "Option2Claimant1Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 1: entitlement, % or amount",
    "how": "reviewed"
   },
   "F69": {
-   "name": "OPTION2_CLAIMANT2_NAME",
+   "name": "Option2Claimant2Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 2: claimant name",
    "how": "reviewed"
   },
   "F70": {
-   "name": "OPTION2_CLAIMANT2_ADDRESS",
+   "name": "Option2Claimant2Address",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 2: full address",
    "how": "reviewed"
   },
   "F71": {
-   "name": "OPTION2_CLAIMANT2_PHONE",
+   "name": "Option2Claimant2Phone",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 2: phone number",
    "how": "reviewed"
   },
   "F72": {
-   "name": "OPTION2_CLAIMANT2_ENTITLEMENT",
+   "name": "Option2Claimant2Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 2: entitlement, % or amount",
    "how": "reviewed"
   },
   "F73": {
-   "name": "OPTION2_CLAIMANT3_NAME",
+   "name": "Option2Claimant3Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 3: claimant name",
    "how": "reviewed"
   },
   "F74": {
-   "name": "OPTION2_CLAIMANT3_ADDRESS",
+   "name": "Option2Claimant3Address",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 3: full address",
    "how": "reviewed"
   },
   "F75": {
-   "name": "OPTION2_CLAIMANT3_PHONE",
+   "name": "Option2Claimant3Phone",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 3: phone number",
    "how": "reviewed"
   },
   "F76": {
-   "name": "OPTION2_CLAIMANT3_ENTITLEMENT",
+   "name": "Option2Claimant3Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 3: entitlement, % or amount",
    "how": "reviewed"
   },
   "F77": {
-   "name": "OPTION2_CLAIMANT4_NAME",
+   "name": "Option2Claimant4Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 4: claimant name",
    "how": "reviewed"
   },
   "F78": {
-   "name": "OPTION2_CLAIMANT4_ADDRESS",
+   "name": "Option2Claimant4Address",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 4: full address",
    "how": "reviewed"
   },
   "F79": {
-   "name": "OPTION2_CLAIMANT4_PHONE",
+   "name": "Option2Claimant4Phone",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 4: phone number",
    "how": "reviewed"
   },
   "F80": {
-   "name": "OPTION2_CLAIMANT4_ENTITLEMENT",
+   "name": "Option2Claimant4Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 4: entitlement, % or amount",
    "how": "reviewed"
   },
   "F81": {
-   "name": "OPTION2_CLAIMANT5_NAME",
+   "name": "Option2Claimant5Name",
    "kind": "entry",
    "label": "Additional Instructions:",
    "desc": "Option #2, claimant 5: claimant name",
    "how": "reviewed"
   },
   "F82": {
-   "name": "OPTION2_CLAIMANT5_ADDRESS",
+   "name": "Option2Claimant5Address",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 5: full address",
    "how": "reviewed"
   },
   "F83": {
-   "name": "OPTION2_CLAIMANT5_PHONE",
+   "name": "Option2Claimant5Phone",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 5: phone number",
    "how": "reviewed"
   },
   "F84": {
-   "name": "OPTION2_CLAIMANT5_ENTITLEMENT",
+   "name": "Option2Claimant5Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 5: entitlement, % or amount",
    "how": "reviewed"
   },
   "F85": {
-   "name": "ADDITIONAL_INSTRUCTIONS",
+   "name": "AdditionalInstructions",
    "kind": "entry",
    "label": "*No cash withdrawals are allowed. Only cheques or transfer can be completed.",
    "desc": "Additional instructions",
    "how": "reviewed"
   },
   "F86": {
-   "name": "ESTATE_TRUSTEE_NAMES",
+   "name": "EstateTrusteeNames",
    "kind": "entry",
    "label": "I/WE,",
    "desc": "The estate trustees named in the will (I/WE, ___)",
@@ -622,7 +621,7 @@
    "save": true
   },
   "F87": {
-   "name": "DECLARED1_AT_CITY",
+   "name": "Declared1AtCity",
    "kind": "entry",
    "label": "DECLARED BEFORE ME at",
    "desc": "Declaration 1: declared before me at",
@@ -630,14 +629,14 @@
    "save": true
   },
   "F88": {
-   "name": "TRUSTEE1_SIGNATURE",
+   "name": "Trustee1Signature",
    "kind": "entry",
    "label": ",",
    "desc": "Signature of estate trustee 1",
    "how": "reviewed"
   },
   "F89": {
-   "name": "DECLARED1_AT_PROVINCE",
+   "name": "Declared1AtProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Declaration 1: in the Province of",
@@ -645,7 +644,7 @@
    "save": true
   },
   "F90": {
-   "name": "DECLARED1_DAY",
+   "name": "Declared1Day",
    "kind": "entry",
    "label": ", this",
    "desc": "Declaration 1: this ___ day",
@@ -653,7 +652,7 @@
    "save": true
   },
   "F91": {
-   "name": "DECLARED1_MONTH",
+   "name": "Declared1Month",
    "kind": "entry",
    "label": "of",
    "desc": "Declaration 1: of ___ (month)",
@@ -661,7 +660,7 @@
    "save": true
   },
   "F92": {
-   "name": "DECLARED1_YEAR",
+   "name": "Declared1Year",
    "kind": "entry",
    "label": ", A.D. 20",
    "desc": "Declaration 1: A.D. 20__",
@@ -669,7 +668,7 @@
    "save": true
   },
   "F93": {
-   "name": "TRUSTEE2_SIGNATURE",
+   "name": "Trustee2Signature",
    "kind": "entry",
    "label": "Signature of Estate Trustee",
    "desc": "Signature of estate trustee 2",
@@ -683,98 +682,98 @@
    "how": "reviewed"
   },
   "F95": {
-   "name": "TRUSTEE3_SIGNATURE",
+   "name": "Trustee3Signature",
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Signature of estate trustee 3",
    "how": "reviewed"
   },
   "F96": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "",
    "desc": "Authorizing staff member (Libro witness): signature",
    "how": "reviewed"
   },
   "F97": {
-   "name": "TRUSTEE4_SIGNATURE",
+   "name": "Trustee4Signature",
    "kind": "entry",
    "label": "Signature of Estate Trustee",
    "desc": "Signature of estate trustee 4",
    "how": "reviewed"
   },
   "F98": {
-   "name": "TRUSTEE5_SIGNATURE",
+   "name": "Trustee5Signature",
    "kind": "entry",
    "label": "OR",
    "desc": "Signature of estate trustee 5",
    "how": "reviewed"
   },
   "F99": {
-   "name": "DECLARED2_AT_CITY",
+   "name": "Declared2AtCity",
    "kind": "entry",
    "label": "DECLARED BEFORE ME at",
    "desc": "Declaration 2: declared before me at",
    "how": "reviewed"
   },
   "F100": {
-   "name": "DECLARED2_AT_PROVINCE",
+   "name": "Declared2AtProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Declaration 2: in the Province of",
    "how": "reviewed"
   },
   "F101": {
-   "name": "DECLARED2_DAY",
+   "name": "Declared2Day",
    "kind": "entry",
    "label": ", this",
    "desc": "Declaration 2: this ___ day",
    "how": "reviewed"
   },
   "F102": {
-   "name": "TRUSTEE6_SIGNATURE",
+   "name": "Trustee6Signature",
    "kind": "entry",
    "label": "day",
    "desc": "Signature of estate trustee 6",
    "how": "reviewed"
   },
   "F103": {
-   "name": "DECLARED2_MONTH",
+   "name": "Declared2Month",
    "kind": "entry",
    "label": "of",
    "desc": "Declaration 2: of ___ (month)",
    "how": "reviewed"
   },
   "F104": {
-   "name": "DECLARED2_YEAR",
+   "name": "Declared2Year",
    "kind": "entry",
    "label": ", A.D. 20",
    "desc": "Declaration 2: A.D. 20__",
    "how": "reviewed"
   },
   "F105": {
-   "name": "TRUSTEE7_SIGNATURE",
+   "name": "Trustee7Signature",
    "kind": "entry",
    "label": "Signature of Estate Trustee",
    "desc": "Signature of estate trustee 7",
    "how": "reviewed"
   },
   "F106": {
-   "name": "COMMISSIONER_PROVINCE",
+   "name": "CommissionerProvince",
    "kind": "entry",
    "label": "Province of",
    "desc": "Commissioner for oaths / notary: province of",
    "how": "reviewed"
   },
   "F107": {
-   "name": "TRUSTEE8_SIGNATURE",
+   "name": "Trustee8Signature",
    "kind": "entry",
    "label": ".",
    "desc": "Signature of estate trustee 8",
    "how": "reviewed"
   },
   "F108": {
-   "name": "COMMISSIONER_APPOINTMENT_EXPIRES",
+   "name": "CommissionerAppointmentExpires",
    "kind": "entry",
    "label": "My appointment expires on",
    "desc": "Commissioner's appointment expires on",

@@ -15,7 +15,7 @@
    "how": "reviewed"
   },
   "F3": {
-   "name": "LIRA_ADMINISTRATOR_NAME",
+   "name": "LIRAAdministratorName",
    "kind": "entry",
    "label": "who has requested a transfer of locked-in money from",
    "desc": "Name of the pension plan or organization administering the LIRA",
@@ -23,7 +23,7 @@
    "save": true
   },
   "F4": {
-   "name": "SIGNED_AT_CITY",
+   "name": "SignedAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (city)",
@@ -31,7 +31,7 @@
    "save": true
   },
   "F5": {
-   "name": "SIGNED_AT_PROVINCE",
+   "name": "SignedAtProvince",
    "kind": "entry",
    "label": ", in the province of",
    "desc": "in the province of",
@@ -39,7 +39,7 @@
    "save": true
   },
   "F6": {
-   "name": "SIGNED_DAY",
+   "name": "SignedDay",
    "kind": "entry",
    "label": ", this",
    "desc": "this ___ day",
@@ -47,7 +47,7 @@
    "save": true
   },
   "F7": {
-   "name": "SIGNED_MONTH",
+   "name": "SignedMonth",
    "kind": "entry",
    "label": "of",
    "desc": "of ___ (month)",
@@ -55,7 +55,7 @@
    "save": true
   },
   "F8": {
-   "name": "SIGNED_YEAR",
+   "name": "SignedYear",
    "kind": "entry",
    "label": ", in the year",
    "desc": "in the year",
@@ -91,7 +91,7 @@
    "save": true
   },
   "F12": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Witness (staff member) signature - was the old witness signature box",

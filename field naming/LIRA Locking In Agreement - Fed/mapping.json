@@ -79,24 +79,25 @@
    "how": "reviewed"
   },
   "F12": {
-   "name": "PENSION_DIFFERENTIATED",
+   "name": "PensionDifferentiation",
    "kind": "entry",
    "label": "",
    "desc": "Tick: the pension plan differentiated on the basis of sex",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of PENSION_DIFFERENTIATED and PENSION_NOT_DIFFERENTIATED must be ticked"
+   "option": "Differentiated",
+   "save": true
   },
   "F13": {
-   "name": "PENSION_NOT_DIFFERENTIATED",
+   "name": "PensionDifferentiation",
    "kind": "entry",
    "label": "on",
    "desc": "Tick: the pension plan did not differentiate",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "NotDifferentiated",
+   "save": true
   },
   "F14": {
-   "name": "EXECUTED_PLACE_TYPE",
+   "name": "ExecutedPlaceType",
    "kind": "entry",
    "label": "Executed at the",
    "desc": "Executed at the (city, town, village ...)",
@@ -104,7 +105,7 @@
    "save": true
   },
   "F15": {
-   "name": "SIGNED_DAY",
+   "name": "SignedDay",
    "kind": "entry",
    "label": "Executed at the",
    "desc": "this ___ day",
@@ -112,7 +113,7 @@
    "save": true
   },
   "F16": {
-   "name": "SIGNED_AT_CITY",
+   "name": "SignedAtCity",
    "kind": "entry",
    "label": "of",
    "desc": "of (name of place)",
@@ -120,7 +121,7 @@
    "save": true
   },
   "F17": {
-   "name": "SIGNED_AT_PROVINCE",
+   "name": "SignedAtProvince",
    "kind": "entry",
    "label": "Executed at the",
    "desc": "in the Province of",
@@ -128,7 +129,7 @@
    "save": true
   },
   "F18": {
-   "name": "SIGNED_MONTH",
+   "name": "SignedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "of ___ (month)",
@@ -136,7 +137,7 @@
    "save": true
   },
   "F19": {
-   "name": "SIGNED_YEAR",
+   "name": "SignedYear",
    "kind": "entry",
    "label": ", A.D.",
    "desc": "A.D.",
@@ -170,7 +171,7 @@
    ]
   },
   "F22": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Per:",
    "desc": "Signed for Libro (Per:)",
@@ -219,7 +220,7 @@
    "how": "reviewed"
   },
   "F23": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Per:",
    "desc": "Signed for Libro (Per:), page 4",

@@ -9,7 +9,7 @@
    "save": true
   },
   "F2": {
-   "name": "SDB_RELEASE_DAY",
+   "name": "SDBReleaseDay",
    "kind": "entry",
    "label": "this",
    "desc": "Contents released this ___ day",
@@ -17,7 +17,7 @@
    "save": true
   },
   "F3": {
-   "name": "SDB_RELEASE_MONTH",
+   "name": "SDBReleaseMonth",
    "kind": "entry",
    "label": "_ day of",
    "desc": "of ___ (month)",
@@ -25,7 +25,7 @@
    "save": true
   },
   "F4": {
-   "name": "SDB_RELEASE_YEAR",
+   "name": "SDBReleaseYear",
    "kind": "entry",
    "label": ", 20",
    "desc": ", 20__",
@@ -124,7 +124,7 @@
    ]
   },
   "F12": {
-   "name": "STAFF2_NAME",
+   "name": "Staff2Name",
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Libro witness 2: name",
@@ -138,7 +138,7 @@
    "save": true
   },
   "F13": {
-   "name": "STAFF2_SIGNATURE",
+   "name": "Staff2Signature",
    "kind": "entry",
    "label": "Member",
    "desc": "Libro witness 2: signature",
@@ -213,7 +213,7 @@
    ]
   },
   "F21": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Member",
    "desc": "Libro witness 1: signature",
@@ -261,7 +261,7 @@
    "how": "reviewed"
   },
   "B6": {
-   "name": "STAFF2_DATE",
+   "name": "Staff2Date",
    "kind": "entry",
    "label": "Date",
    "desc": "Libro witness 2: date",

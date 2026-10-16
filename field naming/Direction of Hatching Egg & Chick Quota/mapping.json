@@ -8,7 +8,7 @@
    "how": "reviewed"
   },
   "F2": {
-   "name": "QUOTA_HOLDER_NAME_ADDRESS",
+   "name": "QuotaHolderNameAddress",
    "kind": "entry",
    "label": "FROM: Name, Address of Individual(s)",
    "desc": "FROM: name and address of the individual(s) - one line for both; PRIMARY_FULL_LEGAL_NAME and the mailing address hold the parts",
@@ -16,7 +16,7 @@
    "save": true
   },
   "F3": {
-   "name": "PRODUCER_NUMBER",
+   "name": "ProducerNumber",
    "kind": "entry",
    "label": "PRODUCER*",
    "desc": "Producer #",
@@ -24,7 +24,7 @@
    "save": true
   },
   "F4": {
-   "name": "GROWER_NUMBER",
+   "name": "GrowerNumber",
    "kind": "entry",
    "label": "GROWER#",
    "desc": "Grower #",
@@ -32,7 +32,7 @@
    "save": true
   },
   "F5": {
-   "name": "SIGNED_AT_CITY",
+   "name": "SignedAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Dated at (city), Ontario",
@@ -47,7 +47,7 @@
    "how": "reviewed"
   },
   "F7": {
-   "name": "QUOTA_HOLDER_REGISTERED_NAME",
+   "name": "QuotaHolderRegisteredName",
    "kind": "entry",
    "label": "Name of quota holder as registered by O.B.H.E.C.C.",
    "desc": "Name of quota holder as registered with the board",
@@ -69,21 +69,21 @@
    "how": "reviewed"
   },
   "F10": {
-   "name": "CORPORATE_SIGNATURE",
+   "name": "CorporateSignature",
    "kind": "entry",
    "label": "per",
    "desc": "If a corporation: signature per (I have the authority to bind the corporation)",
    "how": "reviewed"
   },
   "F11": {
-   "name": "BOARD_HATCHING_EGG_UNITS",
+   "name": "BoardHatchingEggUnits",
    "kind": "entry",
    "label": "held for hatching egg production at time of acknowledgement by",
    "desc": "Board: units held for hatching egg production at acknowledgement",
    "how": "reviewed"
   },
   "F12": {
-   "name": "BOARD_BREEDER_GROWING_UNITS",
+   "name": "BoardBreederGrowingUnits",
    "kind": "entry",
    "label": "units held for breeder growing at time of acknowledgement by",
    "desc": "Board: units held for breeder growing (20 week grower) at acknowledgement",

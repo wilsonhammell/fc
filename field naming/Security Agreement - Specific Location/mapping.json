@@ -92,7 +92,7 @@
    "how": "reviewed"
   },
   "F14": {
-   "name": "PROPERTY_LEGAL_DESCRIPTION",
+   "name": "PropertyLegalDescription",
    "kind": "entry",
    "label": "legally described as",
    "desc": "The property's legal description - moved from the end of the line above onto 'legally described as'",
@@ -106,7 +106,7 @@
    "save": true
   },
   "F15": {
-   "name": "PROPERTY_PIN",
+   "name": "PropertyPIN",
    "kind": "entry",
    "label": "being all of PIN",
    "desc": "The property's PIN",
@@ -114,14 +114,14 @@
    "save": true
   },
   "F16": {
-   "name": "PROPERTY_PIN",
+   "name": "PropertyPIN",
    "kind": "entry",
    "label": "3.09 Real Estate Real property, legally described",
    "desc": "PIN, page 2 (the original shared this box with page 1's PIN)",
    "how": "reviewed"
   },
   "F17": {
-   "name": "PROPERTY_LEGAL_DESCRIPTION",
+   "name": "PropertyLegalDescription",
    "kind": "entry",
    "label": "3.09 Real Estate Real property, legally described",
    "desc": "Legal description, page 2 (shared with page 1) - CHECK the order: page 2 reads description then PIN",

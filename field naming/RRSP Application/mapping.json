@@ -1,23 +1,28 @@
 {
  "items": {
   "F1": {
-   "name": "PLAN_TYPE_RSP",
+   "name": "PlanType",
    "kind": "entry",
    "label": "RSP",
    "desc": "Plan type, tick. Could load from RSP_ACCOUNT_TYPE / RSP_LOCKED once their values are known",
-   "custom": "Exactly one of PLAN_TYPE_RSP, PLAN_TYPE_LIRA and PLAN_TYPE_FEDERAL_LRSP must be ticked"
+   "option": "RSP",
+   "save": true
   },
   "F2": {
-   "name": "PLAN_TYPE_LIRA",
+   "name": "PlanType",
    "kind": "entry",
    "label": "Ontario Locked-In Retirement Account (LIRA)",
-   "desc": "Plan type, tick"
+   "desc": "Plan type, tick",
+   "option": "LIRA",
+   "save": true
   },
   "F3": {
-   "name": "PLAN_TYPE_FEDERAL_LRSP",
+   "name": "PlanType",
    "kind": "entry",
    "label": "Federal Locked-In RSP",
-   "desc": "Plan type, tick"
+   "desc": "Plan type, tick",
+   "option": "LRSP",
+   "save": true
   },
   "F4": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -126,158 +131,158 @@
    ]
   },
   "F19": {
-   "name": "BENE1_ACCOUNT",
+   "name": "Beneficiary1Account",
    "kind": "entry",
    "label": "Account #",
    "desc": "Beneficiary 1, account the designation is for. ALL_BENE_* in the DB hold beneficiaries as lists"
   },
   "F20": {
-   "name": "BENE1_NAME",
+   "name": "Beneficiary1Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 1 name"
   },
   "F21": {
-   "name": "BENE1_DATE_OF_BIRTH",
+   "name": "Beneficiary1DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Beneficiary 1 date of birth"
   },
   "F22": {
-   "name": "BENE1_RELATIONSHIP",
+   "name": "Beneficiary1Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 1 relationship to annuitant"
   },
   "F23": {
-   "name": "BENE1_TYPE",
+   "name": "Beneficiary1Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
    "desc": "Beneficiary 1, P or A"
   },
   "F24": {
-   "name": "BENE2_ACCOUNT",
+   "name": "Beneficiary2Account",
    "kind": "entry",
    "label": "Account #",
    "desc": "Beneficiary 2"
   },
   "F25": {
-   "name": "BENE2_NAME",
+   "name": "Beneficiary2Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 2"
   },
   "F26": {
-   "name": "BENE2_DATE_OF_BIRTH",
+   "name": "Beneficiary2DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Beneficiary 2"
   },
   "F27": {
-   "name": "BENE2_RELATIONSHIP",
+   "name": "Beneficiary2Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 2"
   },
   "F28": {
-   "name": "BENE2_TYPE",
+   "name": "Beneficiary2Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
    "desc": "Beneficiary 2"
   },
   "F29": {
-   "name": "BENE3_ACCOUNT",
+   "name": "Beneficiary3Account",
    "kind": "entry",
    "label": "Account #",
    "desc": "Beneficiary 3"
   },
   "F30": {
-   "name": "BENE3_NAME",
+   "name": "Beneficiary3Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 3"
   },
   "F31": {
-   "name": "BENE3_DATE_OF_BIRTH",
+   "name": "Beneficiary3DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Beneficiary 3"
   },
   "F32": {
-   "name": "BENE3_RELATIONSHIP",
+   "name": "Beneficiary3Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 3"
   },
   "F33": {
-   "name": "BENE3_TYPE",
+   "name": "Beneficiary3Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
    "desc": "Beneficiary 3"
   },
   "F34": {
-   "name": "BENE4_ACCOUNT",
+   "name": "Beneficiary4Account",
    "kind": "entry",
    "label": "Account #",
    "desc": "Beneficiary 4"
   },
   "F35": {
-   "name": "BENE4_NAME",
+   "name": "Beneficiary4Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 4"
   },
   "F36": {
-   "name": "BENE4_DATE_OF_BIRTH",
+   "name": "Beneficiary4DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Beneficiary 4"
   },
   "F37": {
-   "name": "BENE4_RELATIONSHIP",
+   "name": "Beneficiary4Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 4"
   },
   "F38": {
-   "name": "BENE4_TYPE",
+   "name": "Beneficiary4Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
    "desc": "Beneficiary 4"
   },
   "F39": {
-   "name": "INVESTMENT_INSTRUCTIONS_1",
+   "name": "InvestmentInstructions1",
    "kind": "entry",
    "label": "Investment Instructions for Funds",
    "desc": "Line 1 of the investment instructions",
    "save": true
   },
   "F40": {
-   "name": "INVESTMENT_INSTRUCTIONS_2",
+   "name": "InvestmentInstructions2",
    "kind": "entry",
    "label": "Investment Instructions for Funds",
    "desc": "Line 2"
   },
   "F41": {
-   "name": "INVESTMENT_INSTRUCTIONS_3",
+   "name": "InvestmentInstructions3",
    "kind": "entry",
    "label": "Investment Instructions for Funds",
    "desc": "Line 3"
   },
   "F42": {
-   "name": "INVESTMENT_INSTRUCTIONS_4",
+   "name": "InvestmentInstructions4",
    "kind": "entry",
    "label": "Investment Instructions for Funds",
    "desc": "Line 4"
   },
   "F43": {
-   "name": "INVESTMENT_INSTRUCTIONS_5",
+   "name": "InvestmentInstructions5",
    "kind": "entry",
    "label": "Investment Instructions for Funds",
    "desc": "Line 5"
   },
   "F44": {
-   "name": "INVESTMENT_INSTRUCTIONS_6",
+   "name": "InvestmentInstructions6",
    "kind": "entry",
    "label": "Investment Instructions for Funds",
    "desc": "Line 6"

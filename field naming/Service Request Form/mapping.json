@@ -43,7 +43,7 @@
    "how": "reviewed"
   },
   "F7": {
-   "name": "SERVICE_REQUEST_DETAIL",
+   "name": "ServiceRequestDetail",
    "kind": "entry",
    "label": "co-signers and guarantors sign below as applicable.",
    "desc": "Service and/or change request, in words",
@@ -135,7 +135,7 @@
    "how": "reviewed"
   },
   "F20": {
-   "name": "ADMIN_APPROVAL_DATE",
+   "name": "AdminApprovalDate",
    "kind": "entry",
    "label": "Date:",
    "desc": "Administration use only: date approved",
@@ -156,21 +156,21 @@
    "how": "reviewed"
   },
   "F21": {
-   "name": "ADMIN_APPROVER_NAME",
+   "name": "AdminApproverName",
    "kind": "entry",
    "label": "Name of Libro Staﬀ",
    "desc": "Administration: name of Libro staff approving",
    "how": "reviewed"
   },
   "F22": {
-   "name": "ADMIN_APPROVER_SIGNATURE",
+   "name": "AdminApproverSignature",
    "kind": "entry",
    "label": "Signature of Libro Staﬀ",
    "desc": "Administration: signature of Libro staff",
    "how": "reviewed"
   },
   "F23": {
-   "name": "ADMIN_COMMENTS",
+   "name": "AdminComments",
    "kind": "entry",
    "label": "",
    "desc": "Administration: additional comments",

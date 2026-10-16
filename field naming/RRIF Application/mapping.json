@@ -1,29 +1,31 @@
 {
  "items": {
   "F1": {
-   "name": "PLAN_TYPE_RIF",
+   "name": "PlanType",
    "kind": "entry",
    "label": "RIF",
    "desc": "Tick: RIF",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of PLAN_TYPE_RIF, PLAN_TYPE_LIF_ON and PLAN_TYPE_RLIF_FED must be ticked"
+   "option": "RIF",
+   "save": true
   },
   "F2": {
-   "name": "PLAN_TYPE_LIF_ON",
+   "name": "PlanType",
    "kind": "entry",
    "label": "LIF (ON)",
    "desc": "Tick: LIF (Ontario)",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "LIF",
+   "save": true
   },
   "F3": {
-   "name": "PLAN_TYPE_RLIF_FED",
+   "name": "PlanType",
    "kind": "entry",
    "label": "RLIF (FED)",
    "desc": "Tick: RLIF (federal)",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "RLIF",
+   "save": true
   },
   "F4": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -104,21 +106,22 @@
    "how": "reviewed"
   },
   "F15": {
-   "name": "SPOUSAL_NO",
+   "name": "Spousal",
    "kind": "entry",
    "label": "SPOUSAL",
    "desc": "N: no funds came from an RRSP the spouse contributed to",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of SPOUSAL_NO and SPOUSAL_YES must be ticked"
+   "option": "No",
+   "save": true
   },
   "F16": {
-   "name": "SPOUSAL_YES",
+   "name": "Spousal",
    "kind": "entry",
    "label": "",
    "desc": "Y: funds came from an RRSP the spouse contributed to",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Yes",
+   "save": true
   },
   "F17": {
    "name": "SPOUSE_MEMBER_NUMBER",
@@ -126,7 +129,7 @@
    "label": "Spouse/Common-law Partner Account #",
    "desc": "Spouse / common-law partner's account #",
    "how": "reviewed",
-   "custom": "Required when SPOUSAL_YES is ticked"
+   "custom": "Required when Spousal is Yes"
   },
   "F18": {
    "name": "SPOUSE_FULL_NAME",
@@ -141,52 +144,55 @@
    "label": "Spouse/Common-law Partner S.I.N.:",
    "desc": "Spouse / common-law partner's SIN - the DB list has no spouse SIN",
    "how": "reviewed",
-   "custom": "Required when SPOUSAL_YES is ticked"
+   "custom": "Required when Spousal is Yes"
   },
   "F20": {
-   "name": "DESIGNATION_SUCCESSOR",
+   "name": "Designation",
    "kind": "entry",
    "label": "DESIGNATION",
    "desc": "S/CLP: designation of successor annuitant",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of DESIGNATION_SUCCESSOR, DESIGNATION_BENEFICIARY and DESIGNATION_NONE must be ticked"
+   "option": "Successor",
+   "save": true
   },
   "F21": {
-   "name": "DESIGNATION_BENEFICIARY",
+   "name": "Designation",
    "kind": "entry",
    "label": "",
    "desc": "B: designation of beneficiary only",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Beneficiary",
+   "save": true
   },
   "F22": {
-   "name": "DESIGNATION_NONE",
+   "name": "Designation",
    "kind": "entry",
    "label": "",
    "desc": "N: no beneficiary designated",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "None",
+   "save": true
   },
   "F23": {
-   "name": "PAY_DUE_15TH",
+   "name": "PayDue",
    "kind": "entry",
    "label": "15th",
    "desc": "Pay due on the 15th",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of PAY_DUE_15TH and PAY_DUE_28TH must be ticked"
+   "option": "Day15",
+   "save": true
   },
   "F24": {
-   "name": "PAY_DUE_28TH",
+   "name": "PayDue",
    "kind": "entry",
    "label": "28th",
    "desc": "Pay due on the 28th",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Day28",
+   "save": true
   },
   "F25": {
-   "name": "PAYMENT_START_DATE",
+   "name": "PaymentStartDate",
    "kind": "entry",
    "label": "Start Date:",
    "desc": "Payment start date",
@@ -194,188 +200,198 @@
    "save": true
   },
   "F26": {
-   "name": "PAYMENT_SPECIFIED",
+   "name": "PaymentOption",
    "kind": "entry",
    "label": "Specified $",
    "desc": "Payment: specified amount",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one payment option (PAYMENT_SPECIFIED, PAYMENT_MINIMUM, PAYMENT_MAXIMUM) must be ticked"
+   "option": "Specified",
+   "save": true
   },
   "F27": {
-   "name": "PAYMENT_SPECIFIED_AMOUNT",
+   "name": "PaymentSpecifiedAmount",
    "kind": "entry",
    "label": "Specified $",
    "desc": "Specified amount $",
    "how": "reviewed",
-   "custom": "Required when PAYMENT_SPECIFIED is ticked"
+   "custom": "Required when PaymentOption is Specified"
   },
   "F28": {
-   "name": "PAYMENT_NET",
+   "name": "PaymentBasis",
    "kind": "entry",
    "label": "Net (after tax)",
    "desc": "Net (after tax)",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "When PAYMENT_SPECIFIED is ticked, exactly one of PAYMENT_NET and PAYMENT_GROSS must be ticked"
+   "option": "Net",
+   "custom": "Required when PaymentOption is Specified"
   },
   "F29": {
-   "name": "PAYMENT_GROSS",
+   "name": "PaymentBasis",
    "kind": "entry",
    "label": "Minimum",
    "desc": "Gross (before tax)",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Gross",
+   "custom": "Required when PaymentOption is Specified"
   },
   "F30": {
-   "name": "PAYMENT_MINIMUM",
+   "name": "PaymentOption",
    "kind": "entry",
    "label": "Minimum",
    "desc": "Payment: minimum",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Minimum",
+   "save": true
   },
   "F31": {
-   "name": "MINIMUM_NO_TAX",
+   "name": "MinimumTax",
    "kind": "entry",
    "label": "$",
    "desc": "No tax on minimum",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "When PAYMENT_MINIMUM is ticked, exactly one of MINIMUM_NO_TAX and MINIMUM_YES_TAX must be ticked"
+   "option": "No",
+   "custom": "Required when PaymentOption is Minimum"
   },
   "F32": {
-   "name": "MINIMUM_YES_TAX",
+   "name": "MinimumTax",
    "kind": "entry",
    "label": "Yes – Tax on Minimum",
    "desc": "Yes, tax on minimum",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Yes",
+   "custom": "Required when PaymentOption is Minimum"
   },
   "F33": {
-   "name": "PAYMENT_MAXIMUM",
+   "name": "PaymentOption",
    "kind": "entry",
    "label": "Gross",
    "desc": "Maximum (LIF/RLIF only)",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Maximum",
+   "save": true
   },
   "F34": {
-   "name": "EXTRA_TAX_NO",
+   "name": "ExtraTax",
    "kind": "entry",
    "label": "No",
    "desc": "Withhold extra taxes: no",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of EXTRA_TAX_NO and EXTRA_TAX_YES must be ticked"
+   "option": "No",
+   "save": true
   },
   "F35": {
-   "name": "EXTRA_TAX_YES",
+   "name": "ExtraTax",
    "kind": "entry",
    "label": "Yes (if Yes)",
    "desc": "Withhold extra taxes: yes",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Yes",
+   "save": true
   },
   "F36": {
-   "name": "EXTRA_TAX_AMOUNT",
+   "name": "ExtraTaxAmount",
    "kind": "entry",
    "label": "Percentage or Amount",
    "desc": "Extra tax: percentage or amount",
    "how": "reviewed",
-   "custom": "Required when EXTRA_TAX_YES is ticked"
+   "custom": "Required when ExtraTax is Yes"
   },
   "F37": {
-   "name": "PAY_FREQ_MONTHLY",
+   "name": "PayFrequency",
    "kind": "entry",
    "label": "Monthly",
    "desc": "Pay frequency: monthly",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one pay frequency (PAY_FREQ_MONTHLY, _QUARTERLY, _SEMI_ANNUAL, _ANNUAL) must be ticked"
+   "option": "Monthly",
+   "save": true
   },
   "F38": {
-   "name": "PAY_FREQ_QUARTERLY",
+   "name": "PayFrequency",
    "kind": "entry",
    "label": "Quarterly",
    "desc": "quarterly",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Quarterly",
+   "save": true
   },
   "F39": {
-   "name": "PAY_FREQ_SEMI_ANNUAL",
+   "name": "PayFrequency",
    "kind": "entry",
    "label": "Semi-Annually",
    "desc": "semi-annually",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "SemiAnnual",
+   "save": true
   },
   "F40": {
-   "name": "PAY_FREQ_ANNUAL",
+   "name": "PayFrequency",
    "kind": "entry",
    "label": "Annual",
    "desc": "annual",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Annual",
+   "save": true
   },
   "F41": {
-   "name": "CONTINUE_PAYMENT_YES",
+   "name": "ContinuePayment",
    "kind": "entry",
    "label": "Yes",
    "desc": "Continue same payment next year: yes",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of CONTINUE_PAYMENT_YES and CONTINUE_PAYMENT_NO must be ticked"
+   "option": "Yes",
+   "save": true
   },
   "F42": {
-   "name": "CONTINUE_PAYMENT_NO",
+   "name": "ContinuePayment",
    "kind": "entry",
    "label": "No",
    "desc": "no",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "No",
+   "save": true
   },
   "F43": {
-   "name": "AGE_BASE_ANNUITANT",
+   "name": "AgeBase",
    "kind": "entry",
    "label": "AGE",
    "desc": "A: age of annuitant",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of AGE_BASE_ANNUITANT and AGE_BASE_SPOUSE must be ticked"
+   "option": "Annuitant",
+   "save": true
   },
   "F44": {
-   "name": "AGE_BASE_SPOUSE",
+   "name": "AgeBase",
    "kind": "entry",
    "label": "",
    "desc": "S/CLP: spouse's age",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Spouse",
+   "save": true
   },
   "F45": {
-   "name": "SPOUSE_BIRTH_DAY",
+   "name": "SpouseBirthDay",
    "kind": "entry",
    "label": "DD MM",
    "desc": "Spouse's birthdate, DD (SPOUSE_DATE_OF_BIRTH would load it whole)",
    "how": "reviewed",
-   "custom": "Required when AGE_BASE_SPOUSE is ticked (with SPOUSE_BIRTH_MONTH and SPOUSE_BIRTH_YEAR)"
+   "custom": "Required when AgeBase is Spouse (with SpouseBirthMonth and SpouseBirthYear)"
   },
   "F46": {
-   "name": "SPOUSE_BIRTH_MONTH",
+   "name": "SpouseBirthMonth",
    "kind": "entry",
    "label": "MM YY",
    "desc": "Spouse's birthdate, MM",
    "how": "reviewed"
   },
   "F47": {
-   "name": "SPOUSE_BIRTH_YEAR",
+   "name": "SpouseBirthYear",
    "kind": "entry",
    "label": "YY",
    "desc": "Spouse's birthdate, YY",
    "how": "reviewed"
   },
   "F48": {
-   "name": "DEPOSIT_TO_ACCOUNT",
+   "name": "DepositToAccount",
    "kind": "entry",
    "label": "PAYMENT",
    "desc": "Payment method: deposit to account",
@@ -383,7 +399,7 @@
    "type": "checkbox"
   },
   "F49": {
-   "name": "PAY_FROM_TYPE",
+   "name": "PayFromType",
    "kind": "entry",
    "label": "Type:",
    "desc": "Select from: type",
@@ -391,7 +407,7 @@
    "save": true
   },
   "F50": {
-   "name": "PAY_FROM_SUB",
+   "name": "PayFromSub",
    "kind": "entry",
    "label": "Sub:",
    "desc": "Select from: sub",
@@ -399,51 +415,51 @@
    "save": true
   },
   "F52": {
-   "name": "PAY_TO_TYPE",
+   "name": "PayToType",
    "kind": "entry",
    "label": "Type:",
    "desc": "Select to: type",
    "how": "reviewed",
-   "custom": "Required when DEPOSIT_TO_ACCOUNT is ticked"
+   "custom": "Required when DepositToAccount is ticked"
   },
   "F53": {
-   "name": "PAY_TO_SUB",
+   "name": "PayToSub",
    "kind": "entry",
    "label": "",
    "desc": "Select to: sub",
    "how": "reviewed"
   },
   "F54": {
-   "name": "PAY_TO_ACCOUNT",
+   "name": "PayToAccount",
    "kind": "entry",
    "label": "Acct:",
    "desc": "Select to: account",
    "how": "reviewed",
-   "custom": "Required when DEPOSIT_TO_ACCOUNT is ticked"
+   "custom": "Required when DepositToAccount is ticked"
   },
   "F55": {
-   "name": "INVESTMENT_INSTRUCTIONS_1",
+   "name": "InvestmentInstructions1",
    "kind": "entry",
    "label": "INVESTMENT INSTRUCTIONS FOR FUNDS",
    "desc": "Investment instructions for funds, line 1",
    "how": "reviewed"
   },
   "F56": {
-   "name": "INVESTMENT_INSTRUCTIONS_2",
+   "name": "InvestmentInstructions2",
    "kind": "entry",
    "label": "",
    "desc": "line 2",
    "how": "reviewed"
   },
   "F57": {
-   "name": "INVESTMENT_INSTRUCTIONS_3",
+   "name": "InvestmentInstructions3",
    "kind": "entry",
    "label": "",
    "desc": "line 3",
    "how": "reviewed"
   },
   "F58": {
-   "name": "INVESTMENT_INSTRUCTIONS_4",
+   "name": "InvestmentInstructions4",
    "kind": "entry",
    "label": "",
    "desc": "line 4",

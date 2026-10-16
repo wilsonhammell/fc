@@ -1,7 +1,7 @@
 {
  "items": {
   "F1": {
-   "name": "AGENT_NAME",
+   "name": "AgentName",
    "kind": "entry",
    "label": "(the Agent)",
    "desc": "The investment agent (Qtrade Investor Inc.)",
@@ -93,7 +93,7 @@
    "how": "reviewed"
   },
   "F14": {
-   "name": "AGENT_NOTICE_ADDRESS_1",
+   "name": "AgentNoticeAddress1",
    "kind": "entry",
    "label": "For the Agent:",
    "desc": "Agent's address for notices, line 1",
@@ -101,14 +101,14 @@
    "save": true
   },
   "F15": {
-   "name": "AGENT_NOTICE_ADDRESS_2",
+   "name": "AgentNoticeAddress2",
    "kind": "entry",
    "label": "",
    "desc": "line 2",
    "how": "reviewed"
   },
   "F16": {
-   "name": "AGENT_NOTICE_ADDRESS_3",
+   "name": "AgentNoticeAddress3",
    "kind": "entry",
    "label": "",
    "desc": "line 3",
@@ -220,7 +220,7 @@
    "how": "reviewed"
   },
   "F32": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Per:",
    "desc": "Libro (the Lender) signature",
@@ -279,21 +279,21 @@
    ]
   },
   "F45": {
-   "name": "AGENT_SIGNATURE",
+   "name": "AgentSignature",
    "kind": "entry",
    "label": "Per:",
    "desc": "Agent's authorized signature",
    "how": "reviewed"
   },
   "F46": {
-   "name": "AGENT_SIGNER_NAME",
+   "name": "AgentSignerName",
    "kind": "entry",
    "label": "Name:",
    "desc": "Agent's signer, name",
    "how": "reviewed"
   },
   "F47": {
-   "name": "AGENT_SIGNER_TITLE",
+   "name": "AgentSignerTitle",
    "kind": "entry",
    "label": "Title:",
    "desc": "Agent's signer, title",
@@ -315,7 +315,7 @@
    "save": true
   },
   "B5": {
-   "name": "AGENT_NAME",
+   "name": "AgentName",
    "kind": "entry",
    "label": "(the Agent)",
    "desc": "The agent, signing",
@@ -392,21 +392,21 @@
    "how": "reviewed"
   },
   "F50": {
-   "name": "AGENT_NAME",
+   "name": "AgentName",
    "kind": "entry",
    "label": "AND TO: (the Agent)",
    "desc": "The agent",
    "how": "reviewed"
   },
   "F51": {
-   "name": "AGENT_NOTICE_ADDRESS_1",
+   "name": "AgentNoticeAddress1",
    "kind": "entry",
    "label": "",
    "desc": "Agent's address line 1",
    "how": "reviewed"
   },
   "F52": {
-   "name": "AGENT_NOTICE_ADDRESS_2",
+   "name": "AgentNoticeAddress2",
    "kind": "entry",
    "label": "",
    "desc": "Agent's address line 2",
@@ -535,21 +535,21 @@
    "how": "reviewed"
   },
   "F69": {
-   "name": "AGENT_NAME",
+   "name": "AgentName",
    "kind": "entry",
    "label": "TO: (the Agent)",
    "desc": "The agent",
    "how": "reviewed"
   },
   "F70": {
-   "name": "AGENT_NOTICE_ADDRESS_1",
+   "name": "AgentNoticeAddress1",
    "kind": "entry",
    "label": "",
    "desc": "Agent's address line 1",
    "how": "reviewed"
   },
   "F71": {
-   "name": "AGENT_NOTICE_ADDRESS_2",
+   "name": "AgentNoticeAddress2",
    "kind": "entry",
    "label": "",
    "desc": "Agent's address line 2",
@@ -804,7 +804,7 @@
    "how": "reviewed"
   },
   "F112": {
-   "name": "QTRADE_ACCOUNT_NUMBER",
+   "name": "QTRADEAccountNumber",
    "kind": "entry",
    "label": "ACCOUNT NO.",
    "desc": "The Qtrade account to be designated",

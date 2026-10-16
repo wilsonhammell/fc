@@ -8,7 +8,7 @@
    "how": "reviewed"
   },
   "F2": {
-   "name": "LOCKED_IN_AMOUNT",
+   "name": "LockedInAmount",
    "kind": "entry",
    "label": "Amount of Locked-In Funds applicable to this",
    "desc": "Amount of locked-in funds applicable to this transfer",
@@ -16,7 +16,7 @@
    "save": true
   },
   "F3": {
-   "name": "EMPLOYER_NAME",
+   "name": "EmployerName",
    "kind": "entry",
    "label": "Name of Employer:",
    "desc": "Name of the employer (the pension plan's sponsor)",
@@ -24,7 +24,7 @@
    "save": true
   },
   "F4": {
-   "name": "EMPLOYER_ADDRESS",
+   "name": "EmployerAddress",
    "kind": "entry",
    "label": "Employer Address:",
    "desc": "Employer's address",
@@ -32,23 +32,23 @@
    "save": true
   },
   "F5": {
-   "name": "AMOUNT_UNISEX_BASIS",
+   "name": "AmountUnisexBasis",
    "kind": "entry",
    "label": "$",
    "desc": "If no: dollar amount on a unisex basis",
    "how": "reviewed",
-   "custom": "Required when ALL_FUNDS_UNISEX is No (with AMOUNT_SEX_DISTINCT_BASIS, they make up the locked-in amount)"
+   "custom": "Required when AllFundsUnisex is No (with AmountSexDistinctBasis, they make up the locked-in amount)"
   },
   "F6": {
-   "name": "AMOUNT_SEX_DISTINCT_BASIS",
+   "name": "AmountSexDistinctBasis",
    "kind": "entry",
    "label": "$",
    "desc": "and/or dollar amount on a sex distinct basis",
    "how": "reviewed",
-   "custom": "Required when ALL_FUNDS_UNISEX is No"
+   "custom": "Required when AllFundsUnisex is No"
   },
   "F7": {
-   "name": "EARLIEST_RETIREMENT_AGE",
+   "name": "EarliestRetirementAge",
    "kind": "entry",
    "label": "What is the EARLIEST retirement age?",
    "desc": "Earliest retirement age under the plan",
@@ -56,7 +56,7 @@
    "save": true
   },
   "F8": {
-   "name": "PENSION_FEDERAL",
+   "name": "PensionFederal",
    "kind": "entry",
    "label": "Is the pension plan governed under federal legislation?",
    "desc": "Pick one: is the pension plan governed under federal legislation? Yes / No",
@@ -65,7 +65,7 @@
    "save": true
   },
   "F9": {
-   "name": "PENSION_FEDERAL",
+   "name": "PensionFederal",
    "kind": "entry",
    "label": "Yes",
    "desc": "Yes",
@@ -74,15 +74,15 @@
    "save": true
   },
   "F10": {
-   "name": "PENSION_PROVINCE",
+   "name": "PensionProvince",
    "kind": "entry",
    "label": "pension plan is governed by what Provincial Pension Benefits Act?",
    "desc": "If no: what provincial Pension Benefits Act",
    "how": "reviewed",
-   "custom": "Required when PENSION_FEDERAL is No"
+   "custom": "Required when PensionFederal is No"
   },
   "F11": {
-   "name": "UNISEX_RATE",
+   "name": "UnisexRate",
    "kind": "entry",
    "label": "required for jurisdictions of Ontario, New Brunswick and Nova Scotia)",
    "desc": "Is the locked-in value calculated on a unisex rate basis? Pick one: Yes / No",
@@ -91,16 +91,16 @@
    "save": true
   },
   "F12": {
-   "name": "ALL_FUNDS_UNISEX",
+   "name": "AllFundsUnisex",
    "kind": "entry",
    "label": "are all funds to be applied on a unisex basis?",
    "desc": "If yes, are all funds to be applied on a unisex basis? Pick one: Yes / No",
    "how": "reviewed",
    "option": "Yes",
-   "custom": "Required when UNISEX_RATE is Yes"
+   "custom": "Required when UnisexRate is Yes"
   },
   "F13": {
-   "name": "UNISEX_RATE",
+   "name": "UnisexRate",
    "kind": "entry",
    "label": "Yes",
    "desc": "Unisex rate basis? No",
@@ -109,16 +109,16 @@
    "save": true
   },
   "F14": {
-   "name": "ALL_FUNDS_UNISEX",
+   "name": "AllFundsUnisex",
    "kind": "entry",
    "label": "Yes",
    "desc": "All funds on a unisex basis? No",
    "how": "reviewed",
    "option": "No",
-   "custom": "Required when UNISEX_RATE is Yes"
+   "custom": "Required when UnisexRate is Yes"
   },
   "F15": {
-   "name": "COMPLETED_BY_COMPANY",
+   "name": "CompletedByCompany",
    "kind": "entry",
    "label": "Name of Company",
    "desc": "Name of company completing the form",
@@ -162,7 +162,7 @@
    "how": "reviewed"
   },
   "F21": {
-   "name": "COMPLETED_DATE",
+   "name": "CompletedDate",
    "kind": "entry",
    "label": "Date Completed",
    "desc": "Date completed",
@@ -170,7 +170,7 @@
    "save": true
   },
   "F22": {
-   "name": "COMPLETED_BY_NAME_TITLE",
+   "name": "CompletedByNameTitle",
    "kind": "entry",
    "label": "Form Completed By: (Name & Title)",
    "desc": "Form completed by (name & title) - the plan administrator",
@@ -178,7 +178,7 @@
    "save": true
   },
   "F23": {
-   "name": "COMPLETED_BY_PHONE",
+   "name": "CompletedByPhone",
    "kind": "entry",
    "label": "______",
    "desc": "Telephone no. of the contact person",

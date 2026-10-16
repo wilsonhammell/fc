@@ -92,7 +92,7 @@
    "how": "reviewed"
   },
   "F14": {
-   "name": "COLLATERAL_DESCRIPTION",
+   "name": "CollateralDescription",
    "kind": "entry",
    "label": "",
    "desc": "Security agreement: the collateral described",

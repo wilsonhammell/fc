@@ -51,7 +51,7 @@
    "save": true
   },
   "F8": {
-   "name": "BREACH_YEAR_END_1",
+   "name": "BreachYearEnd1",
    "kind": "entry",
    "label": "Year-end",
    "desc": "Year-end of the breached covenant, row 1 - moved into the table cell (it hung outside it)",
@@ -65,14 +65,14 @@
    "save": true
   },
   "B1": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "NAME:",
    "desc": "Relationship manager's signature for Libro",
    "how": "reviewed"
   },
   "B2": {
-   "name": "ATTENTION",
+   "name": "Attention",
    "kind": "entry",
    "label": "Attention:",
    "desc": "Attention: the person the letter is addressed to",
@@ -93,7 +93,7 @@
    "how": "reviewed"
   },
   "B6": {
-   "name": "GUARANTOR_CORP_SIGNATURE_1",
+   "name": "GuarantorCorpSignature1",
    "kind": "entry",
    "label": "Per:",
    "desc": "Corporate guarantor signature 1 (Per:)",
@@ -107,21 +107,21 @@
    "how": "reviewed"
   },
   "B8": {
-   "name": "GUARANTOR_CORP_SIGNATURE_2",
+   "name": "GuarantorCorpSignature2",
    "kind": "entry",
    "label": "Per:",
    "desc": "Corporate guarantor signature 2 (Per:)",
    "how": "reviewed"
   },
   "B9": {
-   "name": "WITNESS_SIGNATURE",
+   "name": "WitnessSignature",
    "kind": "entry",
    "label": "",
    "desc": "Witness as to the signature",
    "how": "reviewed"
   },
   "B10": {
-   "name": "GUARANTOR_PERSONAL_SIGNATURE",
+   "name": "GuarantorPersonalSignature",
    "kind": "entry",
    "label": "_______________________",
    "desc": "Personal guarantor signature",
@@ -141,7 +141,7 @@
     138,
     373
    ],
-   "name": "BREACH_YEAR_END_2",
+   "name": "BreachYearEnd2",
    "kind": "entry",
    "label": "Year-end",
    "desc": "Year-end, row 2",
@@ -155,7 +155,7 @@
     572,
     356
    ],
-   "name": "BREACH_COVENANT_1",
+   "name": "BreachCovenant1",
    "kind": "entry",
    "label": "Financial/Reporting Covenant(s)",
    "desc": "Covenant not complied with, row 1",
@@ -169,7 +169,7 @@
     572,
     373
    ],
-   "name": "BREACH_COVENANT_2",
+   "name": "BreachCovenant2",
    "kind": "entry",
    "label": "Financial/Reporting Covenant(s)",
    "desc": "Covenant, row 2",
@@ -183,7 +183,7 @@
     452,
     476
    ],
-   "name": "ACKNOWLEDGE_BY_DATE",
+   "name": "AcknowledgeByDate",
    "kind": "entry",
    "label": "Please sign ... and return to Libro by",
    "desc": "Date to return the acknowledgment by: 14 days from today (the red note on the form)",
@@ -253,7 +253,7 @@
     470,
     280.5
    ],
-   "name": "GUARANTOR_CORP_SIGNER1_NAME",
+   "name": "GuarantorCorpSigner1Name",
    "kind": "entry",
    "label": "Name:",
    "desc": "Corporate guarantor signer 1 name",
@@ -267,7 +267,7 @@
     470,
     304.4
    ],
-   "name": "GUARANTOR_CORP_SIGNER1_TITLE",
+   "name": "GuarantorCorpSigner1Title",
    "kind": "entry",
    "label": "Title:",
    "desc": "Corporate guarantor signer 1 title",
@@ -281,7 +281,7 @@
     470,
     375.8
    ],
-   "name": "GUARANTOR_CORP_SIGNER2_NAME",
+   "name": "GuarantorCorpSigner2Name",
    "kind": "entry",
    "label": "Name:",
    "desc": "Corporate guarantor signer 2 name",
@@ -295,7 +295,7 @@
     470,
     399.7
    ],
-   "name": "GUARANTOR_CORP_SIGNER2_TITLE",
+   "name": "GuarantorCorpSigner2Title",
    "kind": "entry",
    "label": "Title:",
    "desc": "Corporate guarantor signer 2 title",

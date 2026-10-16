@@ -37,7 +37,7 @@
    "how": "reviewed"
   },
   "F6": {
-   "name": "ESTATE_TRUSTEE_NAMES",
+   "name": "EstateTrusteeNames",
    "kind": "entry",
    "label": "I/We",
    "desc": "The declaring estate trustee(s) (I/We, ___)",
@@ -45,7 +45,7 @@
    "save": true
   },
   "F7": {
-   "name": "ESTATE_TRUSTEE_CITY",
+   "name": "EstateTrusteeCity",
    "kind": "entry",
    "label": ", of",
    "desc": "Trustee's city (of ___)",
@@ -53,7 +53,7 @@
    "save": true
   },
   "F8": {
-   "name": "ESTATE_TRUSTEE_PROVINCE",
+   "name": "EstateTrusteeProvince",
    "kind": "entry",
    "label": ", in the Province of",
    "desc": "Trustee's province",
@@ -61,7 +61,7 @@
    "save": true
   },
   "F9": {
-   "name": "ESTATE_TRUSTEE_RELATIONSHIP",
+   "name": "EstateTrusteeRelationship",
    "kind": "entry",
    "label": "THAT I/We am/are the",
    "desc": "Trustee's relationship to the estate (am/are the ___ of the estate)",
@@ -93,21 +93,21 @@
    "save": true
   },
   "F13": {
-   "name": "WILL_DATED_DAY",
+   "name": "WillDatedDay",
    "kind": "entry",
    "label": "A Certificate of Appointment",
    "desc": "Will dated: day",
    "how": "reviewed"
   },
   "F14": {
-   "name": "WILL_DATED_MONTH",
+   "name": "WillDatedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "month",
    "how": "reviewed"
   },
   "F15": {
-   "name": "WILL_DATED_YEAR",
+   "name": "WillDatedYear",
    "kind": "entry",
    "label": ",",
    "desc": "year",
@@ -122,7 +122,7 @@
    "save": true
   },
   "F17": {
-   "name": "SDB_BRANCH",
+   "name": "SDBBranch",
    "kind": "entry",
    "label": ",",
    "desc": "Branch the box is at",
@@ -130,7 +130,7 @@
    "save": true
   },
   "F18": {
-   "name": "TRUSTEE1_SIGNED_AT_CITY",
+   "name": "Trustee1SignedAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Estate trustee 1: dated at (city)",
@@ -138,7 +138,7 @@
    "save": true
   },
   "F19": {
-   "name": "TRUSTEE1_SIGNED_AT_PROVINCE",
+   "name": "Trustee1SignedAtProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Estate trustee 1: in the province of",
@@ -160,7 +160,7 @@
    "how": "reviewed"
   },
   "F22": {
-   "name": "TRUSTEE1_SIGNED_DAY",
+   "name": "Trustee1SignedDay",
    "kind": "entry",
    "label": "this",
    "desc": "Estate trustee 1: this ___ day",
@@ -168,7 +168,7 @@
    "save": true
   },
   "F23": {
-   "name": "TRUSTEE1_SIGNED_MONTH",
+   "name": "Trustee1SignedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "Estate trustee 1: month",
@@ -176,7 +176,7 @@
    "save": true
   },
   "F24": {
-   "name": "TRUSTEE1_SIGNED_YEAR",
+   "name": "Trustee1SignedYear",
    "kind": "entry",
    "label": ", 20",
    "desc": "Estate trustee 1: year",
@@ -184,7 +184,7 @@
    "save": true
   },
   "F25": {
-   "name": "WITNESS1_NAME",
+   "name": "Witness1Name",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 1: full name",
@@ -192,14 +192,14 @@
    "save": true
   },
   "F26": {
-   "name": "WITNESS1_SIGNATURE",
+   "name": "Witness1Signature",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 1: signature",
    "how": "reviewed"
   },
   "F27": {
-   "name": "WITNESS1_ADDRESS",
+   "name": "Witness1Address",
    "kind": "entry",
    "label": "My address is:",
    "desc": "Witness to estate trustee 1: address",
@@ -207,21 +207,21 @@
    "save": true
   },
   "F28": {
-   "name": "WITNESS1_ADDRESS_2",
+   "name": "Witness1Address2",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 1: address, continued",
    "how": "reviewed"
   },
   "F29": {
-   "name": "WITNESS1_PHONE",
+   "name": "Witness1Phone",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 1: phone number",
    "how": "reviewed"
   },
   "F30": {
-   "name": "WITNESS1_DATE",
+   "name": "Witness1Date",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 1: date",
@@ -229,14 +229,14 @@
    "save": true
   },
   "F31": {
-   "name": "TRUSTEE2_SIGNED_AT_CITY",
+   "name": "Trustee2SignedAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Estate trustee 2: dated at (city)",
    "how": "reviewed"
   },
   "F32": {
-   "name": "TRUSTEE2_SIGNED_AT_PROVINCE",
+   "name": "Trustee2SignedAtProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Estate trustee 2: in the province of",
@@ -257,77 +257,77 @@
    "how": "reviewed"
   },
   "F35": {
-   "name": "TRUSTEE2_SIGNED_DAY",
+   "name": "Trustee2SignedDay",
    "kind": "entry",
    "label": "this",
    "desc": "Estate trustee 2: this ___ day",
    "how": "reviewed"
   },
   "F36": {
-   "name": "TRUSTEE2_SIGNED_MONTH",
+   "name": "Trustee2SignedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "Estate trustee 2: month",
    "how": "reviewed"
   },
   "F37": {
-   "name": "TRUSTEE2_SIGNED_YEAR",
+   "name": "Trustee2SignedYear",
    "kind": "entry",
    "label": ", 20",
    "desc": "Estate trustee 2: year",
    "how": "reviewed"
   },
   "F38": {
-   "name": "WITNESS2_NAME",
+   "name": "Witness2Name",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 2: full name",
    "how": "reviewed"
   },
   "F39": {
-   "name": "WITNESS2_SIGNATURE",
+   "name": "Witness2Signature",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 2: signature",
    "how": "reviewed"
   },
   "F40": {
-   "name": "WITNESS2_ADDRESS",
+   "name": "Witness2Address",
    "kind": "entry",
    "label": "My address is:",
    "desc": "Witness to estate trustee 2: address",
    "how": "reviewed"
   },
   "F41": {
-   "name": "WITNESS2_ADDRESS_2",
+   "name": "Witness2Address2",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 2: address, continued",
    "how": "reviewed"
   },
   "F42": {
-   "name": "WITNESS2_PHONE",
+   "name": "Witness2Phone",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 2: phone number",
    "how": "reviewed"
   },
   "F43": {
-   "name": "WITNESS2_DATE",
+   "name": "Witness2Date",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 2: date",
    "how": "reviewed"
   },
   "F44": {
-   "name": "TRUSTEE3_SIGNED_AT_CITY",
+   "name": "Trustee3SignedAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Estate trustee 3: dated at (city)",
    "how": "reviewed"
   },
   "F45": {
-   "name": "TRUSTEE3_SIGNED_AT_PROVINCE",
+   "name": "Trustee3SignedAtProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Estate trustee 3: in the province of",
@@ -348,77 +348,77 @@
    "how": "reviewed"
   },
   "F48": {
-   "name": "TRUSTEE3_SIGNED_DAY",
+   "name": "Trustee3SignedDay",
    "kind": "entry",
    "label": "this",
    "desc": "Estate trustee 3: this ___ day",
    "how": "reviewed"
   },
   "F49": {
-   "name": "TRUSTEE3_SIGNED_MONTH",
+   "name": "Trustee3SignedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "Estate trustee 3: month",
    "how": "reviewed"
   },
   "F50": {
-   "name": "TRUSTEE3_SIGNED_YEAR",
+   "name": "Trustee3SignedYear",
    "kind": "entry",
    "label": ", 20",
    "desc": "Estate trustee 3: year",
    "how": "reviewed"
   },
   "F51": {
-   "name": "WITNESS3_NAME",
+   "name": "Witness3Name",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 3: full name",
    "how": "reviewed"
   },
   "F52": {
-   "name": "WITNESS3_SIGNATURE",
+   "name": "Witness3Signature",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 3: signature",
    "how": "reviewed"
   },
   "F53": {
-   "name": "WITNESS3_ADDRESS",
+   "name": "Witness3Address",
    "kind": "entry",
    "label": "My address is:",
    "desc": "Witness to estate trustee 3: address",
    "how": "reviewed"
   },
   "F54": {
-   "name": "WITNESS3_ADDRESS_2",
+   "name": "Witness3Address2",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 3: address, continued",
    "how": "reviewed"
   },
   "F55": {
-   "name": "WITNESS3_PHONE",
+   "name": "Witness3Phone",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 3: phone number",
    "how": "reviewed"
   },
   "F56": {
-   "name": "WITNESS3_DATE",
+   "name": "Witness3Date",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 3: date",
    "how": "reviewed"
   },
   "F57": {
-   "name": "TRUSTEE4_SIGNED_AT_CITY",
+   "name": "Trustee4SignedAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Estate trustee 4: dated at (city)",
    "how": "reviewed"
   },
   "F58": {
-   "name": "TRUSTEE4_SIGNED_AT_PROVINCE",
+   "name": "Trustee4SignedAtProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Estate trustee 4: in the province of",
@@ -439,63 +439,63 @@
    "how": "reviewed"
   },
   "F61": {
-   "name": "TRUSTEE4_SIGNED_DAY",
+   "name": "Trustee4SignedDay",
    "kind": "entry",
    "label": "this",
    "desc": "Estate trustee 4: this ___ day",
    "how": "reviewed"
   },
   "F62": {
-   "name": "TRUSTEE4_SIGNED_MONTH",
+   "name": "Trustee4SignedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "Estate trustee 4: month",
    "how": "reviewed"
   },
   "F63": {
-   "name": "TRUSTEE4_SIGNED_YEAR",
+   "name": "Trustee4SignedYear",
    "kind": "entry",
    "label": ", 20",
    "desc": "Estate trustee 4: year",
    "how": "reviewed"
   },
   "F64": {
-   "name": "WITNESS4_NAME",
+   "name": "Witness4Name",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 4: full name",
    "how": "reviewed"
   },
   "F65": {
-   "name": "WITNESS4_SIGNATURE",
+   "name": "Witness4Signature",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 4: signature",
    "how": "reviewed"
   },
   "F66": {
-   "name": "WITNESS4_ADDRESS",
+   "name": "Witness4Address",
    "kind": "entry",
    "label": "My address is:",
    "desc": "Witness to estate trustee 4: address",
    "how": "reviewed"
   },
   "F67": {
-   "name": "WITNESS4_ADDRESS_2",
+   "name": "Witness4Address2",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 4: address, continued",
    "how": "reviewed"
   },
   "F68": {
-   "name": "WITNESS4_PHONE",
+   "name": "Witness4Phone",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 4: phone number",
    "how": "reviewed"
   },
   "F69": {
-   "name": "WITNESS4_DATE",
+   "name": "Witness4Date",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 4: date",
@@ -544,7 +544,7 @@
    "how": "reviewed"
   },
   "F76": {
-   "name": "SDB_RELEASE_DAY",
+   "name": "SDBReleaseDay",
    "kind": "entry",
    "label": "this",
    "desc": "Contents released this ___ day",
@@ -552,7 +552,7 @@
    "save": true
   },
   "F77": {
-   "name": "SDB_RELEASE_MONTH",
+   "name": "SDBReleaseMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "month",
@@ -560,7 +560,7 @@
    "save": true
   },
   "F78": {
-   "name": "SDB_RELEASE_YEAR",
+   "name": "SDBReleaseYear",
    "kind": "entry",
    "label": ", 20",
    "desc": "year",
@@ -631,14 +631,14 @@
    "how": "reviewed"
   },
   "F88": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Libro witness 1: signature",
    "how": "reviewed"
   },
   "F89": {
-   "name": "STAFF2_NAME",
+   "name": "Staff2Name",
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Libro witness 2: name",
@@ -646,7 +646,7 @@
    "save": true
   },
   "F90": {
-   "name": "STAFF2_SIGNATURE",
+   "name": "Staff2Signature",
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Libro witness 2: signature",

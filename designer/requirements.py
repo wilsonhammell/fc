@@ -126,11 +126,19 @@ def number(decimals):
             "currency": "none", "parentheses": False, "redText": False}
 
 
+def snake(name):
+    """A CamelCase name as words, so the name patterns read it the way they
+    read a DB one: PaymentDate -> PAYMENT_DATE, ATMTransactionDate ->
+    ATM_TRANSACTION_DATE."""
+    return re.sub(r"(?<=[a-z0-9])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])", "_", name).upper()
+
+
 def format_for(name, label, kind):
     if kind != "Text":
         return None
     if SIGNER.match(name):
         return {"category": "date"} if name.endswith("SignDate") else None
+    name = snake(name) if not re.fullmatch(r"[A-Z0-9_]+", name) else name
     lab = (label or "").lower()
     if "DATETIME" in name.upper():
         return None

@@ -25,140 +25,145 @@
    "desc": "Member's branch. CHECK: name or number? PRIMARY_BRANCH is the number"
   },
   "F4": {
-   "name": "TRACE_REASON_NO_FUNDS",
+   "name": "TraceReason.NoFunds",
    "kind": "entry",
    "label": "Member didn't receive any funds",
    "desc": "Reason for trace, tick",
-   "custom": "At least one Reason for trace box must be ticked (TRACE_REASON_NO_FUNDS, _PARTIAL_FUNDS, _DECLINED_DEBITED, _DEBITED_TWICE, _NOT_RECOGNIZED, _OTHER)"
+   "save": true
   },
   "F5": {
-   "name": "TRACE_REASON_PARTIAL_FUNDS",
+   "name": "TraceReason.PartialFunds",
    "kind": "entry",
    "label": "Entire amount requested not received",
-   "desc": "Reason for trace, tick"
+   "desc": "Reason for trace, tick",
+   "save": true
   },
   "F6": {
-   "name": "TRACE_REASON_DECLINED_DEBITED",
+   "name": "TraceReason.DeclinedDebited",
    "kind": "entry",
    "label": "Transaction said decline but still debited account",
-   "desc": "Reason for trace, tick"
+   "desc": "Reason for trace, tick",
+   "save": true
   },
   "F7": {
-   "name": "TRACE_REASON_DEBITED_TWICE",
+   "name": "TraceReason.DebitedTwice",
    "kind": "entry",
    "label": "Account debited twice for same transaction",
-   "desc": "Reason for trace, tick"
+   "desc": "Reason for trace, tick",
+   "save": true
   },
   "F8": {
-   "name": "TRACE_REASON_NOT_RECOGNIZED",
+   "name": "TraceReason.NotRecognized",
    "kind": "entry",
    "label": "Member does not recognize the transaction",
-   "desc": "Reason for trace, tick"
+   "desc": "Reason for trace, tick",
+   "save": true
   },
   "F9": {
-   "name": "TRACE_REASON_OTHER",
+   "name": "TraceReason.Other",
    "kind": "entry",
    "label": "Other, please specify",
-   "desc": "Reason for trace, tick"
+   "desc": "Reason for trace, tick",
+   "save": true
   },
   "F10": {
-   "name": "TRACE_REASON_OTHER_DETAIL",
+   "name": "TraceReasonOtherDetail",
    "kind": "entry",
    "label": "Other, please specify",
    "desc": "The other reason, in words",
-   "custom": "Required when TRACE_REASON_OTHER is ticked"
+   "custom": "Required when TraceReason.Other is ticked"
   },
   "F11": {
-   "name": "BRANCH_TRACE_CONTACT",
+   "name": "BranchTraceContact",
    "kind": "entry",
    "label": "Branch contact name for trace",
    "desc": "Staff member Central 1 should contact. Could be REQUESTUSER if it is always the person filling the form",
    "save": true
   },
   "F12": {
-   "name": "ATM_TRANSACTION_DATE",
+   "name": "ATMTransactionDate",
    "kind": "entry",
    "label": "Date of ATM transaction",
    "desc": "Date of the ATM transaction",
-   "custom": "Either the ATM section (ATM_TRANSACTION_DATE, _AMOUNT, ATM_UNIT_ID, ATM_PAN_NUMBER, ATM_TRACER_NUMBER) or the POS section must be filled in"
+   "custom": "Either the ATM section (ATMTransactionDate, ATMTransactionAmount, ATMUnitID, ATMPANNumber, ATMTracerNumber) or the POS section must be filled in"
   },
   "F13": {
-   "name": "ATM_TRANSACTION_AMOUNT",
+   "name": "ATMTransactionAmount",
    "kind": "entry",
    "label": "Amount of ATM transaction",
    "desc": "Amount of the ATM transaction",
-   "custom": "Required when the ATM section is used (ATM_TRANSACTION_DATE filled in)"
+   "custom": "Required when the ATM section is used (ATMTransactionDate filled in)"
   },
   "F14": {
-   "name": "ATM_UNIT_ID",
+   "name": "ATMUnitID",
    "kind": "entry",
    "label": "ATM unit identification number",
    "desc": "ATM unit identification number"
   },
   "F15": {
-   "name": "ATM_PAN_NUMBER",
+   "name": "ATMPANNumber",
    "kind": "entry",
    "label": "PAN number used for the transaction (if available)",
    "desc": "Card number (PAN) used at the ATM"
   },
   "F16": {
-   "name": "ATM_TRACER_NUMBER",
+   "name": "ATMTracerNumber",
    "kind": "entry",
    "label": "Tracer number for the transaction",
    "desc": "Tracer number of the ATM transaction"
   },
   "F17": {
-   "name": "POS_TRANSACTION_DATE",
+   "name": "POSTransactionDate",
    "kind": "entry",
    "label": "Date of POS transaction",
    "desc": "Date of the POS transaction",
-   "custom": "Either the POS section (POS_TRANSACTION_DATE, _AMOUNT, POS_UNIT_ID, POS_PAN_NUMBER, POS_TRACER_NUMBER) or the ATM section must be filled in"
+   "custom": "Either the POS section (POSTransactionDate, POSTransactionAmount, POSUnitID, POSPANNumber, POSTracerNumber) or the ATM section must be filled in"
   },
   "F18": {
-   "name": "POS_TRANSACTION_AMOUNT",
+   "name": "POSTransactionAmount",
    "kind": "entry",
    "label": "Amount of POS transaction",
    "desc": "Amount of the POS transaction",
-   "custom": "Required when the POS section is used (POS_TRANSACTION_DATE filled in)"
+   "custom": "Required when the POS section is used (POSTransactionDate filled in)"
   },
   "F19": {
-   "name": "POS_UNIT_ID",
+   "name": "POSUnitID",
    "kind": "entry",
    "label": "ATM unit identification number",
    "desc": "Terminal identification number (the form says ATM unit under POS)"
   },
   "F20": {
-   "name": "POS_PAN_NUMBER",
+   "name": "POSPANNumber",
    "kind": "entry",
    "label": "PAN number used for the transaction (if available)",
    "desc": "Card number (PAN) used at the POS"
   },
   "B3": {
-   "name": "POS_TRACER_NUMBER",
+   "name": "POSTracerNumber",
    "kind": "entry",
    "label": "Tracer number for the transaction",
    "desc": "Tracer number of the POS transaction - the form had no box for it"
   },
   "F22": {
-   "name": "ADMIN_DATE_RECEIVED",
+   "name": "AdminDateReceived",
    "kind": "entry",
    "label": "Date received from branch",
    "desc": "Admin office use only"
   },
   "F23": {
-   "name": "ADMIN_CENTRAL1_RESPONSE_RECEIVED",
+   "name": "AdminCentral1ResponseReceived",
    "kind": "entry",
    "label": "Response received from Central 1",
    "desc": "Admin office use only"
   },
   "F24": {
-   "name": "ADMIN_BRANCH_CONTACTED",
+   "name": "AdminBranchContacted",
    "kind": "entry",
    "label": "Branch Contacted",
    "desc": "Admin office use only"
   },
   "F25": {
-   "name": "ADMIN_RESPONSE",
+   "name": "AdminResponse",
    "kind": "entry",
    "label": "Response",
    "desc": "Admin office use only"

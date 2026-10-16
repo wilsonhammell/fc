@@ -44,7 +44,7 @@
    "how": "reviewed"
   },
   "F7": {
-   "name": "TRANSFER_AMOUNT",
+   "name": "TransferAmount",
    "kind": "entry",
    "label": "the sum of $",
    "desc": "The sum transferred $",
@@ -52,7 +52,7 @@
    "save": true
   },
   "F8": {
-   "name": "TRANSFER_DATE",
+   "name": "TransferDate",
    "kind": "entry",
    "label": "on",
    "desc": "Date the funds were transferred",

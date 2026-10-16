@@ -1,7 +1,7 @@
 {
  "items": {
   "F1": {
-   "name": "WILL_DATED_DAY",
+   "name": "WillDatedDay",
    "kind": "entry",
    "label": "day of ____________, _________, leaving a Will dated the",
    "desc": "Will dated: day",
@@ -9,7 +9,7 @@
    "save": true
   },
   "F2": {
-   "name": "WILL_DATED_MONTH",
+   "name": "WillDatedMonth",
    "kind": "entry",
    "label": "____________, _________, leaving a Will dated the __________ day of",
    "desc": "month",
@@ -40,7 +40,7 @@
    "how": "reviewed"
   },
   "F6": {
-   "name": "WILL_DATED_YEAR",
+   "name": "WillDatedYear",
    "kind": "entry",
    "label": "_________, leaving a Will dated the __________ day of __________,",
    "desc": "year",
@@ -76,7 +76,7 @@
    "how": "reviewed"
   },
   "F11": {
-   "name": "REVIEWER_NAME",
+   "name": "ReviewerName",
    "kind": "entry",
    "label": "Name of Branch Manager or Estate Specialist",
    "desc": "Request reviewed by: name of branch manager or estate representative",
@@ -84,35 +84,35 @@
    "save": true
   },
   "F12": {
-   "name": "REVIEWER_SIGNATURE",
+   "name": "ReviewerSignature",
    "kind": "entry",
    "label": "Signature of Branch Manager or Estate Specialist",
    "desc": "Request reviewed by: signature",
    "how": "reviewed"
   },
   "F13": {
-   "name": "APPROVER_SUPERVISOR_NAME",
+   "name": "ApproverSupervisorName",
    "kind": "entry",
    "label": "Name of Estate & Trust Supervisor (printed)",
    "desc": "Estate & trust supervisor: name",
    "how": "reviewed"
   },
   "F14": {
-   "name": "APPROVER_SUPERVISOR_SIGNATURE",
+   "name": "ApproverSupervisorSignature",
    "kind": "entry",
    "label": "Signature of Estate & Trust Supervisor",
    "desc": "Estate & trust supervisor: signature",
    "how": "reviewed"
   },
   "F15": {
-   "name": "APPROVER_DIRECTOR_NAME",
+   "name": "ApproverDirectorName",
    "kind": "entry",
    "label": "Name of Director, Centralized Services (printed)",
    "desc": "Director, centralized services: name",
    "how": "reviewed"
   },
   "F16": {
-   "name": "APPROVER_DIRECTOR_SIGNATURE",
+   "name": "ApproverDirectorSignature",
    "kind": "entry",
    "label": "Signature of Director, Centralized Services",
    "desc": "Director, centralized services: signature",
@@ -170,24 +170,25 @@
    "save": true
   },
   "F24": {
-   "name": "ESTATE_ACCOUNT_NOT_OPERATED",
+   "name": "EstateAccount",
    "kind": "entry",
    "label": "Notarized",
    "desc": "Tick: an estate account is not going to be operated",
    "how": "reviewed",
-   "type": "checkbox",
-   "custom": "Exactly one of ESTATE_ACCOUNT_NOT_OPERATED and ESTATE_ACCOUNT_OPERATED must be ticked"
+   "option": "NotOperated",
+   "save": true
   },
   "F25": {
-   "name": "ESTATE_ACCOUNT_OPERATED",
+   "name": "EstateAccount",
    "kind": "entry",
    "label": "An Estate account IS expected to be operated with Libro",
    "desc": "Tick: an estate account IS expected to be operated",
    "how": "reviewed",
-   "type": "checkbox"
+   "option": "Operated",
+   "save": true
   },
   "F26": {
-   "name": "REQUEST_REASON",
+   "name": "RequestReason",
    "kind": "entry",
    "label": "The",
    "desc": "Tick: reason in detail for the request",
@@ -195,7 +196,7 @@
    "type": "checkbox"
   },
   "F27": {
-   "name": "ESTATE_VALUE_RANGE",
+   "name": "EstateValueRange",
    "kind": "entry",
    "label": "",
    "desc": "Pick one: total estate value range",
@@ -204,7 +205,7 @@
    "save": true
   },
   "F28": {
-   "name": "ESTATE_VALUE_RANGE",
+   "name": "EstateValueRange",
    "kind": "entry",
    "label": "Total Estate Valued $700,000.01+",
    "desc": "Total Estate Valued $700,000.01+",
@@ -213,7 +214,7 @@
    "save": true
   },
   "F29": {
-   "name": "APPROVAL_GRANTED",
+   "name": "ApprovalGranted",
    "kind": "entry",
    "label": "Approval Granted*:",
    "desc": "Pick one: approval granted? Yes / No",
@@ -222,7 +223,7 @@
    "save": true
   },
   "F30": {
-   "name": "APPROVAL_GRANTED",
+   "name": "ApprovalGranted",
    "kind": "entry",
    "label": "Yes",
    "desc": "Yes",

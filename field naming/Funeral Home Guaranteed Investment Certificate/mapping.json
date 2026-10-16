@@ -165,7 +165,7 @@
    "how": "reviewed"
   },
   "B1": {
-   "name": "STAFF_SIGNATURE",
+   "name": "StaffSignature",
    "kind": "entry",
    "label": "Per:",
    "desc": "Signed for Libro (Per:)",
