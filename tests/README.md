@@ -9,6 +9,7 @@ check nobody knows works.
     python tests/test_relabel.py restyle_pdf.py relabel.txt
     python tests/test_ligature.py restyle_pdf.py
     python tests/test_fields.py restyle_pdf.py
+    python tests/test_finish.py apply_fields.py
     python tests/test_looks.py
 
 `test_census.py` runs each case through the baseline script as well, to show

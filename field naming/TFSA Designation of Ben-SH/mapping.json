@@ -122,7 +122,17 @@
    "kind": "entry",
    "label": "Acct #",
    "desc": "Beneficiary 1: account the designation is for",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F18": {
    "name": "Beneficiary1Relationship",
@@ -160,14 +170,24 @@
    "label": "Name",
    "desc": "Beneficiary 2: name",
    "how": "reviewed",
-   "custom": "Required when beneficiary 2 is used (any BENE2_ field filled in): name, relationship and share"
+   "custom": "Required when beneficiary 2 is used (any Beneficiary2 field filled in): name, relationship and share"
   },
   "F23": {
    "name": "Beneficiary2Account",
    "kind": "entry",
    "label": "Acct #",
    "desc": "Beneficiary 2: account the designation is for",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F24": {
    "name": "Beneficiary2Relationship",
@@ -203,14 +223,24 @@
    "label": "Name",
    "desc": "Beneficiary 3: name",
    "how": "reviewed",
-   "custom": "Required when beneficiary 3 is used (any BENE3_ field filled in): name, relationship and share"
+   "custom": "Required when beneficiary 3 is used (any Beneficiary3 field filled in): name, relationship and share"
   },
   "F29": {
    "name": "Beneficiary3Account",
    "kind": "entry",
    "label": "Acct #",
    "desc": "Beneficiary 3: account the designation is for",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F30": {
    "name": "Beneficiary3Relationship",
@@ -252,7 +282,17 @@
    "kind": "entry",
    "label": "Acct #",
    "desc": "Alternate beneficiary 1: account the designation is for",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F36": {
    "name": "AlternateBeneficiary1Relationship",
@@ -294,7 +334,17 @@
    "kind": "entry",
    "label": "Acct #",
    "desc": "Alternate beneficiary 2: account the designation is for",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F42": {
    "name": "AlternateBeneficiary2Relationship",
@@ -336,7 +386,17 @@
    "kind": "entry",
    "label": "Acct #",
    "desc": "Alternate beneficiary 3: account the designation is for",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F48": {
    "name": "AlternateBeneficiary3Relationship",

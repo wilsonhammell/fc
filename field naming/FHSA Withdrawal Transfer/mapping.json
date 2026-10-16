@@ -29,18 +29,17 @@
    "how": "reviewed"
   },
   "F5": {
-   "name": "PRIMARY_SURNAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "Name",
-   "desc": "Member's surname",
-   "how": "reviewed"
-  },
-  "F6": {
-   "name": "PRIMARY_NAME",
-   "kind": "db",
-   "label": "Name",
-   "desc": "Member's first name",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    179.6,
+    170.6,
+    587.4,
+    182.6
+   ]
   },
   "F7": {
    "name": "PRIMARY_MAIL_ADDR_LINE2",
@@ -608,7 +607,8 @@
   }
  },
  "drop": [
-  "F55"
+  "F55",
+  "F6"
  ],
  "skip": {
   "B10": "not a blank - beside the qualifying withdrawal line",

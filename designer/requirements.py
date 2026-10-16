@@ -60,8 +60,14 @@ OPTIONAL_DB = re.compile(r"^SIGNER\d_|_MIDDLE$|ADDR_LINE[23]$|_LINE[23]$|^(?!.*B
                          r"EMAIL|^SPOUSE_|_ID_EXPIRYDATE$|_FAX$", re.I)
 SIGNER = re.compile(r"^Member(\d+)(Name|Signature|SignDate)$")
 JOINT = re.compile(r"^JointMember(\d+)(Name|Number)$|^JointMembers$")
-DATE_NAME = re.compile(r"(SIGN_?DATE|_DATE\b|DATE_|DATE$|DATE_OF_BIRTH|_DOB\b|DOB$|EXPIRY|MATURITY|"
+DATE_NAME = re.compile(r"(SIGN_?DATE|_DATE\b|DATE_|DATE$|DATE_OF_BIRTH|_DOB\b|DOB$|EXPIRY|MATURITY$|"
                        r"OPENED$|DATEOPENED|_DT$|SignDate$|FUNDDATE|INTDATE)", re.I)
+# a name ending in one of these holds something else, whatever the words
+# beside it say: Renunciation's SignedAtCity sits after "Date at",
+# Indemnity's CertifiedChequeNumber under "Cheque Number & $Amount", and
+# GIC's TERM_MATURITY_TRANSFER_ACCT is an account, not the maturity date
+NOT_A_VALUE = re.compile(r"(^|_)(NAME|PAYEE|CITY|PLACE|TOWN|REASONS?|NUMBER|NBR|NO|ACCT|ACCOUNT|TYPE|"
+                         r"DISPLAY|DISPOSITION|TRIGGER|SUB|ADDRESS|SIGNATURE|DETAILS?|INSTRUCTIONS)$")
 AMOUNT_NAME = re.compile(r"(AMOUNT|AMT\b|_AMT|BALANCE|PAYMENT_AMOUNT|PRINCIPAL|LIMIT|_FEE\b|FEE$|"
                          r"PRICE|COST|TOTAL|INCOME|WITHHELD|INTEREST_AMOUNT|PAYOUT)", re.I)
 RATE_NAME = re.compile(r"(RATE\d*$|_RATE\b|PERCENT|PCT\b|_PCT)", re.I)
@@ -140,7 +146,7 @@ def format_for(name, label, kind):
         return {"category": "date"} if name.endswith("SignDate") else None
     name = snake(name) if not re.fullmatch(r"[A-Z0-9_]+", name) else name
     lab = (label or "").lower()
-    if "DATETIME" in name.upper():
+    if "DATETIME" in name.upper() or NOT_A_VALUE.search(name.upper()):
         return None
     if DATE_NAME.search(name) or (re.search(r"\bdate\b|d\.o\.b|date of birth|birth date", lab)
                                   and "update" not in lab):

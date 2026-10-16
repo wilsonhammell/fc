@@ -3,7 +3,8 @@
     python make_handover.py [-o handover]
 
 Run after make_review_folder.py, apply_fields.py and the designer build
-(designer/requirements.py, then designer/build.mjs). The output folder is
+(designer/requirements.py, designer/build.mjs, then designer/finish.py). The
+output folder is
 emptied first and filled from:
     field naming/named forms/        the cleaned forms, fields named
     designer/out/<form>/             what the PDF Requirement Designer exports

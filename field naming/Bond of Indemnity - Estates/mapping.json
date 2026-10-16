@@ -20,7 +20,17 @@
    "label": "Account Number",
    "desc": "Deceased's asset 1: account number",
    "how": "reviewed",
-   "save": true
+   "save": true,
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "Required, and a 12-digit Libro account number"
   },
   "F4": {
    "name": "EstateAsset1Amount",
@@ -35,7 +45,17 @@
    "kind": "entry",
    "label": "",
    "desc": "Asset 2: account number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F6": {
    "name": "EstateAsset2Amount",
@@ -49,7 +69,17 @@
    "kind": "entry",
    "label": "",
    "desc": "Asset 3: account number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F8": {
    "name": "EstateAsset3Amount",
@@ -63,14 +93,34 @@
    "kind": "entry",
    "label": "",
    "desc": "Option #2: estate account # the assets go to",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F10": {
    "name": "SpouseTransferAccount",
    "kind": "entry",
    "label": "",
    "desc": "Option #4: surviving spouse's account #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F11": {
    "name": "NoCertificateOfAppointment",

@@ -9,88 +9,56 @@
    "save": true
   },
   "F2": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "AND:",
-   "desc": "Member's first name",
-   "how": "reviewed"
-  },
-  "F3": {
-   "name": "PRIMARY_MIDDLE",
-   "kind": "db",
-   "label": "AND:",
-   "desc": "Member's middle name/initial",
-   "how": "reviewed"
-  },
-  "F4": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "AND:",
-   "desc": "Member's surname",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    103.9,
+    272.4,
+    308.9,
+    286.8
+   ]
   },
   "F5": {
-   "name": "SIGNER1_NAME",
+   "name": "SIGNER1_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 1, first name",
-   "how": "reviewed"
-  },
-  "F6": {
-   "name": "SIGNER1_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 1, middle name/initial",
-   "how": "reviewed"
-  },
-  "F7": {
-   "name": "SIGNER1_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 1, surname",
-   "how": "reviewed"
+   "desc": "Signer 1's full legal name",
+   "how": "reviewed",
+   "rect": [
+    338.2,
+    272.4,
+    543.1,
+    286.8
+   ]
   },
   "F8": {
-   "name": "SIGNER2_NAME",
+   "name": "SIGNER2_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 2, first name",
-   "how": "reviewed"
-  },
-  "F9": {
-   "name": "SIGNER2_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, middle name/initial",
-   "how": "reviewed"
-  },
-  "F10": {
-   "name": "SIGNER2_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, surname",
-   "how": "reviewed"
+   "desc": "Signer 2's full legal name",
+   "how": "reviewed",
+   "rect": [
+    103.9,
+    290.1,
+    308.9,
+    304.5
+   ]
   },
   "F11": {
-   "name": "SIGNER3_NAME",
+   "name": "SIGNER3_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 3, first name",
-   "how": "reviewed"
-  },
-  "F12": {
-   "name": "SIGNER3_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, middle name/initial",
-   "how": "reviewed"
-  },
-  "F13": {
-   "name": "SIGNER3_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, surname",
-   "how": "reviewed"
+   "desc": "Signer 3's full legal name",
+   "how": "reviewed",
+   "rect": [
+    338.2,
+    290.1,
+    543.1,
+    304.5
+   ]
   },
   "F14": {
    "name": "AgentNoticeAddress1",
@@ -115,88 +83,56 @@
    "how": "reviewed"
   },
   "F17": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "For the Borrower:",
-   "desc": "Member's first name",
-   "how": "reviewed"
-  },
-  "F18": {
-   "name": "PRIMARY_MIDDLE",
-   "kind": "db",
-   "label": "For the Borrower:",
-   "desc": "Member's middle name/initial",
-   "how": "reviewed"
-  },
-  "F19": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "For the Borrower:",
-   "desc": "Member's surname",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    151.8,
+    517.6,
+    356.7,
+    532.0
+   ]
   },
   "F20": {
-   "name": "SIGNER1_NAME",
+   "name": "SIGNER1_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 1, first name",
-   "how": "reviewed"
-  },
-  "F21": {
-   "name": "SIGNER1_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 1, middle name/initial",
-   "how": "reviewed"
-  },
-  "F22": {
-   "name": "SIGNER1_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 1, surname",
-   "how": "reviewed"
+   "desc": "Signer 1's full legal name",
+   "how": "reviewed",
+   "rect": [
+    385.6,
+    517.6,
+    590.6,
+    532.0
+   ]
   },
   "F23": {
-   "name": "SIGNER2_NAME",
+   "name": "SIGNER2_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 2, first name",
-   "how": "reviewed"
-  },
-  "F24": {
-   "name": "SIGNER2_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, middle name/initial",
-   "how": "reviewed"
-  },
-  "F25": {
-   "name": "SIGNER2_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, surname",
-   "how": "reviewed"
+   "desc": "Signer 2's full legal name",
+   "how": "reviewed",
+   "rect": [
+    151.8,
+    535.8,
+    356.7,
+    550.2
+   ]
   },
   "F26": {
-   "name": "SIGNER3_NAME",
+   "name": "SIGNER3_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 3, first name",
-   "how": "reviewed"
-  },
-  "F27": {
-   "name": "SIGNER3_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, middle name/initial",
-   "how": "reviewed"
-  },
-  "F28": {
-   "name": "SIGNER3_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, surname",
-   "how": "reviewed"
+   "desc": "Signer 3's full legal name",
+   "how": "reviewed",
+   "rect": [
+    385.6,
+    535.8,
+    590.6,
+    550.2
+   ]
   },
   "F29": {
    "name": "PRIMARY_MAIL_ADDR_LINE1",
@@ -556,172 +492,108 @@
    "how": "reviewed"
   },
   "F72": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "NAME:",
-   "desc": "Member's first name",
-   "how": "reviewed"
-  },
-  "F73": {
-   "name": "PRIMARY_MIDDLE",
-   "kind": "db",
-   "label": "NAME:",
-   "desc": "Member's middle name/initial",
-   "how": "reviewed"
-  },
-  "F74": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "NAME:",
-   "desc": "Member's surname",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    107.8,
+    105.4,
+    312.7,
+    119.8
+   ]
   },
   "F75": {
-   "name": "SIGNER1_NAME",
+   "name": "SIGNER1_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 1, first name",
-   "how": "reviewed"
-  },
-  "F76": {
-   "name": "SIGNER1_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 1, middle name/initial",
-   "how": "reviewed"
-  },
-  "F77": {
-   "name": "SIGNER1_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 1, surname",
-   "how": "reviewed"
+   "desc": "Signer 1's full legal name",
+   "how": "reviewed",
+   "rect": [
+    337.2,
+    105.4,
+    542.2,
+    119.8
+   ]
   },
   "F78": {
-   "name": "SIGNER2_NAME",
+   "name": "SIGNER2_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 2, first name",
-   "how": "reviewed"
-  },
-  "F79": {
-   "name": "SIGNER2_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, middle name/initial",
-   "how": "reviewed"
-  },
-  "F80": {
-   "name": "SIGNER2_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, surname",
-   "how": "reviewed"
+   "desc": "Signer 2's full legal name",
+   "how": "reviewed",
+   "rect": [
+    107.8,
+    121.9,
+    312.7,
+    136.3
+   ]
   },
   "F81": {
-   "name": "SIGNER3_NAME",
+   "name": "SIGNER3_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 3, first name",
-   "how": "reviewed"
-  },
-  "F82": {
-   "name": "SIGNER3_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, middle name/initial",
-   "how": "reviewed"
-  },
-  "F83": {
-   "name": "SIGNER3_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, surname",
-   "how": "reviewed"
+   "desc": "Signer 3's full legal name",
+   "how": "reviewed",
+   "rect": [
+    337.2,
+    121.9,
+    542.2,
+    136.3
+   ]
   },
   "F84": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "Account Name:",
-   "desc": "Member's first name",
-   "how": "reviewed"
-  },
-  "F85": {
-   "name": "PRIMARY_MIDDLE",
-   "kind": "db",
-   "label": "Account Name:",
-   "desc": "Member's middle name/initial",
-   "how": "reviewed"
-  },
-  "F86": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "Account Name:",
-   "desc": "Member's surname",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    147.5,
+    312.3,
+    352.4,
+    326.7
+   ]
   },
   "F87": {
-   "name": "SIGNER1_NAME",
+   "name": "SIGNER1_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 1, first name",
-   "how": "reviewed"
-  },
-  "F88": {
-   "name": "SIGNER1_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 1, middle name/initial",
-   "how": "reviewed"
-  },
-  "F89": {
-   "name": "SIGNER1_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 1, surname",
-   "how": "reviewed"
+   "desc": "Signer 1's full legal name",
+   "how": "reviewed",
+   "rect": [
+    378.9,
+    312.3,
+    583.8,
+    326.7
+   ]
   },
   "F90": {
-   "name": "SIGNER2_NAME",
+   "name": "SIGNER2_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 2, first name",
-   "how": "reviewed"
-  },
-  "F91": {
-   "name": "SIGNER2_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, middle name/initial",
-   "how": "reviewed"
-  },
-  "F92": {
-   "name": "SIGNER2_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, surname",
-   "how": "reviewed"
+   "desc": "Signer 2's full legal name",
+   "how": "reviewed",
+   "rect": [
+    147.5,
+    329.7,
+    352.4,
+    344.1
+   ]
   },
   "F93": {
-   "name": "SIGNER3_NAME",
+   "name": "SIGNER3_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 3, first name",
-   "how": "reviewed"
-  },
-  "F94": {
-   "name": "SIGNER3_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, middle name/initial",
-   "how": "reviewed"
-  },
-  "F95": {
-   "name": "SIGNER3_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, surname",
-   "how": "reviewed"
+   "desc": "Signer 3's full legal name",
+   "how": "reviewed",
+   "rect": [
+    378.9,
+    329.7,
+    583.8,
+    344.1
+   ]
   },
   "F96": {
    "name": "Member1Name",
@@ -906,7 +778,39 @@
   "F103",
   "F104",
   "F106",
-  "F107"
+  "F107",
+  "F3",
+  "F4",
+  "F6",
+  "F7",
+  "F9",
+  "F10",
+  "F12",
+  "F13",
+  "F18",
+  "F19",
+  "F21",
+  "F22",
+  "F24",
+  "F25",
+  "F27",
+  "F28",
+  "F73",
+  "F74",
+  "F76",
+  "F77",
+  "F79",
+  "F80",
+  "F82",
+  "F83",
+  "F85",
+  "F86",
+  "F88",
+  "F89",
+  "F91",
+  "F92",
+  "F94",
+  "F95"
  ],
  "skip": {
   "B1": "Borrower initials - an initials marker in the designer, not a field",

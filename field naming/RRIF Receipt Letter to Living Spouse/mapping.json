@@ -1,18 +1,17 @@
 {
  "items": {
   "F1": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "",
-   "desc": "Member's first name",
-   "how": "reviewed"
-  },
-  "F2": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "",
-   "desc": "Member's surname",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    72.0,
+    152.5,
+    273.7,
+    165.6
+   ]
   },
   "F3": {
    "name": "PRIMARY_MAIL_ADDR_LINE1",
@@ -116,7 +115,9 @@
    "how": "reviewed"
   }
  },
- "drop": [],
+ "drop": [
+  "F2"
+ ],
  "skip": {},
  "add": [],
  "notes": []

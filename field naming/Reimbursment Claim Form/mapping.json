@@ -29,7 +29,17 @@
    "label": "account number",
    "desc": "The member's account the PAD was drawn on (PRIMARY_MEMBER_NUMBER holds the member number)",
    "how": "reviewed",
-   "save": true
+   "save": true,
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "Required, and a 12-digit Libro account number"
   },
   "F5": {
    "name": "PADDebitDate",

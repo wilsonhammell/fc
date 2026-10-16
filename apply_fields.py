@@ -17,7 +17,12 @@ each one is:
      "notes": ["what a person has to settle that no field can"]}
 
 "add" places a field where nothing was found to put one - a value the form
-prints as sample text, a box the layout never drew.
+prints as sample text, a box the layout never drew. "maxlen" on an item is
+the most characters the field takes (12 for a Libro account number).
+
+Every form then gets the same finish: a text field on a printed line is
+stretched along it, Tab follows reading order, the form opens at 100%, and
+default fonts no field uses are dropped.
 
 kind is one of
     db         a name in dbFields.json - the filler loads it
@@ -94,6 +99,8 @@ def problems(item_id, m):
         out.append(f"{item_id}: {name} is marked special but is no signer or joint name")
     if kind in ("candidate", "entry") and name in DB:
         out.append(f"{item_id}: {name} is marked {kind} but IS in dbFields.json")
+    if "maxlen" in m and not (isinstance(m["maxlen"], int) and m["maxlen"] > 0):
+        out.append(f"{item_id}: maxlen {m['maxlen']!r} is not a number of characters")
     return out
 
 
@@ -329,12 +336,17 @@ def merge_repeats(path):
             body += f"/DA({da[1]})"
         if ff[0] != "null":
             body += f"/Ff {ff[1]}"
+        # a length limit belongs to the field: on a widget under a parent,
+        # Acrobat and the designer both look for it on the parent
+        maxlen = doc.xref_get_key(first, "MaxLen")
+        if maxlen[0] == "int":
+            body += f"/MaxLen {maxlen[1]}"
         doc.update_object(parent, body + ">>")
         for x in xrefs:
             # the field's own entries come off the widget altogether - set to
             # null they stay in it as nulls, which pypdf refuses to read
             kept = [ln for ln in doc.xref_object(x).splitlines()
-                    if not re.match(r"\s*/(T|FT|DA|Ff|V|Parent)\b", ln)]
+                    if not re.match(r"\s*/(T|FT|DA|Ff|V|Parent|MaxLen)\b", ln)]
             doc.update_object(x, "\n".join(kept))
             doc.xref_set_key(x, "Parent", f"{parent} 0 R")
         refs = [r for r in refs if r not in xrefs] + [parent]
@@ -352,6 +364,227 @@ def merge_repeats(path):
     doc.close()
     os.replace(path + ".tmp", path)
     return len(repeated)
+
+
+def hidden(doc, w):
+    f = doc.xref_get_key(w.xref, "F")[1]
+    return f.isdigit() and bool(int(f) & 2)
+
+
+def lines_of(shown):
+    """The page's printed lines, [y, x0, x1], a line drawn in pieces joined
+    into one: ATM & POS Trace's Name line is two, broken where the original
+    form's field began. A piece too short to be a rule of its own still
+    counts as part of one it touches: Member Number's line starts with a
+    9.5pt stub."""
+    pieces = [r[:3] for r in restyle_pdf.flat_rules(shown)]
+    for d in shown.get_drawings():
+        for item in d["items"]:
+            if item[0] == "l" and d["type"] in ("s", "fs"):
+                p, q = item[1], item[2]
+                if abs(p.y - q.y) <= 0.6 and 1 <= abs(p.x - q.x) < 12:
+                    pieces.append(((p.y + q.y) / 2, min(p.x, q.x), max(p.x, q.x)))
+            elif item[0] == "re":
+                r = fitz.Rect(item[1])
+                if 0 < r.height <= 1.5 and 1 <= r.width < 12:
+                    pieces.append(((r.y0 + r.y1) / 2, r.x0, r.x1))
+    out = []
+    for y, x0, x1 in sorted(pieces, key=lambda r: (r[1], r[0])):
+        for ln in out:
+            if abs(ln[0] - y) <= 0.8 and x0 <= ln[2] + 1.5 and x1 >= ln[1] - 1.5:
+                ln[1], ln[2] = min(ln[1], x0), max(ln[2], x1)
+                break
+        else:
+            out.append([y, x0, x1])
+    return [ln for ln in out if ln[2] - ln[1] >= 12]
+
+
+def text_part(word):
+    """A word's box without its run of typed underscores - those are a blank
+    to write on, not words in the way ("Name:____" on RRSP Withdrawal)."""
+    x0, y0, x1, y1, text = word[:5]
+    m = re.search(r"_{3,}", text)
+    if not m:
+        return (x0, y0, x1, y1)
+    if m.start() == 0:
+        return None
+    return (x0, y0, x0 + (x1 - x0) * m.start() / len(text), y1)
+
+
+def fit_to_lines(doc):
+    """A text field on a printed line takes the whole free stretch of it:
+    from its caption, or where the line starts, to the next caption, field,
+    cell wall or the line's end. Fields kept the width the original forms
+    drew them at, and many stopped well short of their line - ATM & POS
+    Trace's Name field began 50pt past "Name:". A field only ever grows, and
+    only sideways. Returns how many grew."""
+    grown = 0
+    for page in doc:
+        shown = restyle_pdf.printed(page)
+        lines = lines_of(shown)
+        walls = restyle_pdf.upright_edges(shown)
+        words = [b for b in map(text_part, shown.get_text("words")) if b]
+        ws = [w for w in page.widgets() if not hidden(doc, w)]
+        rects = {w.xref: fitz.Rect(w.rect) for w in ws}
+        for w in sorted(ws, key=lambda w: (w.rect.y0, w.rect.x0)):
+            if w.field_type not in (fitz.PDF_WIDGET_TYPE_TEXT, fitz.PDF_WIDGET_TYPE_COMBOBOX):
+                continue
+            r = rects[w.xref]
+            # a box written in sentences is no line to stretch along
+            if r.height > 24:
+                continue
+            under = [ln for ln in lines if r.y1 - 6 <= ln[0] <= r.y1 + 5
+                     and min(ln[2], r.x1) - max(ln[1], r.x0) >= 0.5 * r.width]
+            if not under:
+                continue
+            y, lo, hi = min(under, key=lambda ln: abs(ln[0] - r.y1))
+            # a section's border across the page is no blank (field_context's
+            # rule too)
+            if hi - lo > 0.8 * page.rect.width:
+                continue
+            for x0, _y0, x1, y1 in words:
+                if y - 14 <= y1 <= y + 3:
+                    if x1 <= r.x0 + 2:
+                        lo = max(lo, x1 + 2)
+                    elif x0 >= r.x1 - 2:
+                        hi = min(hi, x0 - 2)
+            for x, o in rects.items():
+                if x != w.xref and o.y1 > y - 14 and o.y0 < y + 2:
+                    if o.x1 <= r.x0 + 1:
+                        lo = max(lo, o.x1 + 2)
+                    elif o.x0 >= r.x1 - 1:
+                        hi = min(hi, o.x0 - 2)
+            for vx, vy0, vy1 in walls:
+                if vy0 <= r.y0 + 4 and vy1 >= y - 2:
+                    if vx <= r.x0 + 1:
+                        lo = max(lo, vx + 1)
+                    elif vx >= r.x1 - 1:
+                        hi = min(hi, vx - 1)
+            new = fitz.Rect(min(r.x0, lo), r.y0, max(r.x1, hi), r.y1)
+            if new.x0 < r.x0 - 3 or new.x1 > r.x1 + 3:
+                w.rect = new
+                w.update()
+                rects[w.xref] = new
+                grown += 1
+    return grown
+
+
+def reading_order(rects):
+    """Keys of {key: rect} as a page is read: rows top to bottom, each left
+    to right. A field joins the row above when its middle is level with that
+    row's first field."""
+    rows = []
+    for k in sorted(rects, key=lambda k: (rects[k].y0, rects[k].x0)):
+        r = rects[k]
+        mid = (r.y0 + r.y1) / 2
+        if rows:
+            top = rects[rows[-1][0]]
+            if top.y0 - 1 <= mid <= top.y0 + max(12, min(top.height, 18)) + 1:
+                rows[-1].append(k)
+                continue
+        rows.append([k])
+    return [k for row in rows for k in sorted(row, key=lambda k: rects[k].x0)]
+
+
+def tab_in_reading_order(doc):
+    """Tab moves through each page's fields as it is read. It went in the
+    page's /Annots order, the order the fields were made in, so the signing
+    blocks the restyle drew came before the fields above them (Hypothecation's
+    pages 3 to 7, both Safe Deposit Box estate forms). The fields are put in
+    reading order and the page told to tab in that order, /Tabs /W, as the
+    business's own coded forms are; /S, which 65 pages carried over from
+    Word, orders by a structure the fields added here are not part of."""
+    for page in doc:
+        xrefs = [a[0] for a in page.annot_xrefs()]
+        rects = {w.xref: fitz.Rect(w.rect) for w in page.widgets()}
+        if rects:
+            order = reading_order(rects) + [x for x in xrefs if x not in rects]
+            doc.xref_set_key(page.xref, "Annots", "[" + " ".join(f"{x} 0 R" for x in order) + "]")
+        # every page, so a field the designer later puts on a page that had
+        # none still tabs in order
+        doc.xref_set_key(page.xref, "Tabs", "/W")
+
+
+def open_at_full_size(doc):
+    """The form opens on its first page at 100% - "Document View: form loads
+    at 100%", on every one of the business's requirement sheets. An opening
+    action that is anything but a view (a script) is left alone; returns
+    whether the view was set."""
+    cat = doc.pdf_catalog()
+    kind, val = doc.xref_get_key(cat, "OpenAction")
+    if kind == "xref":
+        val = doc.xref_object(int(val.split()[0]), compressed=True)
+    if kind != "null" and "/JavaScript" in val:
+        return False
+    doc.xref_set_key(cat, "OpenAction", f"[{doc[0].xref} 0 R /XYZ null null 1]")
+    return True
+
+
+def holder(doc, xref, path):
+    """The object a key path ends in, as (xref, key): PyMuPDF writes through
+    a path only within one object (see merge_repeats), so each indirect hop
+    is followed by hand. None where the path is missing."""
+    *hops, last = path.split("/")
+    inside = ""                       # the path so far within the object
+    for hop in hops:
+        kind, val = doc.xref_get_key(xref, inside + hop)
+        if kind == "xref":
+            xref, inside = int(val.split()[0]), ""
+        elif kind == "dict":
+            inside += hop + "/"
+        else:
+            return None
+    return xref, inside + last
+
+
+def prune_default_fonts(doc):
+    """The form's default fonts (AcroForm /DR) keep only the ones a field's
+    text uses. The originals listed every font their makers' machines had
+    used, embedded whole - Wire Instructions carried 11 MB of Segoe Print,
+    Script MT and Segoe MDL2 that no field types in. Helv and ZaDb stay
+    whatever happens: they are what a field falls back on. Returns the names
+    dropped."""
+    got = holder(doc, doc.pdf_catalog(), "AcroForm/DR/Font")
+    if not got:
+        return []
+    at, key = got
+    kind, val = doc.xref_get_key(at, key)
+    if kind == "xref":
+        at, key = int(val.split()[0]), None
+        val = doc.xref_object(at, compressed=True)
+    elif kind != "dict":
+        return []
+    used = {"Helv", "ZaDb"}
+    # every field's DA, and the form's own (inside the catalog where the
+    # AcroForm is no object of its own)
+    das = [doc.xref_get_key(doc.pdf_catalog(), "AcroForm/DA")]
+    for x in range(1, doc.xref_length()):
+        try:
+            das.append(doc.xref_get_key(x, "DA"))
+        except RuntimeError:            # an xref entry with no object behind it
+            continue
+    for kind, da in das:
+        if kind == "string":
+            used.update(re.findall(r"/([^\s/]+)\s+[\d.]+\s+Tf", da))
+    fonts = re.findall(r"/([^\s/<>\[\]()]+)\s+(\d+ 0 R)", val)
+    if len(fonts) != val.count(" R"):
+        return []                       # not plain name -> reference pairs: leave it
+    keep = "<<" + "".join(f"/{n} {ref}" for n, ref in fonts if n in used) + ">>"
+    if key is None:
+        doc.update_object(at, keep)
+    else:
+        doc.xref_set_key(at, key, keep)
+    return [n for n, _ in fonts if n not in used]
+
+
+def set_lengths(doc, lengths):
+    """A field's longest value, {name: characters} from the mapping's
+    "maxlen" - a Libro account number is 12 digits, as on the business's
+    Night Deposit and Internal Transfer forms."""
+    for page in doc:
+        for w in page.widgets():
+            if w.field_name in lengths and w.field_type == fitz.PDF_WIDGET_TYPE_TEXT:
+                doc.xref_set_key(w.xref, "MaxLen", str(int(lengths[w.field_name])))
 
 
 def apply(folder):
@@ -501,6 +734,19 @@ def apply(folder):
     if unlisted:
         said.append(f"{unlisted} field(s) were missing from the form's field list - put back "
                     f"(the form at 10pt had them unlisted)")
+    grown = fit_to_lines(doc)
+    if grown:
+        print(f"   ({grown} field(s) stretched along their printed line)")
+    set_lengths(doc, {m["name"]: m["maxlen"] for m in list(named.values()) + extra
+                      if m.get("maxlen")})
+    tab_in_reading_order(doc)
+    if not open_at_full_size(doc):
+        said.append("the form opens with a script of its own - left as it is, so it does "
+                    "not open at 100%")
+    dropped = prune_default_fonts(doc)
+    if dropped:
+        print(f"   ({len(dropped)} default font(s) no field uses taken off: "
+              f"{', '.join(dropped[:4])}{'...' if len(dropped) > 4 else ''})")
     out_pdf = os.path.join(folder, f"{stem}.pdf")
     doc.save(out_pdf, garbage=3, deflate=True)
     doc.close()

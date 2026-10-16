@@ -129,81 +129,29 @@
    ]
   },
   "F16": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "",
-   "desc": "Borrower's first name - address block, one line per person",
+   "desc": "Member's full legal name",
    "how": "reviewed",
    "rect": [
-    77,
-    143,
-    160,
-    156
-   ]
-  },
-  "F17": {
-   "name": "PRIMARY_MIDDLE",
-   "kind": "db",
-   "label": "",
-   "desc": "Borrower's middle name/initial",
-   "how": "reviewed",
-   "rect": [
-    162,
-    143,
-    200,
-    156
-   ]
-  },
-  "F18": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "",
-   "desc": "Borrower's surname",
-   "how": "reviewed",
-   "rect": [
-    202,
-    143,
-    300,
-    156
+    77.0,
+    143.0,
+    300.0,
+    156.0
    ]
   },
   "F19": {
-   "name": "SIGNER1_NAME",
+   "name": "SIGNER1_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "",
-   "desc": "Co-borrower's first name",
+   "desc": "Signer 1's full legal name",
    "how": "reviewed",
    "rect": [
-    77,
-    156,
-    160,
-    169
-   ]
-  },
-  "F20": {
-   "name": "SIGNER1_MIDDLE",
-   "kind": "db",
-   "label": "",
-   "desc": "Co-borrower's middle",
-   "how": "reviewed",
-   "rect": [
-    162,
-    156,
-    200,
-    169
-   ]
-  },
-  "F21": {
-   "name": "SIGNER1_SURNAME",
-   "kind": "db",
-   "label": "",
-   "desc": "Co-borrower's surname",
-   "how": "reviewed",
-   "rect": [
-    202,
-    156,
-    300,
-    169
+    77.0,
+    156.0,
+    300.0,
+    169.0
    ]
   },
   "B2": {
@@ -275,7 +223,11 @@
   "F11",
   "F12",
   "F14",
-  "F15"
+  "F15",
+  "F17",
+  "F18",
+  "F20",
+  "F21"
  ],
  "skip": {
   "B1": "an unlabelled line above the signing rows - nothing says what it is for",

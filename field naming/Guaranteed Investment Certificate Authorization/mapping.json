@@ -34,7 +34,8 @@
    "name": "TERM_ACCOUNT_CODE",
    "kind": "db",
    "label": "Product Type",
-   "desc": "GIC product. CHECK: code or TERM_ACCOUNT_DESC for the words"
+   "desc": "GIC product. CHECK: code or TERM_ACCOUNT_DESC for the words",
+   "editable": true
   },
   "F7": {
    "name": "TERM_ACCOUNT_SUB",
@@ -47,37 +48,43 @@
    "name": "TERM_ACCOUNT_AMOUNT",
    "kind": "db",
    "label": "Principal Amount",
-   "desc": "Principal"
+   "desc": "Principal",
+   "editable": true
   },
   "F9": {
    "name": "TERM_ACCOUNT_OPENED",
    "kind": "db",
    "label": "Date of Deposit",
-   "desc": "Date of deposit. CHECK: or TERM_ACCOUNT_INTDATE"
+   "desc": "Date of deposit. CHECK: or TERM_ACCOUNT_INTDATE",
+   "editable": true
   },
   "F10": {
    "name": "TERM_ACCOUNT_TERMFREQUENCY",
    "kind": "db",
    "label": "Term Length",
-   "desc": "Term length, the number. CHECK: TERMFREQUENCY vs TERMPER - which is the number and which the unit"
+   "desc": "Term length, the number. CHECK: TERMFREQUENCY vs TERMPER - which is the number and which the unit",
+   "editable": true
   },
   "F11": {
    "name": "TERM_ACCOUNT_TERMPER",
    "kind": "db",
    "label": "Term Length",
-   "desc": "Term length, the unit (months/years)"
+   "desc": "Term length, the unit (months/years)",
+   "editable": true
   },
   "F12": {
    "name": "TERM_ACCOUNT_MATURITY",
    "kind": "db",
    "label": "Maturity Date",
-   "desc": "Maturity date"
+   "desc": "Maturity date",
+   "editable": true
   },
   "F13": {
    "name": "TERM_ACCOUNT_RATE1",
    "kind": "db",
    "label": "Interest Rate",
-   "desc": "Interest rate, %"
+   "desc": "Interest rate, %",
+   "editable": true
   },
   "F14": {
    "name": "TERM_ACCOUNT_INTSCHED",

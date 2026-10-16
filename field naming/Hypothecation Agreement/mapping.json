@@ -1,88 +1,56 @@
 {
  "items": {
   "F1": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "In consideration of advances made or to be made",
-   "desc": "Member's first name",
-   "how": "reviewed"
-  },
-  "F2": {
-   "name": "PRIMARY_MIDDLE",
-   "kind": "db",
-   "label": "In consideration of advances made or to be made to",
-   "desc": "Member's middle name/initial",
-   "how": "reviewed"
-  },
-  "F3": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "In consideration of advances made or to be made to",
-   "desc": "Member's surname",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    279.3,
+    151.9,
+    525.6,
+    167.7
+   ]
   },
   "F4": {
-   "name": "SIGNER2_NAME",
+   "name": "SIGNER2_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 2, first name",
-   "how": "reviewed"
-  },
-  "F5": {
-   "name": "SIGNER2_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, middle name/initial",
-   "how": "reviewed"
-  },
-  "F6": {
-   "name": "SIGNER2_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, surname",
-   "how": "reviewed"
+   "desc": "Signer 2's full legal name",
+   "how": "reviewed",
+   "rect": [
+    326.7,
+    170.9,
+    586.4,
+    186.8
+   ]
   },
   "F7": {
-   "name": "SIGNER1_NAME",
+   "name": "SIGNER1_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 1, first name",
-   "how": "reviewed"
-  },
-  "F8": {
-   "name": "SIGNER1_MIDDLE",
-   "kind": "db",
-   "label": "advances",
-   "desc": "Joint owner 1, middle name/initial",
-   "how": "reviewed"
-  },
-  "F9": {
-   "name": "SIGNER1_SURNAME",
-   "kind": "db",
-   "label": "made or to be made to",
-   "desc": "Joint owner 1, surname",
-   "how": "reviewed"
+   "desc": "Signer 1's full legal name",
+   "how": "reviewed",
+   "rect": [
+    43.0,
+    170.9,
+    295.7,
+    186.8
+   ]
   },
   "F10": {
-   "name": "SIGNER3_NAME",
+   "name": "SIGNER3_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 3, first name",
-   "how": "reviewed"
-  },
-  "F11": {
-   "name": "SIGNER3_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, middle name/initial",
-   "how": "reviewed"
-  },
-  "F12": {
-   "name": "SIGNER3_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, surname",
-   "how": "reviewed"
+   "desc": "Signer 3's full legal name",
+   "how": "reviewed",
+   "rect": [
+    71.7,
+    188.6,
+    326.6,
+    204.4
+   ]
   },
   "F13": {
    "name": "PRIMARY_MEMBER_NUMBER",
@@ -1195,7 +1163,15 @@
   "F88",
   "F89",
   "F91",
-  "F92"
+  "F92",
+  "F2",
+  "F3",
+  "F8",
+  "F9",
+  "F5",
+  "F6",
+  "F11",
+  "F12"
  ],
  "skip": {},
  "add": [

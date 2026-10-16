@@ -5,6 +5,7 @@
 //
 // Run from the form_requirements root, which is where its code lives:
 //   node_modules/.bin/vite-node <this file> <jobs folder> <dbFields.json>
+// then designer/finish.py, which puts Tab back in reading order.
 //
 // Left alone, as a BA leaves them: the bodies of CustomSaveValidation and the
 // form hooks, which the developer writes. Fields needing custom code carry

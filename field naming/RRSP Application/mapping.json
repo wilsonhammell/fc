@@ -134,7 +134,17 @@
    "name": "Beneficiary1Account",
    "kind": "entry",
    "label": "Account #",
-   "desc": "Beneficiary 1, account the designation is for. ALL_BENE_* in the DB hold beneficiaries as lists"
+   "desc": "Beneficiary 1, account the designation is for. ALL_BENE_* in the DB hold beneficiaries as lists",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F20": {
    "name": "Beneficiary1Name",
@@ -164,7 +174,17 @@
    "name": "Beneficiary2Account",
    "kind": "entry",
    "label": "Account #",
-   "desc": "Beneficiary 2"
+   "desc": "Beneficiary 2",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F25": {
    "name": "Beneficiary2Name",
@@ -194,7 +214,17 @@
    "name": "Beneficiary3Account",
    "kind": "entry",
    "label": "Account #",
-   "desc": "Beneficiary 3"
+   "desc": "Beneficiary 3",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F30": {
    "name": "Beneficiary3Name",
@@ -224,7 +254,17 @@
    "name": "Beneficiary4Account",
    "kind": "entry",
    "label": "Account #",
-   "desc": "Beneficiary 4"
+   "desc": "Beneficiary 4",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F35": {
    "name": "Beneficiary4Name",

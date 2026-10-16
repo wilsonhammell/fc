@@ -1,25 +1,17 @@
 {
  "items": {
   "F1": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "",
-   "desc": "Member's first name",
-   "how": "reviewed"
-  },
-  "F2": {
-   "name": "PRIMARY_MIDDLE",
-   "kind": "db",
-   "label": "",
-   "desc": "Member's middle name",
-   "how": "reviewed"
-  },
-  "F3": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "Name",
-   "desc": "Member's surname",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    98.7,
+    150.8,
+    330.3,
+    164.0
+   ]
   },
   "F4": {
    "name": "PRIMARY_MEMBER_NUMBER",
@@ -127,7 +119,10 @@
    "how": "reviewed"
   }
  },
- "drop": [],
+ "drop": [
+  "F3",
+  "F2"
+ ],
  "skip": {
   "B1": "a border of the To / Email / Re table or the payout table, not a blank",
   "B2": "a border of the To / Email / Re table or the payout table, not a blank",

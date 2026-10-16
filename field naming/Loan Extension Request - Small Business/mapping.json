@@ -1,25 +1,17 @@
 {
  "items": {
   "F1": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "Name:",
-   "desc": "Member's first name",
-   "how": "reviewed"
-  },
-  "F2": {
-   "name": "PRIMARY_MIDDLE",
-   "kind": "db",
-   "label": "Name:",
-   "desc": "Member's middle name/initial",
-   "how": "reviewed"
-  },
-  "F3": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "Name:",
-   "desc": "Member's surname",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    101.2,
+    114.0,
+    264.9,
+    126.0
+   ]
   },
   "F4": {
    "name": "PRIMARY_MEMBER_NUMBER",
@@ -36,25 +28,17 @@
    "how": "reviewed"
   },
   "F6": {
-   "name": "SIGNER1_NAME",
+   "name": "SIGNER1_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "Joint Owner:",
-   "desc": "Joint owner 1, first name",
-   "how": "reviewed"
-  },
-  "F7": {
-   "name": "SIGNER1_MIDDLE",
-   "kind": "db",
-   "label": "Joint Owner:",
-   "desc": "Joint owner 1, middle name/initial",
-   "how": "reviewed"
-  },
-  "F8": {
-   "name": "SIGNER1_SURNAME",
-   "kind": "db",
-   "label": "Joint Owner:",
-   "desc": "Joint owner 1, surname",
-   "how": "reviewed"
+   "desc": "Signer 1's full legal name",
+   "how": "reviewed",
+   "rect": [
+    101.2,
+    132.3,
+    292.3,
+    144.3
+   ]
   },
   "F9": {
    "name": "JointMember1Number",
@@ -64,25 +48,17 @@
    "how": "reviewed"
   },
   "F10": {
-   "name": "SIGNER2_NAME",
+   "name": "SIGNER2_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "Joint Owner:",
-   "desc": "Joint owner 2, first name",
-   "how": "reviewed"
-  },
-  "F11": {
-   "name": "SIGNER2_MIDDLE",
-   "kind": "db",
-   "label": "Joint Owner:",
-   "desc": "Joint owner 2, middle name/initial",
-   "how": "reviewed"
-  },
-  "F12": {
-   "name": "SIGNER2_SURNAME",
-   "kind": "db",
-   "label": "Joint Owner:",
-   "desc": "Joint owner 2, surname",
-   "how": "reviewed"
+   "desc": "Signer 2's full legal name",
+   "how": "reviewed",
+   "rect": [
+    101.2,
+    150.1,
+    292.3,
+    162.1
+   ]
   },
   "F13": {
    "name": "JointMember2Number",
@@ -92,25 +68,17 @@
    "how": "reviewed"
   },
   "F14": {
-   "name": "SIGNER3_NAME",
+   "name": "SIGNER3_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "Joint Owner:",
-   "desc": "Joint owner 3, first name",
-   "how": "reviewed"
-  },
-  "F15": {
-   "name": "SIGNER3_MIDDLE",
-   "kind": "db",
-   "label": "Joint Owner:",
-   "desc": "Joint owner 3, middle name/initial",
-   "how": "reviewed"
-  },
-  "F16": {
-   "name": "SIGNER3_SURNAME",
-   "kind": "db",
-   "label": "Joint Owner:",
-   "desc": "Joint owner 3, surname",
-   "how": "reviewed"
+   "desc": "Signer 3's full legal name",
+   "how": "reviewed",
+   "rect": [
+    101.2,
+    167.4,
+    292.3,
+    179.4
+   ]
   },
   "F17": {
    "name": "JointMember3Number",
@@ -774,7 +742,15 @@
   "F55",
   "F57",
   "F58",
-  "F59"
+  "F59",
+  "F2",
+  "F3",
+  "F7",
+  "F8",
+  "F11",
+  "F12",
+  "F15",
+  "F16"
  ],
  "skip": {
   "B1": "owner row 3's name line - F52 is placed on it"

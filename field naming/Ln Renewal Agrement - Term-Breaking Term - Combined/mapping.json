@@ -1,75 +1,27 @@
 {
  "items": {
   "F1": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "Member name (address block)",
-   "desc": "Borrower's first name - moved onto one line with middle and surname",
+   "desc": "Member's full legal name",
    "rect": [
-    59,
-    98,
-    150,
-    111
-   ]
-  },
-  "F2": {
-   "name": "PRIMARY_MIDDLE",
-   "kind": "db",
-   "label": "Member name (address block)",
-   "desc": "Borrower's middle name/initial",
-   "rect": [
-    152,
-    98,
-    190,
-    111
-   ]
-  },
-  "F3": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "Member name (address block)",
-   "desc": "Borrower's surname",
-   "rect": [
-    192,
-    98,
-    290,
-    111
+    59.0,
+    98.0,
+    290.0,
+    111.0
    ]
   },
   "F4": {
-   "name": "SIGNER1_NAME",
+   "name": "SIGNER1_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "Co-borrower name (address block)",
-   "desc": "Co-borrower's first name. CHECK PRIMARY vs SIGNER1: here SIGNER1 is taken as the second person",
+   "desc": "Signer 1's full legal name",
    "rect": [
-    59,
-    111,
-    150,
-    124
-   ]
-  },
-  "F5": {
-   "name": "SIGNER1_MIDDLE",
-   "kind": "db",
-   "label": "Co-borrower name (address block)",
-   "desc": "Co-borrower's middle name/initial",
-   "rect": [
-    152,
-    111,
-    190,
-    124
-   ]
-  },
-  "F6": {
-   "name": "SIGNER1_SURNAME",
-   "kind": "db",
-   "label": "Co-borrower name (address block)",
-   "desc": "Co-borrower's surname",
-   "rect": [
-    192,
-    111,
-    290,
-    124
+    59.0,
+    111.0,
+    290.0,
+    124.0
    ]
   },
   "F7": {
@@ -149,40 +101,28 @@
    "desc": "Branch phone"
   },
   "F16": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "(printed under signature line 1)",
-   "desc": "Borrower's first name, shown again under the signature"
-  },
-  "F17": {
-   "name": "PRIMARY_MIDDLE",
-   "kind": "db",
-   "label": "(printed under signature line 1)",
-   "desc": "Borrower's middle"
-  },
-  "F18": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "(printed under signature line 1)",
-   "desc": "Borrower's surname"
+   "desc": "Member's full legal name",
+   "rect": [
+    59.3,
+    904.6,
+    390.4,
+    917.8
+   ]
   },
   "F19": {
-   "name": "SIGNER1_NAME",
+   "name": "SIGNER1_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "(printed under signature line 2)",
-   "desc": "Co-borrower's first name"
-  },
-  "F20": {
-   "name": "SIGNER1_MIDDLE",
-   "kind": "db",
-   "label": "(printed under signature line 2)",
-   "desc": "Co-borrower's middle"
-  },
-  "F21": {
-   "name": "SIGNER1_SURNAME",
-   "kind": "db",
-   "label": "(printed under signature line 2)",
-   "desc": "Co-borrower's surname"
+   "desc": "Signer 1's full legal name",
+   "rect": [
+    59.3,
+    942.9,
+    359.2,
+    956.0
+   ]
   },
   "F22": {
    "name": "PRIMARY_MEMBER_NUMBER",
@@ -221,7 +161,16 @@
    "desc": "Co-borrower's date"
   }
  },
- "drop": [],
+ "drop": [
+  "F2",
+  "F3",
+  "F5",
+  "F6",
+  "F17",
+  "F18",
+  "F20",
+  "F21"
+ ],
  "skip": {},
  "add": [
   {

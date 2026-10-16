@@ -27,84 +27,87 @@
    "kind": "db",
    "label": "Principal Amount",
    "desc": "Principal amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "editable": true
   },
   "F5": {
    "name": "TERM_ACCOUNT_OPENED",
    "kind": "db",
    "label": "Date of Deposit",
    "desc": "Date of deposit. CHECK: or TERM_ACCOUNT_INTDATE",
-   "how": "reviewed"
+   "how": "reviewed",
+   "editable": true
   },
   "F6": {
    "name": "TERM_ACCOUNT_MATURITY",
    "kind": "db",
    "label": "Maturity Date",
    "desc": "Maturity date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "editable": true
   },
   "F7": {
    "name": "TERM_ACCOUNT_TERMFREQUENCY",
    "kind": "db",
    "label": "Term Length",
    "desc": "Term length, the number. CHECK: TERMFREQUENCY vs TERMPER",
-   "how": "reviewed"
+   "how": "reviewed",
+   "editable": true
   },
   "F8": {
    "name": "TERM_ACCOUNT_TERMPER",
    "kind": "db",
    "label": "Term Length",
    "desc": "Term length, the unit",
-   "how": "reviewed"
+   "how": "reviewed",
+   "editable": true
   },
   "F9": {
    "name": "TERM_ACCOUNT_RATE1",
    "kind": "db",
    "label": "Interest Rate",
    "desc": "Interest rate, %",
-   "how": "reviewed"
+   "how": "reviewed",
+   "editable": true
   },
   "F10": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "Received From:",
-   "desc": "Received from: member first (usual) name",
-   "how": "reviewed"
-  },
-  "F11": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "",
-   "desc": "Member's surname",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    54.0,
+    308.7,
+    269.5,
+    321.9
+   ]
   },
   "F12": {
-   "name": "SIGNER1_NAME",
+   "name": "SIGNER1_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "",
-   "desc": "Joint owner 1, usual (first) name",
-   "how": "reviewed"
-  },
-  "F13": {
-   "name": "SIGNER1_SURNAME",
-   "kind": "db",
-   "label": "",
-   "desc": "Joint owner 1, surname",
-   "how": "reviewed"
+   "desc": "Signer 1's full legal name",
+   "how": "reviewed",
+   "rect": [
+    54.0,
+    323.7,
+    250.6,
+    336.9
+   ]
   },
   "F14": {
-   "name": "SIGNER2_NAME",
+   "name": "SIGNER2_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "",
-   "desc": "Joint owner 2, usual (first) name",
-   "how": "reviewed"
-  },
-  "F15": {
-   "name": "SIGNER2_SURNAME",
-   "kind": "db",
-   "label": "",
-   "desc": "Joint owner 2, surname",
-   "how": "reviewed"
+   "desc": "Signer 2's full legal name",
+   "how": "reviewed",
+   "rect": [
+    54.0,
+    338.8,
+    249.5,
+    352.0
+   ]
   },
   "F16": {
    "name": "TERM_MATURITY_DISPOSITION",
@@ -172,7 +175,11 @@
    "how": "reviewed"
   }
  },
- "drop": [],
+ "drop": [
+  "F11",
+  "F13",
+  "F15"
+ ],
  "skip": {},
  "add": [],
  "notes": []

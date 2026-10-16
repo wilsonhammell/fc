@@ -1,18 +1,17 @@
 {
  "items": {
   "F1": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "Name:",
-   "desc": "Member's first name",
-   "how": "reviewed"
-  },
-  "F2": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "Name:",
-   "desc": "Member's surname",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    103.9,
+    160.5,
+    391.4,
+    172.5
+   ]
   },
   "F3": {
    "name": "PRIMARY_MAIL_ADDR_LINE1",
@@ -198,7 +197,9 @@
    "how": "reviewed"
   }
  },
- "drop": [],
+ "drop": [
+  "F2"
+ ],
  "skip": {
   "B7": "the account number box (F6) is moved here",
   "B8": "not a blank - beside the new RRIF line"

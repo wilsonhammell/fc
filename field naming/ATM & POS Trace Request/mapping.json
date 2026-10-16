@@ -1,16 +1,16 @@
 {
  "items": {
   "F1": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "Name",
-   "desc": "Member's first (usual) name - the form splits Name into first and last"
-  },
-  "F21": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "Name",
-   "desc": "Member's surname"
+   "desc": "Member's full legal name",
+   "rect": [
+    172.3,
+    110.5,
+    443.3,
+    128.5
+   ]
   },
   "F2": {
    "name": "PRIMARY_MEMBER_NUMBER",
@@ -169,7 +169,9 @@
    "desc": "Admin office use only"
   }
  },
- "drop": [],
+ "drop": [
+  "F21"
+ ],
  "skip": {
   "B1": "part of the underline of the field beside it on the plain rung - not a place of its own",
   "B2": "part of the underline of the field beside it on the plain rung - not a place of its own"

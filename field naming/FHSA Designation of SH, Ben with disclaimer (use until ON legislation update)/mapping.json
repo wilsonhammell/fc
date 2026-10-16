@@ -66,7 +66,17 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 1: account the designation is for",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F10": {
    "name": "Beneficiary1DateOfBirth",
@@ -112,14 +122,24 @@
    "label": "",
    "desc": "Beneficiary 2: name",
    "how": "reviewed",
-   "custom": "Required when beneficiary 2 is used (any BENE2_ field filled in): name, relationship, type and share"
+   "custom": "Required when beneficiary 2 is used (any Beneficiary2 field filled in): name, relationship, type and share"
   },
   "F16": {
    "name": "Beneficiary2Account",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: account the designation is for",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F17": {
    "name": "Beneficiary2DateOfBirth",
@@ -162,14 +182,24 @@
    "label": "",
    "desc": "Beneficiary 3: name",
    "how": "reviewed",
-   "custom": "Required when beneficiary 3 is used (any BENE3_ field filled in): name, relationship, type and share"
+   "custom": "Required when beneficiary 3 is used (any Beneficiary3 field filled in): name, relationship, type and share"
   },
   "F23": {
    "name": "Beneficiary3Account",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: account the designation is for",
-   "how": "reviewed"
+   "how": "reviewed",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "custom": "If filled in, a 12-digit Libro account number"
   },
   "F24": {
    "name": "Beneficiary3DateOfBirth",

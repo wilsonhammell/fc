@@ -210,88 +210,56 @@
    "how": "reviewed"
   },
   "F14": {
-   "name": "PRIMARY_NAME",
+   "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "BETWEEN:",
-   "desc": "Member's first name",
-   "how": "reviewed"
-  },
-  "F15": {
-   "name": "PRIMARY_MIDDLE",
-   "kind": "db",
-   "label": "BETWEEN:",
-   "desc": "Member's middle name/initial",
-   "how": "reviewed"
-  },
-  "F16": {
-   "name": "PRIMARY_SURNAME",
-   "kind": "db",
-   "label": "BETWEEN:",
-   "desc": "Member's surname",
-   "how": "reviewed"
+   "desc": "Member's full legal name",
+   "how": "reviewed",
+   "rect": [
+    94.5,
+    101.1,
+    349.6,
+    113.1
+   ]
   },
   "F17": {
-   "name": "SIGNER1_NAME",
+   "name": "SIGNER1_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 1, first name",
-   "how": "reviewed"
-  },
-  "F18": {
-   "name": "SIGNER1_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 1, middle name/initial",
-   "how": "reviewed"
-  },
-  "F19": {
-   "name": "SIGNER1_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 1, surname",
-   "how": "reviewed"
+   "desc": "Signer 1's full legal name",
+   "how": "reviewed",
+   "rect": [
+    378.7,
+    101.1,
+    578.3,
+    113.1
+   ]
   },
   "F20": {
-   "name": "SIGNER2_NAME",
+   "name": "SIGNER2_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 2, first name",
-   "how": "reviewed"
-  },
-  "F21": {
-   "name": "SIGNER2_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, middle name/initial",
-   "how": "reviewed"
-  },
-  "F22": {
-   "name": "SIGNER2_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 2, surname",
-   "how": "reviewed"
+   "desc": "Signer 2's full legal name",
+   "how": "reviewed",
+   "rect": [
+    78.8,
+    127.1,
+    349.1,
+    139.1
+   ]
   },
   "F23": {
-   "name": "SIGNER3_NAME",
+   "name": "SIGNER3_FULL_LEGAL_NAME",
    "kind": "db",
    "label": "and",
-   "desc": "Joint owner 3, first name",
-   "how": "reviewed"
-  },
-  "F24": {
-   "name": "SIGNER3_MIDDLE",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, middle name/initial",
-   "how": "reviewed"
-  },
-  "F25": {
-   "name": "SIGNER3_SURNAME",
-   "kind": "db",
-   "label": "and",
-   "desc": "Joint owner 3, surname",
-   "how": "reviewed"
+   "desc": "Signer 3's full legal name",
+   "how": "reviewed",
+   "rect": [
+    378.7,
+    127.1,
+    578.3,
+    139.1
+   ]
   },
   "F26": {
    "name": "CollateralDescription",
@@ -428,7 +396,15 @@
   "F29",
   "F32",
   "F35",
-  "F38"
+  "F38",
+  "F15",
+  "F16",
+  "F18",
+  "F19",
+  "F21",
+  "F22",
+  "F24",
+  "F25"
  ],
  "skip": {},
  "add": [],
