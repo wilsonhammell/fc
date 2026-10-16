@@ -5,3 +5,4 @@ proofs/
 reports/
 *.pdf
 __pycache__/
+handover/
