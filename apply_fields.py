@@ -861,7 +861,9 @@ OLD_PREFILLED = [
      {"Safe Deposit Box - Statutory Declaration - Estates",
       "Statutory Declaration & Indemnification Testacy - with Will"}),
     ("Existing guarantors", "GUARANTOR_FULL_LEGAL_NAME, GUARANTOR_MAIL_FULL_LINE",
-     r"^Guarantor(Corp)?(\d)?Name$",
+     # the guarantor - a person, or the corporation by name - not the
+     # officers signing for a corporation (GuarantorCorp1Name...)
+     r"^Guarantor\d?Name$|^GuarantorCorpName$",
      {"Breach Letter", "Loan Extension Request - Small Business"}),
     ("The official cheque already issued", "OFFICIAL_CHEQUE_AMOUNT, OFFICIAL_CHEQUE_NUMBER, OFFICIAL_CHEQUE_PAYEE",
      r"^OfficialCheque(Number|Amount|Payee)$", {"Indemnity Agreement"}),
