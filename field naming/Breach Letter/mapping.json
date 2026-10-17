@@ -42,7 +42,7 @@
    "how": "reviewed"
   },
   "F7": {
-   "name": "ACCTMGR_POSITION",
+   "name": "ACCTMGR_TITLE",
    "kind": "candidate",
    "label": ",",
    "desc": "The FSR's position / title",

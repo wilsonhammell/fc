@@ -93,87 +93,87 @@
    "desc": "Interest payment frequency"
   },
   "F15": {
-   "name": "TERM_MATURITY_DISPOSITION",
+   "name": "DISP_OF_PRIN_TYPE",
    "kind": "candidate",
    "label": "Maturity Option",
    "desc": "What happens at maturity (renew, transfer...). Old merge tag Maturity_Diposition",
    "save": true
   },
   "F16": {
-   "name": "TERM_MATURITY_INIT_TRIGGER",
+   "name": "DISP_OF_PRIN_INIT_TRIGGER",
    "kind": "candidate",
    "label": "Maturity Option",
    "desc": "Small box after the maturity option (old merge tag Maturity_Init_Trigger) - a code"
   },
   "F17": {
-   "name": "TERM_INTEREST_DISPOSITION",
+   "name": "DISP_OF_INT_TYPE",
    "kind": "candidate",
    "label": "Interest Option",
    "desc": "What happens to interest. Old merge tag Interest_Disposition",
    "save": true
   },
   "F18": {
-   "name": "TERM_INTEREST_INIT_TRIGGER",
+   "name": "DISP_OF_INT_INIT_TRIGGER",
    "kind": "candidate",
    "label": "Interest Option",
    "desc": "Small box after the interest option - a code"
   },
   "F19": {
-   "name": "TERM_MATURITY_TRANSFER_ACCT_TYPE",
+   "name": "DISP_OF_PRIN_ACCOUNT_TYPE",
    "kind": "candidate",
    "label": "Maturity Transfer Account Type (if applicable)",
    "desc": "Account type maturity funds go to (dropdown)"
   },
   "F20": {
-   "name": "TERM_MATURITY_TRANSFER_SUB_DISPLAY",
+   "name": "DISP_OF_PRIN_SUB_DISPLAY",
    "kind": "candidate",
    "label": "Maturity Transfer Account Type (if applicable)",
    "desc": "Sub display beside it (old Maturity_Sub_Display)"
   },
   "F21": {
-   "name": "TERM_MATURITY_TRANSFER_SUB",
+   "name": "DISP_OF_PRIN_SUB",
    "kind": "candidate",
    "label": "Maturity Transfer Account Type (if applicable)",
    "desc": "Sub number maturity funds go to"
   },
   "F22": {
-   "name": "TERM_INTEREST_TRANSFER_ACCT_TYPE",
+   "name": "DISP_OF_INT_ACCOUNT_TYPE",
    "kind": "candidate",
    "label": "Interest Disposition Account Type (if applicable)",
    "desc": "Account type interest goes to (dropdown)"
   },
   "F23": {
-   "name": "TERM_INTEREST_TRANSFER_SUB_DISPLAY",
+   "name": "DISP_OF_INT_SUB_DISPLAY",
    "kind": "candidate",
    "label": "Interest Disposition Account Type (if applicable)",
    "desc": "Sub display beside it"
   },
   "F24": {
-   "name": "TERM_INTEREST_TRANSFER_SUB",
+   "name": "DISP_OF_INT_SUB",
    "kind": "candidate",
    "label": "Interest Disposition Account Type (if applicable)",
    "desc": "Sub number interest goes to"
   },
   "F25": {
-   "name": "TERM_MATURITY_TRANSFER_ACCT_DISPLAY",
+   "name": "DISP_OF_PRIN_ACCOUNT_DISPLAY",
    "kind": "candidate",
    "label": "Maturity Transfer Account Number (if applicable)",
    "desc": "Account maturity funds go to, as shown"
   },
   "F26": {
-   "name": "TERM_MATURITY_TRANSFER_ACCT",
+   "name": "DISP_OF_PRIN_ACCOUNT",
    "kind": "candidate",
    "label": "Maturity Transfer Account Number (if applicable)",
    "desc": "Account number maturity funds go to"
   },
   "F27": {
-   "name": "TERM_INTEREST_TRANSFER_ACCT_DISPLAY",
+   "name": "DISP_OF_INT_ACCOUNT_DISPLAY",
    "kind": "candidate",
    "label": "Interest Transfer Account Number (if applicable)",
    "desc": "Account interest goes to, as shown"
   },
   "F28": {
-   "name": "TERM_INTEREST_TRANSFER_ACCT",
+   "name": "DISP_OF_INT_ACCOUNT",
    "kind": "candidate",
    "label": "Interest Transfer Account Number (if applicable)",
    "desc": "Account number interest goes to"

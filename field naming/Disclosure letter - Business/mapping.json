@@ -100,7 +100,7 @@
    "save": true
   },
   "F5": {
-   "name": "LOAN_PAYMENT_FREQUENCY",
+   "name": "PMT_FREQ_CURRENT",
    "kind": "candidate",
    "label": "Payment Frequency:",
    "desc": "Loan payment frequency",
@@ -108,7 +108,7 @@
    "save": true
   },
   "F6": {
-   "name": "LOAN_PAYMENT_AMOUNT",
+   "name": "PMT_AMOUNT",
    "kind": "candidate",
    "label": "Payment Amount:",
    "desc": "Payment amount (principal and interest; old field PI_Amount)",
@@ -116,7 +116,7 @@
    "save": true
   },
   "F7": {
-   "name": "LOAN_NEXT_PAYMENT_DATE",
+   "name": "PMT_FIRST_DATE",
    "kind": "candidate",
    "label": "First Payment Date:",
    "desc": "Loan's next payment date",
@@ -131,7 +131,7 @@
    "how": "reviewed"
   },
   "F17": {
-   "name": "ACCTMGR_POSITION",
+   "name": "ACCTMGR_TITLE",
    "kind": "candidate",
    "label": "",
    "desc": "The FSR's position / title",

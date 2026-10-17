@@ -103,7 +103,7 @@
    "how": "reviewed"
   },
   "F20": {
-   "name": "LOAN_PAYMENT_FREQUENCY",
+   "name": "PMT_FREQ_CURRENT",
    "kind": "candidate",
    "label": "Payment Frequency:",
    "desc": "Loan payment frequency",

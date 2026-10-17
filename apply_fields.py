@@ -821,10 +821,58 @@ GROUPS = [
     (r"LOAN_PAYOUT_", "Loan payout statements", "No loan group in the DB list."),
     (r"RENEWAL_", "Loan renewal / conversion offers", "The rates and payments offered per term."),
     (r"LOAN_", "Loans", "No loan group in the DB list. If loans live in the mortgage tables, these are MORT_ fields (MORT_ACCOUNT_ORIGINALAMOUNT, MORT_ACCOUNT_PAYMENT, ...)."),
-    (r"TERM_", "Term deposits / GICs", "Beyond the TERM_ fields already listed: sub number and maturity/interest instructions."),
+    (r"PMT_", "Loans", "Named as in the old datafeed."),
+    (r"(TERM_|DISP_OF_)", "Term deposits / GICs", "Beyond the TERM_ fields already listed: sub number and maturity/interest instructions (the old datafeed's DISP_OF_PRIN_ and DISP_OF_INT_)."),
     (r"SDB_", "Safe deposit boxes", ""),
     (r"ESTATE_", "Estates", ""),
 ]
+
+# The old DB's datafeed (datafeed desc.txt: name, type, length). The new DB
+# aims at parity with it, so a candidate it had is the likeliest to come.
+# Where a candidate is not one of its names but probably one of its values,
+# what it may be:
+MAYBE_OLD = {
+    "PRIMARY_MAIL_ADDR_LINE1": "PRIMARY_MAIL_STREET",
+    "PRIMARY_MAIL_ADDR_LINE2": "PRIMARY_MAIL_CTY_PRV_PST",
+    "PRIMARY_MAIL_ADDR_LINE3": "PRIMARY_MAIL_CTY_PRV_PST or PRIMARY_MAIL_CTRYCD",
+    "SPOUSE_ADDRESS": "SPOUSE_MAIL_STREET, _CTY, _PRV, _PST",
+    "ESTATE_CORRESPONDENCE_ADDRESS": "EXE_MAIL_FULL_ADDR",
+    "LOAN_BALANCE": "NOTE_BALANCE",
+    "LOAN_PRINCIPAL_BALANCE": "NOTE_BALANCE",
+    "LOAN_APPROVED_AMOUNT": "APPROVED_LIMIT or ORIGINAL_BALANCE",
+    "LOAN_INTEREST_RATE": "CURRENT_INTEREST_RATE",
+    "LOAN_MATURITY_DATE": "TERM_MATURITY_DATE",
+    "LOAN_TERM_MONTHS": "PMT_REMAIN_TERM_MONTHS",
+    "LOAN_FUND_DATE": "CONTRACT_DATE",
+    "TERM_ACCOUNT_SUB": "REG_CONTRACT_NUMBER",
+}
+# Values the forms have typed in that the old datafeed filled - none of them
+# in dbFields.json: (area, its old fields, pattern for our fields)
+OLD_PREFILLED = [
+    ("Beneficiaries", "BENE1-3_FULL_LEGAL_NAME, _BENE_RELATION, _SIN, _MAIL_FULL_LINE (the new DB has only the ALL_BENE_ lists)",
+     r"^(Alternate)?Beneficiary\d"),
+    ("Estate trustees / executors", "EXE_FULL_LEGAL_NAME, _MAIL_FULL_ADDR, _SIN, _DATE_OF_BIRTH, _PRIMARY_ID (one executor)",
+     r"(?i)trustee|executor"),
+    ("Guarantors", "GUARANTOR_FULL_LEGAL_NAME, _LEGAL_FULL_LINE, _MAIL_FULL_LINE", r"(?i)^guarantor"),
+    ("Indemnitors", "INDEMNITOR_FULL_LEGAL_NAME, _LEGAL_FULL_LINE, _MAIL_FULL_LINE", r"(?i)^indemnit"),
+    ("Power of attorney", "POA_FULL_LEGAL_NAME, _MAIL_FULL_ADDR, _MEMBER_NUMBER, _SIN", r"(?i)attorney|^POA"),
+    ("Official cheques", "OFFICIAL_CHEQUE_AMOUNT, _NUMBER, _PAYEE", r"(?i)^officialcheque"),
+    ("Pre-authorized debits / credits", "PAT_AMOUNT, PAT_FREQUENCY, PAT_NEXT_DISB_DATE, PAT_DR/CR_ACCOUNT_NUMBER",
+     r"(?i)^(pad|pac)(amount|startdate|frequency|sub)$"),
+    ("Registered plan contracts", "REG_CONTRACT_NUMBER, REG_PLAN_NUMBER, REG_PLAN_TYPE", r"(?i)contract"),
+    ("Safe deposit boxes", "SDB_BOX_TYPE, SDB_BOX_NAME, SDB_RENTAL_AMOUNT", r"^SDB(?!_NUMBER)"),
+    ("Collateral", "COLL_MAKE, _MODEL, _MODEL_YEAR, _VID, _PROP_ADDR, _LEGAL_DESC, _VALUE",
+     r"(?i)collateral|propertyaddress"),
+    ("Transactions being traced", "TXN_AMOUNT, TXN_DATE", r"(?i)transaction(date|amount)$"),
+]
+
+
+def old_datafeed():
+    path = os.path.join(HERE, "datafeed desc.txt")
+    if not os.path.exists(path):
+        return set()
+    with open(path, encoding="utf-8") as fh:
+        return {ln.split("\t")[0].strip() for ln in fh if ln.strip()}
 
 
 def gather(root):
@@ -833,13 +881,15 @@ def gather(root):
     label it turns up under - and every DB match a person still has to
     confirm. Read back from each form's fields.csv, so it is the same list
     the forms say."""
-    cands, checks = {}, []
+    cands, checks, entries = {}, [], []
     for stem in sorted(os.listdir(root)):
         path = os.path.join(root, stem, "fields.csv")
         if not os.path.exists(path):
             continue
         with open(path, encoding="utf-8-sig") as fh:
             for r in csv.DictReader(fh):
+                if r.get("kind") == "entry":
+                    entries.append((stem, r["name"]))
                 if r.get("kind") == "candidate":
                     # (a box of a check box group is asked for as its group)
                     c = cands.setdefault(r["name"].split(".")[0], {"desc": r["what goes there"],
@@ -866,13 +916,31 @@ def gather(root):
     stale = os.path.join(root, "DB candidates.csv")
     if os.path.exists(stale):
         os.remove(stale)
+    old = old_datafeed()
+
+    def in_old(n):
+        if n in old:
+            return "yes, same name"
+        if n in MAYBE_OLD:
+            return f"possibly {MAYBE_OLD[n]}"
+        return "no"
     with open(os.path.join(root, "missing from DB.csv"), "w", newline="", encoding="utf-8-sig") as fh:
         wr = csv.writer(fh)
-        wr.writerow(["area", "proposed DB field", "what it is", "forms using it", "labels on the forms",
-                     "forms", "note"])
+        wr.writerow(["area", "proposed DB field", "in the old datafeed", "what it is", "forms using it",
+                     "labels on the forms", "forms", "note"])
         for g, n, c, note in rows:
-            wr.writerow([g, n, c["desc"], len(c["forms"]), " | ".join(c["labels"]),
+            wr.writerow([g, n, in_old(n), c["desc"], len(c["forms"]), " | ".join(c["labels"]),
                          " | ".join(c["forms"]), note])
+    # and what the forms now have typed in that the old datafeed filled
+    with open(os.path.join(root, "typed now, old datafeed filled.csv"), "w", newline="",
+              encoding="utf-8-sig") as fh:
+        wr = csv.writer(fh)
+        wr.writerow(["area", "old datafeed fields", "fields on the forms", "forms"])
+        for area, fields, pat in OLD_PREFILLED:
+            hits = [(s, n) for s, n in entries if re.search(pat, n)]
+            if hits:
+                wr.writerow([area, fields, len({n for _, n in hits}),
+                             " | ".join(sorted({s for s, _ in hits}))])
     # and the names alone, one per line, for whoever just wants the list
     with open(os.path.join(root, "missing from DB.txt"), "w", encoding="utf-8") as fh:
         fh.write("\n".join(n for _, n, _, _ in rows) + "\n")

@@ -270,7 +270,7 @@
     556,
     376
    ],
-   "name": "LOAN_PAYMENT_FREQUENCY",
+   "name": "PMT_FREQ_CURRENT",
    "kind": "candidate",
    "label": "YOUR OPTIONS FOR CONVERSION",
    "desc": "Frequency the options are quoted at. Printed sample value under it - the value must come off the page.",

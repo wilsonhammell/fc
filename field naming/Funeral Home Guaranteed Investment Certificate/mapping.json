@@ -110,7 +110,7 @@
    ]
   },
   "F16": {
-   "name": "TERM_MATURITY_DISPOSITION",
+   "name": "DISP_OF_PRIN_TYPE",
    "kind": "candidate",
    "label": "Maturity Option",
    "desc": "What happens at maturity (old merge tag Maturity_Diposition)",
@@ -118,21 +118,21 @@
    "save": true
   },
   "F17": {
-   "name": "TERM_MATURITY_TRANSFER_ACCT_TYPE",
+   "name": "DISP_OF_PRIN_ACCOUNT_TYPE",
    "kind": "candidate",
    "label": "Transfer Account Details (if any)",
    "desc": "Account type maturity funds go to",
    "how": "reviewed"
   },
   "F18": {
-   "name": "TERM_MATURITY_TRANSFER_ACCT",
+   "name": "DISP_OF_PRIN_ACCOUNT",
    "kind": "candidate",
    "label": "Transfer Account Details (if any)",
    "desc": "Account number maturity funds go to",
    "how": "reviewed"
   },
   "F19": {
-   "name": "TERM_EARLY_REDEMPTION",
+   "name": "TERM_REDEEMABLE",
    "kind": "candidate",
    "label": "Early Redemption Option",
    "desc": "Early redemption option permitted (old merge tag Early_Withdraw_Permitted)",
@@ -146,7 +146,7 @@
    "how": "reviewed"
   },
   "F21": {
-   "name": "TERM_INTEREST_DISPOSITION",
+   "name": "DISP_OF_INT_TYPE",
    "kind": "candidate",
    "label": "Interest Paid to:",
    "desc": "Where interest is paid (old merge tag Interest_Disposition)",
@@ -154,14 +154,14 @@
    "save": true
   },
   "F22": {
-   "name": "TERM_INTEREST_TRANSFER_ACCT_TYPE",
+   "name": "DISP_OF_INT_ACCOUNT_TYPE",
    "kind": "candidate",
    "label": "Interest Paid to:",
    "desc": "Account type interest goes to",
    "how": "reviewed"
   },
   "F23": {
-   "name": "TERM_INTEREST_TRANSFER_ACCT",
+   "name": "DISP_OF_INT_ACCOUNT",
    "kind": "candidate",
    "label": "Interest Paid to:",
    "desc": "Account number interest goes to",

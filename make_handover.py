@@ -80,7 +80,11 @@ reviewer comments.csv
     on the cleaned forms; the designer's export removes every comment, so
     they are not on the designer output
 missing from DB.csv / .txt
-    values the forms ask for that the DB list does not have yet
+    values the forms ask for that the DB list does not have yet, named as
+    the old datafeed named them where it had them, and whether it did
+typed now, old datafeed filled.csv
+    values typed in on the forms that the old datafeed used to fill (the
+    beneficiaries, executors, guarantors...), which the new DB lacks
 to confirm.csv
     DB matches and notes a person should check
 all fields.csv
@@ -180,7 +184,8 @@ def main():
         n_lists += 1
 
     for src in (os.path.join(NAMING, f) for f in
-                ("missing from DB.csv", "missing from DB.txt", "to confirm.csv", "all fields.csv")):
+                ("missing from DB.csv", "missing from DB.txt", "typed now, old datafeed filled.csv",
+                 "to confirm.csv", "all fields.csv")):
         if os.path.isfile(src):
             shutil.copy2(src, out)
         else:

@@ -95,13 +95,13 @@
    "how": "reviewed"
   },
   "F15": {
-   "name": "SPOUSE_SURNAME",
+   "name": "SPOUSE_LAST_NAME",
    "kind": "candidate",
    "label": "Spouse's Last Name",
    "desc": "Contributing spouse's surname - the DB list has only SPOUSE_FULL_NAME"
   },
   "F16": {
-   "name": "SPOUSE_NAME",
+   "name": "SPOUSE_FIRST_NAME",
    "kind": "candidate",
    "label": "Spouse's First Name",
    "desc": "Contributing spouse's first name"

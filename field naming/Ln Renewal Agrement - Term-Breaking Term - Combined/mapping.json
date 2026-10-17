@@ -237,7 +237,7 @@
     260,
     399
    ],
-   "name": "LOAN_PAYMENT_FREQUENCY",
+   "name": "PMT_FREQ_CURRENT",
    "kind": "candidate",
    "label": "Payment Frequency",
    "desc": "Payment frequency.",
@@ -279,7 +279,7 @@
     358,
     426
    ],
-   "name": "LOAN_PAYMENT_FREQUENCY",
+   "name": "PMT_FREQ_CURRENT",
    "kind": "candidate",
    "label": "YOUR OPTIONS FOR RENEWAL ARE AS FOLLOWS",
    "desc": "Frequency the options are quoted at - the same value as Payment Frequency (one field shown twice).",
