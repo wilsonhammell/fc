@@ -846,24 +846,35 @@ MAYBE_OLD = {
     "LOAN_FUND_DATE": "CONTRACT_DATE",
     "TERM_ACCOUNT_SUB": "REG_CONTRACT_NUMBER",
 }
-# Values the forms have typed in that the old datafeed filled - none of them
-# in dbFields.json: (area, its old fields, pattern for our fields)
+# Values the forms have typed in that the old datafeed probably filled, none
+# of them in dbFields.json: (area, its old fields, pattern for our fields,
+# forms where it is a value already on record). Judged form by form, not by
+# name: a designation form's beneficiaries are the new ones being named, so
+# typed; an estate declaration's trustees are the ones on the estate account.
+# Left out as typed for the same reason: new PAD/PAC agreements, Guarantee's
+# new guarantor, the estate account's own declaration, safe deposit box
+# visits, the transaction being traced, transfer forms' contracts (the
+# source is RSP_ACCOUNT_CONTRACT already, the destination is new).
 OLD_PREFILLED = [
-    ("Beneficiaries", "BENE1-3_FULL_LEGAL_NAME, _BENE_RELATION, _SIN, _MAIL_FULL_LINE (the new DB has only the ALL_BENE_ lists)",
-     r"^(Alternate)?Beneficiary\d"),
-    ("Estate trustees / executors", "EXE_FULL_LEGAL_NAME, _MAIL_FULL_ADDR, _SIN, _DATE_OF_BIRTH, _PRIMARY_ID (one executor)",
-     r"(?i)trustee|executor"),
-    ("Guarantors", "GUARANTOR_FULL_LEGAL_NAME, _LEGAL_FULL_LINE, _MAIL_FULL_LINE", r"(?i)^guarantor"),
-    ("Indemnitors", "INDEMNITOR_FULL_LEGAL_NAME, _LEGAL_FULL_LINE, _MAIL_FULL_LINE", r"(?i)^indemnit"),
-    ("Power of attorney", "POA_FULL_LEGAL_NAME, _MAIL_FULL_ADDR, _MEMBER_NUMBER, _SIN", r"(?i)attorney|^POA"),
-    ("Official cheques", "OFFICIAL_CHEQUE_AMOUNT, _NUMBER, _PAYEE", r"(?i)^officialcheque"),
-    ("Pre-authorized debits / credits", "PAT_AMOUNT, PAT_FREQUENCY, PAT_NEXT_DISB_DATE, PAT_DR/CR_ACCOUNT_NUMBER",
-     r"(?i)^(pad|pac)(amount|startdate|frequency|sub)$"),
-    ("Registered plan contracts", "REG_CONTRACT_NUMBER, REG_PLAN_NUMBER, REG_PLAN_TYPE", r"(?i)contract"),
-    ("Safe deposit boxes", "SDB_BOX_TYPE, SDB_BOX_NAME, SDB_RENTAL_AMOUNT", r"^SDB(?!_NUMBER)"),
-    ("Collateral", "COLL_MAKE, _MODEL, _MODEL_YEAR, _VID, _PROP_ADDR, _LEGAL_DESC, _VALUE",
-     r"(?i)collateral|propertyaddress"),
-    ("Transactions being traced", "TXN_AMOUNT, TXN_DATE", r"(?i)transaction(date|amount)$"),
+    ("Estate trustees on record", "EXE_FULL_LEGAL_NAME, EXE_MAIL_FULL_ADDR (one executor)",
+     r"^EstateTrustee(Names|City|Province)$",
+     {"Safe Deposit Box - Statutory Declaration - Estates",
+      "Statutory Declaration & Indemnification Testacy - with Will"}),
+    ("Existing guarantors", "GUARANTOR_FULL_LEGAL_NAME, GUARANTOR_MAIL_FULL_LINE",
+     r"^Guarantor(Corp)?(\d)?Name$",
+     {"Breach Letter", "Loan Extension Request - Small Business"}),
+    ("The official cheque already issued", "OFFICIAL_CHEQUE_AMOUNT, OFFICIAL_CHEQUE_NUMBER, OFFICIAL_CHEQUE_PAYEE",
+     r"^OfficialCheque(Number|Amount|Payee)$", {"Indemnity Agreement"}),
+    ("Collateral on record", "COLL_MAKE, COLL_MODEL, COLL_MODEL_YEAR, COLL_VID, COLL_PROP_ADDR, COLL_LEGAL_DESC",
+     r"^(CollateralDescription|PropertyAddress)$",
+     {"Security Agreement - Specific Equip", "Loan Payout Statement - Business",
+      "Loan Payout Statement - LOC - Business", "Mortgagor's Declaration as to Execution(s)"}),
+    ("The deceased's plan contracts", "REG_CONTRACT_NUMBER (one contract; the forms list several)",
+     r"^(RRSP|TFSA)Contracts$",
+     {"Designated Beneficiary Declaration and Indemnification - Estates",
+      "Renounciation of Designated Beneficiary - Estates",
+      "Statutory Declaration & Indemnification Intestacy - No Will",
+      "Statutory Declaration & Indemnification Testacy - with Will"}),
 ]
 
 
@@ -935,11 +946,12 @@ def gather(root):
     with open(os.path.join(root, "typed now, old datafeed filled.csv"), "w", newline="",
               encoding="utf-8-sig") as fh:
         wr = csv.writer(fh)
-        wr.writerow(["area", "old datafeed fields", "fields on the forms", "forms"])
-        for area, fields, pat in OLD_PREFILLED:
-            hits = [(s, n) for s, n in entries if re.search(pat, n)]
+        wr.writerow(["area", "old datafeed fields", "fields on the forms", "our names", "forms"])
+        for area, fields, pat, forms in OLD_PREFILLED:
+            hits = [(s, n) for s, n in entries if s in forms and re.search(pat, n)]
             if hits:
                 wr.writerow([area, fields, len({n for _, n in hits}),
+                             " | ".join(sorted({n for _, n in hits})),
                              " | ".join(sorted({s for s, _ in hits}))])
     # and the names alone, one per line, for whoever just wants the list
     with open(os.path.join(root, "missing from DB.txt"), "w", encoding="utf-8") as fh:
