@@ -1,0 +1,753 @@
+{
+ "Designated Beneficiary Declaration and Indemnification - Estates": [
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE1",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE2",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE3",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_FULL_LINE",
+   "what": "added (not required)"
+  }
+ ],
+ "Disclosure letter - Business": [
+  {
+   "what": "fields that ran past a table cell wall cut back to it"
+  }
+ ],
+ "FHSA Application": [
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE1",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE2",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE3",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_FULL_LINE",
+   "what": "added (not required)"
+  }
+ ],
+ "FHSA Designation of SH, Ben": [
+  {
+   "field": "Beneficiary1Account",
+   "what": "save validation: not required → required"
+  },
+  {
+   "field": "Beneficiary1DateOfBirth",
+   "what": "save validation: not required → required"
+  },
+  {
+   "field": "Beneficiary1Percent",
+   "what": "save validation: custom: Required, and the shares of all the beneficiaries named (Beneficiary1Percent, Beneficiary2Percent, Beneficiary3Percent) must add up to 100 → required"
+  },
+  {
+   "field": "Beneficiary1SIN",
+   "what": "save validation: not required → required"
+  },
+  {
+   "field": "Beneficiary2Account",
+   "what": "save validation: not required → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2DateOfBirth",
+   "what": "save validation: not required → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2Name",
+   "what": "save validation: custom: Required when beneficiary 2 is used (any Beneficiary2 field filled in): name, relationship, type and share → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2Percent",
+   "what": "save validation: custom: Required when Beneficiary2Name is filled in → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2Relationship",
+   "what": "save validation: custom: Required when Beneficiary2Name is filled in → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2SIN",
+   "what": "save validation: not required → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2Type",
+   "what": "save validation: custom: Required when Beneficiary2Name is filled in → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary3Account",
+   "what": "save validation: not required → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3DateOfBirth",
+   "what": "save validation: not required → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3Name",
+   "what": "save validation: custom: Required when beneficiary 3 is used (any Beneficiary3 field filled in): name, relationship, type and share → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3Percent",
+   "what": "save validation: custom: Required when Beneficiary3Name is filled in → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3Relationship",
+   "what": "save validation: custom: Required when Beneficiary3Name is filled in → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3SIN",
+   "what": "save validation: not required → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3Type",
+   "what": "save validation: custom: Required when Beneficiary3Name is filled in → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  }
+ ],
+ "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)": [
+  {
+   "field": "Beneficiary1Account",
+   "what": "save validation: not required → required"
+  },
+  {
+   "field": "Beneficiary1DateOfBirth",
+   "what": "save validation: not required → required"
+  },
+  {
+   "field": "Beneficiary1Percent",
+   "what": "save validation: custom: Required, and the shares of all the beneficiaries named (Beneficiary1Percent, Beneficiary2Percent, Beneficiary3Percent) must add up to 100 → required"
+  },
+  {
+   "field": "Beneficiary1SIN",
+   "what": "save validation: not required → required"
+  },
+  {
+   "field": "Beneficiary2Account",
+   "what": "save validation: not required → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2DateOfBirth",
+   "what": "save validation: not required → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2Name",
+   "what": "save validation: custom: Required when beneficiary 2 is used (any Beneficiary2 field filled in): name, relationship, type and share → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2Percent",
+   "what": "save validation: custom: Required when Beneficiary2Name is filled in → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2Relationship",
+   "what": "save validation: custom: Required when Beneficiary2Name is filled in → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2SIN",
+   "what": "save validation: not required → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary2Type",
+   "what": "save validation: custom: Required when Beneficiary2Name is filled in → custom: Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent, Beneficiary2Type is filled in"
+  },
+  {
+   "field": "Beneficiary3Account",
+   "what": "save validation: not required → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3DateOfBirth",
+   "what": "save validation: not required → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3Name",
+   "what": "save validation: custom: Required when beneficiary 3 is used (any Beneficiary3 field filled in): name, relationship, type and share → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3Percent",
+   "what": "save validation: custom: Required when Beneficiary3Name is filled in → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3Relationship",
+   "what": "save validation: custom: Required when Beneficiary3Name is filled in → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3SIN",
+   "what": "save validation: not required → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  },
+  {
+   "field": "Beneficiary3Type",
+   "what": "save validation: custom: Required when Beneficiary3Name is filled in → custom: Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent, Beneficiary3Type is filled in"
+  }
+ ],
+ "FHSA Withdrawal Transfer": [
+  {
+   "field": "DeathDetail1",
+   "what": "save validation: not required → custom: Required when TransactionType.Death is ticked"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE1",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE2",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE3",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_FULL_LINE",
+   "what": "added (not required)"
+  },
+  {
+   "field": "Withdrawal1AccruedInterest",
+   "what": "save validation: not required → required"
+  },
+  {
+   "field": "Withdrawal1ExpiryDate",
+   "what": "save validation: not required → required"
+  },
+  {
+   "field": "Withdrawal1Total",
+   "what": "save validation: not required → required"
+  },
+  {
+   "field": "Withdrawal2AccruedInterest",
+   "what": "save validation: not required → custom: Row Withdrawal2: all or nothing - required when any of Withdrawal2FHSASub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
+  },
+  {
+   "field": "Withdrawal2Amount",
+   "what": "save validation: custom: Required when Withdrawal2FHSASub is filled in → custom: Row Withdrawal2: all or nothing - required when any of Withdrawal2FHSASub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
+  },
+  {
+   "field": "Withdrawal2ExpiryDate",
+   "what": "save validation: not required → custom: Row Withdrawal2: all or nothing - required when any of Withdrawal2FHSASub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
+  },
+  {
+   "field": "Withdrawal2FHSASub",
+   "what": "save validation: custom: Required when Withdrawal2Type or Withdrawal2Amount is filled in → custom: Row Withdrawal2: all or nothing - required when any of Withdrawal2FHSASub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
+  },
+  {
+   "field": "Withdrawal2Total",
+   "what": "save validation: not required → custom: Row Withdrawal2: all or nothing - required when any of Withdrawal2FHSASub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
+  },
+  {
+   "field": "Withdrawal2Type",
+   "what": "save validation: custom: Required when Withdrawal2FHSASub is filled in → custom: Row Withdrawal2: all or nothing - required when any of Withdrawal2FHSASub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
+  },
+  {
+   "field": "Withdrawal3AccruedInterest",
+   "what": "save validation: not required → custom: Row Withdrawal3: all or nothing - required when any of Withdrawal3FHSASub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
+  },
+  {
+   "field": "Withdrawal3Amount",
+   "what": "save validation: custom: Required when Withdrawal3FHSASub is filled in → custom: Row Withdrawal3: all or nothing - required when any of Withdrawal3FHSASub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
+  },
+  {
+   "field": "Withdrawal3ExpiryDate",
+   "what": "save validation: not required → custom: Row Withdrawal3: all or nothing - required when any of Withdrawal3FHSASub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
+  },
+  {
+   "field": "Withdrawal3FHSASub",
+   "what": "save validation: custom: Required when Withdrawal3Type or Withdrawal3Amount is filled in → custom: Row Withdrawal3: all or nothing - required when any of Withdrawal3FHSASub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
+  },
+  {
+   "field": "Withdrawal3Total",
+   "what": "save validation: not required → custom: Row Withdrawal3: all or nothing - required when any of Withdrawal3FHSASub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
+  },
+  {
+   "field": "Withdrawal3Type",
+   "what": "save validation: custom: Required when Withdrawal3FHSASub is filled in → custom: Row Withdrawal3: all or nothing - required when any of Withdrawal3FHSASub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
+  },
+  {
+   "field": "Withdrawal4AccruedInterest",
+   "what": "save validation: not required → custom: Row Withdrawal4: all or nothing - required when any of Withdrawal4FHSASub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
+  },
+  {
+   "field": "Withdrawal4Amount",
+   "what": "save validation: custom: Required when Withdrawal4FHSASub is filled in → custom: Row Withdrawal4: all or nothing - required when any of Withdrawal4FHSASub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
+  },
+  {
+   "field": "Withdrawal4ExpiryDate",
+   "what": "save validation: not required → custom: Row Withdrawal4: all or nothing - required when any of Withdrawal4FHSASub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
+  },
+  {
+   "field": "Withdrawal4FHSASub",
+   "what": "save validation: custom: Required when Withdrawal4Type or Withdrawal4Amount is filled in → custom: Row Withdrawal4: all or nothing - required when any of Withdrawal4FHSASub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
+  },
+  {
+   "field": "Withdrawal4Total",
+   "what": "save validation: not required → custom: Row Withdrawal4: all or nothing - required when any of Withdrawal4FHSASub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
+  },
+  {
+   "field": "Withdrawal4Type",
+   "what": "save validation: custom: Required when Withdrawal4FHSASub is filled in → custom: Row Withdrawal4: all or nothing - required when any of Withdrawal4FHSASub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
+  },
+  {
+   "field": "Withdrawal5AccruedInterest",
+   "what": "save validation: not required → custom: Row Withdrawal5: all or nothing - required when any of Withdrawal5FHSASub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest is filled in"
+  },
+  {
+   "field": "Withdrawal5Amount",
+   "what": "save validation: custom: Required when Withdrawal5FHSASub is filled in → custom: Row Withdrawal5: all or nothing - required when any of Withdrawal5FHSASub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest is filled in"
+  },
+  {
+   "field": "Withdrawal5ExpiryDate",
+   "what": "save validation: not required → custom: Row Withdrawal5: all or nothing - required when any of Withdrawal5FHSASub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest is filled in"
+  },
+  {
+   "field": "Withdrawal5FHSASub",
+   "what": "save validation: custom: Required when Withdrawal5Type or Withdrawal5Amount is filled in → custom: Row Withdrawal5: all or nothing - required when any of Withdrawal5FHSASub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest is filled in"
+  },
+  {
+   "field": "Withdrawal5Type",
+   "what": "save validation: custom: Required when Withdrawal5FHSASub is filled in → custom: Row Withdrawal5: all or nothing - required when any of Withdrawal5FHSASub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest is filled in"
+  },
+  {
+   "field": "WithdrawalSubtotal",
+   "what": "save validation: not required → required"
+  }
+ ],
+ "Federal RLIF Transfer - up to 50% of new RLIF": [
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE1",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE2",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE3",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_FULL_LINE",
+   "what": "added (not required)"
+  }
+ ],
+ "Funeral Home Guaranteed Investment Certificate": [
+  {
+   "what": "a caption moved"
+  },
+  {
+   "what": "an empty page removed"
+  },
+  {
+   "what": "fields that ran past a table cell wall cut back to it"
+  }
+ ],
+ "Hypothecation Agreement - Bonds": [
+  {
+   "what": "only this product's own pages kept"
+  }
+ ],
+ "Hypothecation Agreement - Mutual Funds": [
+  {
+   "what": "only this product's own pages kept"
+  }
+ ],
+ "Hypothecation Agreement - Stocks": [
+  {
+   "what": "only this product's own pages kept"
+  }
+ ],
+ "LIRA Locked-in RRSP Trans Info Req": [
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE1",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE2",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE3",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_FULL_LINE",
+   "what": "added (not required)"
+  }
+ ],
+ "LIRA Locking In Agreement - Fed": [
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE1",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE2",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE3",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_FULL_LINE",
+   "what": "moved or resized"
+  }
+ ],
+ "LIRA Locking In Agreement - ON": [
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE1",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE2",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE3",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_FULL_LINE",
+   "what": "added (not required)"
+  }
+ ],
+ "LOC Repricing Letter": [
+  {
+   "field": "LOAN_MAINTENANCE_FEE",
+   "what": "added (required)"
+  },
+  {
+   "field": "LOAN_RENEWAL_FEE",
+   "what": "added (required)"
+  }
+ ],
+ "Loan Conversion Agreement": [
+  {
+   "field": "RENEWAL_PAYMENT_1YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 1Year"
+  },
+  {
+   "field": "RENEWAL_PAYMENT_2YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 2Year"
+  },
+  {
+   "field": "RENEWAL_PAYMENT_3YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 3Year"
+  },
+  {
+   "field": "RENEWAL_PAYMENT_4YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 4Year"
+  },
+  {
+   "field": "RENEWAL_PAYMENT_5YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 5Year"
+  },
+  {
+   "field": "RENEWAL_RATE_1YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 1Year"
+  },
+  {
+   "field": "RENEWAL_RATE_2YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 2Year"
+  },
+  {
+   "field": "RENEWAL_RATE_3YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 3Year"
+  },
+  {
+   "field": "RENEWAL_RATE_4YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 4Year"
+  },
+  {
+   "field": "RENEWAL_RATE_5YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 5Year"
+  },
+  {
+   "what": "printed sample values under fields erased"
+  },
+  {
+   "what": "fields that ran past a table cell wall cut back to it"
+  }
+ ],
+ "Loan Extension Request - Small Business": [
+  {
+   "field": "Guarantor1Date",
+   "what": "save validation: custom: Required when Guarantor1Name is filled in → custom: Row Guarantor1: all or nothing - required when any of Guarantor1Name, Guarantor1Signature, Guarantor1Date is filled in"
+  },
+  {
+   "field": "Guarantor1Name",
+   "what": "save validation: not required → custom: Row Guarantor1: all or nothing - required when any of Guarantor1Name, Guarantor1Signature, Guarantor1Date is filled in"
+  },
+  {
+   "field": "Guarantor1Signature",
+   "what": "save validation: custom: Required when Guarantor1Name is filled in → custom: Row Guarantor1: all or nothing - required when any of Guarantor1Name, Guarantor1Signature, Guarantor1Date is filled in"
+  },
+  {
+   "field": "Guarantor2Date",
+   "what": "save validation: custom: Required when Guarantor2Name is filled in → custom: Row Guarantor2: all or nothing - required when any of Guarantor2Name, Guarantor2Signature, Guarantor2Date is filled in"
+  },
+  {
+   "field": "Guarantor2Name",
+   "what": "save validation: not required → custom: Row Guarantor2: all or nothing - required when any of Guarantor2Name, Guarantor2Signature, Guarantor2Date is filled in"
+  },
+  {
+   "field": "Guarantor2Signature",
+   "what": "save validation: custom: Required when Guarantor2Name is filled in → custom: Row Guarantor2: all or nothing - required when any of Guarantor2Name, Guarantor2Signature, Guarantor2Date is filled in"
+  },
+  {
+   "field": "Guarantor3Date",
+   "what": "save validation: custom: Required when Guarantor3Name is filled in → custom: Row Guarantor3: all or nothing - required when any of Guarantor3Name, Guarantor3Signature, Guarantor3Date is filled in"
+  },
+  {
+   "field": "Guarantor3Name",
+   "what": "save validation: not required → custom: Row Guarantor3: all or nothing - required when any of Guarantor3Name, Guarantor3Signature, Guarantor3Date is filled in"
+  },
+  {
+   "field": "Guarantor3Signature",
+   "what": "save validation: custom: Required when Guarantor3Name is filled in → custom: Row Guarantor3: all or nothing - required when any of Guarantor3Name, Guarantor3Signature, Guarantor3Date is filled in"
+  },
+  {
+   "field": "Guarantor4Date",
+   "what": "save validation: custom: Required when Guarantor4Name is filled in → custom: Row Guarantor4: all or nothing - required when any of Guarantor4Name, Guarantor4Signature, Guarantor4Date is filled in"
+  },
+  {
+   "field": "Guarantor4Name",
+   "what": "save validation: not required → custom: Row Guarantor4: all or nothing - required when any of Guarantor4Name, Guarantor4Signature, Guarantor4Date is filled in"
+  },
+  {
+   "field": "Guarantor4Signature",
+   "what": "save validation: custom: Required when Guarantor4Name is filled in → custom: Row Guarantor4: all or nothing - required when any of Guarantor4Name, Guarantor4Signature, Guarantor4Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp1Date",
+   "what": "save validation: custom: Required when GuarantorCorp1Name is filled in → custom: Row GuarantorCorp1 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp1Name, GuarantorCorp1Signature, GuarantorCorp1Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp1Name",
+   "what": "save validation: not required → custom: Row GuarantorCorp1 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp1Name, GuarantorCorp1Signature, GuarantorCorp1Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp1Signature",
+   "what": "save validation: custom: Required when GuarantorCorp1Name is filled in → custom: Row GuarantorCorp1 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp1Name, GuarantorCorp1Signature, GuarantorCorp1Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp2Date",
+   "what": "save validation: custom: Required when GuarantorCorp2Name is filled in → custom: Row GuarantorCorp2 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp2Name, GuarantorCorp2Signature, GuarantorCorp2Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp2Name",
+   "what": "save validation: not required → custom: Row GuarantorCorp2 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp2Name, GuarantorCorp2Signature, GuarantorCorp2Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp2Signature",
+   "what": "save validation: custom: Required when GuarantorCorp2Name is filled in → custom: Row GuarantorCorp2 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp2Name, GuarantorCorp2Signature, GuarantorCorp2Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp3Date",
+   "what": "save validation: custom: Required when GuarantorCorp3Name is filled in → custom: Row GuarantorCorp3 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp3Name, GuarantorCorp3Signature, GuarantorCorp3Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp3Name",
+   "what": "save validation: not required → custom: Row GuarantorCorp3 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp3Name, GuarantorCorp3Signature, GuarantorCorp3Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp3Signature",
+   "what": "save validation: custom: Required when GuarantorCorp3Name is filled in → custom: Row GuarantorCorp3 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp3Name, GuarantorCorp3Signature, GuarantorCorp3Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp4Date",
+   "what": "save validation: custom: Required when GuarantorCorp4Name is filled in → custom: Row GuarantorCorp4 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp4Name, GuarantorCorp4Signature, GuarantorCorp4Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp4Name",
+   "what": "save validation: not required → custom: Row GuarantorCorp4 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp4Name, GuarantorCorp4Signature, GuarantorCorp4Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp4Signature",
+   "what": "save validation: custom: Required when GuarantorCorp4Name is filled in → custom: Row GuarantorCorp4 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp4Name, GuarantorCorp4Signature, GuarantorCorp4Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp5Date",
+   "what": "save validation: custom: Required when GuarantorCorp5Name is filled in → custom: Row GuarantorCorp5 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp5Name, GuarantorCorp5Signature, GuarantorCorp5Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp5Name",
+   "what": "save validation: not required → custom: Row GuarantorCorp5 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp5Name, GuarantorCorp5Signature, GuarantorCorp5Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp5Signature",
+   "what": "save validation: custom: Required when GuarantorCorp5Name is filled in → custom: Row GuarantorCorp5 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp5Name, GuarantorCorp5Signature, GuarantorCorp5Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp6Date",
+   "what": "save validation: custom: Required when GuarantorCorp6Name is filled in → custom: Row GuarantorCorp6 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp6Name, GuarantorCorp6Signature, GuarantorCorp6Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp6Name",
+   "what": "save validation: not required → custom: Row GuarantorCorp6 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp6Name, GuarantorCorp6Signature, GuarantorCorp6Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp6Signature",
+   "what": "save validation: custom: Required when GuarantorCorp6Name is filled in → custom: Row GuarantorCorp6 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp6Name, GuarantorCorp6Signature, GuarantorCorp6Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp7Date",
+   "what": "save validation: custom: Required when GuarantorCorp7Name is filled in → custom: Row GuarantorCorp7 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp7Name, GuarantorCorp7Signature, GuarantorCorp7Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp7Name",
+   "what": "save validation: not required → custom: Row GuarantorCorp7 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp7Name, GuarantorCorp7Signature, GuarantorCorp7Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp7Signature",
+   "what": "save validation: custom: Required when GuarantorCorp7Name is filled in → custom: Row GuarantorCorp7 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp7Name, GuarantorCorp7Signature, GuarantorCorp7Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp8Date",
+   "what": "save validation: custom: Required when GuarantorCorp8Name is filled in → custom: Row GuarantorCorp8 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp8Name, GuarantorCorp8Signature, GuarantorCorp8Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp8Name",
+   "what": "save validation: not required → custom: Row GuarantorCorp8 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp8Name, GuarantorCorp8Signature, GuarantorCorp8Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp8Signature",
+   "what": "save validation: custom: Required when GuarantorCorp8Name is filled in → custom: Row GuarantorCorp8 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp8Name, GuarantorCorp8Signature, GuarantorCorp8Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp9Date",
+   "what": "save validation: custom: Required when GuarantorCorp9Name is filled in → custom: Row GuarantorCorp9 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp9Name, GuarantorCorp9Signature, GuarantorCorp9Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp9Name",
+   "what": "save validation: not required → custom: Row GuarantorCorp9 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp9Name, GuarantorCorp9Signature, GuarantorCorp9Date is filled in"
+  },
+  {
+   "field": "GuarantorCorp9Signature",
+   "what": "save validation: custom: Required when GuarantorCorp9Name is filled in → custom: Row GuarantorCorp9 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp9Name, GuarantorCorp9Signature, GuarantorCorp9Date is filled in"
+  },
+  {
+   "field": "GuarantorCorpName",
+   "what": "save validation: custom: Required when any GuarantorCorp signer is filled in → custom: Required when any GuarantorCorp officer row is filled in; and when it is filled in, at least one officer row (GuarantorCorp1-9 Name, Signature, Date) is complete"
+  }
+ ],
+ "Loan Payout Statement - Business": [
+  {
+   "field": "LOAN_SUB",
+   "what": "moved or resized"
+  },
+  {
+   "field": "PRIMARY_MEMBER_NUMBER",
+   "what": "moved or resized"
+  },
+  {
+   "field": "PropertyAddress",
+   "what": "moved or resized"
+  },
+  {
+   "what": "printed sample values under fields erased"
+  },
+  {
+   "what": "fields that ran past a table cell wall cut back to it"
+  }
+ ],
+ "Loan Payout Statement - LOC - Business": [
+  {
+   "field": "LOAN_SUB",
+   "what": "moved or resized"
+  },
+  {
+   "field": "PRIMARY_MEMBER_NUMBER",
+   "what": "moved or resized"
+  },
+  {
+   "field": "PropertyAddress",
+   "what": "moved or resized"
+  },
+  {
+   "what": "printed sample values under fields erased"
+  },
+  {
+   "what": "fields that ran past a table cell wall cut back to it"
+  }
+ ],
+ "Loan Renewal Agreement - Breaking Term": [
+  {
+   "field": "RENEWAL_PAYMENT_1YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 1Year"
+  },
+  {
+   "field": "RENEWAL_PAYMENT_2YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 2Year"
+  },
+  {
+   "field": "RENEWAL_PAYMENT_3YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 3Year"
+  },
+  {
+   "field": "RENEWAL_PAYMENT_4YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 4Year"
+  },
+  {
+   "field": "RENEWAL_PAYMENT_5YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 5Year"
+  },
+  {
+   "field": "RENEWAL_PAYMENT_VARIABLE",
+   "what": "save validation: not required → custom: Required when RenewalOption is Variable"
+  },
+  {
+   "field": "RENEWAL_RATE_1YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 1Year"
+  },
+  {
+   "field": "RENEWAL_RATE_2YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 2Year"
+  },
+  {
+   "field": "RENEWAL_RATE_3YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 3Year"
+  },
+  {
+   "field": "RENEWAL_RATE_4YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 4Year"
+  },
+  {
+   "field": "RENEWAL_RATE_5YR",
+   "what": "save validation: not required → custom: Required when RenewalOption is 5Year"
+  },
+  {
+   "field": "RENEWAL_RATE_VARIABLE",
+   "what": "save validation: not required → custom: Required when RenewalOption is Variable"
+  },
+  {
+   "what": "printed sample values under fields erased"
+  },
+  {
+   "what": "fields that ran past a table cell wall cut back to it"
+  }
+ ],
+ "Pre-Authorized Credit Agreement (Credit to other FI)": [
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE1",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE2",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_ADDR_LINE3",
+   "what": "removed"
+  },
+  {
+   "field": "PRIMARY_MAIL_FULL_LINE",
+   "what": "added (not required)"
+  }
+ ]
+}

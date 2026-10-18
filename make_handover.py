@@ -138,6 +138,39 @@ def fingerprint(path):
     return h.hexdigest()
 
 
+def snapshot(path):
+    """A form as the reviewer sees it: per field, what the designer has set
+    on it and where its boxes are; per page, its printed content's hash. The
+    review station compares a verdict's snapshot with the current one."""
+    import hashlib
+    import fitz
+    doc = fitz.open(path)
+    fields = {}
+    for n in doc.embfile_names():
+        try:
+            req = json.loads(doc.embfile_get(n))
+        except ValueError:
+            continue
+        for f in req.get("fields", []):
+            if f.get("systemPlacement") or not f.get("name"):
+                continue
+            s = fields.setdefault(f["name"].strip(), {
+                "type": f.get("type"), "editable": f.get("editable"),
+                "load": f.get("loadValidated"), "save": f.get("saveValidated"),
+                "custom": f.get("customSaveValidated"), "note": f.get("note", ""),
+                "label": f.get("customerFacingName", ""),
+                "format": (f.get("format") or {}).get("category", "none"),
+                "maxLength": f.get("maxLength", 0), "multiline": f.get("multiline"),
+                "boxes": []})
+            r = f.get("rect", {})
+            s["boxes"].append([f.get("page", 0), round(r.get("x", 0)), round(r.get("y", 0)),
+                               round(r.get("width", 0)), round(r.get("height", 0))])
+    for s in fields.values():
+        s["boxes"].sort()
+    pages = [hashlib.sha1(p.read_contents()).hexdigest()[:12] for p in doc]
+    return {"fields": fields, "pages": pages}
+
+
 def copy_tree(src, dst, missing):
     if not os.path.isdir(src):
         missing.append(src)
@@ -299,6 +332,11 @@ def main():
                     fingerprint(os.path.join(root, f))
     with open(os.path.join(out, "fingerprints.json"), "w", encoding="utf-8") as fh:
         json.dump(prints, fh, indent=1, sort_keys=True)
+    # and what each one holds, field by field, so the station can say what
+    # changed since a verdict rather than only that something did
+    with open(os.path.join(out, "snapshots.json"), "w", encoding="utf-8") as fh:
+        json.dump({rel.split("/")[1]: snapshot(os.path.join(out, rel)) for rel in prints},
+                  fh, sort_keys=True)
 
     print(f"{out}:")
     print(f"   {n_clean} cleaned forms, {n_design} designer outputs, {n_apart} not in the form table, "
