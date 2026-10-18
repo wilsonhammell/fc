@@ -2,277 +2,277 @@
  "ATM & POS Trace Request": {
   "status": "approved",
   "note": "",
-  "sha1": "abe746918d722e414aa8d10aa93005180cdf879e",
+  "sha1": "2de5cd58484ef201cb11915c15f4e11427e83d97",
   "at": "2026-10-18T01:32:09.673Z"
  },
  "Account Declaration Agreement - Estates": {
   "status": "approved",
   "note": "",
-  "sha1": "fdf69f4ce2325127ca720316b62f49434bd1e143",
-  "at": "2026-10-18T01:32:02.804Z"
+  "sha1": "fbecc495ff08f683275a8938dbef432700da919d",
+  "at": "2026-10-18T21:17:19.755Z"
  },
  "Assignment of Life Ins Policy - Letter": {
   "status": "approved",
   "note": "",
-  "sha1": "aceab9e6f261f48ac91af48403113ad8585d5980",
-  "at": "2026-10-18T01:32:06.249Z"
+  "sha1": "30968ff6db0b81ac1fe3a26c76ad05406525c9b0",
+  "at": "2026-10-18T21:17:33.373Z"
  },
  "Assignment of Life Insurance Policy": {
   "status": "approved",
   "note": "",
-  "sha1": "a3b8824dcb9df110cf0a14f8d80915b0ffa306e5",
-  "at": "2026-10-18T01:32:08.184Z"
+  "sha1": "f7e285fd2128361932279a8db6c6657b622ad2c4",
+  "at": "2026-10-18T21:17:48.390Z"
  },
  "Authorization to Release Financial Info": {
   "status": "approved",
   "note": "",
-  "sha1": "18a09f41a2355f68f1794e26b79d732eab843dd8",
+  "sha1": "397a9399253c8751d22e3a7b4fa3117c1cccd082",
   "at": "2026-10-18T01:32:11.820Z"
  },
  "Bill Payment Trace": {
   "status": "approved",
   "note": "",
-  "sha1": "49edee07fc9c4e7a4213238d52d93b160ab68bbe",
+  "sha1": "d07e428351066514f7240d22689a0475b77e1724",
   "at": "2026-10-18T01:32:13.557Z"
  },
  "Bond of Indemnity - Estates": {
   "status": "approved",
   "note": "",
-  "sha1": "f671ad64b5d1be63916780bbc2c45a01b76cdedf",
+  "sha1": "28c9083470d320dc09060f9d11e13a7fd4b4d0af",
   "at": "2026-10-18T01:36:55.383Z"
  },
  "Breach Letter": {
   "status": "approved",
   "note": "",
-  "sha1": "392d302a072196070f1b28c6a04d9f3d4162b4a9",
+  "sha1": "34f1c3f4ee3dabe4a05edbef4696f60ae4c46a25",
   "at": "2026-10-18T01:39:42.241Z"
  },
  "Collateral Agreement-Q-Trade Investments": {
   "status": "approved",
   "note": "",
-  "sha1": "bb199450d006a4225fc227e9499d06993ece8301",
+  "sha1": "an earlier build",
   "at": "2026-10-18T01:38:00.252Z"
  },
  "Designated Beneficiary Declaration and Indemnification - Estates": {
   "status": "approved",
   "note": "address thing again and signature thing",
-  "sha1": "376bc1a8031d44d1ff3746b827e22963869fc11d",
+  "sha1": "an earlier build",
   "at": "2026-10-18T01:39:33.532Z"
  },
  "Direction of Chicken Quota": {
   "status": "approved",
   "note": "",
-  "sha1": "dff0b429ba42685d6023131d633ec68da700f966",
+  "sha1": "cc77e55959847271fc612edebbab0c48b040ee26",
   "at": "2026-10-18T01:40:15.730Z"
  },
  "Direction of Egg Quota": {
   "status": "approved",
   "note": "",
-  "sha1": "4a622d21c55d284709a7757e2eb79788e77c5220",
+  "sha1": "e23cf78921252833b3b516f2a7635e00c484b676",
   "at": "2026-10-18T01:40:31.235Z"
  },
  "Direction of Hatching Egg & Chicken Quota": {
   "status": "approved",
   "note": "",
-  "sha1": "44a896e1375577bfab08a7ca0be345b88f490d39",
+  "sha1": "45650fdbc7429b73b51ef79bd7a3b7066fcba02b",
   "at": "2026-10-18T01:46:48.580Z"
  },
  "Direction of Milk Quota Proceeds": {
   "status": "approved",
   "note": "",
-  "sha1": "5230e982a4ba9832d775175ffb456ebdd6bf5e12",
+  "sha1": "6cba314a2922c64338ce0fd583e87627f636274d",
   "at": "2026-10-18T01:47:39.613Z"
  },
  "Direction of Turkey Quota": {
   "status": "approved",
   "note": "",
-  "sha1": "9c6212d4627326d2f82e192b1d9afb0f3e55ca34",
+  "sha1": "92d0283d2a8c58de39037195d4f4ecb7c7e3dcfb",
   "at": "2026-10-18T01:49:32.831Z"
  },
  "Disclosure Letter - Pre Approved Loan Extension - Business": {
   "status": "approved",
   "note": "",
-  "sha1": "e91d2b1ab9559f66c81ac15e13034e488c0dd754",
+  "sha1": "cec2c5ffd5c23b1e9c0a8ef575a6d3b1242ef0b1",
   "at": "2026-10-18T03:34:53.520Z"
  },
  "Disclosure letter - Business": {
   "status": "approved",
   "note": "",
-  "sha1": "4b77efd78bc866aab68a67fabb25751191206072",
+  "sha1": "an earlier build",
   "at": "2026-10-18T03:34:20.616Z"
  },
  "Envelope": {
   "status": "approved",
   "note": "",
-  "sha1": "2bdc8bd0525adcd8b16049d838ed4f05fa4868a3",
+  "sha1": "90a40b46d0aa999a5fb4409dc3258a13edbc5d52",
   "at": "2026-10-18T03:34:52.353Z"
  },
  "FHSA Application": {
   "status": "approved",
   "note": "",
-  "sha1": "063758c78a0db7799f30767cd2a031e04edd433c",
+  "sha1": "an earlier build",
   "at": "2026-10-18T05:25:32.595Z"
  },
  "FHSA Designation of SH, Ben": {
   "status": "changes",
   "note": "same observations as prev",
-  "sha1": "11d71248f291f3e7163b7431c9aeba12c8859bb1",
+  "sha1": "an earlier build",
   "at": "2026-10-18T05:28:00.160Z"
  },
  "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)": {
   "status": "changes",
   "note": "why is bene1account dob and sin not required? for subsequent rows shouldnt it be if any of the row is filled in all must be?",
-  "sha1": "85ecdf7cb18721a9f488966a0b95bedae300495f",
+  "sha1": "an earlier build",
   "at": "2026-10-18T05:27:26.478Z"
  },
  "FHSA Withdrawal Transfer": {
   "status": "changes",
   "note": "address probably just one FULL instead of split into three since its one box, im not sure what death details are but i imagine they are probably needed if death is checked right? why isnt expirary date sv in the rows? same with acrrued interest and total? subsequent rows should again do the thing where if none of the row is filled thats fine but if any is filled thats an issue. why subtotal not required? idk maybe i dont understand the context of this form but seems like a lot of this needs some form of SV",
-  "sha1": "5aa86a35866d32e4cea0407de1a6438448e6ab03",
+  "sha1": "an earlier build",
   "at": "2026-10-18T05:32:22.101Z"
  },
  "Federal RLIF Locking-In Agreement": {
   "status": "approved",
   "note": "",
-  "sha1": "530870c3978f6d419395a2c65305baa3df74dac3",
+  "sha1": "d2349bbfdb04741ab8f49108a33ecfe08703a741",
   "at": "2026-10-18T03:34:48.430Z"
  },
  "Federal RLIF Transfer - up to 50% of new RLIF": {
   "status": "changes",
   "note": "This one since its a single line for the address probably should be full address instead of 3 pieces, probably just easier",
-  "sha1": "35082ad9b59f40bbd219e31a05b64469a175f13d",
+  "sha1": "an earlier build",
   "at": "2026-10-18T05:24:50.027Z"
  },
  "Funeral Home Guaranteed Investment Certificate": {
   "status": "changes",
   "note": "this one has Authorizing Staff written by itself on second page lol, probably need to fix that",
-  "sha1": "47771a5cd71bd0fe9b4d3df6c433d54697c5c068",
+  "sha1": "an earlier build",
   "at": "2026-10-18T05:39:12.598Z"
  },
  "Guaranteed Investment Certificate Authorization": {
   "status": "approved",
   "note": "",
-  "sha1": "9cd71d95735f1904d95f3124e5158322fb640c57",
+  "sha1": "0508bff1b45361ded95d55851d74172c48ae9e5a",
   "at": "2026-10-18T05:40:27.021Z"
  },
  "Hypothecation Agreement - Bonds": {
   "status": "changes",
   "note": "wtf this one has a billion signings on it, did the original have that too???",
-  "sha1": "1bb91483d22cef74177b7f2c44c09ae2f1aee217",
+  "sha1": "an earlier build",
   "at": "2026-10-18T05:41:20.679Z"
  },
  "Hypothecation Agreement - Mutual Funds": {
   "status": "changes",
   "note": "same as prev",
-  "sha1": "892a3478735b089fb2c157b178892ca5c43fb4ce",
+  "sha1": "an earlier build",
   "at": "2026-10-18T05:41:57.501Z"
  },
  "Hypothecation Agreement - Stocks": {
   "status": "changes",
   "note": "same as prev",
-  "sha1": "7d0bd30ce6a2d25290b6891c258eaa12527bae62",
+  "sha1": "an earlier build",
   "at": "2026-10-18T05:42:09.422Z"
  },
  "Indemnity agreement": {
   "status": "approved",
   "note": "",
-  "sha1": "e0dae4a76f7eb0523bf7b2eb5e7370cd2ef8bcdf",
+  "sha1": "7097969f146190907a455d653aff7f5e33f4bd14",
   "at": "2026-10-18T05:42:21.026Z"
  },
  "LIF Locking-in Agreement - ON": {
   "status": "approved",
   "note": "",
-  "sha1": "49536c945e1181d1af2f82cf204865f5da4c6736",
+  "sha1": "ef2572820218416d232ab9d0d5a0d311417c943f",
   "at": "2026-10-18T06:32:04.352Z"
  },
  "LIF Spousal Consent": {
   "status": "approved",
   "note": "",
-  "sha1": "4129ab92b59aa1a900ebe45dcdb444378bb6ba27",
+  "sha1": "d62f8a7a7e863daded0149e8785115ef68bb20a4",
   "at": "2026-10-18T06:32:14.444Z"
  },
  "LIRA Declaration No Spouse": {
   "status": "approved",
   "note": "",
-  "sha1": "caac8840645b1c6ede8fa899a9040a1fc4545f10",
+  "sha1": "8d95bedaae11a4bd0bef7c40731c6a9c6290ab7b",
   "at": "2026-10-18T06:32:26.883Z"
  },
  "LIRA Locked-in RRSP Trans Info Req": {
   "status": "approved",
   "note": "",
-  "sha1": "85e41211e4a040982905ce2c8fc470f8e15b8e2f",
+  "sha1": "an earlier build",
   "at": "2026-10-18T06:33:17.405Z"
  },
  "LIRA Locking In Agreement - Fed": {
   "status": "approved",
   "note": "",
-  "sha1": "4398077941f35230e7ea1f27842657afcc2a943a",
+  "sha1": "an earlier build",
   "at": "2026-10-18T06:33:24.097Z"
  },
  "LIRA Locking In Agreement - ON": {
   "status": "approved",
   "note": "",
-  "sha1": "33e54dfcf0044242da994ba28ab23621bcb02a40",
+  "sha1": "an earlier build",
   "at": "2026-10-18T06:34:05.094Z"
  },
  "LOC Repricing Letter": {
   "status": "changes",
   "note": "shouldnt maintenance fee and annual renewal fee need feels? also we got another multi block addr",
-  "sha1": "c61a62c20b75a14bd45185ef15e73a2cff1a9e2e",
+  "sha1": "an earlier build",
   "at": "2026-10-18T18:42:21.324Z"
  },
  "Loan Conversion Agreement": {
   "status": "changes",
   "note": "shouldnt interest rate and new monthly payment need custom sv if corresponding mark is checked?",
-  "sha1": "aaa6bc77fb0ed073da98b8b99dedd38c5a547696",
+  "sha1": "an earlier build",
   "at": "2026-10-18T18:33:17.153Z"
  },
  "Loan Extension Request - Small Business": {
   "status": "changes",
   "note": "what is guarantorcorp signer? shouldnt it just be if guarantorname is filled out then one row needs to be completed",
-  "sha1": "4dc02d1b59e360a48f21fdf55f5733d48958c3d3",
+  "sha1": "an earlier build",
   "at": "2026-10-18T18:38:19.059Z"
  },
  "Loan Payout Statement - Business": {
   "status": "changes",
   "note": "Primary member number is poorly positioned, I moved it to how it should be placed, also should electronic registration fee have a field or is it drawn in?",
-  "sha1": "6918eda4470088c194dd366087842cfd8f39868b",
+  "sha1": "an earlier build",
   "at": "2026-10-18T18:41:01.273Z"
  },
  "Loan Payout Statement - LOC - Business": {
   "status": "changes",
   "note": "same as prev",
-  "sha1": "c42b428c4b22b5f4b0a9a8b481fa7de1e4ca59a1",
+  "sha1": "an earlier build",
   "at": "2026-10-18T18:41:03.217Z"
  },
  "Loan Renewal Agreement - Breaking Term": {
   "status": "changes",
   "note": "shouldnt that rows need custom sv? also renewal rate fields are too big to the left",
-  "sha1": "6a67f9f757b250ce5be43ae8642a2624626f540d",
+  "sha1": "an earlier build",
   "at": "2026-10-18T18:41:44.359Z"
  },
  "Lost Item Affidavit": {
   "status": "approved",
   "note": "",
-  "sha1": "9f3cfaf95db7bfdfb45ac4d669a0a3f83ea79cf8",
+  "sha1": "e0ffd09946a97480a31a55f4ce468ae68857c312",
   "at": "2026-10-18T18:42:31.358Z"
  },
  "Masterline Takedown Facility Authorization": {
   "status": "approved",
   "note": "",
-  "sha1": "61486b28d1609b3aeb839999766edb7b3772ae1b",
+  "sha1": "02238e346c6c25c1da4233c0c2fa4e98110ac08c",
   "at": "2026-10-18T18:42:49.396Z"
  },
  "Mortgagor's Declaration as to Execution(s)": {
   "status": "approved",
   "note": "",
-  "sha1": "d1045dd293a68468337b5080f5546e04c73c6b63",
+  "sha1": "0f0e5300bd3b9fbb1c3ca9dac49dca4756e46f37",
   "at": "2026-10-18T18:42:55.454Z"
  },
  "Pre-Authorized Credit Agreement (Credit to other FI)": {
   "status": "changes",
   "note": "Should just be full address on this one, its one line box",
-  "sha1": "2646362465208dfc88f679b6c9da4485902f935c",
+  "sha1": "an earlier build",
   "at": "2026-10-18T18:43:13.579Z"
  }
 }

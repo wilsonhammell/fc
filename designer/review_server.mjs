@@ -49,12 +49,23 @@ function forms() {
     const pdf = path.join(apart, name, `${name} - designer output.pdf`);
     if (fs.existsSync(pdf)) out.push({ name, file: pdf, group: 'not in the form table' });
   }
-  return out.map((f) => ({
-    name: f.name,
-    group: f.group,
-    path: path.relative(HANDOVER, f.file).split(path.sep).join('/'),
-    sha1: crypto.createHash('sha1').update(fs.readFileSync(f.file)).digest('hex'),
-  }));
+  // make_handover.py's fingerprints: what each form is, the same across
+  // builds of an unchanged form. The bytes differ on every build (the
+  // designer's generatedAt, the file ID), so a byte hash put every approved
+  // form back up for review after each round.
+  let prints = {};
+  try {
+    prints = JSON.parse(fs.readFileSync(path.join(HANDOVER, 'fingerprints.json'), 'utf8'));
+  } catch { /* none: fall back to the bytes */ }
+  return out.map((f) => {
+    const rel = path.relative(HANDOVER, f.file).split(path.sep).join('/');
+    return {
+      name: f.name,
+      group: f.group,
+      path: rel,
+      sha1: prints[rel] ?? crypto.createHash('sha1').update(fs.readFileSync(f.file)).digest('hex'),
+    };
+  });
 }
 
 function readVerdicts() {

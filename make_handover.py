@@ -98,6 +98,46 @@ the builder fills; entry = typed in by the member or staff.
 """
 
 
+def fingerprint(path):
+    """What a form is, without what changes every time it is written: its
+    pages as drawn, its fields and everything set on them, the designer's
+    scripts and its requirements - less the requirements' generatedAt and
+    field ids, the file ID and the dates, which differ on every build. Two builds of an
+    unchanged form share it; a byte hash never did, and every approved form
+    read as rebuilt after each round."""
+    import hashlib
+    import fitz
+    h = hashlib.sha1()
+    doc = fitz.open(path)
+    for page in doc:
+        h.update(page.read_contents())
+        for w in page.widgets():
+            h.update(repr((w.field_name, w.field_type, [round(v, 1) for v in w.rect], w.field_flags,
+                           w.field_value, w.on_state() if w.field_type in (2, 5) else "",
+                           doc.xref_get_key(w.xref, "MaxLen")[1], doc.xref_get_key(w.xref, "F")[1],
+                           w.script_format, w.script_stroke, w.script_calc, w.script_blur,
+                           w.text_font, w.text_fontsize)).encode())
+    names = doc.xref_get_key(doc.pdf_catalog(), "Names/JavaScript/Names")
+    for ref in re.findall(r"(\d+) 0 R", names[1] if names[0] == "array" else ""):
+        js = doc.xref_get_key(int(ref), "JS")
+        if js[0] == "xref":
+            h.update(doc.xref_stream(int(js[1].split()[0])) or b"")
+        else:
+            h.update(js[1].encode())
+    for n in doc.embfile_names():
+        try:
+            req = json.loads(doc.embfile_get(n))
+            req.pop("generatedAt", None)
+            # each field and marker gets a fresh random id on every import
+            for item in req.get("fields", []) + req.get("markers", []):
+                if isinstance(item, dict):
+                    item.pop("id", None)
+            h.update(json.dumps(req, sort_keys=True).encode())
+        except ValueError:
+            h.update(doc.embfile_get(n))
+    return h.hexdigest()
+
+
 def copy_tree(src, dst, missing):
     if not os.path.isdir(src):
         missing.append(src)
@@ -247,6 +287,18 @@ def main():
 
     with open(os.path.join(out, "README.txt"), "w", encoding="utf-8") as fh:
         fh.write(README)
+
+    # what each form is, for the review station to tell a rebuilt form from
+    # one only written again (designer/review_server.mjs)
+    prints = {}
+    for root, _, files in os.walk(out):
+        for f in files:
+            if f.endswith(".pdf") and (os.path.basename(root) + ".pdf" == f
+                                       or f.endswith(" - designer output.pdf")):
+                prints[os.path.relpath(os.path.join(root, f), out).replace(os.sep, "/")] = \
+                    fingerprint(os.path.join(root, f))
+    with open(os.path.join(out, "fingerprints.json"), "w", encoding="utf-8") as fh:
+        json.dump(prints, fh, indent=1, sort_keys=True)
 
     print(f"{out}:")
     print(f"   {n_clean} cleaned forms, {n_design} designer outputs, {n_apart} not in the form table, "
