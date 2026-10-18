@@ -172,7 +172,8 @@
    "kind": "entry",
    "label": "Per:",
    "desc": "Signed for Libro (Per:)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
  "drop": [

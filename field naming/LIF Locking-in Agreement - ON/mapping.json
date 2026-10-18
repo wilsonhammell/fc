@@ -103,7 +103,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Accepted by authorized officer, as agent for the trustee",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F6": {
    "name": "PRIMARY_FULL_LEGAL_NAME",

@@ -59,9 +59,15 @@
    "name": "LenderAddress",
    "kind": "entry",
    "label": "Address",
-   "desc": "Lender's address, line 1 (printed as 217 York Street)",
+   "desc": "Lender's address (printed as 217 York Street) (one block over the form's lines)",
    "how": "reviewed",
-   "save": true
+   "save": true,
+   "rect": [
+    109.8,
+    477.7,
+    568.9,
+    508.3
+   ]
   },
   "F9": {
    "name": "LenderPhone",
@@ -114,19 +120,13 @@
    "desc": "Director's (producer's) name, row 2",
    "how": "reviewed"
   },
-  "B1": {
-   "name": "LenderAddress2",
-   "kind": "entry",
-   "label": "Fax No.",
-   "desc": "Lender's address, line 2",
-   "how": "reviewed"
-  },
   "B2": {
    "name": "StaffSignature",
    "kind": "entry",
    "label": "Signature of the lender or lender’s authorized representative",
    "desc": "Signature of the lender's authorized representative",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B3": {
    "name": "PRIMARY_SIGN_DATE",
@@ -140,7 +140,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Witness's signature, row 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B5": {
    "name": "Member1Signature",
@@ -161,7 +162,8 @@
    "kind": "entry",
    "label": "WITNESS’ SIGNATURE",
    "desc": "Witness's signature, row 2",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WitnessName2 is filled in"
   },
   "B8": {
    "name": "Member2Signature",
@@ -292,7 +294,8 @@
   }
  },
  "drop": [
-  "F21"
+  "F21",
+  "B1"
  ],
  "skip": {},
  "add": [],

@@ -38,8 +38,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "Required, and a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F5": {
    "name": "PADDebitDate",
@@ -139,7 +138,8 @@
    "kind": "entry",
    "label": "___________________________",
    "desc": "Financial institution representative",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
  "drop": [],

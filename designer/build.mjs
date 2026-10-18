@@ -32,7 +32,7 @@ const buttonIndex = buildButtonIndex(buttons);
 
 // What a BA sets on a field. Everything else on it is what the form has.
 const SET = ['editable', 'loadValidated', 'customerFacingName', 'saveValidated',
-  'customSaveValidated', 'note', 'multiline'];
+  'customSaveValidated', 'note', 'multiline', 'maxLength'];
 
 const report = [];
 const jobs = fs.readdirSync(jobsDir).filter((n) => n.endsWith('.json')).sort();

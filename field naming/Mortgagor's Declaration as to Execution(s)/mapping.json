@@ -29,7 +29,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Witness signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F5": {
    "name": "MortgageTo",

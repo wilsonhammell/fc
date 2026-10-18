@@ -440,33 +440,18 @@
    "custom": "Required when DepositToAccount is ticked"
   },
   "F55": {
-   "name": "InvestmentInstructions1",
+   "name": "InvestmentInstructions",
    "kind": "entry",
    "label": "INVESTMENT INSTRUCTIONS FOR FUNDS",
-   "desc": "Investment instructions for funds, line 1",
+   "desc": "Investment instructions for funds (one block over the form's lines)",
    "how": "reviewed",
-   "save": true
-  },
-  "F56": {
-   "name": "InvestmentInstructions2",
-   "kind": "entry",
-   "label": "",
-   "desc": "line 2",
-   "how": "reviewed"
-  },
-  "F57": {
-   "name": "InvestmentInstructions3",
-   "kind": "entry",
-   "label": "",
-   "desc": "line 3",
-   "how": "reviewed"
-  },
-  "F58": {
-   "name": "InvestmentInstructions4",
-   "kind": "entry",
-   "label": "",
-   "desc": "line 4",
-   "how": "reviewed"
+   "save": true,
+   "rect": [
+    36.0,
+    54.4,
+    580.4,
+    112.4
+   ]
   },
   "F59": {
    "name": "Member1SignDate",
@@ -532,7 +517,10 @@
   }
  },
  "drop": [
-  "F51"
+  "F51",
+  "F56",
+  "F57",
+  "F58"
  ],
  "skip": {
   "B1": "a rule after the Yes/No boxes",

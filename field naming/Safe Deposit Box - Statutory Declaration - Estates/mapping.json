@@ -199,22 +199,22 @@
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 1: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F27": {
    "name": "Witness1Address",
    "kind": "entry",
    "label": "My address is:",
-   "desc": "Witness to estate trustee 1: address",
+   "desc": "Witness to estate trustee 1: address (one block over the form's lines)",
    "how": "reviewed",
-   "save": true
-  },
-  "F28": {
-   "name": "Witness1Address2",
-   "kind": "entry",
-   "label": "My phone number is:",
-   "desc": "Witness to estate trustee 1: address, continued",
-   "how": "reviewed"
+   "save": true,
+   "rect": [
+    86.9,
+    154.7,
+    354.5,
+    182.6
+   ]
   },
   "F29": {
    "name": "Witness1Phone",
@@ -299,22 +299,22 @@
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 2: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 2 signs (Member2Name filled in)"
   },
   "F40": {
    "name": "Witness2Address",
    "kind": "entry",
    "label": "My address is:",
-   "desc": "Witness to estate trustee 2: address",
+   "desc": "Witness to estate trustee 2: address (one block over the form's lines)",
    "how": "reviewed",
-   "custom": "Required when estate trustee 2 signs (Member2Name filled in)"
-  },
-  "F41": {
-   "name": "Witness2Address2",
-   "kind": "entry",
-   "label": "My phone number is:",
-   "desc": "Witness to estate trustee 2: address, continued",
-   "how": "reviewed"
+   "custom": "Required when estate trustee 2 signs (Member2Name filled in)",
+   "rect": [
+    86.9,
+    354.6,
+    355.0,
+    382.6
+   ]
   },
   "F42": {
    "name": "Witness2Phone",
@@ -399,22 +399,22 @@
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 3: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 3 signs (Member3Name filled in)"
   },
   "F53": {
    "name": "Witness3Address",
    "kind": "entry",
    "label": "My address is:",
-   "desc": "Witness to estate trustee 3: address",
+   "desc": "Witness to estate trustee 3: address (one block over the form's lines)",
    "how": "reviewed",
-   "custom": "Required when estate trustee 3 signs (Member3Name filled in)"
-  },
-  "F54": {
-   "name": "Witness3Address2",
-   "kind": "entry",
-   "label": "My phone number is:",
-   "desc": "Witness to estate trustee 3: address, continued",
-   "how": "reviewed"
+   "custom": "Required when estate trustee 3 signs (Member3Name filled in)",
+   "rect": [
+    90.2,
+    519.4,
+    357.7,
+    545.1
+   ]
   },
   "F55": {
    "name": "Witness3Phone",
@@ -499,22 +499,22 @@
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 4: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
   },
   "F66": {
    "name": "Witness4Address",
    "kind": "entry",
    "label": "My address is:",
-   "desc": "Witness to estate trustee 4: address",
+   "desc": "Witness to estate trustee 4: address (one block over the form's lines)",
    "how": "reviewed",
-   "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
-  },
-  "F67": {
-   "name": "Witness4Address2",
-   "kind": "entry",
-   "label": "My phone number is:",
-   "desc": "Witness to estate trustee 4: address, continued",
-   "how": "reviewed"
+   "custom": "Required when estate trustee 4 signs (Member4Name filled in)",
+   "rect": [
+    90.2,
+    677.2,
+    357.7,
+    703.0
+   ]
   },
   "F68": {
    "name": "Witness4Phone",
@@ -666,7 +666,8 @@
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Libro witness 1: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F89": {
    "name": "Staff2Name",
@@ -681,10 +682,16 @@
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Libro witness 2: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
- "drop": [],
+ "drop": [
+  "F28",
+  "F41",
+  "F54",
+  "F67"
+ ],
  "skip": {
   "B1": "not a blank - the declaration wording",
   "B2": "not a blank - the declaration wording",

@@ -148,7 +148,8 @@
     637,
     367,
     651
-   ]
+   ],
+   "save": true
   },
   "F14": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -223,7 +224,8 @@
     593,
     367,
     607
-   ]
+   ],
+   "save": true
   },
   "B1": {
    "name": "Member1SignDate",

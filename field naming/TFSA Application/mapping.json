@@ -79,54 +79,18 @@
    "how": "reviewed"
   },
   "F12": {
-   "name": "InvestmentInstructions1",
+   "name": "InvestmentInstructions",
    "kind": "entry",
    "label": "INVESTMENT INSTRUCTIONS FOR FUNDS",
-   "desc": "Investment instructions for funds, line 1",
+   "desc": "Investment instructions for funds (one block over the form's lines)",
    "how": "reviewed",
-   "save": true
-  },
-  "F13": {
-   "name": "InvestmentInstructions2",
-   "kind": "entry",
-   "label": "",
-   "desc": "Investment instructions for funds, line 2",
-   "how": "reviewed"
-  },
-  "F14": {
-   "name": "InvestmentInstructions3",
-   "kind": "entry",
-   "label": "",
-   "desc": "Investment instructions for funds, line 3",
-   "how": "reviewed"
-  },
-  "F15": {
-   "name": "InvestmentInstructions4",
-   "kind": "entry",
-   "label": "",
-   "desc": "Investment instructions for funds, line 4",
-   "how": "reviewed"
-  },
-  "F16": {
-   "name": "InvestmentInstructions5",
-   "kind": "entry",
-   "label": "",
-   "desc": "Investment instructions for funds, line 5",
-   "how": "reviewed"
-  },
-  "F17": {
-   "name": "InvestmentInstructions6",
-   "kind": "entry",
-   "label": "",
-   "desc": "Investment instructions for funds, line 6",
-   "how": "reviewed"
-  },
-  "F18": {
-   "name": "InvestmentInstructions7",
-   "kind": "entry",
-   "label": "",
-   "desc": "Investment instructions for funds, line 7",
-   "how": "reviewed"
+   "save": true,
+   "rect": [
+    36.0,
+    489.5,
+    582.3,
+    593.4
+   ]
   },
   "F19": {
    "name": "BeneficiaryDesignation",
@@ -160,8 +124,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F22": {
    "name": "Beneficiary1Name",
@@ -208,8 +171,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F27": {
    "name": "Beneficiary2Name",
@@ -256,8 +218,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F32": {
    "name": "Beneficiary3Name",
@@ -304,8 +265,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F37": {
    "name": "Beneficiary4Name",
@@ -401,7 +361,14 @@
    "how": "reviewed"
   }
  },
- "drop": [],
+ "drop": [
+  "F13",
+  "F14",
+  "F15",
+  "F16",
+  "F17",
+  "F18"
+ ],
  "skip": {
   "B7": "a rule under the terms heading"
  },

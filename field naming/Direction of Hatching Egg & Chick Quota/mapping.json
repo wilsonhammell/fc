@@ -73,7 +73,8 @@
    "kind": "entry",
    "label": "per",
    "desc": "If a corporation: signature per (I have the authority to bind the corporation)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "BoardHatchingEggUnits",

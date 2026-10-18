@@ -59,7 +59,8 @@
    "kind": "entry",
    "label": "Signature of Witness",
    "desc": "Signature of witness",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
  "drop": [],

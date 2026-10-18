@@ -95,7 +95,8 @@
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Witness (staff member) signature - was the old witness signature box",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F13": {
    "name": "REQUESTUSER",

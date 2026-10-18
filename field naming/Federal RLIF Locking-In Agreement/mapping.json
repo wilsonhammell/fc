@@ -117,7 +117,8 @@
    "kind": "entry",
    "label": "Accepted by authorized officer, as agent for the Trustee",
    "desc": "Accepted by authorized officer as agent of the financial institution",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
  "drop": [

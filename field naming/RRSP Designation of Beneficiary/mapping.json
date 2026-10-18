@@ -75,8 +75,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F10": {
    "name": "Beneficiary1Relationship",
@@ -130,8 +129,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F16": {
    "name": "Beneficiary2Relationship",
@@ -185,8 +183,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F22": {
    "name": "Beneficiary3Relationship",
@@ -240,8 +237,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F28": {
    "name": "AlternateBeneficiary1Relationship",
@@ -295,8 +291,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F34": {
    "name": "AlternateBeneficiary2Relationship",
@@ -350,8 +345,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F40": {
    "name": "AlternateBeneficiary3Relationship",

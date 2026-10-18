@@ -229,6 +229,10 @@ def settings_for(name, rows, places, mapping_items, production=""):
         s["format"] = fmt
     if kind == "Text" and any(p[1].height >= TALL for p in places):
         s["multiline"] = True
+    # the designer's Character Limit: a Libro account number is 12 digits,
+    # held to it by the field rather than by custom save code
+    if kind == "Text" and m.get("maxlen"):
+        s["maxLength"] = int(m["maxlen"])
     s["label"], s["desc"] = label, desc
     return s
 

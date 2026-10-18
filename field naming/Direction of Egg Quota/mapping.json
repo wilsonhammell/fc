@@ -155,7 +155,8 @@
    "kind": "entry",
    "label": "Authorized Signature:",
    "desc": "Marketing board's authorized signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F14": {
    "name": "PRIMARY_FULL_LEGAL_NAME",

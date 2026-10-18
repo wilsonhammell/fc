@@ -179,7 +179,8 @@
    "kind": "entry",
    "label": "Coach",
    "desc": "Coach (staff member) signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F26": {
    "name": "PRIMARY_SIGN_DATE",

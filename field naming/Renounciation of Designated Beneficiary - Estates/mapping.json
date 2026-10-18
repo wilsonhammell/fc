@@ -104,20 +104,19 @@
    "how": "reviewed",
    "save": true
   },
-  "F14": {
-   "name": "WitnessAddress2",
-   "kind": "entry",
-   "label": "My phone number is: _____________________________",
-   "desc": "Witness's address, continued",
-   "how": "reviewed"
-  },
   "F15": {
    "name": "WitnessAddress",
    "kind": "entry",
    "label": "My address",
-   "desc": "Witness's address",
+   "desc": "Witness's address (one block over the form's lines)",
    "how": "reviewed",
-   "save": true
+   "save": true,
+   "rect": [
+    82.1,
+    666.1,
+    329.6,
+    690.5
+   ]
   },
   "F16": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -199,7 +198,8 @@
    "kind": "entry",
    "label": "(Signature of Designated Beneficiary)",
    "desc": "Signature of the designated beneficiary",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F27": {
    "name": "BeneficiaryOf.RRSP",
@@ -230,7 +230,8 @@
    "kind": "entry",
    "label": "My full name is: ________________________________",
    "desc": "Witness's signature (captioned Authorizing Staff Member)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F31": {
    "name": "WitnessDate",
@@ -241,7 +242,9 @@
    "save": true
   }
  },
- "drop": [],
+ "drop": [
+  "F14"
+ ],
  "skip": {
   "B1": "the 20__ of the year - F12 covers it",
   "B2": "not a blank",

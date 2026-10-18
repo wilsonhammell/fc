@@ -68,7 +68,8 @@
    "kind": "entry",
    "label": "NAME:",
    "desc": "Relationship manager's signature for Libro",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B2": {
    "name": "Attention",

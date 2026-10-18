@@ -88,7 +88,8 @@
    "kind": "entry",
    "label": "Signature of Branch Manager or Estate Specialist",
    "desc": "Request reviewed by: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F13": {
    "name": "ApproverSupervisorName",
@@ -103,7 +104,8 @@
    "kind": "entry",
    "label": "Signature of Estate & Trust Supervisor",
    "desc": "Estate & trust supervisor: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ApprovalGranted is Yes"
   },
   "F15": {
    "name": "ApproverDirectorName",
@@ -118,7 +120,8 @@
    "kind": "entry",
    "label": "Signature of Director, Centralized Services",
    "desc": "Director, centralized services: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ApprovalGranted is Yes and EstateValueRange is Over700K (two signatures)"
   },
   "F17": {
    "name": "PRIMARY_FULL_LEGAL_NAME",

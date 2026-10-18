@@ -688,7 +688,8 @@
    "kind": "entry",
    "label": ",",
    "desc": "Signature of estate trustee 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F89": {
    "name": "Declared1AtProvince",
@@ -727,7 +728,8 @@
    "kind": "entry",
    "label": "Signature of Estate Trustee",
    "desc": "Signature of estate trustee 2",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for each further estate trustee named in EstateTrusteeNames (trustee 2)"
   },
   "F94": {
    "name": "REQUESTUSER",
@@ -741,28 +743,32 @@
    "kind": "entry",
    "label": "Authorizing Staff Member",
    "desc": "Signature of estate trustee 3",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for each further estate trustee named in EstateTrusteeNames (trustee 3)"
   },
   "F96": {
    "name": "StaffSignature",
    "kind": "entry",
    "label": "",
    "desc": "Authorizing staff member (Libro witness): signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F97": {
    "name": "Trustee4Signature",
    "kind": "entry",
    "label": "Signature of Estate Trustee",
    "desc": "Signature of estate trustee 4",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for each further estate trustee named in EstateTrusteeNames (trustee 4)"
   },
   "F98": {
    "name": "Trustee5Signature",
    "kind": "entry",
    "label": "OR",
    "desc": "Signature of estate trustee 5",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for each further estate trustee named in EstateTrusteeNames (trustee 5)"
   },
   "F99": {
    "name": "Declared2AtCity",
@@ -793,7 +799,8 @@
    "kind": "entry",
    "label": "day",
    "desc": "Signature of estate trustee 6",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for each further estate trustee named in EstateTrusteeNames (trustee 6)"
   },
   "F103": {
    "name": "Declared2Month",
@@ -816,7 +823,8 @@
    "kind": "entry",
    "label": "Signature of Estate Trustee",
    "desc": "Signature of estate trustee 7",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for each further estate trustee named in EstateTrusteeNames (trustee 7)"
   },
   "F106": {
    "name": "CommissionerProvince",
@@ -831,7 +839,8 @@
    "kind": "entry",
    "label": ".",
    "desc": "Signature of estate trustee 8",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required for each further estate trustee named in EstateTrusteeNames (trustee 8)"
   },
   "F108": {
    "name": "CommissionerAppointmentExpires",

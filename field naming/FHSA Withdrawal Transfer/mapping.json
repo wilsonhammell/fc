@@ -526,13 +526,6 @@
    "option": "ChequeToFI",
    "save": true
   },
-  "F62": {
-   "name": "OtherFINameAddress2",
-   "kind": "entry",
-   "label": "the following Financial",
-   "desc": "Name and address of the financial institution, line 2",
-   "how": "reviewed"
-  },
   "F63": {
    "name": "PRIMARY_SIGN_DATE",
    "kind": "db",
@@ -614,14 +607,21 @@
    "name": "OtherFINameAddress",
    "kind": "entry",
    "label": "Please send cheque to",
-   "desc": "Name and address of the financial institution, line 1",
+   "desc": "Name and address of the financial institution (one block over the form's lines)",
    "how": "reviewed",
-   "custom": "Required when PaymentMethod is ChequeToFI"
+   "custom": "Required when PaymentMethod is ChequeToFI",
+   "rect": [
+    195.5,
+    110.6,
+    431.3,
+    137.6
+   ]
   }
  },
  "drop": [
   "F55",
-  "F6"
+  "F6",
+  "F62"
  ],
  "skip": {
   "B10": "not a blank - beside the qualifying withdrawal line",

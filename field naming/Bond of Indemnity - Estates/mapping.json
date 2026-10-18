@@ -29,8 +29,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "Required, and a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F4": {
    "name": "EstateAsset1Amount",
@@ -55,7 +54,7 @@
     "redText": false
    },
    "maxlen": 12,
-   "custom": "Required when EstateAsset2Amount is filled in; if filled in, a 12-digit Libro account number"
+   "custom": "Required when EstateAsset2Amount is filled in"
   },
   "F6": {
    "name": "EstateAsset2Amount",
@@ -80,7 +79,7 @@
     "redText": false
    },
    "maxlen": 12,
-   "custom": "Required when EstateAsset3Amount is filled in; if filled in, a 12-digit Libro account number"
+   "custom": "Required when EstateAsset3Amount is filled in"
   },
   "F8": {
    "name": "EstateAsset3Amount",
@@ -105,7 +104,7 @@
     "redText": false
    },
    "maxlen": 12,
-   "custom": "Required when AssetTransferOption is Option2, and a 12-digit Libro account number"
+   "custom": "Required when AssetTransferOption is Option2"
   },
   "F10": {
    "name": "SpouseTransferAccount",
@@ -122,7 +121,7 @@
     "redText": false
    },
    "maxlen": 12,
-   "custom": "Required when AssetTransferOption is Option4, and a 12-digit Libro account number"
+   "custom": "Required when AssetTransferOption is Option4"
   },
   "F11": {
    "name": "NoCertificateOfAppointment",
@@ -219,26 +218,18 @@
    "save": true
   },
   "F22": {
-   "name": "DeclarantAddress1",
+   "name": "DeclarantAddress",
    "kind": "entry",
    "label": "Declarant Address:",
-   "desc": "Declarant's address line 1",
+   "desc": "Declarant's address (one block over the form's lines)",
    "how": "reviewed",
-   "save": true
-  },
-  "F23": {
-   "name": "DeclarantAddress2",
-   "kind": "entry",
-   "label": "",
-   "desc": "line 2",
-   "how": "reviewed"
-  },
-  "F24": {
-   "name": "DeclarantAddress3",
-   "kind": "entry",
-   "label": "",
-   "desc": "line 3",
-   "how": "reviewed"
+   "save": true,
+   "rect": [
+    53.3,
+    661.2,
+    288.0,
+    703.0
+   ]
   },
   "F25": {
    "name": "REQUESTUSER",
@@ -252,14 +243,16 @@
    "kind": "entry",
    "label": "Credit Union Witness Signature",
    "desc": "Credit union witness signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F27": {
    "name": "DeclarantSignature",
    "kind": "entry",
    "label": "Declarant Signature",
    "desc": "Declarant's signature - the declarant is not necessarily a signer on the deceased's account",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F28": {
    "name": "DeclaredYear",
@@ -270,7 +263,10 @@
    "save": true
   }
  },
- "drop": [],
+ "drop": [
+  "F23",
+  "F24"
+ ],
  "skip": {
   "B1": "the city line is F17; not a blank"
  },

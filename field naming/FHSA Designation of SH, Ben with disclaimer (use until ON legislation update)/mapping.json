@@ -75,8 +75,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F10": {
    "name": "Beneficiary1DateOfBirth",
@@ -138,8 +137,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F17": {
    "name": "Beneficiary2DateOfBirth",
@@ -201,8 +199,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F24": {
    "name": "Beneficiary3DateOfBirth",

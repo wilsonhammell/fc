@@ -143,8 +143,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F20": {
    "name": "Beneficiary1Name",
@@ -186,8 +185,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F25": {
    "name": "Beneficiary2Name",
@@ -229,8 +227,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F30": {
    "name": "Beneficiary3Name",
@@ -272,8 +269,7 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "maxlen": 12
   },
   "F35": {
    "name": "Beneficiary4Name",
@@ -303,41 +299,17 @@
    "custom": "Required when Beneficiary4Name is filled in"
   },
   "F39": {
-   "name": "InvestmentInstructions1",
+   "name": "InvestmentInstructions",
    "kind": "entry",
    "label": "Investment Instructions for Funds",
-   "desc": "Line 1 of the investment instructions",
-   "save": true
-  },
-  "F40": {
-   "name": "InvestmentInstructions2",
-   "kind": "entry",
-   "label": "Investment Instructions for Funds",
-   "desc": "Line 2"
-  },
-  "F41": {
-   "name": "InvestmentInstructions3",
-   "kind": "entry",
-   "label": "Investment Instructions for Funds",
-   "desc": "Line 3"
-  },
-  "F42": {
-   "name": "InvestmentInstructions4",
-   "kind": "entry",
-   "label": "Investment Instructions for Funds",
-   "desc": "Line 4"
-  },
-  "F43": {
-   "name": "InvestmentInstructions5",
-   "kind": "entry",
-   "label": "Investment Instructions for Funds",
-   "desc": "Line 5"
-  },
-  "F44": {
-   "name": "InvestmentInstructions6",
-   "kind": "entry",
-   "label": "Investment Instructions for Funds",
-   "desc": "Line 6"
+   "desc": "Line 1 of the investment instructions (one block over the form's lines)",
+   "save": true,
+   "rect": [
+    36.0,
+    55.9,
+    582.3,
+    163.3
+   ]
   },
   "B2": {
    "name": "Member1Name",
@@ -388,8 +360,15 @@
    "desc": "Staff date"
   }
  },
- "drop": [],
+ "drop": [
+  "F40",
+  "F41",
+  "F42",
+  "F43",
+  "F44"
+ ],
  "skip": {
   "B1": "the spouse account row - F18 is moved here"
- }
+ },
+ "add": []
 }

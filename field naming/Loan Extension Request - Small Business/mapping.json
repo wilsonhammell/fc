@@ -423,21 +423,24 @@
    "kind": "entry",
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 1: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp1Name is filled in"
   },
   "F62": {
    "name": "GuarantorCorp2Signature",
    "kind": "entry",
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 2: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp2Name is filled in"
   },
   "F63": {
    "name": "GuarantorCorp3Signature",
    "kind": "entry",
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 3: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp3Name is filled in"
   },
   "F64": {
    "name": "GuarantorCorp4Name",
@@ -451,21 +454,24 @@
    "kind": "entry",
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 4: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp4Name is filled in"
   },
   "F66": {
    "name": "GuarantorCorp5Signature",
    "kind": "entry",
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 5: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp5Name is filled in"
   },
   "F67": {
    "name": "GuarantorCorp6Signature",
    "kind": "entry",
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 6: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp6Name is filled in"
   },
   "F68": {
    "name": "GuarantorCorp7Name",
@@ -479,21 +485,24 @@
    "kind": "entry",
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 7: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp7Name is filled in"
   },
   "F70": {
    "name": "GuarantorCorp8Signature",
    "kind": "entry",
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 8: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp8Name is filled in"
   },
   "F71": {
    "name": "GuarantorCorp9Signature",
    "kind": "entry",
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 9: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp9Name is filled in"
   },
   "B7": {
    "name": "GuarantorCorp1Name",
@@ -635,28 +644,32 @@
    "kind": "entry",
    "label": "",
    "desc": "Individual guarantor 1: signature (the line has no caption)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Guarantor1Name is filled in"
   },
   "F73": {
    "name": "Guarantor2Signature",
    "kind": "entry",
    "label": "",
    "desc": "Individual guarantor 2: signature (the line has no caption)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Guarantor2Name is filled in"
   },
   "F74": {
    "name": "Guarantor3Signature",
    "kind": "entry",
    "label": "",
    "desc": "Individual guarantor 3: signature (the line has no caption)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Guarantor3Name is filled in"
   },
   "F75": {
    "name": "Guarantor4Signature",
    "kind": "entry",
    "label": "",
    "desc": "Individual guarantor 4: signature (the line has no caption)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Guarantor4Name is filled in"
   },
   "F76": {
    "name": "OfficeTransferUpdated",

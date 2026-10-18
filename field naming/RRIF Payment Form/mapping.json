@@ -251,18 +251,17 @@
    "custom": "Required when DepositToAccount is ticked"
   },
   "F31": {
-   "name": "SpecialInstructions1",
+   "name": "SpecialInstructions",
    "kind": "entry",
    "label": "SPECIAL INSTRUCTIONS FOR PAYMENT",
-   "desc": "Special instructions for payment, line 1",
-   "how": "reviewed"
-  },
-  "F32": {
-   "name": "SpecialInstructions2",
-   "kind": "entry",
-   "label": "",
-   "desc": "line 2",
-   "how": "reviewed"
+   "desc": "Special instructions for payment (one block over the form's lines)",
+   "how": "reviewed",
+   "rect": [
+    40.8,
+    664.3,
+    583.1,
+    702.6
+   ]
   },
   "F33": {
    "name": "PRIMARY_SIGN_DATE",
@@ -335,10 +334,13 @@
    "kind": "entry",
    "label": "Employee Authorization",
    "desc": "Employee authorization",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
- "drop": [],
+ "drop": [
+  "F32"
+ ],
  "skip": {
   "B1": "a rule of the form's tables, not a blank",
   "B2": "a rule of the form's tables, not a blank",

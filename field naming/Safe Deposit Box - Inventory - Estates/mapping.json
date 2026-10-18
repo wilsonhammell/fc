@@ -221,7 +221,8 @@
    "kind": "entry",
    "label": "Member",
    "desc": "Libro representative 1: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F32": {
    "name": "Staff2Name",
@@ -236,7 +237,8 @@
    "kind": "entry",
    "label": "Member",
    "desc": "Libro representative 2: signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B1": {
    "name": "Member1SignDate",

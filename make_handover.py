@@ -217,11 +217,13 @@ def main():
                          "Yes" if s.get("loadValidated") else "",
                          "Yes*" if s.get("customSaveValidated") else ("Yes" if s.get("saveValidated") else ""),
                          s.get("customerFacingName", ""), "Editable" if s.get("editable", True) else "Read Only",
-                         fmt, "yes" if s.get("multiline") else "", s.get("note", "")])
+                         fmt, s.get("maxLength") or "", "yes" if s.get("multiline") else "",
+                         s.get("note", "")])
     with open(os.path.join(out, "designer settings.csv"), "w", newline="", encoding="utf-8-sig") as fh:
         wr = csv.writer(fh)
         wr.writerow(["form", "field", "kind", "label on form", "Load Validation", "Save Validation",
-                     "error message name", "access", "format", "multiline", "note / rule"])
+                     "error message name", "access", "format", "character limit", "multiline",
+                     "note / rule"])
         wr.writerows(rows)
 
     # the subject experts' sticky notes on the forms: requirements in their

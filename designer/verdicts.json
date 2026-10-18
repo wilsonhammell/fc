@@ -1,50 +1,62 @@
 {
  "ATM & POS Trace Request": {
-  "status": "changes",
-  "note": "why arent unittid pan num and trace number for each section require custom save validation? im not familiar with finan",
-  "sha1": "070b3cc97b4490e157516b4bb85e7b38798eb090",
-  "at": "2026-10-17T23:45:01.511Z"
+  "status": "approved",
+  "note": "",
+  "sha1": "acd646190a1a3e60ea33c3a25b2d6c719843397f",
+  "at": "2026-10-18T00:45:34.282Z"
  },
  "Account Declaration Agreement - Estates": {
   "status": "approved",
   "note": "",
-  "sha1": "4b7a98dc7d5b0a42eec80f6e30e8fba52dc69f4d",
-  "at": "2026-10-17T23:34:39.153Z"
+  "sha1": "7ec89edb779976c61a8048df98cad781fcc02844",
+  "at": "2026-10-18T00:36:45.971Z"
  },
  "Assignment of Life Ins Policy - Letter": {
   "status": "approved",
   "note": "",
-  "sha1": "28f7ee871e4c2990b8f86bbeb147a723d1be5e7c",
-  "at": "2026-10-17T23:36:26.705Z"
+  "sha1": "3d7808d60e76d240ad02b92e83be9ce4d87a9ebc",
+  "at": "2026-10-18T00:36:52.826Z"
  },
  "Assignment of Life Insurance Policy": {
-  "status": "changes",
-  "note": "The last 3 fields need should be save validated dont you think? like it would be weird if that part wasnt filled in",
-  "sha1": "7ad1b0561bf981e67e9429c0b903d07c2e600d6b",
-  "at": "2026-10-17T23:39:17.739Z"
+  "status": "approved",
+  "note": "",
+  "sha1": "cbae61d0becb45d40d95e2b111a2dfd0f180b938",
+  "at": "2026-10-18T00:45:30.818Z"
  },
  "Authorization to Release Financial Info": {
   "status": "approved",
   "note": "",
-  "sha1": "59b5bf85c793f06b24c6b4855064b8d1f6f0dfc5",
-  "at": "2026-10-17T23:45:21.512Z"
+  "sha1": "641d5106823636791c2ff2257d6c3126d63289de",
+  "at": "2026-10-18T00:40:26.088Z"
  },
  "Bill Payment Trace": {
-  "status": "changes",
-  "note": "Why isnt refundrequestamount custom sv when incorrect is selected?",
-  "sha1": "31784ea6e12aed6ce54587a325bc5e16447fbd28",
-  "at": "2026-10-17T23:48:05.986Z"
+  "status": "approved",
+  "note": "",
+  "sha1": "6db16323c73bb9ce922ba7e39d84c8965723b2ac",
+  "at": "2026-10-18T00:45:28.471Z"
  },
  "Bond of Indemnity - Estates": {
   "status": "changes",
-  "note": "I'm not sure the save logic is correct on the first page lol",
-  "sha1": "951f09929bc5473148aea08dc286d9b5f7243481",
-  "at": "2026-10-17T23:53:35.418Z"
+  "note": "Looks good but maybe we should add character limit to formatting section in the requirements builder so the 12 digit account number can be enforced that way rather than through custom code, also makes it so  fututre char limited fields will work , additionally i feel like the signatures and address block should be required, i think the 3 address blocks are supposed to be all part of 1 address not 3 seperate addresses",
+  "sha1": "c6eadc0c00eb62b78b16e0ed7c5f452b85f35246",
+  "at": "2026-10-18T00:49:17.451Z"
  },
  "Breach Letter": {
   "status": "changes",
-  "note": "Theres red text left on this form, BreachCovenant1 probably also needs save validaiton, and attention and acknowledge date",
-  "sha1": "ede4f47adb45620f213a8eb268130041e7005aff",
-  "at": "2026-10-17T23:57:36.295Z"
+  "note": "staff sig should probably be required?",
+  "sha1": "e4c96b85ba63e1bf978173d9474bf5d3c7f23501",
+  "at": "2026-10-18T00:50:22.327Z"
+ },
+ "Collateral Agreement-Q-Trade Investments": {
+  "status": "none",
+  "note": "again isnt the 3 address fields actually just one address? look at the for the lender part right above it, all one address, again shouldnt signatures be needed? member signatures are the exception since theyre handled through the subnmission logic",
+  "sha1": "0b92c6bc5d6ec9c7603c719517eea370831dd761",
+  "at": "2026-10-18T00:53:27.443Z"
+ },
+ "Designated Beneficiary Declaration and Indemnification - Estates": {
+  "status": "changes",
+  "note": "address thing again and signature thing",
+  "sha1": "c41914398027bb936458718aac4618eb8a2cffcc",
+  "at": "2026-10-18T00:58:20.177Z"
  }
 }

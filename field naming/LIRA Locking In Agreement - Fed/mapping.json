@@ -175,7 +175,8 @@
    "kind": "entry",
    "label": "Per:",
    "desc": "Signed for Libro (Per:)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B1": {
    "name": "Member1Name",
@@ -224,7 +225,8 @@
    "kind": "entry",
    "label": "Per:",
    "desc": "Signed for Libro (Per:), page 4",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F24": {
    "name": "PRIMARY_FULL_LEGAL_NAME",

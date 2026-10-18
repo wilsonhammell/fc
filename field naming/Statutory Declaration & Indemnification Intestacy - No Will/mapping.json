@@ -434,7 +434,8 @@
    "kind": "entry",
    "label": ", this )",
    "desc": "Signature of claimant 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F50": {
    "name": "Declared1Day",
@@ -504,7 +505,8 @@
    "kind": "entry",
    "label": ", this )",
    "desc": "Signature of claimant 2",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
   },
   "F59": {
    "name": "Declared2Day",
@@ -543,14 +545,16 @@
    "kind": "entry",
    "label": "A Commissioner for Oaths/Notary Public",
    "desc": "Commissioner for oaths / notary public, claimant 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B14": {
    "name": "Commissioner2Signature",
    "kind": "entry",
    "label": "A Commissioner for Oaths/Notary Public",
    "desc": "Commissioner for oaths / notary public, claimant 2",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
   }
  },
  "drop": [],
