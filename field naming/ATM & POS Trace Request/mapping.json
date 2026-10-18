@@ -74,11 +74,10 @@
    "custom": "Required when TraceReason.Other is ticked"
   },
   "F11": {
-   "name": "BranchTraceContact",
-   "kind": "entry",
+   "name": "REQUESTUSER",
+   "kind": "db",
    "label": "Branch contact name for trace",
-   "desc": "Staff member Central 1 should contact. Could be REQUESTUSER if it is always the person filling the form",
-   "save": true
+   "desc": "Branch contact for the trace: the staff member generating the form (as on Bill Payment Trace)"
   },
   "F12": {
    "name": "ATMTransactionDate",

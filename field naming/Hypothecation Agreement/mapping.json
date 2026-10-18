@@ -950,7 +950,7 @@
   "F96": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
-   "label": "Authorizing Staff Member",
+   "label": "Corporation Name",
    "desc": "The borrower corporation's name, Bonds direction - moved off the staff line it was laid over",
    "how": "reviewed",
    "rect": [
@@ -958,7 +958,8 @@
     512,
     452,
     528
-   ]
+   ],
+   "facing": "Corporation Name"
   },
   "F97": {
    "name": "ORG_OFFICER1_TITLE",
