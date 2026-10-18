@@ -1193,5 +1193,28 @@
  "notes": [
   "One file carries the Bonds, Mutual Funds and Stocks agreements; every signing block repeats Member1-4 (individuals) or Member1-3 with officer titles (corporations) - the same signers, one value shown in each.",
   "On the Bonds page the corporation's name box sat on the staff line of the individual block - a layout fault in the restyled form; moved for now, but the page wants a look."
- ]
+ ],
+ "production_pages": {
+  "Hypothecation Agreement - Mutual Funds": [
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "Hypothecation Agreement - Stocks": [
+   1,
+   2,
+   3,
+   4,
+   6
+  ],
+  "Hypothecation Agreement - Bonds": [
+   1,
+   2,
+   3,
+   4,
+   7
+  ]
+ }
 }

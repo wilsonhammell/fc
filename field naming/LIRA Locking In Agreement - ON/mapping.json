@@ -44,32 +44,17 @@
    "how": "reviewed"
   },
   "F7": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
    "rect": [
-    219,
-    188,
-    310,
-    200
-   ],
-   "save": true
-  },
-  "F8": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F9": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+    219.0,
+    187.7,
+    543.8,
+    200.0
+   ]
   },
   "F10": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -115,25 +100,17 @@
    "how": "reviewed"
   },
   "F16": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F17": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F18": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    188.5,
+    102.5,
+    547.8,
+    114.5
+   ]
   },
   "F19": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -179,25 +156,17 @@
    "how": "reviewed"
   },
   "F25": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F26": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F27": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    188.5,
+    102.5,
+    547.8,
+    114.5
+   ]
   },
   "F28": {
    "name": "PensionDifferentiation",
@@ -261,25 +230,17 @@
    "how": "reviewed"
   },
   "F36": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F37": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F38": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    188.5,
+    102.5,
+    547.8,
+    114.5
+   ]
   },
   "F39": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -325,25 +286,17 @@
    "how": "reviewed"
   },
   "F45": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F46": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F47": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    188.5,
+    102.5,
+    547.8,
+    114.5
+   ]
   },
   "F48": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -389,25 +342,17 @@
    "how": "reviewed"
   },
   "F54": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F55": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F56": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    188.5,
+    102.5,
+    547.8,
+    114.5
+   ]
   },
   "F57": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -453,25 +398,17 @@
    "how": "reviewed"
   },
   "F63": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F64": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F65": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    188.5,
+    102.5,
+    547.8,
+    114.5
+   ]
   },
   "F66": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -517,25 +454,17 @@
    "how": "reviewed"
   },
   "F72": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F73": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F74": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    188.5,
+    102.5,
+    547.8,
+    114.5
+   ]
   },
   "F75": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -581,25 +510,17 @@
    "how": "reviewed"
   },
   "F81": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F82": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F83": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    188.5,
+    102.5,
+    547.8,
+    114.5
+   ]
   },
   "F84": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -645,25 +566,17 @@
    "how": "reviewed"
   },
   "F90": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F91": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F92": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    188.5,
+    102.5,
+    547.8,
+    114.5
+   ]
   },
   "F93": {
    "name": "ExecutedPlaceType",
@@ -741,25 +654,17 @@
    "how": "reviewed"
   },
   "F103": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F104": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F105": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "S.I.N.:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    188.5,
+    102.5,
+    547.8,
+    114.5
+   ]
   },
   "F106": {
    "name": "SignedMonth",
@@ -846,7 +751,30 @@
    "how": "reviewed"
   }
  },
- "drop": [],
+ "drop": [
+  "F8",
+  "F9",
+  "F17",
+  "F18",
+  "F26",
+  "F27",
+  "F37",
+  "F38",
+  "F46",
+  "F47",
+  "F55",
+  "F56",
+  "F64",
+  "F65",
+  "F73",
+  "F74",
+  "F82",
+  "F83",
+  "F91",
+  "F92",
+  "F104",
+  "F105"
+ ],
  "skip": {
   "B1": "not a blank - the second line of a two-line label; its box is beside it",
   "B2": "not a blank - the second line of a two-line label; its box is beside it",

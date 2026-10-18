@@ -15,26 +15,17 @@
    "how": "reviewed"
   },
   "F3": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Late of:",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
-   "save": true
-  },
-  "F4": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F5": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "rect": [
+    92.2,
+    222.9,
+    535.7,
+    234.9
+   ]
   },
   "F6": {
    "name": "PRIMARY_DEATH_DAY",
@@ -138,7 +129,7 @@
    "label": "",
    "desc": "Legal heir 2: name",
    "how": "reviewed",
-   "custom": "Required when any other Heir2 field is filled in"
+   "custom": "Row Heir2: all or nothing - required when any of Heir2Name, Heir2Relationship, Heir2Birthdate, Heir2SIN is filled in"
   },
   "F19": {
    "name": "Heir2Relationship",
@@ -146,7 +137,7 @@
    "label": "",
    "desc": "Legal heir 2: relationship to the deceased",
    "how": "reviewed",
-   "custom": "Required when Heir2Name is filled in"
+   "custom": "Row Heir2: all or nothing - required when any of Heir2Name, Heir2Relationship, Heir2Birthdate, Heir2SIN is filled in"
   },
   "F20": {
    "name": "Heir2Birthdate",
@@ -154,7 +145,7 @@
    "label": "",
    "desc": "Legal heir 2: birthdate",
    "how": "reviewed",
-   "custom": "Required when Heir2Name is filled in"
+   "custom": "Row Heir2: all or nothing - required when any of Heir2Name, Heir2Relationship, Heir2Birthdate, Heir2SIN is filled in"
   },
   "F21": {
    "name": "Heir2SIN",
@@ -162,7 +153,7 @@
    "label": "",
    "desc": "Legal heir 2: SIN",
    "how": "reviewed",
-   "custom": "Required when Heir2Name is filled in"
+   "custom": "Row Heir2: all or nothing - required when any of Heir2Name, Heir2Relationship, Heir2Birthdate, Heir2SIN is filled in"
   },
   "F22": {
    "name": "Heir3Name",
@@ -170,7 +161,7 @@
    "label": "",
    "desc": "Legal heir 3: name",
    "how": "reviewed",
-   "custom": "Required when any other Heir3 field is filled in"
+   "custom": "Row Heir3: all or nothing - required when any of Heir3Name, Heir3Relationship, Heir3Birthdate, Heir3SIN is filled in"
   },
   "F23": {
    "name": "Heir3Relationship",
@@ -178,7 +169,7 @@
    "label": "",
    "desc": "Legal heir 3: relationship to the deceased",
    "how": "reviewed",
-   "custom": "Required when Heir3Name is filled in"
+   "custom": "Row Heir3: all or nothing - required when any of Heir3Name, Heir3Relationship, Heir3Birthdate, Heir3SIN is filled in"
   },
   "F24": {
    "name": "Heir3Birthdate",
@@ -186,7 +177,7 @@
    "label": "",
    "desc": "Legal heir 3: birthdate",
    "how": "reviewed",
-   "custom": "Required when Heir3Name is filled in"
+   "custom": "Row Heir3: all or nothing - required when any of Heir3Name, Heir3Relationship, Heir3Birthdate, Heir3SIN is filled in"
   },
   "F25": {
    "name": "Heir3SIN",
@@ -194,7 +185,7 @@
    "label": "",
    "desc": "Legal heir 3: SIN",
    "how": "reviewed",
-   "custom": "Required when Heir3Name is filled in"
+   "custom": "Row Heir3: all or nothing - required when any of Heir3Name, Heir3Relationship, Heir3Birthdate, Heir3SIN is filled in"
   },
   "F26": {
    "name": "Heir4Name",
@@ -202,7 +193,7 @@
    "label": "",
    "desc": "Legal heir 4: name",
    "how": "reviewed",
-   "custom": "Required when any other Heir4 field is filled in"
+   "custom": "Row Heir4: all or nothing - required when any of Heir4Name, Heir4Relationship, Heir4Birthdate, Heir4SIN is filled in"
   },
   "F27": {
    "name": "Heir4Relationship",
@@ -210,7 +201,7 @@
    "label": "",
    "desc": "Legal heir 4: relationship to the deceased",
    "how": "reviewed",
-   "custom": "Required when Heir4Name is filled in"
+   "custom": "Row Heir4: all or nothing - required when any of Heir4Name, Heir4Relationship, Heir4Birthdate, Heir4SIN is filled in"
   },
   "F28": {
    "name": "Heir4Birthdate",
@@ -218,7 +209,7 @@
    "label": "",
    "desc": "Legal heir 4: birthdate",
    "how": "reviewed",
-   "custom": "Required when Heir4Name is filled in"
+   "custom": "Row Heir4: all or nothing - required when any of Heir4Name, Heir4Relationship, Heir4Birthdate, Heir4SIN is filled in"
   },
   "F29": {
    "name": "Heir4SIN",
@@ -226,7 +217,7 @@
    "label": "",
    "desc": "Legal heir 4: SIN",
    "how": "reviewed",
-   "custom": "Required when Heir4Name is filled in"
+   "custom": "Row Heir4: all or nothing - required when any of Heir4Name, Heir4Relationship, Heir4Birthdate, Heir4SIN is filled in"
   },
   "B5": {
    "name": "AssetType.RRSP",
@@ -557,7 +548,10 @@
    "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
   }
  },
- "drop": [],
+ "drop": [
+  "F4",
+  "F5"
+ ],
  "skip": {
   "B1": "a rule of the heirs table",
   "B2": "a rule of the heirs table",

@@ -15,25 +15,17 @@
    "how": "reviewed"
   },
   "F3": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Late of:",
-   "desc": "The deceased's address (late of), line 1",
-   "how": "reviewed"
-  },
-  "F4": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F5": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    107.4,
+    182.1,
+    560.1,
+    198.0
+   ]
   },
   "F6": {
    "name": "BeneficiaryName",
@@ -424,7 +416,10 @@
    "save": true
   }
  },
- "drop": [],
+ "drop": [
+  "F4",
+  "F5"
+ ],
  "skip": {
   "B1": "not a blank - the witness statement wording"
  },

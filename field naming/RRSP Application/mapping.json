@@ -73,26 +73,17 @@
    "desc": "Annuitant's date of birth"
   },
   "F12": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Address/Postal Code",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
-   "save": true
-  },
-  "F13": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Address/Postal Code",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F14": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Address/Postal Code",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "rect": [
+    157.4,
+    311.5,
+    582.3,
+    323.5
+   ]
   },
   "F15": {
    "name": "SPOUSE_LAST_NAME",
@@ -143,34 +134,36 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row Beneficiary1: all or nothing - required when any of Beneficiary1Name, Beneficiary1Account, Beneficiary1DateOfBirth, Beneficiary1Relationship, Beneficiary1Type is filled in"
   },
   "F20": {
    "name": "Beneficiary1Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 1 name",
-   "custom": "Required when any other Beneficiary1 field is filled in"
+   "custom": "Row Beneficiary1: all or nothing - required when any of Beneficiary1Name, Beneficiary1Account, Beneficiary1DateOfBirth, Beneficiary1Relationship, Beneficiary1Type is filled in"
   },
   "F21": {
    "name": "Beneficiary1DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
-   "desc": "Beneficiary 1 date of birth"
+   "desc": "Beneficiary 1 date of birth",
+   "custom": "Row Beneficiary1: all or nothing - required when any of Beneficiary1Name, Beneficiary1Account, Beneficiary1DateOfBirth, Beneficiary1Relationship, Beneficiary1Type is filled in"
   },
   "F22": {
    "name": "Beneficiary1Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 1 relationship to annuitant",
-   "custom": "Required when Beneficiary1Name is filled in"
+   "custom": "Row Beneficiary1: all or nothing - required when any of Beneficiary1Name, Beneficiary1Account, Beneficiary1DateOfBirth, Beneficiary1Relationship, Beneficiary1Type is filled in"
   },
   "F23": {
    "name": "Beneficiary1Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
    "desc": "Beneficiary 1, P or A",
-   "custom": "Required when Beneficiary1Name is filled in"
+   "custom": "Row Beneficiary1: all or nothing - required when any of Beneficiary1Name, Beneficiary1Account, Beneficiary1DateOfBirth, Beneficiary1Relationship, Beneficiary1Type is filled in"
   },
   "F24": {
    "name": "Beneficiary2Account",
@@ -185,34 +178,36 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2Type is filled in"
   },
   "F25": {
    "name": "Beneficiary2Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 2",
-   "custom": "Required when any other Beneficiary2 field is filled in"
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2Type is filled in"
   },
   "F26": {
    "name": "Beneficiary2DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
-   "desc": "Beneficiary 2"
+   "desc": "Beneficiary 2",
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2Type is filled in"
   },
   "F27": {
    "name": "Beneficiary2Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 2",
-   "custom": "Required when Beneficiary2Name is filled in"
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2Type is filled in"
   },
   "F28": {
    "name": "Beneficiary2Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
    "desc": "Beneficiary 2",
-   "custom": "Required when Beneficiary2Name is filled in"
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2Type is filled in"
   },
   "F29": {
    "name": "Beneficiary3Account",
@@ -227,34 +222,36 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3Type is filled in"
   },
   "F30": {
    "name": "Beneficiary3Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 3",
-   "custom": "Required when any other Beneficiary3 field is filled in"
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3Type is filled in"
   },
   "F31": {
    "name": "Beneficiary3DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
-   "desc": "Beneficiary 3"
+   "desc": "Beneficiary 3",
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3Type is filled in"
   },
   "F32": {
    "name": "Beneficiary3Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 3",
-   "custom": "Required when Beneficiary3Name is filled in"
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3Type is filled in"
   },
   "F33": {
    "name": "Beneficiary3Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
    "desc": "Beneficiary 3",
-   "custom": "Required when Beneficiary3Name is filled in"
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3Type is filled in"
   },
   "F34": {
    "name": "Beneficiary4Account",
@@ -269,34 +266,36 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row Beneficiary4: all or nothing - required when any of Beneficiary4Name, Beneficiary4Account, Beneficiary4DateOfBirth, Beneficiary4Relationship, Beneficiary4Type is filled in"
   },
   "F35": {
    "name": "Beneficiary4Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Beneficiary 4",
-   "custom": "Required when any other Beneficiary4 field is filled in"
+   "custom": "Row Beneficiary4: all or nothing - required when any of Beneficiary4Name, Beneficiary4Account, Beneficiary4DateOfBirth, Beneficiary4Relationship, Beneficiary4Type is filled in"
   },
   "F36": {
    "name": "Beneficiary4DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
-   "desc": "Beneficiary 4"
+   "desc": "Beneficiary 4",
+   "custom": "Row Beneficiary4: all or nothing - required when any of Beneficiary4Name, Beneficiary4Account, Beneficiary4DateOfBirth, Beneficiary4Relationship, Beneficiary4Type is filled in"
   },
   "F37": {
    "name": "Beneficiary4Relationship",
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 4",
-   "custom": "Required when Beneficiary4Name is filled in"
+   "custom": "Row Beneficiary4: all or nothing - required when any of Beneficiary4Name, Beneficiary4Account, Beneficiary4DateOfBirth, Beneficiary4Relationship, Beneficiary4Type is filled in"
   },
   "F38": {
    "name": "Beneficiary4Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
    "desc": "Beneficiary 4",
-   "custom": "Required when Beneficiary4Name is filled in"
+   "custom": "Row Beneficiary4: all or nothing - required when any of Beneficiary4Name, Beneficiary4Account, Beneficiary4DateOfBirth, Beneficiary4Relationship, Beneficiary4Type is filled in"
   },
   "B2": {
    "name": "Member1Name",
@@ -384,7 +383,10 @@
    "desc": "Line 6"
   }
  },
- "drop": [],
+ "drop": [
+  "F13",
+  "F14"
+ ],
  "skip": {
   "B1": "the spouse account row - F18 is moved here"
  },

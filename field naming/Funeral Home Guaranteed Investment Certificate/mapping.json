@@ -183,5 +183,19 @@
  ],
  "skip": {},
  "add": [],
- "notes": []
+ "notes": [],
+ "move_text": [
+  {
+   "text": "Authorized Signing Officer",
+   "from_page": 2,
+   "to_page": 1,
+   "at": [
+    54.0,
+    760.0
+   ]
+  }
+ ],
+ "drop_pages": [
+  2
+ ]
 }

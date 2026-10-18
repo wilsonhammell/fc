@@ -18,7 +18,13 @@
    "kind": "db",
    "label": "Account Number",
    "desc": "Account number (member number part)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "rect": [
+    339.2,
+    150.8,
+    446.0,
+    164.0
+   ]
   },
   "F5": {
    "name": "LOAN_SUB",
@@ -26,7 +32,13 @@
    "label": "Sub:",
    "desc": "The loan's sub number",
    "how": "reviewed",
-   "save": true
+   "save": true,
+   "rect": [
+    471.9,
+    150.8,
+    592.8,
+    164.0
+   ]
   },
   "F6": {
    "name": "LOAN_PAYOUT_DATE",
@@ -180,10 +192,10 @@
   {
    "page": 0,
    "rect": [
-    98,
-    166,
-    590,
-    187
+    93.4,
+    176.3,
+    592.8,
+    188.8
    ],
    "name": "PropertyAddress",
    "kind": "entry",
@@ -209,5 +221,6 @@
  ],
  "notes": [
   "Electronic Registration Fee prints a fixed $90.00 - left as printed text."
- ]
+ ],
+ "erase_under_fields": true
 }

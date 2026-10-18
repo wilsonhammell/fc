@@ -113,25 +113,17 @@
    ]
   },
   "F29": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "and",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F30": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "and",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F31": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    54.6,
+    558.8,
+    606.5,
+    573.2
+   ]
   },
   "F32": {
    "name": "StaffSignature",
@@ -822,7 +814,9 @@
   "F91",
   "F92",
   "F94",
-  "F95"
+  "F95",
+  "F30",
+  "F31"
  ],
  "skip": {
   "B1": "Borrower initials - an initials marker in the designer, not a field",

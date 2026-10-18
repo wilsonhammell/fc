@@ -416,7 +416,7 @@
    "label": "",
    "desc": "Corporate guarantor (or partnership): its name",
    "how": "reviewed",
-   "custom": "Required when any GuarantorCorp signer is filled in"
+   "custom": "Required when any GuarantorCorp officer row is filled in; and when it is filled in, at least one officer row (GuarantorCorp1-9 Name, Signature, Date) is complete"
   },
   "F61": {
    "name": "GuarantorCorp1Signature",
@@ -424,7 +424,7 @@
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 1: signature",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp1Name is filled in"
+   "custom": "Row GuarantorCorp1 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp1Name, GuarantorCorp1Signature, GuarantorCorp1Date is filled in"
   },
   "F62": {
    "name": "GuarantorCorp2Signature",
@@ -432,7 +432,7 @@
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 2: signature",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp2Name is filled in"
+   "custom": "Row GuarantorCorp2 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp2Name, GuarantorCorp2Signature, GuarantorCorp2Date is filled in"
   },
   "F63": {
    "name": "GuarantorCorp3Signature",
@@ -440,14 +440,15 @@
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 3: signature",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp3Name is filled in"
+   "custom": "Row GuarantorCorp3 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp3Name, GuarantorCorp3Signature, GuarantorCorp3Date is filled in"
   },
   "F64": {
    "name": "GuarantorCorp4Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Corporate guarantor signer 4: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row GuarantorCorp4 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp4Name, GuarantorCorp4Signature, GuarantorCorp4Date is filled in"
   },
   "F65": {
    "name": "GuarantorCorp4Signature",
@@ -455,7 +456,7 @@
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 4: signature",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp4Name is filled in"
+   "custom": "Row GuarantorCorp4 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp4Name, GuarantorCorp4Signature, GuarantorCorp4Date is filled in"
   },
   "F66": {
    "name": "GuarantorCorp5Signature",
@@ -463,7 +464,7 @@
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 5: signature",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp5Name is filled in"
+   "custom": "Row GuarantorCorp5 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp5Name, GuarantorCorp5Signature, GuarantorCorp5Date is filled in"
   },
   "F67": {
    "name": "GuarantorCorp6Signature",
@@ -471,14 +472,15 @@
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 6: signature",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp6Name is filled in"
+   "custom": "Row GuarantorCorp6 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp6Name, GuarantorCorp6Signature, GuarantorCorp6Date is filled in"
   },
   "F68": {
    "name": "GuarantorCorp7Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Corporate guarantor signer 7: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row GuarantorCorp7 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp7Name, GuarantorCorp7Signature, GuarantorCorp7Date is filled in"
   },
   "F69": {
    "name": "GuarantorCorp7Signature",
@@ -486,7 +488,7 @@
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 7: signature",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp7Name is filled in"
+   "custom": "Row GuarantorCorp7 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp7Name, GuarantorCorp7Signature, GuarantorCorp7Date is filled in"
   },
   "F70": {
    "name": "GuarantorCorp8Signature",
@@ -494,7 +496,7 @@
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 8: signature",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp8Name is filled in"
+   "custom": "Row GuarantorCorp8 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp8Name, GuarantorCorp8Signature, GuarantorCorp8Date is filled in"
   },
   "F71": {
    "name": "GuarantorCorp9Signature",
@@ -502,14 +504,15 @@
    "label": "Authorized Signature",
    "desc": "Corporate guarantor signer 9: signature",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp9Name is filled in"
+   "custom": "Row GuarantorCorp9 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp9Name, GuarantorCorp9Signature, GuarantorCorp9Date is filled in"
   },
   "B7": {
    "name": "GuarantorCorp1Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Corporate guarantor signer 1: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row GuarantorCorp1 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp1Name, GuarantorCorp1Signature, GuarantorCorp1Date is filled in"
   },
   "B8": {
    "name": "GuarantorCorp1Date",
@@ -517,14 +520,15 @@
    "label": "Date",
    "desc": "Corporate guarantor signer 1: date",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp1Name is filled in"
+   "custom": "Row GuarantorCorp1 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp1Name, GuarantorCorp1Signature, GuarantorCorp1Date is filled in"
   },
   "B9": {
    "name": "GuarantorCorp2Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Corporate guarantor signer 2: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row GuarantorCorp2 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp2Name, GuarantorCorp2Signature, GuarantorCorp2Date is filled in"
   },
   "B10": {
    "name": "GuarantorCorp2Date",
@@ -532,14 +536,15 @@
    "label": "Date",
    "desc": "Corporate guarantor signer 2: date",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp2Name is filled in"
+   "custom": "Row GuarantorCorp2 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp2Name, GuarantorCorp2Signature, GuarantorCorp2Date is filled in"
   },
   "B11": {
    "name": "GuarantorCorp3Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Corporate guarantor signer 3: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row GuarantorCorp3 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp3Name, GuarantorCorp3Signature, GuarantorCorp3Date is filled in"
   },
   "B12": {
    "name": "GuarantorCorp3Date",
@@ -547,7 +552,7 @@
    "label": "Date",
    "desc": "Corporate guarantor signer 3: date",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp3Name is filled in"
+   "custom": "Row GuarantorCorp3 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp3Name, GuarantorCorp3Signature, GuarantorCorp3Date is filled in"
   },
   "B13": {
    "name": "GuarantorCorp4Date",
@@ -555,14 +560,15 @@
    "label": "Date",
    "desc": "Corporate guarantor signer 4: date",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp4Name is filled in"
+   "custom": "Row GuarantorCorp4 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp4Name, GuarantorCorp4Signature, GuarantorCorp4Date is filled in"
   },
   "B14": {
    "name": "GuarantorCorp5Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Corporate guarantor signer 5: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row GuarantorCorp5 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp5Name, GuarantorCorp5Signature, GuarantorCorp5Date is filled in"
   },
   "B15": {
    "name": "GuarantorCorp5Date",
@@ -570,14 +576,15 @@
    "label": "Date",
    "desc": "Corporate guarantor signer 5: date",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp5Name is filled in"
+   "custom": "Row GuarantorCorp5 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp5Name, GuarantorCorp5Signature, GuarantorCorp5Date is filled in"
   },
   "B16": {
    "name": "GuarantorCorp6Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Corporate guarantor signer 6: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row GuarantorCorp6 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp6Name, GuarantorCorp6Signature, GuarantorCorp6Date is filled in"
   },
   "B17": {
    "name": "GuarantorCorp6Date",
@@ -585,7 +592,7 @@
    "label": "Date",
    "desc": "Corporate guarantor signer 6: date",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp6Name is filled in"
+   "custom": "Row GuarantorCorp6 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp6Name, GuarantorCorp6Signature, GuarantorCorp6Date is filled in"
   },
   "B18": {
    "name": "GuarantorCorp7Date",
@@ -593,14 +600,15 @@
    "label": "Date",
    "desc": "Corporate guarantor signer 7: date",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp7Name is filled in"
+   "custom": "Row GuarantorCorp7 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp7Name, GuarantorCorp7Signature, GuarantorCorp7Date is filled in"
   },
   "B19": {
    "name": "GuarantorCorp8Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Corporate guarantor signer 8: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row GuarantorCorp8 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp8Name, GuarantorCorp8Signature, GuarantorCorp8Date is filled in"
   },
   "B20": {
    "name": "GuarantorCorp8Date",
@@ -608,14 +616,15 @@
    "label": "Date",
    "desc": "Corporate guarantor signer 8: date",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp8Name is filled in"
+   "custom": "Row GuarantorCorp8 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp8Name, GuarantorCorp8Signature, GuarantorCorp8Date is filled in"
   },
   "B21": {
    "name": "GuarantorCorp9Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Corporate guarantor signer 9: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row GuarantorCorp9 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp9Name, GuarantorCorp9Signature, GuarantorCorp9Date is filled in"
   },
   "B22": {
    "name": "GuarantorCorp9Date",
@@ -623,7 +632,7 @@
    "label": "Date",
    "desc": "Corporate guarantor signer 9: date",
    "how": "reviewed",
-   "custom": "Required when GuarantorCorp9Name is filled in"
+   "custom": "Row GuarantorCorp9 (an officer signing for the corporate guarantor): all or nothing - required when any of GuarantorCorp9Name, GuarantorCorp9Signature, GuarantorCorp9Date is filled in"
   },
   "B23": {
    "name": "REQUESTUSER",
@@ -645,7 +654,7 @@
    "label": "",
    "desc": "Individual guarantor 1: signature (the line has no caption)",
    "how": "reviewed",
-   "custom": "Required when Guarantor1Name is filled in"
+   "custom": "Row Guarantor1: all or nothing - required when any of Guarantor1Name, Guarantor1Signature, Guarantor1Date is filled in"
   },
   "F73": {
    "name": "Guarantor2Signature",
@@ -653,7 +662,7 @@
    "label": "",
    "desc": "Individual guarantor 2: signature (the line has no caption)",
    "how": "reviewed",
-   "custom": "Required when Guarantor2Name is filled in"
+   "custom": "Row Guarantor2: all or nothing - required when any of Guarantor2Name, Guarantor2Signature, Guarantor2Date is filled in"
   },
   "F74": {
    "name": "Guarantor3Signature",
@@ -661,7 +670,7 @@
    "label": "",
    "desc": "Individual guarantor 3: signature (the line has no caption)",
    "how": "reviewed",
-   "custom": "Required when Guarantor3Name is filled in"
+   "custom": "Row Guarantor3: all or nothing - required when any of Guarantor3Name, Guarantor3Signature, Guarantor3Date is filled in"
   },
   "F75": {
    "name": "Guarantor4Signature",
@@ -669,7 +678,7 @@
    "label": "",
    "desc": "Individual guarantor 4: signature (the line has no caption)",
    "how": "reviewed",
-   "custom": "Required when Guarantor4Name is filled in"
+   "custom": "Row Guarantor4: all or nothing - required when any of Guarantor4Name, Guarantor4Signature, Guarantor4Date is filled in"
   },
   "F76": {
    "name": "OfficeTransferUpdated",
@@ -704,7 +713,8 @@
    "kind": "entry",
    "label": "Name",
    "desc": "Individual guarantor 1: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Guarantor1: all or nothing - required when any of Guarantor1Name, Guarantor1Signature, Guarantor1Date is filled in"
   },
   "B26": {
    "name": "Guarantor1Date",
@@ -712,14 +722,15 @@
    "label": "Date",
    "desc": "Individual guarantor 1: date",
    "how": "reviewed",
-   "custom": "Required when Guarantor1Name is filled in"
+   "custom": "Row Guarantor1: all or nothing - required when any of Guarantor1Name, Guarantor1Signature, Guarantor1Date is filled in"
   },
   "B27": {
    "name": "Guarantor2Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Individual guarantor 2: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Guarantor2: all or nothing - required when any of Guarantor2Name, Guarantor2Signature, Guarantor2Date is filled in"
   },
   "B28": {
    "name": "Guarantor2Date",
@@ -727,14 +738,15 @@
    "label": "Date",
    "desc": "Individual guarantor 2: date",
    "how": "reviewed",
-   "custom": "Required when Guarantor2Name is filled in"
+   "custom": "Row Guarantor2: all or nothing - required when any of Guarantor2Name, Guarantor2Signature, Guarantor2Date is filled in"
   },
   "B29": {
    "name": "Guarantor3Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Individual guarantor 3: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Guarantor3: all or nothing - required when any of Guarantor3Name, Guarantor3Signature, Guarantor3Date is filled in"
   },
   "B30": {
    "name": "Guarantor3Date",
@@ -742,14 +754,15 @@
    "label": "Date",
    "desc": "Individual guarantor 3: date",
    "how": "reviewed",
-   "custom": "Required when Guarantor3Name is filled in"
+   "custom": "Row Guarantor3: all or nothing - required when any of Guarantor3Name, Guarantor3Signature, Guarantor3Date is filled in"
   },
   "B31": {
    "name": "Guarantor4Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Individual guarantor 4: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Guarantor4: all or nothing - required when any of Guarantor4Name, Guarantor4Signature, Guarantor4Date is filled in"
   },
   "B32": {
    "name": "Guarantor4Date",
@@ -757,7 +770,7 @@
    "label": "Date",
    "desc": "Individual guarantor 4: date",
    "how": "reviewed",
-   "custom": "Required when Guarantor4Name is filled in"
+   "custom": "Row Guarantor4: all or nothing - required when any of Guarantor4Name, Guarantor4Signature, Guarantor4Date is filled in"
   }
  },
  "drop": [

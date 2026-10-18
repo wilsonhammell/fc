@@ -19,7 +19,9 @@ each one is:
 "add" places a field where nothing was found to put one - a value the form
 prints as sample text, a box the layout never drew. "maxlen" on an item is
 the most characters the field takes (12 for a Libro account number).
-"erase" lists printed text that is no part of the form (an author's notes).
+"erase" lists printed text that is no part of the form (an author's notes);
+"erase_under_fields": true takes off sample values printed where fields sit;
+"move_text" and "drop_pages" put a run-on caption back and drop the page.
 
 Every form then gets the same finish: a text field on a printed line is
 stretched along it, Tab follows reading order, the form opens at 100%, and
@@ -601,6 +603,102 @@ def erase_text(doc, texts):
     return found
 
 
+def move_text(doc, moves):
+    """Printed text put back where it belongs, the mapping's "move_text":
+    [{"text", "from_page", "to_page", "at": [x, baseline]}], pages 1-based.
+    Funeral Home GIC's "Authorized Signing Officer" caption ran on to a page
+    of its own under the signature line it names. Returns what was moved."""
+    done = []
+    for mv in moves:
+        page = doc[mv["from_page"] - 1]
+        spans = [s for b in page.get_text("dict")["blocks"] for ln in b.get("lines", [])
+                 for s in ln["spans"] if s["text"].strip() == mv["text"]]
+        if not spans:
+            continue
+        size = spans[0]["size"]
+        for s in spans:
+            page.add_redact_annot(fitz.Rect(s["bbox"]))
+        page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE, graphics=fitz.PDF_REDACT_LINE_ART_NONE)
+        doc[mv["to_page"] - 1].insert_text(fitz.Point(mv["at"]), mv["text"], fontname="helv", fontsize=size)
+        done.append(mv["text"])
+    return done
+
+
+def drop_pages(doc, pages):
+    """Pages left with nothing on them (1-based), the mapping's "drop_pages".
+    Refused for a page that still has a field or any printed word."""
+    keep, said = [], []
+    for page in doc:
+        n = page.number + 1
+        if n in pages:
+            if list(page.widgets()) or restyle_pdf.printed(page).get_text("words"):
+                said.append(f"page {n} still has text or fields - kept")
+                keep.append(page.number)
+        else:
+            keep.append(page.number)
+    if len(keep) < doc.page_count:
+        # delete_pages, not select: select drops the catalog's AcroForm, and
+        # every field with it
+        doc.delete_pages([i for i in range(doc.page_count) if i not in keep])
+    return said
+
+
+def erase_under_fields(doc):
+    """Printed sample values a field sits on, taken off: the loan renewals'
+    "$100,000.00", "6.00%" and "#VALUE!" printed in the very boxes the fields
+    fill, so both showed. Only text mostly inside a text field, never the
+    form's blank lines (underscores) - opted into per form, the mapping's
+    "erase_under_fields", since a misplaced field can sit on a caption.
+    Returns what went."""
+    gone = []
+    for page in doc:
+        boxes = [fitz.Rect(w.rect) for w in page.widgets()
+                 if w.field_type in (fitz.PDF_WIDGET_TYPE_TEXT, fitz.PDF_WIDGET_TYPE_COMBOBOX)]
+        hit = False
+        for block in page.get_text("dict")["blocks"]:
+            for line in block.get("lines", []):
+                for span in line["spans"]:
+                    t = span["text"].strip()
+                    r = fitz.Rect(span["bbox"])
+                    if not t or re.fullmatch(r"[_\s.,:;$%#]*", t):
+                        continue
+                    if any((r & b).get_area() >= 0.5 * r.get_area() for b in boxes):
+                        page.add_redact_annot(fitz.Rect(r.x0, r.y0 + 1, r.x1, r.y1 - 1))
+                        gone.append(t)
+                        hit = True
+        if hit:
+            page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE,
+                                  graphics=fitz.PDF_REDACT_LINE_ART_NONE)
+    return gone
+
+
+def clip_to_cells(doc):
+    """A text field that runs a little way past a table's cell wall is cut
+    back to the wall: Loan Renewal's interest-rate boxes began inside the
+    Term column. Only an overrun under a quarter of the field's width - a
+    field mostly on the far side is another matter. Returns how many."""
+    clipped = 0
+    for page in doc:
+        walls = restyle_pdf.upright_edges(restyle_pdf.printed(page))
+        for w in page.widgets():
+            if w.field_type != fitz.PDF_WIDGET_TYPE_TEXT or hidden(doc, w):
+                continue
+            r = fitz.Rect(w.rect)
+            new = fitz.Rect(r)
+            for vx, vy0, vy1 in walls:
+                if vy0 > r.y0 + 2 or vy1 < r.y1 - 2 or not r.x0 + 1 < vx < r.x1 - 1:
+                    continue
+                if vx - r.x0 < 0.25 * r.width:
+                    new.x0 = max(new.x0, vx + 1)
+                elif r.x1 - vx < 0.25 * r.width:
+                    new.x1 = min(new.x1, vx - 1)
+            if new != r and new.width > 10:
+                w.rect = new
+                w.update()
+                clipped += 1
+    return clipped
+
+
 def set_lengths(doc, lengths):
     """A field's longest value, {name: characters} from the mapping's
     "maxlen" - a Libro account number is 12 digits, as on the business's
@@ -626,6 +724,11 @@ def apply(folder):
         missing = erase - set(erase_text(doc, erase))
         if missing:
             said.append(f"text to erase not on the form: {sorted(missing)}")
+    moves = mapping.get("move_text", [])
+    if moves:
+        missing = {m["text"] for m in moves} - set(move_text(doc, moves))
+        if missing:
+            said.append(f"text to move not on the form: {sorted(missing)}")
     by_id = {i["id"]: i for i in ctx["items"]}
 
     for i in ctx["items"]:
@@ -770,9 +873,17 @@ def apply(folder):
     if unlisted:
         said.append(f"{unlisted} field(s) were missing from the form's field list - put back "
                     f"(the form at 10pt had them unlisted)")
+    clipped = clip_to_cells(doc)
+    if clipped:
+        print(f"   ({clipped} field(s) cut back to the cell wall they ran past)")
     grown = fit_to_lines(doc)
     if grown:
         print(f"   ({grown} field(s) stretched along their printed line)")
+    if mapping.get("erase_under_fields"):
+        gone = erase_under_fields(doc)
+        if gone:
+            print(f"   (printed sample values under fields erased: {', '.join(sorted(set(gone)))[:120]})")
+    said += drop_pages(doc, set(mapping.get("drop_pages", [])))
     set_lengths(doc, {m["name"]: m["maxlen"] for m in list(named.values()) + extra
                       if m.get("maxlen")})
     tab_in_reading_order(doc)

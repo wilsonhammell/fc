@@ -313,7 +313,8 @@
    "kind": "candidate",
    "label": "Interest Rate - 1 year closed",
    "desc": "Rate offered for the 1 year closed term",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 1Year"
   },
   {
    "page": 0,
@@ -327,7 +328,8 @@
    "kind": "candidate",
    "label": "New Monthly Payment - 1 year closed",
    "desc": "Payment at the 1 year closed rate.",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 1Year"
   },
   {
    "page": 0,
@@ -357,7 +359,8 @@
    "kind": "candidate",
    "label": "Interest Rate - 2 year closed",
    "desc": "Rate offered for the 2 year closed term",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 2Year"
   },
   {
    "page": 0,
@@ -371,7 +374,8 @@
    "kind": "candidate",
    "label": "New Monthly Payment - 2 year closed",
    "desc": "Payment at the 2 year closed rate.",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 2Year"
   },
   {
    "page": 0,
@@ -401,7 +405,8 @@
    "kind": "candidate",
    "label": "Interest Rate - 3 year closed",
    "desc": "Rate offered for the 3 year closed term",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 3Year"
   },
   {
    "page": 0,
@@ -415,7 +420,8 @@
    "kind": "candidate",
    "label": "New Monthly Payment - 3 year closed",
    "desc": "Payment at the 3 year closed rate.",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 3Year"
   },
   {
    "page": 0,
@@ -445,7 +451,8 @@
    "kind": "candidate",
    "label": "Interest Rate - 4 year closed",
    "desc": "Rate offered for the 4 year closed term",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 4Year"
   },
   {
    "page": 0,
@@ -459,7 +466,8 @@
    "kind": "candidate",
    "label": "New Monthly Payment - 4 year closed",
    "desc": "Payment at the 4 year closed rate.",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 4Year"
   },
   {
    "page": 0,
@@ -489,7 +497,8 @@
    "kind": "candidate",
    "label": "Interest Rate - 5 year closed",
    "desc": "Rate offered for the 5 year closed term",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 5Year"
   },
   {
    "page": 0,
@@ -503,7 +512,8 @@
    "kind": "candidate",
    "label": "New Monthly Payment - 5 year closed",
    "desc": "Payment at the 5 year closed rate.",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 5Year"
   },
   {
    "page": 0,
@@ -533,7 +543,8 @@
    "kind": "candidate",
    "label": "Interest Rate - Variable",
    "desc": "Variable rate offered (Libro Prime + n).",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is Variable"
   },
   {
    "page": 0,
@@ -547,12 +558,13 @@
    "kind": "candidate",
    "label": "New Monthly Payment - Variable",
    "desc": "Payment at the Variable rate.",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is Variable"
   }
  ],
  "notes": [
-  "The table prints sample values ($100,000.00, 6.00%, 60, 240, Monthly, 300, $392.01, #VALUE!, $743.63, Libro Prime + 2 = 6.45%) - fields are placed over them, but the printed text has to come off the form or it shows through.",
   "Three values the wording asks for have no room at all: the Renewal Date ('as of  (the Renewal Date)'), the prepayment penalty amount ('in the amount of $ and will be withdrawn'), and the date the penalty was calculated ('calculated as of and is valid'). Each needs a gap in the sentence before a field can go in: LOAN_RENEWAL_DATE, LOAN_PREPAYMENT_PENALTY, LOAN_PENALTY_CALC_DATE.",
   "No MORT_ fields used: this is a commercial term loan, and the DB list has no loan group. If term loans live in the mortgage tables, the LOAN_ candidates map to MORT_ (MORT_ACCOUNT_ORIGINALAMOUNT, MORT_ACCOUNT_PAYMENT, MORT_ACCOUNT_PAYMENT_FREQ, MORT_ACCOUNT_MATURITY)."
- ]
+ ],
+ "erase_under_fields": true
 }

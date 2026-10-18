@@ -85,6 +85,37 @@
  },
  "drop": [],
  "skip": {},
- "add": [],
+ "add": [
+  {
+   "page": 0,
+   "rect": [
+    211.1,
+    369.7,
+    330.0,
+    383.8
+   ],
+   "name": "LOAN_MAINTENANCE_FEE",
+   "kind": "candidate",
+   "type": "text",
+   "save": true,
+   "label": "Maintenance Fee: $",
+   "desc": "The line of credit's maintenance fee, $"
+  },
+  {
+   "page": 0,
+   "rect": [
+    211.1,
+    383.5,
+    330.0,
+    397.6
+   ],
+   "name": "LOAN_RENEWAL_FEE",
+   "kind": "candidate",
+   "type": "text",
+   "save": true,
+   "label": "Annual Renewal Fee: $",
+   "desc": "The line of credit's annual renewal fee, $"
+  }
+ ],
  "notes": []
 }

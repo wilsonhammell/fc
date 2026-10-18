@@ -15,26 +15,17 @@
    "how": "reviewed"
   },
   "F3": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Late of:",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
-   "save": true
-  },
-  "F4": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F5": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "rect": [
+    91.6,
+    209.3,
+    537.1,
+    221.3
+   ]
   },
   "F6": {
    "name": "EstateTrusteeNames",
@@ -491,25 +482,17 @@
    "how": "reviewed"
   },
   "F72": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Late of:",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F73": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F74": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    91.6,
+    219.3,
+    551.7,
+    231.3
+   ]
   },
   "F75": {
    "name": "SDB_NUMBER",
@@ -694,7 +677,12 @@
    "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
   }
  },
- "drop": [],
+ "drop": [
+  "F4",
+  "F5",
+  "F73",
+  "F74"
+ ],
  "skip": {
   "B1": "not a blank - the declaration wording",
   "B2": "not a blank - the declaration wording",

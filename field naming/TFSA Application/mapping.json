@@ -57,26 +57,17 @@
    "how": "reviewed"
   },
   "F9": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Address/Postal Code:",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
-   "save": true
-  },
-  "F10": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Address/Postal Code:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F11": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Address/Postal Code:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "rect": [
+    157.4,
+    270.7,
+    582.3,
+    282.7
+   ]
   },
   "F19": {
    "name": "BeneficiaryDesignation",
@@ -110,7 +101,8 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row Beneficiary1: all or nothing - required when any of Beneficiary1Name, Beneficiary1Account, Beneficiary1DateOfBirth, Beneficiary1Relationship, Beneficiary1Type is filled in"
   },
   "F22": {
    "name": "Beneficiary1Name",
@@ -118,14 +110,15 @@
    "label": "",
    "desc": "Beneficiary 1: name",
    "how": "reviewed",
-   "custom": "Required when BeneficiaryDesignation is Designates"
+   "custom": "Row Beneficiary1: all or nothing - required when any of Beneficiary1Name, Beneficiary1Account, Beneficiary1DateOfBirth, Beneficiary1Relationship, Beneficiary1Type is filled in"
   },
   "F23": {
    "name": "Beneficiary1DateOfBirth",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 1: date of birth",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Beneficiary1: all or nothing - required when any of Beneficiary1Name, Beneficiary1Account, Beneficiary1DateOfBirth, Beneficiary1Relationship, Beneficiary1Type is filled in"
   },
   "F24": {
    "name": "Beneficiary1Relationship",
@@ -133,7 +126,7 @@
    "label": "",
    "desc": "Beneficiary 1: relationship to the holder",
    "how": "reviewed",
-   "custom": "Required when BeneficiaryDesignation is Designates"
+   "custom": "Row Beneficiary1: all or nothing - required when any of Beneficiary1Name, Beneficiary1Account, Beneficiary1DateOfBirth, Beneficiary1Relationship, Beneficiary1Type is filled in"
   },
   "F25": {
    "name": "Beneficiary1Type",
@@ -141,7 +134,7 @@
    "label": "Holder*",
    "desc": "Beneficiary 1: designation: SH successor holder, P primary, A alternate",
    "how": "reviewed",
-   "custom": "Required when BeneficiaryDesignation is Designates"
+   "custom": "Row Beneficiary1: all or nothing - required when any of Beneficiary1Name, Beneficiary1Account, Beneficiary1DateOfBirth, Beneficiary1Relationship, Beneficiary1Type is filled in"
   },
   "F26": {
    "name": "Beneficiary2Account",
@@ -157,7 +150,8 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2Type is filled in"
   },
   "F27": {
    "name": "Beneficiary2Name",
@@ -165,14 +159,15 @@
    "label": "",
    "desc": "Beneficiary 2: name",
    "how": "reviewed",
-   "custom": "Required when any other Beneficiary2 field is filled in"
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2Type is filled in"
   },
   "F28": {
    "name": "Beneficiary2DateOfBirth",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: date of birth",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2Type is filled in"
   },
   "F29": {
    "name": "Beneficiary2Relationship",
@@ -180,7 +175,7 @@
    "label": "",
    "desc": "Beneficiary 2: relationship to the holder",
    "how": "reviewed",
-   "custom": "Required when Beneficiary2Name is filled in"
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2Type is filled in"
   },
   "F30": {
    "name": "Beneficiary2Type",
@@ -188,7 +183,7 @@
    "label": "",
    "desc": "Beneficiary 2: designation: SH successor holder, P primary, A alternate",
    "how": "reviewed",
-   "custom": "Required when Beneficiary2Name is filled in"
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2Type is filled in"
   },
   "F31": {
    "name": "Beneficiary3Account",
@@ -204,7 +199,8 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3Type is filled in"
   },
   "F32": {
    "name": "Beneficiary3Name",
@@ -212,14 +208,15 @@
    "label": "",
    "desc": "Beneficiary 3: name",
    "how": "reviewed",
-   "custom": "Required when any other Beneficiary3 field is filled in"
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3Type is filled in"
   },
   "F33": {
    "name": "Beneficiary3DateOfBirth",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: date of birth",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3Type is filled in"
   },
   "F34": {
    "name": "Beneficiary3Relationship",
@@ -227,7 +224,7 @@
    "label": "",
    "desc": "Beneficiary 3: relationship to the holder",
    "how": "reviewed",
-   "custom": "Required when Beneficiary3Name is filled in"
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3Type is filled in"
   },
   "F35": {
    "name": "Beneficiary3Type",
@@ -235,7 +232,7 @@
    "label": "",
    "desc": "Beneficiary 3: designation: SH successor holder, P primary, A alternate",
    "how": "reviewed",
-   "custom": "Required when Beneficiary3Name is filled in"
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3Type is filled in"
   },
   "F36": {
    "name": "Beneficiary4Account",
@@ -251,7 +248,8 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row Beneficiary4: all or nothing - required when any of Beneficiary4Name, Beneficiary4Account, Beneficiary4DateOfBirth, Beneficiary4Relationship, Beneficiary4Type is filled in"
   },
   "F37": {
    "name": "Beneficiary4Name",
@@ -259,14 +257,15 @@
    "label": "",
    "desc": "Beneficiary 4: name",
    "how": "reviewed",
-   "custom": "Required when any other Beneficiary4 field is filled in"
+   "custom": "Row Beneficiary4: all or nothing - required when any of Beneficiary4Name, Beneficiary4Account, Beneficiary4DateOfBirth, Beneficiary4Relationship, Beneficiary4Type is filled in"
   },
   "F38": {
    "name": "Beneficiary4DateOfBirth",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 4: date of birth",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Beneficiary4: all or nothing - required when any of Beneficiary4Name, Beneficiary4Account, Beneficiary4DateOfBirth, Beneficiary4Relationship, Beneficiary4Type is filled in"
   },
   "F39": {
    "name": "Beneficiary4Relationship",
@@ -274,7 +273,7 @@
    "label": "",
    "desc": "Beneficiary 4: relationship to the holder",
    "how": "reviewed",
-   "custom": "Required when Beneficiary4Name is filled in"
+   "custom": "Row Beneficiary4: all or nothing - required when any of Beneficiary4Name, Beneficiary4Account, Beneficiary4DateOfBirth, Beneficiary4Relationship, Beneficiary4Type is filled in"
   },
   "F40": {
    "name": "Beneficiary4Type",
@@ -282,7 +281,7 @@
    "label": "",
    "desc": "Beneficiary 4: designation: SH successor holder, P primary, A alternate",
    "how": "reviewed",
-   "custom": "Required when Beneficiary4Name is filled in"
+   "custom": "Row Beneficiary4: all or nothing - required when any of Beneficiary4Name, Beneficiary4Account, Beneficiary4DateOfBirth, Beneficiary4Relationship, Beneficiary4Type is filled in"
   },
   "F41": {
    "name": "Member1SignDate",
@@ -397,7 +396,10 @@
    "how": "reviewed"
   }
  },
- "drop": [],
+ "drop": [
+  "F10",
+  "F11"
+ ],
  "skip": {
   "B7": "a rule under the terms heading"
  },

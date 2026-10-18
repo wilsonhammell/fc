@@ -84,26 +84,17 @@
    "how": "reviewed"
   },
   "F12": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Address/Postal Code:",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
-   "save": true
-  },
-  "F13": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Address/Postal Code:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F14": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Address/Postal Code:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "rect": [
+    148.7,
+    283.1,
+    587.5,
+    295.1
+   ]
   },
   "F15": {
    "name": "Spousal",
@@ -532,7 +523,9 @@
   }
  },
  "drop": [
-  "F51"
+  "F51",
+  "F13",
+  "F14"
  ],
  "skip": {
   "B1": "a rule after the Yes/No boxes",

@@ -119,25 +119,17 @@
    "how": "reviewed"
   },
   "F18": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Late of:",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
-   "how": "reviewed"
-  },
-  "F19": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F20": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
+   "how": "reviewed",
+   "rect": [
+    94.9,
+    179.5,
+    554.1,
+    197.5
+   ]
   },
   "F21": {
    "name": "BeneficiaryProvince",
@@ -244,7 +236,10 @@
    "save": true
   }
  },
- "drop": [],
+ "drop": [
+  "F19",
+  "F20"
+ ],
  "skip": {
   "B1": "the 20__ of the year - F12 covers it",
   "B2": "not a blank",

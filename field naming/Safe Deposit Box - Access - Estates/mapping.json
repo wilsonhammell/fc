@@ -15,26 +15,17 @@
    "how": "reviewed"
   },
   "F3": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Late of:",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
-   "save": true
-  },
-  "F4": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F5": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "rect": [
+    94.8,
+    223.9,
+    538.7,
+    235.9
+   ]
   },
   "F6": {
    "name": "SDB_NUMBER",
@@ -274,7 +265,9 @@
  "drop": [
   "F14",
   "F17",
-  "F20"
+  "F20",
+  "F4",
+  "F5"
  ],
  "skip": {},
  "add": [],

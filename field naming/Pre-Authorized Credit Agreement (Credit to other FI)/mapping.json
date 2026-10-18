@@ -29,26 +29,17 @@
    "how": "reviewed"
   },
   "F5": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Address",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
-   "save": true
-  },
-  "F6": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Address",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F7": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Address",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "rect": [
+    166.7,
+    155.0,
+    573.0,
+    167.0
+   ]
   },
   "F8": {
    "name": "PRIMARY_BRANCH_NAME",
@@ -480,7 +471,10 @@
    "how": "reviewed"
   }
  },
- "drop": [],
+ "drop": [
+  "F6",
+  "F7"
+ ],
  "skip": {},
  "add": [
   {

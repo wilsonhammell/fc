@@ -42,26 +42,17 @@
    ]
   },
   "F7": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Address",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F8": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
-   "label": "Address",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
-   "save": true
-  },
-  "F9": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Address",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "rect": [
+    179.6,
+    189.6,
+    587.4,
+    201.6
+   ]
   },
   "F10": {
    "name": "SPOUSE_FULL_NAME",
@@ -219,7 +210,8 @@
    "kind": "entry",
    "label": "(dd/mm/yy)",
    "desc": "Withdrawal row 1: expiry date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F29": {
    "name": "Withdrawal1Type",
@@ -242,14 +234,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 1: accrued interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F32": {
    "name": "Withdrawal1Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 1: total",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F33": {
    "name": "Withdrawal2RRIFSub",
@@ -257,14 +251,15 @@
    "label": "",
    "desc": "Withdrawal row 2: RRIF (sub) #",
    "how": "reviewed",
-   "custom": "Required when Withdrawal2Type or Withdrawal2Amount is filled in"
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRIFSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F34": {
    "name": "Withdrawal2ExpiryDate",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: expiry date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRIFSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F35": {
    "name": "Withdrawal2Type",
@@ -272,7 +267,7 @@
    "label": "",
    "desc": "Withdrawal row 2: A principal + interest / S specified amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal2RRIFSub is filled in"
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRIFSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F36": {
    "name": "Withdrawal2Amount",
@@ -280,21 +275,23 @@
    "label": "",
    "desc": "Withdrawal row 2: withdrawal/transfer amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal2RRIFSub is filled in"
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRIFSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F37": {
    "name": "Withdrawal2AccruedInterest",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: accrued interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRIFSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F38": {
    "name": "Withdrawal2Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: total",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRIFSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F39": {
    "name": "Withdrawal3RRIFSub",
@@ -302,14 +299,15 @@
    "label": "",
    "desc": "Withdrawal row 3: RRIF (sub) #",
    "how": "reviewed",
-   "custom": "Required when Withdrawal3Type or Withdrawal3Amount is filled in"
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRIFSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F40": {
    "name": "Withdrawal3ExpiryDate",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: expiry date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRIFSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F41": {
    "name": "Withdrawal3Type",
@@ -317,7 +315,7 @@
    "label": "",
    "desc": "Withdrawal row 3: A principal + interest / S specified amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal3RRIFSub is filled in"
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRIFSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F42": {
    "name": "Withdrawal3Amount",
@@ -325,21 +323,23 @@
    "label": "",
    "desc": "Withdrawal row 3: withdrawal/transfer amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal3RRIFSub is filled in"
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRIFSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F43": {
    "name": "Withdrawal3AccruedInterest",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: accrued interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRIFSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F44": {
    "name": "Withdrawal3Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: total",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRIFSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F45": {
    "name": "Withdrawal4RRIFSub",
@@ -347,14 +347,15 @@
    "label": "",
    "desc": "Withdrawal row 4: RRIF (sub) #",
    "how": "reviewed",
-   "custom": "Required when Withdrawal4Type or Withdrawal4Amount is filled in"
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRIFSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F46": {
    "name": "Withdrawal4ExpiryDate",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: expiry date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRIFSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F47": {
    "name": "Withdrawal4Type",
@@ -362,7 +363,7 @@
    "label": "",
    "desc": "Withdrawal row 4: A principal + interest / S specified amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal4RRIFSub is filled in"
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRIFSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F48": {
    "name": "Withdrawal4Amount",
@@ -370,21 +371,23 @@
    "label": "",
    "desc": "Withdrawal row 4: withdrawal/transfer amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal4RRIFSub is filled in"
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRIFSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F49": {
    "name": "Withdrawal4AccruedInterest",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: accrued interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRIFSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F50": {
    "name": "Withdrawal4Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: total",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRIFSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F51": {
    "name": "WithdrawalTotal",
@@ -406,7 +409,8 @@
    "kind": "entry",
    "label": "Subtotal",
    "desc": "Subtotal",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F54": {
    "name": "OfficeDateProcessed",
@@ -450,7 +454,8 @@
    "kind": "entry",
    "label": "Partial Contract Termination",
    "desc": "Line after Death, unlabelled - CHECK what it asks for",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TransactionType.Death is ticked"
   },
   "B3": {
    "name": "DeathDetail2",
@@ -479,14 +484,15 @@
    "label": "Withholding",
    "desc": "Withdrawal row 5: RRIF (sub) #",
    "how": "reviewed",
-   "custom": "Required when Withdrawal5Type or Withdrawal5Amount is filled in"
+   "custom": "Row Withdrawal5: all or nothing - required when any of Withdrawal5RRIFSub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest is filled in"
   },
   "B7": {
    "name": "Withdrawal5ExpiryDate",
    "kind": "entry",
    "label": "Withholding Tax Rates:",
    "desc": "Withdrawal row 5: expiry date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal5: all or nothing - required when any of Withdrawal5RRIFSub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest is filled in"
   },
   "B8": {
    "name": "Withdrawal5Type",
@@ -494,7 +500,7 @@
    "label": "",
    "desc": "Withdrawal row 5: A principal + interest / S specified amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal5RRIFSub is filled in"
+   "custom": "Row Withdrawal5: all or nothing - required when any of Withdrawal5RRIFSub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest is filled in"
   },
   "B9": {
    "name": "Withdrawal5Amount",
@@ -502,14 +508,15 @@
    "label": "",
    "desc": "Withdrawal row 5: withdrawal/transfer amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal5RRIFSub is filled in"
+   "custom": "Row Withdrawal5: all or nothing - required when any of Withdrawal5RRIFSub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest is filled in"
   },
   "B10": {
    "name": "Withdrawal5AccruedInterest",
    "kind": "entry",
    "label": "Total",
    "desc": "Withdrawal row 5: accrued interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal5: all or nothing - required when any of Withdrawal5RRIFSub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest is filled in"
   },
   "B11": {
    "name": "SPOUSE_SIN",
@@ -668,7 +675,9 @@
  },
  "drop": [
   "F59",
-  "F6"
+  "F6",
+  "F8",
+  "F9"
  ],
  "skip": {
   "B1": "a rule",

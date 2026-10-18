@@ -117,7 +117,8 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "save": true
   },
   "F16": {
    "name": "Beneficiary1Relationship",
@@ -132,14 +133,16 @@
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Beneficiary 1: date of birth",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F18": {
    "name": "Beneficiary1SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Beneficiary 1: SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F19": {
    "name": "Beneficiary1Percent",
@@ -147,7 +150,7 @@
    "label": "%",
    "desc": "Beneficiary 1: share, %",
    "how": "reviewed",
-   "custom": "Required, and the shares of the primary beneficiaries named (Beneficiary1Percent, Beneficiary2Percent, Beneficiary3Percent) must add up to 100"
+   "custom": "Required, and the primary beneficiaries' shares (Beneficiary1-3Percent) must add up to 100"
   },
   "F20": {
    "name": "Beneficiary2Name",
@@ -155,7 +158,7 @@
    "label": "Name",
    "desc": "Beneficiary 2: name",
    "how": "reviewed",
-   "custom": "Required when beneficiary 2 is used (any Beneficiary2 field filled in): name, relationship and share"
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent is filled in"
   },
   "F21": {
    "name": "Beneficiary2Account",
@@ -171,7 +174,8 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent is filled in"
   },
   "F22": {
    "name": "Beneficiary2Relationship",
@@ -179,21 +183,23 @@
    "label": "Relationship",
    "desc": "Beneficiary 2: relationship to the holder",
    "how": "reviewed",
-   "custom": "Required when Beneficiary2Name is filled in"
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent is filled in"
   },
   "F23": {
    "name": "Beneficiary2DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Beneficiary 2: date of birth",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent is filled in"
   },
   "F24": {
    "name": "Beneficiary2SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Beneficiary 2: SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent is filled in"
   },
   "F25": {
    "name": "Beneficiary2Percent",
@@ -201,7 +207,7 @@
    "label": "%",
    "desc": "Beneficiary 2: share, %",
    "how": "reviewed",
-   "custom": "Required when Beneficiary2Name is filled in"
+   "custom": "Row Beneficiary2: all or nothing - required when any of Beneficiary2Name, Beneficiary2Account, Beneficiary2DateOfBirth, Beneficiary2Relationship, Beneficiary2SIN, Beneficiary2Percent is filled in"
   },
   "F26": {
    "name": "Beneficiary3Name",
@@ -209,7 +215,7 @@
    "label": "Name",
    "desc": "Beneficiary 3: name",
    "how": "reviewed",
-   "custom": "Required when beneficiary 3 is used (any Beneficiary3 field filled in): name, relationship and share"
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent is filled in"
   },
   "F27": {
    "name": "Beneficiary3Account",
@@ -225,7 +231,8 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent is filled in"
   },
   "F28": {
    "name": "Beneficiary3Relationship",
@@ -233,21 +240,23 @@
    "label": "Relationship",
    "desc": "Beneficiary 3: relationship to the holder",
    "how": "reviewed",
-   "custom": "Required when Beneficiary3Name is filled in"
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent is filled in"
   },
   "F29": {
    "name": "Beneficiary3DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Beneficiary 3: date of birth",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent is filled in"
   },
   "F30": {
    "name": "Beneficiary3SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Beneficiary 3: SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent is filled in"
   },
   "F31": {
    "name": "Beneficiary3Percent",
@@ -255,7 +264,7 @@
    "label": "%",
    "desc": "Beneficiary 3: share, %",
    "how": "reviewed",
-   "custom": "Required when Beneficiary3Name is filled in"
+   "custom": "Row Beneficiary3: all or nothing - required when any of Beneficiary3Name, Beneficiary3Account, Beneficiary3DateOfBirth, Beneficiary3Relationship, Beneficiary3SIN, Beneficiary3Percent is filled in"
   },
   "F32": {
    "name": "AlternateBeneficiary1Name",
@@ -263,7 +272,7 @@
    "label": "Name",
    "desc": "Alternate beneficiary 1: name",
    "how": "reviewed",
-   "custom": "Required when any other AlternateBeneficiary1 field is filled in"
+   "custom": "Row AlternateBeneficiary1: all or nothing - required when any of AlternateBeneficiary1Name, AlternateBeneficiary1Account, AlternateBeneficiary1DateOfBirth, AlternateBeneficiary1Relationship, AlternateBeneficiary1SIN, AlternateBeneficiary1Percent is filled in"
   },
   "F33": {
    "name": "AlternateBeneficiary1Account",
@@ -279,7 +288,8 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row AlternateBeneficiary1: all or nothing - required when any of AlternateBeneficiary1Name, AlternateBeneficiary1Account, AlternateBeneficiary1DateOfBirth, AlternateBeneficiary1Relationship, AlternateBeneficiary1SIN, AlternateBeneficiary1Percent is filled in"
   },
   "F34": {
    "name": "AlternateBeneficiary1Relationship",
@@ -287,21 +297,23 @@
    "label": "Relationship",
    "desc": "Alternate beneficiary 1: relationship to the holder",
    "how": "reviewed",
-   "custom": "Required when AlternateBeneficiary1Name is filled in"
+   "custom": "Row AlternateBeneficiary1: all or nothing - required when any of AlternateBeneficiary1Name, AlternateBeneficiary1Account, AlternateBeneficiary1DateOfBirth, AlternateBeneficiary1Relationship, AlternateBeneficiary1SIN, AlternateBeneficiary1Percent is filled in"
   },
   "F35": {
    "name": "AlternateBeneficiary1DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Alternate beneficiary 1: date of birth",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row AlternateBeneficiary1: all or nothing - required when any of AlternateBeneficiary1Name, AlternateBeneficiary1Account, AlternateBeneficiary1DateOfBirth, AlternateBeneficiary1Relationship, AlternateBeneficiary1SIN, AlternateBeneficiary1Percent is filled in"
   },
   "F36": {
    "name": "AlternateBeneficiary1SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Alternate beneficiary 1: SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row AlternateBeneficiary1: all or nothing - required when any of AlternateBeneficiary1Name, AlternateBeneficiary1Account, AlternateBeneficiary1DateOfBirth, AlternateBeneficiary1Relationship, AlternateBeneficiary1SIN, AlternateBeneficiary1Percent is filled in"
   },
   "F37": {
    "name": "AlternateBeneficiary1Percent",
@@ -309,7 +321,7 @@
    "label": "%",
    "desc": "Alternate beneficiary 1: share, %",
    "how": "reviewed",
-   "custom": "Required when AlternateBeneficiary1Name is filled in, and the alternate beneficiaries' shares (AlternateBeneficiary1-3Percent) must add up to 100 when any alternate is named"
+   "custom": "Row AlternateBeneficiary1: all or nothing; and the alternates' shares must add up to 100 when any alternate is named"
   },
   "F38": {
    "name": "AlternateBeneficiary2Name",
@@ -317,7 +329,7 @@
    "label": "Name",
    "desc": "Alternate beneficiary 2: name",
    "how": "reviewed",
-   "custom": "Required when any other AlternateBeneficiary2 field is filled in"
+   "custom": "Row AlternateBeneficiary2: all or nothing - required when any of AlternateBeneficiary2Name, AlternateBeneficiary2Account, AlternateBeneficiary2DateOfBirth, AlternateBeneficiary2Relationship, AlternateBeneficiary2SIN, AlternateBeneficiary2Percent is filled in"
   },
   "F39": {
    "name": "AlternateBeneficiary2Account",
@@ -333,7 +345,8 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row AlternateBeneficiary2: all or nothing - required when any of AlternateBeneficiary2Name, AlternateBeneficiary2Account, AlternateBeneficiary2DateOfBirth, AlternateBeneficiary2Relationship, AlternateBeneficiary2SIN, AlternateBeneficiary2Percent is filled in"
   },
   "F40": {
    "name": "AlternateBeneficiary2Relationship",
@@ -341,21 +354,23 @@
    "label": "Relationship",
    "desc": "Alternate beneficiary 2: relationship to the holder",
    "how": "reviewed",
-   "custom": "Required when AlternateBeneficiary2Name is filled in"
+   "custom": "Row AlternateBeneficiary2: all or nothing - required when any of AlternateBeneficiary2Name, AlternateBeneficiary2Account, AlternateBeneficiary2DateOfBirth, AlternateBeneficiary2Relationship, AlternateBeneficiary2SIN, AlternateBeneficiary2Percent is filled in"
   },
   "F41": {
    "name": "AlternateBeneficiary2DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Alternate beneficiary 2: date of birth",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row AlternateBeneficiary2: all or nothing - required when any of AlternateBeneficiary2Name, AlternateBeneficiary2Account, AlternateBeneficiary2DateOfBirth, AlternateBeneficiary2Relationship, AlternateBeneficiary2SIN, AlternateBeneficiary2Percent is filled in"
   },
   "F42": {
    "name": "AlternateBeneficiary2SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Alternate beneficiary 2: SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row AlternateBeneficiary2: all or nothing - required when any of AlternateBeneficiary2Name, AlternateBeneficiary2Account, AlternateBeneficiary2DateOfBirth, AlternateBeneficiary2Relationship, AlternateBeneficiary2SIN, AlternateBeneficiary2Percent is filled in"
   },
   "F43": {
    "name": "AlternateBeneficiary2Percent",
@@ -363,7 +378,7 @@
    "label": "%",
    "desc": "Alternate beneficiary 2: share, %",
    "how": "reviewed",
-   "custom": "Required when AlternateBeneficiary2Name is filled in"
+   "custom": "Row AlternateBeneficiary2: all or nothing - required when any of AlternateBeneficiary2Name, AlternateBeneficiary2Account, AlternateBeneficiary2DateOfBirth, AlternateBeneficiary2Relationship, AlternateBeneficiary2SIN, AlternateBeneficiary2Percent is filled in"
   },
   "F44": {
    "name": "AlternateBeneficiary3Name",
@@ -371,7 +386,7 @@
    "label": "Name",
    "desc": "Alternate beneficiary 3: name",
    "how": "reviewed",
-   "custom": "Required when any other AlternateBeneficiary3 field is filled in"
+   "custom": "Row AlternateBeneficiary3: all or nothing - required when any of AlternateBeneficiary3Name, AlternateBeneficiary3Account, AlternateBeneficiary3DateOfBirth, AlternateBeneficiary3Relationship, AlternateBeneficiary3SIN, AlternateBeneficiary3Percent is filled in"
   },
   "F45": {
    "name": "AlternateBeneficiary3Account",
@@ -387,7 +402,8 @@
     "parentheses": false,
     "redText": false
    },
-   "maxlen": 12
+   "maxlen": 12,
+   "custom": "Row AlternateBeneficiary3: all or nothing - required when any of AlternateBeneficiary3Name, AlternateBeneficiary3Account, AlternateBeneficiary3DateOfBirth, AlternateBeneficiary3Relationship, AlternateBeneficiary3SIN, AlternateBeneficiary3Percent is filled in"
   },
   "F46": {
    "name": "AlternateBeneficiary3Relationship",
@@ -395,21 +411,23 @@
    "label": "Relationship",
    "desc": "Alternate beneficiary 3: relationship to the holder",
    "how": "reviewed",
-   "custom": "Required when AlternateBeneficiary3Name is filled in"
+   "custom": "Row AlternateBeneficiary3: all or nothing - required when any of AlternateBeneficiary3Name, AlternateBeneficiary3Account, AlternateBeneficiary3DateOfBirth, AlternateBeneficiary3Relationship, AlternateBeneficiary3SIN, AlternateBeneficiary3Percent is filled in"
   },
   "F47": {
    "name": "AlternateBeneficiary3DateOfBirth",
    "kind": "entry",
    "label": "Date of Birth",
    "desc": "Alternate beneficiary 3: date of birth",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row AlternateBeneficiary3: all or nothing - required when any of AlternateBeneficiary3Name, AlternateBeneficiary3Account, AlternateBeneficiary3DateOfBirth, AlternateBeneficiary3Relationship, AlternateBeneficiary3SIN, AlternateBeneficiary3Percent is filled in"
   },
   "F48": {
    "name": "AlternateBeneficiary3SIN",
    "kind": "entry",
    "label": "SIN",
    "desc": "Alternate beneficiary 3: SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row AlternateBeneficiary3: all or nothing - required when any of AlternateBeneficiary3Name, AlternateBeneficiary3Account, AlternateBeneficiary3DateOfBirth, AlternateBeneficiary3Relationship, AlternateBeneficiary3SIN, AlternateBeneficiary3Percent is filled in"
   },
   "F49": {
    "name": "AlternateBeneficiary3Percent",
@@ -417,7 +435,7 @@
    "label": "%",
    "desc": "Alternate beneficiary 3: share, %",
    "how": "reviewed",
-   "custom": "Required when AlternateBeneficiary3Name is filled in"
+   "custom": "Row AlternateBeneficiary3: all or nothing - required when any of AlternateBeneficiary3Name, AlternateBeneficiary3Account, AlternateBeneficiary3DateOfBirth, AlternateBeneficiary3Relationship, AlternateBeneficiary3SIN, AlternateBeneficiary3Percent is filled in"
   },
   "F50": {
    "name": "SignedAtCity",

@@ -15,26 +15,17 @@
    "how": "reviewed"
   },
   "F3": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Late of:",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
-   "save": true
-  },
-  "F4": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F5": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Late of:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "rect": [
+    117.8,
+    239.4,
+    557.6,
+    251.4
+   ]
   },
   "F6": {
    "name": "PRIMARY_DEATH_DAY",
@@ -210,7 +201,7 @@
    "label": "",
    "desc": "Beneficiary under the will 2: name",
    "how": "reviewed",
-   "custom": "Required when any other WillBeneficiary2 field is filled in"
+   "custom": "Row WillBeneficiary2: all or nothing - required when any of WillBeneficiary2Name, WillBeneficiary2Relationship, WillBeneficiary2Birthdate is filled in"
   },
   "F28": {
    "name": "WillBeneficiary2Relationship",
@@ -218,7 +209,7 @@
    "label": "",
    "desc": "Beneficiary under the will 2: relationship to the deceased",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary2Name is filled in"
+   "custom": "Row WillBeneficiary2: all or nothing - required when any of WillBeneficiary2Name, WillBeneficiary2Relationship, WillBeneficiary2Birthdate is filled in"
   },
   "F29": {
    "name": "WillBeneficiary2Birthdate",
@@ -226,7 +217,7 @@
    "label": "",
    "desc": "Beneficiary under the will 2: birthdate",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary2Name is filled in"
+   "custom": "Row WillBeneficiary2: all or nothing - required when any of WillBeneficiary2Name, WillBeneficiary2Relationship, WillBeneficiary2Birthdate is filled in"
   },
   "F30": {
    "name": "WillBeneficiary3Name",
@@ -234,7 +225,7 @@
    "label": "",
    "desc": "Beneficiary under the will 3: name",
    "how": "reviewed",
-   "custom": "Required when any other WillBeneficiary3 field is filled in"
+   "custom": "Row WillBeneficiary3: all or nothing - required when any of WillBeneficiary3Name, WillBeneficiary3Relationship, WillBeneficiary3Birthdate is filled in"
   },
   "F31": {
    "name": "WillBeneficiary3Relationship",
@@ -242,7 +233,7 @@
    "label": "",
    "desc": "Beneficiary under the will 3: relationship to the deceased",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary3Name is filled in"
+   "custom": "Row WillBeneficiary3: all or nothing - required when any of WillBeneficiary3Name, WillBeneficiary3Relationship, WillBeneficiary3Birthdate is filled in"
   },
   "F32": {
    "name": "WillBeneficiary3Birthdate",
@@ -250,7 +241,7 @@
    "label": "",
    "desc": "Beneficiary under the will 3: birthdate",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary3Name is filled in"
+   "custom": "Row WillBeneficiary3: all or nothing - required when any of WillBeneficiary3Name, WillBeneficiary3Relationship, WillBeneficiary3Birthdate is filled in"
   },
   "F33": {
    "name": "WillBeneficiary4Name",
@@ -258,7 +249,7 @@
    "label": "",
    "desc": "Beneficiary under the will 4: name",
    "how": "reviewed",
-   "custom": "Required when any other WillBeneficiary4 field is filled in"
+   "custom": "Row WillBeneficiary4: all or nothing - required when any of WillBeneficiary4Name, WillBeneficiary4Relationship, WillBeneficiary4Birthdate is filled in"
   },
   "F34": {
    "name": "WillBeneficiary4Relationship",
@@ -266,7 +257,7 @@
    "label": "",
    "desc": "Beneficiary under the will 4: relationship to the deceased",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary4Name is filled in"
+   "custom": "Row WillBeneficiary4: all or nothing - required when any of WillBeneficiary4Name, WillBeneficiary4Relationship, WillBeneficiary4Birthdate is filled in"
   },
   "F35": {
    "name": "WillBeneficiary4Birthdate",
@@ -274,7 +265,7 @@
    "label": "",
    "desc": "Beneficiary under the will 4: birthdate",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary4Name is filled in"
+   "custom": "Row WillBeneficiary4: all or nothing - required when any of WillBeneficiary4Name, WillBeneficiary4Relationship, WillBeneficiary4Birthdate is filled in"
   },
   "F36": {
    "name": "WillBeneficiary5Name",
@@ -282,7 +273,7 @@
    "label": "",
    "desc": "Beneficiary under the will 5: name",
    "how": "reviewed",
-   "custom": "Required when any other WillBeneficiary5 field is filled in"
+   "custom": "Row WillBeneficiary5: all or nothing - required when any of WillBeneficiary5Name, WillBeneficiary5Relationship, WillBeneficiary5Birthdate is filled in"
   },
   "F37": {
    "name": "WillBeneficiary5Relationship",
@@ -290,7 +281,7 @@
    "label": "",
    "desc": "Beneficiary under the will 5: relationship to the deceased",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary5Name is filled in"
+   "custom": "Row WillBeneficiary5: all or nothing - required when any of WillBeneficiary5Name, WillBeneficiary5Relationship, WillBeneficiary5Birthdate is filled in"
   },
   "F38": {
    "name": "WillBeneficiary5Birthdate",
@@ -298,7 +289,7 @@
    "label": "",
    "desc": "Beneficiary under the will 5: birthdate",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary5Name is filled in"
+   "custom": "Row WillBeneficiary5: all or nothing - required when any of WillBeneficiary5Name, WillBeneficiary5Relationship, WillBeneficiary5Birthdate is filled in"
   },
   "F39": {
    "name": "WillBeneficiary6Name",
@@ -306,7 +297,7 @@
    "label": "",
    "desc": "Beneficiary under the will 6: name",
    "how": "reviewed",
-   "custom": "Required when any other WillBeneficiary6 field is filled in"
+   "custom": "Row WillBeneficiary6: all or nothing - required when any of WillBeneficiary6Name, WillBeneficiary6Relationship, WillBeneficiary6Birthdate is filled in"
   },
   "F40": {
    "name": "WillBeneficiary6Relationship",
@@ -314,7 +305,7 @@
    "label": "",
    "desc": "Beneficiary under the will 6: relationship to the deceased",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary6Name is filled in"
+   "custom": "Row WillBeneficiary6: all or nothing - required when any of WillBeneficiary6Name, WillBeneficiary6Relationship, WillBeneficiary6Birthdate is filled in"
   },
   "F41": {
    "name": "WillBeneficiary6Birthdate",
@@ -322,7 +313,7 @@
    "label": "",
    "desc": "Beneficiary under the will 6: birthdate",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary6Name is filled in"
+   "custom": "Row WillBeneficiary6: all or nothing - required when any of WillBeneficiary6Name, WillBeneficiary6Relationship, WillBeneficiary6Birthdate is filled in"
   },
   "F42": {
    "name": "WillBeneficiary7Name",
@@ -330,7 +321,7 @@
    "label": "",
    "desc": "Beneficiary under the will 7: name",
    "how": "reviewed",
-   "custom": "Required when any other WillBeneficiary7 field is filled in"
+   "custom": "Row WillBeneficiary7: all or nothing - required when any of WillBeneficiary7Name, WillBeneficiary7Relationship, WillBeneficiary7Birthdate is filled in"
   },
   "F43": {
    "name": "WillBeneficiary7Relationship",
@@ -338,7 +329,7 @@
    "label": "",
    "desc": "Beneficiary under the will 7: relationship to the deceased",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary7Name is filled in"
+   "custom": "Row WillBeneficiary7: all or nothing - required when any of WillBeneficiary7Name, WillBeneficiary7Relationship, WillBeneficiary7Birthdate is filled in"
   },
   "F44": {
    "name": "WillBeneficiary7Birthdate",
@@ -346,7 +337,7 @@
    "label": "",
    "desc": "Beneficiary under the will 7: birthdate",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary7Name is filled in"
+   "custom": "Row WillBeneficiary7: all or nothing - required when any of WillBeneficiary7Name, WillBeneficiary7Relationship, WillBeneficiary7Birthdate is filled in"
   },
   "F45": {
    "name": "WillBeneficiary8Name",
@@ -354,7 +345,7 @@
    "label": "",
    "desc": "Beneficiary under the will 8: name",
    "how": "reviewed",
-   "custom": "Required when any other WillBeneficiary8 field is filled in"
+   "custom": "Row WillBeneficiary8: all or nothing - required when any of WillBeneficiary8Name, WillBeneficiary8Relationship, WillBeneficiary8Birthdate is filled in"
   },
   "F46": {
    "name": "WillBeneficiary8Relationship",
@@ -362,7 +353,7 @@
    "label": "",
    "desc": "Beneficiary under the will 8: relationship to the deceased",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary8Name is filled in"
+   "custom": "Row WillBeneficiary8: all or nothing - required when any of WillBeneficiary8Name, WillBeneficiary8Relationship, WillBeneficiary8Birthdate is filled in"
   },
   "F47": {
    "name": "WillBeneficiary8Birthdate",
@@ -370,7 +361,7 @@
    "label": "",
    "desc": "Beneficiary under the will 8: birthdate",
    "how": "reviewed",
-   "custom": "Required when WillBeneficiary8Name is filled in"
+   "custom": "Row WillBeneficiary8: all or nothing - required when any of WillBeneficiary8Name, WillBeneficiary8Relationship, WillBeneficiary8Birthdate is filled in"
   },
   "F49": {
    "name": "EstateAssetsValue",
@@ -394,7 +385,7 @@
    "label": "",
    "desc": "Option #1, claimant 1: Libro folio (member) #",
    "how": "reviewed",
-   "custom": "Required when Option1Claimant1Name is filled in"
+   "custom": "Row Option1Claimant1: all or nothing - required when any of Option1Claimant1Name, Option1Claimant1MemberNumber, Option1Claimant1Entitlement is filled in"
   },
   "F52": {
    "name": "Option1Claimant1Entitlement",
@@ -402,7 +393,7 @@
    "label": "",
    "desc": "Option #1, claimant 1: entitlement, % or amount",
    "how": "reviewed",
-   "custom": "Required when Option1Claimant1Name is filled in"
+   "custom": "Row Option1Claimant1: all or nothing - required when any of Option1Claimant1Name, Option1Claimant1MemberNumber, Option1Claimant1Entitlement is filled in"
   },
   "F53": {
    "name": "Option1Claimant2Name",
@@ -410,7 +401,7 @@
    "label": "",
    "desc": "Option #1, claimant 2: claimant name",
    "how": "reviewed",
-   "custom": "Required when any other Option1Claimant2 field is filled in"
+   "custom": "Row Option1Claimant2: all or nothing - required when any of Option1Claimant2Name, Option1Claimant2MemberNumber, Option1Claimant2Entitlement is filled in"
   },
   "F54": {
    "name": "Option1Claimant2MemberNumber",
@@ -418,7 +409,7 @@
    "label": "",
    "desc": "Option #1, claimant 2: Libro folio (member) #",
    "how": "reviewed",
-   "custom": "Required when Option1Claimant2Name is filled in"
+   "custom": "Row Option1Claimant2: all or nothing - required when any of Option1Claimant2Name, Option1Claimant2MemberNumber, Option1Claimant2Entitlement is filled in"
   },
   "F55": {
    "name": "Option1Claimant2Entitlement",
@@ -426,7 +417,7 @@
    "label": "",
    "desc": "Option #1, claimant 2: entitlement, % or amount",
    "how": "reviewed",
-   "custom": "Required when Option1Claimant2Name is filled in"
+   "custom": "Row Option1Claimant2: all or nothing - required when any of Option1Claimant2Name, Option1Claimant2MemberNumber, Option1Claimant2Entitlement is filled in"
   },
   "F56": {
    "name": "Option1Claimant3Name",
@@ -434,7 +425,7 @@
    "label": "",
    "desc": "Option #1, claimant 3: claimant name",
    "how": "reviewed",
-   "custom": "Required when any other Option1Claimant3 field is filled in"
+   "custom": "Row Option1Claimant3: all or nothing - required when any of Option1Claimant3Name, Option1Claimant3MemberNumber, Option1Claimant3Entitlement is filled in"
   },
   "F57": {
    "name": "Option1Claimant3MemberNumber",
@@ -442,7 +433,7 @@
    "label": "",
    "desc": "Option #1, claimant 3: Libro folio (member) #",
    "how": "reviewed",
-   "custom": "Required when Option1Claimant3Name is filled in"
+   "custom": "Row Option1Claimant3: all or nothing - required when any of Option1Claimant3Name, Option1Claimant3MemberNumber, Option1Claimant3Entitlement is filled in"
   },
   "F58": {
    "name": "Option1Claimant3Entitlement",
@@ -450,7 +441,7 @@
    "label": "",
    "desc": "Option #1, claimant 3: entitlement, % or amount",
    "how": "reviewed",
-   "custom": "Required when Option1Claimant3Name is filled in"
+   "custom": "Row Option1Claimant3: all or nothing - required when any of Option1Claimant3Name, Option1Claimant3MemberNumber, Option1Claimant3Entitlement is filled in"
   },
   "F59": {
    "name": "Option1Claimant4Name",
@@ -458,7 +449,7 @@
    "label": "",
    "desc": "Option #1, claimant 4: claimant name",
    "how": "reviewed",
-   "custom": "Required when any other Option1Claimant4 field is filled in"
+   "custom": "Row Option1Claimant4: all or nothing - required when any of Option1Claimant4Name, Option1Claimant4MemberNumber, Option1Claimant4Entitlement is filled in"
   },
   "F60": {
    "name": "Option1Claimant4MemberNumber",
@@ -466,7 +457,7 @@
    "label": "",
    "desc": "Option #1, claimant 4: Libro folio (member) #",
    "how": "reviewed",
-   "custom": "Required when Option1Claimant4Name is filled in"
+   "custom": "Row Option1Claimant4: all or nothing - required when any of Option1Claimant4Name, Option1Claimant4MemberNumber, Option1Claimant4Entitlement is filled in"
   },
   "F61": {
    "name": "Option1Claimant4Entitlement",
@@ -474,7 +465,7 @@
    "label": "",
    "desc": "Option #1, claimant 4: entitlement, % or amount",
    "how": "reviewed",
-   "custom": "Required when Option1Claimant4Name is filled in"
+   "custom": "Row Option1Claimant4: all or nothing - required when any of Option1Claimant4Name, Option1Claimant4MemberNumber, Option1Claimant4Entitlement is filled in"
   },
   "F62": {
    "name": "Option1Claimant5Name",
@@ -482,7 +473,7 @@
    "label": "Option #2",
    "desc": "Option #1, claimant 5: claimant name",
    "how": "reviewed",
-   "custom": "Required when any other Option1Claimant5 field is filled in"
+   "custom": "Row Option1Claimant5: all or nothing - required when any of Option1Claimant5Name, Option1Claimant5MemberNumber, Option1Claimant5Entitlement is filled in"
   },
   "F63": {
    "name": "Option1Claimant5MemberNumber",
@@ -490,7 +481,7 @@
    "label": "",
    "desc": "Option #1, claimant 5: Libro folio (member) #",
    "how": "reviewed",
-   "custom": "Required when Option1Claimant5Name is filled in"
+   "custom": "Row Option1Claimant5: all or nothing - required when any of Option1Claimant5Name, Option1Claimant5MemberNumber, Option1Claimant5Entitlement is filled in"
   },
   "F64": {
    "name": "Option1Claimant5Entitlement",
@@ -498,7 +489,7 @@
    "label": "",
    "desc": "Option #1, claimant 5: entitlement, % or amount",
    "how": "reviewed",
-   "custom": "Required when Option1Claimant5Name is filled in"
+   "custom": "Row Option1Claimant5: all or nothing - required when any of Option1Claimant5Name, Option1Claimant5MemberNumber, Option1Claimant5Entitlement is filled in"
   },
   "F65": {
    "name": "Option2Claimant1Name",
@@ -514,7 +505,7 @@
    "label": "",
    "desc": "Option #2, claimant 1: full address",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant1Name is filled in"
+   "custom": "Row Option2Claimant1: all or nothing - required when any of Option2Claimant1Name, Option2Claimant1Address, Option2Claimant1Phone, Option2Claimant1Entitlement is filled in"
   },
   "F67": {
    "name": "Option2Claimant1Phone",
@@ -522,7 +513,7 @@
    "label": "",
    "desc": "Option #2, claimant 1: phone number",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant1Name is filled in"
+   "custom": "Row Option2Claimant1: all or nothing - required when any of Option2Claimant1Name, Option2Claimant1Address, Option2Claimant1Phone, Option2Claimant1Entitlement is filled in"
   },
   "F68": {
    "name": "Option2Claimant1Entitlement",
@@ -530,7 +521,7 @@
    "label": "",
    "desc": "Option #2, claimant 1: entitlement, % or amount",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant1Name is filled in"
+   "custom": "Row Option2Claimant1: all or nothing - required when any of Option2Claimant1Name, Option2Claimant1Address, Option2Claimant1Phone, Option2Claimant1Entitlement is filled in"
   },
   "F69": {
    "name": "Option2Claimant2Name",
@@ -538,7 +529,7 @@
    "label": "",
    "desc": "Option #2, claimant 2: claimant name",
    "how": "reviewed",
-   "custom": "Required when any other Option2Claimant2 field is filled in"
+   "custom": "Row Option2Claimant2: all or nothing - required when any of Option2Claimant2Name, Option2Claimant2Address, Option2Claimant2Phone, Option2Claimant2Entitlement is filled in"
   },
   "F70": {
    "name": "Option2Claimant2Address",
@@ -546,7 +537,7 @@
    "label": "",
    "desc": "Option #2, claimant 2: full address",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant2Name is filled in"
+   "custom": "Row Option2Claimant2: all or nothing - required when any of Option2Claimant2Name, Option2Claimant2Address, Option2Claimant2Phone, Option2Claimant2Entitlement is filled in"
   },
   "F71": {
    "name": "Option2Claimant2Phone",
@@ -554,7 +545,7 @@
    "label": "",
    "desc": "Option #2, claimant 2: phone number",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant2Name is filled in"
+   "custom": "Row Option2Claimant2: all or nothing - required when any of Option2Claimant2Name, Option2Claimant2Address, Option2Claimant2Phone, Option2Claimant2Entitlement is filled in"
   },
   "F72": {
    "name": "Option2Claimant2Entitlement",
@@ -562,7 +553,7 @@
    "label": "",
    "desc": "Option #2, claimant 2: entitlement, % or amount",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant2Name is filled in"
+   "custom": "Row Option2Claimant2: all or nothing - required when any of Option2Claimant2Name, Option2Claimant2Address, Option2Claimant2Phone, Option2Claimant2Entitlement is filled in"
   },
   "F73": {
    "name": "Option2Claimant3Name",
@@ -570,7 +561,7 @@
    "label": "",
    "desc": "Option #2, claimant 3: claimant name",
    "how": "reviewed",
-   "custom": "Required when any other Option2Claimant3 field is filled in"
+   "custom": "Row Option2Claimant3: all or nothing - required when any of Option2Claimant3Name, Option2Claimant3Address, Option2Claimant3Phone, Option2Claimant3Entitlement is filled in"
   },
   "F74": {
    "name": "Option2Claimant3Address",
@@ -578,7 +569,7 @@
    "label": "",
    "desc": "Option #2, claimant 3: full address",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant3Name is filled in"
+   "custom": "Row Option2Claimant3: all or nothing - required when any of Option2Claimant3Name, Option2Claimant3Address, Option2Claimant3Phone, Option2Claimant3Entitlement is filled in"
   },
   "F75": {
    "name": "Option2Claimant3Phone",
@@ -586,7 +577,7 @@
    "label": "",
    "desc": "Option #2, claimant 3: phone number",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant3Name is filled in"
+   "custom": "Row Option2Claimant3: all or nothing - required when any of Option2Claimant3Name, Option2Claimant3Address, Option2Claimant3Phone, Option2Claimant3Entitlement is filled in"
   },
   "F76": {
    "name": "Option2Claimant3Entitlement",
@@ -594,7 +585,7 @@
    "label": "",
    "desc": "Option #2, claimant 3: entitlement, % or amount",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant3Name is filled in"
+   "custom": "Row Option2Claimant3: all or nothing - required when any of Option2Claimant3Name, Option2Claimant3Address, Option2Claimant3Phone, Option2Claimant3Entitlement is filled in"
   },
   "F77": {
    "name": "Option2Claimant4Name",
@@ -602,7 +593,7 @@
    "label": "",
    "desc": "Option #2, claimant 4: claimant name",
    "how": "reviewed",
-   "custom": "Required when any other Option2Claimant4 field is filled in"
+   "custom": "Row Option2Claimant4: all or nothing - required when any of Option2Claimant4Name, Option2Claimant4Address, Option2Claimant4Phone, Option2Claimant4Entitlement is filled in"
   },
   "F78": {
    "name": "Option2Claimant4Address",
@@ -610,7 +601,7 @@
    "label": "",
    "desc": "Option #2, claimant 4: full address",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant4Name is filled in"
+   "custom": "Row Option2Claimant4: all or nothing - required when any of Option2Claimant4Name, Option2Claimant4Address, Option2Claimant4Phone, Option2Claimant4Entitlement is filled in"
   },
   "F79": {
    "name": "Option2Claimant4Phone",
@@ -618,7 +609,7 @@
    "label": "",
    "desc": "Option #2, claimant 4: phone number",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant4Name is filled in"
+   "custom": "Row Option2Claimant4: all or nothing - required when any of Option2Claimant4Name, Option2Claimant4Address, Option2Claimant4Phone, Option2Claimant4Entitlement is filled in"
   },
   "F80": {
    "name": "Option2Claimant4Entitlement",
@@ -626,7 +617,7 @@
    "label": "",
    "desc": "Option #2, claimant 4: entitlement, % or amount",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant4Name is filled in"
+   "custom": "Row Option2Claimant4: all or nothing - required when any of Option2Claimant4Name, Option2Claimant4Address, Option2Claimant4Phone, Option2Claimant4Entitlement is filled in"
   },
   "F81": {
    "name": "Option2Claimant5Name",
@@ -634,7 +625,7 @@
    "label": "Additional Instructions:",
    "desc": "Option #2, claimant 5: claimant name",
    "how": "reviewed",
-   "custom": "Required when any other Option2Claimant5 field is filled in"
+   "custom": "Row Option2Claimant5: all or nothing - required when any of Option2Claimant5Name, Option2Claimant5Address, Option2Claimant5Phone, Option2Claimant5Entitlement is filled in"
   },
   "F82": {
    "name": "Option2Claimant5Address",
@@ -642,7 +633,7 @@
    "label": "",
    "desc": "Option #2, claimant 5: full address",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant5Name is filled in"
+   "custom": "Row Option2Claimant5: all or nothing - required when any of Option2Claimant5Name, Option2Claimant5Address, Option2Claimant5Phone, Option2Claimant5Entitlement is filled in"
   },
   "F83": {
    "name": "Option2Claimant5Phone",
@@ -650,7 +641,7 @@
    "label": "",
    "desc": "Option #2, claimant 5: phone number",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant5Name is filled in"
+   "custom": "Row Option2Claimant5: all or nothing - required when any of Option2Claimant5Name, Option2Claimant5Address, Option2Claimant5Phone, Option2Claimant5Entitlement is filled in"
   },
   "F84": {
    "name": "Option2Claimant5Entitlement",
@@ -658,7 +649,7 @@
    "label": "",
    "desc": "Option #2, claimant 5: entitlement, % or amount",
    "how": "reviewed",
-   "custom": "Required when Option2Claimant5Name is filled in"
+   "custom": "Row Option2Claimant5: all or nothing - required when any of Option2Claimant5Name, Option2Claimant5Address, Option2Claimant5Phone, Option2Claimant5Entitlement is filled in"
   },
   "F85": {
    "name": "AdditionalInstructions",
@@ -881,7 +872,9 @@
   }
  },
  "drop": [
-  "F48"
+  "F48",
+  "F4",
+  "F5"
  ],
  "skip": {
   "B1": "not a blank",

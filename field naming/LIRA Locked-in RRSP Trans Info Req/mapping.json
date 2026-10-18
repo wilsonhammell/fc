@@ -133,26 +133,17 @@
    "how": "reviewed"
   },
   "F17": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Address of Owner:",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
-   "save": true
-  },
-  "F18": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Address of Owner:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed"
-  },
-  "F19": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Address of Owner:",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed"
+   "rect": [
+    162.5,
+    167.6,
+    587.1,
+    185.6
+   ]
   },
   "F20": {
    "name": "PRIMARY_SIN",
@@ -186,7 +177,10 @@
    "save": true
   }
  },
- "drop": [],
+ "drop": [
+  "F18",
+  "F19"
+ ],
  "skip": {},
  "add": [],
  "notes": [

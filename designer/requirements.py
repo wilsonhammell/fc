@@ -38,6 +38,7 @@ import json
 import os
 import re
 import shutil
+import sys
 
 import fitz
 
@@ -307,6 +308,31 @@ def render_pages(doc, markers, stem):
     return paths
 
 
+def trim_pages(src, keep, dst):
+    """The named form cut to the pages one production form carries
+    (mapping "production_pages", 1-based). Hypothecation Agreement is one file
+    over three products: pages 1 to 4 are shared, and the Mutual Funds,
+    Stocks and Bonds signing pages are 5, 6 and 7 - each production form got
+    all three. The field list keeps only fields still on a page."""
+    sys.path.insert(0, HERE)
+    import restyle_pdf
+    doc = fitz.open(src)
+    # (delete_pages, not select: select drops the catalog's AcroForm)
+    doc.delete_pages([i for i in range(doc.page_count) if i + 1 not in keep])
+    tops = []
+    for page in doc:
+        for w in page.widgets():
+            x = w.xref
+            while doc.xref_get_key(x, "Parent")[0] == "xref":
+                x = int(doc.xref_get_key(x, "Parent")[1].split()[0])
+            if x not in tops:
+                tops.append(x)
+    listed, write = restyle_pdf.field_list(doc)
+    write([x for x in listed if x in tops] + [x for x in tops if x not in listed])
+    doc.save(dst, garbage=3, deflate=True)
+    return dst
+
+
 def main():
     matches = json.load(open(os.path.join(HERE, "designer", "form_matches.json"), encoding="utf-8"))
     # both start empty, so nothing left from an earlier run reaches the handover
@@ -321,10 +347,13 @@ def main():
         if not mt["folder"] or not os.path.isfile(pdf):
             summary.append((mt["production name"], "NO NAMED FORM"))
             continue
+        mp = json.load(open(os.path.join(folder, "mapping.json"), encoding="utf-8"))
+        keep = mp.get("production_pages", {}).get(mt["production name"].strip())
+        if keep:
+            pdf = trim_pages(pdf, keep, os.path.join(JOBS, f"{mt['production name'].strip()}.pdf"))
         doc, places = page_widgets(pdf)
         rows = [r for r in csv.DictReader(open(os.path.join(folder, "fields.csv"), encoding="utf-8-sig"))
                 if r.get("name")]
-        mp = json.load(open(os.path.join(folder, "mapping.json"), encoding="utf-8"))
         items_by_name = {}
         for it in mp.get("items", {}).values():
             items_by_name.setdefault(it["name"], []).append(it)

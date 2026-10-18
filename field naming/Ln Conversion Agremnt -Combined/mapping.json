@@ -304,7 +304,8 @@
    "kind": "candidate",
    "label": "Interest Rate - 1 year closed",
    "desc": "Rate offered for the 1 year closed term",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 1Year"
   },
   {
    "page": 0,
@@ -318,7 +319,8 @@
    "kind": "candidate",
    "label": "New Monthly Payment - 1 year closed",
    "desc": "Payment at the 1 year rate. Printed sample value under it - the value must come off the page.",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 1Year"
   },
   {
    "page": 0,
@@ -348,7 +350,8 @@
    "kind": "candidate",
    "label": "Interest Rate - 2 year closed",
    "desc": "Rate offered for the 2 year closed term",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 2Year"
   },
   {
    "page": 0,
@@ -362,7 +365,8 @@
    "kind": "candidate",
    "label": "New Monthly Payment - 2 year closed",
    "desc": "Payment at the 2 year rate. Printed sample value under it - the value must come off the page.",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 2Year"
   },
   {
    "page": 0,
@@ -392,7 +396,8 @@
    "kind": "candidate",
    "label": "Interest Rate - 3 year closed",
    "desc": "Rate offered for the 3 year closed term",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 3Year"
   },
   {
    "page": 0,
@@ -406,7 +411,8 @@
    "kind": "candidate",
    "label": "New Monthly Payment - 3 year closed",
    "desc": "Payment at the 3 year rate. Printed sample value under it - the value must come off the page.",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 3Year"
   },
   {
    "page": 0,
@@ -436,7 +442,8 @@
    "kind": "candidate",
    "label": "Interest Rate - 4 year closed",
    "desc": "Rate offered for the 4 year closed term",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 4Year"
   },
   {
    "page": 0,
@@ -450,7 +457,8 @@
    "kind": "candidate",
    "label": "New Monthly Payment - 4 year closed",
    "desc": "Payment at the 4 year rate. Printed sample value under it - the value must come off the page.",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 4Year"
   },
   {
    "page": 0,
@@ -480,7 +488,8 @@
    "kind": "candidate",
    "label": "Interest Rate - 5 year closed",
    "desc": "Rate offered for the 5 year closed term",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 5Year"
   },
   {
    "page": 0,
@@ -494,11 +503,12 @@
    "kind": "candidate",
    "label": "New Monthly Payment - 5 year closed",
    "desc": "Payment at the 5 year rate. Printed sample value under it - the value must come off the page.",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when RenewalOption is 5Year"
   }
  ],
  "notes": [
-  "The conversion table prints sample values ($100,000.00, 240, Monthly, #VALUE!) - fields are placed over them, but the printed text has to come off the form.",
   "No MORT_ fields used: a term loan; if term loans live in the mortgage tables, the LOAN_ candidates map to MORT_."
- ]
+ ],
+ "erase_under_fields": true
 }

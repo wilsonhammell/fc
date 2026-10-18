@@ -2,61 +2,277 @@
  "ATM & POS Trace Request": {
   "status": "approved",
   "note": "",
-  "sha1": "acd646190a1a3e60ea33c3a25b2d6c719843397f",
-  "at": "2026-10-18T00:45:34.282Z"
+  "sha1": "abe746918d722e414aa8d10aa93005180cdf879e",
+  "at": "2026-10-18T01:32:09.673Z"
  },
  "Account Declaration Agreement - Estates": {
   "status": "approved",
   "note": "",
-  "sha1": "7ec89edb779976c61a8048df98cad781fcc02844",
-  "at": "2026-10-18T00:36:45.971Z"
+  "sha1": "fdf69f4ce2325127ca720316b62f49434bd1e143",
+  "at": "2026-10-18T01:32:02.804Z"
  },
  "Assignment of Life Ins Policy - Letter": {
   "status": "approved",
   "note": "",
-  "sha1": "3d7808d60e76d240ad02b92e83be9ce4d87a9ebc",
-  "at": "2026-10-18T00:36:52.826Z"
+  "sha1": "aceab9e6f261f48ac91af48403113ad8585d5980",
+  "at": "2026-10-18T01:32:06.249Z"
  },
  "Assignment of Life Insurance Policy": {
   "status": "approved",
   "note": "",
-  "sha1": "cbae61d0becb45d40d95e2b111a2dfd0f180b938",
-  "at": "2026-10-18T00:45:30.818Z"
+  "sha1": "a3b8824dcb9df110cf0a14f8d80915b0ffa306e5",
+  "at": "2026-10-18T01:32:08.184Z"
  },
  "Authorization to Release Financial Info": {
   "status": "approved",
   "note": "",
-  "sha1": "641d5106823636791c2ff2257d6c3126d63289de",
-  "at": "2026-10-18T00:40:26.088Z"
+  "sha1": "18a09f41a2355f68f1794e26b79d732eab843dd8",
+  "at": "2026-10-18T01:32:11.820Z"
  },
  "Bill Payment Trace": {
   "status": "approved",
   "note": "",
-  "sha1": "6db16323c73bb9ce922ba7e39d84c8965723b2ac",
-  "at": "2026-10-18T00:45:28.471Z"
+  "sha1": "49edee07fc9c4e7a4213238d52d93b160ab68bbe",
+  "at": "2026-10-18T01:32:13.557Z"
  },
  "Bond of Indemnity - Estates": {
-  "status": "changes",
-  "note": "Looks good but maybe we should add character limit to formatting section in the requirements builder so the 12 digit account number can be enforced that way rather than through custom code, also makes it so  fututre char limited fields will work , additionally i feel like the signatures and address block should be required, i think the 3 address blocks are supposed to be all part of 1 address not 3 seperate addresses",
-  "sha1": "c6eadc0c00eb62b78b16e0ed7c5f452b85f35246",
-  "at": "2026-10-18T00:49:17.451Z"
+  "status": "approved",
+  "note": "",
+  "sha1": "f671ad64b5d1be63916780bbc2c45a01b76cdedf",
+  "at": "2026-10-18T01:36:55.383Z"
  },
  "Breach Letter": {
-  "status": "changes",
-  "note": "staff sig should probably be required?",
-  "sha1": "e4c96b85ba63e1bf978173d9474bf5d3c7f23501",
-  "at": "2026-10-18T00:50:22.327Z"
+  "status": "approved",
+  "note": "",
+  "sha1": "392d302a072196070f1b28c6a04d9f3d4162b4a9",
+  "at": "2026-10-18T01:39:42.241Z"
  },
  "Collateral Agreement-Q-Trade Investments": {
-  "status": "none",
-  "note": "again isnt the 3 address fields actually just one address? look at the for the lender part right above it, all one address, again shouldnt signatures be needed? member signatures are the exception since theyre handled through the subnmission logic",
-  "sha1": "0b92c6bc5d6ec9c7603c719517eea370831dd761",
-  "at": "2026-10-18T00:53:27.443Z"
+  "status": "approved",
+  "note": "",
+  "sha1": "bb199450d006a4225fc227e9499d06993ece8301",
+  "at": "2026-10-18T01:38:00.252Z"
  },
  "Designated Beneficiary Declaration and Indemnification - Estates": {
-  "status": "changes",
+  "status": "approved",
   "note": "address thing again and signature thing",
-  "sha1": "c41914398027bb936458718aac4618eb8a2cffcc",
-  "at": "2026-10-18T00:58:20.177Z"
+  "sha1": "376bc1a8031d44d1ff3746b827e22963869fc11d",
+  "at": "2026-10-18T01:39:33.532Z"
+ },
+ "Direction of Chicken Quota": {
+  "status": "approved",
+  "note": "",
+  "sha1": "dff0b429ba42685d6023131d633ec68da700f966",
+  "at": "2026-10-18T01:40:15.730Z"
+ },
+ "Direction of Egg Quota": {
+  "status": "approved",
+  "note": "",
+  "sha1": "4a622d21c55d284709a7757e2eb79788e77c5220",
+  "at": "2026-10-18T01:40:31.235Z"
+ },
+ "Direction of Hatching Egg & Chicken Quota": {
+  "status": "approved",
+  "note": "",
+  "sha1": "44a896e1375577bfab08a7ca0be345b88f490d39",
+  "at": "2026-10-18T01:46:48.580Z"
+ },
+ "Direction of Milk Quota Proceeds": {
+  "status": "approved",
+  "note": "",
+  "sha1": "5230e982a4ba9832d775175ffb456ebdd6bf5e12",
+  "at": "2026-10-18T01:47:39.613Z"
+ },
+ "Direction of Turkey Quota": {
+  "status": "approved",
+  "note": "",
+  "sha1": "9c6212d4627326d2f82e192b1d9afb0f3e55ca34",
+  "at": "2026-10-18T01:49:32.831Z"
+ },
+ "Disclosure Letter - Pre Approved Loan Extension - Business": {
+  "status": "approved",
+  "note": "",
+  "sha1": "e91d2b1ab9559f66c81ac15e13034e488c0dd754",
+  "at": "2026-10-18T03:34:53.520Z"
+ },
+ "Disclosure letter - Business": {
+  "status": "approved",
+  "note": "",
+  "sha1": "4b77efd78bc866aab68a67fabb25751191206072",
+  "at": "2026-10-18T03:34:20.616Z"
+ },
+ "Envelope": {
+  "status": "approved",
+  "note": "",
+  "sha1": "2bdc8bd0525adcd8b16049d838ed4f05fa4868a3",
+  "at": "2026-10-18T03:34:52.353Z"
+ },
+ "FHSA Application": {
+  "status": "approved",
+  "note": "",
+  "sha1": "063758c78a0db7799f30767cd2a031e04edd433c",
+  "at": "2026-10-18T05:25:32.595Z"
+ },
+ "FHSA Designation of SH, Ben": {
+  "status": "changes",
+  "note": "same observations as prev",
+  "sha1": "11d71248f291f3e7163b7431c9aeba12c8859bb1",
+  "at": "2026-10-18T05:28:00.160Z"
+ },
+ "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)": {
+  "status": "changes",
+  "note": "why is bene1account dob and sin not required? for subsequent rows shouldnt it be if any of the row is filled in all must be?",
+  "sha1": "85ecdf7cb18721a9f488966a0b95bedae300495f",
+  "at": "2026-10-18T05:27:26.478Z"
+ },
+ "FHSA Withdrawal Transfer": {
+  "status": "changes",
+  "note": "address probably just one FULL instead of split into three since its one box, im not sure what death details are but i imagine they are probably needed if death is checked right? why isnt expirary date sv in the rows? same with acrrued interest and total? subsequent rows should again do the thing where if none of the row is filled thats fine but if any is filled thats an issue. why subtotal not required? idk maybe i dont understand the context of this form but seems like a lot of this needs some form of SV",
+  "sha1": "5aa86a35866d32e4cea0407de1a6438448e6ab03",
+  "at": "2026-10-18T05:32:22.101Z"
+ },
+ "Federal RLIF Locking-In Agreement": {
+  "status": "approved",
+  "note": "",
+  "sha1": "530870c3978f6d419395a2c65305baa3df74dac3",
+  "at": "2026-10-18T03:34:48.430Z"
+ },
+ "Federal RLIF Transfer - up to 50% of new RLIF": {
+  "status": "changes",
+  "note": "This one since its a single line for the address probably should be full address instead of 3 pieces, probably just easier",
+  "sha1": "35082ad9b59f40bbd219e31a05b64469a175f13d",
+  "at": "2026-10-18T05:24:50.027Z"
+ },
+ "Funeral Home Guaranteed Investment Certificate": {
+  "status": "changes",
+  "note": "this one has Authorizing Staff written by itself on second page lol, probably need to fix that",
+  "sha1": "47771a5cd71bd0fe9b4d3df6c433d54697c5c068",
+  "at": "2026-10-18T05:39:12.598Z"
+ },
+ "Guaranteed Investment Certificate Authorization": {
+  "status": "approved",
+  "note": "",
+  "sha1": "9cd71d95735f1904d95f3124e5158322fb640c57",
+  "at": "2026-10-18T05:40:27.021Z"
+ },
+ "Hypothecation Agreement - Bonds": {
+  "status": "changes",
+  "note": "wtf this one has a billion signings on it, did the original have that too???",
+  "sha1": "1bb91483d22cef74177b7f2c44c09ae2f1aee217",
+  "at": "2026-10-18T05:41:20.679Z"
+ },
+ "Hypothecation Agreement - Mutual Funds": {
+  "status": "changes",
+  "note": "same as prev",
+  "sha1": "892a3478735b089fb2c157b178892ca5c43fb4ce",
+  "at": "2026-10-18T05:41:57.501Z"
+ },
+ "Hypothecation Agreement - Stocks": {
+  "status": "changes",
+  "note": "same as prev",
+  "sha1": "7d0bd30ce6a2d25290b6891c258eaa12527bae62",
+  "at": "2026-10-18T05:42:09.422Z"
+ },
+ "Indemnity agreement": {
+  "status": "approved",
+  "note": "",
+  "sha1": "e0dae4a76f7eb0523bf7b2eb5e7370cd2ef8bcdf",
+  "at": "2026-10-18T05:42:21.026Z"
+ },
+ "LIF Locking-in Agreement - ON": {
+  "status": "approved",
+  "note": "",
+  "sha1": "49536c945e1181d1af2f82cf204865f5da4c6736",
+  "at": "2026-10-18T06:32:04.352Z"
+ },
+ "LIF Spousal Consent": {
+  "status": "approved",
+  "note": "",
+  "sha1": "4129ab92b59aa1a900ebe45dcdb444378bb6ba27",
+  "at": "2026-10-18T06:32:14.444Z"
+ },
+ "LIRA Declaration No Spouse": {
+  "status": "approved",
+  "note": "",
+  "sha1": "caac8840645b1c6ede8fa899a9040a1fc4545f10",
+  "at": "2026-10-18T06:32:26.883Z"
+ },
+ "LIRA Locked-in RRSP Trans Info Req": {
+  "status": "approved",
+  "note": "",
+  "sha1": "85e41211e4a040982905ce2c8fc470f8e15b8e2f",
+  "at": "2026-10-18T06:33:17.405Z"
+ },
+ "LIRA Locking In Agreement - Fed": {
+  "status": "approved",
+  "note": "",
+  "sha1": "4398077941f35230e7ea1f27842657afcc2a943a",
+  "at": "2026-10-18T06:33:24.097Z"
+ },
+ "LIRA Locking In Agreement - ON": {
+  "status": "approved",
+  "note": "",
+  "sha1": "33e54dfcf0044242da994ba28ab23621bcb02a40",
+  "at": "2026-10-18T06:34:05.094Z"
+ },
+ "LOC Repricing Letter": {
+  "status": "changes",
+  "note": "shouldnt maintenance fee and annual renewal fee need feels? also we got another multi block addr",
+  "sha1": "c61a62c20b75a14bd45185ef15e73a2cff1a9e2e",
+  "at": "2026-10-18T18:42:21.324Z"
+ },
+ "Loan Conversion Agreement": {
+  "status": "changes",
+  "note": "shouldnt interest rate and new monthly payment need custom sv if corresponding mark is checked?",
+  "sha1": "aaa6bc77fb0ed073da98b8b99dedd38c5a547696",
+  "at": "2026-10-18T18:33:17.153Z"
+ },
+ "Loan Extension Request - Small Business": {
+  "status": "changes",
+  "note": "what is guarantorcorp signer? shouldnt it just be if guarantorname is filled out then one row needs to be completed",
+  "sha1": "4dc02d1b59e360a48f21fdf55f5733d48958c3d3",
+  "at": "2026-10-18T18:38:19.059Z"
+ },
+ "Loan Payout Statement - Business": {
+  "status": "changes",
+  "note": "Primary member number is poorly positioned, I moved it to how it should be placed, also should electronic registration fee have a field or is it drawn in?",
+  "sha1": "6918eda4470088c194dd366087842cfd8f39868b",
+  "at": "2026-10-18T18:41:01.273Z"
+ },
+ "Loan Payout Statement - LOC - Business": {
+  "status": "changes",
+  "note": "same as prev",
+  "sha1": "c42b428c4b22b5f4b0a9a8b481fa7de1e4ca59a1",
+  "at": "2026-10-18T18:41:03.217Z"
+ },
+ "Loan Renewal Agreement - Breaking Term": {
+  "status": "changes",
+  "note": "shouldnt that rows need custom sv? also renewal rate fields are too big to the left",
+  "sha1": "6a67f9f757b250ce5be43ae8642a2624626f540d",
+  "at": "2026-10-18T18:41:44.359Z"
+ },
+ "Lost Item Affidavit": {
+  "status": "approved",
+  "note": "",
+  "sha1": "9f3cfaf95db7bfdfb45ac4d669a0a3f83ea79cf8",
+  "at": "2026-10-18T18:42:31.358Z"
+ },
+ "Masterline Takedown Facility Authorization": {
+  "status": "approved",
+  "note": "",
+  "sha1": "61486b28d1609b3aeb839999766edb7b3772ae1b",
+  "at": "2026-10-18T18:42:49.396Z"
+ },
+ "Mortgagor's Declaration as to Execution(s)": {
+  "status": "approved",
+  "note": "",
+  "sha1": "d1045dd293a68468337b5080f5546e04c73c6b63",
+  "at": "2026-10-18T18:42:55.454Z"
+ },
+ "Pre-Authorized Credit Agreement (Credit to other FI)": {
+  "status": "changes",
+  "note": "Should just be full address on this one, its one line box",
+  "sha1": "2646362465208dfc88f679b6c9da4485902f935c",
+  "at": "2026-10-18T18:43:13.579Z"
  }
 }

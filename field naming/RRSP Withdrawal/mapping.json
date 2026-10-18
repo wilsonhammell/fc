@@ -147,7 +147,8 @@
    "kind": "entry",
    "label": "DD/MM/YY",
    "desc": "Withdrawal row 1: expiry date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F19": {
    "name": "Withdrawal1Type",
@@ -170,14 +171,16 @@
    "kind": "entry",
    "label": "Accrued Interest",
    "desc": "Withdrawal row 1: accrued interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F22": {
    "name": "Withdrawal1Total",
    "kind": "entry",
    "label": "Total",
    "desc": "Withdrawal row 1: total",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F23": {
    "name": "Withdrawal2RRSPSub",
@@ -185,14 +188,15 @@
    "label": "",
    "desc": "Withdrawal row 2: RRSP (sub) #",
    "how": "reviewed",
-   "custom": "Required when Withdrawal2Type or Withdrawal2Amount is filled in"
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRSPSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F24": {
    "name": "Withdrawal2ExpiryDate",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: expiry date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRSPSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F25": {
    "name": "Withdrawal2Type",
@@ -200,7 +204,7 @@
    "label": "",
    "desc": "Withdrawal row 2: A principal + interest / S specified amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal2RRSPSub is filled in"
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRSPSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F26": {
    "name": "Withdrawal2Amount",
@@ -208,21 +212,23 @@
    "label": "",
    "desc": "Withdrawal row 2: withdrawal/transfer amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal2RRSPSub is filled in"
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRSPSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F27": {
    "name": "Withdrawal2AccruedInterest",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: accrued interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRSPSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F28": {
    "name": "Withdrawal2Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: total",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal2: all or nothing - required when any of Withdrawal2RRSPSub, Withdrawal2ExpiryDate, Withdrawal2Type, Withdrawal2Amount, Withdrawal2AccruedInterest, Withdrawal2Total is filled in"
   },
   "F29": {
    "name": "Withdrawal3RRSPSub",
@@ -230,14 +236,15 @@
    "label": "",
    "desc": "Withdrawal row 3: RRSP (sub) #",
    "how": "reviewed",
-   "custom": "Required when Withdrawal3Type or Withdrawal3Amount is filled in"
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRSPSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F30": {
    "name": "Withdrawal3ExpiryDate",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: expiry date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRSPSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F31": {
    "name": "Withdrawal3Type",
@@ -245,7 +252,7 @@
    "label": "",
    "desc": "Withdrawal row 3: A principal + interest / S specified amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal3RRSPSub is filled in"
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRSPSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F32": {
    "name": "Withdrawal3Amount",
@@ -253,21 +260,23 @@
    "label": "",
    "desc": "Withdrawal row 3: withdrawal/transfer amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal3RRSPSub is filled in"
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRSPSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F33": {
    "name": "Withdrawal3AccruedInterest",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: accrued interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRSPSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F34": {
    "name": "Withdrawal3Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: total",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal3: all or nothing - required when any of Withdrawal3RRSPSub, Withdrawal3ExpiryDate, Withdrawal3Type, Withdrawal3Amount, Withdrawal3AccruedInterest, Withdrawal3Total is filled in"
   },
   "F35": {
    "name": "Withdrawal4RRSPSub",
@@ -275,14 +284,15 @@
    "label": "",
    "desc": "Withdrawal row 4: RRSP (sub) #",
    "how": "reviewed",
-   "custom": "Required when Withdrawal4Type or Withdrawal4Amount is filled in"
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRSPSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F36": {
    "name": "Withdrawal4ExpiryDate",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: expiry date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRSPSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F37": {
    "name": "Withdrawal4Type",
@@ -290,7 +300,7 @@
    "label": "",
    "desc": "Withdrawal row 4: A principal + interest / S specified amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal4RRSPSub is filled in"
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRSPSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F38": {
    "name": "Withdrawal4Amount",
@@ -298,21 +308,23 @@
    "label": "",
    "desc": "Withdrawal row 4: withdrawal/transfer amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal4RRSPSub is filled in"
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRSPSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F39": {
    "name": "Withdrawal4AccruedInterest",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: accrued interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRSPSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F40": {
    "name": "Withdrawal4Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: total",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal4: all or nothing - required when any of Withdrawal4RRSPSub, Withdrawal4ExpiryDate, Withdrawal4Type, Withdrawal4Amount, Withdrawal4AccruedInterest, Withdrawal4Total is filled in"
   },
   "F41": {
    "name": "Withdrawal5RRSPSub",
@@ -320,14 +332,15 @@
    "label": "",
    "desc": "Withdrawal row 5: RRSP (sub) #",
    "how": "reviewed",
-   "custom": "Required when Withdrawal5Type or Withdrawal5Amount is filled in"
+   "custom": "Row Withdrawal5: all or nothing - required when any of Withdrawal5RRSPSub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest, Withdrawal5Total is filled in"
   },
   "F42": {
    "name": "Withdrawal5ExpiryDate",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 5: expiry date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal5: all or nothing - required when any of Withdrawal5RRSPSub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest, Withdrawal5Total is filled in"
   },
   "F43": {
    "name": "Withdrawal5Type",
@@ -335,7 +348,7 @@
    "label": "",
    "desc": "Withdrawal row 5: A principal + interest / S specified amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal5RRSPSub is filled in"
+   "custom": "Row Withdrawal5: all or nothing - required when any of Withdrawal5RRSPSub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest, Withdrawal5Total is filled in"
   },
   "F44": {
    "name": "Withdrawal5Amount",
@@ -343,21 +356,23 @@
    "label": "",
    "desc": "Withdrawal row 5: withdrawal/transfer amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal5RRSPSub is filled in"
+   "custom": "Row Withdrawal5: all or nothing - required when any of Withdrawal5RRSPSub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest, Withdrawal5Total is filled in"
   },
   "F45": {
    "name": "Withdrawal5AccruedInterest",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 5: accrued interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal5: all or nothing - required when any of Withdrawal5RRSPSub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest, Withdrawal5Total is filled in"
   },
   "F46": {
    "name": "Withdrawal5Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 5: total",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal5: all or nothing - required when any of Withdrawal5RRSPSub, Withdrawal5ExpiryDate, Withdrawal5Type, Withdrawal5Amount, Withdrawal5AccruedInterest, Withdrawal5Total is filled in"
   },
   "F47": {
    "name": "Withdrawal6RRSPSub",
@@ -365,14 +380,15 @@
    "label": "Withholding Tax Rates:",
    "desc": "Withdrawal row 6: RRSP (sub) #",
    "how": "reviewed",
-   "custom": "Required when Withdrawal6Type or Withdrawal6Amount is filled in"
+   "custom": "Row Withdrawal6: all or nothing - required when any of Withdrawal6RRSPSub, Withdrawal6ExpiryDate, Withdrawal6Type, Withdrawal6Amount, Withdrawal6AccruedInterest, Withdrawal6Total is filled in"
   },
   "F48": {
    "name": "Withdrawal6ExpiryDate",
    "kind": "entry",
    "label": "Rates:",
    "desc": "Withdrawal row 6: expiry date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal6: all or nothing - required when any of Withdrawal6RRSPSub, Withdrawal6ExpiryDate, Withdrawal6Type, Withdrawal6Amount, Withdrawal6AccruedInterest, Withdrawal6Total is filled in"
   },
   "F49": {
    "name": "Withdrawal6Type",
@@ -380,7 +396,7 @@
    "label": "",
    "desc": "Withdrawal row 6: A principal + interest / S specified amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal6RRSPSub is filled in"
+   "custom": "Row Withdrawal6: all or nothing - required when any of Withdrawal6RRSPSub, Withdrawal6ExpiryDate, Withdrawal6Type, Withdrawal6Amount, Withdrawal6AccruedInterest, Withdrawal6Total is filled in"
   },
   "F50": {
    "name": "Withdrawal6Amount",
@@ -388,21 +404,23 @@
    "label": "Less Withholding",
    "desc": "Withdrawal row 6: withdrawal/transfer amount",
    "how": "reviewed",
-   "custom": "Required when Withdrawal6RRSPSub is filled in"
+   "custom": "Row Withdrawal6: all or nothing - required when any of Withdrawal6RRSPSub, Withdrawal6ExpiryDate, Withdrawal6Type, Withdrawal6Amount, Withdrawal6AccruedInterest, Withdrawal6Total is filled in"
   },
   "F51": {
    "name": "Withdrawal6AccruedInterest",
    "kind": "entry",
    "label": "Withholding Tax @ _____%",
    "desc": "Withdrawal row 6: accrued interest",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal6: all or nothing - required when any of Withdrawal6RRSPSub, Withdrawal6ExpiryDate, Withdrawal6Type, Withdrawal6Amount, Withdrawal6AccruedInterest, Withdrawal6Total is filled in"
   },
   "F52": {
    "name": "Withdrawal6Total",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 6: total",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Row Withdrawal6: all or nothing - required when any of Withdrawal6RRSPSub, Withdrawal6ExpiryDate, Withdrawal6Type, Withdrawal6Amount, Withdrawal6AccruedInterest, Withdrawal6Total is filled in"
   },
   "F53": {
    "name": "WithdrawalTaxRate",
@@ -592,30 +610,16 @@
    ]
   },
   "F76": {
-   "name": "PRIMARY_MAIL_ADDR_LINE1",
-   "kind": "candidate",
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
    "label": "Contributor’s Name and SIN (if applicable):____________________________________________________",
-   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)",
    "how": "reviewed",
    "rect": [
-    60,
-    168,
-    249,
-    181
-   ],
-   "save": true
-  },
-  "F77": {
-   "name": "PRIMARY_MAIL_ADDR_LINE2",
-   "kind": "candidate",
-   "label": "Address:",
-   "desc": "Member's mailing address, line 2",
-   "how": "reviewed",
-   "rect": [
-    253,
-    168,
-    420,
-    181
+    60.0,
+    168.0,
+    592.0,
+    181.0
    ]
   },
   "F78": {
@@ -631,19 +635,6 @@
     194
    ]
   },
-  "F79": {
-   "name": "PRIMARY_MAIL_ADDR_LINE3",
-   "kind": "candidate",
-   "label": "Address: __________________________________",
-   "desc": "Member's mailing address, line 3",
-   "how": "reviewed",
-   "rect": [
-    423,
-    168,
-    592,
-    181
-   ]
-  },
   "B1": {
    "name": "SPOUSE_SIN",
    "kind": "candidate",
@@ -654,7 +645,9 @@
  },
  "drop": [
   "F74",
-  "F75"
+  "F75",
+  "F77",
+  "F79"
  ],
  "skip": {},
  "add": [],
