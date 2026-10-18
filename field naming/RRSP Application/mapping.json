@@ -150,7 +150,8 @@
    "name": "Beneficiary1Name",
    "kind": "entry",
    "label": "Name",
-   "desc": "Beneficiary 1 name"
+   "desc": "Beneficiary 1 name",
+   "custom": "Required when any other Beneficiary1 field is filled in"
   },
   "F21": {
    "name": "Beneficiary1DateOfBirth",
@@ -162,13 +163,15 @@
    "name": "Beneficiary1Relationship",
    "kind": "entry",
    "label": "Relationship",
-   "desc": "Beneficiary 1 relationship to annuitant"
+   "desc": "Beneficiary 1 relationship to annuitant",
+   "custom": "Required when Beneficiary1Name is filled in"
   },
   "F23": {
    "name": "Beneficiary1Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
-   "desc": "Beneficiary 1, P or A"
+   "desc": "Beneficiary 1, P or A",
+   "custom": "Required when Beneficiary1Name is filled in"
   },
   "F24": {
    "name": "Beneficiary2Account",
@@ -190,7 +193,8 @@
    "name": "Beneficiary2Name",
    "kind": "entry",
    "label": "Name",
-   "desc": "Beneficiary 2"
+   "desc": "Beneficiary 2",
+   "custom": "Required when any other Beneficiary2 field is filled in"
   },
   "F26": {
    "name": "Beneficiary2DateOfBirth",
@@ -202,13 +206,15 @@
    "name": "Beneficiary2Relationship",
    "kind": "entry",
    "label": "Relationship",
-   "desc": "Beneficiary 2"
+   "desc": "Beneficiary 2",
+   "custom": "Required when Beneficiary2Name is filled in"
   },
   "F28": {
    "name": "Beneficiary2Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
-   "desc": "Beneficiary 2"
+   "desc": "Beneficiary 2",
+   "custom": "Required when Beneficiary2Name is filled in"
   },
   "F29": {
    "name": "Beneficiary3Account",
@@ -230,7 +236,8 @@
    "name": "Beneficiary3Name",
    "kind": "entry",
    "label": "Name",
-   "desc": "Beneficiary 3"
+   "desc": "Beneficiary 3",
+   "custom": "Required when any other Beneficiary3 field is filled in"
   },
   "F31": {
    "name": "Beneficiary3DateOfBirth",
@@ -242,13 +249,15 @@
    "name": "Beneficiary3Relationship",
    "kind": "entry",
    "label": "Relationship",
-   "desc": "Beneficiary 3"
+   "desc": "Beneficiary 3",
+   "custom": "Required when Beneficiary3Name is filled in"
   },
   "F33": {
    "name": "Beneficiary3Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
-   "desc": "Beneficiary 3"
+   "desc": "Beneficiary 3",
+   "custom": "Required when Beneficiary3Name is filled in"
   },
   "F34": {
    "name": "Beneficiary4Account",
@@ -270,7 +279,8 @@
    "name": "Beneficiary4Name",
    "kind": "entry",
    "label": "Name",
-   "desc": "Beneficiary 4"
+   "desc": "Beneficiary 4",
+   "custom": "Required when any other Beneficiary4 field is filled in"
   },
   "F36": {
    "name": "Beneficiary4DateOfBirth",
@@ -282,13 +292,15 @@
    "name": "Beneficiary4Relationship",
    "kind": "entry",
    "label": "Relationship",
-   "desc": "Beneficiary 4"
+   "desc": "Beneficiary 4",
+   "custom": "Required when Beneficiary4Name is filled in"
   },
   "F38": {
    "name": "Beneficiary4Type",
    "kind": "entry",
    "label": "Primary (P) or Alternate (A)",
-   "desc": "Beneficiary 4"
+   "desc": "Beneficiary 4",
+   "custom": "Required when Beneficiary4Name is filled in"
   },
   "F39": {
    "name": "InvestmentInstructions1",

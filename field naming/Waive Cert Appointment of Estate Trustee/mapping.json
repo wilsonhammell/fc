@@ -95,7 +95,8 @@
    "kind": "entry",
    "label": "Name of Estate & Trust Supervisor (printed)",
    "desc": "Estate & trust supervisor: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ApprovalGranted is Yes"
   },
   "F14": {
    "name": "ApproverSupervisorSignature",
@@ -109,7 +110,8 @@
    "kind": "entry",
    "label": "Name of Director, Centralized Services (printed)",
    "desc": "Director, centralized services: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when ApprovalGranted is Yes and EstateValueRange is Over700K (two signatures)"
   },
   "F16": {
    "name": "ApproverDirectorSignature",
@@ -193,7 +195,8 @@
    "label": "The",
    "desc": "Tick: reason in detail for the request",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "save": true
   },
   "F27": {
    "name": "EstateValueRange",

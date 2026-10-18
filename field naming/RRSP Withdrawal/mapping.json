@@ -184,7 +184,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: RRSP (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal2Type or Withdrawal2Amount is filled in"
   },
   "F24": {
    "name": "Withdrawal2ExpiryDate",
@@ -198,14 +199,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal2RRSPSub is filled in"
   },
   "F26": {
    "name": "Withdrawal2Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal2RRSPSub is filled in"
   },
   "F27": {
    "name": "Withdrawal2AccruedInterest",
@@ -226,7 +229,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: RRSP (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal3Type or Withdrawal3Amount is filled in"
   },
   "F30": {
    "name": "Withdrawal3ExpiryDate",
@@ -240,14 +244,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal3RRSPSub is filled in"
   },
   "F32": {
    "name": "Withdrawal3Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal3RRSPSub is filled in"
   },
   "F33": {
    "name": "Withdrawal3AccruedInterest",
@@ -268,7 +274,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: RRSP (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal4Type or Withdrawal4Amount is filled in"
   },
   "F36": {
    "name": "Withdrawal4ExpiryDate",
@@ -282,14 +289,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal4RRSPSub is filled in"
   },
   "F38": {
    "name": "Withdrawal4Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal4RRSPSub is filled in"
   },
   "F39": {
    "name": "Withdrawal4AccruedInterest",
@@ -310,7 +319,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 5: RRSP (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal5Type or Withdrawal5Amount is filled in"
   },
   "F42": {
    "name": "Withdrawal5ExpiryDate",
@@ -324,14 +334,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 5: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal5RRSPSub is filled in"
   },
   "F44": {
    "name": "Withdrawal5Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 5: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal5RRSPSub is filled in"
   },
   "F45": {
    "name": "Withdrawal5AccruedInterest",
@@ -352,7 +364,8 @@
    "kind": "entry",
    "label": "Withholding Tax Rates:",
    "desc": "Withdrawal row 6: RRSP (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal6Type or Withdrawal6Amount is filled in"
   },
   "F48": {
    "name": "Withdrawal6ExpiryDate",
@@ -366,14 +379,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 6: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal6RRSPSub is filled in"
   },
   "F50": {
    "name": "Withdrawal6Amount",
    "kind": "entry",
    "label": "Less Withholding",
    "desc": "Withdrawal row 6: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal6RRSPSub is filled in"
   },
   "F51": {
    "name": "Withdrawal6AccruedInterest",
@@ -487,7 +502,8 @@
    "kind": "entry",
    "label": "_________________________________ Cheque",
    "desc": "Cheque #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PaymentMethod is ChequeToFI"
   },
   "F66": {
    "name": "REQUESTUSER",

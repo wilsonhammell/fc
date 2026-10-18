@@ -171,21 +171,24 @@
    "kind": "entry",
    "label": "Executed at",
    "desc": "Acknowledgment: city the insurer executes at",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B8": {
    "name": "CompanyAckDate",
    "kind": "entry",
    "label": "Date:",
    "desc": "Acknowledgment: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B9": {
    "name": "InsuranceCompanySignature",
    "kind": "entry",
    "label": "I/We have authority to bind the Company.",
    "desc": "Insurer's signature (I/We have authority to bind the Company)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
  "drop": [

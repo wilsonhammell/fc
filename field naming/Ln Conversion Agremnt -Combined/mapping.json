@@ -284,11 +284,13 @@
     96,
     438.0
    ],
-   "name": "RenewalOption1Yr",
+   "name": "RenewalOption",
    "kind": "entry",
    "label": "Mark (x) - 1 year closed",
-   "desc": "Option the member chooses, tick",
-   "type": "checkbox"
+   "desc": "Pick one: the renewal option the member chooses - 1Year",
+   "type": "checkbox",
+   "option": "1Year",
+   "save": true
   },
   {
    "page": 0,
@@ -326,11 +328,13 @@
     96,
     452.6
    ],
-   "name": "RenewalOption2Yr",
+   "name": "RenewalOption",
    "kind": "entry",
    "label": "Mark (x) - 2 year closed",
-   "desc": "Option the member chooses, tick",
-   "type": "checkbox"
+   "desc": "Pick one: the renewal option the member chooses - 2Year",
+   "type": "checkbox",
+   "option": "2Year",
+   "save": true
   },
   {
    "page": 0,
@@ -368,11 +372,13 @@
     96,
     467.1
    ],
-   "name": "RenewalOption3Yr",
+   "name": "RenewalOption",
    "kind": "entry",
    "label": "Mark (x) - 3 year closed",
-   "desc": "Option the member chooses, tick",
-   "type": "checkbox"
+   "desc": "Pick one: the renewal option the member chooses - 3Year",
+   "type": "checkbox",
+   "option": "3Year",
+   "save": true
   },
   {
    "page": 0,
@@ -410,11 +416,13 @@
     96,
     481.7
    ],
-   "name": "RenewalOption4Yr",
+   "name": "RenewalOption",
    "kind": "entry",
    "label": "Mark (x) - 4 year closed",
-   "desc": "Option the member chooses, tick",
-   "type": "checkbox"
+   "desc": "Pick one: the renewal option the member chooses - 4Year",
+   "type": "checkbox",
+   "option": "4Year",
+   "save": true
   },
   {
    "page": 0,
@@ -452,11 +460,13 @@
     96,
     496.2
    ],
-   "name": "RenewalOption5Yr",
+   "name": "RenewalOption",
    "kind": "entry",
    "label": "Mark (x) - 5 year closed",
-   "desc": "Option the member chooses, tick",
-   "type": "checkbox"
+   "desc": "Pick one: the renewal option the member chooses - 5Year",
+   "type": "checkbox",
+   "option": "5Year",
+   "save": true
   },
   {
    "page": 0,

@@ -97,7 +97,8 @@
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F14": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -160,7 +161,8 @@
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F23": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -241,7 +243,8 @@
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F34": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -304,7 +307,8 @@
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F43": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -367,7 +371,8 @@
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F52": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -430,7 +435,8 @@
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F61": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -493,7 +499,8 @@
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F70": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -556,7 +563,8 @@
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F79": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -619,7 +627,8 @@
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F88": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -714,7 +723,8 @@
    "kind": "entry",
    "label": "Agent for Libro Credit Union Limited:",
    "desc": "Agent for Libro Credit Union Limited (the trustee) - on every page",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F101": {
    "name": "PRIMARY_FULL_LEGAL_NAME",

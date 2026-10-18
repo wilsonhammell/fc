@@ -55,14 +55,15 @@
     "redText": false
    },
    "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "custom": "Required when EstateAsset2Amount is filled in; if filled in, a 12-digit Libro account number"
   },
   "F6": {
    "name": "EstateAsset2Amount",
    "kind": "entry",
    "label": "",
    "desc": "Asset 2: amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when EstateAsset2Account is filled in"
   },
   "F7": {
    "name": "EstateAsset3Account",
@@ -79,14 +80,15 @@
     "redText": false
    },
    "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "custom": "Required when EstateAsset3Amount is filled in; if filled in, a 12-digit Libro account number"
   },
   "F8": {
    "name": "EstateAsset3Amount",
    "kind": "entry",
    "label": "",
    "desc": "Asset 3: amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when EstateAsset3Account is filled in"
   },
   "F9": {
    "name": "EstateTransferAccount",
@@ -103,7 +105,7 @@
     "redText": false
    },
    "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "custom": "Required when AssetTransferOption is Option2, and a 12-digit Libro account number"
   },
   "F10": {
    "name": "SpouseTransferAccount",
@@ -120,7 +122,7 @@
     "redText": false
    },
    "maxlen": 12,
-   "custom": "If filled in, a 12-digit Libro account number"
+   "custom": "Required when AssetTransferOption is Option4, and a 12-digit Libro account number"
   },
   "F11": {
    "name": "NoCertificateOfAppointment",
@@ -129,7 +131,7 @@
    "desc": "Tick: a Certificate of Appointment was not obtained",
    "how": "reviewed",
    "type": "checkbox",
-   "custom": "Either the will case (NoCertificateOfAppointment, NotarizedWillAttached, ProofOfDeathAttached) or the intestate case (LegallyMarriedToDeceased, DiedIntestate, ProofOfDeathAttached2) must be ticked in full"
+   "custom": "One declaration in full, not a mix: either all three trustee boxes (NoCertificateOfAppointment, NotarizedWillAttached, ProofOfDeathAttached) or all three spouse boxes (LegallyMarriedToDeceased, DiedIntestate, ProofOfDeathAttached2)"
   },
   "F12": {
    "name": "NotarizedWillAttached",
@@ -137,7 +139,8 @@
    "label": "A notarized copy of the Deceased’s Will is attached; and",
    "desc": "Tick: notarized copy of the deceased's will attached",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Part of the trustee declaration - see NoCertificateOfAppointment"
   },
   "F13": {
    "name": "ProofOfDeathAttached",
@@ -145,7 +148,8 @@
    "label": "A copy of the Proof of Death Certificate is attached.",
    "desc": "Tick: proof of death certificate attached",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Part of the trustee declaration - see NoCertificateOfAppointment"
   },
   "F14": {
    "name": "LegallyMarriedToDeceased",
@@ -153,7 +157,8 @@
    "label": "The Deceased and I were legally married at the Deceased’s",
    "desc": "Tick: the deceased and I were legally married",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Part of the spouse declaration - see NoCertificateOfAppointment"
   },
   "F15": {
    "name": "DiedIntestate",
@@ -161,7 +166,8 @@
    "label": "The Deceased died intestate, and the estate is equal to",
    "desc": "Tick: the deceased died intestate",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Part of the spouse declaration - see NoCertificateOfAppointment"
   },
   "F16": {
    "name": "ProofOfDeathAttached2",
@@ -169,7 +175,8 @@
    "label": "A copy of the Proof of Death Certificate is attached.",
    "desc": "Tick: proof of death certificate attached (intestate case)",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "custom": "Part of the spouse declaration - see NoCertificateOfAppointment"
   },
   "F17": {
    "name": "DeclaredAtCity",
@@ -267,8 +274,71 @@
  "skip": {
   "B1": "the city line is F17; not a blank"
  },
- "add": [],
- "notes": [
-  "Options #1-#4 (what to do with the assets) have no tick boxes on the form - the choice can only be marked by hand."
- ]
+ "add": [
+  {
+   "page": 0,
+   "rect": [
+    58.5,
+    755.5,
+    70.5,
+    767.5
+   ],
+   "name": "AssetTransferOption",
+   "kind": "entry",
+   "type": "checkbox",
+   "option": "Option1",
+   "label": "Option #1",
+   "desc": "Pick one: Option #1 - Transfer the assets to the estate trustees",
+   "save": true
+  },
+  {
+   "page": 0,
+   "rect": [
+    58.5,
+    811.5,
+    70.5,
+    823.5
+   ],
+   "name": "AssetTransferOption",
+   "kind": "entry",
+   "type": "checkbox",
+   "option": "Option2",
+   "label": "Option #2",
+   "desc": "Pick one: Option #2 - Transfer the assets to estate account #",
+   "save": true
+  },
+  {
+   "page": 0,
+   "rect": [
+    58.5,
+    853.5,
+    70.5,
+    865.5
+   ],
+   "name": "AssetTransferOption",
+   "kind": "entry",
+   "type": "checkbox",
+   "option": "Option3",
+   "label": "Option #3",
+   "desc": "Pick one: Option #3 - Transfer the assets to a testamentary trust account",
+   "save": true
+  },
+  {
+   "page": 0,
+   "rect": [
+    58.5,
+    895.5,
+    70.5,
+    907.5
+   ],
+   "name": "AssetTransferOption",
+   "kind": "entry",
+   "type": "checkbox",
+   "option": "Option4",
+   "label": "Option #4",
+   "desc": "Pick one: Option #4 - Transfer the assets to the surviving spouse",
+   "save": true
+  }
+ ],
+ "notes": []
 }

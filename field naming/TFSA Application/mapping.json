@@ -83,7 +83,8 @@
    "kind": "entry",
    "label": "INVESTMENT INSTRUCTIONS FOR FUNDS",
    "desc": "Investment instructions for funds, line 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F13": {
    "name": "InvestmentInstructions2",
@@ -215,7 +216,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Beneficiary2 field is filled in"
   },
   "F28": {
    "name": "Beneficiary2DateOfBirth",
@@ -229,14 +231,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary2Name is filled in"
   },
   "F30": {
    "name": "Beneficiary2Type",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: designation: SH successor holder, P primary, A alternate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary2Name is filled in"
   },
   "F31": {
    "name": "Beneficiary3Account",
@@ -260,7 +264,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Beneficiary3 field is filled in"
   },
   "F33": {
    "name": "Beneficiary3DateOfBirth",
@@ -274,14 +279,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary3Name is filled in"
   },
   "F35": {
    "name": "Beneficiary3Type",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: designation: SH successor holder, P primary, A alternate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary3Name is filled in"
   },
   "F36": {
    "name": "Beneficiary4Account",
@@ -305,7 +312,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 4: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Beneficiary4 field is filled in"
   },
   "F38": {
    "name": "Beneficiary4DateOfBirth",
@@ -319,14 +327,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 4: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary4Name is filled in"
   },
   "F40": {
    "name": "Beneficiary4Type",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 4: designation: SH successor holder, P primary, A alternate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary4Name is filled in"
   },
   "F41": {
    "name": "Member1SignDate",

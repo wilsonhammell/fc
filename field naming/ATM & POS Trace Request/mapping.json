@@ -98,7 +98,8 @@
    "name": "ATMUnitID",
    "kind": "entry",
    "label": "ATM unit identification number",
-   "desc": "ATM unit identification number"
+   "desc": "ATM unit identification number",
+   "custom": "Required when the ATM section is used (ATMTransactionDate filled in)"
   },
   "F15": {
    "name": "ATMPANNumber",
@@ -110,7 +111,8 @@
    "name": "ATMTracerNumber",
    "kind": "entry",
    "label": "Tracer number for the transaction",
-   "desc": "Tracer number of the ATM transaction"
+   "desc": "Tracer number of the ATM transaction",
+   "custom": "Required when the ATM section is used (ATMTransactionDate filled in)"
   },
   "F17": {
    "name": "POSTransactionDate",
@@ -130,7 +132,8 @@
    "name": "POSUnitID",
    "kind": "entry",
    "label": "ATM unit identification number",
-   "desc": "Terminal identification number (the form says ATM unit under POS)"
+   "desc": "Terminal identification number (the form says ATM unit under POS)",
+   "custom": "Required when the POS section is used (POSTransactionDate filled in)"
   },
   "F20": {
    "name": "POSPANNumber",
@@ -142,7 +145,8 @@
    "name": "POSTracerNumber",
    "kind": "entry",
    "label": "Tracer number for the transaction",
-   "desc": "Tracer number of the POS transaction - the form had no box for it"
+   "desc": "Tracer number of the POS transaction - the form had no box for it",
+   "custom": "Required when the POS section is used (POSTransactionDate filled in)"
   },
   "F22": {
    "name": "AdminDateReceived",

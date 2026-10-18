@@ -226,14 +226,16 @@
    "kind": "entry",
    "label": "Name:",
    "desc": "Agent's signer, name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F47": {
    "name": "AgentSignerTitle",
    "kind": "entry",
    "label": "Title:",
    "desc": "Agent's signer, title",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F48": {
    "name": "REQUESTUSER",
@@ -255,7 +257,8 @@
    "kind": "entry",
    "label": "(the Agent)",
    "desc": "The agent, signing",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B6": {
    "name": "Member1Signature",
@@ -332,14 +335,16 @@
    "kind": "entry",
    "label": "AND TO: (the Agent)",
    "desc": "The agent",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F51": {
    "name": "AgentNoticeAddress1",
    "kind": "entry",
    "label": "",
    "desc": "Agent's address line 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F52": {
    "name": "AgentNoticeAddress2",
@@ -475,14 +480,16 @@
    "kind": "entry",
    "label": "TO: (the Agent)",
    "desc": "The agent",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F70": {
    "name": "AgentNoticeAddress1",
    "kind": "entry",
    "label": "",
    "desc": "Agent's address line 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F71": {
    "name": "AgentNoticeAddress2",

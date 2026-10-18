@@ -223,7 +223,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: FHSA (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal2Type or Withdrawal2Amount is filled in"
   },
   "F30": {
    "name": "Withdrawal2ExpiryDate",
@@ -237,14 +238,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal2FHSASub is filled in"
   },
   "F32": {
    "name": "Withdrawal2Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal2FHSASub is filled in"
   },
   "F33": {
    "name": "Withdrawal2AccruedInterest",
@@ -265,7 +268,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: FHSA (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal3Type or Withdrawal3Amount is filled in"
   },
   "F36": {
    "name": "Withdrawal3ExpiryDate",
@@ -279,14 +283,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal3FHSASub is filled in"
   },
   "F38": {
    "name": "Withdrawal3Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal3FHSASub is filled in"
   },
   "F39": {
    "name": "Withdrawal3AccruedInterest",
@@ -307,7 +313,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: FHSA (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal4Type or Withdrawal4Amount is filled in"
   },
   "F42": {
    "name": "Withdrawal4ExpiryDate",
@@ -321,14 +328,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal4FHSASub is filled in"
   },
   "F44": {
    "name": "Withdrawal4Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal4FHSASub is filled in"
   },
   "F45": {
    "name": "Withdrawal4AccruedInterest",
@@ -436,7 +445,8 @@
    "kind": "entry",
    "label": "Withholding",
    "desc": "Withdrawal row 5: FHSA (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal5Type or Withdrawal5Amount is filled in"
   },
   "B6": {
    "name": "Withdrawal5ExpiryDate",
@@ -450,14 +460,16 @@
    "kind": "entry",
    "label": "taxable withdrawal):",
    "desc": "Withdrawal row 5: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal5FHSASub is filled in"
   },
   "B8": {
    "name": "Withdrawal5Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 5: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal5FHSASub is filled in"
   },
   "B9": {
    "name": "Withdrawal5AccruedInterest",
@@ -553,7 +565,8 @@
    "kind": "entry",
    "label": "Cheque Number",
    "desc": "Cheque number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PaymentMethod is ChequeToFI"
   },
   "B12": {
    "name": "Member1Name",

@@ -153,14 +153,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary2Name is filled in"
   },
   "F19": {
    "name": "Beneficiary2Type",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: designation: SH successor holder, P primary, A alternate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary2Name is filled in"
   },
   "F20": {
    "name": "Beneficiary2SIN",
@@ -174,7 +176,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 2: share, %",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary2Name is filled in"
   },
   "F22": {
    "name": "Beneficiary3Name",
@@ -213,14 +216,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary3Name is filled in"
   },
   "F26": {
    "name": "Beneficiary3Type",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: designation: SH successor holder, P primary, A alternate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary3Name is filled in"
   },
   "F27": {
    "name": "Beneficiary3SIN",
@@ -234,14 +239,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary 3: share, %",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary3Name is filled in"
   },
   "F29": {
    "name": "Minor1Name",
    "kind": "entry",
    "label": "Name of Minor",
    "desc": "Beneficiary who is a minor, 1: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Minor1TrusteeName is filled in (a minor beneficiary has a trustee)"
   },
   "F30": {
    "name": "Minor1TrusteeName",
@@ -270,7 +277,8 @@
     632,
     180,
     644
-   ]
+   ],
+   "custom": "Required when Minor2TrusteeName is filled in (a minor beneficiary has a trustee)"
   },
   "F33": {
    "name": "Minor2TrusteeName",

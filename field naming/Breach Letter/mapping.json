@@ -75,7 +75,8 @@
    "kind": "entry",
    "label": "Attention:",
    "desc": "Attention: the person the letter is addressed to",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B4": {
    "name": "Member1SignDate",
@@ -146,7 +147,8 @@
    "kind": "entry",
    "label": "Year-end",
    "desc": "Year-end, row 2",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when BreachCovenant2 is filled in"
   },
   {
    "page": 0,
@@ -160,7 +162,8 @@
    "kind": "entry",
    "label": "Financial/Reporting Covenant(s)",
    "desc": "Covenant not complied with, row 1",
-   "type": "text"
+   "type": "text",
+   "save": true
   },
   {
    "page": 0,
@@ -174,7 +177,8 @@
    "kind": "entry",
    "label": "Financial/Reporting Covenant(s)",
    "desc": "Covenant, row 2",
-   "type": "text"
+   "type": "text",
+   "custom": "Required when BreachYearEnd2 is filled in"
   },
   {
    "page": 0,
@@ -188,7 +192,8 @@
    "kind": "entry",
    "label": "Please sign ... and return to Libro by",
    "desc": "Date to return the acknowledgment by: 14 days from today (the red note on the form)",
-   "type": "text"
+   "type": "text",
+   "custom": "Required; the form asks for the date 14 days from today, so it can default to that"
   },
   {
    "page": 1,
@@ -304,7 +309,11 @@
   }
  ],
  "notes": [
-  "The form carries author notes printed in red ('details', 'Auto-input date 14 days from today', 'Relationship Manager name and position') - they print on the letter.",
   "'Commitment letter between Libro and the Borrower dated (the Commitment)' asks for a date with no room for it: COMMITMENT_DATE needs a gap in the sentence."
+ ],
+ "erase": [
+  "details",
+  "Auto-input date 14 days from today",
+  "Relationship Manager name and position"
  ]
 }

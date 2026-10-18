@@ -137,84 +137,96 @@
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 2: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Heir2 field is filled in"
   },
   "F19": {
    "name": "Heir2Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 2: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Heir2Name is filled in"
   },
   "F20": {
    "name": "Heir2Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 2: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Heir2Name is filled in"
   },
   "F21": {
    "name": "Heir2SIN",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 2: SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Heir2Name is filled in"
   },
   "F22": {
    "name": "Heir3Name",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 3: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Heir3 field is filled in"
   },
   "F23": {
    "name": "Heir3Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 3: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Heir3Name is filled in"
   },
   "F24": {
    "name": "Heir3Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 3: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Heir3Name is filled in"
   },
   "F25": {
    "name": "Heir3SIN",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 3: SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Heir3Name is filled in"
   },
   "F26": {
    "name": "Heir4Name",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 4: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Heir4 field is filled in"
   },
   "F27": {
    "name": "Heir4Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 4: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Heir4Name is filled in"
   },
   "F28": {
    "name": "Heir4Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 4: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Heir4Name is filled in"
   },
   "F29": {
    "name": "Heir4SIN",
    "kind": "entry",
    "label": "",
    "desc": "Legal heir 4: SIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Heir4Name is filled in"
   },
   "B5": {
    "name": "AssetType.RRSP",
@@ -445,14 +457,16 @@
    "kind": "entry",
    "label": "in and for the Province of",
    "desc": "Commissioner 1: in and for the Province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F53": {
    "name": "Commissioner1AppointmentExpires",
    "kind": "entry",
    "label": "My appointment expires on",
    "desc": "Commissioner 1: appointment expires on",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F54": {
    "name": "Claimant2Name",
@@ -466,21 +480,24 @@
    "kind": "entry",
    "label": "Province of",
    "desc": "Claimant 2: declared before me at",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
   },
   "F56": {
    "name": "Declared2AtProvince",
    "kind": "entry",
    "label": "Province of",
    "desc": "Claimant 2: in the Province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
   },
   "F57": {
    "name": "Declared2Year",
    "kind": "entry",
    "label": "Province of",
    "desc": "Claimant 2: A.D. 20__ (the box sits before \", this\")",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
   },
   "F58": {
    "name": "Claimant2Signature",
@@ -494,28 +511,32 @@
    "kind": "entry",
    "label": "Province",
    "desc": "Claimant 2: this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
   },
   "F60": {
    "name": "Declared2Month",
    "kind": "entry",
    "label": "day of",
    "desc": "Claimant 2: day of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
   },
   "F61": {
    "name": "Commissioner2Province",
    "kind": "entry",
    "label": "in and for the Province of",
    "desc": "Commissioner 2: in and for the Province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
   },
   "F62": {
    "name": "Commissioner2AppointmentExpires",
    "kind": "entry",
    "label": "My appointment expires on",
    "desc": "Commissioner 2: appointment expires on",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
   },
   "B13": {
    "name": "Commissioner1Signature",

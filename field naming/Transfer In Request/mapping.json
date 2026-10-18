@@ -409,14 +409,16 @@
    "kind": "entry",
    "label": "2) Symbol and/or Certificate/Policy Number:",
    "desc": "Investment 2: symbol and/or certificate/policy number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Investment2Amount is filled in"
   },
   "F51": {
    "name": "Investment2Amount",
    "kind": "entry",
    "label": "Amount: $",
    "desc": "Investment 2: amount $",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Investment2Symbol is filled in"
   },
   "F52": {
    "name": "Investment2Cash",

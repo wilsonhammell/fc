@@ -86,7 +86,8 @@
    "kind": "entry",
    "label": "Relationship",
    "desc": "Spouse or common-law partner",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when SPOUSE_FULL_NAME is filled in (a successor holder is named)"
   },
   "F13": {
    "name": "SPOUSE_SIN",
@@ -194,7 +195,8 @@
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 2: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary2Name is filled in"
   },
   "F25": {
    "name": "Beneficiary2DateOfBirth",
@@ -215,7 +217,8 @@
    "kind": "entry",
    "label": "%",
    "desc": "Beneficiary 2: share, %",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary2Name is filled in"
   },
   "F28": {
    "name": "Beneficiary3Name",
@@ -247,7 +250,8 @@
    "kind": "entry",
    "label": "Relationship",
    "desc": "Beneficiary 3: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary3Name is filled in"
   },
   "F31": {
    "name": "Beneficiary3DateOfBirth",
@@ -268,14 +272,16 @@
    "kind": "entry",
    "label": "%",
    "desc": "Beneficiary 3: share, %",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Beneficiary3Name is filled in"
   },
   "F34": {
    "name": "AlternateBeneficiary1Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Alternate beneficiary 1: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other AlternateBeneficiary1 field is filled in"
   },
   "F35": {
    "name": "AlternateBeneficiary1Account",
@@ -299,7 +305,8 @@
    "kind": "entry",
    "label": "Relationship",
    "desc": "Alternate beneficiary 1: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when AlternateBeneficiary1Name is filled in"
   },
   "F37": {
    "name": "AlternateBeneficiary1DateOfBirth",
@@ -320,14 +327,16 @@
    "kind": "entry",
    "label": "%",
    "desc": "Alternate beneficiary 1: share, %",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when AlternateBeneficiary1Name is filled in, and the alternate beneficiaries' shares (AlternateBeneficiary1-3Percent) must add up to 100 when any alternate is named"
   },
   "F40": {
    "name": "AlternateBeneficiary2Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Alternate beneficiary 2: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other AlternateBeneficiary2 field is filled in"
   },
   "F41": {
    "name": "AlternateBeneficiary2Account",
@@ -351,7 +360,8 @@
    "kind": "entry",
    "label": "Relationship",
    "desc": "Alternate beneficiary 2: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when AlternateBeneficiary2Name is filled in"
   },
   "F43": {
    "name": "AlternateBeneficiary2DateOfBirth",
@@ -372,14 +382,16 @@
    "kind": "entry",
    "label": "%",
    "desc": "Alternate beneficiary 2: share, %",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when AlternateBeneficiary2Name is filled in"
   },
   "F46": {
    "name": "AlternateBeneficiary3Name",
    "kind": "entry",
    "label": "Name",
    "desc": "Alternate beneficiary 3: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other AlternateBeneficiary3 field is filled in"
   },
   "F47": {
    "name": "AlternateBeneficiary3Account",
@@ -403,7 +415,8 @@
    "kind": "entry",
    "label": "Relationship",
    "desc": "Alternate beneficiary 3: relationship to the holder",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when AlternateBeneficiary3Name is filled in"
   },
   "F49": {
    "name": "AlternateBeneficiary3DateOfBirth",
@@ -424,7 +437,8 @@
    "kind": "entry",
    "label": "%",
    "desc": "Alternate beneficiary 3: share, %",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when AlternateBeneficiary3Name is filled in"
   },
   "F52": {
    "name": "SignedAtCity",

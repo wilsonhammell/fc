@@ -117,7 +117,8 @@
    "kind": "entry",
    "label": "Refund request: $",
    "desc": "Incorrect amount paid: refund requested",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when TraceReason is IncorrectAmount"
   },
   "F13": {
    "name": "TraceReason",

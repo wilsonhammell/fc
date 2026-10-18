@@ -239,7 +239,8 @@
    "kind": "entry",
    "label": "Sub:",
    "desc": "Select to: sub",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F30": {
    "name": "PayToAccount",
@@ -326,7 +327,8 @@
    "label": "Deposit to account Select from:",
    "desc": "Payment method: deposit to account",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "save": true
   },
   "B13": {
    "name": "StaffSignature",

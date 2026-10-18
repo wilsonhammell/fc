@@ -97,21 +97,24 @@
    "kind": "entry",
    "label": "A Certificate of Appointment",
    "desc": "Will dated: day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F14": {
    "name": "WillDatedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "month",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F15": {
    "name": "WillDatedYear",
    "kind": "entry",
    "label": ",",
    "desc": "year",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F16": {
    "name": "SDB_NUMBER",
@@ -218,7 +221,8 @@
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 1: phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F30": {
    "name": "Witness1Date",
@@ -233,14 +237,16 @@
    "kind": "entry",
    "label": "Dated at",
    "desc": "Estate trustee 2: dated at (city)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 2 signs (Member2Name filled in)"
   },
   "F32": {
    "name": "Trustee2SignedAtProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Estate trustee 2: in the province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 2 signs (Member2Name filled in)"
   },
   "F33": {
    "name": "Member2Name",
@@ -261,28 +267,32 @@
    "kind": "entry",
    "label": "this",
    "desc": "Estate trustee 2: this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 2 signs (Member2Name filled in)"
   },
   "F36": {
    "name": "Trustee2SignedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "Estate trustee 2: month",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 2 signs (Member2Name filled in)"
   },
   "F37": {
    "name": "Trustee2SignedYear",
    "kind": "entry",
    "label": ", 20",
    "desc": "Estate trustee 2: year",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 2 signs (Member2Name filled in)"
   },
   "F38": {
    "name": "Witness2Name",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 2: full name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 2 signs (Member2Name filled in)"
   },
   "F39": {
    "name": "Witness2Signature",
@@ -296,7 +306,8 @@
    "kind": "entry",
    "label": "My address is:",
    "desc": "Witness to estate trustee 2: address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 2 signs (Member2Name filled in)"
   },
   "F41": {
    "name": "Witness2Address2",
@@ -310,28 +321,32 @@
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 2: phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 2 signs (Member2Name filled in)"
   },
   "F43": {
    "name": "Witness2Date",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 2: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 2 signs (Member2Name filled in)"
   },
   "F44": {
    "name": "Trustee3SignedAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Estate trustee 3: dated at (city)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 3 signs (Member3Name filled in)"
   },
   "F45": {
    "name": "Trustee3SignedAtProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Estate trustee 3: in the province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 3 signs (Member3Name filled in)"
   },
   "F46": {
    "name": "Member3Name",
@@ -352,28 +367,32 @@
    "kind": "entry",
    "label": "this",
    "desc": "Estate trustee 3: this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 3 signs (Member3Name filled in)"
   },
   "F49": {
    "name": "Trustee3SignedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "Estate trustee 3: month",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 3 signs (Member3Name filled in)"
   },
   "F50": {
    "name": "Trustee3SignedYear",
    "kind": "entry",
    "label": ", 20",
    "desc": "Estate trustee 3: year",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 3 signs (Member3Name filled in)"
   },
   "F51": {
    "name": "Witness3Name",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 3: full name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 3 signs (Member3Name filled in)"
   },
   "F52": {
    "name": "Witness3Signature",
@@ -387,7 +406,8 @@
    "kind": "entry",
    "label": "My address is:",
    "desc": "Witness to estate trustee 3: address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 3 signs (Member3Name filled in)"
   },
   "F54": {
    "name": "Witness3Address2",
@@ -401,28 +421,32 @@
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 3: phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 3 signs (Member3Name filled in)"
   },
   "F56": {
    "name": "Witness3Date",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 3: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 3 signs (Member3Name filled in)"
   },
   "F57": {
    "name": "Trustee4SignedAtCity",
    "kind": "entry",
    "label": "Dated at",
    "desc": "Estate trustee 4: dated at (city)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
   },
   "F58": {
    "name": "Trustee4SignedAtProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Estate trustee 4: in the province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
   },
   "F59": {
    "name": "Member4Name",
@@ -443,28 +467,32 @@
    "kind": "entry",
    "label": "this",
    "desc": "Estate trustee 4: this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
   },
   "F62": {
    "name": "Trustee4SignedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "Estate trustee 4: month",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
   },
   "F63": {
    "name": "Trustee4SignedYear",
    "kind": "entry",
    "label": ", 20",
    "desc": "Estate trustee 4: year",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
   },
   "F64": {
    "name": "Witness4Name",
    "kind": "entry",
    "label": "My full name is:",
    "desc": "Witness to estate trustee 4: full name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
   },
   "F65": {
    "name": "Witness4Signature",
@@ -478,7 +506,8 @@
    "kind": "entry",
    "label": "My address is:",
    "desc": "Witness to estate trustee 4: address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
   },
   "F67": {
    "name": "Witness4Address2",
@@ -492,14 +521,16 @@
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 4: phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
   },
   "F69": {
    "name": "Witness4Date",
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness to estate trustee 4: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when estate trustee 4 signs (Member4Name filled in)"
   },
   "F70": {
    "name": "PRIMARY_FULL_LEGAL_NAME",

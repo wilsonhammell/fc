@@ -174,7 +174,8 @@
    "kind": "entry",
    "label": "Phone Number:",
    "desc": "Beneficiary's phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F24": {
    "name": "PayoutOption.1A",
@@ -269,7 +270,8 @@
    "kind": "entry",
    "label": "Deposit the funds to my Libro demand account# __________________, Sub#",
    "desc": "Option #3: sub #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PayoutOption.3 is ticked"
   },
   "F36": {
    "name": "PayoutOption.4",
@@ -292,7 +294,8 @@
    "kind": "entry",
    "label": "I,",
    "desc": "The declarant's name (I, ___ make this solemn declaration)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F39": {
    "name": "DeclaredAtCity",
@@ -376,14 +379,16 @@
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness's phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F50": {
    "name": "WitnessDate",
    "kind": "entry",
    "label": "My phone number is: ________________________________",
    "desc": "Date of the witness signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F51": {
    "name": "PRIMARY_FULL_LEGAL_NAME",

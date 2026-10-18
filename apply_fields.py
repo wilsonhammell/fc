@@ -19,6 +19,7 @@ each one is:
 "add" places a field where nothing was found to put one - a value the form
 prints as sample text, a box the layout never drew. "maxlen" on an item is
 the most characters the field takes (12 for a Libro account number).
+"erase" lists printed text that is no part of the form (an author's notes).
 
 Every form then gets the same finish: a text field on a printed line is
 stretched along it, Tab follows reading order, the form opens at 100%, and
@@ -577,6 +578,29 @@ def prune_default_fonts(doc):
     return [n for n, _ in fonts if n not in used]
 
 
+def erase_text(doc, texts):
+    """Printed text that is no part of the form, taken off it: the mapping's
+    "erase" list, matched span by span. Breach Letter carried its author's
+    notes in red ("Auto-input date 14 days from today"), and they printed on
+    every letter. Only text goes - no line, image or field near it. Returns
+    what was found."""
+    found = []
+    for page in doc:
+        hit = False
+        for block in page.get_text("dict")["blocks"]:
+            for line in block.get("lines", []):
+                for span in line["spans"]:
+                    if span["text"].strip() in texts:
+                        r = fitz.Rect(span["bbox"])
+                        page.add_redact_annot(fitz.Rect(r.x0, r.y0 + 1, r.x1, r.y1 - 1))
+                        found.append(span["text"].strip())
+                        hit = True
+        if hit:
+            page.apply_redactions(images=fitz.PDF_REDACT_IMAGE_NONE,
+                                  graphics=fitz.PDF_REDACT_LINE_ART_NONE)
+    return found
+
+
 def set_lengths(doc, lengths):
     """A field's longest value, {name: characters} from the mapping's
     "maxlen" - a Libro account number is 12 digits, as on the business's
@@ -597,6 +621,11 @@ def apply(folder):
     extra, notes = mapping.get("add", []), mapping.get("notes", [])
     doc = fitz.open(os.path.join(FORMS, ctx["form"]))
     said, rows = [], []
+    erase = set(mapping.get("erase", []))
+    if erase:
+        missing = erase - set(erase_text(doc, erase))
+        if missing:
+            said.append(f"text to erase not on the form: {sorted(missing)}")
     by_id = {i["id"]: i for i in ctx["items"]}
 
     for i in ctx["items"]:
@@ -707,6 +736,12 @@ def apply(folder):
             continue
         asked = m.get("type") or ("checkbox" if i["type"] == "tick" else "text")
         add_field(doc[i["page"]], m.get("rect") or i["rect"], m["name"], type_for(m["name"], asked))
+    # and boxes the form never drew a place for: Bond of Indemnity's four
+    # transfer options print with an empty cell beside each, no box
+    for m in extra:
+        if m.get("option"):
+            pick_ones.setdefault(m["name"], []).append({
+                "page": m["page"], "rect": fitz.Rect(m["rect"]), "on": m["option"]})
     for name, opts in pick_ones.items():
         ons = [o["on"] for o in opts]
         if len(opts) < 2 or len(set(ons)) != len(ons):
@@ -719,7 +754,8 @@ def apply(folder):
     restyle_pdf.build_choice_groups(doc, pick_ones, order)
 
     for m in extra:
-        add_field(doc[m["page"]], m["rect"], m["name"], type_for(m["name"], m.get("type", "text")))
+        if not m.get("option"):
+            add_field(doc[m["page"]], m["rect"], m["name"], type_for(m["name"], m.get("type", "text")))
 
     # a tick-any group's boxes, named Group.Option, under their group
     nest_dotted(doc)

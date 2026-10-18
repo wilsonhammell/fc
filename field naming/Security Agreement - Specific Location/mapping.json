@@ -86,14 +86,16 @@
    "kind": "entry",
    "label": "3.09 Real Estate Real property, legally described",
    "desc": "PIN, page 2 (the original shared this box with page 1's PIN)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F17": {
    "name": "PropertyLegalDescription",
    "kind": "entry",
    "label": "3.09 Real Estate Real property, legally described",
    "desc": "Legal description, page 2 (shared with page 1) - CHECK the order: page 2 reads description then PIN",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F18": {
    "name": "Member1Name",

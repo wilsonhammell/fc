@@ -232,11 +232,13 @@
     66,
     418
    ],
-   "name": "RequestDuplicate",
+   "name": "Request",
    "kind": "entry",
    "label": "issue a duplicate to replace the Document",
-   "desc": "Tick: issue a duplicate - the form had no box for it",
-   "type": "checkbox"
+   "desc": "Pick one: issue a duplicate to replace the document",
+   "type": "checkbox",
+   "option": "Duplicate",
+   "save": true
   }
  ],
  "notes": []

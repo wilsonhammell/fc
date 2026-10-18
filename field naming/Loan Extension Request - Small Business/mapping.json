@@ -415,7 +415,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Corporate guarantor (or partnership): its name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any GuarantorCorp signer is filled in"
   },
   "F61": {
    "name": "GuarantorCorp1Signature",
@@ -506,7 +507,8 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Corporate guarantor signer 1: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp1Name is filled in"
   },
   "B9": {
    "name": "GuarantorCorp2Name",
@@ -520,7 +522,8 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Corporate guarantor signer 2: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp2Name is filled in"
   },
   "B11": {
    "name": "GuarantorCorp3Name",
@@ -534,14 +537,16 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Corporate guarantor signer 3: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp3Name is filled in"
   },
   "B13": {
    "name": "GuarantorCorp4Date",
    "kind": "entry",
    "label": "Date",
    "desc": "Corporate guarantor signer 4: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp4Name is filled in"
   },
   "B14": {
    "name": "GuarantorCorp5Name",
@@ -555,7 +560,8 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Corporate guarantor signer 5: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp5Name is filled in"
   },
   "B16": {
    "name": "GuarantorCorp6Name",
@@ -569,14 +575,16 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Corporate guarantor signer 6: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp6Name is filled in"
   },
   "B18": {
    "name": "GuarantorCorp7Date",
    "kind": "entry",
    "label": "Date",
    "desc": "Corporate guarantor signer 7: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp7Name is filled in"
   },
   "B19": {
    "name": "GuarantorCorp8Name",
@@ -590,7 +598,8 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Corporate guarantor signer 8: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp8Name is filled in"
   },
   "B21": {
    "name": "GuarantorCorp9Name",
@@ -604,7 +613,8 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Corporate guarantor signer 9: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when GuarantorCorp9Name is filled in"
   },
   "B23": {
    "name": "REQUESTUSER",
@@ -688,7 +698,8 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Individual guarantor 1: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Guarantor1Name is filled in"
   },
   "B27": {
    "name": "Guarantor2Name",
@@ -702,7 +713,8 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Individual guarantor 2: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Guarantor2Name is filled in"
   },
   "B29": {
    "name": "Guarantor3Name",
@@ -716,7 +728,8 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Individual guarantor 3: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Guarantor3Name is filled in"
   },
   "B31": {
    "name": "Guarantor4Name",
@@ -730,7 +743,8 @@
    "kind": "entry",
    "label": "Date",
    "desc": "Individual guarantor 4: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Guarantor4Name is filled in"
   }
  },
  "drop": [

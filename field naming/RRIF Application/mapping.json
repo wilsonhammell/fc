@@ -396,7 +396,8 @@
    "label": "PAYMENT",
    "desc": "Payment method: deposit to account",
    "how": "reviewed",
-   "type": "checkbox"
+   "type": "checkbox",
+   "save": true
   },
   "F49": {
    "name": "PayFromType",
@@ -427,7 +428,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Select to: sub",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when DepositToAccount is ticked"
   },
   "F54": {
    "name": "PayToAccount",
@@ -442,7 +444,8 @@
    "kind": "entry",
    "label": "INVESTMENT INSTRUCTIONS FOR FUNDS",
    "desc": "Investment instructions for funds, line 1",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F56": {
    "name": "InvestmentInstructions2",

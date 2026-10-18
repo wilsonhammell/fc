@@ -1,0 +1,50 @@
+{
+ "ATM & POS Trace Request": {
+  "status": "changes",
+  "note": "why arent unittid pan num and trace number for each section require custom save validation? im not familiar with finan",
+  "sha1": "070b3cc97b4490e157516b4bb85e7b38798eb090",
+  "at": "2026-10-17T23:45:01.511Z"
+ },
+ "Account Declaration Agreement - Estates": {
+  "status": "approved",
+  "note": "",
+  "sha1": "4b7a98dc7d5b0a42eec80f6e30e8fba52dc69f4d",
+  "at": "2026-10-17T23:34:39.153Z"
+ },
+ "Assignment of Life Ins Policy - Letter": {
+  "status": "approved",
+  "note": "",
+  "sha1": "28f7ee871e4c2990b8f86bbeb147a723d1be5e7c",
+  "at": "2026-10-17T23:36:26.705Z"
+ },
+ "Assignment of Life Insurance Policy": {
+  "status": "changes",
+  "note": "The last 3 fields need should be save validated dont you think? like it would be weird if that part wasnt filled in",
+  "sha1": "7ad1b0561bf981e67e9429c0b903d07c2e600d6b",
+  "at": "2026-10-17T23:39:17.739Z"
+ },
+ "Authorization to Release Financial Info": {
+  "status": "approved",
+  "note": "",
+  "sha1": "59b5bf85c793f06b24c6b4855064b8d1f6f0dfc5",
+  "at": "2026-10-17T23:45:21.512Z"
+ },
+ "Bill Payment Trace": {
+  "status": "changes",
+  "note": "Why isnt refundrequestamount custom sv when incorrect is selected?",
+  "sha1": "31784ea6e12aed6ce54587a325bc5e16447fbd28",
+  "at": "2026-10-17T23:48:05.986Z"
+ },
+ "Bond of Indemnity - Estates": {
+  "status": "changes",
+  "note": "I'm not sure the save logic is correct on the first page lol",
+  "sha1": "951f09929bc5473148aea08dc286d9b5f7243481",
+  "at": "2026-10-17T23:53:35.418Z"
+ },
+ "Breach Letter": {
+  "status": "changes",
+  "note": "Theres red text left on this form, BreachCovenant1 probably also needs save validaiton, and attention and acknowledge date",
+  "sha1": "ede4f47adb45620f213a8eb268130041e7005aff",
+  "at": "2026-10-17T23:57:36.295Z"
+ }
+}

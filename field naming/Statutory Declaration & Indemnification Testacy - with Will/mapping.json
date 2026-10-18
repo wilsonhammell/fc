@@ -201,154 +201,176 @@
    "kind": "entry",
    "label": "Birthdate",
    "desc": "Beneficiary under the will 1: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F27": {
    "name": "WillBeneficiary2Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 2: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other WillBeneficiary2 field is filled in"
   },
   "F28": {
    "name": "WillBeneficiary2Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 2: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary2Name is filled in"
   },
   "F29": {
    "name": "WillBeneficiary2Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 2: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary2Name is filled in"
   },
   "F30": {
    "name": "WillBeneficiary3Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 3: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other WillBeneficiary3 field is filled in"
   },
   "F31": {
    "name": "WillBeneficiary3Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 3: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary3Name is filled in"
   },
   "F32": {
    "name": "WillBeneficiary3Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 3: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary3Name is filled in"
   },
   "F33": {
    "name": "WillBeneficiary4Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 4: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other WillBeneficiary4 field is filled in"
   },
   "F34": {
    "name": "WillBeneficiary4Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 4: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary4Name is filled in"
   },
   "F35": {
    "name": "WillBeneficiary4Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 4: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary4Name is filled in"
   },
   "F36": {
    "name": "WillBeneficiary5Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 5: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other WillBeneficiary5 field is filled in"
   },
   "F37": {
    "name": "WillBeneficiary5Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 5: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary5Name is filled in"
   },
   "F38": {
    "name": "WillBeneficiary5Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 5: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary5Name is filled in"
   },
   "F39": {
    "name": "WillBeneficiary6Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 6: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other WillBeneficiary6 field is filled in"
   },
   "F40": {
    "name": "WillBeneficiary6Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 6: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary6Name is filled in"
   },
   "F41": {
    "name": "WillBeneficiary6Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 6: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary6Name is filled in"
   },
   "F42": {
    "name": "WillBeneficiary7Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 7: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other WillBeneficiary7 field is filled in"
   },
   "F43": {
    "name": "WillBeneficiary7Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 7: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary7Name is filled in"
   },
   "F44": {
    "name": "WillBeneficiary7Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 7: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary7Name is filled in"
   },
   "F45": {
    "name": "WillBeneficiary8Name",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 8: name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other WillBeneficiary8 field is filled in"
   },
   "F46": {
    "name": "WillBeneficiary8Relationship",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 8: relationship to the deceased",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary8Name is filled in"
   },
   "F47": {
    "name": "WillBeneficiary8Birthdate",
    "kind": "entry",
    "label": "",
    "desc": "Beneficiary under the will 8: birthdate",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when WillBeneficiary8Name is filled in"
   },
   "F49": {
    "name": "EstateAssetsValue",
@@ -371,98 +393,112 @@
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 1: Libro folio (member) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option1Claimant1Name is filled in"
   },
   "F52": {
    "name": "Option1Claimant1Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 1: entitlement, % or amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option1Claimant1Name is filled in"
   },
   "F53": {
    "name": "Option1Claimant2Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 2: claimant name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Option1Claimant2 field is filled in"
   },
   "F54": {
    "name": "Option1Claimant2MemberNumber",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 2: Libro folio (member) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option1Claimant2Name is filled in"
   },
   "F55": {
    "name": "Option1Claimant2Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 2: entitlement, % or amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option1Claimant2Name is filled in"
   },
   "F56": {
    "name": "Option1Claimant3Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 3: claimant name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Option1Claimant3 field is filled in"
   },
   "F57": {
    "name": "Option1Claimant3MemberNumber",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 3: Libro folio (member) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option1Claimant3Name is filled in"
   },
   "F58": {
    "name": "Option1Claimant3Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 3: entitlement, % or amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option1Claimant3Name is filled in"
   },
   "F59": {
    "name": "Option1Claimant4Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 4: claimant name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Option1Claimant4 field is filled in"
   },
   "F60": {
    "name": "Option1Claimant4MemberNumber",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 4: Libro folio (member) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option1Claimant4Name is filled in"
   },
   "F61": {
    "name": "Option1Claimant4Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 4: entitlement, % or amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option1Claimant4Name is filled in"
   },
   "F62": {
    "name": "Option1Claimant5Name",
    "kind": "entry",
    "label": "Option #2",
    "desc": "Option #1, claimant 5: claimant name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Option1Claimant5 field is filled in"
   },
   "F63": {
    "name": "Option1Claimant5MemberNumber",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 5: Libro folio (member) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option1Claimant5Name is filled in"
   },
   "F64": {
    "name": "Option1Claimant5Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #1, claimant 5: entitlement, % or amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option1Claimant5Name is filled in"
   },
   "F65": {
    "name": "Option2Claimant1Name",
@@ -477,133 +513,152 @@
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 1: full address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant1Name is filled in"
   },
   "F67": {
    "name": "Option2Claimant1Phone",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 1: phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant1Name is filled in"
   },
   "F68": {
    "name": "Option2Claimant1Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 1: entitlement, % or amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant1Name is filled in"
   },
   "F69": {
    "name": "Option2Claimant2Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 2: claimant name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Option2Claimant2 field is filled in"
   },
   "F70": {
    "name": "Option2Claimant2Address",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 2: full address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant2Name is filled in"
   },
   "F71": {
    "name": "Option2Claimant2Phone",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 2: phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant2Name is filled in"
   },
   "F72": {
    "name": "Option2Claimant2Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 2: entitlement, % or amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant2Name is filled in"
   },
   "F73": {
    "name": "Option2Claimant3Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 3: claimant name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Option2Claimant3 field is filled in"
   },
   "F74": {
    "name": "Option2Claimant3Address",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 3: full address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant3Name is filled in"
   },
   "F75": {
    "name": "Option2Claimant3Phone",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 3: phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant3Name is filled in"
   },
   "F76": {
    "name": "Option2Claimant3Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 3: entitlement, % or amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant3Name is filled in"
   },
   "F77": {
    "name": "Option2Claimant4Name",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 4: claimant name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Option2Claimant4 field is filled in"
   },
   "F78": {
    "name": "Option2Claimant4Address",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 4: full address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant4Name is filled in"
   },
   "F79": {
    "name": "Option2Claimant4Phone",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 4: phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant4Name is filled in"
   },
   "F80": {
    "name": "Option2Claimant4Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 4: entitlement, % or amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant4Name is filled in"
   },
   "F81": {
    "name": "Option2Claimant5Name",
    "kind": "entry",
    "label": "Additional Instructions:",
    "desc": "Option #2, claimant 5: claimant name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Option2Claimant5 field is filled in"
   },
   "F82": {
    "name": "Option2Claimant5Address",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 5: full address",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant5Name is filled in"
   },
   "F83": {
    "name": "Option2Claimant5Phone",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 5: phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant5Name is filled in"
   },
   "F84": {
    "name": "Option2Claimant5Entitlement",
    "kind": "entry",
    "label": "",
    "desc": "Option #2, claimant 5: entitlement, % or amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Option2Claimant5Name is filled in"
   },
   "F85": {
    "name": "AdditionalInstructions",
@@ -714,21 +769,24 @@
    "kind": "entry",
    "label": "DECLARED BEFORE ME at",
    "desc": "Declaration 2: declared before me at",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Declared2 field is filled in (a second estate trustee declares)"
   },
   "F100": {
    "name": "Declared2AtProvince",
    "kind": "entry",
    "label": "in the Province of",
    "desc": "Declaration 2: in the Province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Declared2 field is filled in (a second estate trustee declares)"
   },
   "F101": {
    "name": "Declared2Day",
    "kind": "entry",
    "label": ", this",
    "desc": "Declaration 2: this ___ day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Declared2 field is filled in (a second estate trustee declares)"
   },
   "F102": {
    "name": "Trustee6Signature",
@@ -742,14 +800,16 @@
    "kind": "entry",
    "label": "of",
    "desc": "Declaration 2: of ___ (month)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Declared2 field is filled in (a second estate trustee declares)"
   },
   "F104": {
    "name": "Declared2Year",
    "kind": "entry",
    "label": ", A.D. 20",
    "desc": "Declaration 2: A.D. 20__",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when any other Declared2 field is filled in (a second estate trustee declares)"
   },
   "F105": {
    "name": "Trustee7Signature",
@@ -763,7 +823,8 @@
    "kind": "entry",
    "label": "Province of",
    "desc": "Commissioner for oaths / notary: province of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F107": {
    "name": "Trustee8Signature",
@@ -777,7 +838,8 @@
    "kind": "entry",
    "label": "My appointment expires on",
    "desc": "Commissioner's appointment expires on",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F109": {
    "name": "PRIMARY_FULL_LEGAL_NAME",

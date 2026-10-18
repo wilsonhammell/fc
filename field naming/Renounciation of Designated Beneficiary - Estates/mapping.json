@@ -69,7 +69,8 @@
    "kind": "entry",
    "label": "Date at ________________________________",
    "desc": "Name of designated beneficiary, at the signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F10": {
    "name": "SignedDay",
@@ -221,7 +222,8 @@
    "kind": "entry",
    "label": "My phone number is:",
    "desc": "Witness's phone number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F30": {
    "name": "WitnessSignature",
@@ -235,7 +237,8 @@
    "kind": "entry",
    "label": "My phone number is: _____________________________",
    "desc": "Date of the witness signature",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
  "drop": [],

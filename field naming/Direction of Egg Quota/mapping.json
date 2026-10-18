@@ -139,14 +139,16 @@
    "kind": "entry",
    "label": "Dated at",
    "desc": "Acknowledgement by the marketing board: dated at (city)",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B6": {
    "name": "BoardAckDate",
    "kind": "entry",
    "label": ", Ontario, this",
    "desc": "Acknowledgement: date",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B7": {
    "name": "BoardAckSignature",

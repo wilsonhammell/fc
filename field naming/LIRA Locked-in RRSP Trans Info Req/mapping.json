@@ -182,7 +182,8 @@
    "kind": "entry",
    "label": "______",
    "desc": "Telephone no. of the contact person",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   }
  },
  "drop": [],

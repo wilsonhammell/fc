@@ -256,7 +256,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: RRIF (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal2Type or Withdrawal2Amount is filled in"
   },
   "F34": {
    "name": "Withdrawal2ExpiryDate",
@@ -270,14 +271,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal2RRIFSub is filled in"
   },
   "F36": {
    "name": "Withdrawal2Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 2: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal2RRIFSub is filled in"
   },
   "F37": {
    "name": "Withdrawal2AccruedInterest",
@@ -298,7 +301,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: RRIF (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal3Type or Withdrawal3Amount is filled in"
   },
   "F40": {
    "name": "Withdrawal3ExpiryDate",
@@ -312,14 +316,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal3RRIFSub is filled in"
   },
   "F42": {
    "name": "Withdrawal3Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 3: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal3RRIFSub is filled in"
   },
   "F43": {
    "name": "Withdrawal3AccruedInterest",
@@ -340,7 +346,8 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: RRIF (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal4Type or Withdrawal4Amount is filled in"
   },
   "F46": {
    "name": "Withdrawal4ExpiryDate",
@@ -354,14 +361,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal4RRIFSub is filled in"
   },
   "F48": {
    "name": "Withdrawal4Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 4: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal4RRIFSub is filled in"
   },
   "F49": {
    "name": "Withdrawal4AccruedInterest",
@@ -469,7 +478,8 @@
    "kind": "entry",
    "label": "Withholding",
    "desc": "Withdrawal row 5: RRIF (sub) #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal5Type or Withdrawal5Amount is filled in"
   },
   "B7": {
    "name": "Withdrawal5ExpiryDate",
@@ -483,14 +493,16 @@
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 5: A principal + interest / S specified amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal5RRIFSub is filled in"
   },
   "B9": {
    "name": "Withdrawal5Amount",
    "kind": "entry",
    "label": "",
    "desc": "Withdrawal row 5: withdrawal/transfer amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when Withdrawal5RRIFSub is filled in"
   },
   "B10": {
    "name": "Withdrawal5AccruedInterest",
@@ -592,7 +604,8 @@
    "kind": "entry",
    "label": "Cheque Number",
    "desc": "Cheque number",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PaymentMethod is ChequeToFI"
   },
   "B14": {
    "name": "REQUESTUSER",

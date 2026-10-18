@@ -73,21 +73,24 @@
    "kind": "entry",
    "label": "Nothing was removed except the Original Will dated:",
    "desc": "Original will dated: day",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F11": {
    "name": "WillDatedMonth",
    "kind": "entry",
    "label": "day of",
    "desc": "month",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F12": {
    "name": "WillDatedYear",
    "kind": "entry",
    "label": ", 20",
    "desc": "year",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F13": {
    "name": "Member1Name",

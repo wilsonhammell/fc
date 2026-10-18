@@ -158,7 +158,8 @@
    "kind": "entry",
    "label": "For the reason of:",
    "desc": "For the reason of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F22": {
    "name": "PRIMARY_SIGN_DATE",

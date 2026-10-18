@@ -117,7 +117,8 @@
    "kind": "entry",
    "label": "For the reason of:",
    "desc": "For the reason of",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F17": {
    "name": "Member1SignDate",
@@ -202,7 +203,8 @@
    "kind": "entry",
    "label": "Amount",
    "desc": "Change: amount",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "When PACChange is ticked, at least one of PACChangeAmount, PACChangeDueDate, PACChangeFrequency, or PACChangeFIInfo with its account details"
   },
   "F28": {
    "name": "PACChangeDueDate",
@@ -247,21 +249,24 @@
    "kind": "entry",
    "label": "Account Name",
    "desc": "Change: account name",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PACChangeFIInfo is ticked"
   },
   "F34": {
    "name": "PACChangeBenefitType",
    "kind": "entry",
    "label": "Account Benefit Type",
    "desc": "Change: account benefit type",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PACChangeFIInfo is ticked"
   },
   "F35": {
    "name": "PACChangeSub",
    "kind": "entry",
    "label": "Account Sub #",
    "desc": "Change: account sub #",
-   "how": "reviewed"
+   "how": "reviewed",
+   "custom": "Required when PACChangeFIInfo is ticked"
   },
   "F36": {
    "name": "Member1Signature",

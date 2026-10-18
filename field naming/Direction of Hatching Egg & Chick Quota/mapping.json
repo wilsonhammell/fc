@@ -80,14 +80,16 @@
    "kind": "entry",
    "label": "held for hatching egg production at time of acknowledgement by",
    "desc": "Board: units held for hatching egg production at acknowledgement",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "F12": {
    "name": "BoardBreederGrowingUnits",
    "kind": "entry",
    "label": "units held for breeder growing at time of acknowledgement by",
    "desc": "Board: units held for breeder growing (20 week grower) at acknowledgement",
-   "how": "reviewed"
+   "how": "reviewed",
+   "save": true
   },
   "B2": {
    "name": "Member1SignDate",

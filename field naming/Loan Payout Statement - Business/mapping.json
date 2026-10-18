@@ -166,7 +166,8 @@
    "kind": "entry",
    "label": "To: ___, Barrister and Solicitor",
    "desc": "The member's solicitor - only 30pt of room before ', Barrister and Solicitor'",
-   "type": "text"
+   "type": "text",
+   "save": true
   },
   {
    "page": 0,
@@ -180,7 +181,8 @@
    "kind": "entry",
    "label": "Email:",
    "desc": "Solicitor's email",
-   "type": "text"
+   "type": "text",
+   "save": true
   },
   {
    "page": 0,
@@ -194,7 +196,8 @@
    "kind": "entry",
    "label": "Municipal Address/Legal Description of Property",
    "desc": "Address or legal description of the mortgaged property",
-   "type": "text"
+   "type": "text",
+   "save": true
   },
   {
    "page": 0,
