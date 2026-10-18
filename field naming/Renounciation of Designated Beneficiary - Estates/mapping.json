@@ -104,20 +104,6 @@
    "how": "reviewed",
    "save": true
   },
-  "F15": {
-   "name": "WitnessAddress",
-   "kind": "entry",
-   "label": "My address",
-   "desc": "Witness's address (one block over the form's lines)",
-   "how": "reviewed",
-   "save": true,
-   "rect": [
-    82.1,
-    666.1,
-    329.6,
-    690.5
-   ]
-  },
   "F16": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
@@ -240,11 +226,25 @@
    "desc": "Date of the witness signature",
    "how": "reviewed",
    "save": true
+  },
+  "F14": {
+   "name": "WitnessAddress2",
+   "kind": "entry",
+   "label": "My phone number is: _____________________________",
+   "desc": "Witness's address, continued",
+   "how": "reviewed",
+   "save": true
+  },
+  "F15": {
+   "name": "WitnessAddress",
+   "kind": "entry",
+   "label": "My address",
+   "desc": "Witness's address",
+   "how": "reviewed",
+   "save": true
   }
  },
- "drop": [
-  "F14"
- ],
+ "drop": [],
  "skip": {
   "B1": "the 20__ of the year - F12 covers it",
   "B2": "not a blank",

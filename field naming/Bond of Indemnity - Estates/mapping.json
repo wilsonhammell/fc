@@ -217,20 +217,6 @@
    "how": "reviewed",
    "save": true
   },
-  "F22": {
-   "name": "DeclarantAddress",
-   "kind": "entry",
-   "label": "Declarant Address:",
-   "desc": "Declarant's address (one block over the form's lines)",
-   "how": "reviewed",
-   "save": true,
-   "rect": [
-    53.3,
-    661.2,
-    288.0,
-    703.0
-   ]
-  },
   "F25": {
    "name": "REQUESTUSER",
    "kind": "db",
@@ -261,12 +247,32 @@
    "desc": "A.D. 20__",
    "how": "reviewed",
    "save": true
+  },
+  "F22": {
+   "name": "DeclarantAddress1",
+   "kind": "entry",
+   "label": "Declarant Address:",
+   "desc": "Declarant's address line 1",
+   "how": "reviewed",
+   "save": true
+  },
+  "F23": {
+   "name": "DeclarantAddress2",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 2",
+   "how": "reviewed",
+   "save": true
+  },
+  "F24": {
+   "name": "DeclarantAddress3",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 3",
+   "how": "reviewed"
   }
  },
- "drop": [
-  "F23",
-  "F24"
- ],
+ "drop": [],
  "skip": {
   "B1": "the city line is F17; not a blank"
  },

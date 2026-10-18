@@ -60,20 +60,6 @@
     304.5
    ]
   },
-  "F14": {
-   "name": "AgentNoticeAddress",
-   "kind": "entry",
-   "label": "For the Agent:",
-   "desc": "Agent's address for notices (one block over the form's lines)",
-   "how": "reviewed",
-   "save": true,
-   "rect": [
-    210.2,
-    437.2,
-    425.0,
-    487.6
-   ]
-  },
   "F17": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
    "kind": "db",
@@ -332,20 +318,6 @@
    "how": "reviewed",
    "save": true
   },
-  "F51": {
-   "name": "AgentNoticeAddress",
-   "kind": "entry",
-   "label": "",
-   "desc": "Agent's address (one block over the form's lines)",
-   "how": "reviewed",
-   "save": true,
-   "rect": [
-    142.4,
-    158.2,
-    395.3,
-    190.6
-   ]
-  },
   "F53": {
    "name": "Member1SignDate",
    "kind": "special",
@@ -475,20 +447,6 @@
    "desc": "The agent",
    "how": "reviewed",
    "save": true
-  },
-  "F70": {
-   "name": "AgentNoticeAddress",
-   "kind": "entry",
-   "label": "",
-   "desc": "Agent's address (one block over the form's lines)",
-   "how": "reviewed",
-   "save": true,
-   "rect": [
-    142.4,
-    235.0,
-    395.3,
-    267.0
-   ]
   },
   "F72": {
    "name": "PRIMARY_FULL_LEGAL_NAME",
@@ -751,6 +709,61 @@
    "label": "Date",
    "desc": "Staff date",
    "how": "reviewed"
+  },
+  "F14": {
+   "name": "AgentNoticeAddress1",
+   "kind": "entry",
+   "label": "For the Agent:",
+   "desc": "Agent's address for notices, line 1",
+   "how": "reviewed",
+   "save": true
+  },
+  "F15": {
+   "name": "AgentNoticeAddress2",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 2",
+   "how": "reviewed",
+   "save": true
+  },
+  "F16": {
+   "name": "AgentNoticeAddress3",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 3",
+   "how": "reviewed"
+  },
+  "F51": {
+   "name": "AgentNoticeAddress1",
+   "kind": "entry",
+   "label": "",
+   "desc": "Agent's address line 1",
+   "how": "reviewed",
+   "save": true
+  },
+  "F52": {
+   "name": "AgentNoticeAddress2",
+   "kind": "entry",
+   "label": "",
+   "desc": "Agent's address line 2",
+   "how": "reviewed",
+   "save": true
+  },
+  "F70": {
+   "name": "AgentNoticeAddress1",
+   "kind": "entry",
+   "label": "",
+   "desc": "Agent's address line 1",
+   "how": "reviewed",
+   "save": true
+  },
+  "F71": {
+   "name": "AgentNoticeAddress2",
+   "kind": "entry",
+   "label": "",
+   "desc": "Agent's address line 2",
+   "how": "reviewed",
+   "save": true
   }
  },
  "drop": [
@@ -809,11 +822,7 @@
   "F91",
   "F92",
   "F94",
-  "F95",
-  "F15",
-  "F16",
-  "F52",
-  "F71"
+  "F95"
  ],
  "skip": {
   "B1": "Borrower initials - an initials marker in the designer, not a field",

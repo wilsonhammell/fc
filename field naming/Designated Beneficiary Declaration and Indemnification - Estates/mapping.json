@@ -147,20 +147,6 @@
    "how": "reviewed",
    "save": true
   },
-  "F20": {
-   "name": "BeneficiaryAddress",
-   "kind": "entry",
-   "label": "Address:",
-   "desc": "Beneficiary's permanent address (one block over the form's lines)",
-   "how": "reviewed",
-   "save": true,
-   "rect": [
-    175.4,
-    526.8,
-    556.4,
-    604.7
-   ]
-  },
   "F23": {
    "name": "BeneficiaryPhone",
    "kind": "entry",
@@ -353,20 +339,6 @@
    "how": "reviewed",
    "save": true
   },
-  "F47": {
-   "name": "WitnessAddress",
-   "kind": "entry",
-   "label": "My address is:",
-   "desc": "Witness's address (one block over the form's lines)",
-   "how": "reviewed",
-   "save": true,
-   "rect": [
-    95.4,
-    499.1,
-    370.4,
-    525.6
-   ]
-  },
   "F49": {
    "name": "WitnessPhone",
    "kind": "entry",
@@ -411,13 +383,48 @@
    "label": "",
    "desc": "Staff member's email",
    "how": "reviewed"
+  },
+  "F20": {
+   "name": "BeneficiaryAddress1",
+   "kind": "entry",
+   "label": "Address:",
+   "desc": "Beneficiary's permanent address, line 1",
+   "how": "reviewed",
+   "save": true
+  },
+  "F21": {
+   "name": "BeneficiaryAddress2",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 2",
+   "how": "reviewed",
+   "save": true
+  },
+  "F22": {
+   "name": "BeneficiaryAddress3",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 3",
+   "how": "reviewed"
+  },
+  "F47": {
+   "name": "WitnessAddress",
+   "kind": "entry",
+   "label": "My address is:",
+   "desc": "Witness's address, line 1",
+   "how": "reviewed",
+   "save": true
+  },
+  "F48": {
+   "name": "WitnessAddress2",
+   "kind": "entry",
+   "label": "My phone number is: ________________________________",
+   "desc": "Witness's address, line 2",
+   "how": "reviewed",
+   "save": true
   }
  },
- "drop": [
-  "F21",
-  "F22",
-  "F48"
- ],
+ "drop": [],
  "skip": {
   "B1": "not a blank - the witness statement wording"
  },
