@@ -51,7 +51,12 @@ Libro forms - final selection
     for every field marked Yes* (Custom Save Validation) - its note in the
     Logic column says what the rule is - and the form hooks.
     Hypothecation Agreement is one cleaned form and three production forms
-    (Bonds, Mutual Funds, Stocks), so it has three folders here.
+    (Bonds, Mutual Funds, Stocks), so it has three folders here, each with
+    the shared pages 1-4 and its own signing page.
+    Character limits (a Libro account number is 12 digits) are written as
+    the PDF's MaxLen and hold in any viewer. The designer shows and edits
+    them in its Format section from form_requirements commit ce0921b on; an
+    older designer build keeps them but does not show them.
 
 not in the form table\\
     Forms with no row in Combined Form Requirements: the workbook lists them
@@ -71,7 +76,8 @@ not in the form table\\
 
 designer settings.csv
     every field's Load / Save / Custom Save Validation, error message name,
-    format and note, form by form - what the designer output carries
+    format, character limit and note, form by form - what the designer
+    output carries
 form table matches.csv
     which workbook row each form was matched to
 reviewer comments.csv
