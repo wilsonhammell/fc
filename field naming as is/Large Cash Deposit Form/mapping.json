@@ -1,0 +1,238 @@
+{
+ "as_is": true,
+ "items": {
+  "F8": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "LCD Form",
+   "desc": "Member's full legal name, in the email subject line"
+  },
+  "F9": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "LCD Form",
+   "desc": "Member number, in the email subject line"
+  },
+  "F10": {
+   "name": "DepositType",
+   "kind": "entry",
+   "label": "Large Cash Deposit Type",
+   "desc": "Large cash deposit type (dropdown)",
+   "custom": "Required: a deposit type chosen, not the 'Select ...' placeholder"
+  },
+  "F11": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Account Name",
+   "desc": "Account (owner) name"
+  },
+  "F12": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Account Number",
+   "desc": "Account number - the merge tag was the member number (Customer_Number)"
+  },
+  "F18": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch of Account",
+   "desc": "Branch of the account"
+  },
+  "F13": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Owner's address, line 1"
+  },
+  "F17": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Owner's address, line 2"
+  },
+  "F19": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Owner's address, line 3"
+  },
+  "F14": {
+   "name": "PRIMARY_HOME_PHONE",
+   "kind": "db",
+   "label": "Telephone",
+   "desc": "Owner's telephone"
+  },
+  "F20": {
+   "name": "PRIMARY_BUSINESS_NUMBER",
+   "kind": "candidate",
+   "label": "Incorporation Number (if applicable)",
+   "desc": "Incorporation number, if a corporation (the old datafeed's PRIMARY_BUSINESS_NUMBER)"
+  },
+  "F15": {
+   "name": "DepositDate",
+   "kind": "entry",
+   "label": "Date of Deposit",
+   "desc": "Date of deposit",
+   "save": true
+  },
+  "F21": {
+   "name": "DepositAmount",
+   "kind": "entry",
+   "label": "Amount of Deposit(s): $",
+   "desc": "Amount of the deposit(s), $",
+   "save": true
+  },
+  "F16": {
+   "name": "SourceOfFunds",
+   "kind": "entry",
+   "label": "Source of Funds (if known)",
+   "desc": "Source of funds, if known (dropdown)"
+  },
+  "F1": {
+   "name": "SourceOfFundsOtherDetail",
+   "kind": "entry",
+   "label": "If Source of Funds is Other, provide description",
+   "desc": "Source of funds when Other",
+   "custom": "Required when SourceOfFunds is 'Other'"
+  },
+  "F22": {
+   "name": "SourceInfoObtained",
+   "kind": "entry",
+   "label": "Was info about the source of cash obtained?",
+   "desc": "Was information about the source (person/entity) of the cash obtained (No/Yes)",
+   "save": true
+  },
+  "F23": {
+   "name": "TransactionPurpose",
+   "kind": "entry",
+   "label": "Purpose of Transaction (if known)",
+   "desc": "Purpose of the transaction, if known (dropdown)"
+  },
+  "F2": {
+   "name": "TransactionPurposeOtherDetail",
+   "kind": "entry",
+   "label": "If Purpose is Other, provide description",
+   "desc": "Purpose when Other",
+   "custom": "Required when TransactionPurpose is 'Other'"
+  },
+  "F24": {
+   "name": "DepositorName",
+   "kind": "entry",
+   "label": "Depositor's Name",
+   "desc": "Depositor's name",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits)"
+  },
+  "F25": {
+   "name": "DepositorRelationship",
+   "kind": "entry",
+   "label": "Relationship Depositor has to the Account",
+   "desc": "Depositor's relationship to the account (dropdown)",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits); a relationship chosen, not the 'Select ...' placeholder"
+  },
+  "F3": {
+   "name": "DepositorRelationshipOtherDetail",
+   "kind": "entry",
+   "label": "If Other, provide description",
+   "desc": "Relationship when Other",
+   "custom": "Required when DepositorRelationship is 'Other'"
+  },
+  "F26": {
+   "name": "DepositorType",
+   "kind": "entry",
+   "label": "Depositor Type",
+   "desc": "Depositor type: Conductor or On Behalf Of (dropdown)",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits)"
+  },
+  "F4": {
+   "name": "DepositorOccupation",
+   "kind": "entry",
+   "label": "Occupation",
+   "desc": "Depositor's occupation",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits)"
+  },
+  "F5": {
+   "name": "DepositorEmployer",
+   "kind": "entry",
+   "label": "Employer",
+   "desc": "Depositor's employer",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits)"
+  },
+  "F27": {
+   "name": "DepositorIDType",
+   "kind": "entry",
+   "label": "I.D. Type",
+   "desc": "Depositor's ID type (dropdown)",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits); an ID type chosen, not the 'Select ...' placeholder"
+  },
+  "F6": {
+   "name": "DepositorIDNumber",
+   "kind": "entry",
+   "label": "I.D Number",
+   "desc": "Depositor's ID number",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits)"
+  },
+  "F7": {
+   "name": "DepositorIDDescription",
+   "kind": "entry",
+   "label": "I.D Description (if applicable)",
+   "desc": "Depositor's ID description, if applicable"
+  },
+  "F28": {
+   "name": "DepositorDateOfBirth",
+   "kind": "entry",
+   "label": "Date of Birth",
+   "desc": "Depositor's date of birth",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits)"
+  },
+  "F29": {
+   "name": "DepositorStreetAddress",
+   "kind": "entry",
+   "label": "Street Address (No P.O. Box.)",
+   "desc": "Depositor's street address, no P.O. box",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits)"
+  },
+  "F30": {
+   "name": "DepositorCity",
+   "kind": "entry",
+   "label": "City",
+   "desc": "Depositor's city",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits)"
+  },
+  "F31": {
+   "name": "DepositorPostalCode",
+   "kind": "entry",
+   "label": "Postal Code",
+   "desc": "Depositor's postal code",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits)"
+  },
+  "F32": {
+   "name": "DepositorTelephone",
+   "kind": "entry",
+   "label": "Telephone",
+   "desc": "Depositor's telephone",
+   "custom": "Required unless DepositType is 'ATM Cash Deposit' (the depositor section is not for ATM, night or quick-drop deposits)"
+  },
+  "F33": {
+   "name": "DepositorEmail",
+   "kind": "entry",
+   "label": "Email",
+   "desc": "Depositor's email"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "taken as is: the form prints this blank with no field, and none is added",
+  "B2": "taken as is: the form prints this blank with no field, and none is added",
+  "B3": "taken as is: the form prints this blank with no field, and none is added",
+  "B4": "taken as is: the form prints this blank with no field, and none is added",
+  "B5": "taken as is: the form prints this blank with no field, and none is added",
+  "B6": "taken as is: the form prints this blank with no field, and none is added",
+  "B7": "taken as is: the form prints this blank with no field, and none is added",
+  "B8": "taken as is: the form prints this blank with no field, and none is added",
+  "B9": "taken as is: the form prints this blank with no field, and none is added",
+  "B10": "taken as is: the form prints this blank with no field, and none is added",
+  "B11": "taken as is: the form prints this blank with no field, and none is added",
+  "B12": "taken as is: the form prints this blank with no field, and none is added"
+ },
+ "notes": []
+}

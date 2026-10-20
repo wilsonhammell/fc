@@ -1,0 +1,140 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Member number"
+  },
+  "F3": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name(s):",
+   "desc": "Member's full name"
+  },
+  "F4": {
+   "name": "JointMember2Name",
+   "kind": "special",
+   "label": "Name(s):",
+   "desc": "Joint owner 2"
+  },
+  "F5": {
+   "name": "ServiceRequestDetail",
+   "kind": "entry",
+   "label": "co-signers and guarantors sign below as applicable.",
+   "desc": "Service and/or change request, in words",
+   "save": true
+  },
+  "F6": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "Name(s):",
+   "desc": "Joint owner 1"
+  },
+  "F7": {
+   "name": "JointMember3Name",
+   "kind": "special",
+   "label": "Name(s):",
+   "desc": "Joint owner 3"
+  },
+  "F8": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1"
+  },
+  "F9": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1"
+  },
+  "F10": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2"
+  },
+  "F11": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2"
+  },
+  "F12": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3"
+  },
+  "F13": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3"
+  },
+  "F14": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4"
+  },
+  "F15": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4"
+  },
+  "F16": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1"
+  },
+  "F17": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2"
+  },
+  "F18": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3"
+  },
+  "F19": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4"
+  },
+  "F20": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "signing"
+  },
+  "F21": {
+   "name": "AdminApprovalDate",
+   "kind": "entry",
+   "label": "Date:",
+   "desc": "Administration use only: date approved"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "taken as is: the form prints this blank with no field, and none is added",
+  "B2": "taken as is: the form prints this blank with no field, and none is added",
+  "B3": "taken as is: the form prints this blank with no field, and none is added"
+ },
+ "notes": []
+}

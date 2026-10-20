@@ -1,0 +1,47 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH",
+   "kind": "db",
+   "label": "Account Number: 828-",
+   "desc": "Beneficiary account: branch transit (828-transit-member). CHECK: is the transit number the branch number"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Account Number",
+   "desc": "Beneficiary account: member number"
+  },
+  "F3": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "828 -",
+   "desc": "Beneficiary (member) name"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address:",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "save": true
+  },
+  "F5": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2"
+  },
+  "F6": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "taken as is: the form prints this blank with no field, and none is added"
+ },
+ "notes": []
+}

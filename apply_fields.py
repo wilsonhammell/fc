@@ -572,7 +572,7 @@ def prune_default_fonts(doc):
     for x in range(1, doc.xref_length()):
         try:
             das.append(doc.xref_get_key(x, "DA"))
-        except RuntimeError:            # an xref entry with no object behind it
+        except Exception:               # an xref entry with no object behind it
             continue
     for kind, da in das:
         if kind == "string":
@@ -725,8 +725,12 @@ def apply(folder):
     # blanks looked at and judged not to be a place for a value, with why
     skip = mapping.get("skip", {})
     extra, notes = mapping.get("add", []), mapping.get("notes", [])
-    doc = fitz.open(os.path.join(FORMS, ctx["form"]))
+    doc = fitz.open(ctx.get("source") or os.path.join(FORMS, ctx["form"]))
     said, rows = [], []
+    if mapping.get("as_is"):
+        # the restyle makes every radio button a check box, and a form taken
+        # as is never went through it: the same, every box where it was
+        restyle_pdf.radios_to_checkboxes(doc)
     erase = set(mapping.get("erase", []))
     if erase:
         missing = erase - set(erase_text(doc, erase))
@@ -881,12 +885,15 @@ def apply(folder):
     if unlisted:
         said.append(f"{unlisted} field(s) were missing from the form's field list - put back "
                     f"(the form at 10pt had them unlisted)")
-    clipped = clip_to_cells(doc)
-    if clipped:
-        print(f"   ({clipped} field(s) cut back to the cell wall they ran past)")
-    grown = fit_to_lines(doc)
-    if grown:
-        print(f"   ({grown} field(s) stretched along their printed line)")
+    # a form taken as is ("dont restructure") keeps every field where and as
+    # big as its makers drew it: named and coded, nothing moved
+    if not mapping.get("as_is"):
+        clipped = clip_to_cells(doc)
+        if clipped:
+            print(f"   ({clipped} field(s) cut back to the cell wall they ran past)")
+        grown = fit_to_lines(doc)
+        if grown:
+            print(f"   ({grown} field(s) stretched along their printed line)")
     if mapping.get("erase_under_fields"):
         gone = erase_under_fields(doc)
         if gone:
@@ -1043,6 +1050,23 @@ def old_datafeed():
         return {ln.split("\t")[0].strip() for ln in fh if ln.strip()}
 
 
+def form_dirs(root):
+    """[(stem, folder)] of every named form the lists cover. Under the main
+    root, the forms taken as is ("field naming as is", the "dont restructure"
+    copies) stand in for the restyled copies they supersede (its
+    supersedes.json), so each production form is counted once."""
+    out = [(s, os.path.join(root, s)) for s in sorted(os.listdir(root))
+           if os.path.isfile(os.path.join(root, s, "fields.csv"))]
+    as_is = os.path.join(os.path.dirname(os.path.abspath(root)), "field naming as is")
+    if os.path.abspath(root) == os.path.abspath(os.path.join(HERE, "field naming")) and os.path.isdir(as_is):
+        sup = json.load(open(os.path.join(as_is, "supersedes.json"), encoding="utf-8"))             if os.path.exists(os.path.join(as_is, "supersedes.json")) else {}
+        gone = {v for v in sup.values() if v}
+        out = [(s, f) for s, f in out if s not in gone]
+        out += [(s, os.path.join(as_is, s)) for s in sorted(os.listdir(as_is))
+                if os.path.isfile(os.path.join(as_is, s, "fields.csv"))]
+    return out
+
+
 def gather(root):
     """One list across every form named so far, for the people who build the
     datafeed: each candidate value once, with what it is and every form and
@@ -1050,10 +1074,8 @@ def gather(root):
     confirm. Read back from each form's fields.csv, so it is the same list
     the forms say."""
     cands, checks, entries = {}, [], []
-    for stem in sorted(os.listdir(root)):
-        path = os.path.join(root, stem, "fields.csv")
-        if not os.path.exists(path):
-            continue
+    for stem, folder in form_dirs(root):
+        path = os.path.join(folder, "fields.csv")
         with open(path, encoding="utf-8-sig") as fh:
             for r in csv.DictReader(fh):
                 if r.get("kind") == "entry":
@@ -1119,13 +1141,16 @@ def gather(root):
     named = os.path.join(root, "named forms")
     os.makedirs(named, exist_ok=True)
     every = []
-    for stem in sorted(os.listdir(root)):
-        path = os.path.join(root, stem, "fields.csv")
-        if not os.path.exists(path):
-            continue
+    forms = form_dirs(root)
+    # a named form no longer in the set (superseded by its as-is copy) goes
+    for f in os.listdir(named):
+        if f.endswith(".pdf") and f[:-4] not in {s for s, _ in forms}:
+            os.remove(os.path.join(named, f))
+    for stem, folder in forms:
+        path = os.path.join(folder, "fields.csv")
         with open(path, encoding="utf-8-sig") as fh:
             every += [{"form": stem, **r} for r in csv.DictReader(fh) if r.get("id") not in ("NOTE", "CHECK")]
-        pdf = os.path.join(root, stem, f"{stem}.pdf")
+        pdf = os.path.join(folder, f"{stem}.pdf")
         if os.path.exists(pdf):
             shutil.copy2(pdf, named)
     with open(os.path.join(root, "all fields.csv"), "w", newline="", encoding="utf-8-sig") as fh:

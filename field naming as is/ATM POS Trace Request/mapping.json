@@ -1,0 +1,166 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_NAME",
+   "kind": "db",
+   "label": "Member Name:",
+   "desc": "Member's usual (first) name",
+   "how": "tag"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number",
+   "desc": "Member number"
+  },
+  "F3": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Branch",
+   "desc": "Member's branch. CHECK: name or number? PRIMARY_BRANCH is the number"
+  },
+  "F4": {
+   "name": "TraceReason.NoFunds",
+   "kind": "entry",
+   "label": "Member didn't receive any funds",
+   "desc": "Reason for trace, tick",
+   "save": true
+  },
+  "F5": {
+   "name": "TraceReason.PartialFunds",
+   "kind": "entry",
+   "label": "Entire amount requested not received",
+   "desc": "Reason for trace, tick",
+   "save": true
+  },
+  "F6": {
+   "name": "TraceReason.DeclinedDebited",
+   "kind": "entry",
+   "label": "Transaction said decline but still debited account",
+   "desc": "Reason for trace, tick",
+   "save": true
+  },
+  "F7": {
+   "name": "TraceReason.DebitedTwice",
+   "kind": "entry",
+   "label": "Account debited twice for same transaction",
+   "desc": "Reason for trace, tick",
+   "save": true
+  },
+  "F8": {
+   "name": "TraceReason.NotRecognized",
+   "kind": "entry",
+   "label": "Member does not recognize the transaction",
+   "desc": "Reason for trace, tick",
+   "save": true
+  },
+  "F9": {
+   "name": "TraceReason.Other",
+   "kind": "entry",
+   "label": "Other, please specify",
+   "desc": "Reason for trace, tick",
+   "save": true
+  },
+  "F10": {
+   "name": "TraceReasonOtherDetail",
+   "kind": "entry",
+   "label": "Other, please specify",
+   "desc": "The other reason, in words",
+   "custom": "Required when TraceReason.Other is ticked"
+  },
+  "F11": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Branch contact name for trace",
+   "desc": "Branch contact for the trace: the staff member generating the form (as on Bill Payment Trace)"
+  },
+  "F12": {
+   "name": "ATMTransactionDate",
+   "kind": "entry",
+   "label": "Date of ATM transaction",
+   "desc": "Date of the ATM transaction",
+   "custom": "Either the ATM section (ATMTransactionDate, ATMTransactionAmount, ATMUnitID, ATMPANNumber, ATMTracerNumber) or the POS section must be filled in"
+  },
+  "F13": {
+   "name": "ATMTransactionAmount",
+   "kind": "entry",
+   "label": "Amount of ATM transaction",
+   "desc": "Amount of the ATM transaction",
+   "custom": "Required when the ATM section is used (ATMTransactionDate filled in)"
+  },
+  "F14": {
+   "name": "ATMUnitID",
+   "kind": "entry",
+   "label": "ATM unit identification number",
+   "desc": "ATM unit identification number",
+   "custom": "Required when the ATM section is used (ATMTransactionDate filled in)"
+  },
+  "F15": {
+   "name": "ATMPANNumber",
+   "kind": "entry",
+   "label": "PAN number used for the transaction (if available)",
+   "desc": "Card number (PAN) used at the ATM"
+  },
+  "F16": {
+   "name": "ATMTracerNumber",
+   "kind": "entry",
+   "label": "Tracer number for the transaction",
+   "desc": "Tracer number of the ATM transaction",
+   "custom": "Required when the ATM section is used (ATMTransactionDate filled in)"
+  },
+  "F17": {
+   "name": "POSTransactionDate",
+   "kind": "entry",
+   "label": "Date of POS transaction",
+   "desc": "Date of the POS transaction",
+   "custom": "Either the POS section (POSTransactionDate, POSTransactionAmount, POSUnitID, POSPANNumber, POSTracerNumber) or the ATM section must be filled in"
+  },
+  "F18": {
+   "name": "POSTransactionAmount",
+   "kind": "entry",
+   "label": "Amount of POS transaction",
+   "desc": "Amount of the POS transaction",
+   "custom": "Required when the POS section is used (POSTransactionDate filled in)"
+  },
+  "F19": {
+   "name": "POSUnitID",
+   "kind": "entry",
+   "label": "ATM unit identification number",
+   "desc": "Terminal identification number (the form says ATM unit under POS)",
+   "custom": "Required when the POS section is used (POSTransactionDate filled in)"
+  },
+  "F20": {
+   "name": "POSPANNumber",
+   "kind": "entry",
+   "label": "PAN number used for the transaction (if available)",
+   "desc": "Card number (PAN) used at the POS"
+  },
+  "F21": {
+   "name": "PRIMARY_SURNAME",
+   "kind": "db",
+   "label": "Member Name:",
+   "desc": "Member's surname",
+   "how": "tag"
+  },
+  "F22": {
+   "name": "TracedTransaction",
+   "kind": "entry",
+   "option": "ATM",
+   "save": true,
+   "label": "ATM transaction being traced",
+   "desc": "Pick one: which transaction is traced - ATM"
+  },
+  "F23": {
+   "name": "TracedTransaction",
+   "kind": "entry",
+   "option": "POS",
+   "save": true,
+   "label": "POS transaction being traced",
+   "desc": "Pick one: which transaction is traced - POS"
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "notes": []
+}

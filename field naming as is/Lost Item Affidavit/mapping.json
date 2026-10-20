@@ -1,0 +1,94 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name"
+  },
+  "F2": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "save": true
+  },
+  "F3": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Libro Member #",
+   "desc": "Member number"
+  },
+  "F4": {
+   "name": "ChequeNumber",
+   "kind": "entry",
+   "label": "Cheque #",
+   "desc": "Cheque # of the lost item",
+   "save": true
+  },
+  "F5": {
+   "name": "ChequeDateIssued",
+   "kind": "entry",
+   "label": "Date Issued",
+   "desc": "Date the cheque was issued",
+   "save": true
+  },
+  "F6": {
+   "name": "ChequePayee",
+   "kind": "entry",
+   "label": "Cheque Payable To Payee",
+   "desc": "Cheque payable to (payee)",
+   "save": true
+  },
+  "F7": {
+   "name": "ChequeAmount",
+   "kind": "entry",
+   "label": "Cheque Amount",
+   "desc": "Cheque amount $",
+   "save": true
+  },
+  "F8": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Signature of Above Named Payee",
+   "desc": "Signature of the above named payee (the member) - affidavit, its own signing kept"
+  },
+  "F9": {
+   "name": "WitnessName",
+   "kind": "entry",
+   "label": "Name of Witness (Payor) [print or type]",
+   "desc": "Name of witness (payor), print or type",
+   "save": true
+  },
+  "F10": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Address",
+   "desc": "Member's mailing address, line 2"
+  },
+  "F11": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date of Signature",
+   "desc": "Date of the payee's signature"
+  },
+  "F12": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "taken as is: the form prints this blank with no field, and none is added",
+  "B2": "taken as is: the form prints this blank with no field, and none is added",
+  "B3": "taken as is: the form prints this blank with no field, and none is added",
+  "B4": "taken as is: the form prints this blank with no field, and none is added",
+  "B5": "taken as is: the form prints this blank with no field, and none is added",
+  "B6": "taken as is: the form prints this blank with no field, and none is added",
+  "B7": "taken as is: the form prints this blank with no field, and none is added"
+ },
+ "notes": []
+}

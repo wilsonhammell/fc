@@ -252,7 +252,12 @@ def main():
         os.makedirs(folder, exist_ok=True)
         doc, items = read_form(path)
         with open(os.path.join(folder, "context.json"), "w", encoding="utf-8") as fh:
-            json.dump({"form": os.path.basename(path), "items": items}, fh,
+            # where the form came from, when that is not the restyled folder
+            # apply_fields reads by default ("dont restructure", taken as is)
+            here = {"form": os.path.basename(path), "items": items}
+            if os.path.dirname(os.path.abspath(path)) != os.path.abspath(os.path.join(HERE, "final selection at 10pt")):
+                here["source"] = os.path.abspath(path)
+            json.dump(here, fh,
                       indent=1, ensure_ascii=False)
         proof(doc, items, folder, stem)
         have = sum(1 for i in items if i["existing"] is not None)

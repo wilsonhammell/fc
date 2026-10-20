@@ -39,6 +39,11 @@ Libro forms - final selection
     The cleaned forms: Arial 10pt, Libro header, signing areas, every field
     named from the DB list (dbFields.json). This is what goes into the PDF
     Requirement Designer ("Import Form").
+    Except the forms given in "dont restructure" (ATM & POS Trace, Bill
+    Payment Trace, Large Cash Deposit, Lost Item Affidavit, Reimbursement
+    Claim, Service Request, the four Wire Instructions): taken as they were
+    given - nothing on the page moved or restyled, every field where its
+    maker put it - and only named and coded. Their proofs say "as is".
 
 2 designer output\\<form>\\
     What the designer's export gives for each production form, made by
@@ -253,10 +258,10 @@ def main():
     lists = os.path.join(out, "4 field lists")
     os.makedirs(lists)
     n_lists = 0
-    for stem in sorted(os.listdir(NAMING)):
-        folder = os.path.join(NAMING, stem)
-        if not os.path.isfile(os.path.join(folder, "fields.csv")):
-            continue
+    sys.path.insert(0, HERE)
+    import apply_fields
+    # the forms taken as is stand in for the restyled copies they supersede
+    for stem, folder in apply_fields.form_dirs(NAMING):
         dst = os.path.join(lists, stem)
         os.makedirs(dst)
         for f in sorted(os.listdir(folder)):

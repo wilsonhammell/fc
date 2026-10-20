@@ -81,6 +81,33 @@ def main():
                     os.remove(os.path.join(d, old))
             R.join_down(pages, os.path.join(d, f"{stem} [final 10pt].png"))
         made.append((form, said))
+    # forms taken as is ("dont restructure"): their copy beside the final, and
+    # the restyled copy's proof gone, since the form no longer comes from it
+    as_is = os.path.join(HERE, "field naming as is")
+    sup = json.load(open(os.path.join(as_is, "supersedes.json"), encoding="utf-8")) \
+        if os.path.exists(os.path.join(as_is, "supersedes.json")) else {}
+    for form, old in sup.items():
+        ctx_p = os.path.join(as_is, form, "context.json")
+        named = os.path.join(as_is, form, f"{form}.pdf")
+        if not (os.path.exists(ctx_p) and os.path.exists(named)):
+            continue
+        source = fitz.open(json.load(open(ctx_p, encoding="utf-8"))["source"])
+        final = fitz.open(named)
+        pages = [R.save_proof(source[i].get_pixmap(dpi=DPI), final[i].get_pixmap(dpi=DPI, annots=False), None,
+                              f"{form}.pdf   page {i + 1}   (as given left, final right)   taken as is", dpi=DPI,
+                              legend=["taken as is (dont restructure): nothing on the page moved or restyled - "
+                                      "fields named and coded only"] if i == 0 else ())
+                 for i in range(final.page_count)]
+        stems = {form} | ({os.path.splitext(json.load(open(os.path.join(NAMING, old, "context.json"),
+                                                         encoding="utf-8"))["form"])[0]} if old else set())
+        for d in PROOF_DIRS:
+            if not os.path.isdir(d):
+                continue
+            for f in os.listdir(d):
+                if any(f.startswith(s + " [") or f.startswith(s + "  [") for s in stems):
+                    os.remove(os.path.join(d, f))
+            R.join_down(pages, os.path.join(d, f"{form} [as is].png"))
+        made.append((form, ["taken as is"]))
     for form, said in made:
         print(f"{form}: {'; '.join(said)}")
     print(f"{len(made)} proof(s) redone")

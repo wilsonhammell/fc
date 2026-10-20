@@ -259,24 +259,32 @@ def button_rects(buttons, page):
     """Each placed button's rect in PDF user space, left to right along the
     strip the cleaned form keeps clear at the top of page 1."""
     on = [b for b in BUTTON_ORDER if buttons.get(b)]
-    out, x = {}, BUTTON_LEFT
+    width = sum(BUTTON_W.get(b, 80) for b in on) + BUTTON_GAP * max(len(on) - 1, 0) \
+        + (ESIGN_RUN if "RemoteESignButton" in on else 0)
+    things = [(fitz.Rect(b[:4]), f"the words {b[4]!r}") for b in page.get_text("words")]
+    things += [(r, "an image") for d in page.get_images(full=True) for r in page.get_image_rects(d[0])]
+
+    def in_the_way(left):
+        strip = fitz.Rect(left, BUTTON_TOP, left + width, BUTTON_TOP + BUTTON_H)
+        return [(r, what) for r, what in things if r.intersects(strip)]
+
+    # where the cleaned form keeps the strip clear, the business's own spot;
+    # a form taken as is with its logo there gets them along the same line,
+    # just right of whatever is in the way
+    left = BUTTON_LEFT
+    while on and in_the_way(left) and left + width <= page.rect.width - 6:
+        left = max(r.x1 for r, _ in in_the_way(left)) + BUTTON_GAP
+    out, x = {}, left
     for b in on:
         w = BUTTON_W.get(b, 80)
         out[b] = {"x": x, "y": page.rect.height - BUTTON_TOP - BUTTON_H, "width": w, "height": BUTTON_H}
         x += w + BUTTON_GAP
     clash = []
     if on:
-        right = x - BUTTON_GAP + (ESIGN_RUN if "RemoteESignButton" in on else 0)
-        strip = fitz.Rect(BUTTON_LEFT, BUTTON_TOP, right, BUTTON_TOP + BUTTON_H)
-        if right > page.rect.width - 6:
-            clash.append(f"the buttons run to x={right:.0f}, past the page edge")
-        for b in page.get_text("words"):
-            if fitz.Rect(b[:4]).intersects(strip):
-                clash.append(f"over the words {b[4]!r} at {b[0]:.0f},{b[1]:.0f}")
-        for d in page.get_images(full=True):
-            for r in page.get_image_rects(d[0]):
-                if r.intersects(strip):
-                    clash.append(f"over an image at {r.x0:.0f},{r.y0:.0f}")
+        if left + width > page.rect.width - 6:
+            clash.append(f"the buttons run to x={left + width:.0f}, past the page edge")
+        for r, what in in_the_way(left):
+            clash.append(f"over {what} at {r.x0:.0f},{r.y0:.0f}")
     return out, clash
 
 
@@ -342,7 +350,8 @@ def main():
     os.makedirs(JOBS)
     summary = []
     for mt in matches:
-        folder = os.path.join(NAMING, mt["folder"] or "")
+        # (a form taken as is lives under its own root, "field naming as is")
+        folder = os.path.join(HERE, mt["root"], mt["folder"]) if mt.get("root")             else os.path.join(NAMING, mt["folder"] or "")
         pdf = os.path.join(folder, f"{mt['folder']}.pdf")
         if not mt["folder"] or not os.path.isfile(pdf):
             summary.append((mt["production name"], "NO NAMED FORM"))

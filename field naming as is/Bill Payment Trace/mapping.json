@@ -1,0 +1,165 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name:",
+   "desc": "Owner's full name"
+  },
+  "F2": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Member’s Home Branch:",
+   "desc": "Owner's branch. CHECK: name or number (PRIMARY_BRANCH)"
+  },
+  "F3": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Branch Contact:",
+   "desc": "Staff member preparing the form"
+  },
+  "F4": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member Number:",
+   "desc": "Owner (member) number"
+  },
+  "F5": {
+   "name": "ErrorType",
+   "kind": "entry",
+   "label": "Branch error - Admin will apply s/c to Branch GL",
+   "desc": "Tick: branch error - admin will apply fee",
+   "save": true,
+   "option": "Branch"
+  },
+  "F6": {
+   "name": "ErrorType",
+   "kind": "entry",
+   "label": "Member error - Admin will apply s/c to Member",
+   "desc": "Tick: member error - admin will apply fee",
+   "save": true,
+   "option": "Member"
+  },
+  "F7": {
+   "name": "VendorName",
+   "kind": "entry",
+   "label": "Vendor name:",
+   "desc": "Vendor name:",
+   "save": true
+  },
+  "F8": {
+   "name": "VendorAccountNumber",
+   "kind": "entry",
+   "label": "Vendor Account # paid:",
+   "desc": "Vendor account # paid",
+   "save": true
+  },
+  "F9": {
+   "name": "PaymentAmount",
+   "kind": "entry",
+   "label": "Payment Amount $",
+   "desc": "Payment amount",
+   "save": true
+  },
+  "F10": {
+   "name": "PaymentDate",
+   "kind": "entry",
+   "label": "Payment Date:",
+   "desc": "Payment Date:",
+   "save": true
+  },
+  "F11": {
+   "name": "TraceReason",
+   "kind": "entry",
+   "label": "Reason",
+   "desc": "Reason for trace (pick one: account not credited, incorrect amount, incorrect vendor, incorrect account, other)",
+   "how": "reviewed",
+   "option": "NotCredited",
+   "save": true
+  },
+  "F12": {
+   "name": "TraceReason",
+   "kind": "entry",
+   "label": "Incorrect amount paid. Paid:$",
+   "desc": "Incorrect amount paid. Paid:$",
+   "how": "reviewed",
+   "option": "IncorrectAmount",
+   "save": true
+  },
+  "F13": {
+   "name": "TraceReason",
+   "kind": "entry",
+   "label": "Payment made to Incorrect Vendor. Refund requested for: $",
+   "desc": "Payment made to Incorrect Vendor. Refund requested for: $",
+   "how": "reviewed",
+   "option": "IncorrectVendor",
+   "save": true
+  },
+  "F14": {
+   "name": "TraceReason",
+   "kind": "entry",
+   "label": "Payment is made to incorrect account number. Correct account:",
+   "desc": "Payment is made to incorrect account number. Correct account:",
+   "how": "reviewed",
+   "option": "IncorrectAccount",
+   "save": true
+  },
+  "F15": {
+   "name": "TraceReason",
+   "kind": "entry",
+   "label": "Other(specify):",
+   "desc": "Other(specify):",
+   "how": "reviewed",
+   "option": "Other",
+   "save": true
+  },
+  "F16": {
+   "name": "AmountPaid",
+   "kind": "entry",
+   "label": "Incorrect amount paid. Paid:$",
+   "desc": "Incorrect amount paid: the amount paid",
+   "custom": "Required when TraceReason is IncorrectAmount"
+  },
+  "F17": {
+   "name": "CorrectAmount",
+   "kind": "entry",
+   "label": "Correct Amount $",
+   "desc": "Incorrect amount paid: the correct amount",
+   "custom": "Required when TraceReason is IncorrectAmount"
+  },
+  "F18": {
+   "name": "RefundRequestAmount",
+   "kind": "entry",
+   "label": "Refund request: $",
+   "desc": "Incorrect amount paid: refund requested",
+   "custom": "Required when TraceReason is IncorrectAmount"
+  },
+  "F19": {
+   "name": "RefundIncorrectVendorAmount",
+   "kind": "entry",
+   "label": "Payment made to Incorrect Vendor. Refund requested for: $",
+   "desc": "Paid to incorrect vendor: refund requested for",
+   "custom": "Required when TraceReason is IncorrectVendor"
+  },
+  "F20": {
+   "name": "CorrectAccountNumber",
+   "kind": "entry",
+   "label": "Payment is made to incorrect account number. Correct account:",
+   "desc": "Paid to incorrect account: the correct account",
+   "custom": "Required when TraceReason is IncorrectAccount"
+  },
+  "F21": {
+   "name": "TraceReasonOtherDetail",
+   "kind": "entry",
+   "label": "",
+   "desc": "Other reason, in words",
+   "custom": "Required when TraceReason is Other"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "taken as is: the form prints this blank with no field, and none is added"
+ },
+ "notes": []
+}
