@@ -12,6 +12,7 @@ designer's requirements, scripts and attachment stay byte for byte as it
 wrote them.
 """
 import glob
+import json
 import os
 import sys
 
@@ -22,6 +23,11 @@ sys.path.insert(0, os.path.dirname(HERE))
 import apply_fields  # noqa: E402
 
 OUT = os.path.join(HERE, "out")
+# the designer's system fields keep the order it wrote them in - that order
+# is also how they are drawn, and DNA_REQ comes last so it covers the form
+SYSTEM = {e["identifier"] for e in json.load(open(
+    os.path.join(os.path.dirname(os.path.dirname(HERE)), "form_requirements", "public", "systemFields.json"),
+    encoding="utf-8"))}
 
 
 def main():
@@ -29,7 +35,7 @@ def main():
     for path in pdfs:
         doc = fitz.open(path)
         before = [[a[0] for a in page.annot_xrefs()] for page in doc]
-        apply_fields.tab_in_reading_order(doc)
+        apply_fields.tab_in_reading_order(doc, keep_order=SYSTEM)
         after = [[a[0] for a in page.annot_xrefs()] for page in doc]
         moved = sum(a != b for a, b in zip(before, after))
         doc.saveIncr()

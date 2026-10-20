@@ -117,12 +117,14 @@ def fingerprint(path):
     doc = fitz.open(path)
     for page in doc:
         h.update(page.read_contents())
-        for w in page.widgets():
-            h.update(repr((w.field_name, w.field_type, [round(v, 1) for v in w.rect], w.field_flags,
-                           w.field_value, w.on_state() if w.field_type in (2, 5) else "",
-                           doc.xref_get_key(w.xref, "MaxLen")[1], doc.xref_get_key(w.xref, "F")[1],
-                           w.script_format, w.script_stroke, w.script_calc, w.script_blur,
-                           w.text_font, w.text_fontsize)).encode())
+        # sorted: the fields' order on the page is Tab and drawing order,
+        # which a reviewer does not judge, and its fixes touched every form
+        for r in sorted(repr((w.field_name, w.field_type, [round(v, 1) for v in w.rect], w.field_flags,
+                              w.field_value, w.on_state() if w.field_type in (2, 5) else "",
+                              doc.xref_get_key(w.xref, "MaxLen")[1], doc.xref_get_key(w.xref, "F")[1],
+                              w.script_format, w.script_stroke, w.script_calc, w.script_blur,
+                              w.text_font, w.text_fontsize)) for w in page.widgets()):
+            h.update(r.encode())
     names = doc.xref_get_key(doc.pdf_catalog(), "Names/JavaScript/Names")
     for ref in re.findall(r"(\d+) 0 R", names[1] if names[0] == "array" else ""):
         js = doc.xref_get_key(int(ref), "JS")

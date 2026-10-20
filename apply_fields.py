@@ -489,19 +489,27 @@ def reading_order(rects):
     return [k for row in rows for k in sorted(row, key=lambda k: rects[k].x0)]
 
 
-def tab_in_reading_order(doc):
+def tab_in_reading_order(doc, keep_order=()):
     """Tab moves through each page's fields as it is read. It went in the
     page's /Annots order, the order the fields were made in, so the signing
     blocks the restyle drew came before the fields above them (Hypothecation's
     pages 3 to 7, both Safe Deposit Box estate forms). The fields are put in
     reading order and the page told to tab in that order, /Tabs /W, as the
     business's own coded forms are; /S, which 65 pages carried over from
-    Word, orders by a structure the fields added here are not part of."""
+    Word, orders by a structure the fields added here are not part of.
+    Fields named in keep_order (the designer's system fields) are left in
+    the order they had, after the rest: the list is the drawing order too."""
     for page in doc:
         xrefs = [a[0] for a in page.annot_xrefs()]
-        rects = {w.xref: fitz.Rect(w.rect) for w in page.widgets()}
-        if rects:
-            order = reading_order(rects) + [x for x in xrefs if x not in rects]
+        widgets = list(page.widgets())
+        # the designer's own system fields keep the order it gave them, after
+        # the form's: the list is also the drawing order, and DNA_REQ comes
+        # last so it covers the rest - sorted with the others it went under
+        kept = [w.xref for w in widgets if w.field_name in keep_order]
+        rects = {w.xref: fitz.Rect(w.rect) for w in widgets if w.xref not in kept}
+        if rects or kept:
+            kept.sort(key=xrefs.index)
+            order = reading_order(rects) + kept + [x for x in xrefs if x not in rects and x not in kept]
             doc.xref_set_key(page.xref, "Annots", "[" + " ".join(f"{x} 0 R" for x in order) + "]")
         # every page, so a field the designer later puts on a page that had
         # none still tabs in order

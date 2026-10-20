@@ -92,6 +92,18 @@ got = [w.field_name for w in doc[0].widgets()]
 check(f"Tab goes as the page reads: {got}", got == ["FirstLeft", "FirstRight", "Second", "Third"])
 check("and the page tabs in that order", doc.xref_get_key(doc[0].xref, "Tabs")[1] == "/W")
 
+# -- the designer's system fields keep their order, after the form's: DNA_REQ
+# is drawn last so it covers the rest, and sorted with the others it went under
+doc = fitz.open()
+page = doc.new_page()
+field(page, "DNA_REQ", (20, 20, 590, 770))      # the whole page, made first
+field(page, "Below", (72, 300, 200, 314))
+field(page, "Above", (72, 100, 200, 114))
+field(page, "VALID_ID", (0, 0, 10, 10))
+A.tab_in_reading_order(doc, keep_order={"DNA_REQ", "VALID_ID"})
+got = [w.field_name for w in doc[0].widgets()]
+check(f"system fields keep their order, after the form's: {got}", got == ["Above", "Below", "DNA_REQ", "VALID_ID"])
+
 # -- opening view
 check("opens at 100%", A.open_at_full_size(doc)
       and doc.xref_get_key(doc.pdf_catalog(), "OpenAction")[1].endswith("/XYZ null null 1]"))
