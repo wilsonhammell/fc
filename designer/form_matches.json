@@ -89,8 +89,8 @@
  },
  {
   "production name": "ATM & POS Trace Request",
-  "file": "ATM POS Trace Request",
-  "folder": "ATM POS Trace Request",
+  "file": "ATM & POS Trace Request",
+  "folder": "ATM & POS Trace Request",
   "match": "exact",
   "score": 1.0,
   "sheet": "Confirmed Forms(74)",
@@ -115,8 +115,7 @@
    "RemoteESignButton": false,
    "SubmitForProcessingButton": true
   },
-  "notes": [],
-  "root": "field naming as is"
+  "notes": []
  },
  {
   "production name": "Authorization to Release Financial Info",
@@ -175,8 +174,7 @@
    "RemoteESignButton": false,
    "SubmitForProcessingButton": true
   },
-  "notes": [],
-  "root": "field naming as is"
+  "notes": []
  },
  {
   "production name": "Bond of Indemnity - Estates",
@@ -1220,8 +1218,7 @@
    "DigitalSignatureButton": true,
    "RemoteESignButton": true
   },
-  "notes": [],
-  "root": "field naming as is"
+  "notes": []
  },
  {
   "production name": "Masterline Takedown Facility Authorization",
@@ -1339,8 +1336,8 @@
  },
  {
   "production name": "Reimbursement Claim Form",
-  "file": "Reimbursement Claim Form",
-  "folder": "Reimbursement Claim Form",
+  "file": "Reimbursment Claim Form",
+  "folder": "Reimbursment Claim Form",
   "match": "exact",
   "score": 1.0,
   "sheet": "Confirmed Forms(74)",
@@ -1364,8 +1361,7 @@
    "DigitalSignatureButton": true,
    "RemoteESignButton": true
   },
-  "notes": [],
-  "root": "field naming as is"
+  "notes": []
  },
  {
   "production name": "Renounciation of Designated Beneficiary - Estates",
@@ -1816,8 +1812,7 @@
   },
   "notes": [
    "Post Processing Queue \"Yes - Optional\" not recognised."
-  ],
-  "root": "field naming as is"
+  ]
  },
  {
   "production name": "Statutory Declaration & Indemnification Intestacy - No Will",
@@ -2017,8 +2012,7 @@
    "RemoteESignButton": false,
    "PrintButton": true
   },
-  "notes": [],
-  "root": "field naming as is"
+  "notes": []
  },
  {
   "production name": "Wire Instructions EUR",
@@ -2046,8 +2040,7 @@
    "RemoteESignButton": false,
    "PrintButton": true
   },
-  "notes": [],
-  "root": "field naming as is"
+  "notes": []
  },
  {
   "production name": "Wire Instructions OTHER CURRENCIES",
@@ -2075,8 +2068,7 @@
    "RemoteESignButton": false,
    "PrintButton": true
   },
-  "notes": [],
-  "root": "field naming as is"
+  "notes": []
  },
  {
   "production name": "Wire Instructions USD",
@@ -2104,8 +2096,7 @@
    "RemoteESignButton": false,
    "PrintButton": true
   },
-  "notes": [],
-  "root": "field naming as is"
+  "notes": []
  },
  {
   "production name": "LIRA Locked-in RRSP Trans Info Req",
@@ -2162,38 +2153,5 @@
   "config": {},
   "buttons": {},
   "notes": []
- },
- {
-  "production name": "Large Cash Deposit Form",
-  "file": "Large Cash Deposit Form",
-  "folder": "Large Cash Deposit Form",
-  "root": "field naming as is",
-  "match": "exact",
-  "score": 1.0,
-  "sheet": "Confirmed Forms(74)",
-  "row": 32,
-  "row name": "Large Cash Deposit Form",
-  "closest": "",
-  "config": {
-   "formName": "Large Cash Deposit Form",
-   "formDescription": "Large Cash Deposit Form",
-   "formMenuGroups": "Member Servicing",
-   "formType": "combined",
-   "productCodes": "M",
-   "postProcessing": false,
-   "adminQueue": false,
-   "supportServices": false,
-   "formId": "L_LCD",
-   "foCabinet": "Member Records"
-  },
-  "buttons": {
-   "PhoneAuthButton": false,
-   "DigitalSignatureButton": false,
-   "RemoteESignButton": false,
-   "PrintButton": true
-  },
-  "notes": [
-   "formId and foCabinet from the FO Data Line sheet; the Confirmed Forms row leaves them blank"
-  ]
  }
 ]

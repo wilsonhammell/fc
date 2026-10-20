@@ -1,0 +1,304 @@
+[
+ {
+  "production name": "ATM & POS Trace Request",
+  "file": "ATM POS Trace Request",
+  "folder": "ATM POS Trace Request",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 5,
+  "row name": "ATM & POS Trace Request",
+  "closest": "",
+  "config": {
+   "formName": "ATM & POS Trace Request",
+   "formId": "L_ATPO",
+   "formDescription": "ATM & POS Trace Request",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "SubmitForProcessingButton": true
+  },
+  "notes": [],
+  "root": "field naming as is"
+ },
+ {
+  "production name": "Bill Payment Trace",
+  "file": "Bill Payment Trace",
+  "folder": "Bill Payment Trace",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 7,
+  "row name": "Bill Payment Trace",
+  "closest": "",
+  "config": {
+   "formName": "Bill Payment Trace",
+   "formId": "L_BPT",
+   "formDescription": "Bill Payment Trace",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "SubmitForProcessingButton": true
+  },
+  "notes": [],
+  "root": "field naming as is"
+ },
+ {
+  "production name": "Lost Item Affidavit",
+  "file": "Lost Item Affidavit",
+  "folder": "Lost Item Affidavit",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 44,
+  "row name": "Lost Item Affidavit",
+  "closest": "",
+  "config": {
+   "formName": "Lost Item Affidavit",
+   "formId": "L_LIA",
+   "formDescription": "Lost Item Affidavit",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "D, M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": [],
+  "root": "field naming as is"
+ },
+ {
+  "production name": "Reimbursement Claim Form",
+  "file": "Reimbursement Claim Form",
+  "folder": "Reimbursement Claim Form",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 49,
+  "row name": "Reimbursement Claim Form",
+  "closest": "",
+  "config": {
+   "formName": "Reimbursement Claim Form",
+   "formId": "L_RC",
+   "formDescription": "Reimbursement Claim Form",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": [],
+  "root": "field naming as is"
+ },
+ {
+  "production name": "Service Request Form",
+  "file": "Service Request Form",
+  "folder": "Service Request Form",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 65,
+  "row name": "Service Request Form",
+  "closest": "",
+  "config": {
+   "formName": "Service Request Form",
+   "formId": "L_SR",
+   "formDescription": "Service Request Form",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing, Estates",
+   "formType": "combined",
+   "productCodes": "D, L, M",
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": [
+   "Post Processing Queue \"Yes - Optional\" not recognised."
+  ],
+  "root": "field naming as is"
+ },
+ {
+  "production name": "Wire Instructions CAD",
+  "file": "Wire Instructions CAD",
+  "folder": "Wire Instructions CAD",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 72,
+  "row name": "Wire Instructions CAD",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions CAD",
+   "formDescription": "Wire Instructions CAD",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "D",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": [],
+  "root": "field naming as is"
+ },
+ {
+  "production name": "Wire Instructions EUR",
+  "file": "Wire Instructions EUR",
+  "folder": "Wire Instructions EUR",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 73,
+  "row name": "Wire Instructions EUR",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions EUR",
+   "formDescription": "Wire Instructions EUR",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "D",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": [],
+  "root": "field naming as is"
+ },
+ {
+  "production name": "Wire Instructions OTHER CURRENCIES",
+  "file": "Wire Instructions OTHER CURRENCIES",
+  "folder": "Wire Instructions OTHER CURRENCIES",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 74,
+  "row name": "Wire Instructions OTHER CURRENCIES",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions OTHER CURRENCIES",
+   "formDescription": "Wire Instructions OTHER CURRENCIES",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "D",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": [],
+  "root": "field naming as is"
+ },
+ {
+  "production name": "Wire Instructions USD",
+  "file": "Wire Instructions USD",
+  "folder": "Wire Instructions USD",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 75,
+  "row name": "Wire Instructions USD",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions USD",
+   "formDescription": "Wire Instructions USD",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "D",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": [],
+  "root": "field naming as is"
+ },
+ {
+  "production name": "Large Cash Deposit Form",
+  "file": "Large Cash Deposit Form",
+  "folder": "Large Cash Deposit Form",
+  "root": "field naming as is",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 32,
+  "row name": "Large Cash Deposit Form",
+  "closest": "",
+  "config": {
+   "formName": "Large Cash Deposit Form",
+   "formDescription": "Large Cash Deposit Form",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "M",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false,
+   "formId": "L_LCD",
+   "foCabinet": "Member Records"
+  },
+  "buttons": {
+   "PhoneAuthButton": false,
+   "DigitalSignatureButton": false,
+   "RemoteESignButton": false,
+   "PrintButton": true
+  },
+  "notes": [
+   "formId and foCabinet from the FO Data Line sheet; the Confirmed Forms row leaves them blank"
+  ]
+ }
+]

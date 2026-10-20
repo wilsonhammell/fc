@@ -9,3 +9,7 @@ handover/
 designer/jobs/
 designer/out/
 designer/build_report.json
+designer/jobs_as_is/
+designer/out_as_is/
+designer/build_report_as_is.json
+handover - special (as is)/

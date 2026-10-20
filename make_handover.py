@@ -39,11 +39,6 @@ Libro forms - final selection
     The cleaned forms: Arial 10pt, Libro header, signing areas, every field
     named from the DB list (dbFields.json). This is what goes into the PDF
     Requirement Designer ("Import Form").
-    Except the forms given in "dont restructure" (ATM & POS Trace, Bill
-    Payment Trace, Large Cash Deposit, Lost Item Affidavit, Reimbursement
-    Claim, Service Request, the four Wire Instructions): taken as they were
-    given - nothing on the page moved or restyled, every field where its
-    maker put it - and only named and coded. Their proofs say "as is".
 
 2 designer output\\<form>\\
     What the designer's export gives for each production form, made by
@@ -106,6 +101,36 @@ form mappings.txt, missing forms.txt
 Field kinds in fields.csv: db = a DB field; candidate = a value missing
 from the DB (listed in missing from DB); special = a signer or staff field
 the builder fills; entry = typed in by the member or staff.
+"""
+
+
+README_AS_IS = """Libro forms - special test forms, taken as is
+=============================================
+
+The ten forms given in "dont restructure": copies cleaned by hand, handed
+over apart from the main handover. Nothing on their pages was moved or
+restyled - every field is where and as big as its maker drew it, and every
+page prints as given (checked: no box moved, pages pixel for pixel the same).
+They were only named and coded:
+  - every field named from the DB list, by the same rules as the main set,
+    each taking the name and validation the reviewed copy of the same form
+    has (Large Cash Deposit Form named fresh);
+  - radio buttons made pick-one check boxes, each box where it was;
+  - load and save validation, formats, character limits;
+  - the designer's buttons, Config and requirements. On four forms the logo
+    sits where the buttons go, so they are on the same line, just right of it.
+What could not be done without moving things: a name the form gives two
+boxes stays two fields (first name, surname), and a blank the form prints
+with no field gets none.
+
+1 cleaned forms\\        the named forms, before the designer
+2 designer output\\<form>\\  the designer's export: the coded PDF and its
+                          requirements workbook
+3 proofs\\               each form as given beside the final
+4 field lists\\<form>\\     fields.csv and each page with its fields named
+designer settings.csv    every field's validation, format, limit and rule
+missing from DB.csv / .txt, to confirm.csv, all fields.csv
+                         as in the main handover, for these ten
 """
 
 
@@ -199,14 +224,21 @@ def norm(text):
 def main():
     ap = argparse.ArgumentParser(description=__doc__,
                                  formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("-o", "--output", default=os.path.join(HERE, "handover"))
+    ap.add_argument("-o", "--output")
+    ap.add_argument("--set", choices=["main", "as-is"], default="main",
+                    help="as-is: the special test forms taken as is (dont restructure/), "
+                         "handed over on their own")
     args = ap.parse_args()
-    out = args.output
+    global NAMING, REVIEW
+    if args.set == "as-is":
+        NAMING = REVIEW = os.path.join(HERE, "field naming as is")
+    sfx = "_as_is" if args.set == "as-is" else ""
+    out = args.output or os.path.join(HERE, "handover" if args.set == "main" else "handover - special (as is)")
     if os.path.exists(out):
         shutil.rmtree(out)
     os.makedirs(out)
     missing, said = [], []
-    matches = json.load(open(os.path.join(DESIGNER, "form_matches.json"), encoding="utf-8"))
+    matches = json.load(open(os.path.join(DESIGNER, f"form_matches{sfx}.json"), encoding="utf-8"))
     unmatched_files = {m["file"] for m in matches if m["match"] != "exact"}
     named = os.path.join(NAMING, "named forms")
 
@@ -223,11 +255,12 @@ def main():
     designed = os.path.join(out, "2 designer output")
     apart = os.path.join(out, "not in the form table")
     os.makedirs(designed)
-    os.makedirs(apart)
+    if any(m["match"] != "exact" for m in matches):
+        os.makedirs(apart)
     n_design = n_apart = 0
     for m in matches:
         prod = m["production name"].strip()
-        src = os.path.join(DESIGNER, "out", prod)
+        src = os.path.join(DESIGNER, f"out{sfx}", prod)
         if m["match"] == "exact":
             if not os.path.isdir(src):
                 missing.append(f"designer output for {prod}")
@@ -276,7 +309,7 @@ def main():
             shutil.copy2(src, out)
         else:
             missing.append(src)
-    for f in ("form mappings.txt", "missing forms.txt"):
+    for f in ("form mappings.txt", "missing forms.txt") if args.set == "main" else ():
         src = os.path.join(REVIEW, f)
         if os.path.isfile(src):
             shutil.copy2(src, out)
@@ -289,7 +322,7 @@ def main():
         missing.append(src)
 
     # every field's designer settings, from the build's jobs
-    jobs = os.path.join(DESIGNER, "jobs")
+    jobs = os.path.join(DESIGNER, f"jobs{sfx}")
     rows = []
     for f in sorted(os.listdir(jobs)) if os.path.isdir(jobs) else []:
         if not f.endswith(".json"):
@@ -332,7 +365,7 @@ def main():
         wr.writerows(notes)
 
     with open(os.path.join(out, "README.txt"), "w", encoding="utf-8") as fh:
-        fh.write(README)
+        fh.write(README if args.set == "main" else README_AS_IS)
 
     # what each form is, for the review station to tell a rebuilt form from
     # one only written again (designer/review_server.mjs)
