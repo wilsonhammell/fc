@@ -155,6 +155,36 @@ for indirect in (False, True):
     check(f"AcroForm {where}: pypdf still reads both fields",
           set((pypdf.PdfReader(path).get_fields() or {}).keys()) == {"A", "B"})
 
+# -- Helv and ZaDb listed where the fields' text names them and /DR doesn't
+def font_list(doc):
+    kind, val = doc.xref_get_key(doc.pdf_catalog(), "AcroForm/DR/Font")
+    if kind == "xref":
+        val = doc.xref_object(int(val.split()[0]), compressed=True)
+    return val
+
+
+doc = fitz.open()
+page = doc.new_page()
+field(page, "A", (72, 72, 200, 86))
+cat = doc.pdf_catalog()
+kind, body = doc.xref_get_key(cat, "AcroForm")
+if kind == "xref":
+    doc.update_object(int(body.split()[0]), "<</Fields[" + " ".join(
+        f"{w.xref} 0 R" for w in page.widgets()) + "]>>")
+else:
+    doc.xref_set_key(cat, "AcroForm", "<</Fields[" + " ".join(f"{w.xref} 0 R" for w in page.widgets()) + "]>>")
+added = A.add_default_fonts(doc)
+check(f"a form with no /DR gets Helv and ZaDb ({font_list(doc)})",
+      added == ["Helv", "ZaDb"] and "/Helv" in font_list(doc) and "/ZaDb" in font_list(doc))
+check("and a second pass adds nothing", A.add_default_fonts(doc) == [])
+
+for indirect in (False, True):
+    doc = with_fonts(indirect)
+    added = A.add_default_fonts(doc)
+    where = "an object of its own" if indirect else "in the catalog"
+    check(f"AcroForm {where}, Helv already listed: only ZaDb added, Cour kept ({font_list(doc)})",
+          added == ["ZaDb"] and "/Cour" in font_list(doc) and "/ZaDb" in font_list(doc))
+
 # -- a length limit on a repeated name
 doc = fitz.open()
 page = doc.new_page()

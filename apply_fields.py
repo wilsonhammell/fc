@@ -588,6 +588,43 @@ def prune_default_fonts(doc):
     return [n for n, _ in fonts if n not in used]
 
 
+def add_default_fonts(doc):
+    """Helv and ZaDb in the form's default fonts (AcroForm /DR), where they
+    are missing. PyMuPDF writes "/Helv" into every field's text style but
+    leaves a form with no /DR without one, and the designer's export adds only
+    its own Helvetica: 51 coded forms named a font they did not list. With
+    NeedAppearances off, Acrobat resolves that name against /DR whenever it
+    redraws a field someone types in. Returns the names added."""
+    if doc.xref_get_key(doc.pdf_catalog(), "AcroForm")[0] == "null":
+        return []
+    want = {"Helv": "<</Type/Font/Subtype/Type1/BaseFont/Helvetica/Encoding/WinAnsiEncoding>>",
+            "ZaDb": "<</Type/Font/Subtype/Type1/BaseFont/ZapfDingbats>>"}
+    got = holder(doc, doc.pdf_catalog(), "AcroForm/DR/Font")
+    kind, val = doc.xref_get_key(*got) if got else ("null", "")
+    if kind == "xref":                  # the font list is an object of its own
+        got, kind = (int(val.split()[0]), ""), "dict"
+        val = doc.xref_object(got[0], compressed=True)
+    have = set(re.findall(r"/([^\s/<>\[\]()]+)\s+\d+ 0 R", val)) if kind == "dict" else set()
+    added = []
+    for name, font in want.items():
+        if name in have:
+            continue
+        ref = doc.get_new_xref()
+        doc.update_object(ref, font)
+        if kind == "dict":
+            at, key = got
+            doc.xref_set_key(at, f"{key}/{name}" if key else name, f"{ref} 0 R")
+        elif got:                       # a /DR with no font list in it
+            doc.xref_set_key(*got, f"<</{name} {ref} 0 R>>")
+        else:                           # no /DR at all
+            doc.xref_set_key(*holder(doc, doc.pdf_catalog(), "AcroForm/DR"),
+                             f"<</Font<</{name} {ref} 0 R>>>>")
+        if kind != "dict":
+            got, kind = holder(doc, doc.pdf_catalog(), "AcroForm/DR/Font"), "dict"
+        added.append(name)
+    return added
+
+
 def erase_text(doc, texts):
     """Printed text that is no part of the form, taken off it: the mapping's
     "erase" list, matched span by span. Breach Letter carried its author's
@@ -909,6 +946,7 @@ def apply(folder):
     if dropped:
         print(f"   ({len(dropped)} default font(s) no field uses taken off: "
               f"{', '.join(dropped[:4])}{'...' if len(dropped) > 4 else ''})")
+    add_default_fonts(doc)
     out_pdf = os.path.join(folder, f"{stem}.pdf")
     doc.save(out_pdf, garbage=3, deflate=True)
     doc.close()
