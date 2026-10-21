@@ -22,8 +22,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
 import apply_fields  # noqa: E402
 
-# --set as-is: the special test forms, built apart into out_as_is/
-OUT = os.path.join(HERE, "out_as_is" if "--set" in sys.argv and "as-is" in sys.argv else "out")
+OUT = os.path.join(HERE, "out")
 # the designer's system fields keep the order it wrote them in - that order
 # is also how they are drawn, and DNA_REQ comes last so it covers the form
 SYSTEM = {e["identifier"] for e in json.load(open(

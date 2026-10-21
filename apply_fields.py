@@ -1051,9 +1051,20 @@ def old_datafeed():
 
 
 def form_dirs(root):
-    """[(stem, folder)] of every named form under root."""
-    return [(s, os.path.join(root, s)) for s in sorted(os.listdir(root))
-            if os.path.isfile(os.path.join(root, s, "fields.csv"))]
+    """[(stem, folder)] of every named form the lists cover. Under the main
+    root, the forms taken as is ("field naming as is", the "dont restructure"
+    copies) stand in for the restyled copies they supersede (its
+    supersedes.json), so each production form is counted once."""
+    out = [(s, os.path.join(root, s)) for s in sorted(os.listdir(root))
+           if os.path.isfile(os.path.join(root, s, "fields.csv"))]
+    as_is = os.path.join(os.path.dirname(os.path.abspath(root)), "field naming as is")
+    if os.path.abspath(root) == os.path.abspath(os.path.join(HERE, "field naming")) and os.path.isdir(as_is):
+        sup = json.load(open(os.path.join(as_is, "supersedes.json"), encoding="utf-8"))             if os.path.exists(os.path.join(as_is, "supersedes.json")) else {}
+        gone = {v for v in sup.values() if v}
+        out = [(s, f) for s, f in out if s not in gone]
+        out += [(s, os.path.join(as_is, s)) for s in sorted(os.listdir(as_is))
+                if os.path.isfile(os.path.join(as_is, s, "fields.csv"))]
+    return out
 
 
 def gather(root):

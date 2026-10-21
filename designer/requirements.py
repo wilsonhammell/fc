@@ -342,24 +342,16 @@ def trim_pages(src, keep, dst):
 
 
 def main():
-    global JOBS
-    # --set as-is: the special test forms taken as is (dont restructure/),
-    # built apart - their own matches, jobs and output - and handed over apart
-    as_is = "--set" in sys.argv and sys.argv[sys.argv.index("--set") + 1] == "as-is"
-    sfx = "_as_is" if as_is else ""
-    JOBS = os.path.join(HERE, "designer", f"jobs{sfx}")
-    out_root = os.path.join(HERE, "designer", f"out{sfx}")
-    matches = json.load(open(os.path.join(HERE, "designer", f"form_matches{sfx}.json"), encoding="utf-8"))
+    matches = json.load(open(os.path.join(HERE, "designer", "form_matches.json"), encoding="utf-8"))
     # both start empty, so nothing left from an earlier run reaches the handover
-    for d in (JOBS, out_root):
+    for d in (JOBS, os.path.join(HERE, "designer", "out")):
         if os.path.isdir(d):
             shutil.rmtree(d)
     os.makedirs(JOBS)
     summary = []
     for mt in matches:
         # (a form taken as is lives under its own root, "field naming as is")
-        folder = (os.path.join(HERE, mt["root"], mt["folder"]) if mt.get("root")
-                  else os.path.join(NAMING, mt["folder"] or ""))
+        folder = os.path.join(HERE, mt["root"], mt["folder"]) if mt.get("root")             else os.path.join(NAMING, mt["folder"] or "")
         pdf = os.path.join(folder, f"{mt['folder']}.pdf")
         if not mt["folder"] or not os.path.isfile(pdf):
             summary.append((mt["production name"], "NO NAMED FORM"))
@@ -391,7 +383,7 @@ def main():
             "source": pdf, "config": mt["config"], "buttons": rects, "button clash": clash,
             "fields": fields, "markers": markers,
             "images": render_pages(doc, markers, stem),
-            "out": os.path.join(out_root, stem),
+            "out": os.path.join(HERE, "designer", "out", stem),
         }
         json.dump(job, open(os.path.join(JOBS, f"{stem}.json"), "w", encoding="utf-8"),
                   indent=1, ensure_ascii=False)

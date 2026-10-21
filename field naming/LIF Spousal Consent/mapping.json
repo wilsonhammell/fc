@@ -106,24 +106,24 @@
    "how": "reviewed"
   },
   "B1": {
-   "name": "Member1Name",
+   "name": "Member2Name",
    "kind": "special",
    "label": "Name",
-   "desc": "Signer 1",
+   "desc": "Signer 2 (the second signing row)",
    "how": "reviewed"
   },
   "B2": {
-   "name": "Member1Signature",
+   "name": "Member2Signature",
    "kind": "special",
    "label": "Authorized Signature",
-   "desc": "Signer 1",
+   "desc": "Signer 2 (the second signing row)",
    "how": "reviewed"
   },
   "B3": {
-   "name": "Member1SignDate",
+   "name": "Member2SignDate",
    "kind": "special",
    "label": "Date",
-   "desc": "Signer 1",
+   "desc": "Signer 2 (the second signing row)",
    "how": "reviewed"
   },
   "B4": {

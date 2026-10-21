@@ -122,7 +122,5 @@ for (const name of jobs) {
   console.log(`${r.ok ? 'ok  ' : 'FAIL'} ${r.form}` + (r.ok ? ` - ${r.load} load, ${r.save} save, ${r.custom} custom` : ''));
   for (const s of r.said) console.log(`       ${s.split('\n')[0]}`);
 }
-// jobs/ -> build_report.json, jobs_as_is/ -> build_report_as_is.json
-const reportName = `build_report${path.basename(jobsDir).replace(/^jobs/, '')}.json`;
-fs.writeFileSync(path.join(jobsDir, '..', reportName), JSON.stringify(report, null, 1));
+fs.writeFileSync(path.join(jobsDir, '..', 'build_report.json'), JSON.stringify(report, null, 1));
 console.log(`${report.filter((r) => r.ok).length} of ${report.length} built`);
