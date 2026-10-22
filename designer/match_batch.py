@@ -7,12 +7,13 @@ the table JSON by form_table.mjs). Each form takes, as the designer's
 "Import Configuration from Form Table" would:
 
   1. its row on the sheet the designer opens on (Confirmed Forms), by name;
-  2. where that row is shifted a column (the import reads Membership "Type"
-     as "NO", Remote eSign as "Combined" - Funeral Home GIC, GIC, Indemnity,
-     LIF Spousal Consent in the 2026-10-22 workbook), its FO Data Line row
-     instead, which is aligned - keeping Confirmed Forms' tag element (Form
-     ID) where FO Data Line has none;
-  3. where the chosen row has no product codes (doc_sys), FO Data Line's.
+  2. where that row is misaligned (the import reads Membership "Type" as
+     "NO", Remote eSign as "Combined" - Funeral Home GIC, GIC, Indemnity,
+     LIF Spousal Consent in the 2026-10-22 workbook), the buttons, membership
+     type and menu group from its FO Data Line row, which is aligned - Form ID
+     and product codes still from Confirmed Forms;
+  3. product codes (doc_sys) from Confirmed Forms, the column the business
+     keeps up to date; FO Data Line's only where Confirmed Forms has none.
 
 The named form is looked for in "field naming <batch>" (the batch's own
 naming) and then "field naming as is" (a batch file that is one of the forms
@@ -55,10 +56,14 @@ def main():
         config, buttons = dict(row["config"]), dict(row["buttons"])
         if conf and conf["notes"] and fo:
             config, buttons = dict(fo["config"]), dict(fo["buttons"])
-            if "formId" not in config and "formId" in conf["config"]:
-                config["formId"] = conf["config"]["formId"]
-            said.append(f"Confirmed Forms row {conf['row']} is shifted a column ({'; '.join(conf['notes'])}): "
-                        f"Config and buttons from FO Data Line row {fo['row']}, Form ID from Confirmed Forms")
+            # Confirmed Forms' own Form ID and product codes still stand:
+            # those columns read correctly on a misaligned row
+            for key in ("formId", "productCodes"):
+                if conf["config"].get(key):
+                    config[key] = conf["config"][key]
+            said.append(f"Confirmed Forms row {conf['row']} is misaligned ({'; '.join(conf['notes'])}): "
+                        f"buttons, membership type and menu group from FO Data Line row {fo['row']}; "
+                        f"Form ID and product codes from Confirmed Forms")
         if not config.get("productCodes") and fo and fo["config"].get("productCodes"):
             config["productCodes"] = fo["config"]["productCodes"]
             said.append(f"product codes from FO Data Line row {fo['row']}")

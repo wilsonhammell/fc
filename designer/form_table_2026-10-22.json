@@ -407,9 +407,9 @@
   {
    "sheet": "FO Data Line",
    "row": 20,
-   "formName": "ye",
+   "formName": "Wire Instructions OTHER CURRENCIES",
    "config": {
-    "formName": "ye",
+    "formName": "Wire Instructions OTHER CURRENCIES",
     "formDescription": "Wire Instructions OTHER CURRENCIES",
     "formMenuGroups": "Wires",
     "formType": "combined",
@@ -1050,6 +1050,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Security",
     "formType": "org",
+    "productCodes": "Member",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -1071,6 +1072,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Personal Lending and Business Lending",
     "formType": "combined",
+    "productCodes": "loan,mortgage",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -1092,6 +1094,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Security",
     "formType": "org",
+    "productCodes": "Member",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -1113,6 +1116,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Personal Lending and Business Lending",
     "formType": "combined",
+    "productCodes": "Member",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -1134,6 +1138,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Security",
     "formType": "org",
+    "productCodes": "Member",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -1155,6 +1160,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Business Lending",
     "formType": "org",
+    "productCodes": "loan,mortgage",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -1979,6 +1985,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Business Lending",
     "formType": "org",
+    "productCodes": "loan,mortgage, curract, special",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -2146,6 +2153,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Business Lending",
     "formType": "org",
+    "productCodes": "loan,mortgage",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -2205,7 +2213,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Business Lending",
     "formType": "org",
-    "productCodes": "loan, m,tgage",
+    "productCodes": "loan, mortgage",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -2460,7 +2468,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Business Lending",
     "formType": "org",
-    "productCodes": "loan, LOC, m,tgage, curacct, special",
+    "productCodes": "loan, LOC, mortgage, curacct, special",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -3224,6 +3232,7 @@
     "foCabinet": "Investments",
     "formMenuGroups": "Wealth (all folders)",
     "formType": "combined",
+    "productCodes": "TFS, TD, RSP, RIF, GIC, FHS, tfsvar, special, savings, rrspvar, rrifvar, perschq, pca,fhsavar, curract",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -5263,6 +5272,7 @@
     "formName": "Disclosure Letter - Pre Approved Loan Extension - Business",
     "formDescription": "Disclosure Letter - Pre Approved Loan Extension - Business",
     "foCabinet": "Lending",
+    "productCodes": "loan, LOC, mortgage, curacct, special",
     "postProcessing": false,
     "adminQueue": false
    },
@@ -5285,6 +5295,7 @@
     "formId": "L_FLA",
     "formDescription": "Federal RLIF Locking-In Agreement",
     "foCabinet": "Investments",
+    "productCodes": "rrifvar , RIF",
     "postProcessing": false,
     "adminQueue": false
    },
@@ -5306,6 +5317,7 @@
     "formId": "L_FT",
     "formDescription": "Federal RLIF Transfer - up to 50% of new RLIF",
     "foCabinet": "investments",
+    "productCodes": "rrifvar , RIF",
     "postProcessing": false,
     "adminQueue": false
    },
@@ -5328,6 +5340,7 @@
     "formId": "L_FHSA",
     "formDescription": "FHSA Application",
     "foCabinet": "Investments",
+    "productCodes": "fhsavar, FHS",
     "postProcessing": false,
     "adminQueue": false
    },
@@ -5350,6 +5363,7 @@
     "formId": "L_FHSAB",
     "formDescription": "FHSA Designation of SH, Ben",
     "foCabinet": "Investments",
+    "productCodes": "fhsavar, FHS",
     "postProcessing": false,
     "adminQueue": false
    },
@@ -5372,6 +5386,7 @@
     "formId": "L_FHSABD",
     "formDescription": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
     "foCabinet": "Investments",
+    "productCodes": "fhsavar, FHS",
     "postProcessing": false,
     "adminQueue": false
    },
@@ -5394,6 +5409,7 @@
     "formId": "L_FHSAWT",
     "formDescription": "FHSA Withdrawal Transfer",
     "foCabinet": "Investments",
+    "productCodes": "fhsavar, FHS",
     "postProcessing": false,
     "adminQueue": false
    },
@@ -5415,7 +5431,7 @@
     "formId": "L_FHGIC",
     "formDescription": "Funeral Home Guaranteed Investment Certificate",
     "foCabinet": "Investments",
-    "productCodes": "GIC , TD",
+    "productCodes": "GIC,TD",
     "postProcessing": false,
     "adminQueue": false
    },
@@ -5595,6 +5611,7 @@
     "formName": "LIF Locking-in Agreement - ON",
     "formDescription": "LIF Locking-in Agreement - ON",
     "foCabinet": "investments",
+    "productCodes": "rrifvar , RIF",
     "postProcessing": false,
     "adminQueue": false
    },
@@ -5616,6 +5633,7 @@
     "formId": "L_LSC",
     "formDescription": "LIF Spousal Consent",
     "foCabinet": "investments",
+    "productCodes": "rrifvar , RIF",
     "postProcessing": false,
     "adminQueue": false
    },
@@ -5747,6 +5765,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Business Lending",
     "formType": "org",
+    "productCodes": "loan, mortgage",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -5769,6 +5788,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Business Lending",
     "formType": "org",
+    "productCodes": "LOC, curacct, special",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -5812,6 +5832,7 @@
     "foCabinet": "Lending",
     "formMenuGroups": "Business Lending",
     "formType": "org",
+    "productCodes": "curacct, special, LOC",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -5904,6 +5925,7 @@
     "foCabinet": "Member Records",
     "formMenuGroups": "Member Servicing",
     "formType": "combined",
+    "productCodes": "curacct, intrnal, pca, perschq, savings, special, usacct",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false
@@ -5926,6 +5948,7 @@
     "foCabinet": "Member Records",
     "formMenuGroups": "Member Servicing",
     "formType": "combined",
+    "productCodes": "curacct, intrnal, pca, perschq, savings, special, usacct",
     "postProcessing": false,
     "adminQueue": false,
     "supportServices": false

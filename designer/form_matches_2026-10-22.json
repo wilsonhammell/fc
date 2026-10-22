@@ -146,7 +146,7 @@
    "PrintButton": true
   },
   "notes": [
-   "Confirmed Forms row 25 is shifted a column (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Combined\" not recognised.): Config and buttons from FO Data Line row 133, Form ID from Confirmed Forms"
+   "Confirmed Forms row 25 is misaligned (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Combined\" not recognised.): buttons, membership type and menu group from FO Data Line row 133; Form ID and product codes from Confirmed Forms"
   ]
  },
  {
@@ -176,7 +176,7 @@
    "PrintButton": true
   },
   "notes": [
-   "Confirmed Forms row 27 is shifted a column (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Combined\" not recognised.): Config and buttons from FO Data Line row 159, Form ID from Confirmed Forms"
+   "Confirmed Forms row 27 is misaligned (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Combined\" not recognised.): buttons, membership type and menu group from FO Data Line row 159; Form ID and product codes from Confirmed Forms"
   ]
  },
  {
@@ -208,7 +208,7 @@
    "RemoteESignButton": true
   },
   "notes": [
-   "Confirmed Forms row 31 is shifted a column (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Combined\" not recognised.): Config and buttons from FO Data Line row 125, Form ID from Confirmed Forms"
+   "Confirmed Forms row 31 is misaligned (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Combined\" not recognised.): buttons, membership type and menu group from FO Data Line row 125; Form ID and product codes from Confirmed Forms"
   ]
  },
  {
@@ -240,7 +240,7 @@
    "RemoteESignButton": true
   },
   "notes": [
-   "Confirmed Forms row 34 is shifted a column (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Person (Retail)\" not recognised.): Config and buttons from FO Data Line row 134, Form ID from Confirmed Forms"
+   "Confirmed Forms row 34 is misaligned (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Person (Retail)\" not recognised.): buttons, membership type and menu group from FO Data Line row 134; Form ID and product codes from Confirmed Forms"
   ]
  },
  {
