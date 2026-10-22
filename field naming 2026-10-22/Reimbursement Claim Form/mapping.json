@@ -1,0 +1,165 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "I/We,",
+   "desc": "The payor(s) making the claim (I/We, ___)"
+  },
+  "F2": {
+   "name": "PADClaimAmount",
+   "kind": "entry",
+   "label": "of $",
+   "desc": "Amount of the PAD claimed $",
+   "save": true
+  },
+  "F3": {
+   "name": "PADPayee",
+   "kind": "entry",
+   "label": "of $ ___________ drawn in favour",
+   "desc": "The PAD was drawn in favour of (the payee)",
+   "save": true
+  },
+  "F4": {
+   "name": "PADAccountNumber",
+   "kind": "entry",
+   "label": "account number",
+   "desc": "The member's account the PAD was drawn on (PRIMARY_MEMBER_NUMBER holds the member number)",
+   "save": true,
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12
+  },
+  "F5": {
+   "name": "PADDebitDate",
+   "kind": "entry",
+   "label": "account number",
+   "desc": "Date the PAD was debited (on ___)",
+   "save": true
+  },
+  "F6": {
+   "name": "PADDescription",
+   "kind": "entry",
+   "label": "for",
+   "desc": "What the PAD was for (for ___, the PAD)",
+   "save": true
+  },
+  "F7": {
+   "name": "ClaimReason.NotPerAgreement",
+   "kind": "entry",
+   "label": "The PAD was not processed in accordance with my/our Payor’s",
+   "desc": "Tick 1: the PAD was not processed per the PAD agreement",
+   "save": true
+  },
+  "F8": {
+   "name": "ClaimReason.AgreementCancelled",
+   "kind": "entry",
+   "label": "My/our Payor’s PAD Agreement was cancelled/revoked and notice of such",
+   "desc": "Tick 2: the payor's PAD agreement was cancelled/revoked",
+   "save": true
+  },
+  "F9": {
+   "name": "ClaimReason.NoPrenotification",
+   "kind": "entry",
+   "label": "Agreement",
+   "desc": "Tick 3(a): no pre-notification of the PAD",
+   "save": true
+  },
+  "F10": {
+   "name": "ClaimReason.NoConfirmation",
+   "kind": "entry",
+   "label": "time",
+   "desc": "Tick 3(b): no confirmation of the electronic agreement",
+   "save": true
+  },
+  "F11": {
+   "name": "ClaimReason.NoAgreement",
+   "kind": "entry",
+   "label": "days",
+   "desc": "Tick 4: I/we have no payor's PAD agreement with the payee",
+   "save": true
+  },
+  "F12": {
+   "name": "ClaimPermitFI",
+   "kind": "entry",
+   "label": "I/We permit",
+   "desc": "I/We permit ___ (the financial institution) to provide this form",
+   "save": true
+  },
+  "F13": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Where the Payor’s account agreement persons are required for the purposes",
+   "desc": "Date"
+  },
+  "F14": {
+   "name": "ClaimCancellationDate",
+   "kind": "entry",
+   "label": "Cancellation/revocation was provided to the PAYEE",
+   "desc": "Notice of cancellation/revocation was given to the payee on (date)",
+   "custom": "Required when ClaimReason.AgreementCancelled is ticked"
+  },
+  "F15": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "the PAYEE and to the financial institution acting",
+   "desc": "Payor signature 1"
+  },
+  "F16": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "acting on behalf of the PAYEE for their records.",
+   "desc": "Payor signature 2"
+  },
+  "F17": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member"
+  },
+  "F18": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Payor 1: name"
+  },
+  "F19": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Payor 2: name"
+  },
+  "F20": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Payor 1: date signed"
+  },
+  "F21": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Payor 2: date signed"
+  },
+  "F22": {
+   "name": "ClaimPermitFI",
+   "kind": "entry",
+   "label": "Reimbursement Claim to",
+   "save": true,
+   "desc": "I/We permit ___ (the financial institution) to provide this Reimbursement Claim to the payee's financial institution"
+  }
+ },
+ "drop": [],
+ "skip": {
+  "B1": "the rule under the title, no blank",
+  "B2": "space at the end of a paragraph line, no blank"
+ },
+ "notes": []
+}

@@ -13,3 +13,7 @@ designer/jobs_as_is/
 designer/out_as_is/
 designer/build_report_as_is.json
 handover - special (as is)/
+designer/jobs_*/
+designer/out_*/
+designer/build_report_*.json
+handover * batch/

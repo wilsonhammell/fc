@@ -1,0 +1,528 @@
+{
+ "as_is": true,
+ "items": {
+  "B1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Of:",
+   "desc": "The deceased's name (estate of)"
+  },
+  "B2": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "SIN:",
+   "desc": "The deceased's SIN"
+  },
+  "B3": {
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
+   "label": "Late of:",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)"
+  },
+  "B4": {
+   "name": "BeneficiaryName",
+   "kind": "entry",
+   "label": "I, (full name)",
+   "desc": "Designated beneficiary's full name (the declarant)",
+   "save": true
+  },
+  "B5": {
+   "name": "BeneficiaryCity",
+   "kind": "entry",
+   "label": ", of",
+   "desc": "Beneficiary's city",
+   "save": true
+  },
+  "B6": {
+   "name": "BeneficiaryRelationship",
+   "kind": "entry",
+   "label": "do hereby certify that I am the ___ of the deceased",
+   "desc": "Beneficiary's relationship to the deceased",
+   "save": true
+  },
+  "B7": {
+   "name": "PRIMARY_DEATH_DAY",
+   "kind": "candidate",
+   "label": "died on the ___ day",
+   "desc": "Day of the member's death - the DB list has no date of death",
+   "save": true
+  },
+  "B8": {
+   "name": "PRIMARY_DEATH_MONTH_YEAR",
+   "kind": "candidate",
+   "label": "of ___ (month/year)",
+   "desc": "Month and year of the member's death",
+   "save": true
+  },
+  "B9": {
+   "name": "BeneficiaryBirthDay",
+   "kind": "entry",
+   "label": "entitled to the proceeds",
+   "desc": "Beneficiary's date of birth, day",
+   "save": true,
+   "rect": [
+    192,
+    396.0,
+    251,
+    409.0
+   ]
+  },
+  "B10": {
+   "name": "BeneficiarySIN",
+   "kind": "entry",
+   "label": "SIN",
+   "desc": "Beneficiary's SIN",
+   "save": true
+  },
+  "B11": {
+   "name": "Option1ARRSPContract",
+   "kind": "entry",
+   "label": "Application/Subsequent Deposit Form attached)",
+   "desc": "Option #1a: beneficiary's RRSP contract #",
+   "custom": "Required when PayoutOption.1A is ticked"
+  },
+  "B12": {
+   "name": "Option1ARRSPAccount",
+   "kind": "entry",
+   "label": "attached)",
+   "desc": "Option #1a: account #",
+   "custom": "Required when PayoutOption.1A is ticked"
+  },
+  "B13": {
+   "name": "Option1BTFSAContract",
+   "kind": "entry",
+   "label": "Application/Subsequent Deposit Form attached)",
+   "desc": "Option #1b: beneficiary's TFSA contract #",
+   "custom": "Required when PayoutOption.1B is ticked"
+  },
+  "B14": {
+   "name": "Option1BTFSAAccount",
+   "kind": "entry",
+   "label": "attached)",
+   "desc": "Option #1b: account #",
+   "custom": "Required when PayoutOption.1B is ticked"
+  },
+  "B15": {
+   "name": "Option2RRIFContract",
+   "kind": "entry",
+   "label": "Transferred to my RRIF Contract#",
+   "desc": "Option #2: RRIF contract #",
+   "custom": "Required when PayoutOption.2 is ticked"
+  },
+  "B16": {
+   "name": "Option2RRIFAccount",
+   "kind": "entry",
+   "label": "Transferred to my RRIF Contract# __________________, Acct#",
+   "desc": "Option #2: account #",
+   "custom": "Required when PayoutOption.2 is ticked"
+  },
+  "B17": {
+   "name": "Option3DemandAccount",
+   "kind": "entry",
+   "label": "Deposit the funds to my Libro demand account#",
+   "desc": "Option #3: demand account #",
+   "custom": "Required when PayoutOption.3 is ticked"
+  },
+  "B18": {
+   "name": "Option3DemandSub",
+   "kind": "entry",
+   "label": "Deposit the funds to my Libro demand account# __________________, Sub#",
+   "desc": "Option #3: sub #",
+   "custom": "Required when PayoutOption.3 is ticked"
+  },
+  "B19": {
+   "name": "BeneficiaryName",
+   "kind": "entry",
+   "label": "I, (full name)",
+   "desc": "The declarant's name (I, ___ make this solemn declaration)",
+   "save": true
+  },
+  "B20": {
+   "name": "DeclaredAtCity",
+   "kind": "entry",
+   "label": "In the city of",
+   "desc": "Dated at (city)",
+   "save": true
+  },
+  "B21": {
+   "name": "DeclaredDay",
+   "kind": "entry",
+   "label": "___________, this",
+   "desc": "this ___ day",
+   "save": true
+  },
+  "B22": {
+   "name": "DeclaredMonth",
+   "kind": "entry",
+   "label": "___________, this _______ day of",
+   "desc": "of ___ (month)",
+   "save": true
+  },
+  "B23": {
+   "name": "DeclaredYear",
+   "kind": "entry",
+   "label": "___________, this _______ day of __________, A.D.",
+   "desc": "A.D. 20__",
+   "save": true,
+   "maxlen": 2
+  },
+  "B24": {
+   "name": "BeneficiaryName",
+   "kind": "entry",
+   "label": "Trustee Name",
+   "desc": "The declarant (the designated beneficiary) signing: the witness statement calls them the Claimant",
+   "save": true
+  },
+  "B25": {
+   "name": "DeclarantSignature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Signature of the designated beneficiary",
+   "save": true
+  },
+  "B26": {
+   "name": "DeclarantSignDate",
+   "kind": "entry",
+   "save": true,
+   "label": "Date",
+   "desc": "Date the designated beneficiary signs"
+  },
+  "B27": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Sincerely,",
+   "desc": "Staff member preparing the form"
+  },
+  "B28": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db"
+  },
+  "B29": {
+   "name": "WitnessName",
+   "kind": "entry",
+   "label": "My full legal name is:",
+   "desc": "Witness's full name",
+   "save": true
+  },
+  "B30": {
+   "name": "WitnessAddress",
+   "kind": "entry",
+   "label": "My address is:",
+   "desc": "Witness's address, line 1",
+   "save": true
+  },
+  "B31": {
+   "name": "WitnessPhone",
+   "kind": "entry",
+   "label": "My phone is:",
+   "desc": "Witness's phone number",
+   "save": true
+  },
+  "B32": {
+   "name": "WitnessSignature",
+   "kind": "entry",
+   "label": "Signature of Witness",
+   "desc": "Signature of witness",
+   "save": true
+  },
+  "B33": {
+   "name": "WitnessDate",
+   "kind": "entry",
+   "label": "My phone number is: ________________________________",
+   "desc": "Date of the witness signature",
+   "save": true
+  }
+ },
+ "skip": {
+  "B34": "a stray rule under 'this ___ day', no blank of its own"
+ },
+ "drop": [],
+ "notes": [],
+ "reviewed copy": "field naming\\Designated Beneficiary Declaration and Indemnification - Estates",
+ "add": [
+  {
+   "name": "BeneficiaryBirthMonth",
+   "kind": "entry",
+   "label": "proceeds and claim the",
+   "desc": "Beneficiary's date of birth, month",
+   "save": true,
+   "page": 0,
+   "rect": [
+    258,
+    396.0,
+    321,
+    409.0
+   ]
+  },
+  {
+   "name": "BeneficiaryBirthYear",
+   "kind": "entry",
+   "label": "the said funds",
+   "desc": "Beneficiary's date of birth, year",
+   "save": true,
+   "page": 0,
+   "rect": [
+    328,
+    396.0,
+    370,
+    409.0
+   ]
+  },
+  {
+   "name": "BeneficiaryOf.RRSP",
+   "kind": "entry",
+   "label": "THAT",
+   "desc": "Tick: named beneficiary of RRSP contract(s)",
+   "save": true,
+   "type": "checkbox",
+   "page": 0,
+   "rect": [
+    101.2,
+    293.9,
+    115.2,
+    307.9
+   ]
+  },
+  {
+   "name": "RRSPContracts",
+   "kind": "entry",
+   "label": "RRSP Contract(s)",
+   "desc": "The deceased's RRSP contract number(s)",
+   "custom": "Required when BeneficiaryOf.RRSP is ticked",
+   "page": 0,
+   "rect": [
+    241,
+    293,
+    538,
+    309
+   ]
+  },
+  {
+   "name": "BeneficiaryOf.TFSA",
+   "kind": "entry",
+   "label": "TFSA Contract(s)",
+   "desc": "Tick: named beneficiary of TFSA contract(s)",
+   "save": true,
+   "type": "checkbox",
+   "page": 0,
+   "rect": [
+    101.2,
+    314.1,
+    115.2,
+    328.1
+   ]
+  },
+  {
+   "name": "TFSAContracts",
+   "kind": "entry",
+   "label": "TFSA Contract(s)",
+   "desc": "The deceased's TFSA contract number(s)",
+   "custom": "Required when BeneficiaryOf.TFSA is ticked",
+   "page": 0,
+   "rect": [
+    241,
+    313.3,
+    538,
+    329.3
+   ]
+  },
+  {
+   "name": "BeneficiaryAddress1",
+   "kind": "entry",
+   "label": "Address:",
+   "desc": "Beneficiary's permanent address, line 1",
+   "save": true,
+   "page": 0,
+   "rect": [
+    177,
+    476,
+    532,
+    496
+   ]
+  },
+  {
+   "name": "BeneficiaryAddress2",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 2",
+   "save": true,
+   "page": 0,
+   "rect": [
+    177,
+    502,
+    532,
+    522
+   ]
+  },
+  {
+   "name": "BeneficiaryAddress3",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 3",
+   "page": 0,
+   "rect": [
+    177,
+    528,
+    532,
+    548
+   ]
+  },
+  {
+   "name": "BeneficiaryPhone",
+   "kind": "entry",
+   "label": "Phone Number:",
+   "desc": "Beneficiary's phone number",
+   "save": true,
+   "page": 0,
+   "rect": [
+    177,
+    554.5,
+    532,
+    574.5
+   ]
+  },
+  {
+   "name": "PayoutOption.1A",
+   "kind": "entry",
+   "label": "Option #1a – RRSP only",
+   "desc": "Tick: Option #1a - transfer RRSP to my RRSP",
+   "save": true,
+   "type": "checkbox",
+   "page": 0,
+   "rect": [
+    59.5,
+    780.2,
+    73.6,
+    794.2
+   ]
+  },
+  {
+   "name": "PayoutOption.1B",
+   "kind": "entry",
+   "label": "Option #1b – TFSA only",
+   "desc": "Tick: Option #1b - transfer TFSA to my TFSA",
+   "save": true,
+   "type": "checkbox",
+   "page": 0,
+   "rect": [
+    59.5,
+    822,
+    73.6,
+    836
+   ]
+  },
+  {
+   "name": "PayoutOption.2",
+   "kind": "entry",
+   "label": "Option #2 – RRSP only",
+   "desc": "Tick: Option #2 - transfer RRSP to my RRIF",
+   "save": true,
+   "type": "checkbox",
+   "page": 1,
+   "rect": [
+    60,
+    87.5,
+    70,
+    97.5
+   ]
+  },
+  {
+   "name": "PayoutOption.3",
+   "kind": "entry",
+   "label": "Option #3 – RRSP and/or TFSA",
+   "desc": "Tick: Option #3 - deposit to my Libro demand account",
+   "save": true,
+   "type": "checkbox",
+   "page": 1,
+   "rect": [
+    60,
+    117.8,
+    70,
+    127.8
+   ]
+  },
+  {
+   "name": "PayoutOption.4",
+   "kind": "entry",
+   "label": "Option #4 – RRSP and/or TFSA",
+   "desc": "Tick: Option #4 - RRSP and/or TFSA, other",
+   "save": true,
+   "type": "checkbox",
+   "page": 1,
+   "rect": [
+    60,
+    148,
+    70,
+    158
+   ]
+  },
+  {
+   "name": "AdditionalInstructions",
+   "kind": "entry",
+   "label": "*No cash withdrawals are allowed.",
+   "desc": "Additional instructions",
+   "custom": "Required when PayoutOption.4 is ticked",
+   "type": "text",
+   "page": 1,
+   "rect": [
+    60,
+    237,
+    553,
+    297
+   ]
+  },
+  {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Of:",
+   "desc": "The deceased's name (estate of)",
+   "page": 2,
+   "rect": [
+    264,
+    149,
+    560,
+    163.3
+   ]
+  },
+  {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Sincerely,",
+   "desc": "Staff member preparing the form",
+   "page": 2,
+   "rect": [
+    72,
+    440,
+    300,
+    454
+   ]
+  },
+  {
+   "name": "REQUESTUSER_POSITION",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Staff member's position / title",
+   "save": true,
+   "page": 2,
+   "rect": [
+    72,
+    456,
+    300,
+    470
+   ]
+  },
+  {
+   "name": "REQUESTUSER_EMAIL",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Staff member's email",
+   "page": 2,
+   "rect": [
+    72,
+    472,
+    300,
+    486
+   ]
+  }
+ ]
+}

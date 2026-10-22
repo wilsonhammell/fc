@@ -1,0 +1,7051 @@
+{
+ "defaultSheet": "Confirmed Forms(74)",
+ "rows": [
+  {
+   "sheet": "FO Data Line",
+   "row": 2,
+   "formName": "TEMPLATE ROW",
+   "config": {
+    "formName": "TEMPLATE ROW",
+    "formId": "IT",
+    "formDescription": "IT",
+    "foCabinet": "Member Records",
+    "formType": "person"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": [
+    "Post Processing Queue \"n/a for Libro\" not recognised.",
+    "ADMIN QUEUE \"n/a for Libro\" not recognised.",
+    "Support Services \"n/a for Libro\" not recognised."
+   ]
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 3,
+   "formName": "Authorization to Release Financial Info",
+   "config": {
+    "formName": "Authorization to Release Financial Info",
+    "formId": "L_ARFI",
+    "formDescription": "Authorization to Release Financial Info",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 4,
+   "formName": "Assignment of Life Ins Policy - Letter",
+   "config": {
+    "formName": "Assignment of Life Ins Policy - Letter",
+    "formId": "L_ALIPL",
+    "formDescription": "Assignment of Life Ins Policy - Letter",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 5,
+   "formName": "Mortgagor's Declaration as to Execution(s)",
+   "config": {
+    "formName": "Mortgagor's Declaration as to Execution(s)",
+    "formDescription": "Mortgagor's Declaration as to Execution(s)",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 6,
+   "formName": "Collateral Agreement-Q-Trade Investments",
+   "config": {
+    "formName": "Collateral Agreement-Q-Trade Investments",
+    "formDescription": "Collateral Agreement-Q-Trade Investments",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 7,
+   "formName": "Hypothecation Agreement - Bonds",
+   "config": {
+    "formName": "Hypothecation Agreement - Bonds",
+    "formDescription": "Hypothecation Agreement - Bonds",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 8,
+   "formName": "Hypothecation Agreement - Mutual Funds",
+   "config": {
+    "formName": "Hypothecation Agreement - Mutual Funds",
+    "formDescription": "Hypothecation Agreement - Mutual Funds",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 9,
+   "formName": "Hypothecation Agreement - Stocks",
+   "config": {
+    "formName": "Hypothecation Agreement - Stocks",
+    "formDescription": "Hypothecation Agreement - Stocks",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 10,
+   "formName": "Direction of Chicken Quota",
+   "config": {
+    "formName": "Direction of Chicken Quota",
+    "formId": "L_DCQ",
+    "formDescription": "Direction of Chicken Quota",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 11,
+   "formName": "Direction of Egg Quota",
+   "config": {
+    "formName": "Direction of Egg Quota",
+    "formDescription": "Direction of Egg Quota",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 12,
+   "formName": "Direction of Turkey Quota",
+   "config": {
+    "formName": "Direction of Turkey Quota",
+    "formDescription": "Direction of Turkey Quota",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 13,
+   "formName": "Direction of Hatching Egg & Chicken Quota",
+   "config": {
+    "formName": "Direction of Hatching Egg & Chicken Quota",
+    "formDescription": "Direction of Hatching Egg & Chicken Quota",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 14,
+   "formName": "Direction of Milk Quota Proceeds",
+   "config": {
+    "formName": "Direction of Milk Quota Proceeds",
+    "formDescription": "Direction of Milk Quota Proceeds",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 15,
+   "formName": "Pre-Authorized Credit Agreement (Credit to other FI)",
+   "config": {
+    "formName": "Pre-Authorized Credit Agreement (Credit to other FI)",
+    "formId": "L_PACA",
+    "formDescription": "Pre-Authorized Credit Agreement (Credit to other FI)",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "curacct, intrnal, pca, perschq, savings, special, usacct",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 16,
+   "formName": "Pre-Authorized Debit Agreement (Debit to other FI)",
+   "config": {
+    "formName": "Pre-Authorized Debit Agreement (Debit to other FI)",
+    "formId": "L_PADA",
+    "formDescription": "Pre-Authorized Debit Agreement (Debit to other FI)",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "curacct, intrnal, pca, perschq, savings, special, usacct",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 17,
+   "formName": "Service Request Form",
+   "config": {
+    "formName": "Service Request Form",
+    "formId": "L_SR",
+    "formDescription": "Service Request Form",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing, Estates",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 18,
+   "formName": "Wire Instructions CAD",
+   "config": {
+    "formName": "Wire Instructions CAD",
+    "formDescription": "Wire Instructions CAD",
+    "formMenuGroups": "Wires",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 19,
+   "formName": "Wire Instructions EUR",
+   "config": {
+    "formName": "Wire Instructions EUR",
+    "formDescription": "Wire Instructions EUR",
+    "formMenuGroups": "Wires",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 20,
+   "formName": "ye",
+   "config": {
+    "formName": "ye",
+    "formDescription": "Wire Instructions OTHER CURRENCIES",
+    "formMenuGroups": "Wires",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 21,
+   "formName": "Wire Instructions USD",
+   "config": {
+    "formName": "Wire Instructions USD",
+    "formDescription": "Wire Instructions USD",
+    "formMenuGroups": "Wires",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 22,
+   "formName": "Safe Deposit Box - Statutory Declaration - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Statutory Declaration - Estates",
+    "formId": "L_SDSDB",
+    "formDescription": "Est107-Statutory Decl Safe Deposit Box",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 23,
+   "formName": "Statutory Declaration & Indemnification Intestacy - No Will",
+   "config": {
+    "formName": "Statutory Declaration & Indemnification Intestacy - No Will",
+    "formId": "L_SDII",
+    "formDescription": "Est115-Statutory Decl. and Indemn.  Intestacy",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 24,
+   "formName": "Statutory Declaration & Indemnification Testacy - with Will",
+   "config": {
+    "formName": "Statutory Declaration & Indemnification Testacy - with Will",
+    "formId": "L_SDIT",
+    "formDescription": "Est120-Statutory Decl and Indemn Testacy",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 25,
+   "formName": "Designated Beneficiary Declaration and Indemnification - Estates",
+   "config": {
+    "formName": "Designated Beneficiary Declaration and Indemnification - Estates",
+    "formId": "L_DBDI",
+    "formDescription": "Est125-Designated Beneficiary Decl and Indemn",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 26,
+   "formName": "Renounciation of Designated Beneficiary - Estates",
+   "config": {
+    "formName": "Renounciation of Designated Beneficiary - Estates",
+    "formId": "L_REI",
+    "formDescription": "Est135-Renounce Design Beneficiary",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 27,
+   "formName": "Safe Deposit Box - Contents Receipt - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Contents Receipt - Estates",
+    "formId": "L_SDBC",
+    "formDescription": "Est170-Receipt for Safe Deposit Box Contents",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 28,
+   "formName": "Safe Deposit Box - Access - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Access - Estates",
+    "formId": "L_SDBA",
+    "formDescription": "Est171-Notice of Safe Deposit Box Access",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 29,
+   "formName": "Safe Deposit Box - Inventory - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Inventory - Estates",
+    "formId": "L_SDBI",
+    "formDescription": "Est172-Safe Deposit Box Inventory",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 30,
+   "formName": "Waive Cert Appointment of Estate Trustee",
+   "config": {
+    "formName": "Waive Cert Appointment of Estate Trustee",
+    "formId": "L_WCAE",
+    "formDescription": "Est190-Request Waive Cert Appt of Estate Trustee",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 31,
+   "formName": "Account Declaration Agreement - Estates",
+   "config": {
+    "formName": "Account Declaration Agreement - Estates",
+    "formId": "L_ACI",
+    "formDescription": "Estate Account Declaration Agreement",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 32,
+   "formName": "Bond of Indemnity - Estates",
+   "config": {
+    "formName": "Bond of Indemnity - Estates",
+    "formId": "L_BOIE",
+    "formDescription": "Estate - Bond of Indemnity",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 33,
+   "formName": "Large Cash Deposit Form",
+   "config": {
+    "formName": "Large Cash Deposit Form",
+    "formId": "L_LCD",
+    "formDescription": "Large Cash Deposit Form",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 34,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "formDescription": "Envelope",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 35,
+   "formName": "Lost Item Affidavit",
+   "config": {
+    "formName": "Lost Item Affidavit",
+    "formId": "L_LIA",
+    "formDescription": "Lost Item Affidavit",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 36,
+   "formName": "Reimbursement Claim Form",
+   "config": {
+    "formName": "Reimbursement Claim Form",
+    "formId": "L_RC",
+    "formDescription": "Reimbursement Claim Form",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 37,
+   "formName": "ATM & POS Trace Request",
+   "config": {
+    "formName": "ATM & POS Trace Request",
+    "formId": "L_ATPO",
+    "formDescription": "ATM & POS Trace Request",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "SubmitForProcessingButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 38,
+   "formName": "Bill Payment Trace",
+   "config": {
+    "formName": "Bill Payment Trace",
+    "formId": "L_BPT",
+    "formDescription": "Bill Payment Trace",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "SubmitForProcessingButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 39,
+   "formName": "LIRA Declaration No Spouse",
+   "config": {
+    "formName": "LIRA Declaration No Spouse",
+    "formDescription": "LIRA Declaration No Spouse",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar,RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 40,
+   "formName": "RRSP Application",
+   "config": {
+    "formName": "RRSP Application",
+    "formDescription": "RRSP Application",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar , RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 41,
+   "formName": "RRSP Designation of Beneficiary",
+   "config": {
+    "formName": "RRSP Designation of Beneficiary",
+    "formDescription": "RRSP Designation of Beneficiary",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar , RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 42,
+   "formName": "TFSA Application",
+   "config": {
+    "formName": "TFSA Application",
+    "formDescription": "TFSA Application",
+    "foCabinet": "Investments",
+    "formMenuGroups": "TFSA",
+    "formType": "person",
+    "productCodes": "tfsvar , TFS",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 43,
+   "formName": "TFSA Designation of Beneficiary",
+   "config": {
+    "formName": "TFSA Designation of Beneficiary",
+    "formDescription": "TFSA Designation of Beneficiary",
+    "foCabinet": "Investments",
+    "formMenuGroups": "TFSA",
+    "formType": "person",
+    "productCodes": "tfsvar , TFS",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 44,
+   "formName": "LIRA Locking In Agreement - Fed",
+   "config": {
+    "formName": "LIRA Locking In Agreement - Fed",
+    "formDescription": "LIRA Locking In Agreement - Fed",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar , RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 45,
+   "formName": "LIRA Locking In Agreement - ON",
+   "config": {
+    "formName": "LIRA Locking In Agreement - ON",
+    "formDescription": "LIRA Locking In Agreement - ON",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar , RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 46,
+   "formName": "RRSP Withdrawal",
+   "config": {
+    "formName": "RRSP Withdrawal",
+    "formDescription": "RRSP Withdrawal",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar , RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 47,
+   "formName": "Assignment of Life Insurance Policy",
+   "config": {
+    "formName": "Assignment of Life Insurance Policy",
+    "formDescription": "Assignment of Life Insurance Policy",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 48,
+   "formName": "Security Agreement - General",
+   "config": {
+    "formName": "Security Agreement - General",
+    "formDescription": "Security Agreement - General",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 49,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "formDescription": "Loan Conversion Agreement",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Personal Lending and Business Lending",
+    "formType": "combined",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 50,
+   "formName": "Security Agreement - Specific Location",
+   "config": {
+    "formName": "Security Agreement - Specific Location",
+    "formDescription": "Security Agreement - Specific Location",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 51,
+   "formName": "Guarantee",
+   "config": {
+    "formName": "Guarantee",
+    "formDescription": "Guarantee",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Personal Lending and Business Lending",
+    "formType": "combined",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 52,
+   "formName": "Security Agreement - Specific Equipment",
+   "config": {
+    "formName": "Security Agreement - Specific Equipment",
+    "formDescription": "Security Agreement - Specific Equipment",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 53,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "formDescription": "Loan Renewal Agreement - Breaking Term",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 54,
+   "formName": "Security Agreement - General",
+   "config": {
+    "formName": "Security Agreement - General",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 55,
+   "formName": "Security Agreement - General",
+   "config": {
+    "formName": "Security Agreement - General",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 56,
+   "formName": "Security Agreement - Specific Location",
+   "config": {
+    "formName": "Security Agreement - Specific Location",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 57,
+   "formName": "Security Agreement - Specific Location",
+   "config": {
+    "formName": "Security Agreement - Specific Location",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 58,
+   "formName": "Guarantee",
+   "config": {
+    "formName": "Guarantee",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 59,
+   "formName": "Guarantee",
+   "config": {
+    "formName": "Guarantee",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 60,
+   "formName": "Guarantee",
+   "config": {
+    "formName": "Guarantee",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 61,
+   "formName": "Guarantee",
+   "config": {
+    "formName": "Guarantee",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 62,
+   "formName": "Guarantee",
+   "config": {
+    "formName": "Guarantee",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 63,
+   "formName": "Guarantee",
+   "config": {
+    "formName": "Guarantee",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 64,
+   "formName": "Security Agreement - Specific Equipment",
+   "config": {
+    "formName": "Security Agreement - Specific Equipment",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 65,
+   "formName": "Security Agreement - Specific Equipment",
+   "config": {
+    "formName": "Security Agreement - Specific Equipment",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 66,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 67,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 68,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 69,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 70,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 71,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 72,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 73,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 74,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 75,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 76,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 77,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 78,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 79,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 80,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 81,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 82,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 83,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 84,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 85,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 86,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 87,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 88,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 89,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 90,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 91,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 92,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 93,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 94,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 95,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 96,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 97,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 98,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 99,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 100,
+   "formName": "LOC Repricing Letter",
+   "config": {
+    "formName": "LOC Repricing Letter",
+    "formDescription": "LOC Repricing Letter",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "productCodes": "curacct, special, LOC"
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true,
+    "SubmitForProcessingButton": false
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 101,
+   "formName": "Disclosure letter - Business",
+   "config": {
+    "formName": "Disclosure letter - Business",
+    "formDescription": "Disclosure Letter - Business",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true,
+    "SubmitForProcessingButton": false
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 102,
+   "formName": "Disclosure letter - Business",
+   "config": {
+    "formName": "Disclosure letter - Business",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 103,
+   "formName": "Disclosure letter - Business",
+   "config": {
+    "formName": "Disclosure letter - Business",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 104,
+   "formName": "Disclosure letter - Business",
+   "config": {
+    "formName": "Disclosure letter - Business",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 105,
+   "formName": "Disclosure letter - Business",
+   "config": {
+    "formName": "Disclosure letter - Business",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 106,
+   "formName": "Disclosure letter - Business",
+   "config": {
+    "formName": "Disclosure letter - Business",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 107,
+   "formName": "Breach Letter",
+   "config": {
+    "formName": "Breach Letter",
+    "formDescription": "Breach Letter",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 108,
+   "formName": "Masterline Takedown Facility Authorization",
+   "config": {
+    "formName": "Masterline Takedown Facility Authorization",
+    "formDescription": "Masterline Takedown Facility Authorization",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 109,
+   "formName": "Loan Extension Request - Small Business",
+   "config": {
+    "formName": "Loan Extension Request - Small Business",
+    "formDescription": "Loan Extension Request - Small Business",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 110,
+   "formName": "Loan Extension Request - Small Business",
+   "config": {
+    "formName": "Loan Extension Request - Small Business",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 111,
+   "formName": "Loan Extension Request - Small Business",
+   "config": {
+    "formName": "Loan Extension Request - Small Business",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 112,
+   "formName": "Loan Payout Statement - Business",
+   "config": {
+    "formName": "Loan Payout Statement - Business",
+    "formDescription": "Loan Payout Statement - Business",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "productCodes": "loan, m,tgage",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 113,
+   "formName": "Loan Payout Statement - LOC - Business",
+   "config": {
+    "formName": "Loan Payout Statement - LOC - Business",
+    "formDescription": "Loan Payout Statement - LOC - Business",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "productCodes": "LOC, curacct, special",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 114,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 115,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 116,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 117,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 118,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 119,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 120,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 121,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 122,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 123,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 124,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 125,
+   "formName": "Indemnity agreement",
+   "config": {
+    "formName": "Indemnity agreement",
+    "formDescription": "Indemnity agreement",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 126,
+   "formName": "Disclosure Letter - Pre Approved Loan Extension - Business",
+   "config": {
+    "formName": "Disclosure Letter - Pre Approved Loan Extension - Business",
+    "formDescription": "Disclosure Letter - Pre Approved Loan Extension - Business",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "productCodes": "loan, LOC, m,tgage, curacct, special",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 127,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "formId": "K_MSR020",
+    "formDescription": "Pre-Authorized Internal Transfer",
+    "foCabinet": "Member Records",
+    "formType": "combined",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 128,
+   "formName": "Federal RLIF Transfer - up to 50% of new RLIF",
+   "config": {
+    "formName": "Federal RLIF Transfer - up to 50% of new RLIF",
+    "formDescription": "Federal RLIF Transfer - up to 50% of new RLIF",
+    "foCabinet": "investments",
+    "formMenuGroups": "RIF",
+    "formType": "person",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 129,
+   "formName": "FHSA Application",
+   "config": {
+    "formName": "FHSA Application",
+    "formDescription": "FHSA Application",
+    "foCabinet": "Investments",
+    "formMenuGroups": "FHSA",
+    "formType": "person",
+    "productCodes": "fhsavar, FHS",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 130,
+   "formName": "FHSA Designation of SH, Ben",
+   "config": {
+    "formName": "FHSA Designation of SH, Ben",
+    "formDescription": "FHSA Designation of SH, Ben",
+    "foCabinet": "Investments",
+    "formMenuGroups": "FHSA",
+    "formType": "person",
+    "productCodes": "fhsavar, FHS",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 131,
+   "formName": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+   "config": {
+    "formName": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+    "formDescription": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+    "foCabinet": "Investments",
+    "formMenuGroups": "FHSA",
+    "formType": "person",
+    "productCodes": "fhsavar, FHS",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 132,
+   "formName": "FHSA Withdrawal Transfer",
+   "config": {
+    "formName": "FHSA Withdrawal Transfer",
+    "formDescription": "FHSA Withdrawal Transfer",
+    "foCabinet": "Investments",
+    "formMenuGroups": "FHSA",
+    "formType": "person",
+    "productCodes": "fhsavar, FHS",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 133,
+   "formName": "Funeral Home Guaranteed Investment Certificate",
+   "config": {
+    "formName": "Funeral Home Guaranteed Investment Certificate",
+    "formDescription": "Funeral Home Guaranteed Investment Certificate",
+    "foCabinet": "Investments",
+    "formMenuGroups": "Wealth",
+    "formType": "combined",
+    "productCodes": "GIC,TD",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 134,
+   "formName": "LIF Spousal Consent",
+   "config": {
+    "formName": "LIF Spousal Consent",
+    "formDescription": "LIF Spousal Consent",
+    "foCabinet": "investments",
+    "formMenuGroups": "RIF",
+    "formType": "person",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 135,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 136,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 137,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 138,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 139,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 140,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 141,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 142,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 143,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 144,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 145,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 146,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 147,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 148,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 149,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 150,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 151,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 152,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 153,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 154,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 155,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 156,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 157,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 158,
+   "formName": "Federal RLIF Locking-In Agreement",
+   "config": {
+    "formName": "Federal RLIF Locking-In Agreement",
+    "formDescription": "Federal RLIF Locking-In Agreement",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RIF",
+    "formType": "person",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 159,
+   "formName": "Guaranteed Investment Certificate",
+   "config": {
+    "formName": "Guaranteed Investment Certificate",
+    "formDescription": "Guaranteed Investment Certificate Authorization",
+    "foCabinet": "Investments",
+    "formMenuGroups": "Wealth (all folders except shares)",
+    "formType": "combined",
+    "productCodes": "FHS, GIC, RIF, RSP, TD, , TFS",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 160,
+   "formName": "To be removed from CRM",
+   "config": {
+    "formName": "To be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 161,
+   "formName": "LIF Locking-in Agreement - ON",
+   "config": {
+    "formName": "LIF Locking-in Agreement - ON",
+    "formDescription": "LIF Locking-in Agreement - ON",
+    "foCabinet": "investments",
+    "formMenuGroups": "RIF",
+    "formType": "person",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 162,
+   "formName": "Transfer In Request",
+   "config": {
+    "formName": "Transfer In Request",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 163,
+   "formName": "RRIF Application",
+   "config": {
+    "formName": "RRIF Application",
+    "formDescription": "RRIF Application",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RIF",
+    "formType": "person",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 164,
+   "formName": "RRIF Designation of Beneficiary",
+   "config": {
+    "formName": "RRIF Designation of Beneficiary",
+    "formDescription": "RRIF Designation of Beneficiary",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RIF",
+    "formType": "person",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 165,
+   "formName": "RRIF Payment Form",
+   "config": {
+    "formName": "RRIF Payment Form",
+    "formDescription": "RRIF Payment Form",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RIF",
+    "formType": "person",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 166,
+   "formName": "RRIF Withdrawal Transfer",
+   "config": {
+    "formName": "RRIF Withdrawal Transfer",
+    "formDescription": "RRIF Withdrawal Transfer",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RIF",
+    "formType": "person",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 167,
+   "formName": "Transfer In Request",
+   "config": {
+    "formName": "Transfer In Request",
+    "formDescription": "Transfer In Request",
+    "foCabinet": "Investments",
+    "formMenuGroups": "Wealth (all folders)",
+    "formType": "combined",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 168,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 169,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 170,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 171,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 172,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 173,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 174,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 175,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 176,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 177,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 178,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 179,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 180,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 181,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 182,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 183,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 184,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 185,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 186,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 187,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 188,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 189,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 190,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 191,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 192,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 193,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 194,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 195,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 196,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 197,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 198,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 199,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 200,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 201,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 202,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 203,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 204,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 205,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 206,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 207,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 208,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 209,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 210,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 211,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 212,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 213,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 214,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 215,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 216,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 217,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 218,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 219,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 220,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 221,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 222,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 223,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 224,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 225,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 226,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 227,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 228,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 229,
+   "formName": "to be removed from CRM",
+   "config": {
+    "formName": "to be removed from CRM",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 230,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "formId": "K_LLPRW_P",
+    "foCabinet": "Registered Products",
+    "formType": "person"
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 231,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "formId": "K_INV002",
+    "formDescription": "Term Adjustment",
+    "foCabinet": "Member Records",
+    "formType": "combined",
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": [
+    "Post Processing Queue \"Yes - Optional\" not recognised."
+   ]
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 232,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "formId": "K_INV024",
+    "formDescription": "Registered Plans Contract Adjustment",
+    "foCabinet": "Registered Products",
+    "formType": "person",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 233,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "formId": "K_RIFDEP",
+    "formDescription": "RIF Deposit",
+    "foCabinet": "Registered Products",
+    "formType": "person",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 234,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "formId": "K_INV006",
+    "formDescription": "Registered Deposit",
+    "foCabinet": "Registered Products",
+    "formType": "person",
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": [
+    "Post Processing Queue \"Yes - Optional\" not recognised."
+   ]
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 235,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "formId": "K_INV007",
+    "formDescription": "RSP Investment Option Transfer Form",
+    "foCabinet": "Registered Products",
+    "formType": "person",
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": [
+    "Post Processing Queue \"Yes - Optional\" not recognised."
+   ]
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 236,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "formId": "K_F1242",
+    "formDescription": "Term Deposit Contract",
+    "foCabinet": "Member Records",
+    "formType": "person",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 237,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 238,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 239,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 240,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 241,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 242,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 243,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 244,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 245,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 246,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 247,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 248,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 249,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 250,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 251,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 252,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 253,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 254,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 255,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 256,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 257,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 258,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 259,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 260,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required"
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 261,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 262,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 263,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 264,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 265,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 266,
+   "formName": "Not Required",
+   "config": {
+    "formName": "Not Required",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "FO Data Line",
+   "row": 267,
+   "formName": "Forms Requiring Confirmation",
+   "config": {
+    "formName": "Forms Requiring Confirmation"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 2,
+   "formName": "Account Declaration Agreement - Estates",
+   "config": {
+    "formName": "Account Declaration Agreement - Estates",
+    "formId": "L_ACI",
+    "formDescription": "Estate Account Declaration Agreement",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 3,
+   "formName": "Assignment of Life Ins Policy - Letter",
+   "config": {
+    "formName": "Assignment of Life Ins Policy - Letter",
+    "formId": "L_ALIPL",
+    "formDescription": "Assignment of Life Ins Policy - Letter",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 4,
+   "formName": "Assignment of Life Insurance Policy",
+   "config": {
+    "formName": "Assignment of Life Insurance Policy",
+    "formId": "L_ALIP",
+    "formDescription": "Assignment of Life Insurance Policy",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 5,
+   "formName": "ATM & POS Trace Request",
+   "config": {
+    "formName": "ATM & POS Trace Request",
+    "formId": "L_ATPO",
+    "formDescription": "ATM & POS Trace Request",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "SubmitForProcessingButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 6,
+   "formName": "Authorization to Release Financial Info",
+   "config": {
+    "formName": "Authorization to Release Financial Info",
+    "formId": "L_ARFI",
+    "formDescription": "Authorization to Release Financial Info",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 7,
+   "formName": "Bill Payment Trace",
+   "config": {
+    "formName": "Bill Payment Trace",
+    "formId": "L_BPT",
+    "formDescription": "Bill Payment Trace",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "SubmitForProcessingButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 8,
+   "formName": "Bond of Indemnity - Estates",
+   "config": {
+    "formName": "Bond of Indemnity - Estates",
+    "formId": "L_BOIE",
+    "formDescription": "Estate - Bond of Indemnity",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 9,
+   "formName": "Breach Letter",
+   "config": {
+    "formName": "Breach Letter",
+    "formId": "L_BREL",
+    "formDescription": "Breach Letter",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 10,
+   "formName": "Collateral Agreement-Q-Trade Investments",
+   "config": {
+    "formName": "Collateral Agreement-Q-Trade Investments",
+    "formId": "L_CAQT",
+    "formDescription": "Collateral Agreement-Q-Trade Investments",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 11,
+   "formName": "Designated Beneficiary Declaration and Indemnification - Estates",
+   "config": {
+    "formName": "Designated Beneficiary Declaration and Indemnification - Estates",
+    "formId": "L_DBDI",
+    "formDescription": "Est125-Designated Beneficiary Decl and Indemn",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 12,
+   "formName": "Direction of Chicken Quota",
+   "config": {
+    "formName": "Direction of Chicken Quota",
+    "formId": "L_DCQ",
+    "formDescription": "Direction of Chicken Quota",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 13,
+   "formName": "Direction of Egg Quota",
+   "config": {
+    "formName": "Direction of Egg Quota",
+    "formId": "L_DEQ",
+    "formDescription": "Direction of Egg Quota",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 14,
+   "formName": "Direction of Hatching Egg & Chicken Quota",
+   "config": {
+    "formName": "Direction of Hatching Egg & Chicken Quota",
+    "formId": "L_DHECQ",
+    "formDescription": "Direction of Hatching Egg & Chicken Quota",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 15,
+   "formName": "Direction of Milk Quota Proceeds",
+   "config": {
+    "formName": "Direction of Milk Quota Proceeds",
+    "formId": "L_DMQ",
+    "formDescription": "Direction of Milk Quota Proceeds",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 16,
+   "formName": "Direction of Turkey Quota",
+   "config": {
+    "formName": "Direction of Turkey Quota",
+    "formId": "L_DTQ",
+    "formDescription": "Direction of Turkey Quota",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 17,
+   "formName": "Disclosure letter - Business",
+   "config": {
+    "formName": "Disclosure letter - Business",
+    "formDescription": "Disclosure Letter - Business",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true,
+    "SubmitForProcessingButton": false
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 18,
+   "formName": "Disclosure Letter - Pre Approved Loan Extension - Business",
+   "config": {
+    "formName": "Disclosure Letter - Pre Approved Loan Extension - Business",
+    "formDescription": "Disclosure Letter - Pre Approved Loan Extension - Business",
+    "foCabinet": "Lending",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "PrintButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"YES\" not recognised.",
+    "Remote eSign \"Organization (Business)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 19,
+   "formName": "Federal RLIF Locking-In Agreement",
+   "config": {
+    "formName": "Federal RLIF Locking-In Agreement",
+    "formId": "L_FLA",
+    "formDescription": "Federal RLIF Locking-In Agreement",
+    "foCabinet": "Investments",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"NO\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 20,
+   "formName": "Federal RLIF Transfer - up to 50% of new RLIF",
+   "config": {
+    "formName": "Federal RLIF Transfer - up to 50% of new RLIF",
+    "formId": "L_FT",
+    "formDescription": "Federal RLIF Transfer - up to 50% of new RLIF",
+    "foCabinet": "investments",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"YES\" not recognised.",
+    "Support Services \"33966\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 21,
+   "formName": "FHSA Application",
+   "config": {
+    "formName": "FHSA Application",
+    "formId": "L_FHSA",
+    "formDescription": "FHSA Application",
+    "foCabinet": "Investments",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"YES\" not recognised.",
+    "Support Services \"33969\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 22,
+   "formName": "FHSA Designation of SH, Ben",
+   "config": {
+    "formName": "FHSA Designation of SH, Ben",
+    "formId": "L_FHSAB",
+    "formDescription": "FHSA Designation of SH, Ben",
+    "foCabinet": "Investments",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"YES\" not recognised.",
+    "Support Services \"33986\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 23,
+   "formName": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+   "config": {
+    "formName": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+    "formId": "L_FHSABD",
+    "formDescription": "FHSA Designation of SH, Ben with disclaimer (use until ON legislation update)",
+    "foCabinet": "Investments",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"YES\" not recognised.",
+    "Support Services \"33971\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 24,
+   "formName": "FHSA Withdrawal Transfer",
+   "config": {
+    "formName": "FHSA Withdrawal Transfer",
+    "formId": "L_FHSAWT",
+    "formDescription": "FHSA Withdrawal Transfer",
+    "foCabinet": "Investments",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"YES\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 25,
+   "formName": "Funeral Home Guaranteed Investment Certificate",
+   "config": {
+    "formName": "Funeral Home Guaranteed Investment Certificate",
+    "formId": "L_FHGIC",
+    "formDescription": "Funeral Home Guaranteed Investment Certificate",
+    "foCabinet": "Investments",
+    "productCodes": "GIC , TD",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "PrintButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"NO\" not recognised.",
+    "Remote eSign \"Combined\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 26,
+   "formName": "Guarantee",
+   "config": {
+    "formName": "Guarantee",
+    "formId": "L_GUA",
+    "formDescription": "Guarantee",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Personal Lending and Business Lending",
+    "formType": "combined",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 27,
+   "formName": "Guaranteed Investment Certificate",
+   "config": {
+    "formName": "Guaranteed Investment Certificate",
+    "formId": "L_GICA",
+    "formDescription": "Guaranteed Investment Certificate Authorization",
+    "foCabinet": "Investments",
+    "productCodes": "FHS, GIC, RIF, RSP, TD, , TFS",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "PrintButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"NO\" not recognised.",
+    "Remote eSign \"Combined\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 28,
+   "formName": "Hypothecation Agreement - Bonds",
+   "config": {
+    "formName": "Hypothecation Agreement - Bonds",
+    "formId": "L_HAB",
+    "formDescription": "Hypothecation Agreement - Bonds",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 29,
+   "formName": "Hypothecation Agreement - Mutual Funds",
+   "config": {
+    "formName": "Hypothecation Agreement - Mutual Funds",
+    "formId": "L_HAMF",
+    "formDescription": "Hypothecation Agreement - Mutual Funds",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 30,
+   "formName": "Hypothecation Agreement - Stocks",
+   "config": {
+    "formName": "Hypothecation Agreement - Stocks",
+    "formId": "L_HAS",
+    "formDescription": "Hypothecation Agreement - Stocks",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 31,
+   "formName": "Indemnity agreement",
+   "config": {
+    "formName": "Indemnity agreement",
+    "formId": "L_IAGREE",
+    "formDescription": "Indemnity agreement",
+    "foCabinet": "Member Records",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"NO\" not recognised.",
+    "Remote eSign \"Combined\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 32,
+   "formName": "Large Cash Deposit Form",
+   "config": {
+    "formName": "Large Cash Deposit Form",
+    "formDescription": "Large Cash Deposit Form",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 33,
+   "formName": "LIF Locking-in Agreement - ON",
+   "config": {
+    "formName": "LIF Locking-in Agreement - ON",
+    "formDescription": "LIF Locking-in Agreement - ON",
+    "foCabinet": "investments",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"NO\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 34,
+   "formName": "LIF Spousal Consent",
+   "config": {
+    "formName": "LIF Spousal Consent",
+    "formId": "L_LSC",
+    "formDescription": "LIF Spousal Consent",
+    "foCabinet": "investments",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"NO\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 35,
+   "formName": "LIRA Declaration No Spouse",
+   "config": {
+    "formName": "LIRA Declaration No Spouse",
+    "formId": "L_LDNS",
+    "formDescription": "LIRA Declaration No Spouse",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar,RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 36,
+   "formName": "LIRA Locking In Agreement - Fed",
+   "config": {
+    "formName": "LIRA Locking In Agreement - Fed",
+    "formDescription": "LIRA Locking In Agreement - Fed",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar , RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 37,
+   "formName": "LIRA Locking In Agreement - ON",
+   "config": {
+    "formName": "LIRA Locking In Agreement - ON",
+    "formDescription": "LIRA Locking In Agreement - ON",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar , RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 38,
+   "formName": "Loan Conversion Agreement",
+   "config": {
+    "formName": "Loan Conversion Agreement",
+    "formDescription": "Loan Conversion Agreement",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Personal Lending and Business Lending",
+    "formType": "combined",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 39,
+   "formName": "Loan Extension Request - Small Business",
+   "config": {
+    "formName": "Loan Extension Request - Small Business",
+    "formDescription": "Loan Extension Request - Small Business",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 40,
+   "formName": "Loan Payout Statement - Business",
+   "config": {
+    "formName": "Loan Payout Statement - Business",
+    "formDescription": "Loan Payout Statement - Business",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 41,
+   "formName": "Loan Payout Statement - LOC - Business",
+   "config": {
+    "formName": "Loan Payout Statement - LOC - Business",
+    "formDescription": "Loan Payout Statement - LOC - Business",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 42,
+   "formName": "Loan Renewal Agreement - Breaking Term",
+   "config": {
+    "formName": "Loan Renewal Agreement - Breaking Term",
+    "formDescription": "Loan Renewal Agreement - Breaking Term",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 43,
+   "formName": "LOC Repricing Letter",
+   "config": {
+    "formName": "LOC Repricing Letter",
+    "formDescription": "LOC Repricing Letter",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true,
+    "SubmitForProcessingButton": false
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 44,
+   "formName": "Lost Item Affidavit",
+   "config": {
+    "formName": "Lost Item Affidavit",
+    "formId": "L_LIA",
+    "formDescription": "Lost Item Affidavit",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 45,
+   "formName": "Masterline Takedown Facility Authorization",
+   "config": {
+    "formName": "Masterline Takedown Facility Authorization",
+    "formDescription": "Masterline Takedown Facility Authorization",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "org",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 46,
+   "formName": "Mortgagor's Declaration as to Execution(s)",
+   "config": {
+    "formName": "Mortgagor's Declaration as to Execution(s)",
+    "formDescription": "Mortgagor's Declaration as to Execution(s)",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Business Lending",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 47,
+   "formName": "Pre-Authorized Credit Agreement (Credit to other FI)",
+   "config": {
+    "formName": "Pre-Authorized Credit Agreement (Credit to other FI)",
+    "formId": "L_PACA",
+    "formDescription": "Pre-Authorized Credit Agreement (Credit to other FI)",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 48,
+   "formName": "Pre-Authorized Debit Agreement (Debit to other FI)",
+   "config": {
+    "formName": "Pre-Authorized Debit Agreement (Debit to other FI)",
+    "formId": "L_PADA",
+    "formDescription": "Pre-Authorized Debit Agreement (Debit to other FI)",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 49,
+   "formName": "Reimbursement Claim Form",
+   "config": {
+    "formName": "Reimbursement Claim Form",
+    "formId": "L_RC",
+    "formDescription": "Reimbursement Claim Form",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 50,
+   "formName": "Renounciation of Designated Beneficiary - Estates",
+   "config": {
+    "formName": "Renounciation of Designated Beneficiary - Estates",
+    "formId": "L_REI",
+    "formDescription": "Est135-Renounce Design Beneficiary",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 51,
+   "formName": "RRIF Application",
+   "config": {
+    "formName": "RRIF Application",
+    "formId": "L_RRFA",
+    "formDescription": "RRIF Application",
+    "foCabinet": "Investments",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"YES\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 52,
+   "formName": "RRIF Designation of Beneficiary",
+   "config": {
+    "formName": "RRIF Designation of Beneficiary",
+    "formDescription": "RRIF Designation of Beneficiary",
+    "foCabinet": "Investments",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"YES\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 53,
+   "formName": "RRIF Payment Form",
+   "config": {
+    "formName": "RRIF Payment Form",
+    "formDescription": "RRIF Payment Form",
+    "foCabinet": "Investments",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"YES\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 54,
+   "formName": "RRIF Withdrawal Transfer",
+   "config": {
+    "formName": "RRIF Withdrawal Transfer",
+    "formDescription": "RRIF Withdrawal Transfer",
+    "foCabinet": "Investments",
+    "productCodes": "rrifvar , RIF",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"YES\" not recognised.",
+    "Remote eSign \"Person (Retail)\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 55,
+   "formName": "RRSP Application",
+   "config": {
+    "formName": "RRSP Application",
+    "formId": "L_RSPA",
+    "formDescription": "RRSP Application",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar , RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 56,
+   "formName": "RRSP Designation of Beneficiary",
+   "config": {
+    "formName": "RRSP Designation of Beneficiary",
+    "formDescription": "RRSP Designation of Beneficiary",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar , RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 57,
+   "formName": "RRSP Withdrawal",
+   "config": {
+    "formName": "RRSP Withdrawal",
+    "formDescription": "RRSP Withdrawal",
+    "foCabinet": "Investments",
+    "formMenuGroups": "RRSP",
+    "formType": "person",
+    "productCodes": "rrspvar , RSP",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 58,
+   "formName": "Safe Deposit Box - Access - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Access - Estates",
+    "formId": "L_SDBA",
+    "formDescription": "Est171-Notice of Safe Deposit Box Access",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 59,
+   "formName": "Safe Deposit Box - Contents Receipt - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Contents Receipt - Estates",
+    "formId": "L_SDBC",
+    "formDescription": "Est170-Receipt for Safe Deposit Box Contents",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 60,
+   "formName": "Safe Deposit Box - Inventory - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Inventory - Estates",
+    "formId": "L_SDBI",
+    "formDescription": "Est172-Safe Deposit Box Inventory",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 61,
+   "formName": "Safe Deposit Box - Statutory Declaration - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Statutory Declaration - Estates",
+    "formId": "L_SDSDB",
+    "formDescription": "Est107-Statutory Decl Safe Deposit Box",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 62,
+   "formName": "Security Agreement - General",
+   "config": {
+    "formName": "Security Agreement - General",
+    "formDescription": "Security Agreement - General",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 63,
+   "formName": "Security Agreement - Specific Equipment",
+   "config": {
+    "formName": "Security Agreement - Specific Equipment",
+    "formDescription": "Security Agreement - Specific Equipment",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 64,
+   "formName": "Security Agreement - Specific Location",
+   "config": {
+    "formName": "Security Agreement - Specific Location",
+    "formDescription": "Security Agreement - Specific Location",
+    "foCabinet": "Lending",
+    "formMenuGroups": "Security",
+    "formType": "org",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 65,
+   "formName": "Service Request Form",
+   "config": {
+    "formName": "Service Request Form",
+    "formId": "L_SR",
+    "formDescription": "Service Request Form",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Member Servicing, Estates",
+    "formType": "combined",
+    "productCodes": "Member",
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": [
+    "Post Processing Queue \"Yes - Optional\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 66,
+   "formName": "Statutory Declaration & Indemnification Intestacy - No Will",
+   "config": {
+    "formName": "Statutory Declaration & Indemnification Intestacy - No Will",
+    "formId": "L_SDII",
+    "formDescription": "Est115-Statutory Decl. and Indemn.  Intestacy",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 67,
+   "formName": "Statutory Declaration & Indemnification Testacy - with Will",
+   "config": {
+    "formName": "Statutory Declaration & Indemnification Testacy - with Will",
+    "formId": "L_SDIT",
+    "formDescription": "Est120-Statutory Decl and Indemn Testacy",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 68,
+   "formName": "TFSA Application",
+   "config": {
+    "formName": "TFSA Application",
+    "formId": "L_TFSAA",
+    "formDescription": "TFSA Application",
+    "foCabinet": "Investments",
+    "formMenuGroups": "TFSA",
+    "formType": "person",
+    "productCodes": "tfsvar , TFS",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 69,
+   "formName": "TFSA Designation of Beneficiary",
+   "config": {
+    "formName": "TFSA Designation of Beneficiary",
+    "formDescription": "TFSA Designation of Beneficiary",
+    "foCabinet": "Investments",
+    "formMenuGroups": "TFSA",
+    "formType": "person",
+    "productCodes": "tfsvar , TFS",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 70,
+   "formName": "Transfer In Request",
+   "config": {
+    "formName": "Transfer In Request",
+    "formDescription": "Transfer In Request",
+    "foCabinet": "Investments",
+    "postProcessing": false,
+    "adminQueue": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true
+   },
+   "notes": [
+    "Membership \"Type\" \"NO\" not recognised.",
+    "Remote eSign \"Combined\" not recognised."
+   ]
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 71,
+   "formName": "Waive Cert Appointment of Estate Trustee",
+   "config": {
+    "formName": "Waive Cert Appointment of Estate Trustee",
+    "formId": "L_WCAE",
+    "formDescription": "Est190-Request Waive Cert Appt of Estate Trustee",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 72,
+   "formName": "Wire Instructions CAD",
+   "config": {
+    "formName": "Wire Instructions CAD",
+    "formDescription": "Wire Instructions CAD",
+    "formMenuGroups": "Wires",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 73,
+   "formName": "Wire Instructions EUR",
+   "config": {
+    "formName": "Wire Instructions EUR",
+    "formDescription": "Wire Instructions EUR",
+    "formMenuGroups": "Wires",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 74,
+   "formName": "Wire Instructions OTHER CURRENCIES",
+   "config": {
+    "formName": "Wire Instructions OTHER CURRENCIES",
+    "formDescription": "Wire Instructions OTHER CURRENCIES",
+    "formMenuGroups": "Wires",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Confirmed Forms(74)",
+   "row": 75,
+   "formName": "Wire Instructions USD",
+   "config": {
+    "formName": "Wire Instructions USD",
+    "formDescription": "Wire Instructions USD",
+    "formMenuGroups": "Wires",
+    "formType": "combined",
+    "productCodes": "Member",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 2,
+   "formName": "All forms",
+   "config": {
+    "formName": "All forms"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 3,
+   "formName": "All Forms",
+   "config": {
+    "formName": "All Forms"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 4,
+   "formName": "All Forms",
+   "config": {
+    "formName": "All Forms"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 5,
+   "formName": "All Forms",
+   "config": {
+    "formName": "All Forms"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 6,
+   "formName": "All Forms",
+   "config": {
+    "formName": "All Forms"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 7,
+   "formName": "All Estate Forms",
+   "config": {
+    "formName": "All Estate Forms"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 8,
+   "formName": "All Business Forms",
+   "config": {
+    "formName": "All Business Forms"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 9,
+   "formName": "Account Declaration Agreement - Estates",
+   "config": {
+    "formName": "Account Declaration Agreement - Estates"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 10,
+   "formName": "Designated Beneficiary Declaration and Indemnification - Estates",
+   "config": {
+    "formName": "Designated Beneficiary Declaration and Indemnification - Estates"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 11,
+   "formName": "Renounciation of Designated Beneficiary - Estates",
+   "config": {
+    "formName": "Renounciation of Designated Beneficiary - Estates"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 12,
+   "formName": "Safe Deposit Box - Access - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Access - Estates"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 13,
+   "formName": "Safe Deposit Box - Contents Receipt - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Contents Receipt - Estates"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 14,
+   "formName": "Safe Deposit Box - Inventory - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Inventory - Estates"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 15,
+   "formName": "Safe Deposit Box - Statutory Declaration - Estates",
+   "config": {
+    "formName": "Safe Deposit Box - Statutory Declaration - Estates"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 16,
+   "formName": "Statutory Declaration & Indemnification Intestacy - No Will",
+   "config": {
+    "formName": "Statutory Declaration & Indemnification Intestacy - No Will"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 17,
+   "formName": "Statutory Declaration & Indemnification Testacy - with Will",
+   "config": {
+    "formName": "Statutory Declaration & Indemnification Testacy - with Will"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 18,
+   "formName": "Waive Cert Appointment of Estate Trustee",
+   "config": {
+    "formName": "Waive Cert Appointment of Estate Trustee"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 19,
+   "formName": "Large Cash Deposit Forms",
+   "config": {
+    "formName": "Large Cash Deposit Forms"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 20,
+   "formName": "Lost Item Affidavit",
+   "config": {
+    "formName": "Lost Item Affidavit"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Roadblocks&Enhancements",
+   "row": 21,
+   "formName": "LIF Spousal Consent",
+   "config": {
+    "formName": "LIF Spousal Consent"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Dynamic Pkg_Form",
+   "row": 2,
+   "formName": "Dynamic Hypothecation Agreement",
+   "config": {
+    "formName": "Dynamic Hypothecation Agreement",
+    "productCodes": "D, L",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Dynamic Pkg_Form",
+   "row": 3,
+   "formName": "Dynamic Standard Quota Transfer Direction (Chicken, Egg, Turkey)",
+   "config": {
+    "formName": "Dynamic Standard Quota Transfer Direction (Chicken, Egg, Turkey)",
+    "productCodes": "D, L",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Estate Forms(11)",
+   "row": 2,
+   "formName": "Estate - Bond of Indemnity",
+   "config": {
+    "formName": "Estate - Bond of Indemnity",
+    "formId": "L_EBOI",
+    "formDescription": "Bond of Indemnity",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "M",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Estate Forms(11)",
+   "row": 7,
+   "formName": "Est125-Designated Beneficiary Decl and Indemn",
+   "config": {
+    "formName": "Est125-Designated Beneficiary Decl and Indemn",
+    "formId": "L_DBDI",
+    "formDescription": "Designated Beneficiary Declaration and Indemnification",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "M",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Estate Forms(11)",
+   "row": 12,
+   "formName": "Estate Account Declaration Agreement",
+   "config": {
+    "formName": "Estate Account Declaration Agreement",
+    "formId": "L_ADA",
+    "formDescription": "Account Declaration Agreement",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "M, T",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Estate Forms(11)",
+   "row": 17,
+   "formName": "Est135-Renounce Design Beneficiary",
+   "config": {
+    "formName": "Est135-Renounce Design Beneficiary",
+    "formId": "L_RDB",
+    "formDescription": "Renounciation of Designated Beneficiary",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "M",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Estate Forms(11)",
+   "row": 22,
+   "formName": "Est171-Notice of Safe Deposit Box Access",
+   "config": {
+    "formName": "Est171-Notice of Safe Deposit Box Access",
+    "formId": "L_SDA",
+    "formDescription": "Safe Deposit Box - Access - Estate",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "M",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Estate Forms(11)",
+   "row": 27,
+   "formName": "Est170-Receipt for Safe Deposit Box Contents",
+   "config": {
+    "formName": "Est170-Receipt for Safe Deposit Box Contents",
+    "formId": "L_SDCR",
+    "formDescription": "Safe Deposit Box - Contents Receipt - Estate",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "M",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Estate Forms(11)",
+   "row": 32,
+   "formName": "Est172-Safe Deposit Box Inventory",
+   "config": {
+    "formName": "Est172-Safe Deposit Box Inventory",
+    "formId": "L_SDIE",
+    "formDescription": "Safe Deposit Box - Inventory - Estate",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "M",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Estate Forms(11)",
+   "row": 37,
+   "formName": "Est107-Statutory Decl Safe Deposit Box",
+   "config": {
+    "formName": "Est107-Statutory Decl Safe Deposit Box",
+    "formId": "L_SDSD",
+    "formDescription": "Safe Deposit Box - Statutory Declaration",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "M",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Estate Forms(11)",
+   "row": 42,
+   "formName": "Est115-Statutory Decl. and Indemn.  Intestacy",
+   "config": {
+    "formName": "Est115-Statutory Decl. and Indemn.  Intestacy",
+    "formId": "L_DIINW",
+    "formDescription": "Statutory Declaration & Indemnification Intestacy - No Will",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "M",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": false,
+    "DigitalSignatureButton": false,
+    "RemoteESignButton": false,
+    "PrintButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Estate Forms(11)",
+   "row": 47,
+   "formName": "Est120-Statutory Decl and Indemn Testacy",
+   "config": {
+    "formName": "Est120-Statutory Decl and Indemn Testacy",
+    "formId": "L_DITWW",
+    "formDescription": "Statutory Declaration & Indemnification Testacy - with Will",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "M",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Estate Forms(11)",
+   "row": 52,
+   "formName": "Est190-Request Waive Cert Appt of Estate Trustee",
+   "config": {
+    "formName": "Est190-Request Waive Cert Appt of Estate Trustee",
+    "formId": "L_WCAET",
+    "formDescription": "Waive Cert Appointment of Estate Trustee",
+    "foCabinet": "Member Records",
+    "formMenuGroups": "Estates",
+    "formType": "person",
+    "productCodes": "M",
+    "postProcessing": false,
+    "adminQueue": false,
+    "supportServices": false
+   },
+   "buttons": {
+    "PhoneAuthButton": true,
+    "DigitalSignatureButton": true,
+    "RemoteESignButton": true
+   },
+   "notes": []
+  },
+  {
+   "sheet": "Outstanding",
+   "row": 2,
+   "formName": "All Forms",
+   "config": {
+    "formName": "All Forms"
+   },
+   "buttons": {},
+   "notes": []
+  },
+  {
+   "sheet": "Outstanding",
+   "row": 3,
+   "formName": "All Forms",
+   "config": {
+    "formName": "All Forms"
+   },
+   "buttons": {},
+   "notes": []
+  }
+ ]
+}

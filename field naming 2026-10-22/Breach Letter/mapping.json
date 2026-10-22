@@ -1,0 +1,201 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's full legal name"
+  },
+  "F2": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)"
+  },
+  "F3": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2"
+  },
+  "F4": {
+   "name": "Attention",
+   "kind": "entry",
+   "label": "Attention:",
+   "desc": "Attention: the person the letter is addressed to",
+   "save": true
+  },
+  "F5": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Libro Credit Union (“Libro” or “we” or “our”) loan(s) to",
+   "desc": "Member's full name"
+  },
+  "F6": {
+   "name": "BreachYearEnd1",
+   "kind": "entry",
+   "label": "Year-end",
+   "desc": "Year-end of the breached covenant, row 1 - moved into the table cell (it hung outside it)",
+   "save": true
+  },
+  "F7": {
+   "name": "BreachCovenant1",
+   "kind": "entry",
+   "label": "Financial/Reporting Covenant(s)",
+   "desc": "Covenant not complied with, row 1",
+   "save": true,
+   "type": "text"
+  },
+  "F8": {
+   "name": "BreachYearEnd2",
+   "kind": "entry",
+   "label": "Year-end",
+   "desc": "Year-end, row 2",
+   "custom": "Required when BreachCovenant2 is filled in",
+   "type": "text"
+  },
+  "F9": {
+   "name": "BreachCovenant2",
+   "kind": "entry",
+   "label": "Financial/Reporting Covenant(s)",
+   "desc": "Covenant, row 2",
+   "custom": "Required when BreachYearEnd2 is filled in",
+   "type": "text"
+  },
+  "F10": {
+   "name": "AcknowledgeByDate",
+   "kind": "entry",
+   "label": "Please sign ... and return to Libro by",
+   "desc": "Date to return the acknowledgment by: 14 days from today (the red note on the form)",
+   "custom": "Required; the form asks for the date 14 days from today, so it can default to that",
+   "type": "text"
+  },
+  "F11": {
+   "name": "StaffSignature",
+   "kind": "entry",
+   "label": "NAME:",
+   "desc": "Relationship manager's signature for Libro",
+   "save": true
+  },
+  "F12": {
+   "name": "ACCTMGR_FULL_NAME",
+   "kind": "db",
+   "label": "Relationship Manager name",
+   "desc": "Relationship manager signing the letter. CHECK: is the RM the account manager"
+  },
+  "F13": {
+   "name": "ACCTMGR_TITLE",
+   "kind": "candidate",
+   "label": ",",
+   "desc": "The FSR's position / title",
+   "save": true
+  },
+  "F14": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Acknowledged date:",
+   "desc": "Acknowledged date"
+  },
+  "F15": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Per:",
+   "desc": "Borrower's authorized signature 1 (Per:)"
+  },
+  "F16": {
+   "name": "GuarantorCorpSignature1",
+   "kind": "entry",
+   "label": "Per:",
+   "desc": "Corporate guarantor signature 1 (Per:)"
+  },
+  "F17": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name:",
+   "desc": "Borrower signer 1 name",
+   "type": "text"
+  },
+  "F18": {
+   "name": "GuarantorCorpSigner1Name",
+   "kind": "entry",
+   "label": "Name:",
+   "desc": "Corporate guarantor signer 1 name",
+   "type": "text"
+  },
+  "F19": {
+   "name": "ORG_OFFICER1_TITLE",
+   "kind": "candidate",
+   "label": "Title:",
+   "desc": "Borrower signer 1's title",
+   "type": "text"
+  },
+  "F20": {
+   "name": "GuarantorCorpSigner1Title",
+   "kind": "entry",
+   "label": "Title:",
+   "desc": "Corporate guarantor signer 1 title",
+   "type": "text"
+  },
+  "F21": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Per:",
+   "desc": "Borrower's authorized signature 2 (Per:)"
+  },
+  "F22": {
+   "name": "GuarantorCorpSignature2",
+   "kind": "entry",
+   "label": "Per:",
+   "desc": "Corporate guarantor signature 2 (Per:)"
+  },
+  "F23": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name:",
+   "desc": "Borrower signer 2 name",
+   "type": "text"
+  },
+  "F24": {
+   "name": "GuarantorCorpSigner2Name",
+   "kind": "entry",
+   "label": "Name:",
+   "desc": "Corporate guarantor signer 2 name",
+   "type": "text"
+  },
+  "F25": {
+   "name": "ORG_OFFICER2_TITLE",
+   "kind": "candidate",
+   "label": "Title:",
+   "desc": "Borrower signer 2's title",
+   "type": "text"
+  },
+  "F26": {
+   "name": "GuarantorCorpSigner2Title",
+   "kind": "entry",
+   "label": "Title:",
+   "desc": "Corporate guarantor signer 2 title",
+   "type": "text"
+  },
+  "F27": {
+   "name": "WitnessSignature",
+   "kind": "entry",
+   "label": "",
+   "desc": "Witness as to the signature"
+  },
+  "F28": {
+   "name": "GuarantorPersonalSignature",
+   "kind": "entry",
+   "label": "_______________________",
+   "desc": "Personal guarantor signature"
+  }
+ },
+ "skip": {
+  "B1": "space at the end of the borrower line, no blank"
+ },
+ "drop": [],
+ "notes": [
+  "'Commitment letter between Libro and the Borrower dated (the Commitment)' asks for a date with no room for it: COMMITMENT_DATE needs a gap in the sentence."
+ ],
+ "reviewed copy": "field naming\\Breach Letter"
+}

@@ -1,0 +1,198 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name:",
+   "desc": "Member's full name"
+  },
+  "F2": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Second party (and ___)"
+  },
+  "F3": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Number:",
+   "desc": "Member number"
+  },
+  "F4": {
+   "name": "DocumentType",
+   "kind": "entry",
+   "label": "",
+   "desc": "Tick: the document is a credit union certified cheque",
+   "save": true,
+   "option": "CertifiedCheque"
+  },
+  "F5": {
+   "name": "CertifiedChequeCurrency",
+   "kind": "entry",
+   "label": "$Cdn",
+   "desc": "Certified cheque in $Cdn",
+   "custom": "Required when DocumentType is CertifiedCheque",
+   "option": "CAD"
+  },
+  "F6": {
+   "name": "CertifiedChequeNumber",
+   "kind": "entry",
+   "label": "Cheque Number & $Amount:",
+   "desc": "Certified cheque number",
+   "custom": "Required when DocumentType is CertifiedCheque"
+  },
+  "F7": {
+   "name": "CertifiedChequeAmount",
+   "kind": "entry",
+   "label": "$",
+   "desc": "Certified cheque amount $",
+   "custom": "Required when DocumentType is CertifiedCheque"
+  },
+  "F8": {
+   "name": "CertifiedChequeCurrency",
+   "kind": "entry",
+   "label": "$U S",
+   "desc": "Certified cheque in $US",
+   "custom": "Required when DocumentType is CertifiedCheque",
+   "option": "USD"
+  },
+  "F9": {
+   "name": "CertifiedChequePayee",
+   "kind": "entry",
+   "label": "Payee:",
+   "desc": "Certified cheque payee",
+   "custom": "Required when DocumentType is CertifiedCheque"
+  },
+  "F10": {
+   "name": "DocumentType",
+   "kind": "entry",
+   "label": "",
+   "desc": "Tick: the document is an official credit union cheque",
+   "save": true,
+   "option": "OfficialCheque"
+  },
+  "F11": {
+   "name": "OfficialChequeCurrency",
+   "kind": "entry",
+   "label": "$Cdn",
+   "desc": "Official cheque in $Cdn",
+   "custom": "Required when DocumentType is OfficialCheque",
+   "option": "CAD"
+  },
+  "F12": {
+   "name": "OfficialChequeNumber",
+   "kind": "entry",
+   "label": "Cheque Number & $Amount:",
+   "desc": "Official cheque number",
+   "custom": "Required when DocumentType is OfficialCheque"
+  },
+  "F13": {
+   "name": "OfficialChequeAmount",
+   "kind": "entry",
+   "label": "$",
+   "desc": "Official cheque amount $",
+   "custom": "Required when DocumentType is OfficialCheque"
+  },
+  "F14": {
+   "name": "OfficialChequeCurrency",
+   "kind": "entry",
+   "label": "$U S",
+   "desc": "Official cheque in $US",
+   "custom": "Required when DocumentType is OfficialCheque",
+   "option": "USD"
+  },
+  "F15": {
+   "name": "OfficialChequePayee",
+   "kind": "entry",
+   "label": "Payee:",
+   "desc": "Official cheque payee",
+   "custom": "Required when DocumentType is OfficialCheque"
+  },
+  "F16": {
+   "name": "RequestDetail",
+   "kind": "entry",
+   "label": "have asked and you have agreed to: [choose one only]",
+   "desc": "Box after 'I have asked and you have agreed to: [choose one only]' - CHECK it is wanted, the choice is the tick boxes below"
+  },
+  "F17": {
+   "name": "Request",
+   "kind": "entry",
+   "label": "issue a duplicate to replace the Document",
+   "desc": "Pick one: issue a duplicate to replace the document",
+   "save": true,
+   "option": "Duplicate",
+   "type": "checkbox"
+  },
+  "F18": {
+   "name": "Request",
+   "kind": "entry",
+   "label": "",
+   "desc": "Tick: pay to me the amount of the document - was a text box",
+   "save": true,
+   "option": "PayAmount"
+  },
+  "F19": {
+   "name": "Request",
+   "kind": "entry",
+   "label": "",
+   "desc": "Tick: process a stop payment on the document - was a text box",
+   "save": true,
+   "option": "StopPayment"
+  },
+  "F20": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1"
+  },
+  "F21": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1"
+  },
+  "F22": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1"
+  },
+  "F23": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2"
+  },
+  "F24": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2"
+  },
+  "F25": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2"
+  },
+  "F26": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member"
+  },
+  "F27": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date"
+  }
+ },
+ "skip": {
+  "B1": "space under the paragraph, no blank"
+ },
+ "drop": [],
+ "notes": [],
+ "reviewed copy": "field naming\\Indemnity Agreement"
+}

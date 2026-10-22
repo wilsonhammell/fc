@@ -23,6 +23,9 @@ sys.path.insert(0, os.path.dirname(HERE))
 import apply_fields  # noqa: E402
 
 OUT = os.path.join(HERE, "out")
+# a batch's own output: python designer/finish.py designer/out_<batch>
+if len(sys.argv) > 1:
+    OUT = os.path.abspath(sys.argv[1])
 # the designer's system fields keep the order it wrote them in - that order
 # is also how they are drawn, and DNA_REQ comes last so it covers the form
 SYSTEM = {e["identifier"] for e in json.load(open(

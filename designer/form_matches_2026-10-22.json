@@ -1,0 +1,586 @@
+[
+ {
+  "production name": "Account Declaration Agreement - Estates",
+  "file": "Account Declaration Agreement - Estates",
+  "folder": "Account Declaration Agreement - Estates",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 2,
+  "row name": "Account Declaration Agreement - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Account Declaration Agreement - Estates",
+   "formId": "L_ACI",
+   "formDescription": "Estate Account Declaration Agreement",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Bond of Indemnity - Estates",
+  "file": "Bond of Indemnity - Estates",
+  "folder": "Bond of Indemnity - Estates",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 8,
+  "row name": "Bond of Indemnity - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Bond of Indemnity - Estates",
+   "formId": "L_BOIE",
+   "formDescription": "Estate - Bond of Indemnity",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Breach Letter",
+  "file": "Breach Letter",
+  "folder": "Breach Letter",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 9,
+  "row name": "Breach Letter",
+  "closest": "",
+  "config": {
+   "formName": "Breach Letter",
+   "formId": "L_BREL",
+   "formDescription": "Breach Letter",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Designated Beneficiary Declaration and Indemnification - Estates",
+  "file": "Designated Beneficiary Declaration and Indemnification - Estates",
+  "folder": "Designated Beneficiary Declaration and Indemnification - Estates",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 11,
+  "row name": "Designated Beneficiary Declaration and Indemnification - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Designated Beneficiary Declaration and Indemnification - Estates",
+   "formId": "L_DBDI",
+   "formDescription": "Est125-Designated Beneficiary Decl and Indemn",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Funeral Home Guaranteed Investment Certificate",
+  "file": "Funeral Home Guaranteed Investment Certificate",
+  "folder": "Funeral Home Guaranteed Investment Certificate",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 25,
+  "row name": "Funeral Home Guaranteed Investment Certificate",
+  "closest": "",
+  "config": {
+   "formName": "Funeral Home Guaranteed Investment Certificate",
+   "formDescription": "Funeral Home Guaranteed Investment Certificate",
+   "foCabinet": "Investments",
+   "formMenuGroups": "Wealth",
+   "formType": "combined",
+   "productCodes": "GIC,TD",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false,
+   "formId": "L_FHGIC"
+  },
+  "buttons": {
+   "PrintButton": true
+  },
+  "notes": [
+   "Confirmed Forms row 25 is shifted a column (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Combined\" not recognised.): Config and buttons from FO Data Line row 133, Form ID from Confirmed Forms"
+  ]
+ },
+ {
+  "production name": "Guaranteed Investment Certificate",
+  "file": "Guaranteed Investment Certificate",
+  "folder": "Guaranteed Investment Certificate",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 27,
+  "row name": "Guaranteed Investment Certificate",
+  "closest": "",
+  "config": {
+   "formName": "Guaranteed Investment Certificate",
+   "formDescription": "Guaranteed Investment Certificate Authorization",
+   "foCabinet": "Investments",
+   "formMenuGroups": "Wealth (all folders except shares)",
+   "formType": "combined",
+   "productCodes": "FHS, GIC, RIF, RSP, TD, , TFS",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false,
+   "formId": "L_GICA"
+  },
+  "buttons": {
+   "PrintButton": true
+  },
+  "notes": [
+   "Confirmed Forms row 27 is shifted a column (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Combined\" not recognised.): Config and buttons from FO Data Line row 159, Form ID from Confirmed Forms"
+  ]
+ },
+ {
+  "production name": "Indemnity Agreement",
+  "file": "Indemnity Agreement",
+  "folder": "Indemnity Agreement",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 31,
+  "row name": "Indemnity agreement",
+  "closest": "",
+  "config": {
+   "formName": "Indemnity agreement",
+   "formDescription": "Indemnity agreement",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false,
+   "formId": "L_IAGREE"
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": [
+   "Confirmed Forms row 31 is shifted a column (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Combined\" not recognised.): Config and buttons from FO Data Line row 125, Form ID from Confirmed Forms"
+  ]
+ },
+ {
+  "production name": "LIF Spousal Consent",
+  "file": "LIF Spousal Consent",
+  "folder": "LIF Spousal Consent",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 34,
+  "row name": "LIF Spousal Consent",
+  "closest": "",
+  "config": {
+   "formName": "LIF Spousal Consent",
+   "formDescription": "LIF Spousal Consent",
+   "foCabinet": "investments",
+   "formMenuGroups": "RIF",
+   "formType": "person",
+   "productCodes": "rrifvar , RIF",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false,
+   "formId": "L_LSC"
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": [
+   "Confirmed Forms row 34 is shifted a column (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Person (Retail)\" not recognised.): Config and buttons from FO Data Line row 134, Form ID from Confirmed Forms"
+  ]
+ },
+ {
+  "production name": "LIRA Declaration No Spouse",
+  "file": "LIRA Declaration No Spouse",
+  "folder": "LIRA Declaration No Spouse",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 35,
+  "row name": "LIRA Declaration No Spouse",
+  "closest": "",
+  "config": {
+   "formName": "LIRA Declaration No Spouse",
+   "formId": "L_LDNS",
+   "formDescription": "LIRA Declaration No Spouse",
+   "foCabinet": "Investments",
+   "formMenuGroups": "RRSP",
+   "formType": "person",
+   "productCodes": "rrspvar,RSP",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Lost Item Affidavit",
+  "file": "Lost Item Affidavit",
+  "folder": "Lost Item Affidavit",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 44,
+  "row name": "Lost Item Affidavit",
+  "closest": "",
+  "config": {
+   "formName": "Lost Item Affidavit",
+   "formId": "L_LIA",
+   "formDescription": "Lost Item Affidavit",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Reimbursement Claim Form",
+  "file": "Reimbursement Claim Form",
+  "folder": "Reimbursement Claim Form",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 49,
+  "row name": "Reimbursement Claim Form",
+  "closest": "",
+  "config": {
+   "formName": "Reimbursement Claim Form",
+   "formId": "L_RC",
+   "formDescription": "Reimbursement Claim Form",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Member Servicing",
+   "formType": "combined",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Safe Deposit Box - Access - Estates",
+  "file": "Safe Deposit Box - Access - Estates",
+  "folder": "Safe Deposit Box - Access - Estates",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 58,
+  "row name": "Safe Deposit Box - Access - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Safe Deposit Box - Access - Estates",
+   "formId": "L_SDBA",
+   "formDescription": "Est171-Notice of Safe Deposit Box Access",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Safe Deposit Box - Contents Receipt - Estates",
+  "file": "Safe Deposit Box - Contents Receipt - Estates",
+  "folder": "Safe Deposit Box - Contents Receipt - Estates",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 59,
+  "row name": "Safe Deposit Box - Contents Receipt - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Safe Deposit Box - Contents Receipt - Estates",
+   "formId": "L_SDBC",
+   "formDescription": "Est170-Receipt for Safe Deposit Box Contents",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Safe Deposit Box - Inventory - Estates",
+  "file": "Safe Deposit Box - Inventory - Estates",
+  "folder": "Safe Deposit Box - Inventory - Estates",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 60,
+  "row name": "Safe Deposit Box - Inventory - Estates",
+  "closest": "",
+  "config": {
+   "formName": "Safe Deposit Box - Inventory - Estates",
+   "formId": "L_SDBI",
+   "formDescription": "Est172-Safe Deposit Box Inventory",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Statutory Declaration & Indemnification Intestacy - No Will",
+  "file": "Statutory Declaration & Indemnification Intestacy - No Will",
+  "folder": "Statutory Declaration & Indemnification Intestacy - No Will",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 66,
+  "row name": "Statutory Declaration & Indemnification Intestacy - No Will",
+  "closest": "",
+  "config": {
+   "formName": "Statutory Declaration & Indemnification Intestacy - No Will",
+   "formId": "L_SDII",
+   "formDescription": "Est115-Statutory Decl. and Indemn.  Intestacy",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Statutory Declaration & Indemnification Testacy - with Will",
+  "file": "Statutory Declaration & Indemnification Testacy - with Will",
+  "folder": "Statutory Declaration & Indemnification Testacy - with Will",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 67,
+  "row name": "Statutory Declaration & Indemnification Testacy - with Will",
+  "closest": "",
+  "config": {
+   "formName": "Statutory Declaration & Indemnification Testacy - with Will",
+   "formId": "L_SDIT",
+   "formDescription": "Est120-Statutory Decl and Indemn Testacy",
+   "foCabinet": "Member Records",
+   "formMenuGroups": "Estates",
+   "formType": "person",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Wire Instructions CAD",
+  "file": "Wire Instructions CAD",
+  "folder": "Wire Instructions CAD",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 72,
+  "row name": "Wire Instructions CAD",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions CAD",
+   "formDescription": "Wire Instructions CAD",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Wire Instructions EUR",
+  "file": "Wire Instructions EUR",
+  "folder": "Wire Instructions EUR",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 73,
+  "row name": "Wire Instructions EUR",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions EUR",
+   "formDescription": "Wire Instructions EUR",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Wire Instructions OTHER CURRENCIES",
+  "file": "Wire Instructions OTHER CURRENCIES",
+  "folder": "Wire Instructions OTHER CURRENCIES",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 74,
+  "row name": "Wire Instructions OTHER CURRENCIES",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions OTHER CURRENCIES",
+   "formDescription": "Wire Instructions OTHER CURRENCIES",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PrintButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Wire Instructions USD",
+  "file": "Wire Instructions USD",
+  "folder": "Wire Instructions USD",
+  "root": "field naming 2026-10-22",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 75,
+  "row name": "Wire Instructions USD",
+  "closest": "",
+  "config": {
+   "formName": "Wire Instructions USD",
+   "formDescription": "Wire Instructions USD",
+   "formMenuGroups": "Wires",
+   "formType": "combined",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PrintButton": true
+  },
+  "notes": []
+ }
+]

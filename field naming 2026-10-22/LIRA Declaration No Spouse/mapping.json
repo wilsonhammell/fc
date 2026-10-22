@@ -1,0 +1,63 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "I,",
+   "desc": "Member's full name"
+  },
+  "F2": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "Contract #",
+   "desc": "LIRA / locked-in RRSP contract number. CHECK: is this plan in the RSP_ tables"
+  },
+  "F3": {
+   "name": "Legislation",
+   "kind": "entry",
+   "label": "Legislation",
+   "desc": "Tick: governed by the (Ontario) Pension Benefits Act",
+   "save": true,
+   "option": "Ontario"
+  },
+  "F4": {
+   "name": "Legislation",
+   "kind": "entry",
+   "label": "(FEDERAL) PENSION BENEFITS STANDARD ACT",
+   "desc": "Tick: governed by the (federal) Pension Benefits Standards Act",
+   "save": true,
+   "option": "Federal"
+  },
+  "F5": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Date of the annuitant's signature"
+  },
+  "F6": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Signature of Annuitant",
+   "desc": "Signature of the annuitant (the member) - declaration, its own signing kept"
+  },
+  "F7": {
+   "name": "WitnessDate",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Date of the witness signature",
+   "save": true
+  },
+  "F8": {
+   "name": "WitnessSignature",
+   "kind": "entry",
+   "label": "Signature of Witness",
+   "desc": "Signature of witness",
+   "save": true
+  }
+ },
+ "skip": {},
+ "drop": [],
+ "notes": [],
+ "reviewed copy": "field naming\\LIRA Declaration No Spouse"
+}

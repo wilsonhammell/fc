@@ -1,0 +1,262 @@
+{
+ "as_is": true,
+ "items": {
+  "B1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Folio Name: Estate of",
+   "desc": "The estate's name (Folio Name: Estate of ...)"
+  },
+  "B2": {
+   "name": "PRIMARY_BRANCH_NAME",
+   "kind": "db",
+   "label": "Credit Union Branch:",
+   "desc": "Member's branch. CHECK: name or number (PRIMARY_BRANCH)"
+  },
+  "B3": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member #:",
+   "desc": "Member number"
+  },
+  "B4": {
+   "name": "EstateTrustees",
+   "kind": "entry",
+   "save": true,
+   "label": "Estate Trustee(s)",
+   "desc": "The estate trustees' names, as appointed"
+  },
+  "B5": {
+   "name": "SignedAtCity",
+   "kind": "entry",
+   "label": "at",
+   "desc": "City the agreement is signed at",
+   "save": true
+  },
+  "B6": {
+   "name": "SignedDay",
+   "kind": "entry",
+   "save": true,
+   "label": ", this",
+   "desc": "Day the agreement is signed"
+  },
+  "B7": {
+   "name": "SignedMonth",
+   "kind": "entry",
+   "save": true,
+   "label": "day of",
+   "desc": "Month the agreement is signed"
+  },
+  "B8": {
+   "name": "SignedYear",
+   "kind": "entry",
+   "save": true,
+   "label": ", 20",
+   "desc": "Year the agreement is signed (last two digits)",
+   "maxlen": 2
+  },
+  "B9": {
+   "name": "ESTATE_CORRESPONDENCE_ADDRESS",
+   "kind": "candidate",
+   "label": "Estate Trustee Address for",
+   "desc": "Correspondence address, line 1 (C/O whom)",
+   "save": true,
+   "rect": [
+    76,
+    499.4,
+    292.5,
+    512.4
+   ]
+  },
+  "B10": {
+   "name": "ESTATE_CORRESPONDENCE_ADDRESS_2",
+   "kind": "candidate",
+   "label": "Correspondence:",
+   "desc": "Correspondence address, line 2",
+   "save": true
+  },
+  "B11": {
+   "name": "ESTATE_CORRESPONDENCE_ADDRESS_3",
+   "kind": "candidate",
+   "save": true,
+   "label": "Correspondence:",
+   "desc": "Correspondence address, line 3"
+  },
+  "B12": {
+   "name": "ESTATE_CORRESPONDENCE_ADDRESS_4",
+   "kind": "candidate",
+   "label": "Correspondence:",
+   "desc": "Correspondence address, line 4 (optional)"
+  },
+  "B13": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Estate Trustee:",
+   "desc": "Estate trustee 1 (signer 1)"
+  },
+  "B14": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Signature:",
+   "desc": "Estate trustee 1"
+  },
+  "B15": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Estate trustee 1's signing date"
+  },
+  "B16": {
+   "name": "SIGNER1_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member# of Estate",
+   "desc": "Estate trustee 1's member number. CHECK: SIGNER numbering vs the trustee picked in Member1Name"
+  },
+  "B17": {
+   "name": "SIGNER1_HOME_PHONE",
+   "kind": "db",
+   "label": "Telephone:",
+   "desc": "Estate trustee 1's telephone. CHECK: home, work or cell"
+  },
+  "B18": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Estate Trustee:",
+   "desc": "Estate trustee 2"
+  },
+  "B19": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Signature:",
+   "desc": "Estate trustee 2"
+  },
+  "B20": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Estate trustee 2's signing date"
+  },
+  "B21": {
+   "name": "SIGNER2_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member# of Estate",
+   "desc": "Estate trustee 2's member number"
+  },
+  "B22": {
+   "name": "SIGNER2_HOME_PHONE",
+   "kind": "db",
+   "label": "Telephone:",
+   "desc": "Estate trustee 2's telephone"
+  },
+  "B23": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Estate Trustee:",
+   "desc": "Estate trustee 3"
+  },
+  "B24": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Signature:",
+   "desc": "Estate trustee 3"
+  },
+  "B25": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Estate trustee 3's signing date"
+  },
+  "B26": {
+   "name": "SIGNER3_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member# of Estate",
+   "desc": "Estate trustee 3's member number"
+  },
+  "B27": {
+   "name": "SIGNER3_HOME_PHONE",
+   "kind": "db",
+   "label": "Telephone:",
+   "desc": "Estate trustee 3's telephone"
+  },
+  "B28": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Estate Trustee:",
+   "desc": "Estate trustee 4"
+  },
+  "B29": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Signature:",
+   "desc": "Estate trustee 4"
+  },
+  "B30": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Estate trustee 4's signing date"
+  },
+  "B31": {
+   "name": "SIGNER4_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Member# of Estate",
+   "desc": "Estate trustee 4's member number"
+  },
+  "B32": {
+   "name": "SIGNER4_HOME_PHONE",
+   "kind": "db",
+   "label": "Telephone:",
+   "desc": "Estate trustee 4's telephone"
+  },
+  "B33": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Coach",
+   "desc": "Coach (staff member) name"
+  },
+  "B34": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "This agreement is being signed on",
+   "desc": "Date the agreement is signed"
+  }
+ },
+ "skip": {},
+ "drop": [],
+ "notes": [],
+ "reviewed copy": "field naming\\Account Declaration Agreement - Estates",
+ "add": [
+  {
+   "page": 0,
+   "rect": [
+    124.6,
+    490.0,
+    160.0,
+    512.2
+   ],
+   "name": "EstateTrustee",
+   "option": "Will",
+   "kind": "entry",
+   "save": true,
+   "label": "as appointed in the Last Will and Testament",
+   "desc": "Tick: trustee appointed in the Last Will",
+   "type": "checkbox"
+  },
+  {
+   "page": 0,
+   "rect": [
+    124.0,
+    586.0,
+    159.4,
+    608.2
+   ],
+   "name": "EstateTrustee",
+   "option": "Certificate",
+   "kind": "entry",
+   "save": true,
+   "label": "as appointed in the Certificate of Appointment",
+   "desc": "Tick: trustee appointed in the Certificate of Appointment",
+   "type": "checkbox"
+  }
+ ]
+}

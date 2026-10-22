@@ -1,0 +1,242 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "of:",
+   "desc": "Member's full name"
+  },
+  "F2": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "SIN:",
+   "desc": "Member's SIN"
+  },
+  "F3": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 1 (first of three boxes)"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Mailing address, line 2"
+  },
+  "F5": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Mailing address, line 3"
+  },
+  "F6": {
+   "name": "SDB_NUMBER",
+   "kind": "candidate",
+   "label": "Safe Deposit Box #",
+   "desc": "Safe deposit box #",
+   "save": true
+  },
+  "F7": {
+   "name": "SDBAccessDay",
+   "kind": "entry",
+   "label": "was accessed on the",
+   "desc": "Box accessed on the ___ day",
+   "save": true
+  },
+  "F8": {
+   "name": "SDBAccessMonth",
+   "kind": "entry",
+   "label": "day of",
+   "desc": "of ___ (month)",
+   "save": true
+  },
+  "F9": {
+   "name": "SDBAccessYear",
+   "kind": "entry",
+   "label": ", 20",
+   "desc": ", 20__",
+   "save": true
+  },
+  "F10": {
+   "name": "SDBContents1",
+   "kind": "entry",
+   "label": "1.",
+   "desc": "Contents found in the box, item 1",
+   "save": true
+  },
+  "F11": {
+   "name": "SDBContents2",
+   "kind": "entry",
+   "label": "2.",
+   "desc": "Contents found in the box, item 2"
+  },
+  "F12": {
+   "name": "SDBContents3",
+   "kind": "entry",
+   "label": "3.",
+   "desc": "Contents found in the box, item 3"
+  },
+  "F13": {
+   "name": "SDBContents4",
+   "kind": "entry",
+   "label": "4.",
+   "desc": "Contents found in the box, item 4"
+  },
+  "F14": {
+   "name": "SDBContents5",
+   "kind": "entry",
+   "label": "5.",
+   "desc": "Contents found in the box, item 5"
+  },
+  "F15": {
+   "name": "SDBContents6",
+   "kind": "entry",
+   "label": "6.",
+   "desc": "Contents found in the box, item 6"
+  },
+  "F16": {
+   "name": "SDBContents7",
+   "kind": "entry",
+   "label": "7.",
+   "desc": "Contents found in the box, item 7"
+  },
+  "F17": {
+   "name": "SDBContents8",
+   "kind": "entry",
+   "label": "8.",
+   "desc": "Contents found in the box, item 8"
+  },
+  "F18": {
+   "name": "SDBContents9",
+   "kind": "entry",
+   "label": "9.",
+   "desc": "Contents found in the box, item 9"
+  },
+  "F19": {
+   "name": "SDBContents10",
+   "kind": "entry",
+   "label": "10.",
+   "desc": "Contents found in the box, item 10"
+  },
+  "F20": {
+   "name": "SDBContents11",
+   "kind": "entry",
+   "label": "11.",
+   "desc": "Contents found in the box, item 11"
+  },
+  "F21": {
+   "name": "SDBContents12",
+   "kind": "entry",
+   "label": "12.",
+   "desc": "Contents found in the box, item 12"
+  },
+  "F22": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1"
+  },
+  "F23": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1"
+  },
+  "F24": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2"
+  },
+  "F25": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2"
+  },
+  "F26": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3"
+  },
+  "F27": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3"
+  },
+  "F28": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4"
+  },
+  "F29": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4"
+  },
+  "F30": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Libro representative 1 (authorizing staff member): name"
+  },
+  "F31": {
+   "name": "Staff2Name",
+   "kind": "entry",
+   "label": "Authorizing Staff Member",
+   "desc": "Libro representative 2: name",
+   "save": true
+  },
+  "B1": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1"
+  },
+  "B2": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2"
+  },
+  "B3": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3"
+  },
+  "B4": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4"
+  },
+  "B5": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Libro representative 1: date"
+  },
+  "B6": {
+   "name": "Staff2Date",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Libro representative 2: date",
+   "save": true
+  }
+ },
+ "skip": {
+  "B7": "space after 'found in the Safe Deposit Box:', no blank"
+ },
+ "drop": [],
+ "notes": [
+  "The estate trustees sign as Member1-4; CHECK the trustees are in DNA's signer list for the estate account."
+ ],
+ "reviewed copy": "field naming\\Safe Deposit Box - Inventory - Estates"
+}

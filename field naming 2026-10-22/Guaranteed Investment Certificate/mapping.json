@@ -1,0 +1,187 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Name",
+   "desc": "Member's full name"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Account Number",
+   "desc": "Member's account (member) number - the old merge tag was Customer_Number. CHECK: or IN_ACCTNBR"
+  },
+  "F3": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Joint owner 1 - filled by the starter code from SIGNER1"
+  },
+  "F4": {
+   "name": "JointMember2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Joint owner 2"
+  },
+  "F5": {
+   "name": "TERM_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "Contract Number",
+   "desc": "GIC contract number (registered contract)"
+  },
+  "F6": {
+   "name": "TERM_ACCOUNT_CODE",
+   "kind": "db",
+   "label": "Product Type",
+   "desc": "GIC product. CHECK: code or TERM_ACCOUNT_DESC for the words",
+   "editable": true
+  },
+  "F7": {
+   "name": "TERM_ACCOUNT_SUB",
+   "kind": "candidate",
+   "label": "Sub Number",
+   "desc": "GIC sub-account number (old merge tag Sub). Could be IN_ACCTNBR",
+   "save": true
+  },
+  "F8": {
+   "name": "TERM_ACCOUNT_AMOUNT",
+   "kind": "db",
+   "label": "Principal Amount",
+   "desc": "Principal",
+   "editable": true
+  },
+  "F9": {
+   "name": "TERM_ACCOUNT_OPENED",
+   "kind": "db",
+   "label": "Date of Deposit",
+   "desc": "Date of deposit. CHECK: or TERM_ACCOUNT_INTDATE",
+   "editable": true
+  },
+  "F10": {
+   "name": "TERM_ACCOUNT_TERMFREQUENCY",
+   "kind": "db",
+   "label": "Term Length",
+   "desc": "Term length, the number. CHECK: TERMFREQUENCY vs TERMPER - which is the number and which the unit",
+   "editable": true
+  },
+  "F11": {
+   "name": "TERM_ACCOUNT_TERMPER",
+   "kind": "db",
+   "label": "Term Length",
+   "desc": "Term length, the unit (months/years)",
+   "editable": true
+  },
+  "F12": {
+   "name": "TERM_ACCOUNT_MATURITY",
+   "kind": "db",
+   "label": "Maturity Date",
+   "desc": "Maturity date",
+   "editable": true
+  },
+  "F13": {
+   "name": "TERM_ACCOUNT_RATE1",
+   "kind": "db",
+   "label": "Interest Rate",
+   "desc": "Interest rate, %",
+   "editable": true
+  },
+  "F14": {
+   "name": "TERM_ACCOUNT_INTSCHED",
+   "kind": "db",
+   "label": "Interest Payment Frequency",
+   "desc": "Interest payment frequency"
+  },
+  "F15": {
+   "name": "DISP_OF_PRIN_TYPE",
+   "kind": "candidate",
+   "label": "Maturity Option",
+   "desc": "What happens at maturity (renew, transfer...). Old merge tag Maturity_Diposition",
+   "save": true
+  },
+  "F16": {
+   "name": "DISP_OF_PRIN_INIT_TRIGGER",
+   "kind": "candidate",
+   "label": "Maturity Option",
+   "desc": "Small box after the maturity option (old merge tag Maturity_Init_Trigger) - a code"
+  },
+  "F17": {
+   "name": "DISP_OF_INT_TYPE",
+   "kind": "candidate",
+   "label": "Interest Option",
+   "desc": "What happens to interest. Old merge tag Interest_Disposition",
+   "save": true
+  },
+  "F18": {
+   "name": "DISP_OF_INT_INIT_TRIGGER",
+   "kind": "candidate",
+   "label": "Interest Option",
+   "desc": "Small box after the interest option - a code"
+  },
+  "F19": {
+   "name": "DISP_OF_PRIN_ACCOUNT_TYPE",
+   "kind": "candidate",
+   "label": "Maturity Transfer Account Type (if applicable)",
+   "desc": "Account type maturity funds go to (dropdown)"
+  },
+  "F20": {
+   "name": "DISP_OF_PRIN_SUB_DISPLAY",
+   "kind": "candidate",
+   "label": "Maturity Transfer Account Type (if applicable)",
+   "desc": "Sub display beside it (old Maturity_Sub_Display)"
+  },
+  "F21": {
+   "name": "DISP_OF_PRIN_SUB",
+   "kind": "candidate",
+   "label": "Maturity Transfer Account Type (if applicable)",
+   "desc": "Sub number maturity funds go to"
+  },
+  "F22": {
+   "name": "DISP_OF_INT_ACCOUNT_TYPE",
+   "kind": "candidate",
+   "label": "Interest Disposition Account Type (if applicable)",
+   "desc": "Account type interest goes to (dropdown)"
+  },
+  "F23": {
+   "name": "DISP_OF_INT_SUB_DISPLAY",
+   "kind": "candidate",
+   "label": "Interest Disposition Account Type (if applicable)",
+   "desc": "Sub display beside it"
+  },
+  "F24": {
+   "name": "DISP_OF_INT_SUB",
+   "kind": "candidate",
+   "label": "Interest Disposition Account Type (if applicable)",
+   "desc": "Sub number interest goes to"
+  },
+  "F25": {
+   "name": "DISP_OF_PRIN_ACCOUNT_DISPLAY",
+   "kind": "candidate",
+   "label": "Maturity Transfer Account Number (if applicable)",
+   "desc": "Account maturity funds go to, as shown"
+  },
+  "F26": {
+   "name": "DISP_OF_PRIN_ACCOUNT",
+   "kind": "candidate",
+   "label": "Maturity Transfer Account Number (if applicable)",
+   "desc": "Account number maturity funds go to"
+  },
+  "F27": {
+   "name": "DISP_OF_INT_ACCOUNT_DISPLAY",
+   "kind": "candidate",
+   "label": "Interest Transfer Account Number (if applicable)",
+   "desc": "Account interest goes to, as shown"
+  },
+  "F28": {
+   "name": "DISP_OF_INT_ACCOUNT",
+   "kind": "candidate",
+   "label": "Interest Transfer Account Number (if applicable)",
+   "desc": "Account number interest goes to"
+  }
+ },
+ "skip": {},
+ "drop": [],
+ "notes": [],
+ "reviewed copy": "field naming\\Guaranteed Investment Certificate Authorization"
+}

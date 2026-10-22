@@ -1,0 +1,139 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Account Number:",
+   "desc": "Account (member) number"
+  },
+  "F2": {
+   "name": "TERM_ACCOUNT_SUB",
+   "kind": "candidate",
+   "label": "Deposit Number:",
+   "desc": "GIC deposit (sub) number (old merge tag Sub)",
+   "save": true
+  },
+  "F3": {
+   "name": "TERM_ACCOUNT_AMOUNT",
+   "kind": "db",
+   "label": "Principal Amount",
+   "desc": "Principal amount",
+   "editable": true
+  },
+  "F4": {
+   "name": "TERM_ACCOUNT_OPENED",
+   "kind": "db",
+   "label": "Date of Deposit",
+   "desc": "Date of deposit. CHECK: or TERM_ACCOUNT_INTDATE",
+   "editable": true
+  },
+  "F5": {
+   "name": "TERM_ACCOUNT_MATURITY",
+   "kind": "db",
+   "label": "Maturity Date",
+   "desc": "Maturity date",
+   "editable": true
+  },
+  "F6": {
+   "name": "TERM_ACCOUNT_TERMFREQUENCY",
+   "kind": "db",
+   "label": "Term Length",
+   "desc": "Term length, the number. CHECK: TERMFREQUENCY vs TERMPER",
+   "editable": true
+  },
+  "F7": {
+   "name": "TERM_ACCOUNT_RATE1",
+   "kind": "db",
+   "label": "Interest Rate",
+   "desc": "Interest rate, %",
+   "editable": true
+  },
+  "F8": {
+   "name": "TERM_ACCOUNT_TERMPER",
+   "kind": "db",
+   "label": "Term Length",
+   "desc": "Term length, the unit",
+   "editable": true
+  },
+  "F9": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Received From:",
+   "desc": "Member's full legal name"
+  },
+  "F10": {
+   "name": "SIGNER1_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Signer 1's full legal name"
+  },
+  "F11": {
+   "name": "SIGNER2_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Signer 2's full legal name"
+  },
+  "F12": {
+   "name": "DISP_OF_PRIN_TYPE",
+   "kind": "candidate",
+   "label": "Maturity Option",
+   "desc": "What happens at maturity (old merge tag Maturity_Diposition)",
+   "save": true
+  },
+  "F13": {
+   "name": "DISP_OF_PRIN_ACCOUNT_TYPE",
+   "kind": "candidate",
+   "label": "Transfer Account Details (if any)",
+   "desc": "Account type maturity funds go to"
+  },
+  "F14": {
+   "name": "TERM_REDEEMABLE",
+   "kind": "candidate",
+   "label": "Early Redemption Option",
+   "desc": "Early redemption option permitted (old merge tag Early_Withdraw_Permitted)"
+  },
+  "F15": {
+   "name": "TERM_ACCOUNT_INTSCHED",
+   "kind": "db",
+   "label": "Interest Frequency",
+   "desc": "Interest frequency"
+  },
+  "F16": {
+   "name": "DISP_OF_INT_TYPE",
+   "kind": "candidate",
+   "label": "Interest Paid to:",
+   "desc": "Where interest is paid (old merge tag Interest_Disposition)",
+   "save": true
+  },
+  "F17": {
+   "name": "DISP_OF_PRIN_ACCOUNT",
+   "kind": "candidate",
+   "label": "Transfer Account Details (if any)",
+   "desc": "Account number maturity funds go to"
+  },
+  "F18": {
+   "name": "DISP_OF_INT_ACCOUNT_TYPE",
+   "kind": "candidate",
+   "label": "Interest Paid to:",
+   "desc": "Account type interest goes to"
+  },
+  "F19": {
+   "name": "DISP_OF_INT_ACCOUNT",
+   "kind": "candidate",
+   "label": "Interest Paid to:",
+   "desc": "Account number interest goes to"
+  },
+  "F20": {
+   "name": "StaffSignature",
+   "kind": "entry",
+   "label": "Per:",
+   "desc": "Signed for Libro (Per:)",
+   "save": true
+  }
+ },
+ "skip": {},
+ "drop": [],
+ "notes": [],
+ "reviewed copy": "field naming\\Funeral Home Guaranteed Investment Certificate"
+}

@@ -1,0 +1,1170 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Of:",
+   "desc": "Member's full name"
+  },
+  "F2": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "SIN:",
+   "desc": "Member's SIN"
+  },
+  "F3": {
+   "name": "PRIMARY_MAIL_FULL_LINE",
+   "kind": "db",
+   "label": "Late of:",
+   "desc": "Member's mailing address, in full on one line (the form prints one box for it)"
+  },
+  "F4": {
+   "name": "PRIMARY_DEATH_DAY",
+   "kind": "candidate",
+   "label": "1. THAT the Deceased died on the",
+   "desc": "Day of the member's death",
+   "save": true
+  },
+  "F5": {
+   "name": "PRIMARY_DEATH_MONTH",
+   "kind": "candidate",
+   "label": "day of",
+   "desc": "Month of the member's death",
+   "save": true
+  },
+  "F6": {
+   "name": "PRIMARY_DEATH_YEAR",
+   "kind": "candidate",
+   "label": ",",
+   "desc": "Year of the member's death",
+   "save": true
+  },
+  "F7": {
+   "name": "AssetType.DepositAccount",
+   "kind": "entry",
+   "label": "Deposit Account(s)",
+   "desc": "Tick: deposit account(s)",
+   "save": true
+  },
+  "F8": {
+   "name": "DepositAccountNumbers",
+   "kind": "entry",
+   "label": "Deposit Account(s)",
+   "desc": "The deceased's deposit account number(s)",
+   "custom": "Required when AssetType.DepositAccount is ticked"
+  },
+  "F9": {
+   "name": "AssetType.TermDeposit",
+   "kind": "entry",
+   "label": "Term Deposit/GIC(s)",
+   "desc": "Tick: term deposit / GIC(s)",
+   "save": true
+  },
+  "F10": {
+   "name": "TermDepositNumbers",
+   "kind": "entry",
+   "label": "Term Deposit/GIC(s)",
+   "desc": "The deceased's term deposit / GIC number(s)",
+   "custom": "Required when AssetType.TermDeposit is ticked"
+  },
+  "F11": {
+   "name": "AssetType.RRSP",
+   "kind": "entry",
+   "label": "RRSP Contract(s)",
+   "desc": "Tick: RRSP contract(s)",
+   "save": true
+  },
+  "F12": {
+   "name": "RRSPContracts",
+   "kind": "entry",
+   "label": "RRSP Contract(s)",
+   "desc": "The deceased's RRSP contract number(s)",
+   "custom": "Required when AssetType.RRSP is ticked"
+  },
+  "F13": {
+   "name": "AssetType.TFSA",
+   "kind": "entry",
+   "label": "TFSA Contract(s)",
+   "desc": "Tick: TFSA contract(s)",
+   "save": true,
+   "type": "checkbox"
+  },
+  "F14": {
+   "name": "TFSAContracts",
+   "kind": "entry",
+   "label": "TFSA Contract(s)",
+   "desc": "The deceased's TFSA contract number(s)",
+   "custom": "Required when AssetType.TFSA is ticked"
+  },
+  "F15": {
+   "name": "AssetType.ClassPShares",
+   "kind": "entry",
+   "label": "Class P Proﬁt Shares",
+   "desc": "Tick: Class P profit shares",
+   "save": true
+  },
+  "F17": {
+   "name": "ClassPShares",
+   "kind": "entry",
+   "label": "$",
+   "desc": "Class P profit shares $",
+   "custom": "Required when AssetType.ClassPShares is ticked",
+   "rect": [
+    240,
+    377,
+    556,
+    395
+   ]
+  },
+  "F18": {
+   "name": "AssetType.MembershipShares",
+   "kind": "entry",
+   "label": "Membership Shares",
+   "desc": "Tick: membership shares",
+   "save": true
+  },
+  "F20": {
+   "name": "MembershipSharesAmount",
+   "kind": "entry",
+   "label": "$",
+   "desc": "Membership shares $",
+   "custom": "Required when AssetType.MembershipShares is ticked",
+   "rect": [
+    240,
+    397,
+    556,
+    415
+   ]
+  },
+  "F21": {
+   "name": "WillDatedDay",
+   "kind": "entry",
+   "label": "3. THAT the deceased had a will dated",
+   "desc": "Will dated: day",
+   "save": true
+  },
+  "F22": {
+   "name": "WillDatedMonth",
+   "kind": "entry",
+   "label": "day of",
+   "desc": "month",
+   "save": true
+  },
+  "F23": {
+   "name": "WillDatedYear",
+   "kind": "entry",
+   "label": ",",
+   "desc": "year",
+   "save": true
+  },
+  "F24": {
+   "name": "WillBeneficiary1Name",
+   "kind": "entry",
+   "label": "Name",
+   "desc": "Beneficiary under the will 1: name",
+   "save": true
+  },
+  "F25": {
+   "name": "WillBeneficiary1Relationship",
+   "kind": "entry",
+   "label": "Relationship to Deceased",
+   "desc": "Beneficiary under the will 1: relationship to the deceased",
+   "save": true
+  },
+  "F26": {
+   "name": "WillBeneficiary1Birthdate",
+   "kind": "entry",
+   "label": "Birthdate",
+   "desc": "Beneficiary under the will 1: birthdate",
+   "save": true
+  },
+  "F27": {
+   "name": "WillBeneficiary2Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 2: name",
+   "custom": "Row WillBeneficiary2: all or nothing - required when any of WillBeneficiary2Name, WillBeneficiary2Relationship, WillBeneficiary2Birthdate is filled in"
+  },
+  "F28": {
+   "name": "WillBeneficiary2Relationship",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 2: relationship to the deceased",
+   "custom": "Row WillBeneficiary2: all or nothing - required when any of WillBeneficiary2Name, WillBeneficiary2Relationship, WillBeneficiary2Birthdate is filled in"
+  },
+  "F29": {
+   "name": "WillBeneficiary2Birthdate",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 2: birthdate",
+   "custom": "Row WillBeneficiary2: all or nothing - required when any of WillBeneficiary2Name, WillBeneficiary2Relationship, WillBeneficiary2Birthdate is filled in"
+  },
+  "F30": {
+   "name": "WillBeneficiary3Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 3: name",
+   "custom": "Row WillBeneficiary3: all or nothing - required when any of WillBeneficiary3Name, WillBeneficiary3Relationship, WillBeneficiary3Birthdate is filled in"
+  },
+  "F31": {
+   "name": "WillBeneficiary3Relationship",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 3: relationship to the deceased",
+   "custom": "Row WillBeneficiary3: all or nothing - required when any of WillBeneficiary3Name, WillBeneficiary3Relationship, WillBeneficiary3Birthdate is filled in"
+  },
+  "F32": {
+   "name": "WillBeneficiary3Birthdate",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 3: birthdate",
+   "custom": "Row WillBeneficiary3: all or nothing - required when any of WillBeneficiary3Name, WillBeneficiary3Relationship, WillBeneficiary3Birthdate is filled in"
+  },
+  "F33": {
+   "name": "WillBeneficiary4Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 4: name",
+   "custom": "Row WillBeneficiary4: all or nothing - required when any of WillBeneficiary4Name, WillBeneficiary4Relationship, WillBeneficiary4Birthdate is filled in"
+  },
+  "F34": {
+   "name": "WillBeneficiary4Relationship",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 4: relationship to the deceased",
+   "custom": "Row WillBeneficiary4: all or nothing - required when any of WillBeneficiary4Name, WillBeneficiary4Relationship, WillBeneficiary4Birthdate is filled in"
+  },
+  "F35": {
+   "name": "WillBeneficiary4Birthdate",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 4: birthdate",
+   "custom": "Row WillBeneficiary4: all or nothing - required when any of WillBeneficiary4Name, WillBeneficiary4Relationship, WillBeneficiary4Birthdate is filled in"
+  },
+  "F36": {
+   "name": "WillBeneficiary5Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 5: name",
+   "custom": "Row WillBeneficiary5: all or nothing - required when any of WillBeneficiary5Name, WillBeneficiary5Relationship, WillBeneficiary5Birthdate is filled in"
+  },
+  "F37": {
+   "name": "WillBeneficiary5Relationship",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 5: relationship to the deceased",
+   "custom": "Row WillBeneficiary5: all or nothing - required when any of WillBeneficiary5Name, WillBeneficiary5Relationship, WillBeneficiary5Birthdate is filled in"
+  },
+  "F38": {
+   "name": "WillBeneficiary5Birthdate",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 5: birthdate",
+   "custom": "Row WillBeneficiary5: all or nothing - required when any of WillBeneficiary5Name, WillBeneficiary5Relationship, WillBeneficiary5Birthdate is filled in"
+  },
+  "F39": {
+   "name": "WillBeneficiary6Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 6: name",
+   "custom": "Row WillBeneficiary6: all or nothing - required when any of WillBeneficiary6Name, WillBeneficiary6Relationship, WillBeneficiary6Birthdate is filled in"
+  },
+  "F40": {
+   "name": "WillBeneficiary6Relationship",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 6: relationship to the deceased",
+   "custom": "Row WillBeneficiary6: all or nothing - required when any of WillBeneficiary6Name, WillBeneficiary6Relationship, WillBeneficiary6Birthdate is filled in"
+  },
+  "F41": {
+   "name": "WillBeneficiary6Birthdate",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 6: birthdate",
+   "custom": "Row WillBeneficiary6: all or nothing - required when any of WillBeneficiary6Name, WillBeneficiary6Relationship, WillBeneficiary6Birthdate is filled in"
+  },
+  "F42": {
+   "name": "WillBeneficiary7Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 7: name",
+   "custom": "Row WillBeneficiary7: all or nothing - required when any of WillBeneficiary7Name, WillBeneficiary7Relationship, WillBeneficiary7Birthdate is filled in"
+  },
+  "F43": {
+   "name": "WillBeneficiary7Relationship",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 7: relationship to the deceased",
+   "custom": "Row WillBeneficiary7: all or nothing - required when any of WillBeneficiary7Name, WillBeneficiary7Relationship, WillBeneficiary7Birthdate is filled in"
+  },
+  "F44": {
+   "name": "WillBeneficiary7Birthdate",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 7: birthdate",
+   "custom": "Row WillBeneficiary7: all or nothing - required when any of WillBeneficiary7Name, WillBeneficiary7Relationship, WillBeneficiary7Birthdate is filled in"
+  },
+  "F45": {
+   "name": "WillBeneficiary8Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 8: name",
+   "custom": "Row WillBeneficiary8: all or nothing - required when any of WillBeneficiary8Name, WillBeneficiary8Relationship, WillBeneficiary8Birthdate is filled in"
+  },
+  "F46": {
+   "name": "WillBeneficiary8Relationship",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 8: relationship to the deceased",
+   "custom": "Row WillBeneficiary8: all or nothing - required when any of WillBeneficiary8Name, WillBeneficiary8Relationship, WillBeneficiary8Birthdate is filled in"
+  },
+  "F47": {
+   "name": "WillBeneficiary8Birthdate",
+   "kind": "entry",
+   "label": "",
+   "desc": "Beneficiary under the will 8: birthdate",
+   "custom": "Row WillBeneficiary8: all or nothing - required when any of WillBeneficiary8Name, WillBeneficiary8Relationship, WillBeneficiary8Birthdate is filled in"
+  },
+  "F48": {
+   "name": "NoMinorChildrenConfirmed",
+   "kind": "entry",
+   "label": "I/We Confirm this",
+   "desc": "Tick: confirms the deceased has no minor children",
+   "save": true,
+   "type": "checkbox"
+  },
+  "F49": {
+   "name": "EstateAssetsValue",
+   "kind": "entry",
+   "label": "and registered funds with a valid Designation of Beneﬁciary): $",
+   "desc": "Value of all assets in the deceased's name $",
+   "save": true
+  },
+  "F52": {
+   "name": "AdditionalInstructions",
+   "kind": "entry",
+   "label": "*No cash withdrawals are allowed. Only cheques or transfer can be completed.",
+   "desc": "Additional instructions"
+  },
+  "F53": {
+   "name": "EstateTrusteeNames",
+   "kind": "entry",
+   "label": "I/WE,",
+   "desc": "The estate trustees named in the will (I/WE, ___)",
+   "save": true
+  },
+  "F54": {
+   "name": "Declared1Month",
+   "kind": "entry",
+   "label": "of",
+   "desc": "Declaration 1: of ___ (month)",
+   "save": false,
+   "custom": "Part of the page 2 declaration (before Libro staff) - see Declared1AtCity"
+  },
+  "F55": {
+   "name": "Declared1AtCity",
+   "kind": "entry",
+   "label": "DECLARED BEFORE ME at",
+   "desc": "Declaration 1: declared before me at",
+   "save": false,
+   "custom": "Either the page 2 declaration (before Libro staff: Declared1 fields, the first Trustee row, REQUESTUSER) or the page 3 declaration (before a commissioner: Declared2 fields, the first Declared2Trustee row, the Commissioner fields) is completed in full"
+  },
+  "F56": {
+   "name": "Declared1AtProvince",
+   "kind": "entry",
+   "label": "in the Province of",
+   "desc": "Declaration 1: in the Province of",
+   "save": false,
+   "custom": "Part of the page 2 declaration (before Libro staff) - see Declared1AtCity"
+  },
+  "F57": {
+   "name": "Declared1Day",
+   "kind": "entry",
+   "label": ", this",
+   "desc": "Declaration 1: this ___ day",
+   "save": false,
+   "custom": "Part of the page 2 declaration (before Libro staff) - see Declared1AtCity"
+  },
+  "F58": {
+   "name": "Trustee1Name",
+   "kind": "entry",
+   "label": "Trustee Name",
+   "desc": "Page 2 declaration: estate trustee 1's name",
+   "custom": "Part of the page 2 declaration (before Libro staff) - see Declared1AtCity"
+  },
+  "F59": {
+   "name": "Trustee1Signature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Page 2 declaration: estate trustee 1's signature",
+   "save": true,
+   "custom": "Part of the page 2 declaration (before Libro staff) - see Declared1AtCity"
+  },
+  "F60": {
+   "name": "Trustee1SignDate",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Page 2 declaration: date estate trustee 1 signs",
+   "custom": "Part of the page 2 declaration (before Libro staff) - see Declared1AtCity"
+  },
+  "F61": {
+   "name": "Trustee2Name",
+   "kind": "entry",
+   "label": "Trustee Name",
+   "desc": "Page 2 declaration: estate trustee 2's name",
+   "custom": "Row Trustee2: all or nothing - required when any of Trustee2Name, Trustee2Signature, Trustee2SignDate is filled in"
+  },
+  "F62": {
+   "name": "Trustee2Signature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Page 2 declaration: estate trustee 2's signature",
+   "custom": "Row Trustee2: all or nothing - required when any of Trustee2Name, Trustee2Signature, Trustee2SignDate is filled in"
+  },
+  "F63": {
+   "name": "Trustee2SignDate",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Page 2 declaration: date estate trustee 2 signs",
+   "custom": "Row Trustee2: all or nothing - required when any of Trustee2Name, Trustee2Signature, Trustee2SignDate is filled in"
+  },
+  "F64": {
+   "name": "Trustee3Name",
+   "kind": "entry",
+   "label": "Trustee Name",
+   "desc": "Page 2 declaration: estate trustee 3's name",
+   "custom": "Row Trustee3: all or nothing - required when any of Trustee3Name, Trustee3Signature, Trustee3SignDate is filled in"
+  },
+  "F65": {
+   "name": "Trustee3Signature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Page 2 declaration: estate trustee 3's signature",
+   "custom": "Row Trustee3: all or nothing - required when any of Trustee3Name, Trustee3Signature, Trustee3SignDate is filled in"
+  },
+  "F66": {
+   "name": "Trustee3SignDate",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Page 2 declaration: date estate trustee 3 signs",
+   "custom": "Row Trustee3: all or nothing - required when any of Trustee3Name, Trustee3Signature, Trustee3SignDate is filled in"
+  },
+  "F67": {
+   "name": "Trustee4Name",
+   "kind": "entry",
+   "label": "Trustee Name",
+   "desc": "Page 2 declaration: estate trustee 4's name",
+   "custom": "Row Trustee4: all or nothing - required when any of Trustee4Name, Trustee4Signature, Trustee4SignDate is filled in"
+  },
+  "F68": {
+   "name": "Trustee4Signature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Page 2 declaration: estate trustee 4's signature",
+   "custom": "Row Trustee4: all or nothing - required when any of Trustee4Name, Trustee4Signature, Trustee4SignDate is filled in"
+  },
+  "F69": {
+   "name": "Trustee4SignDate",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Page 2 declaration: date estate trustee 4 signs",
+   "custom": "Row Trustee4: all or nothing - required when any of Trustee4Name, Trustee4Signature, Trustee4SignDate is filled in"
+  },
+  "F70": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "",
+   "desc": "Authorizing staff member (Libro witness): name"
+  },
+  "F71": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db"
+  },
+  "B3": {
+   "name": "Declared1Year",
+   "kind": "entry",
+   "label": ", A.D. 20",
+   "desc": "Declaration 1: A.D. 20__",
+   "save": false,
+   "custom": "Part of the page 2 declaration (before Libro staff) - see Declared1AtCity",
+   "maxlen": 2
+  },
+  "F72": {
+   "name": "Declared2AtCity",
+   "kind": "entry",
+   "label": "DECLARED BEFORE ME at",
+   "desc": "Declaration 2: declared before me at",
+   "custom": "Part of the page 3 declaration (before a commissioner) - see Declared1AtCity"
+  },
+  "F73": {
+   "name": "Declared2AtProvince",
+   "kind": "entry",
+   "label": "in the Province of",
+   "desc": "Declaration 2: in the Province of",
+   "custom": "Part of the page 3 declaration (before a commissioner) - see Declared1AtCity"
+  },
+  "F74": {
+   "name": "Declared2Day",
+   "kind": "entry",
+   "label": ", this",
+   "desc": "Declaration 2: this ___ day",
+   "custom": "Part of the page 3 declaration (before a commissioner) - see Declared1AtCity"
+  },
+  "F75": {
+   "name": "Declared2Month",
+   "kind": "entry",
+   "label": "of",
+   "desc": "Declaration 2: of ___ (month)",
+   "custom": "Part of the page 3 declaration (before a commissioner) - see Declared1AtCity"
+  },
+  "F76": {
+   "name": "CommissionerSignature",
+   "kind": "entry",
+   "label": "A Commissioner for Oaths/Notary Public",
+   "desc": "Commissioner for oaths / notary public: signature",
+   "custom": "Part of the page 3 declaration (before a commissioner) - see Declared1AtCity"
+  },
+  "F77": {
+   "name": "CommissionerProvince",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Commissioner for oaths / notary: province of",
+   "save": false,
+   "custom": "Part of the page 3 declaration (before a commissioner) - see Declared1AtCity"
+  },
+  "F78": {
+   "name": "CommissionerAppointmentExpires",
+   "kind": "entry",
+   "label": "My appointment expires on",
+   "desc": "Commissioner's appointment expires on",
+   "save": false,
+   "custom": "Part of the page 3 declaration (before a commissioner) - see Declared1AtCity"
+  },
+  "F79": {
+   "name": "Declared2Trustee1Name",
+   "kind": "entry",
+   "label": "Trustee Name",
+   "desc": "Page 3 declaration (before a commissioner): estate trustee 1's name",
+   "custom": "Part of the page 3 declaration (before a commissioner) - see Declared1AtCity"
+  },
+  "F80": {
+   "name": "Declared2Trustee1Signature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Page 3 declaration: estate trustee 1's signature",
+   "custom": "Part of the page 3 declaration (before a commissioner) - see Declared1AtCity"
+  },
+  "F81": {
+   "name": "Declared2Trustee1SignDate",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Page 3 declaration: date estate trustee 1 signs",
+   "custom": "Part of the page 3 declaration (before a commissioner) - see Declared1AtCity"
+  },
+  "F82": {
+   "name": "Declared2Trustee2Name",
+   "kind": "entry",
+   "label": "Trustee Name",
+   "desc": "Page 3 declaration (before a commissioner): estate trustee 2's name",
+   "custom": "Row Declared2Trustee2: all or nothing - required when any of Declared2Trustee2Name, Declared2Trustee2Signature, Declared2Trustee2SignDate is filled in"
+  },
+  "F83": {
+   "name": "Declared2Trustee2Signature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Page 3 declaration: estate trustee 2's signature",
+   "custom": "Row Declared2Trustee2: all or nothing - required when any of Declared2Trustee2Name, Declared2Trustee2Signature, Declared2Trustee2SignDate is filled in"
+  },
+  "F84": {
+   "name": "Declared2Trustee2SignDate",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Page 3 declaration: date estate trustee 2 signs",
+   "custom": "Row Declared2Trustee2: all or nothing - required when any of Declared2Trustee2Name, Declared2Trustee2Signature, Declared2Trustee2SignDate is filled in"
+  },
+  "F85": {
+   "name": "Declared2Trustee3Name",
+   "kind": "entry",
+   "label": "Trustee Name",
+   "desc": "Page 3 declaration (before a commissioner): estate trustee 3's name",
+   "custom": "Row Declared2Trustee3: all or nothing - required when any of Declared2Trustee3Name, Declared2Trustee3Signature, Declared2Trustee3SignDate is filled in"
+  },
+  "F86": {
+   "name": "Declared2Trustee3Signature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Page 3 declaration: estate trustee 3's signature",
+   "custom": "Row Declared2Trustee3: all or nothing - required when any of Declared2Trustee3Name, Declared2Trustee3Signature, Declared2Trustee3SignDate is filled in"
+  },
+  "F87": {
+   "name": "Declared2Trustee3SignDate",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Page 3 declaration: date estate trustee 3 signs",
+   "custom": "Row Declared2Trustee3: all or nothing - required when any of Declared2Trustee3Name, Declared2Trustee3Signature, Declared2Trustee3SignDate is filled in"
+  },
+  "F88": {
+   "name": "Declared2Trustee4Name",
+   "kind": "entry",
+   "label": "Trustee Name",
+   "desc": "Page 3 declaration (before a commissioner): estate trustee 4's name",
+   "custom": "Row Declared2Trustee4: all or nothing - required when any of Declared2Trustee4Name, Declared2Trustee4Signature, Declared2Trustee4SignDate is filled in"
+  },
+  "F89": {
+   "name": "Declared2Trustee4Signature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Page 3 declaration: estate trustee 4's signature",
+   "custom": "Row Declared2Trustee4: all or nothing - required when any of Declared2Trustee4Name, Declared2Trustee4Signature, Declared2Trustee4SignDate is filled in"
+  },
+  "F90": {
+   "name": "Declared2Trustee4SignDate",
+   "kind": "entry",
+   "label": "Date",
+   "desc": "Page 3 declaration: date estate trustee 4 signs",
+   "custom": "Row Declared2Trustee4: all or nothing - required when any of Declared2Trustee4Name, Declared2Trustee4Signature, Declared2Trustee4SignDate is filled in"
+  },
+  "B4": {
+   "name": "Declared2Year",
+   "kind": "entry",
+   "label": ", A.D. 20",
+   "desc": "Declaration 2: A.D. 20__",
+   "custom": "Part of the page 3 declaration (before a commissioner) - see Declared1AtCity",
+   "maxlen": 2
+  },
+  "F91": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "",
+   "desc": "Authorizing staff member (Libro witness): name"
+  },
+  "F92": {
+   "name": "REQUESTUSER_POSITION",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Staff member's position / title",
+   "save": true
+  }
+ },
+ "skip": {
+  "B1": "space after a paragraph line, no blank",
+  "B2": "space after a paragraph line, no blank",
+  "B5": "the estates@libro.ca link, printed"
+ },
+ "drop": [
+  "F16",
+  "F19",
+  "F50",
+  "F51"
+ ],
+ "notes": [
+  "Two alternative declarations: page 2 before Libro staff, page 3 before a commissioner. Each has its own fields (Trustee1-4 / Declared2Trustee1-4), so filling one never fills the other."
+ ],
+ "reviewed copy": "field naming\\Statutory Declaration & Indemnification Testacy - with Will",
+ "add": [
+  {
+   "name": "Option1Claimant1Name",
+   "kind": "entry",
+   "label": "(enter % or exact amount)",
+   "desc": "Option #1, claimant 1: claimant name",
+   "custom": "Either Option #1 (Option1Claimant1Name, Option1Claimant1MemberNumber, Option1Claimant1Entitlement) or Option #2 (Option2Claimant1Name, Option2Claimant1Address, Option2Claimant1Phone, Option2Claimant1Entitlement) must be completed for at least one claimant",
+   "page": 1,
+   "rect": [
+    82.9,
+    159.6,
+    237.0,
+    174.6
+   ]
+  },
+  {
+   "name": "Option1Claimant1MemberNumber",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 1: Libro folio (member) #",
+   "custom": "Row Option1Claimant1: all or nothing - required when any of Option1Claimant1Name, Option1Claimant1MemberNumber, Option1Claimant1Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    240.0,
+    159.6,
+    394.0,
+    174.6
+   ]
+  },
+  {
+   "name": "Option1Claimant1Entitlement",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 1: entitlement, % or amount",
+   "custom": "Row Option1Claimant1: all or nothing - required when any of Option1Claimant1Name, Option1Claimant1MemberNumber, Option1Claimant1Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    397.0,
+    159.6,
+    550.6,
+    174.6
+   ]
+  },
+  {
+   "name": "Option1Claimant2Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 2: claimant name",
+   "custom": "Row Option1Claimant2: all or nothing - required when any of Option1Claimant2Name, Option1Claimant2MemberNumber, Option1Claimant2Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    82.9,
+    177.1,
+    237.0,
+    192.1
+   ]
+  },
+  {
+   "name": "Option1Claimant2MemberNumber",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 2: Libro folio (member) #",
+   "custom": "Row Option1Claimant2: all or nothing - required when any of Option1Claimant2Name, Option1Claimant2MemberNumber, Option1Claimant2Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    240.0,
+    177.1,
+    394.0,
+    192.1
+   ]
+  },
+  {
+   "name": "Option1Claimant2Entitlement",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 2: entitlement, % or amount",
+   "custom": "Row Option1Claimant2: all or nothing - required when any of Option1Claimant2Name, Option1Claimant2MemberNumber, Option1Claimant2Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    397.0,
+    177.1,
+    550.6,
+    192.1
+   ]
+  },
+  {
+   "name": "Option1Claimant3Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 3: claimant name",
+   "custom": "Row Option1Claimant3: all or nothing - required when any of Option1Claimant3Name, Option1Claimant3MemberNumber, Option1Claimant3Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    82.9,
+    194.6,
+    237.0,
+    209.6
+   ]
+  },
+  {
+   "name": "Option1Claimant3MemberNumber",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 3: Libro folio (member) #",
+   "custom": "Row Option1Claimant3: all or nothing - required when any of Option1Claimant3Name, Option1Claimant3MemberNumber, Option1Claimant3Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    240.0,
+    194.6,
+    394.0,
+    209.6
+   ]
+  },
+  {
+   "name": "Option1Claimant3Entitlement",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 3: entitlement, % or amount",
+   "custom": "Row Option1Claimant3: all or nothing - required when any of Option1Claimant3Name, Option1Claimant3MemberNumber, Option1Claimant3Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    397.0,
+    194.6,
+    550.6,
+    209.6
+   ]
+  },
+  {
+   "name": "Option1Claimant4Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 4: claimant name",
+   "custom": "Row Option1Claimant4: all or nothing - required when any of Option1Claimant4Name, Option1Claimant4MemberNumber, Option1Claimant4Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    82.9,
+    212.1,
+    237.0,
+    227.1
+   ]
+  },
+  {
+   "name": "Option1Claimant4MemberNumber",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 4: Libro folio (member) #",
+   "custom": "Row Option1Claimant4: all or nothing - required when any of Option1Claimant4Name, Option1Claimant4MemberNumber, Option1Claimant4Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    240.0,
+    212.1,
+    394.0,
+    227.1
+   ]
+  },
+  {
+   "name": "Option1Claimant4Entitlement",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 4: entitlement, % or amount",
+   "custom": "Row Option1Claimant4: all or nothing - required when any of Option1Claimant4Name, Option1Claimant4MemberNumber, Option1Claimant4Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    397.0,
+    212.1,
+    550.6,
+    227.1
+   ]
+  },
+  {
+   "name": "Option1Claimant5Name",
+   "kind": "entry",
+   "label": "Option #2",
+   "desc": "Option #1, claimant 5: claimant name",
+   "custom": "Row Option1Claimant5: all or nothing - required when any of Option1Claimant5Name, Option1Claimant5MemberNumber, Option1Claimant5Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    82.9,
+    229.6,
+    237.0,
+    244.6
+   ]
+  },
+  {
+   "name": "Option1Claimant5MemberNumber",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 5: Libro folio (member) #",
+   "custom": "Row Option1Claimant5: all or nothing - required when any of Option1Claimant5Name, Option1Claimant5MemberNumber, Option1Claimant5Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    240.0,
+    229.6,
+    394.0,
+    244.6
+   ]
+  },
+  {
+   "name": "Option1Claimant5Entitlement",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #1, claimant 5: entitlement, % or amount",
+   "custom": "Row Option1Claimant5: all or nothing - required when any of Option1Claimant5Name, Option1Claimant5MemberNumber, Option1Claimant5Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    397.0,
+    229.6,
+    550.6,
+    244.6
+   ]
+  },
+  {
+   "name": "Option2Claimant1Name",
+   "kind": "entry",
+   "label": "(enter % or exact amount)",
+   "desc": "Option #2, claimant 1: claimant name",
+   "custom": "Either Option #2 or Option #1 must be completed for at least one claimant (see Option1Claimant1Name)",
+   "page": 1,
+   "rect": [
+    82.9,
+    383.3,
+    202.4,
+    398.4
+   ]
+  },
+  {
+   "name": "Option2Claimant1Address",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 1: full address",
+   "custom": "Row Option2Claimant1: all or nothing - required when any of Option2Claimant1Name, Option2Claimant1Address, Option2Claimant1Phone, Option2Claimant1Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    205.4,
+    383.3,
+    365.0,
+    398.4
+   ]
+  },
+  {
+   "name": "Option2Claimant1Phone",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 1: phone number",
+   "custom": "Row Option2Claimant1: all or nothing - required when any of Option2Claimant1Name, Option2Claimant1Address, Option2Claimant1Phone, Option2Claimant1Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    368.0,
+    383.3,
+    444.1,
+    398.4
+   ]
+  },
+  {
+   "name": "Option2Claimant1Entitlement",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 1: entitlement, % or amount",
+   "custom": "Row Option2Claimant1: all or nothing - required when any of Option2Claimant1Name, Option2Claimant1Address, Option2Claimant1Phone, Option2Claimant1Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    447.1,
+    383.3,
+    550.6,
+    398.4
+   ]
+  },
+  {
+   "name": "Option2Claimant2Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 2: claimant name",
+   "custom": "Row Option2Claimant2: all or nothing - required when any of Option2Claimant2Name, Option2Claimant2Address, Option2Claimant2Phone, Option2Claimant2Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    82.9,
+    400.9,
+    202.4,
+    415.9
+   ]
+  },
+  {
+   "name": "Option2Claimant2Address",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 2: full address",
+   "custom": "Row Option2Claimant2: all or nothing - required when any of Option2Claimant2Name, Option2Claimant2Address, Option2Claimant2Phone, Option2Claimant2Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    205.4,
+    400.9,
+    365.0,
+    415.9
+   ]
+  },
+  {
+   "name": "Option2Claimant2Phone",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 2: phone number",
+   "custom": "Row Option2Claimant2: all or nothing - required when any of Option2Claimant2Name, Option2Claimant2Address, Option2Claimant2Phone, Option2Claimant2Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    368.0,
+    400.9,
+    444.1,
+    415.9
+   ]
+  },
+  {
+   "name": "Option2Claimant2Entitlement",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 2: entitlement, % or amount",
+   "custom": "Row Option2Claimant2: all or nothing - required when any of Option2Claimant2Name, Option2Claimant2Address, Option2Claimant2Phone, Option2Claimant2Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    447.1,
+    400.9,
+    550.6,
+    415.9
+   ]
+  },
+  {
+   "name": "Option2Claimant3Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 3: claimant name",
+   "custom": "Row Option2Claimant3: all or nothing - required when any of Option2Claimant3Name, Option2Claimant3Address, Option2Claimant3Phone, Option2Claimant3Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    82.9,
+    418.4,
+    202.4,
+    433.4
+   ]
+  },
+  {
+   "name": "Option2Claimant3Address",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 3: full address",
+   "custom": "Row Option2Claimant3: all or nothing - required when any of Option2Claimant3Name, Option2Claimant3Address, Option2Claimant3Phone, Option2Claimant3Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    205.4,
+    418.4,
+    365.0,
+    433.4
+   ]
+  },
+  {
+   "name": "Option2Claimant3Phone",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 3: phone number",
+   "custom": "Row Option2Claimant3: all or nothing - required when any of Option2Claimant3Name, Option2Claimant3Address, Option2Claimant3Phone, Option2Claimant3Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    368.0,
+    418.4,
+    444.1,
+    433.4
+   ]
+  },
+  {
+   "name": "Option2Claimant3Entitlement",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 3: entitlement, % or amount",
+   "custom": "Row Option2Claimant3: all or nothing - required when any of Option2Claimant3Name, Option2Claimant3Address, Option2Claimant3Phone, Option2Claimant3Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    447.1,
+    418.4,
+    550.6,
+    433.4
+   ]
+  },
+  {
+   "name": "Option2Claimant4Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 4: claimant name",
+   "custom": "Row Option2Claimant4: all or nothing - required when any of Option2Claimant4Name, Option2Claimant4Address, Option2Claimant4Phone, Option2Claimant4Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    82.9,
+    435.8,
+    202.4,
+    450.9
+   ]
+  },
+  {
+   "name": "Option2Claimant4Address",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 4: full address",
+   "custom": "Row Option2Claimant4: all or nothing - required when any of Option2Claimant4Name, Option2Claimant4Address, Option2Claimant4Phone, Option2Claimant4Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    205.4,
+    435.8,
+    365.0,
+    450.9
+   ]
+  },
+  {
+   "name": "Option2Claimant4Phone",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 4: phone number",
+   "custom": "Row Option2Claimant4: all or nothing - required when any of Option2Claimant4Name, Option2Claimant4Address, Option2Claimant4Phone, Option2Claimant4Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    368.0,
+    435.8,
+    444.1,
+    450.9
+   ]
+  },
+  {
+   "name": "Option2Claimant4Entitlement",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 4: entitlement, % or amount",
+   "custom": "Row Option2Claimant4: all or nothing - required when any of Option2Claimant4Name, Option2Claimant4Address, Option2Claimant4Phone, Option2Claimant4Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    447.1,
+    435.8,
+    550.6,
+    450.9
+   ]
+  },
+  {
+   "name": "Option2Claimant5Name",
+   "kind": "entry",
+   "label": "Additional Instructions:",
+   "desc": "Option #2, claimant 5: claimant name",
+   "custom": "Row Option2Claimant5: all or nothing - required when any of Option2Claimant5Name, Option2Claimant5Address, Option2Claimant5Phone, Option2Claimant5Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    82.9,
+    453.4,
+    202.4,
+    468.4
+   ]
+  },
+  {
+   "name": "Option2Claimant5Address",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 5: full address",
+   "custom": "Row Option2Claimant5: all or nothing - required when any of Option2Claimant5Name, Option2Claimant5Address, Option2Claimant5Phone, Option2Claimant5Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    205.4,
+    453.4,
+    365.0,
+    468.4
+   ]
+  },
+  {
+   "name": "Option2Claimant5Phone",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 5: phone number",
+   "custom": "Row Option2Claimant5: all or nothing - required when any of Option2Claimant5Name, Option2Claimant5Address, Option2Claimant5Phone, Option2Claimant5Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    368.0,
+    453.4,
+    444.1,
+    468.4
+   ]
+  },
+  {
+   "name": "Option2Claimant5Entitlement",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2, claimant 5: entitlement, % or amount",
+   "custom": "Row Option2Claimant5: all or nothing - required when any of Option2Claimant5Name, Option2Claimant5Address, Option2Claimant5Phone, Option2Claimant5Entitlement is filled in",
+   "page": 1,
+   "rect": [
+    447.1,
+    453.4,
+    550.6,
+    468.4
+   ]
+  },
+  {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Of:",
+   "desc": "Member's full name",
+   "page": 3,
+   "rect": [
+    271,
+    153,
+    560,
+    168
+   ]
+  }
+ ]
+}

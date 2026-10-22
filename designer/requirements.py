@@ -2,8 +2,10 @@
 ahead of it: one job file per production form for build.mjs to run.
 
     python designer/requirements.py
+    python designer/requirements.py --matches designer/form_matches_<batch>.json
+        --jobs designer/jobs_<batch> --out designer/out_<batch>
 
-A BA sets these in the designer by hand (Forms_Development_Procedure.docx,
+(the second for a batch handed over on its own). A BA sets these in the designer by hand (Forms_Development_Procedure.docx,
 "BA Development"). Here they come from:
 
   Config and signing buttons   the form's row of Combined Form Requirements
@@ -33,6 +35,7 @@ A mapping entry can override any of these: "format", "facing", "editable",
 Writes designer/jobs/<production name>.json and the page pictures the
 requirements workbook shows, designer/jobs/<production name> pN.png.
 """
+import argparse
 import csv
 import json
 import os
@@ -342,9 +345,18 @@ def trim_pages(src, keep, dst):
 
 
 def main():
-    matches = json.load(open(os.path.join(HERE, "designer", "form_matches.json"), encoding="utf-8"))
+    global JOBS
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--matches", default=os.path.join(HERE, "designer", "form_matches.json"),
+                    help="the forms and their form-table rows (a batch has its own)")
+    ap.add_argument("--jobs", default=JOBS)
+    ap.add_argument("--out", default=os.path.join(HERE, "designer", "out"))
+    args = ap.parse_args()
+    # absolute: build.mjs runs from the designer's own folder
+    JOBS, args.out = os.path.abspath(args.jobs), os.path.abspath(args.out)
+    matches = json.load(open(args.matches, encoding="utf-8"))
     # both start empty, so nothing left from an earlier run reaches the handover
-    for d in (JOBS, os.path.join(HERE, "designer", "out")):
+    for d in (JOBS, args.out):
         if os.path.isdir(d):
             shutil.rmtree(d)
     os.makedirs(JOBS)
@@ -383,7 +395,7 @@ def main():
             "source": pdf, "config": mt["config"], "buttons": rects, "button clash": clash,
             "fields": fields, "markers": markers,
             "images": render_pages(doc, markers, stem),
-            "out": os.path.join(HERE, "designer", "out", stem),
+            "out": os.path.join(args.out, stem),
         }
         json.dump(job, open(os.path.join(JOBS, f"{stem}.json"), "w", encoding="utf-8"),
                   indent=1, ensure_ascii=False)

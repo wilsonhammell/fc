@@ -1,0 +1,570 @@
+{
+ "as_is": true,
+ "items": {
+  "F2": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "of:",
+   "desc": "The deceased's name (estate of)"
+  },
+  "F3": {
+   "name": "PRIMARY_SIN",
+   "kind": "db",
+   "label": "S.I.N",
+   "desc": "Member's SIN"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Member's mailing address, line 1 (first of two boxes)"
+  },
+  "F5": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "Late of:",
+   "desc": "Mailing address, line 2"
+  },
+  "F6": {
+   "name": "PRIMARY_DEATH_DAY",
+   "kind": "candidate",
+   "label": "1. THAT the Deceased died on the",
+   "desc": "Day of the member's death",
+   "save": true
+  },
+  "F7": {
+   "name": "PRIMARY_DEATH_MONTH_YEAR",
+   "kind": "candidate",
+   "label": "day of",
+   "desc": "Month and year of the member's death",
+   "save": true
+  },
+  "F8": {
+   "name": "RRSPContracts",
+   "kind": "entry",
+   "label": "□ RRSP contract No.(s)",
+   "desc": "The deceased's RRSP contract number(s)",
+   "custom": "Required when AssetType.RRSP is ticked"
+  },
+  "F9": {
+   "name": "TFSAContracts",
+   "kind": "entry",
+   "label": "□ TFSA contract No.(s)",
+   "desc": "The deceased's TFSA contract number(s)",
+   "custom": "Required when AssetType.TFSA is ticked"
+  },
+  "F10": {
+   "name": "TermDepositNumbers",
+   "kind": "entry",
+   "label": "□ Term Deposit/GIC No.(s)",
+   "desc": "The deceased's term deposit / GIC number(s)",
+   "custom": "Required when AssetType.TermDeposit is ticked"
+  },
+  "F11": {
+   "name": "DepositAccountNumbers",
+   "kind": "entry",
+   "label": "□ Deposit Account No.(s)",
+   "desc": "The deceased's deposit account number(s)",
+   "custom": "Required when AssetType.DepositAccount is ticked"
+  },
+  "F12": {
+   "name": "ClassPShares",
+   "kind": "entry",
+   "label": "□ Class P Profit Shares",
+   "desc": "The deceased's Class P profit shares",
+   "custom": "Required when AssetType.ClassPShares is ticked"
+  },
+  "F13": {
+   "name": "MembershipSharesAmount",
+   "kind": "entry",
+   "label": "$",
+   "desc": "The deceased's membership shares $",
+   "custom": "Required when AssetType.MembershipShares is ticked"
+  },
+  "F14": {
+   "name": "Heir1Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 1: name",
+   "save": true
+  },
+  "F15": {
+   "name": "Heir1Relationship",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 1: relationship to the deceased",
+   "save": true
+  },
+  "F16": {
+   "name": "Heir1Birthdate",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 1: birthdate",
+   "save": true
+  },
+  "F17": {
+   "name": "Heir1SIN",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 1: SIN",
+   "save": true
+  },
+  "F18": {
+   "name": "Heir2Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 2: name",
+   "custom": "Row Heir2: all or nothing - required when any of Heir2Name, Heir2Relationship, Heir2Birthdate, Heir2SIN is filled in"
+  },
+  "F19": {
+   "name": "Heir2Relationship",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 2: relationship to the deceased",
+   "custom": "Row Heir2: all or nothing - required when any of Heir2Name, Heir2Relationship, Heir2Birthdate, Heir2SIN is filled in"
+  },
+  "F20": {
+   "name": "Heir2Birthdate",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 2: birthdate",
+   "custom": "Row Heir2: all or nothing - required when any of Heir2Name, Heir2Relationship, Heir2Birthdate, Heir2SIN is filled in"
+  },
+  "F21": {
+   "name": "Heir2SIN",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 2: SIN",
+   "custom": "Row Heir2: all or nothing - required when any of Heir2Name, Heir2Relationship, Heir2Birthdate, Heir2SIN is filled in"
+  },
+  "F22": {
+   "name": "Heir3Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 3: name",
+   "custom": "Row Heir3: all or nothing - required when any of Heir3Name, Heir3Relationship, Heir3Birthdate, Heir3SIN is filled in"
+  },
+  "F23": {
+   "name": "Heir3Relationship",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 3: relationship to the deceased",
+   "custom": "Row Heir3: all or nothing - required when any of Heir3Name, Heir3Relationship, Heir3Birthdate, Heir3SIN is filled in"
+  },
+  "F24": {
+   "name": "Heir3Birthdate",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 3: birthdate",
+   "custom": "Row Heir3: all or nothing - required when any of Heir3Name, Heir3Relationship, Heir3Birthdate, Heir3SIN is filled in"
+  },
+  "F25": {
+   "name": "Heir3SIN",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 3: SIN",
+   "custom": "Row Heir3: all or nothing - required when any of Heir3Name, Heir3Relationship, Heir3Birthdate, Heir3SIN is filled in"
+  },
+  "F26": {
+   "name": "Heir4Name",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 4: name",
+   "custom": "Row Heir4: all or nothing - required when any of Heir4Name, Heir4Relationship, Heir4Birthdate, Heir4SIN is filled in"
+  },
+  "F27": {
+   "name": "Heir4Relationship",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 4: relationship to the deceased",
+   "custom": "Row Heir4: all or nothing - required when any of Heir4Name, Heir4Relationship, Heir4Birthdate, Heir4SIN is filled in"
+  },
+  "F28": {
+   "name": "Heir4Birthdate",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 4: birthdate",
+   "custom": "Row Heir4: all or nothing - required when any of Heir4Name, Heir4Relationship, Heir4Birthdate, Heir4SIN is filled in"
+  },
+  "F29": {
+   "name": "Heir4SIN",
+   "kind": "entry",
+   "label": "",
+   "desc": "Legal heir 4: SIN",
+   "custom": "Row Heir4: all or nothing - required when any of Heir4Name, Heir4Relationship, Heir4Birthdate, Heir4SIN is filled in"
+  },
+  "F30": {
+   "name": "EstateAssetsValue",
+   "kind": "entry",
+   "label": "joint deposits and registered funds with Designation of Beneficiary): $",
+   "desc": "Value of all assets on deposit in the deceased's name $",
+   "save": true
+  },
+  "B1": {
+   "name": "AssetType.RRSP",
+   "kind": "entry",
+   "label": "□",
+   "desc": "Tick: RRSP contract(s) - the form typed a box with no field",
+   "save": true,
+   "type": "checkbox"
+  },
+  "B2": {
+   "name": "AssetType.TFSA",
+   "kind": "entry",
+   "label": "□",
+   "desc": "Tick: TFSA contract(s)",
+   "save": true,
+   "type": "checkbox"
+  },
+  "B3": {
+   "name": "AssetType.TermDeposit",
+   "kind": "entry",
+   "label": "□",
+   "desc": "Tick: term deposit / GIC",
+   "save": true,
+   "type": "checkbox"
+  },
+  "B4": {
+   "name": "AssetType.DepositAccount",
+   "kind": "entry",
+   "label": "□",
+   "desc": "Tick: deposit account(s)",
+   "save": true,
+   "type": "checkbox"
+  },
+  "B5": {
+   "name": "AssetType.ClassPShares",
+   "kind": "entry",
+   "label": "□",
+   "desc": "Tick: Class P profit shares",
+   "save": true,
+   "type": "checkbox"
+  },
+  "B6": {
+   "name": "AssetType.MembershipShares",
+   "kind": "entry",
+   "label": "THAT",
+   "desc": "Tick: membership shares",
+   "save": true,
+   "type": "checkbox"
+  },
+  "F31": {
+   "name": "TermDepositTransferNames",
+   "kind": "entry",
+   "label": "Transferred into the following name(s):",
+   "desc": "Name(s) the term deposits go to",
+   "custom": "Required when Distribution.TermDeposits is ticked"
+  },
+  "F32": {
+   "name": "TermDepositTransferNames2",
+   "kind": "entry",
+   "label": "If more than one name:",
+   "desc": "Name(s), continued"
+  },
+  "F33": {
+   "name": "TransferToMemberNumber",
+   "kind": "entry",
+   "label": "Transferred to Member #",
+   "desc": "Transferred to member #",
+   "custom": "Required when Distribution.ToMember is ticked"
+  },
+  "F34": {
+   "name": "TransferToMemberNames",
+   "kind": "entry",
+   "label": "in the name(s) of",
+   "desc": "in the name(s) of",
+   "custom": "Required when Distribution.ToMember is ticked"
+  },
+  "F36": {
+   "name": "OtherAssetsMemberNumber",
+   "kind": "entry",
+   "label": "Transferred to Member #",
+   "desc": "Other assets: transferred to member #",
+   "custom": "Required when Distribution.OtherAssetsToMember is ticked"
+  },
+  "F37": {
+   "name": "OtherAssetsNames",
+   "kind": "entry",
+   "label": "in the name(s) of",
+   "desc": "Other assets: in the name(s) of",
+   "custom": "Required when Distribution.OtherAssetsToMember is ticked"
+  },
+  "F38": {
+   "name": "Claimant1Name",
+   "kind": "entry",
+   "label": "I,",
+   "desc": "Claimant 1 making the declaration (I, ___)",
+   "save": true
+  },
+  "F39": {
+   "name": "Declared1AtCity",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 1: declared before me at",
+   "save": true
+  },
+  "F40": {
+   "name": "Declared1Month",
+   "kind": "entry",
+   "label": "day of",
+   "desc": "Claimant 1: day of ___ (month)",
+   "save": true
+  },
+  "F41": {
+   "name": "Commissioner1Signature",
+   "kind": "entry",
+   "label": "A Commissioner for Oaths/Notary Public",
+   "desc": "Commissioner for oaths / notary public, claimant 1",
+   "save": true
+  },
+  "F42": {
+   "name": "Declared1AtProvince",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 1: in the Province of",
+   "save": true
+  },
+  "F43": {
+   "name": "Declared1Day",
+   "kind": "entry",
+   "label": "Province",
+   "desc": "Claimant 1: this ___ day",
+   "save": true
+  },
+  "F44": {
+   "name": "Commissioner1Province",
+   "kind": "entry",
+   "label": "in and for the Province of",
+   "desc": "Commissioner 1: in and for the Province of",
+   "save": true
+  },
+  "F45": {
+   "name": "Commissioner1AppointmentExpires",
+   "kind": "entry",
+   "label": "My appointment expires on",
+   "desc": "Commissioner 1: appointment expires on",
+   "save": true
+  },
+  "F46": {
+   "name": "Claimant1Signature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Signature of claimant 1",
+   "save": true
+  },
+  "F47": {
+   "name": "Claimant1SignDate",
+   "kind": "entry",
+   "save": true,
+   "label": "Date",
+   "desc": "Date claimant 1 signs"
+  },
+  "F48": {
+   "name": "Claimant2Name",
+   "kind": "entry",
+   "label": "I,",
+   "desc": "Claimant 2 making the declaration (I, ___)"
+  },
+  "F49": {
+   "name": "Declared2AtCity",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 2: declared before me at",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
+  },
+  "F50": {
+   "name": "Declared2Month",
+   "kind": "entry",
+   "label": "day of",
+   "desc": "Claimant 2: day of ___ (month)",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
+  },
+  "F51": {
+   "name": "Commissioner2Signature",
+   "kind": "entry",
+   "label": "A Commissioner for Oaths/Notary Public",
+   "desc": "Commissioner for oaths / notary public, claimant 2",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
+  },
+  "F52": {
+   "name": "Declared2AtProvince",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 2: in the Province of",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
+  },
+  "F53": {
+   "name": "Declared2Day",
+   "kind": "entry",
+   "label": "Province",
+   "desc": "Claimant 2: this ___ day",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
+  },
+  "F54": {
+   "name": "Commissioner2AppointmentExpires",
+   "kind": "entry",
+   "label": "My appointment expires on",
+   "desc": "Commissioner 2: appointment expires on",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
+  },
+  "F55": {
+   "name": "Claimant2Signature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Signature of claimant 2",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
+  },
+  "F56": {
+   "name": "Claimant2SignDate",
+   "kind": "entry",
+   "custom": "Required when Claimant2Name is filled in (a second claimant's declaration)",
+   "label": "Date",
+   "desc": "Date claimant 2 signs"
+  },
+  "F57": {
+   "name": "Commissioner2Province",
+   "kind": "entry",
+   "label": "in and for the Province of",
+   "desc": "Commissioner 2: in and for the Province of",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)"
+  },
+  "B9": {
+   "name": "Declared1Year",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 1: A.D. 20__ (the box sits before \", this\")",
+   "save": true,
+   "maxlen": 2
+  },
+  "B10": {
+   "name": "Declared2Year",
+   "kind": "entry",
+   "label": "Province of",
+   "desc": "Claimant 2: A.D. 20__ (the box sits before \", this\")",
+   "custom": "Required when Claimant2Name is filled in (a second claimant declares)",
+   "maxlen": 2
+  }
+ },
+ "skip": {
+  "B7": "an empty row: a box and a line with no words, left from an earlier layout - nothing to collect",
+  "B8": "space over the names field, no blank"
+ },
+ "drop": [
+  "F1",
+  "F35"
+ ],
+ "notes": [
+  "Declarations are sworn before a commissioner - the claimants and commissioners sign here, no member signer rows."
+ ],
+ "reviewed copy": "field naming\\Statutory Declaration & Indemnification Intestacy - No Will",
+ "add": [
+  {
+   "name": "Distribution.TermDeposits",
+   "kind": "entry",
+   "label": "THEREFORE,",
+   "desc": "Tick: term deposits / GIC's only, transferred into the following name(s)",
+   "save": true,
+   "type": "checkbox",
+   "page": 1,
+   "rect": [
+    65.35,
+    251.4,
+    74.35,
+    260.4
+   ]
+  },
+  {
+   "name": "Certificates",
+   "kind": "entry",
+   "label": "more",
+   "desc": "If more than one name: separate certificates",
+   "custom": "Required when Distribution.TermDeposits is ticked for more than one name",
+   "option": "Separate",
+   "type": "checkbox",
+   "page": 1,
+   "rect": [
+    101.05,
+    308.7,
+    110.05,
+    317.7
+   ]
+  },
+  {
+   "name": "Certificates",
+   "kind": "entry",
+   "label": "more",
+   "desc": "If more than one name: separate certificates",
+   "custom": "Required when Distribution.TermDeposits is ticked for more than one name",
+   "option": "Single",
+   "type": "checkbox",
+   "page": 1,
+   "rect": [
+    101.05,
+    325.9,
+    110.05,
+    334.9
+   ]
+  },
+  {
+   "name": "Distribution.ToMember",
+   "kind": "entry",
+   "label": "Transferred to Member #",
+   "desc": "Tick: transferred to member #",
+   "save": true,
+   "type": "checkbox",
+   "page": 1,
+   "rect": [
+    65.35,
+    352.3,
+    74.35,
+    361.3
+   ]
+  },
+  {
+   "name": "Distribution.OtherAssetsToMember",
+   "kind": "entry",
+   "label": "Transferred to Member #",
+   "desc": "Tick: all other assets cashed and transferred to member #",
+   "save": true,
+   "type": "checkbox",
+   "page": 1,
+   "rect": [
+    65.45,
+    427.8,
+    74.45,
+    436.8
+   ]
+  },
+  {
+   "name": "Distribution.PayEachClaimant",
+   "kind": "entry",
+   "label": "Pay to each Claimant that has signed this form and",
+   "desc": "Tick: pay each claimant by cheque or AFT",
+   "save": true,
+   "type": "checkbox",
+   "page": 1,
+   "rect": [
+    67.45,
+    458.3,
+    76.45,
+    467.3
+   ]
+  },
+  {
+   "name": "ClaimantDetails",
+   "kind": "entry",
+   "label": "",
+   "desc": "Each claimant's name, address, phone and entitlement",
+   "custom": "Required when Distribution.PayEachClaimant is ticked",
+   "page": 1,
+   "rect": [
+    82,
+    530,
+    589,
+    720
+   ],
+   "type": "text",
+   "note": "The form says 'listed on the lines below' but prints no lines: one box in the space under the paragraph"
+  }
+ ]
+}

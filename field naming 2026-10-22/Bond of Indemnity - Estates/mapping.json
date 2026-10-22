@@ -1,0 +1,405 @@
+{
+ "as_is": true,
+ "items": {
+  "B1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Of:",
+   "desc": "The deceased's name (estate of)"
+  },
+  "B2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Account Number",
+   "desc": "The deceased's account (member) number"
+  },
+  "B3": {
+   "name": "EstateTransferAccount",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #2: estate account # the assets go to",
+   "custom": "Required when AssetTransferOption is Option2",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12
+  },
+  "B4": {
+   "name": "SpouseTransferAccount",
+   "kind": "entry",
+   "label": "",
+   "desc": "Option #4: surviving spouse's account #",
+   "custom": "Required when AssetTransferOption is Option4",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12
+  },
+  "B5": {
+   "name": "DeclaredAtCity",
+   "kind": "entry",
+   "label": "___________, this _______ day",
+   "desc": "Declared before me in the city of",
+   "save": true
+  },
+  "B6": {
+   "name": "DeclaredDay",
+   "kind": "entry",
+   "label": "___________, this",
+   "desc": "Declared this ___ day",
+   "save": true
+  },
+  "B7": {
+   "name": "DeclaredMonth",
+   "kind": "entry",
+   "label": "___________, this _______ day of",
+   "desc": "of ___ (month)",
+   "save": true
+  },
+  "B8": {
+   "name": "DeclaredYear",
+   "kind": "entry",
+   "label": "A.D.",
+   "desc": "A.D. 20__",
+   "save": true,
+   "maxlen": 2
+  },
+  "B9": {
+   "name": "DeclarantAddress1",
+   "kind": "entry",
+   "label": "Authorized Signatory Address",
+   "desc": "Declarant's address line 1",
+   "save": true
+  },
+  "B10": {
+   "name": "DeclarantAddress2",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 2",
+   "save": true
+  },
+  "B11": {
+   "name": "DeclarantAddress3",
+   "kind": "entry",
+   "label": "",
+   "desc": "line 3"
+  },
+  "B12": {
+   "name": "DeclarantAddress4",
+   "kind": "entry",
+   "desc": "line 4 (optional)"
+  },
+  "B13": {
+   "name": "DeclarantName",
+   "kind": "entry",
+   "label": "Trustee Name",
+   "desc": "Declarant's name",
+   "save": true
+  },
+  "B14": {
+   "name": "DeclarantSignature",
+   "kind": "entry",
+   "label": "Authorized Signature",
+   "desc": "Declarant's signature - the declarant is not necessarily a signer on the deceased's account",
+   "save": true
+  },
+  "B15": {
+   "name": "DeclarantSignDate",
+   "kind": "entry",
+   "save": true,
+   "label": "Date",
+   "desc": "Date the declarant signs"
+  },
+  "B16": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Credit Union Witness Name",
+   "desc": "Credit union witness (staff member) name"
+  },
+  "B17": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db"
+  }
+ },
+ "skip": {},
+ "drop": [],
+ "notes": [],
+ "reviewed copy": "field naming\\Bond of Indemnity - Estates",
+ "add": [
+  {
+   "name": "NoCertificateOfAppointment",
+   "kind": "entry",
+   "label": "A Certificate of Appointment was not obtained due to the",
+   "desc": "Tick: a Certificate of Appointment was not obtained",
+   "custom": "One declaration in full, not a mix: either all three trustee boxes (NoCertificateOfAppointment, NotarizedWillAttached, ProofOfDeathAttached) or all three spouse boxes (LegallyMarriedToDeceased, DiedIntestate, ProofOfDeathAttached2)",
+   "type": "checkbox",
+   "page": 0,
+   "rect": [
+    56.5,
+    205.1,
+    70.5,
+    219.1
+   ]
+  },
+  {
+   "name": "NotarizedWillAttached",
+   "kind": "entry",
+   "label": "A notarized copy of the Deceased’s Will is attached; and",
+   "desc": "Tick: notarized copy of the deceased's will attached",
+   "custom": "Part of the trustee declaration - see NoCertificateOfAppointment",
+   "type": "checkbox",
+   "page": 0,
+   "rect": [
+    56.5,
+    235.1,
+    70.5,
+    249.1
+   ]
+  },
+  {
+   "name": "ProofOfDeathAttached",
+   "kind": "entry",
+   "label": "A copy of the Proof of Death Certificate is attached.",
+   "desc": "Tick: proof of death certificate attached",
+   "custom": "Part of the trustee declaration - see NoCertificateOfAppointment",
+   "type": "checkbox",
+   "page": 0,
+   "rect": [
+    56.5,
+    266.0,
+    70.5,
+    280.0
+   ]
+  },
+  {
+   "name": "LegallyMarriedToDeceased",
+   "kind": "entry",
+   "label": "The Deceased and I were legally married at the Deceased’s",
+   "desc": "Tick: the deceased and I were legally married",
+   "custom": "Part of the spouse declaration - see NoCertificateOfAppointment",
+   "type": "checkbox",
+   "page": 0,
+   "rect": [
+    56.5,
+    365.0,
+    70.5,
+    379.0
+   ]
+  },
+  {
+   "name": "DiedIntestate",
+   "kind": "entry",
+   "label": "The Deceased died intestate, and the estate is equal to",
+   "desc": "Tick: the deceased died intestate",
+   "custom": "Part of the spouse declaration - see NoCertificateOfAppointment",
+   "type": "checkbox",
+   "page": 0,
+   "rect": [
+    56.5,
+    395.4,
+    70.5,
+    409.4
+   ]
+  },
+  {
+   "name": "ProofOfDeathAttached2",
+   "kind": "entry",
+   "label": "A copy of the Proof of Death Certificate is attached.",
+   "desc": "Tick: proof of death certificate attached (intestate case)",
+   "custom": "Part of the spouse declaration - see NoCertificateOfAppointment",
+   "type": "checkbox",
+   "page": 0,
+   "rect": [
+    56.5,
+    429.2,
+    70.5,
+    443.2
+   ]
+  },
+  {
+   "name": "EstateAsset1Account",
+   "kind": "entry",
+   "label": "Account Number",
+   "desc": "Deceased's asset 1: account number",
+   "save": true,
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "page": 0,
+   "rect": [
+    56,
+    543.7,
+    229,
+    570.3
+   ]
+  },
+  {
+   "name": "EstateAsset1Amount",
+   "kind": "entry",
+   "label": "Amount",
+   "desc": "Asset 1: amount",
+   "save": true,
+   "page": 0,
+   "rect": [
+    233,
+    543.7,
+    371,
+    570.3
+   ]
+  },
+  {
+   "name": "EstateAsset2Account",
+   "kind": "entry",
+   "label": "",
+   "desc": "Asset 2: account number",
+   "custom": "Required when EstateAsset2Amount is filled in",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "page": 0,
+   "rect": [
+    56,
+    574.3,
+    229,
+    601.0
+   ]
+  },
+  {
+   "name": "EstateAsset2Amount",
+   "kind": "entry",
+   "label": "",
+   "desc": "Asset 2: amount",
+   "custom": "Required when EstateAsset2Account is filled in",
+   "page": 0,
+   "rect": [
+    233,
+    574.3,
+    371,
+    601.0
+   ]
+  },
+  {
+   "name": "EstateAsset3Account",
+   "kind": "entry",
+   "label": "",
+   "desc": "Asset 3: account number",
+   "custom": "Required when EstateAsset3Amount is filled in",
+   "format": {
+    "category": "number",
+    "decimals": 0,
+    "separator": "none",
+    "currency": "none",
+    "parentheses": false,
+    "redText": false
+   },
+   "maxlen": 12,
+   "page": 0,
+   "rect": [
+    56,
+    605.0,
+    229,
+    631.7
+   ]
+  },
+  {
+   "name": "EstateAsset3Amount",
+   "kind": "entry",
+   "label": "",
+   "desc": "Asset 3: amount",
+   "custom": "Required when EstateAsset3Account is filled in",
+   "page": 0,
+   "rect": [
+    233,
+    605.0,
+    371,
+    631.7
+   ]
+  },
+  {
+   "page": 0,
+   "rect": [
+    58.5,
+    683.9,
+    70.5,
+    695.9
+   ],
+   "name": "AssetTransferOption",
+   "kind": "entry",
+   "type": "checkbox",
+   "option": "Option1",
+   "label": "Option #1",
+   "desc": "Pick one: Option #1 - Transfer the assets to the estate trustees",
+   "save": true
+  },
+  {
+   "page": 0,
+   "rect": [
+    58.5,
+    731.3,
+    70.5,
+    743.3
+   ],
+   "name": "AssetTransferOption",
+   "kind": "entry",
+   "type": "checkbox",
+   "option": "Option2",
+   "label": "Option #2",
+   "desc": "Pick one: Option #2 - Transfer the assets to estate account #",
+   "save": true
+  },
+  {
+   "page": 0,
+   "rect": [
+    58.5,
+    773.2,
+    70.5,
+    785.2
+   ],
+   "name": "AssetTransferOption",
+   "kind": "entry",
+   "type": "checkbox",
+   "option": "Option3",
+   "label": "Option #3",
+   "desc": "Pick one: Option #3 - Transfer the assets to a testamentary trust account",
+   "save": true
+  },
+  {
+   "page": 0,
+   "rect": [
+    58.5,
+    815.2,
+    70.5,
+    827.2
+   ],
+   "name": "AssetTransferOption",
+   "kind": "entry",
+   "type": "checkbox",
+   "option": "Option4",
+   "label": "Option #4",
+   "desc": "Pick one: Option #4 - Transfer the assets to the surviving spouse",
+   "save": true
+  }
+ ]
+}
