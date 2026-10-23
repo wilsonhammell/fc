@@ -32,6 +32,8 @@ BAR_GREY = (0.82, 0.81, 0.81)
 # and TFSA shade their headings 0.60, and came back 0.82).
 BAR_FILL = {}
 HIDDEN = []          # text the form draws in white on white
+UNDER_LOGO = []      # template text under a logo set into a field, never seen
+LOGO_DROPPED = []    # (name, kind) of a template's logo field and what it hid
 MARKS = []           # symbols Arial has no letter for, and what went in instead
 SPELT = []           # ligature glyphs the text layer named wrongly
 TAKEN = set()        # field names the form already uses
@@ -230,6 +232,34 @@ def blocks_of(page, args):
     return out
 
 
+def covered_by_pictures(page):
+    """The rects of fields whose appearance is a picture - a logo set into a
+    button, as a form template does it. A field draws over the page, so the
+    text the template left under it ("Insert Logo Here", and a text box of
+    its own holding the same words) is never seen on the form; drawn again
+    by the rebuild, without the picture, it would be."""
+    doc, out = page.parent, []
+    for w in page.widgets():
+        if w.field_type != fitz.PDF_WIDGET_TYPE_BUTTON:
+            continue
+        kind, val = doc.xref_get_key(w.xref, "AP/N")
+        if kind != "xref":
+            continue
+        try:
+            stream = doc.xref_stream(int(val.split()[0])) or b""
+        except Exception:
+            continue
+        if re.search(rb"/\w+\s+Do\b", stream):
+            out.append(fitz.Rect(w.rect))
+    return out
+
+
+def under_a_picture(rect, covers):
+    rect = fitz.Rect(rect)
+    return rect.get_area() > 0 and any((rect & c).get_area() >= 0.8 * rect.get_area()
+                                       for c in covers)
+
+
 def rows_with_fields(page, grids=()):
     """Each row of the form as an ordered run of things: text, then a field,
     then more text. "I, ___ of ___, in the Province of Ontario" is a row of
@@ -258,6 +288,7 @@ def rows_with_fields(page, grids=()):
         return drawable(c["c"], fitz.Rect(c["bbox"]))
 
     items = []
+    covers = covered_by_pictures(page)
     raw = {tuple(round(v, 1) for v in l["bbox"]): l
            for b in p.get_text("rawdict")["blocks"] if b.get("type") == 0
            for l in b["lines"]}
@@ -349,6 +380,10 @@ def rows_with_fields(page, grids=()):
                 continue
             chars = kept
         sp0 = ln["spans"][0]
+        if under_a_picture(ln["bbox"], covers):
+            # under a logo the template set into a field: never seen
+            UNDER_LOGO.append("".join(x["text"] for x in ln["spans"]).strip())
+            continue
         if all(x.get("color", 0) == 0xFFFFFF for x in ln["spans"]):
             # White on white. One form carries a broken mail-merge tag under
             # its signature field this way; the restyle keeps it invisible by
@@ -496,6 +531,32 @@ def rows_with_fields(page, grids=()):
 
     for w in page.widgets():
         r = fitz.Rect(w.rect)
+        # A template's logo, set into a button ("LogoField"), and the
+        # placeholder box under it ("border", holding "Insert Logo Here"):
+        # the house header puts Libro's logo in, and rebuilt without its
+        # picture the pair came back as a stray button and a box printing the
+        # placeholder's words.
+        if any(abs(r.x0 - c.x0) < 0.5 and abs(r.y0 - c.y0) < 0.5 and abs(r.x1 - c.x1) < 0.5
+               and abs(r.y1 - c.y1) < 0.5 for c in covers) or (
+                w.field_type != fitz.PDF_WIDGET_TYPE_BUTTON and under_a_picture(r, covers)):
+            LOGO_DROPPED.append((w.field_name, w.field_type_string))
+            continue
+        # Two tick boxes stacked on one square - Buyer Request has "NonReg" and
+        # a leftover "Check Box34" over the same drawn box - are one box with
+        # two fields. As two items the rebuild set them side by side, and
+        # every choice came out with a doubled box. The second rides on the
+        # first and is put back exactly over it, name and all.
+        if w.field_type in (fitz.PDF_WIDGET_TYPE_CHECKBOX, fitz.PDF_WIDGET_TYPE_RADIOBUTTON):
+            host = next((i for i in items if i["what"] == "field"
+                         and i["type"] in (fitz.PDF_WIDGET_TYPE_CHECKBOX, fitz.PDF_WIDGET_TYPE_RADIOBUTTON)
+                         and (i["rect"] & r).get_area() >= 0.5 * min(i["rect"].get_area(), r.get_area())),
+                        None)
+            if host is not None:
+                host.setdefault("twins", []).append(
+                    {"what": "field", "name": w.field_name, "type": w.field_type,
+                     "kind": w.field_type_string, "value": w.field_value,
+                     "props": R.field_props(w), "flags": w.field_flags})
+                continue
         # a field sits astride the baseline of its own label, so its middle
         # lines up with the text far better than its bottom edge does
         items.append({"what": "field", "rect": r, "base": (r.y0 + r.y1) / 2 + 2,
@@ -2418,6 +2479,9 @@ class KeepShape:
                                                              or props.get("checked")):
             self.tick_state(made, props.get("on_state") or "Yes", props.get("checked"))
         self.fields.append(w.field_name)
+        # the tick boxes the form stacked on this one go back on top of it
+        for twin in item.get("twins", ()):
+            self.field(rect, twin)
 
     def tick_state(self, w, on, checked):
         """Give a rebuilt tick box the export value the form's had - what it
@@ -3395,6 +3459,8 @@ class Rebuild:
             w.border_color = (0, 0, 0)
         self.page.add_widget(w)
         self.fields.append(w.field_name)
+        for twin in item.get("twins", ()):
+            self.field(rect, twin)
 
     def table(self, rows):
         """A grid: every label keeps its own cell, with its box beside it."""
@@ -4908,11 +4974,16 @@ def main():
         say("SYMBOL_REDRAWN: " + ", ".join(f"{k} x{n}" for k, n in kinds.items()))
     if HIDDEN:
         say(f"left out, drawn in white on white by the form: {HIDDEN}")
+    if UNDER_LOGO or LOGO_DROPPED:
+        say(f"LOGO_PLACEHOLDER_DROPPED: the template's logo field and what it covered - "
+            f"fields {[n for n, _ in LOGO_DROPPED]}, text {UNDER_LOGO} - the header sets "
+            f"Libro's logo instead")
     for kind, detail in NOTES_OFF:
         say(f"{kind.upper()}: {detail}")
     was = R.fields_expected(doc)    # radio groups as the check boxes they became
     was.update(ADDED)          # text boxes put in place of merge tags, on purpose
     was.subtract(Counter(SIGNING_DROPPED))   # signers past the second, on purpose
+    was.subtract(Counter(LOGO_DROPPED))      # a template's logo field, on purpose
     was = +was
     if running:
         # the form's copies of a running block are gone, and one is set on
