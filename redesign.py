@@ -1310,9 +1310,9 @@ def snap(values, tol):
     return [sum(g) / len(g) for g in out]
 
 
-def rules_of(page):
+def rules_of(page, merged=True):
     """Every straight line the page draws, merged, as horizontals and
-    verticals: (at, from, to)."""
+    verticals: (at, from, to). Unmerged, each piece as drawn."""
     hs, vs = [], []
     for d in R.printed(page).get_drawings():
         # white on white is no line at all (see R.upright_edges)
@@ -1353,7 +1353,7 @@ def rules_of(page):
                 out.append((at, lo, hi))
         return out
 
-    return run(hs), run(vs)
+    return (run(hs), run(vs)) if merged else (hs, vs)
 
 
 def form_grids(page, min_bands=1):
@@ -3607,6 +3607,109 @@ def say(line):
 BOXED = {}           # (file id, widget xref) -> does it draw its own border
 
 
+RULES_OF = {}
+
+
+def drawn_round(page, r, slack=4.0):
+    """Does the page itself rule a box snugly round `r`: a line along its top
+    and its bottom, each across most of its width, and an upright at each end?
+
+    Snug both ways: the box's own edges, no longer than the field. A table's
+    row lines run its width and its uprights its height, and a field in a
+    cell is the grid's to draw - read as a box of its own it got a second
+    one inside its cell."""
+    # (the file's name too: an id is reused once a document is closed)
+    key = (id(page.parent), page.parent.name, page.parent.page_count, page.number)
+    if key not in RULES_OF:
+        # each box's own edges, before end-to-end pieces are joined: the
+        # TFSA's Birthdate and SIN boxes, side by side, share a top line
+        RULES_OF[key] = rules_of(page, merged=False) + field_boxes(page, form_grids(page))
+    hs, vs, grids, boxes = RULES_OF[key]
+    # a box the form ruled round a field (a lattice of nothing but fields)
+    if any(c.contains(fitz.Point((r.x0 + r.x1) / 2, (r.y0 + r.y1) / 2)) for c in boxes):
+        return True
+    # a field in a table is the grid's: the grid draws its cells again
+    if any(fitz.Rect(g["box"]).contains(fitz.Rect(r.x0 + 1, r.y0 + 1, r.x1 - 1, r.y1 - 1))
+           for g in grids):
+        return False
+    need = 0.85 * r.width
+
+    def across(y):
+        return any(abs(at - y) <= slack and min(hi, r.x1) - max(lo, r.x0) >= need
+                   and hi - lo <= r.width + 3 * slack for at, lo, hi in hs)
+
+    # (uprights may run on: boxes stacked one under another - an address's
+    # three lines - share their sides. A table across columns is still kept
+    # out by its row lines, which run the width of the table.)
+    def upright(x):
+        return any(abs(at - x) <= slack and lo <= r.y0 + slack and hi >= r.y1 - slack
+                   for at, lo, hi in vs)
+
+    return across(r.y0) and across(r.y1) and upright(r.x0) and upright(r.x1)
+
+
+def field_boxes(page, grids):
+    """The grids that are only boxes round fields, and the rest.
+
+    A lattice whose every cell holds a field and no words is not a table: it
+    is the box, or a stack of boxes, the form ruled round its answers - the
+    Concentra applications' Branch Number, Member Number and Contract Number
+    are three of them side by side. Taken as tables they were laid out apart
+    from their row, and their fields, marked as written in a cell, got
+    neither line nor box: they vanished. Returns (tables, box rects)."""
+    words = page.get_text("words")
+    rects = [fitz.Rect(w.rect) for w in page.widgets()
+             if w.field_type == fitz.PDF_WIDGET_TYPE_TEXT]
+    mid = lambda r: fitz.Point((r.x0 + r.x1) / 2, (r.y0 + r.y1) / 2)
+    tables, boxes = [], []
+    for g in grids:
+        cells = [fitz.Rect(x0, top, x1, foot) for top, foot, cuts in g["bands"]
+                 for x0, x1 in zip(cuts, cuts[1:])]
+        only_fields = cells and all(
+            any(c.contains(mid(r)) for r in rects)
+            and not any(c.contains(fitz.Point((w[0] + w[2]) / 2, (w[1] + w[3]) / 2))
+                        for w in words)
+            for c in cells)
+        if only_fields:
+            boxes += cells
+        else:
+            tables.append(g)
+    return tables, boxes
+
+
+def split_beside_grids(rows, grids, pad=6.0):
+    """A grid takes only what stands inside it.
+
+    A row is read across the whole page, and a table that shares its rows
+    with things beside it - the TFSA's address boxes with the telephone boxes
+    to their right, its Days/Months/Years term grid with "Variable", "Term",
+    Interest Rate and Maturity Date either side - pulled the lot in: the
+    telephones came back inside the address box and the term grid scrambled.
+    What stands left of the grid is set just before it, what stands right of
+    it just after, each row of it as it was."""
+    for g in sorted(grids, key=lambda g: g["box"].y0):
+        b = g["box"]
+        cx = lambda i: (i["rect"].x0 + i["rect"].x1) / 2
+        inside = lambda i: b.x0 - pad <= cx(i) <= b.x1 + pad
+        span = [k for k, r in enumerate(rows)
+                if r and b.y0 - 2 <= min(i["base"] for i in r) <= b.y1 + 2
+                and any(inside(i) for i in r)]
+        if not span or not any(not inside(i) for k in span for i in rows[k]):
+            continue
+        before, after = [], []
+        for k in span:
+            left = [i for i in rows[k] if not inside(i) and cx(i) < b.x0]
+            right = [i for i in rows[k] if not inside(i) and cx(i) > b.x1]
+            rows[k] = [i for i in rows[k] if inside(i)]
+            if left:
+                before.append(left)
+            if right:
+                after.append(right)
+        first, last = span[0], span[-1]
+        rows[first:last + 1] = before + rows[first:last + 1] + after
+    return [r for r in rows if r]
+
+
 def boxed_field(page, w, floor=120.0):
     """Does this field show as a box to write in, rather than a line?
 
@@ -3620,11 +3723,18 @@ def boxed_field(page, w, floor=120.0):
 
     Only wide fields are worth asking about, and each answer is kept."""
     r = fitz.Rect(w.rect)
-    if r.width < floor or r.height < 4:
-        return False
     key = (id(page.parent), w.xref)
     if key in BOXED:
         return BOXED[key]
+    # Or the page draws the box, and the field only fills it: the Concentra
+    # TFSA/RRSP applications rule a rectangle round every answer, Branch
+    # Number to Postal code, and their fields have no border of their own.
+    # Read as lines, the rebuild drew nothing round them and they vanished.
+    if r.height >= 6 and r.width >= 12 and drawn_round(page, r):
+        BOXED[key] = True
+        return True
+    if r.width < floor or r.height < 4:
+        return False
     clip = fitz.Rect(r.x0 - 1, r.y0 - 1, r.x1 + 1, r.y1 + 1)
     m = fitz.Matrix(3, 3)
     try:
@@ -4204,7 +4314,8 @@ def main():
                 sheet.image_log["repeated on every sheet"] += 1
     read, seen_title = [], ""
     for page in doc:
-        grids = form_grids(page)
+        # (a lattice of nothing but fields is their boxes, not a table)
+        grids = field_boxes(page, form_grids(page))[0]
         rows = align_stacks(merge_prose(unfold_columns(rows_with_fields(page, grids), page,
                                                        foot_boxes.get(page.number, ())),
                                         page_box(page).x1))
@@ -4218,7 +4329,8 @@ def main():
         typed_words = shown.get_text("words")
         for row in rows:
             for i in row:
-                if i["what"] != "field" or i.get("kind") in ("CheckBox", "RadioButton"):
+                if (i["what"] != "field" or i.get("kind") in ("CheckBox", "RadioButton")
+                        or i.get("boxed")):
                     continue
                 r = fitz.Rect(i["rect"])
                 mid = (r.y0 + r.y1) / 2
@@ -4397,7 +4509,7 @@ def main():
         grids = here["grids"]
         for g in grids:
             zones[page.number].append(g["box"] + (-4, -4, 4, 4))
-        laid = here["rows"]
+        laid = split_beside_grids(here["rows"], grids)
         # A page of the form that is the last before a fresh sheet - the end
         # of the form, or the page before another document starts - and that
         # would spill a few rows onto a sheet of their own, closes up the
@@ -4617,7 +4729,11 @@ def main():
                 while k < len(laid):
                     y = min(i["base"] for i in laid[k])
                     if not (here["box"].y0 - 2 <= y <= here["box"].y1 + 2
-                            and middle(laid[k]) >= here["box"].y0 - 0.5):
+                            and middle(laid[k]) >= here["box"].y0 - 0.5
+                            # (and inside it sideways: what stood beside the
+                            #  grid was set after it - see split_beside_grids)
+                            and here["box"].x0 - 6 <= min(i["rect"].x0 for i in laid[k])
+                            <= here["box"].x1 + 6):
                         break
                     inside += laid[k]
                     k += 1
