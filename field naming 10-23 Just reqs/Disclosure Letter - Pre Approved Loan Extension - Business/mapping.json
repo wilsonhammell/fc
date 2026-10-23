@@ -1,0 +1,101 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_BRANCH_PHONE",
+   "kind": "db",
+   "label": "T",
+   "desc": "Branch phone"
+  },
+  "F2": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's full name"
+  },
+  "F3": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "",
+   "desc": "Joint owner 1, full name - the starter code fills it from SIGNER1"
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "save": true
+  },
+  "F5": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2"
+  },
+  "F6": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3"
+  },
+  "F7": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "RE: Owner Number:",
+   "desc": "Member number"
+  },
+  "F8": {
+   "name": "LOAN_SUB",
+   "kind": "candidate",
+   "label": "Sub:",
+   "desc": "The loan's sub number",
+   "save": true
+  },
+  "F9": {
+   "name": "LOAN_APPROVED_AMOUNT",
+   "kind": "candidate",
+   "label": "Principal Amount:",
+   "desc": "Loan's approved (original) amount",
+   "save": true
+  },
+  "F10": {
+   "name": "LOAN_MATURITY_DATE",
+   "kind": "candidate",
+   "label": "New Maturity Date:",
+   "desc": "Loan's maturity date",
+   "save": true
+  },
+  "F11": {
+   "name": "LOAN_EXTENSION_FEE",
+   "kind": "candidate",
+   "label": "Loan Extension Fee: $",
+   "desc": "Fee charged for the loan extension - the form had no box for it",
+   "type": "text"
+  },
+  "F12": {
+   "name": "ACCTMGR_FULL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "FSR signing the letter. CHECK: is the FSR the account manager"
+  },
+  "F13": {
+   "name": "ACCTMGR_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "The FSR's position / title",
+   "save": true
+  },
+  "F14": {
+   "name": "REQUESTDATETIME",
+   "kind": "db",
+   "label": "(letter date)",
+   "desc": "The letter's date - the request's date, as on Authorization to Release Financial Info"
+  }
+ },
+ "skip": {
+  "B1": "space after 'We confirm the following:', no blank"
+ },
+ "drop": [],
+ "notes": [],
+ "reviewed copy": "field naming\\Disclosure Letter - Pre Approved Loan Extension - Business"
+}

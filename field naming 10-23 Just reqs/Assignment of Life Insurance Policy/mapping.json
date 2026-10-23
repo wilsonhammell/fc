@@ -1,0 +1,179 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Owner/Policy Holder:",
+   "desc": "Owner/policy holder 1"
+  },
+  "F2": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db"
+  },
+  "F3": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Owner/policy holder 2"
+  },
+  "F4": {
+   "name": "JointMember2Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Owner/policy holder 3"
+  },
+  "F5": {
+   "name": "JointMember3Name",
+   "kind": "special",
+   "label": "and",
+   "desc": "Owner/policy holder 4"
+  },
+  "F6": {
+   "name": "InsurancePolicyNumber",
+   "kind": "entry",
+   "label": "Life Insurance Policy Number:",
+   "desc": "Life insurance policy number",
+   "save": true
+  },
+  "F7": {
+   "name": "InsurancePolicyAmount",
+   "kind": "entry",
+   "label": "in the amount of $",
+   "desc": "Policy amount",
+   "save": true
+  },
+  "F8": {
+   "name": "InsuranceCompany",
+   "kind": "entry",
+   "label": "Insurance Company:",
+   "desc": "Insurance company",
+   "save": true
+  },
+  "F9": {
+   "name": "InsuranceCompanyAddress",
+   "kind": "entry",
+   "label": "Address:",
+   "desc": "Insurance company's address",
+   "save": true
+  },
+  "F10": {
+   "name": "SignedAtCity",
+   "kind": "entry",
+   "label": "Executed at",
+   "desc": "City the assignment is executed at",
+   "save": true
+  },
+  "F11": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1"
+  },
+  "F12": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1"
+  },
+  "F13": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member"
+  },
+  "F14": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1"
+  },
+  "F15": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2"
+  },
+  "F16": {
+   "name": "Member3SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 3"
+  },
+  "F17": {
+   "name": "Member4SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 4"
+  },
+  "F18": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date"
+  },
+  "F19": {
+   "name": "CompanyAckDate",
+   "kind": "entry",
+   "label": "Date:",
+   "desc": "Acknowledgment: date",
+   "save": true
+  },
+  "F20": {
+   "name": "CompanySignedAtCity",
+   "kind": "entry",
+   "label": "Executed at",
+   "desc": "Acknowledgment: city the insurer executes at",
+   "save": true
+  },
+  "F21": {
+   "name": "InsuranceCompanySignature",
+   "kind": "entry",
+   "label": "I/We have authority to bind the Company.",
+   "desc": "Insurer's signature (I/We have authority to bind the Company)",
+   "save": true
+  },
+  "F22": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2"
+  },
+  "F23": {
+   "name": "Member3Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 3"
+  },
+  "F24": {
+   "name": "Member4Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 4"
+  },
+  "F25": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2"
+  },
+  "F26": {
+   "name": "Member3Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 3"
+  },
+  "F27": {
+   "name": "Member4Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 4"
+  }
+ },
+ "skip": {
+  "B1": "space under the closing paragraph, no blank"
+ },
+ "drop": [],
+ "notes": [],
+ "reviewed copy": "field naming\\Assignment of Life Insurance Policy"
+}

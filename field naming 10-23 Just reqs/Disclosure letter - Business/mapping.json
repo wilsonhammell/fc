@@ -1,0 +1,146 @@
+{
+ "items": {
+  "F8": {
+   "name": "LOAN_FUND_DATE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Date the loan was funded",
+   "how": "reviewed",
+   "save": true
+  },
+  "F9": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's full name",
+   "how": "reviewed"
+  },
+  "F10": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "",
+   "desc": "Joint owner 1, full name - the starter code fills it from SIGNER1",
+   "how": "reviewed"
+  },
+  "F11": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "how": "reviewed",
+   "save": true
+  },
+  "F12": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2",
+   "how": "reviewed"
+  },
+  "F13": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3",
+   "how": "reviewed"
+  },
+  "F14": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "RE: Owner Number:",
+   "desc": "Member number",
+   "how": "reviewed"
+  },
+  "F15": {
+   "name": "LOAN_SUB",
+   "kind": "candidate",
+   "label": "Sub:",
+   "desc": "The loan's sub number",
+   "how": "reviewed",
+   "save": true
+  },
+  "F1": {
+   "name": "LOAN_APPROVED_AMOUNT",
+   "kind": "candidate",
+   "label": "Principal Amount Borrowed:",
+   "desc": "Loan's approved (original) amount",
+   "how": "reviewed",
+   "save": true
+  },
+  "F18": {
+   "name": "LOAN_RATE_INCREMENT",
+   "kind": "candidate",
+   "label": "%",
+   "desc": "Rate over prime",
+   "how": "reviewed",
+   "save": true
+  },
+  "F2": {
+   "name": "LOAN_TERM_YEARS",
+   "kind": "candidate",
+   "label": "Term:",
+   "desc": "Loan term, years",
+   "how": "reviewed",
+   "save": true
+  },
+  "F3": {
+   "name": "LOAN_AMORTIZATION_YEARS",
+   "kind": "candidate",
+   "label": "Amortization:",
+   "desc": "Loan amortization, years",
+   "how": "reviewed",
+   "save": true
+  },
+  "F4": {
+   "name": "LOAN_MATURITY_DATE",
+   "kind": "candidate",
+   "label": "Maturity Date:",
+   "desc": "Loan's maturity date",
+   "how": "reviewed",
+   "save": true
+  },
+  "F5": {
+   "name": "PMT_FREQ_CURRENT",
+   "kind": "candidate",
+   "label": "Payment Frequency:",
+   "desc": "Loan payment frequency",
+   "how": "reviewed",
+   "save": true
+  },
+  "F6": {
+   "name": "PMT_AMOUNT",
+   "kind": "candidate",
+   "label": "Payment Amount:",
+   "desc": "Payment amount (principal and interest; old field PI_Amount)",
+   "how": "reviewed",
+   "save": true
+  },
+  "F7": {
+   "name": "PMT_FIRST_DATE",
+   "kind": "candidate",
+   "label": "First Payment Date:",
+   "desc": "Loan's next payment date",
+   "how": "reviewed",
+   "save": true
+  },
+  "F16": {
+   "name": "ACCTMGR_FULL_NAME",
+   "kind": "db",
+   "label": "Thank you for your business!",
+   "desc": "FSR signing the letter. CHECK: is the FSR the account manager",
+   "how": "reviewed"
+  },
+  "F17": {
+   "name": "ACCTMGR_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "The FSR's position / title",
+   "how": "reviewed",
+   "save": true
+  }
+ },
+ "drop": [],
+ "skip": {},
+ "add": [],
+ "notes": []
+}

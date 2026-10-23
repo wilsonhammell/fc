@@ -1,0 +1,135 @@
+{
+ "items": {
+  "F1": {
+   "name": "PensionDifferentiation",
+   "kind": "entry",
+   "label": "differentiated",
+   "desc": "Tick: the pension plan differentiated on the basis of sex",
+   "how": "reviewed",
+   "option": "Differentiated",
+   "save": true
+  },
+  "F2": {
+   "name": "PensionDifferentiation",
+   "kind": "entry",
+   "label": "did not differentiate",
+   "desc": "Tick: the pension plan did not differentiate",
+   "how": "reviewed",
+   "option": "NotDifferentiated",
+   "save": true
+  },
+  "F3": {
+   "name": "SignedDay",
+   "kind": "entry",
+   "label": "Signed this",
+   "desc": "Signed this ___ day",
+   "how": "reviewed",
+   "save": true
+  },
+  "F4": {
+   "name": "SignedMonth",
+   "kind": "entry",
+   "label": "day of",
+   "desc": "of ___ (month)",
+   "how": "reviewed",
+   "save": true
+  },
+  "F5": {
+   "name": "SignedYear",
+   "kind": "entry",
+   "label": ", 20",
+   "desc": ", 20__",
+   "how": "reviewed",
+   "save": true
+  },
+  "F6": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "NAME",
+   "desc": "Annuitant's name",
+   "how": "reviewed"
+  },
+  "F7": {
+   "name": "RSP_ACCOUNT_CONTRACT",
+   "kind": "db",
+   "label": "CONTRACT #",
+   "desc": "RLIF contract number. CHECK: is this plan in the RSP_ tables",
+   "how": "reviewed"
+  },
+  "B1": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B2": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B3": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1",
+   "how": "reviewed"
+  },
+  "B4": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B5": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B6": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2",
+   "how": "reviewed"
+  },
+  "B7": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member",
+   "how": "reviewed"
+  },
+  "B8": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date",
+   "how": "reviewed"
+  },
+  "B9": {
+   "name": "StaffSignature",
+   "kind": "entry",
+   "label": "Accepted by authorized officer, as agent for the Trustee",
+   "desc": "Accepted by authorized officer as agent of the financial institution",
+   "how": "reviewed",
+   "save": true
+  }
+ },
+ "drop": [
+  "F8",
+  "F9"
+ ],
+ "skip": {
+  "B10": "not a blank - the amendment wording"
+ },
+ "add": [],
+ "notes": [
+  "Old 'Print' and 'Reset' push buttons were dropped - the designer places its own buttons."
+ ]
+}

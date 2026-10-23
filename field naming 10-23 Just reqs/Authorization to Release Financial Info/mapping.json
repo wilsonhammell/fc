@@ -1,0 +1,97 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "REQUESTDATETIME",
+   "kind": "db",
+   "label": "Current Date",
+   "desc": "Current date - the request's date"
+  },
+  "F2": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "Farm/Business Name",
+   "desc": "Farm/business name (old tag Member_Surname - an organization keeps its name there)"
+  },
+  "F3": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Libro Member Number",
+   "desc": "Libro member number"
+  },
+  "F4": {
+   "name": "AccountingFirm",
+   "kind": "entry",
+   "label": "Designated Accounting Firm",
+   "desc": "Designated accounting firm",
+   "save": true
+  },
+  "F5": {
+   "name": "ORG_OFFICER1_NAME",
+   "kind": "candidate",
+   "label": "Name 1",
+   "desc": "Signing officer 1 of the firm",
+   "save": true
+  },
+  "F6": {
+   "name": "ORG_OFFICER2_NAME",
+   "kind": "candidate",
+   "label": "Name 2",
+   "desc": "Signing officer 2 of the firm"
+  },
+  "F7": {
+   "name": "Member1Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 1 (signing officer)"
+  },
+  "F8": {
+   "name": "Member1Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 1"
+  },
+  "F9": {
+   "name": "Member1SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 1"
+  },
+  "F10": {
+   "name": "Member2Name",
+   "kind": "special",
+   "label": "Name",
+   "desc": "Signer 2"
+  },
+  "F11": {
+   "name": "Member2Signature",
+   "kind": "special",
+   "label": "Authorized Signature",
+   "desc": "Signer 2"
+  },
+  "F12": {
+   "name": "Member2SignDate",
+   "kind": "special",
+   "label": "Date",
+   "desc": "Signer 2"
+  },
+  "F13": {
+   "name": "REQUESTUSER",
+   "kind": "db",
+   "label": "Authorizing Staff Member",
+   "desc": "Authorizing staff member - was a signature box laid across the staff line"
+  },
+  "F14": {
+   "name": "PRIMARY_SIGN_DATE",
+   "kind": "db",
+   "label": "Date",
+   "desc": "Staff date"
+  }
+ },
+ "skip": {
+  "B1": "the rule under the form's title, no blank"
+ },
+ "drop": [],
+ "notes": [],
+ "reviewed copy": "field naming\\Authorization to Release Financial Info"
+}

@@ -1,0 +1,102 @@
+{
+ "as_is": true,
+ "items": {
+  "F1": {
+   "name": "PRIMARY_FULL_LEGAL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "Member's full name"
+  },
+  "F2": {
+   "name": "JointMember1Name",
+   "kind": "special",
+   "label": "",
+   "desc": "Joint owner 1, full name - the starter code fills it from SIGNER1"
+  },
+  "F3": {
+   "name": "PRIMARY_MAIL_ADDR_LINE1",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 1 (the merge's address lines; the DB list has PRIMARY_MAIL_FULL_LINE as one line, or legal street/city/province/postal)",
+   "save": true
+  },
+  "F4": {
+   "name": "PRIMARY_MAIL_ADDR_LINE2",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 2"
+  },
+  "F5": {
+   "name": "PRIMARY_MAIL_ADDR_LINE3",
+   "kind": "candidate",
+   "label": "",
+   "desc": "Member's mailing address, line 3"
+  },
+  "F6": {
+   "name": "PRIMARY_MEMBER_NUMBER",
+   "kind": "db",
+   "label": "Effective your line of credit number",
+   "desc": "Member number"
+  },
+  "F7": {
+   "name": "LOAN_APPROVED_AMOUNT",
+   "kind": "candidate",
+   "label": "Authorized Amount:",
+   "desc": "Loan's approved (original) amount",
+   "save": true
+  },
+  "F8": {
+   "name": "LOAN_INTEREST_RATE",
+   "kind": "candidate",
+   "label": "Interest Rate:",
+   "desc": "Loan's interest rate",
+   "save": true
+  },
+  "F9": {
+   "name": "LOAN_RATE_INCREMENT",
+   "kind": "candidate",
+   "label": "% (Prime +",
+   "desc": "Rate over prime",
+   "save": true
+  },
+  "F10": {
+   "name": "LOAN_MAINTENANCE_FEE",
+   "kind": "candidate",
+   "label": "Maintenance Fee: $",
+   "desc": "The line of credit's maintenance fee, $",
+   "save": true,
+   "type": "text"
+  },
+  "F11": {
+   "name": "LOAN_RENEWAL_FEE",
+   "kind": "candidate",
+   "label": "Annual Renewal Fee: $",
+   "desc": "The line of credit's annual renewal fee, $",
+   "save": true,
+   "type": "text"
+  },
+  "F12": {
+   "name": "ACCTMGR_FULL_NAME",
+   "kind": "db",
+   "label": "",
+   "desc": "The member's FSR, signing the letter. CHECK: is the FSR the account manager"
+  },
+  "F13": {
+   "name": "ACCTMGR_TITLE",
+   "kind": "candidate",
+   "label": "",
+   "desc": "The FSR's position / title",
+   "save": true
+  },
+  "F14": {
+   "name": "REQUESTDATETIME",
+   "kind": "db",
+   "label": "(letter date)",
+   "desc": "The letter's date - the request's date, as on Authorization to Release Financial Info"
+  }
+ },
+ "skip": {},
+ "drop": [],
+ "notes": [],
+ "reviewed copy": "field naming\\LOC Repricing Letter"
+}

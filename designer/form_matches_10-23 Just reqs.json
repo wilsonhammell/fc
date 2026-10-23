@@ -1,0 +1,361 @@
+[
+ {
+  "production name": "Assignment of Life Insurance Policy",
+  "file": "Assignment of Life Insurance Policy",
+  "folder": "Assignment of Life Insurance Policy",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 4,
+  "row name": "Assignment of Life Insurance Policy",
+  "closest": "",
+  "config": {
+   "formName": "Assignment of Life Insurance Policy",
+   "formId": "L_ALIP",
+   "formDescription": "Assignment of Life Insurance Policy",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "combined",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Authorization to Release Financial Info",
+  "file": "Authorization to Release Financial Info",
+  "folder": "Authorization to Release Financial Info",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 6,
+  "row name": "Authorization to Release Financial Info",
+  "closest": "",
+  "config": {
+   "formName": "Authorization to Release Financial Info",
+   "formId": "L_ARFI",
+   "formDescription": "Authorization to Release Financial Info",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Direction of Chicken Quota",
+  "file": "Direction of Chicken Quota",
+  "folder": "Direction of Chicken Quota",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 12,
+  "row name": "Direction of Chicken Quota",
+  "closest": "",
+  "config": {
+   "formName": "Direction of Chicken Quota",
+   "formId": "L_DCQ",
+   "formDescription": "Direction of Chicken Quota",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Direction of Egg Quota",
+  "file": "Direction of Egg Quota",
+  "folder": "Direction of Egg Quota",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 13,
+  "row name": "Direction of Egg Quota",
+  "closest": "",
+  "config": {
+   "formName": "Direction of Egg Quota",
+   "formId": "L_DEQ",
+   "formDescription": "Direction of Egg Quota",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Direction of Hatching Egg & Chicken Quota",
+  "file": "Direction of Hatching Egg & Chick Quota",
+  "folder": "Direction of Hatching Egg & Chick Quota",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 14,
+  "row name": "Direction of Hatching Egg & Chicken Quota",
+  "closest": "",
+  "config": {
+   "formName": "Direction of Hatching Egg & Chicken Quota",
+   "formId": "L_DHECQ",
+   "formDescription": "Direction of Hatching Egg & Chicken Quota",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Direction of Milk Quota Proceeds",
+  "file": "Direction of Milk Quota",
+  "folder": "Direction of Milk Quota",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 15,
+  "row name": "Direction of Milk Quota Proceeds",
+  "closest": "",
+  "config": {
+   "formName": "Direction of Milk Quota Proceeds",
+   "formId": "L_DMQ",
+   "formDescription": "Direction of Milk Quota Proceeds",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Direction of Turkey Quota",
+  "file": "Direction of Turkey Quota",
+  "folder": "Direction of Turkey Quota",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 16,
+  "row name": "Direction of Turkey Quota",
+  "closest": "",
+  "config": {
+   "formName": "Direction of Turkey Quota",
+   "formId": "L_DTQ",
+   "formDescription": "Direction of Turkey Quota",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Security",
+   "formType": "org",
+   "productCodes": "Member",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": []
+ },
+ {
+  "production name": "Disclosure Letter - Pre Approved Loan Extension - Business",
+  "file": "Disclosure Letter - Pre Approved Loan Extension - Business",
+  "folder": "Disclosure Letter - Pre Approved Loan Extension - Business",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 18,
+  "row name": "Disclosure Letter - Pre Approved Loan Extension - Business",
+  "closest": "",
+  "config": {
+   "formName": "Disclosure Letter - Pre Approved Loan Extension - Business",
+   "formDescription": "Disclosure Letter - Pre Approved Loan Extension - Business",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "loan, LOC, mortgage, curacct, special",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PrintButton": true
+  },
+  "notes": [
+   "Confirmed Forms row 18 is misaligned (Membership \"Type\" \"YES\" not recognised.; Remote eSign \"Organization (Business)\" not recognised.): buttons, membership type and menu group from FO Data Line row 126; Form ID and product codes from Confirmed Forms"
+  ]
+ },
+ {
+  "production name": "Disclosure letter - Business",
+  "file": "Disclosure letter - Business",
+  "folder": "Disclosure letter - Business",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 17,
+  "row name": "Disclosure letter - Business",
+  "closest": "",
+  "config": {
+   "formName": "Disclosure letter - Business",
+   "formDescription": "Disclosure Letter - Business",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false,
+   "productCodes": "loan,mortgage, curract, special"
+  },
+  "buttons": {
+   "PrintButton": true
+  },
+  "notes": [
+   "product codes from FO Data Line row 101"
+  ]
+ },
+ {
+  "production name": "Federal RLIF Locking-In Agreement",
+  "file": "Federal RLIF Locking-In Agreement",
+  "folder": "Federal RLIF Locking-In Agreement",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 19,
+  "row name": "Federal RLIF Locking-In Agreement",
+  "closest": "",
+  "config": {
+   "formName": "Federal RLIF Locking-In Agreement",
+   "formDescription": "Federal RLIF Locking-In Agreement",
+   "foCabinet": "Investments",
+   "formMenuGroups": "RIF",
+   "formType": "person",
+   "productCodes": "rrifvar , RIF",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false,
+   "formId": "L_FLA"
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": [
+   "Confirmed Forms row 19 is misaligned (Membership \"Type\" \"NO\" not recognised.; Remote eSign \"Person (Retail)\" not recognised.): buttons, membership type and menu group from FO Data Line row 158; Form ID and product codes from Confirmed Forms"
+  ]
+ },
+ {
+  "production name": "Federal RLIF Transfer - up to 50% of new RLIF",
+  "file": "Federal RLIF Transfer - up to 50% of new RLIF",
+  "folder": "Federal RLIF Transfer - up to 50% of new RLIF",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 20,
+  "row name": "Federal RLIF Transfer - up to 50% of new RLIF",
+  "closest": "",
+  "config": {
+   "formName": "Federal RLIF Transfer - up to 50% of new RLIF",
+   "formDescription": "Federal RLIF Transfer - up to 50% of new RLIF",
+   "foCabinet": "investments",
+   "formMenuGroups": "RIF",
+   "formType": "person",
+   "productCodes": "rrifvar , RIF",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false,
+   "formId": "L_FT"
+  },
+  "buttons": {
+   "PhoneAuthButton": true,
+   "DigitalSignatureButton": true,
+   "RemoteESignButton": true
+  },
+  "notes": [
+   "Confirmed Forms row 20 is misaligned (Membership \"Type\" \"YES\" not recognised.; Support Services \"33966\" not recognised.; Remote eSign \"Person (Retail)\" not recognised.): buttons, membership type and menu group from FO Data Line row 128; Form ID and product codes from Confirmed Forms"
+  ]
+ },
+ {
+  "production name": "LOC Repricing Letter",
+  "file": "LOC Repricing Letter",
+  "folder": "LOC Repricing Letter",
+  "root": "field naming 10-23 Just reqs",
+  "match": "exact",
+  "score": 1.0,
+  "sheet": "Confirmed Forms(74)",
+  "row": 43,
+  "row name": "LOC Repricing Letter",
+  "closest": "",
+  "config": {
+   "formName": "LOC Repricing Letter",
+   "formDescription": "LOC Repricing Letter",
+   "foCabinet": "Lending",
+   "formMenuGroups": "Business Lending",
+   "formType": "org",
+   "productCodes": "curacct, special, LOC",
+   "postProcessing": false,
+   "adminQueue": false,
+   "supportServices": false
+  },
+  "buttons": {
+   "PrintButton": true
+  },
+  "notes": []
+ }
+]

@@ -40,17 +40,26 @@ def main():
     for r in table["rows"]:
         rows.setdefault((r["sheet"], norm(r["formName"])), r)
     roots = [f"field naming {tag}", "field naming as is"]
+    # a file whose name is not its row's: the main set's matches already say
+    # which row it is ("Direction of Milk Quota" is "... Milk Quota Proceeds")
+    known = {}
+    for m in json.load(open(os.path.join(HERE, "designer", "form_matches.json"), encoding="utf-8")):
+        if m.get("match") == "exact":
+            known.setdefault(norm(m["file"]), []).append(m["production name"].strip())
     out = []
     for f in sorted(os.listdir(batch)):
         if not f.lower().endswith(".pdf"):
             continue
-        stem = f[:-4]
-        root = next((r for r in roots if os.path.isfile(os.path.join(HERE, r, stem, f"{stem}.pdf"))), None)
+        folder = f[:-4]
+        root = next((r for r in roots if os.path.isfile(os.path.join(HERE, r, folder, f"{folder}.pdf"))), None)
+        stem = folder
+        if (CONFIRMED, norm(stem)) not in rows and len(known.get(norm(stem), [])) == 1:
+            stem = known[norm(stem)][0]
         conf, fo = rows.get((CONFIRMED, norm(stem))), rows.get((FO, norm(stem)))
         said = []
         row = conf or fo
         if row is None:
-            out.append({"production name": stem, "file": stem, "folder": stem if root else None, "root": root,
+            out.append({"production name": stem, "file": folder, "folder": folder if root else None, "root": root,
                         "match": "unmatched - no row in the batch's workbook", "config": {}, "buttons": {}, "notes": []})
             continue
         config, buttons = dict(row["config"]), dict(row["buttons"])
@@ -67,7 +76,7 @@ def main():
         if not config.get("productCodes") and fo and fo["config"].get("productCodes"):
             config["productCodes"] = fo["config"]["productCodes"]
             said.append(f"product codes from FO Data Line row {fo['row']}")
-        out.append({"production name": stem, "file": stem, "folder": stem if root else None, "root": root,
+        out.append({"production name": stem, "file": folder, "folder": folder if root else None, "root": root,
                     "match": "exact", "score": 1.0, "sheet": row["sheet"], "row": row["row"],
                     "row name": row["formName"], "closest": "", "config": config,
                     "buttons": {k: v for k, v in buttons.items() if v}, "notes": said})
