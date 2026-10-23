@@ -3507,10 +3507,18 @@ def standard_signing(page, area, fonts, size, margin=36.0):
     # kept to the area instead, the block came out shifted right and narrow.
     if blocked and max(r.y1 for r in blocked) <= block_top + size * 2.2:
         block_top_ = max(r.y1 for r in blocked) + size * 0.4
-        if block_top_ + need <= ground - 4:
-            block_ = fitz.Rect(left, block_top_, right, block_top_ + need)
+        # rows as close as they may go, if that is what makes it fit: the
+        # spacing was worked out for room from the area's top, and starting
+        # under the line beside it - the Concentra TFSA's "accepted by Credit
+        # Union authorized officer" - it no longer fitted and the block went
+        # narrow down the right third of the page
+        need_ = need if block_top_ + need <= ground - 4 else least * rows + lead
+        if block_top_ + need_ <= ground - 4:
+            block_ = fitz.Rect(left, block_top_, right, block_top_ + need_)
             if not [r for ch, base, r in plain if not mine_(r) and r.intersects(block_)]:
                 block_top, block, blocked = block_top_, block_, []
+                if need_ != need:
+                    need, pitch = need_, least
     if blocked:
         cols = narrow_cols
         left, right = cols[0][0], cols[2][1]

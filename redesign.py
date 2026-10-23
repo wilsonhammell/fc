@@ -365,9 +365,11 @@ def rows_with_fields(page, grids=()):
         # starts - is not a space on the page. The transfer authorization's
         # writer put one between every change of font, mid-word, and read as
         # text they printed "Gove rnin g Legislation".
+        # (or starts before it: the RRSP's " Y es" kerns the "e" back over the
+        #  space, and printed "Yes" came out "Y es")
         chars = [c for k, c in enumerate(chars)
                  if not (c["c"] == " " and k + 1 < len(chars)
-                         and abs(chars[k + 1]["origin"][0] - c["origin"][0]) < 0.3
+                         and chars[k + 1]["origin"][0] - c["origin"][0] < 0.3
                          and not chars[k + 1]["c"].isspace())]
         if note_ink:
             kept = [c for c in chars
@@ -2429,6 +2431,15 @@ class KeepShape:
                 if x > x0p + wp:
                     wide += x - (x0p + wp)
                     x = x0p + wp
+            if item.get("boxed"):
+                # a box to write in, as the form drew it - the Concentra
+                # applications' Branch / Member / Contract Number under their
+                # captions came back as three lines
+                cell = fitz.Rect(x, base - self.size, x + wide, base + 3)
+                self.page.draw_rect(cell, color=(0, 0, 0), width=0.6)
+                self.drew[item["what"]] += 1
+                self.field(cell + (1, 1, -1, -1), item)
+                continue
             if not item.get("in_cell") and not item.get("unruled"):
                 self.page.draw_line(fitz.Point(x, base + 2),
                                     fitz.Point(x + wide, base + 2),
@@ -3670,11 +3681,112 @@ def field_boxes(page, grids):
             and not any(c.contains(fitz.Point((w[0] + w[2]) / 2, (w[1] + w[3]) / 2))
                         for w in words)
             for c in cells)
-        if only_fields:
-            boxes += cells
+        # or a stack of boxes with a label among them - the address's three
+        # lines and its "Postal code [box]": most of its bands one cell and
+        # that cell a field, no band a header of labels. A real table has a
+        # header (Name | Relationship | Birthdate over rows of boxes) or a
+        # label beside a box on every band (Days | [ ], Months | [ ]).
+        def kind(c):
+            f = any(c.contains(mid(r)) for r in rects)
+            t = any(c.contains(fitz.Point((w[0] + w[2]) / 2, (w[1] + w[3]) / 2)) for w in words)
+            return "B" if f and t else "F" if f else "T" if t else "-"
+        bands = [[kind(fitz.Rect(x0, top, x1, foot)) for x0, x1 in zip(cuts, cuts[1:])]
+                 for top, foot, cuts in g["bands"]]
+        # (a band may be one box holding its own label too - the RRSP's
+        #  "Postal code [ ]" is set inside the address's last box)
+        lone = sum(1 for b in bands if b == ["F"])
+        stack = (len(bands) >= 3 and lone * 2 > len(bands)
+                 and not any(b.count("T") >= 2 and "F" not in b for b in bands)
+                 # (a band of nothing but labels is a table's header)
+                 and not any("T" in b and all(c in ("T", "-") for c in b) for b in bands))
+        if only_fields or stack:
+            boxes += [c for c in cells if kind(c) in ("F", "B")]
         else:
             tables.append(g)
     return tables, boxes
+
+
+def join_stacked_labels(rows, size=10.0):
+    """A short label set over two lines is one label.
+
+    "Telephone / (residence)", "Deposit / Date", "Interest / Rate": the form
+    breaks a label in two to fit a narrow slot, the second line straight
+    under the first. Read a line at a time they were two rows, and each half
+    went its own way - "(residence)" ended up far from "Telephone", and the
+    box between them with neither. The lower line joins the upper one, and
+    the label goes in the row that holds its box, if either does.
+
+    Only short lines, one under the other on the same left edge, with no gap
+    between them a line could fit in and nothing else at that height in
+    between: prose is merge_prose's, and a column of separate labels -
+    "Days / Months / Years" each with its own box - keeps its rows."""
+    texts = [(k, i) for k, r in enumerate(rows) for i in r if i["what"] == "text"]
+    short = lambda i: len(i["text"]) <= 24 and i["rect"].width <= 110
+    has_field = lambda k: any(j["what"] == "field" for j in rows[k])
+    for k, a in texts:
+        if not short(a) or a.get("joined_into"):
+            continue
+        for m, b in texts:
+            if b is a or m == k or b.get("joined_into") or not short(b):
+                continue
+            ra, rb = a["rect"], b["rect"]
+            gap = rb.y0 - ra.y1
+            if not (-1.5 <= gap <= 0.45 * a["size"] and abs(rb.x0 - ra.x0) <= 3):
+                continue
+            # a field's label: one half, and only one, stands in a row with a
+            # box. Two that each own one are two labels; neither, and it is
+            # an address, a footer or a heading, not a label broken in two
+            if has_field(k) == has_field(m):
+                continue
+            # words, both of them: not a list's numbers or bullets ("1." over
+            # "1.1"), and the top half not a label already finished (":")
+            if (not all(len(re.findall(r"[A-Za-z]", t["text"])) >= 3 for t in (a, b))
+                    or a["text"].rstrip().endswith(":")
+                    or a.get("bold") != b.get("bold") or abs(a["size"] - b["size"]) > 0.6):
+                continue
+            # two phrases each a label of its own - "Name of Annuitant" over
+            # "Address of Annuitant:" - are two labels: a broken one is a word
+            # or two carried over ("Deposit / Date", "Transfer to / variable")
+            if (len(a["text"].split()) >= 2 and len(b["text"].split()) >= 2
+                    and b["text"][:1].isupper()):
+                continue
+            # nothing stands between or alongside, within the label's width
+            if any(j is not a and j is not b and j["rect"].x0 < max(ra.x1, rb.x1) + 2
+                   and j["rect"].x1 > ra.x0 - 2 and ra.y0 < (j["rect"].y0 + j["rect"].y1) / 2 < rb.y1
+                   for r in rows for j in r):
+                continue
+            home, lost = (b, a) if has_field(m) and not has_field(k) else (a, b)
+            runs = join_runs(a, b)
+            home["text"] = f"{a['text']} {b['text']}"
+            home["rect"] = fitz.Rect(ra) | rb
+            home["runs"] = runs
+            lost["joined_into"] = True
+            break
+    return [r for r in ([i for i in row if not i.get("joined_into")] for row in rows) if r]
+
+
+def attach_units(rows):
+    """A unit typed just after a box - "%" after the TFSA's Interest Rate -
+    belongs to that box's row. Set a hair lower than the box's label it was
+    read as a row of its own, and went to the next sheet without its box."""
+    for k, r in enumerate(rows):
+        if len(r) != 1 or r[0]["what"] != "text" or not re.fullmatch(r"[%$¢]", r[0]["text"].strip()):
+            continue
+        u = r[0]["rect"]
+        host = None
+        for m in range(max(0, k - 4), min(len(rows), k + 4)):
+            if m == k:
+                continue
+            for i in rows[m]:
+                f = i["rect"]
+                if (i["what"] == "field" and 0 <= u.x0 - f.x1 <= 8
+                        and abs((u.y0 + u.y1) / 2 - (f.y0 + f.y1) / 2) <= 6):
+                    host = m
+        if host is not None:
+            rows[host].append(r[0])
+            rows[host].sort(key=lambda i: i["rect"].x0)
+            rows[k] = []
+    return [r for r in rows if r]
 
 
 def split_beside_grids(rows, grids, pad=6.0):
@@ -3691,10 +3803,14 @@ def split_beside_grids(rows, grids, pad=6.0):
         b = g["box"]
         cx = lambda i: (i["rect"].x0 + i["rect"].x1) / 2
         inside = lambda i: b.x0 - pad <= cx(i) <= b.x1 + pad
+        # every row standing at the grid's height, whether or not any of it
+        # is inside: TFSA's "(residence)", the second line of a telephone
+        # label beside the address boxes, was a row of its own there, and
+        # left in place it cut the grid's rows in two
         span = [k for k, r in enumerate(rows)
-                if r and b.y0 - 2 <= min(i["base"] for i in r) <= b.y1 + 2
-                and any(inside(i) for i in r)]
-        if not span or not any(not inside(i) for k in span for i in rows[k]):
+                if r and b.y0 - 2 <= min(i["base"] for i in r) <= b.y1 + 2]
+        if (not any(inside(i) for k in span for i in rows[k])
+                or not any(not inside(i) for k in span for i in rows[k])):
             continue
         before, after = [], []
         for k in span:
@@ -4509,7 +4625,7 @@ def main():
         grids = here["grids"]
         for g in grids:
             zones[page.number].append(g["box"] + (-4, -4, 4, 4))
-        laid = split_beside_grids(here["rows"], grids)
+        laid = split_beside_grids(attach_units(join_stacked_labels(here["rows"])), grids)
         # A page of the form that is the last before a fresh sheet - the end
         # of the form, or the page before another document starts - and that
         # would spill a few rows onto a sheet of their own, closes up the
@@ -4555,9 +4671,14 @@ def main():
                 # an area is its own thing, and splitting it from its captions
                 # to make room left its captions 40pt adrift
                 pieces = [p + (-2, -2, 2, 2) for p in area["pieces"]]
+                # (not a row of nothing but buttons - the Concentra forms'
+                #  Save / Print / Reset under the signature: counted in, they
+                #  were set inside the room kept for the block, and the block
+                #  was drawn over them)
                 idx = [k for k, r in enumerate(laid)
-                       if any(fitz.Rect(i["rect"]).intersects(p)
-                              for i in r for p in pieces)]
+                       if not all(i.get("type") == fitz.PDF_WIDGET_TYPE_BUTTON for i in r)
+                       and any(fitz.Rect(i["rect"]).intersects(p)
+                               for i in r for p in pieces)]
                 if idx:
                     # the block is drawn from the area's first line, which sits
                     # a row below where the area's rows begin
