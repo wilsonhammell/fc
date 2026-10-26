@@ -438,7 +438,10 @@ def rows_with_fields(page, grids=()):
                             and (len(held) != 1
                                  or c["bbox"][0] - run[-1]["bbox"][2] > 1.2 * style["size"]
                                  # a list marker and its tab: "1)  For the purpose"
-                                 or re.fullmatch(r"\(?[0-9a-zA-Z]{1,4}[.)]",
+                                 # (a number, a letter or a roman numeral -
+                                 #  not a word ending its sentence before a
+                                 #  double space: TFSA's "TFSA.  We will give")
+                                 or re.fullmatch(r"\(?(?:\d{1,3}|[a-zA-Z]|[ivxIVX]{2,4})[.)]",
                                                  "".join(x["c"] for x in run).strip())))):
                 # a soft hyphen in the middle of a word draws as a hyphen;
                 # set it as one so the word can still be searched for
@@ -1314,6 +1317,9 @@ def page_numbers(row, page):
 # "(a)", "A.", "12.", "iv)", and the "1.1" / "18.1" of a numbered
 # agreement: the start of a new item in a list, which is never the rest
 # of the sentence above it, whatever follows the marker.
+# a list marker proper, for telling a new item from a sentence going on
+ITEM_MARK = re.compile(r"^(?:\(?(?:\d{1,3}|[a-zA-Z]|[ivxIVX]{2,4})[.)](?![\w.)])"
+                       r"|\d{1,3}(?:\.\d{1,3})+\.?$)")
 LIST_MARK = re.compile(r"^(?:\(?[a-zA-Z0-9]{1,3}[.)](?![\w.)])"
                        r"|\d{1,3}(?:\.\d{1,3})+\.?$)")
 
@@ -1552,6 +1558,15 @@ def merge_prose(rows, right_edge=10 ** 6):
         if sum(1 for x in xs if top - x <= 2.0) >= 2:
             edges[k] = top
 
+    def opens_item(text):
+        """Does this line open a list item? "Act." alone on a line - the end
+        of "... Income Tax / Act." - matches the marker pattern but is a
+        word: a marker is followed by its words, or is marker-short."""
+        # (and a marker is a number, a letter or a roman numeral: "us." at
+        #  the head of "us. Any notices given by us ..." is a word)
+        text = text.strip()
+        return bool(ITEM_MARK.match(text)) and (len(text.split()) > 1 or len(text) <= 3)
+
     def carries_on(a, b, same_start=True, column=None, fallback=None):
         """Is b the rest of a's sentence rather than a new line of its own?
 
@@ -1570,7 +1585,7 @@ def merge_prose(rows, right_edge=10 ** 6):
                 and a["bold"] == b["bold"] and a["italic"] == b["italic"]
                 and 0 < b["base"] - a["base"] < 2.2 * b["size"]
                 and (not same_start or abs(a["rect"].x0 - b["rect"].x0) <= 2.5)
-                and not LIST_MARK.match(b["text"].lstrip())
+                and not opens_item(b["text"])
                 # (Word's second-level bullet, an "o", is not lower case)
                 and not re.match(r"o\s", b["text"].lstrip())):
             return True
@@ -1598,12 +1613,17 @@ def merge_prose(rows, right_edge=10 ** 6):
             # form's own
             return False
         reach = min(reach, right_edge)
+        # (an italic title in the middle of a sentence is still the sentence:
+        #  "... subsection 207.01(1) of the" / "Income Tax Act." stayed two
+        #  lines. Each run keeps its own style when joined.)
+        same_slant = (a["italic"] == b["italic"]
+                      or a["text"].rstrip()[-1:] not in ".:;!?)")
         return (abs(a["size"] - b["size"]) < 0.6
-                and a["bold"] == b["bold"] and a["italic"] == b["italic"]
+                and a["bold"] == b["bold"] and same_slant
                 and 0 < b["base"] - a["base"] < 2.2 * b["size"]
                 and (not same_start or abs(a["rect"].x0 - b["rect"].x0) <= 2.5)
                 and not a["text"].rstrip().endswith(":")
-                and not LIST_MARK.match(b["text"].lstrip())
+                and not opens_item(b["text"])
                 and b["text"].lstrip()[:1] not in ("•", "●", "○", "◦", "▪", "■")
                 # Word's second-level bullet is a plain "o" and a space
                 and not re.match(r"o\s", b["text"].lstrip())
@@ -1614,9 +1634,53 @@ def merge_prose(rows, right_edge=10 ** 6):
         out["text"] = a["text"].rstrip() + " " + b["text"].lstrip()
         out["runs"] = join_runs(a, b)
         out["base"] = b["base"]
+        # (and where it began: the space above a paragraph is measured to
+        #  its first line - see `first_base` in main)
+        out["first_base"] = a.get("first_base", a["base"])
         out["rect"] = a["rect"] | b["rect"]
         out["last_x1"] = b.get("last_x1", b["rect"].x1)
         return out
+
+    # A line of a wrapped column that the reader broke at a wide space -
+    # TFSA's "TFSA.  We will give the successor trustee all the information",
+    # a double space after a full stop - is one line: it runs from the
+    # column's start to its edge, with no more than a word space or two
+    # inside. Left in two pieces, the paragraph broke round it.
+    for k, row in enumerate(rows):
+        spots = sorted(row, key=lambda i: i["rect"].x0)
+        if len(spots) < 2 or any(i["what"] != "text" for i in spots):
+            continue
+        first, last_ = spots[0], spots[-1]
+        edge = edges.get(round(first["rect"].x0))
+        if (edge is None or abs(last_["rect"].x1 - edge) > 2.5
+                or opens_item(first["text"]) or first["text"].rstrip().endswith(":")
+                or any(abs(a["size"] - b["size"]) >= 0.6 or a["bold"] != b["bold"]
+                       or b["rect"].x0 - a["rect"].x1 > 2.5 * b["size"]
+                       for a, b in zip(spots, spots[1:]))):
+            continue
+        one = spots[0]
+        for b in spots[1:]:
+            one = dict(one, text=one["text"].rstrip() + " " + b["text"].lstrip(),
+                       rect=one["rect"] | b["rect"], runs=join_runs(one, b))
+        rows[k] = [one]
+
+    hang_at = {}    # where an item's marker starts -> how far in its words start
+
+    def split_marker(item, words_x):
+        """A list item read as one run, as its marker and its words."""
+        mark, rest = item["text"].lstrip().split(None, 1)
+        runs = item.get("runs")
+        font = ARIAL or R.resolve_fonts({})["regular"][2]
+        r = item["rect"]
+        head = dict(item, text=mark, runs=None,
+                    bold=runs[0][1] if runs else item["bold"],
+                    italic=runs[0][2] if runs else item["italic"],
+                    rect=fitz.Rect(r.x0, r.y0, min(words_x - 1, r.x0 + font.text_length(
+                        mark, item.get("size", 10.0) or 10.0)), r.y1))
+        head.pop("last_x1", None)
+        body = dict(item, text=rest, runs=runs[1:] if runs else None,
+                    rect=fitz.Rect(words_x, r.y0, max(r.x1, words_x + 1), r.y1))
+        return [head, body]
 
     def hangs(a, b):
         """Is b the next line of a list item set with a hanging indent - the
@@ -1625,7 +1689,7 @@ def merge_prose(rows, right_edge=10 ** 6):
         in under the words, not under the marker? Where its words start is
         worked out from the marker's width."""
         head = a["text"].lstrip()
-        m = LIST_MARK.match(head)
+        m = ITEM_MARK.match(head)
         if not m or len(head.split()) < 2:
             return False
         mark = head.split()[0]
@@ -1664,7 +1728,13 @@ def merge_prose(rows, right_edge=10 ** 6):
             held = join(tail, row[0])
             held["rect"] = fitz.Rect(tail["rect"].x0, held["rect"].y0,
                                      held["rect"].x1, held["rect"].y1)
-            out[-1] = [j if j is not tail else held for j in last]
+            # (its marker - a letter, a bullet, a tick box - ends where its
+            #  words end: left on the baseline of the item's second line, the
+            #  row read as ending there and the gap to the next item came out
+            #  two lines deep)
+            out[-1] = [held if j is tail
+                       else dict(j, base=max(j["base"], held["base"]))
+                       if j["rect"].x1 <= tail["rect"].x0 + 1 else j for j in last]
         elif (plain and last and len(last) == 1 and last[0]["what"] == "text"
                 and carries_on(last[0], row[0])):
             out[-1] = [join(last[0], row[0])]
@@ -1672,10 +1742,22 @@ def merge_prose(rows, right_edge=10 ** 6):
                 and hangs(last[0], row[0])
                 and carries_on(last[0], row[0], same_start=False,
                                column=last[0]["rect"].x0, fallback=right_edge)):
-            # the rest of a list item set with a hanging indent
-            out[-1] = [join(last[0], row[0])]
+            # the rest of a list item set with a hanging indent - and the
+            # item set that way again: its marker apart, its words from where
+            # the second line started. Kept as one run, "a. the Contributions
+            # ..." wrapped back under its own "a." at the new size.
+            held = join(last[0], row[0])
+            out[-1] = split_marker(held, row[0]["rect"].x0)
+            hang_at[round(held["rect"].x0)] = row[0]["rect"].x0 - held["rect"].x0
         else:
             out.append(row)
+    # and the one-line items of the same list, whose second line there was
+    # none to show, hang the same way
+    for k, row in enumerate(out):
+        if (len(row) == 1 and row[0]["what"] == "text" and opens_item(row[0]["text"])
+                and len(row[0]["text"].split()) > 1
+                and round(row[0]["rect"].x0) in hang_at):
+            out[k] = split_marker(row[0], row[0]["rect"].x0 + hang_at[round(row[0]["rect"].x0)])
     return out
 
 
@@ -1813,10 +1895,27 @@ def unfold_columns(rows, page, feet=()):
         steps = [b - a for a, b in zip(bases, bases[1:]) if 2 < b - a < 20]
         pitch = sorted(steps)[len(steps) // 2] if steps else 12.0
         dy = (bases[-1] + pitch) - min(i["base"] for r in rights for i in r)
+        # and a paragraph's space more where the right column opens a new
+        # paragraph or item, as the column spaces its own: RRSP's "f." came
+        # straight under "e." with none, the only item of the list without
+        lines_ = sorted({round(b, 1) for b in bases})
+        paras = sorted(s_ for s_ in (b - a for a, b in zip(lines_, lines_[1:]))
+                       if 1.3 * pitch < s_ < 3 * pitch)
+        last_left = max((i for r in lefts for i in r if i["what"] == "text"),
+                        key=lambda i: i["base"], default=None)
+        first_right = min((i for r in rights for i in r if i["what"] == "text"),
+                          key=lambda i: (i["base"], i["rect"].x0), default=None)
+        if (paras and last_left is not None and first_right is not None
+                and (last_left["text"].rstrip()[-1:] in ".;:"
+                     or LIST_MARK.match(first_right["text"].lstrip()))):
+            dy += paras[len(paras) // 2] - pitch
         moved = []
         for r in rights:
             if r:
-                moved.append([dict(i, base=i["base"] + dy,
+                # (marked: moved down the page, the right column's first
+                #  line can land where the footer was - RRSP's "13. No
+                #  Advantage" was taken for the footer and set at the foot)
+                moved.append([dict(i, base=i["base"] + dy, unfolded=True,
                                    rect=fitz.Rect(i["rect"].x0 + dx, i["rect"].y0 + dy,
                                                   i["rect"].x1 + dx, i["rect"].y1 + dy))
                               for i in r])
@@ -4629,9 +4728,10 @@ def main():
     # own page breaks, so the old one goes.
     def in_foot(row, n):
         return (bool(page_numbers(row, doc[n])) and len(page_numbers(row, doc[n])) == len(row)
-                or all(any(fitz.Point((i["rect"].x0 + i["rect"].x1) / 2,
-                                      (i["rect"].y0 + i["rect"].y1) / 2) in b + (-2, -2, 2, 2)
-                           for b, _ in foot_boxes.get(n, ())) for i in row))
+                or all(not i.get("unfolded") and any(
+                    fitz.Point((i["rect"].x0 + i["rect"].x1) / 2,
+                               (i["rect"].y0 + i["rect"].y1) / 2) in b + (-2, -2, 2, 2)
+                    for b, _ in foot_boxes.get(n, ())) for i in row))
     for n in range(doc.page_count - 1):
         if read[n + 1]["opens"]:
             continue
@@ -4663,6 +4763,7 @@ def main():
                           f"{b['text'].split()[0]!r} - one sentence the old page break cut"))
 
     last_base, started, typed = None, False, 0
+    gaps_seen, across, ended_with = [], None, ""   # paragraph spacing across the form's pages
     panels_at = []               # ([panels], rows, {row: (sheet, y)}) per page of the form
     rooms = []                   # (sheet, top, foot) kept for the standard signing block
     for page in doc:
@@ -4852,6 +4953,16 @@ def main():
                     free = (min(rights) if rights else right_edge) - g_["box"].x1 - 4
                     g_["nudge"] = max(g_.get("nudge", 0.0), min(over - back, max(0.0, free)))
             for a in signing_at:
+                # The words that open the signing - "IN WITNESS WHEREOF the
+                # Borrower has hereunto set his hand ..." - go to the sheet
+                # the block goes to. With the block moved on alone, Turkey's
+                # signing lines stood at the head of a sheet under nothing,
+                # and the signing pass no longer took them for a member's.
+                if (a["start"] is None and not a["done"] and n == a["first"] - 1
+                        and any(i["what"] == "text" for i in row)
+                        and not any(i["what"] == "field" for i in row)):
+                    sheet.room(sheet.measure(row, right_edge) + sheet.size + a["need"] + 8,
+                               clear=False)
                 if a["start"] is None and not a["done"] and n >= a["first"]:
                     sheet.room(a["need"] + 8, clear=False)
                     # the air under the block only where the sheet has it:
@@ -4887,7 +4998,7 @@ def main():
             # halfway down a page ("EST 107 (06/15)" between two witness
             # blocks). It is taken out here and set at the foot afterwards.
             boxes = foot_boxes.get(page.number, ())
-            footing = [i for i in row if i["what"] == "text" and any(
+            footing = [i for i in row if i["what"] == "text" and not i.get("unfolded") and any(
                 fitz.Point((i["rect"].x0 + i["rect"].x1) / 2, (i["rect"].y0 + i["rect"].y1) / 2)
                 in b + (-2, -2, 2, 2) for b, _ in boxes)]
             if footing:
@@ -4930,7 +5041,12 @@ def main():
                     if closes and len(laid) - n <= 4 else 10 ** 6)
             if last_base is not None:
                 # keep the space the form left between rows, in proportion
-                gap = max(0.0, base - last_base) - (texts[0]["size"] if texts else 9)
+                # (to the row's first line: a paragraph joined from several
+                #  carries its last line's baseline, and measured from that
+                #  every paragraph opened with a blank line under its heading
+                #  while the heading itself sat tight under the text above)
+                top_ = min(i.get("first_base", i["base"]) for i in row)
+                gap = max(0.0, top_ - last_base) - (texts[0]["size"] if texts else 9)
                 want = min(18.0, max(0.0, gap)) * squeeze
                 # close up only where the gap would push the rest onto a sheet
                 # of its own: Turkey's last signing row was squashed against
@@ -4938,7 +5054,21 @@ def main():
                 left = sheet.rect.height - sheet.bottom - sheet.y
                 # (counting the gaps of every row still to come, not just this one)
                 sheet.gap(0.0 if tail <= 40 and tail + want * (len(laid) - n) > left else want)
+                if want > 2:
+                    gaps_seen.append(want)
+            elif across and texts and gaps_seen and (
+                    R.TERMS_HEAD.search(texts[0]["text"]) or LIST_MARK.match(texts[0]["text"].lstrip())
+                    or texts[0]["bold"] or across.rstrip()[-1:] in ".;:"):
+                # The form's own page break took the space between paragraphs
+                # with it: a page of the form's text starts its run afresh, and
+                # TFSA's "11. Your Responsibilities", heading the next page,
+                # sat tight under the clause before it. A paragraph that opens
+                # a page of the form gets the space its paragraphs have.
+                sheet.gap(sorted(gaps_seen)[len(gaps_seen) // 2])
+            across = None
             last_base = base
+            if texts:
+                ended_with = texts[-1]["text"]
 
             for i in row:
                 if i.get("drawn"):
@@ -5122,11 +5252,24 @@ def main():
                     step = (min(i["base"] for i in laid[k]) - min(i["base"] for i in laid[k - 1])
                             - (said[0]["size"] if said else 9))
                     return min(18.0, max(0.0, step)) * squeeze
+                # (what is set beside a grid, and the grid, stand side by
+                #  side: they take the height of the tallest of them, not of
+                #  all three one under another - TFSA's Deposit section,
+                #  measured stacked, left half of page 1 empty for no reason)
+                sides_ = ({}, {})
+                def grows(k, h, w):
+                    tag = laid[k][0].get("beside") if laid[k] else None
+                    if tag is None:
+                        return h
+                    d = sides_[w].setdefault(tag[0], {})
+                    was = max(d.values(), default=0.0)
+                    d[tag[1]] = d.get(tag[1], 0.0) + h
+                    return max(d.values()) - was
                 whole, k = est(row), n + 1
                 bare = whole
                 while k < len(laid) and not is_heading(laid[k], bars, strong_only=True):
-                    whole += est(laid[k]) + gap_before(k)
-                    bare += est(laid[k])
+                    whole += grows(k, est(laid[k]) + gap_before(k), 0)
+                    bare += grows(k, est(laid[k]), 1)
                     if whole > usable:
                         break
                     k += 1
@@ -5160,6 +5303,9 @@ def main():
                 close_signing(a)
         marks[len(laid)] = (sheet.doc.page_count - 1, sheet.y)
         last_base = None                    # a new page starts its own run
+        # (and the next page of the form, unless it opens a document of its
+        #  own, carries on from the last words of this one)
+        across = ended_with if not closes else None
     if adding and adding_spot is None:
         sheet.room(block_need + 8, clear=False)
         adding_spot = (sheet.doc.page_count - 1, sheet.y + sheet.size)
