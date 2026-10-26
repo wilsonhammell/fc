@@ -568,6 +568,8 @@ def rows_with_fields(page, grids=()):
                       "name": w.field_name, "type": w.field_type,
                       "kind": w.field_type_string, "size": 10.0,
                       "boxed": w.field_type_string == "Text" and boxed_field(page, w),
+                      # the box the form drew it in, which another field may share
+                      "in_box": box_drawn_round(page, r),
                       # a button is pressed, not written on: no line under it
                       "unruled": w.field_type == fitz.PDF_WIDGET_TYPE_BUTTON,
                       "value": w.field_value, "props": R.field_props(w),
@@ -1034,6 +1036,26 @@ def rows_with_fields(page, grids=()):
             continue
         if len(mates) >= 2 or (mates and i["text"].rstrip().endswith(":")
                                and all(j["text"].rstrip().endswith(":") for j in mates)):
+            i["ralign"] = i["rect"].x1
+    # A label set just before its tick box, where that box stands in one
+    # column with a tick box on a row nearby, ends where it ended: TFSA's
+    # "Compound" and "Transfer to variable" boxes stand one over the other,
+    # and set from their labels' left edges the longer label pushed its box
+    # out of the column.
+    ticks = [(k, j) for k, row in enumerate(rows) for j in row
+             if j["what"] == "field" and j.get("kind") in ("CheckBox", "RadioButton")]
+    for k, i in texts_:
+        box = next((j for j in rows[k] if j["what"] == "field"
+                    and j.get("kind") in ("CheckBox", "RadioButton")
+                    and 0 <= j["rect"].x0 - i["rect"].x1 <= 20
+                    and not any(m is not i and i["rect"].x1 - 1 < m["rect"].x0 < j["rect"].x0
+                                for m in rows[k])), None)
+        # (not a label ending in ":" - those head a column of labels set
+        #  flush left: RRIF's "Withhold Extra Taxes:" stood out of it)
+        if (box is not None and i.get("ralign") is None and len(i["text"]) <= 40
+                and not i["text"].rstrip().endswith(":")
+                and any(j is not box and 0 < abs(k2 - k) <= 3
+                        and abs(j["rect"].x0 - box["rect"].x0) <= 2 for k2, j in ticks)):
             i["ralign"] = i["rect"].x1
     return rows
 
@@ -2271,8 +2293,19 @@ class KeepShape:
         short = [min(w, 36.0) if spots[n]["what"] != "text"
                  and spots[n].get("kind") not in ("CheckBox", "RadioButton") else floor[n]
                  for n, w in enumerate(want)]
+        # A label the form set over two lines to make room - "Telephone /
+        # (residence)" beside the TFSA's address boxes - goes back to its two
+        # lines before any blank gives way: joined into one, it took the
+        # room the form had kept for the boxes, and they came back short.
+        restack = list(want)
+        for n, item in enumerate(spots):
+            if item["what"] == "text" and item.get("stacked"):
+                font = self.face(item["bold"], item["italic"])[2]
+                restack[n] = max(font.text_length(t, self.size) for t in item["stacked"]) + 1
         for anchored in (True, False):
             tries = [list(want)]
+            if restack != want:
+                tries.append(list(restack))
             tries.append(relax(list(want), anchored, True))       # blanks give
             kept, floor[:] = list(floor), short
             tries.append(relax(list(tries[-1]), anchored, True))  # ...to 36pt
@@ -2296,6 +2329,19 @@ class KeepShape:
             if item.get("end_x") and item["what"] != "text":
                 nxt_ = xs[n + 1] - min(pad[n], 12.0) if n + 1 < len(spots) else right_edge
                 widths[n] = max(36.0, min(item["end_x"], nxt_) - xs[n])
+        # and one that shares its end with the blanks round it (share_ends)
+        for n, item in enumerate(spots):
+            stop = item.get("shared_end")
+            if not stop or item["what"] == "text":
+                continue
+            if stop - xs[n] < 0.75 * want[n] and restack != want:
+                xs2, end2 = run(list(restack), True)
+                if end2 <= right_edge and stop - xs2[n] >= 0.75 * want[n]:
+                    xs, widths = xs2, [restack[m] if spots[m]["what"] == "text" else widths[m]
+                                       for m in range(len(spots))]
+            if stop - xs[n] >= max(36.0, 0.75 * want[n]):
+                nxt_ = xs[n + 1] - min(pad[n], 12.0) if n + 1 < len(spots) else right_edge
+                widths[n] = min(stop, nxt_) - xs[n]
         out = []
         for n, item in enumerate(spots):
             if item["what"] == "text":
@@ -2335,10 +2381,18 @@ class KeepShape:
             match = [c for c in cols if abs(c[0] - first["rect"].x0) <= 2.0 and c[4] != "text"]
             if match:
                 d = match[-1][1] - laid[0][1]
-                if 0.5 <= abs(d) <= 90 and laid[-1][1] + laid[-1][2] + d <= right_edge + 1 \
-                        and laid[0][1] + d >= 18:
+                over = laid[-1][1] + laid[-1][2] + d - (right_edge + 1)
+                # (a blank at the end of the row gives up what it overruns:
+                #  RRSP's "No" box stayed out of line under "Yes" for want of
+                #  4pt at the end of the Pension Jurisdiction box)
+                last_blank = (laid[-1][0]["what"] != "text"
+                              and laid[-1][0].get("kind") not in ("CheckBox", "RadioButton"))
+                if (0.5 <= abs(d) <= 90 and laid[0][1] + d >= 18
+                        and (over <= 0 or (last_blank and laid[-1][2] - over >= 36.0))):
                     for t in laid:
                         t[1] += d
+                    if over > 0:
+                        laid[-1][2] -= over
         for n in range(1, len(laid)):
             item, x, room, lines = laid[n]
             # (a blank lines up with a blank started within 12pt of it: ABM's
@@ -2388,7 +2442,20 @@ class KeepShape:
         del cols[:-40]
 
     def place(self, row, right_edge, lead=1.25, last=False):
-        laid = self.line_up(self.plan(row, right_edge), right_edge)
+        laid = [list(t) for t in self.line_up(self.plan(row, right_edge), right_edge)]
+        # a label anchored by its right end to the tick box after it follows
+        # the box where the box was lined up with the one above: TFSA's
+        # "Transfer to variable" stayed put while its box moved under
+        # "Compound"'s, and stood well apart from it
+        for n in range(1, len(laid)):
+            box, label = laid[n], laid[n - 1]
+            if (box[0]["what"] == "field" and box[0].get("kind") in ("CheckBox", "RadioButton")
+                    and label[0]["what"] == "text" and label[0].get("ralign") is not None):
+                gap_ = min(24.0, max(self.size * 0.42, box[0]["rect"].x0 - label[0]["rect"].x1))
+                want_ = box[1] - gap_ - label[2]
+                floor_ = laid[n - 2][1] + laid[n - 2][2] + self.size * 0.42 if n >= 2 else 0.0
+                if want_ > label[1] + 0.5 and want_ >= floor_:
+                    label[1] = want_
         tall = max(len(lines) for _, _, _, lines in laid)
         height = tall * self.size * lead
         span = (min(x for _, x, _, _ in laid),
@@ -2425,6 +2492,10 @@ class KeepShape:
                     self.said.update(re.findall(r"[^\s_]+", piece))
                     self.note_ink(x, at, piece, font)
                     self.note_swap(item, x, at, piece, font)
+                    if item.get("framed") and k == len(lines) - 1:
+                        wide_ = max(font.text_length(l_, self.size) for l_ in lines)
+                        self.page.draw_rect(fitz.Rect(x - 3, base - self.size - 2, x + wide_ + 3,
+                                                      at + 4), color=(0, 0, 0), width=0.6)
                     if item.get("underline") and not item.get("underline_group") and not any(
                             r[3] for r in (item.get("runs") or ())):
                         # the form ruled a line under these words; it belongs
@@ -2446,7 +2517,18 @@ class KeepShape:
                 # the form shows this one as a box to write in, not a rule
                 deep = max(item["rect"].height, self.size * 1.4)
                 cell = fitz.Rect(x, base - self.size, x + room, base - self.size + deep)
-                self.page.draw_rect(cell, color=(0, 0, 0), width=0.6)
+                # fields the form wrote in one box share one box: the first
+                # draws it to the end of the last, the others draw none
+                share = item.get("in_box")
+                prev_ = laid[n - 1][0] if n else None
+                if not (share and prev_ is not None and prev_.get("boxed")
+                        and prev_.get("in_box") == share):
+                    k_ = n
+                    while (share and k_ + 1 < len(laid) and laid[k_ + 1][0].get("boxed")
+                           and laid[k_ + 1][0].get("in_box") == share):
+                        k_ += 1
+                    edge_ = fitz.Rect(x, cell.y0, laid[k_][1] + laid[k_][2], cell.y1)
+                    self.page.draw_rect(edge_, color=(0, 0, 0), width=0.6)
                 self.drew[item["what"]] += 1
                 self.field(cell + (1, 1, -1, -1), item)
                 self.y = max(self.y, cell.y1 - height + 2)
@@ -2927,8 +3009,18 @@ class KeepShape:
         def at(x):
             return left + (x - box.x0) * scale
 
+        # Bands with the same columns keep the same columns: each widened
+        # on its own, the term grid's "Months" row pushed its divider out
+        # past the "Days" and "Years" rows' and the line between label and
+        # box came out kinked. Each column takes the widest any band needs.
+        col_xs = {}
         for top, foot, cuts, items in bands:
-            xs = self.widen([at(c) for c in cuts], items, at, pad)
+            key_ = tuple(round(c) for c in cuts)
+            xs_ = self.widen([at(c) for c in cuts], items, at, pad)
+            was_ = col_xs.get(key_)
+            col_xs[key_] = xs_ if was_ is None else [max(a, b) for a, b in zip(was_, xs_)]
+        for top, foot, cuts, items in bands:
+            xs = list(col_xs[tuple(round(c) for c in cuts)])
             plan, tall = [], 0
             for n in range(len(xs) - 1):
                 room = xs[n + 1] - xs[n] - 2 * pad
@@ -3786,6 +3878,17 @@ def drawn_round(page, r, slack=4.0):
     return across(r.y0) and across(r.y1) and upright(r.x0) and upright(r.x1)
 
 
+def box_drawn_round(page, r):
+    """The box the page draws round a field, where it is one of the boxes
+    field_boxes found - None otherwise. Two fields can share one: TFSA's
+    surname and first name are written in one box."""
+    key = (id(page.parent), page.parent.name, page.parent.page_count, page.number)
+    if key not in RULES_OF:
+        drawn_round(page, r)
+    c = fitz.Point((r.x0 + r.x1) / 2, (r.y0 + r.y1) / 2)
+    return next((tuple(round(v, 1) for v in b) for b in RULES_OF[key][3] if b.contains(c)), None)
+
+
 def field_boxes(page, grids):
     """The grids that are only boxes round fields, and the rest.
 
@@ -3799,10 +3902,33 @@ def field_boxes(page, grids):
     rects = [fitz.Rect(w.rect) for w in page.widgets()
              if w.field_type == fitz.PDF_WIDGET_TYPE_TEXT]
     mid = lambda r: fitz.Point((r.x0 + r.x1) / 2, (r.y0 + r.y1) / 2)
+    # every shape, as (rect, whether it is a box drawn round an area): a
+    # stroked rectangle of some size. A sliver or a line is a rule - Word
+    # draws a table's borders as thin filled strips (the PAD's tables)
+    shapes = []
+    for d in R.printed(page).get_drawings():
+        for it in d["items"]:
+            r_ = fitz.Rect(it[1]) if it[0] == "re" else fitz.Rect(d["rect"])
+            boxy = (it[0] == "re" and "s" in d["type"] and r_.width >= 4 and r_.height >= 4)
+            shapes.append((r_, boxy))
     tables, boxes = [], []
     for g in grids:
         cells = [fitz.Rect(x0, top, x1, foot) for top, foot, cuts in g["bands"]
                  for x0, x1 in zip(cuts, cuts[1:])]
+        # Boxes drawn one by one that only touch are not a table: TFSA's Last
+        # name box sits on its Birthdate and SIN boxes, and read as one
+        # lattice it made cells no box draws - round the "Birthdate" and
+        # "SIN" labels, and a sliver between the SIN box and the note beside
+        # it - and came back as a table of them. A table's every cell is
+        # inside something drawn (the term grid's rows are boxes, a line
+        # splitting each); where some cell is not, the boxes are the form's.
+        within = [(r, b) for r, b in shapes if (g["box"] + (-2, -2, 2, 2)).contains(r)]
+        inside = [r for r, b in within if b]
+        implied = [c for c in cells if c.width > 4 and c.height > 4
+                   and not any(r.contains(c + (2, 2, -2, -2)) for r in inside)]
+        if inside and implied and all(b for _, b in within):
+            boxes += [r for r in inside if any(r.contains(mid(f)) for f in rects)]
+            continue
         only_fields = cells and all(
             any(c.contains(mid(r)) for r in rects)
             and not any(c.contains(fitz.Point((w[0] + w[2]) / 2, (w[1] + w[3]) / 2))
@@ -3884,9 +4010,13 @@ def join_stacked_labels(rows, size=10.0):
                 continue
             home, lost = (b, a) if has_field(m) and not has_field(k) else (a, b)
             runs = join_runs(a, b)
+            lines_ = (a.get("stacked") or [a["text"]]) + (b.get("stacked") or [b["text"]])
             home["text"] = f"{a['text']} {b['text']}"
             home["rect"] = fitz.Rect(ra) | rb
             home["runs"] = runs
+            # (the two lines it was, to set it in again where its row is
+            #  crowded - see KeepShape.plan)
+            home["stacked"] = lines_
             lost["joined_into"] = True
             break
     return [r for r in ([i for i in row if not i.get("joined_into")] for row in rows) if r]
@@ -3940,6 +4070,71 @@ def in_panel(row, rect):
     inside = sum(1 for i in row if fitz.Point((i["rect"].x0 + i["rect"].x1) / 2,
                                               (i["rect"].y0 + i["rect"].y1) / 2) in rect)
     return inside * 2 > len(row)
+
+
+def share_ends(rows, sheet, right_edge, grids=(), reach=4):
+    """Blanks that ended at one point on the form end at one point rebuilt.
+
+    Each row gives its blanks back on its own, so where a row is crowded its
+    blank comes back shorter than the one above it: TFSA's three address
+    boxes and its Postal code box all end at the same edge on the form, and
+    rebuilt the two beside the telephone boxes came back shorter than the
+    first. Blanks in rows near one another (within `reach` rows) that ended
+    within 2pt of each other on the form end, rebuilt, where the most
+    crowded of them has to - as long as each keeps a usable 36pt."""
+    ends = []
+    for k, row in enumerate(rows):
+        if not row or any(g["box"].contains(fitz.Point(
+                (row[0]["rect"].x0 + row[0]["rect"].x1) / 2,
+                (row[0]["rect"].y0 + row[0]["rect"].y1) / 2)) for g in grids):
+            continue
+        for item, x, width, _ in sheet.plan(row, right_edge):
+            # (not one with words straight after it: shortened, Intestacy's
+            #  "in the name(s) of ____ ." left its full stop standing apart)
+            # (boxes only: a line to write on has the column rule above, and
+            #  shortened here Intestacy's contract-number lines came out ragged)
+            if (item["what"] == "field" and item.get("boxed")
+                    and item.get("kind") not in ("CheckBox", "RadioButton")
+                    and not item.get("end_x")
+                    and not any(j["what"] == "text" and -1 <= j["rect"].x0 - item["rect"].x1 <= 8
+                                for j in row)):
+                ends.append((k, item, x, x + width))
+    # (a blank that would come back under three quarters of its width to end
+    #  there sets its stacked label on two lines again first, or stays as
+    #  it was - see KeepShape.plan)
+    # which blanks go together: ending within 2pt of each other on the form,
+    # and either starting in one column within `reach` rows or on rows next
+    # to each other (the Postal code box under the last address line)
+    parent = list(range(len(ends)))
+    def root(a):
+        while parent[a] != a:
+            parent[a] = parent[parent[a]]
+            a = parent[a]
+        return a
+    for a in range(len(ends)):
+        for b in range(a + 1, len(ends)):
+            (ka, ia, _, _), (kb, ib, _, _) = ends[a], ends[b]
+            if ka == kb or abs(ia["rect"].x1 - ib["rect"].x1) > 2:
+                continue
+            if (abs(ka - kb) == 1 or (abs(ka - kb) <= reach
+                                      and abs(ia["rect"].x0 - ib["rect"].x0) <= 3)):
+                parent[root(a)] = root(b)
+    groups = {}
+    for a in range(len(ends)):
+        groups.setdefault(root(a), []).append(ends[a])
+    for group in groups.values():
+        if len({g[0] for g in group}) < 2:
+            continue
+        # (a blank the rebuild runs to the margin keeps its length, as in
+        #  the column rule above: cut back to a crowded neighbour, Loan
+        #  Extension's right-hand lines looked unfinished)
+        if any(g[3] >= right_edge - 2 for g in group):
+            continue
+        stop = min(g[3] for g in group)
+        if max(g[3] for g in group) - stop > 2:
+            for g in group:
+                g[1]["shared_end"] = stop
+    return rows
 
 
 def split_beside_grids(rows, grids, pad=6.0):
@@ -4764,6 +4959,7 @@ def main():
 
     last_base, started, typed = None, False, 0
     gaps_seen, across, ended_with = [], None, ""   # paragraph spacing across the form's pages
+    after_table = False          # the row before was a table, set by grid()
     panels_at = []               # ([panels], rows, {row: (sheet, y)}) per page of the form
     rooms = []                   # (sheet, top, foot) kept for the standard signing block
     for page in doc:
@@ -4788,6 +4984,24 @@ def main():
         for g in grids:
             zones[page.number].append(g["box"] + (-4, -4, 4, 4))
         laid = split_beside_grids(attach_units(join_stacked_labels(here["rows"])), grids)
+        laid = share_ends(laid, sheet, right_edge, grids)
+        # A note the form boxed on its own - TFSA's "Surname, birthdate and
+        # SIN must match CRA records." - keeps its box: it is no field's and
+        # no table's, so nothing else drew it, and it came back bare.
+        widgets_ = [fitz.Rect(w.rect) for w in page.widgets()]
+        for d in R.printed(page).get_drawings():
+            for it in d["items"]:
+                if it[0] != "re" or d.get("color") is None:
+                    continue
+                fr = fitz.Rect(it[1])
+                if (fr.width < 40 or fr.height < 8
+                        or any((fr + (1.5, 1.5, -1.5, -1.5)).intersects(w) for w in widgets_)):
+                    continue
+                held_ = [i for row in laid for i in row if i["what"] == "text"
+                         and fr.contains(fitz.Point((i["rect"].x0 + i["rect"].x1) / 2,
+                                                    (i["rect"].y0 + i["rect"].y1) / 2))]
+                if len(held_) == 1 and held_[0]["rect"].width >= 0.6 * fr.width:
+                    held_[0]["framed"] = True
         # A page of the form that is the last before a fresh sheet - the end
         # of the form, or the page before another document starts - and that
         # would spill a few rows onto a sheet of their own, closes up the
@@ -5048,6 +5262,10 @@ def main():
                 top_ = min(i.get("first_base", i["base"]) for i in row)
                 gap = max(0.0, top_ - last_base) - (texts[0]["size"] if texts else 9)
                 want = min(18.0, max(0.0, gap)) * squeeze
+                # (a row under a table keeps clear of its bottom rule: at the
+                #  form's own 2pt, PAD's "I/We the undersigned ..." sat on it)
+                if after_table:
+                    want = max(want, sheet.size * 0.6)
                 # close up only where the gap would push the rest onto a sheet
                 # of its own: Turkey's last signing row was squashed against
                 # the one above with half the page still empty below it
@@ -5066,6 +5284,7 @@ def main():
                 # a page of the form gets the space its paragraphs have.
                 sheet.gap(sorted(gaps_seen)[len(gaps_seen) // 2])
             across = None
+            after_table = False
             last_base = base
             if texts:
                 ended_with = texts[-1]["text"]
@@ -5157,6 +5376,7 @@ def main():
                                   f"page {page.number + 1} of the form: a shaded box of "
                                   f"{len(panel_rows)} row(s) with no columns, set as rows"))
                     last_base = gb.y1
+                    after_table = True
                     n = k
                     continue
                 # every item belongs to exactly one band, or a field that
@@ -5181,6 +5401,7 @@ def main():
                 sheet.grid(here, bands, right_edge, bars=bars,
                            fills=fills_of[page.number])
                 last_base = here["box"].y1
+                after_table = True
                 n = k
                 continue
 
@@ -5208,6 +5429,7 @@ def main():
                     sheet.room(whole_ + 8, clear=False)
                 sheet.table(grid, right_edge)
                 last_base = max(i["base"] for i in grid[-1])
+                after_table = True
                 n = k
                 continue
 
