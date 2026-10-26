@@ -852,6 +852,28 @@ def rows_with_fields(page, grids=()):
             continue
         k += 1
 
+    # A label set level with the blank it names, just left of it, but a few
+    # points below a row the blank was read into: RRSP Application's
+    # "Pension Jurisdiction" came back under its box, the box beside "No".
+    k = 1
+    while k < len(rows):
+        row, up = rows[k], rows[k - 1]
+        lab = row[0]
+        # (not the second line of a label stacked over it - "Postal / code")
+        if len(row) == 1 and lab["what"] == "text" and not any(
+                i["what"] == "text" and abs(i["rect"].x0 - lab["rect"].x0) <= 3 for i in up):
+            t = lab["rect"]
+            beside = [i for i in up if i["what"] == "field" and i.get("kind") == "Text"
+                      and 0 <= i["rect"].x0 - t.x1 <= 30
+                      and min(i["rect"].y1, t.y1) - max(i["rect"].y0, t.y0) >= 0.5 * t.height
+                      and not any(j is not i and t.x1 - 1 < j["rect"].x0 < i["rect"].x0
+                                  for j in up)]
+            if beside:
+                rows[k - 1] = up + [dict(lab, base=beside[0]["base"])]
+                del rows[k]
+                continue
+        k += 1
+
     # And the other way: a tall tick box set beside a two-line item - Indemnity's
     # "CREDIT UNION CERTIFIED CHEQUE / Order Number & $Amount" - has its middle
     # between the lines, and read as a row of its own it was rebuilt on a line
@@ -1882,10 +1904,13 @@ class KeepShape:
         self.running_on = set()  # the form's pages that carried that block
         self.running_placed = 0  # how many sheets it was set on
         self.quiet = False       # rows being set that the form's art must not follow
+        self.starts, self.ends = {}, {}   # sheet -> where its rows began, where they stopped
         self.page = None
         self.new_page()
 
     def new_page(self):
+        if self.page is not None:
+            self.ends[self.doc.page_count - 1] = self.y
         self.page = self.doc.new_page(width=self.rect.width, height=self.rect.height)
         self.y = self.top
         # A form that prints its letterhead on every sheet gets it on every
@@ -1908,6 +1933,7 @@ class KeepShape:
                 self.running_placed += 1
             finally:
                 self.quiet = False
+        self.starts.setdefault(self.doc.page_count - 1, self.y)
 
     def reserve_image(self, pix, rect):
         """Set an image on the sheet in hand and keep the rows off it."""
@@ -2795,6 +2821,8 @@ class KeepShape:
         box = spec["box"]
         left = max(box.x0, 18.0)
         width = max(60.0, min(right_edge, box.x1) - left)
+        # moved right to clear the words set left of it (see `beside` in main)
+        left += spec.get("nudge", 0.0)
         scale = width / max(box.width, 1.0)
 
         def at(x):
@@ -3789,6 +3817,32 @@ def attach_units(rows):
     return [r for r in rows if r]
 
 
+def rounded_panels(page):
+    """The rounded boxes a form draws round its sections - the Concentra
+    applications' "Branch", "Holder", "Deposit" and "Review" panels: curved
+    outlines most of the page wide. (rect, stroke, width, fill), top down."""
+    out = []
+    for d in R.printed(page).get_drawings():
+        r = d["rect"]
+        if (r.width < page.rect.width * 0.4 or r.height < 30 or d.get("color") is None
+                or sum(1 for it in d["items"] if it[0] == "c") < 4):
+            continue
+        if any(abs(r.x0 - o.x0) < 3 and abs(r.y0 - o.y0) < 3 and abs(r.x1 - o.x1) < 3
+               and abs(r.y1 - o.y1) < 3 for o, *_ in out):
+            continue
+        fill = d.get("fill")
+        out.append((fitz.Rect(r), tuple(d["color"]), d.get("width") or 0.5,
+                    tuple(fill) if fill is not None and min(fill) < 0.95 else None))
+    return sorted(out, key=lambda p: p[0].y0)
+
+
+def in_panel(row, rect):
+    """Whether most of a row's items stand inside a panel of the form."""
+    inside = sum(1 for i in row if fitz.Point((i["rect"].x0 + i["rect"].x1) / 2,
+                                              (i["rect"].y0 + i["rect"].y1) / 2) in rect)
+    return inside * 2 > len(row)
+
+
 def split_beside_grids(rows, grids, pad=6.0):
     """A grid takes only what stands inside it.
 
@@ -3817,6 +3871,11 @@ def split_beside_grids(rows, grids, pad=6.0):
             left = [i for i in rows[k] if not inside(i) and cx(i) < b.x0]
             right = [i for i in rows[k] if not inside(i) and cx(i) > b.x1]
             rows[k] = [i for i in rows[k] if inside(i)]
+            # each tagged with the grid and its side, so the three can be
+            # set side by side again, as the form set them
+            for side, items in (("before", left), ("in", rows[k]), ("after", right)):
+                for i in items:
+                    i["beside"] = (id(g), side)
             if left:
                 before.append(left)
             if right:
@@ -4604,6 +4663,8 @@ def main():
                           f"{b['text'].split()[0]!r} - one sentence the old page break cut"))
 
     last_base, started, typed = None, False, 0
+    panels_at = []               # ([panels], rows, {row: (sheet, y)}) per page of the form
+    rooms = []                   # (sheet, top, foot) kept for the standard signing block
     for page in doc:
         right_edge = page_box(page).x1
         sheet.source = page.number
@@ -4700,6 +4761,9 @@ def main():
             if a["start"] is None:
                 return
             page_no, y0 = a["start"]
+            # (the block itself, not the air kept under it)
+            rooms.append((page_no - 1, y0, y0 + a["need"] - (a["air"] if a.get("aired") else 0),
+                          page_box(page)))
             if sheet.doc.page_count == page_no and sheet.y - y0 < a["need"]:
                 # straight onto the cursor: a gap opened with `gap` can be
                 # given back to a later row, and this one is not spare
@@ -4734,9 +4798,59 @@ def main():
         # goes missing is counted rather than silently lost: the word census
         # cannot see one, because a rule has no words in it
         typed += sum(1 for row in laid for i in row if i["what"] == "rule")
+        # where each row began on the rebuilt sheets, for the form's rounded
+        # panels to be drawn round the rows they held
+        panels = rounded_panels(page)
+        marks = {}
+        if panels:
+            panels_at.append((panels, laid, marks))
         n = 0
+        beside = None    # {grid, side, start: (sheet, y), ends: [(sheet, y)]}
         while n < len(laid):
+            marks.setdefault(n, (sheet.doc.page_count - 1, sheet.y))
             row = laid[n]
+            # What stood left of a grid, the grid, and what stood right of it
+            # each start level with the first, where all three are on one
+            # sheet: set one after another, TFSA's "Variable / Term", its
+            # Days-Months-Years grid and "Interest Rate ... Maturity Date"
+            # came back as three bands, each a third of the page wide.
+            tag = row[0].get("beside") if row else None
+            if beside is not None and tag != (beside["grid"], beside["side"]):
+                beside["ends"].append((sheet.doc.page_count - 1, sheet.y))
+                still = tag is not None and tag[0] == beside["grid"]
+                if beside["ends"][-1][0] != beside["start"][0]:
+                    beside = None               # it ran onto another sheet: left as it came
+                elif still:
+                    sheet.y, sheet.spare = beside["start"][1], 0.0
+                    beside["side"] = tag[1]
+                else:
+                    sheet.y = max(y for _, y in beside["ends"])
+                    beside = None
+            if beside is None and tag is not None and tag[1] == "before":
+                beside = {"grid": tag[0], "side": "before", "ends": [],
+                          "start": (sheet.doc.page_count - 1, sheet.y)}
+            # and what stands left of the grid still ends before it: TFSA's
+            # "Term" ran into "Days" once set at 10pt. The row moves left by
+            # what it overruns, where the margin lets it.
+            if beside is not None and tag == (beside["grid"], "before"):
+                gx = next((g["box"].x0 for g in grids if id(g) == tag[0]), None)
+                last_ = max(row, key=lambda i: i["rect"].x1)
+                reach = last_["rect"].x0 + (
+                    sheet.face(last_.get("bold"), last_.get("italic"))[2].text_length(
+                        last_["text"], fontsize=sheet.size)
+                    if last_["what"] == "text" else last_["rect"].width)
+                over = reach + 8 - gx if gx is not None else 0
+                if over > 0:
+                    # as far as the margin lets it, and the grid moves right
+                    # for the rest - as far as what stands right of it allows
+                    back = max(0.0, min(over, min(i["rect"].x0 for i in row) - page_box(page).x0))
+                    for i in row:
+                        i["rect"] = fitz.Rect(i["rect"]) + (-back, 0, -back, 0)
+                    g_ = next(g for g in grids if id(g) == tag[0])
+                    rights = [i["rect"].x0 for r in laid for i in r
+                              if i.get("beside") == (tag[0], "after")]
+                    free = (min(rights) if rights else right_edge) - g_["box"].x1 - 4
+                    g_["nudge"] = max(g_.get("nudge", 0.0), min(over - back, max(0.0, free)))
             for a in signing_at:
                 if a["start"] is None and not a["done"] and n >= a["first"]:
                     sheet.room(a["need"] + 8, clear=False)
@@ -4744,6 +4858,7 @@ def main():
                     # asked for regardless, Egg's signing area went to a new page
                     if sheet.y + a["need"] + a["air"] + 8 <= sheet.rect.height - sheet.bottom:
                         a["need"] += a["air"]
+                        a["aired"] = True
                     a["start"] = (sheet.doc.page_count, sheet.y)
                 if a["start"] is not None and not a["done"] and n > a["last"]:
                     close_signing(a)
@@ -5043,6 +5158,7 @@ def main():
         for a in signing_at:              # an area that ran to the foot of the page
             if not a["done"]:
                 close_signing(a)
+        marks[len(laid)] = (sheet.doc.page_count - 1, sheet.y)
         last_base = None                    # a new page starts its own run
     if adding and adding_spot is None:
         sheet.room(block_need + 8, clear=False)
@@ -5129,6 +5245,69 @@ def main():
                               f"page {pg.number + 1}: the form asks for no signature; the "
                               f"standard block was added at y={y_:.0f}"))
         sheet.said = +sheet.said        # drop the words taken out entirely
+    # The form's rounded panels go back round the rows they held, from the
+    # top of the first to the foot of the last, on each sheet they run onto.
+    # Read as rows, the Concentra applications came back as a list with no
+    # sections. (drawn under the rows, so a filled panel hides nothing; and
+    # after the signing pass, so the standard block drawn into a panel's room
+    # is measured as it came out)
+    # The marks say which rows a panel held; its edges are taken from what
+    # was set for them - words, fields, rules - so the gap above its first row
+    # and the line before it stay outside.
+    inked = {}
+    def ink_of(p):
+        if p not in inked:
+            pg = out[p]
+            inked[p] = ([fitz.Rect(w[:4]) for w in pg.get_text("words")]
+                        + [fitz.Rect(w.rect) for w in pg.widgets() if w.field_type_string != "Button"]
+                        + [d["rect"] for d in pg.get_drawings() if d["rect"].height < 60
+                           # (not the Save / Print / Reset buttons' borders)
+                           and not any(d["rect"] in fitz.Rect(w.rect) + (-1, -1, 1, 1)
+                                       for w in pg.widgets() if w.field_type_string == "Button")])
+        return inked[p]
+    to_draw = []
+    for panels, rows_, marks_ in panels_at:
+        for rect, stroke, width, fill in panels:
+            held = [j for j, row in enumerate(rows_) if row and in_panel(row, rect)]
+            if not held:
+                continue
+            p0, y0 = marks_[min(m for m in marks_ if m >= held[0])]
+            p1, y1 = marks_[min(m for m in marks_ if m > held[-1])]
+            for p in range(p0, p1 + 1):
+                top = y0 if p == p0 else sheet.starts.get(p, sheet.top) - 1
+                foot = y1 if p == p1 else sheet.ends.get(p, top) + 1
+                # The room kept for the standard signing block is the panel's
+                # too, where the form signed inside it ("Review Carefully and
+                # Sign Below"), as far down as the signing pass drew the block:
+                # its last caption ran past the room kept for it.
+                for q, t, f, m in rooms:
+                    if q == p and top - 1 <= t < foot:
+                        foot = max([foot] + [b.y1 - 6 for b in signing_boxes.get(p, ())
+                                             if b.y0 < f and b.y1 > t])
+                got = [r for r in ink_of(p) if top < (r.y0 + r.y1) / 2 < foot
+                       and r.x1 > rect.x0 and r.x0 < rect.x1]
+                if not got:
+                    continue
+                # wide enough for what it holds, and no wider than the sheet
+                box = fitz.Rect(max(12, min(rect.x0, min(r.x0 for r in got) - 12)),
+                                min(r.y0 for r in got) - sheet.size * 0.6,
+                                min(sheet.rect.width - 12, max(rect.x1, max(r.x1 for r in got) + 12)),
+                                max(r.y1 for r in got) + sheet.size * 0.6)
+                to_draw.append((p, box, stroke, width, fill, rect))
+    # panels the form set to the same edges keep the same edges, however
+    # far one of them had to widen for what it holds
+    for p_, box, *_, rect in to_draw:
+        same = [b for q, b, *_, r in to_draw
+                if abs(r.x0 - rect.x0) <= 3 and abs(r.x1 - rect.x1) <= 3]
+        box.x0, box.x1 = min(b.x0 for b in same), max(b.x1 for b in same)
+    to_draw.sort(key=lambda d: (d[0], d[1].y0))
+    for (p, box, *_), (q, nxt, *_) in zip(to_draw, to_draw[1:]):
+        if p == q and nxt.y0 < box.y1:
+            box.y1 = nxt.y0 = (box.y1 + nxt.y0) / 2
+    for p, box, stroke, width, fill, _ in to_draw:
+        out[p].draw_rect(box, color=stroke, fill=fill, width=width,
+                         radius=min(0.5, 8 / min(box.width, box.height)), overlay=fill is None)
+        sheet.drew["panel"] += 1
     # An area the block had no room in: map it back to the rows of the form
     # it was laid out from, and lay the form out once more with the room kept
     # there. The reading of the form's own page can miss an area the rebuilt

@@ -3413,7 +3413,12 @@ def standard_signing(page, area, fonts, size, margin=36.0):
              and not fitz.Rect(d["rect"]).intersects(box)]
     # a line's worth of air above whatever comes next: 4pt left the staff
     # row's caption sitting on the "Quota No. / Address" rule under it
-    ground = min(below + draws + [page.rect.height - margin])
+    # and a field is printed paper too: a button's face is its appearance,
+    # not the page's, and TFSA's block was spread down over Save/Print/Reset
+    fields_below = [fitz.Rect(w.rect).y0 for w in page.widgets()
+                    if fitz.Rect(w.rect).y0 > box.y1 + 1
+                    and not fitz.Rect(w.rect).intersects(box) and not w.rect.is_empty]
+    ground = min(below + draws + fields_below + [page.rect.height - margin])
     floor = ground - max(4.0, 2 * size)
     # a staff row for each staff member who signs there: the estate forms
     # have two Libro witnesses, each with a signature field of their own
