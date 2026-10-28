@@ -28,7 +28,7 @@ import re
 import openpyxl
 
 HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BOOK = r"C:\Users\Wilson\Desktop\form_requirements\Combined Form Requirements.xlsx"
+BOOK = os.path.join(os.path.dirname(HERE), "form_requirements", "Combined Form Requirements.xlsx")
 TABLE = os.path.join(HERE, "designer", "form_table.json")
 PILOT = os.path.join(HERE, "pilot_forms.txt")
 NAMING = os.path.join(HERE, "field naming")

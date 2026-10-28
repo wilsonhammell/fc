@@ -17,3 +17,21 @@ designer/jobs_*/
 designer/out_*/
 designer/build_report_*.json
 handover * batch/
+
+# Client material that must never reach the online copy: renders and proofs
+# of their forms, their Word and Excel originals (a requirements workbook
+# carries live account numbers) and handover zips. The header logo is the
+# one image the restyle reads.
+*.png
+!assets/*.png
+*.docx
+*.xlsx
+*.zip
+field naming*/*/context.json
+field naming*/*/fields.csv
+client_review_notes.txt
+relabel_proposed.txt
+# reports apply_fields.py writes on every run
+field naming*/*.csv
+field naming*/*.txt
+forms for review/

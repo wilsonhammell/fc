@@ -50,7 +50,7 @@ NAMING = os.path.join(HERE, "field naming")
 JOBS = os.path.join(HERE, "designer", "jobs")
 DB = {e["identifier"]: e["label"] for e in json.load(open(os.path.join(HERE, "dbFields.json"), encoding="utf-8"))}
 SYSTEM = {e["identifier"] for e in json.load(open(
-    r"C:\Users\Wilson\Desktop\form_requirements\public\systemFields.json", encoding="utf-8"))}
+    os.path.join(os.path.dirname(HERE), "form_requirements", "public", "systemFields.json"), encoding="utf-8"))}
 
 EDITABLE_DB = {"PRIMARY_SIGN_DATE"}
 # Pulled from the DB but NOT Load Validated: values a member can lack. Load
